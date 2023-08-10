@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Geospatial Data Science with Julia"
+  author: "Júlio Hoffimann"
+  date: today
+  chapters:
+    - index.qmd
+    - 0-preface.qmd
+    - 1-introduction.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+  pdf:
+    documentclass: scrreprt
+
+jupyter: julia-1.9

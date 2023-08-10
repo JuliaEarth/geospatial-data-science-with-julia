@@ -1,0 +1,11 @@
+{
+  "hash": "933ebbfd15bca15d7d068c5a7420ce54",
+  "result": {
+    "markdown": "# Welcome {.unnumbered}\n\n*Geospatial Data Science with Julia* provides a fresh\napproach to data science with geospatial data and the\n[Julia](https://julialang.org) programming language.\nIt contains best practices for writting *clean*, *readable*\nand *performant* code in geoscientific applications\ninvolving sophisticated representations of the subsurface\nof the Earth such as unstructured meshes made of 2D and\n3D geometries.\n\nBy reading this book, you will:\n\n1. Get a broader perspective on geospatial data\n2. Learn advanced geostatistical algorithms\n3. Reproduce practical **open-source examples**\n\nThis online collaborative book is hosted at\n[geodatascience.julia.org]().\nGive us a star if \n\n<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-nd/4.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png\" /></a><br />This work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-nd/4.0/\">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.\n\nThis is a code block:\n\n::: {.cell execution_count=1}\n``` {.julia .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-display execution_count=41}\n```\n2\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files/figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

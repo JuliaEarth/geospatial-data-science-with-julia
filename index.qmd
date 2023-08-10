@@ -1,0 +1,24 @@
+# Welcome {.unnumbered}
+
+*Geospatial Data Science with Julia* provides a fresh
+approach to data science with geospatial data and the
+[![](https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/b5551ca7946b4a25746c045c15fbb8806610f8d0/images/julia-logo-color.svg){fig-alt="Julia" width=40px}](https://julialang.org)
+programming language.
+It contains best practices for writting *clean*, *readable*
+and *performant* code in geoscientific applications
+involving sophisticated representations of the subsurface
+of the Earth such as unstructured meshes made of 2D and
+3D geometries.
+
+By reading this book, you will:
+
+1. Get a broader perspective on geospatial data
+2. Learn advanced geostatistical algorithms
+3. Reproduce practical **open-source examples**
+
+This online version of the book is hosted at
+[geodatasciencewithjulia.org]().
+and kept up-to-date by our open-source
+community.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
