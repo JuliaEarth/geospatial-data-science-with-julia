@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Geospatial Data Science with Julia",
     "section": "",
-    "text": "Welcome\nGeospatial Data Science with Julia provides a fresh approach to data science with geospatial data and the  programming language. It contains best practices for writting clean, readable and performant code in geoscientific applications involving sophisticated representations of the subsurface of the Earth such as unstructured meshes made of 2D and 3D geometries.\nBy reading this book, you will:\nThe online version of the book is hosted at geodatasciencewithjulia.org and kept up-to-date by GitHub Actions.\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License."
+    "text": "Welcome\nGeospatial Data Science with Julia provides a fresh approach to data science with geospatial data and the  programming language. It contains best practices for writting clean, readable and performant code in geoscientific applications involving sophisticated representations of the subsurface of the Earth such as unstructured meshes made of 2D and 3D geometries.\nBy reading this book, you will:\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License."
   },
   {
     "objectID": "intro.html",
