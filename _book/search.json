@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Geospatial Data Science with Julia",
     "section": "",
-    "text": "Welcome\nGeospatial Data Science with Julia provides a fresh approach to data science with geospatial data and the  programming language. It contains best practices for writting clean, readable and performant code in geoscientific applications involving sophisticated representations of the subsurface of the Earth such as unstructured meshes made of 2D and 3D geometries.\nBy reading this book, you will:\n\nGet a broader perspective on geospatial data\nLearn advanced geostatistical algorithms\nReproduce practical open-source examples\n\nThis online version of book is hosted at geodatasciencewithjulia.org. and kept up-to-date by our open-source community.\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License."
+    "text": "Welcome\nGeospatial Data Science with Julia provides a fresh approach to data science with geospatial data and the  programming language. It contains best practices for writting clean, readable and performant code in geoscientific applications involving sophisticated representations of the subsurface of the Earth such as unstructured meshes made of 2D and 3D geometries.\nBy reading this book, you will:\n\nGet a broader perspective on geospatial data\nLearn advanced geostatistical algorithms\nReproduce practical open-source examples\n\nThis online version of the book is hosted at geodatasciencewithjulia.org. and kept up-to-date by our open-source community.\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License."
   },
   {
     "objectID": "intro.html",
@@ -26,5 +26,12 @@
     "title": "References",
     "section": "",
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "1-introduction.html",
+    "href": "1-introduction.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]
