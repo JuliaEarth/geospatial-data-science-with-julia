@@ -3,6 +3,7 @@ project:
 
 book:
   title: "Geospatial Data Science with Julia"
+  cover-image: "images/cover.svg"
   author: "Júlio Hoffimann"
   date: today
   chapters:

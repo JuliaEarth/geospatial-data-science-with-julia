@@ -6,7 +6,7 @@ approach to data science with geospatial data and the
 programming language.
 It contains best practices for writting *clean*, *readable*
 and *performant* code in geoscientific applications
-involving sophisticated representations of the subsurface
+involving sophisticated representations of the (sub)surface
 of the Earth such as unstructured meshes made of 2D and
 3D geometries.
 
@@ -14,10 +14,42 @@ By reading this book, you will:
 
 1. Get a broader perspective on geospatial data
 2. Learn advanced geostatistical algorithms
-3. Reproduce practical **open-source examples**
+3. Reproduce practical **open source** examples
+
+It introduces a set of features much more rich than the
+[simple features](https://en.wikipedia.org/wiki/Simple_Features)
+implemented in traditional geographic information systems (GIS)
+and other programming languages.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
 ## How to contribute?
 
+First off, thank you for considering contributing to the book.
+It's people like you that make this project so interesting.
+Below are a few suggestions to facilitate the review process:
+
+- Please be polite, we are here to help and learn from each other
+- Try to explain your contribution with simple language
+- References to textbooks and papers are always welcome
+- Follow the code style in the examples as much as possible
+
+This book is [open source](https://github.com/juliohm/geospatial-data-science-with-julia)
+and fully reproducible thanks to the amazing
+[Quarto](https://quarto.org) project. You can edit the pages
+directly on GitHub and submit a pull request for review.
+If you are not familiar with this process, consider reading
+the [first contributions](https://github.com/firstcontributions/first-contributions) guide.
+
+Alternatively, you can render the book locally with the
+[Quarto VS Code Extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto),
+which is the recommended method for assessing more elaborate
+contributions.
+
 ## Getting involved
+
+- Sharing the book on social media
+
+- [Starring](https://github.com/juliohm/geospatial-data-science-with-julia) the GitHub repository
+
+- [Citing](CITATION.bib) the book in publications
