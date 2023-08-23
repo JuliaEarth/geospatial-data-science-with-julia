@@ -1,1 +1,22 @@
 # Foreword {.unnumbered}
+
+I've always felt that something was wrong with the current approaches
+to geospatial data science in other programming languages. I remember
+sitting in
+[Stanford's Green library](https://en.wikipedia.org/wiki/Cecil_H._Green_Library) after a short
+introductory course on GIS with R, and wondering why I had to be so
+"computer sciency":
+
+- What on Earth is a "LineString"? Isn't a line a geometric object with infinite lenght?
+- Why do I need to learn this low-level distinction between "raster" and "vector" data?
+
+Something was off for sure, but it took me years after my PhD to envision
+a more general approach to geospatial data science through the consistent
+development of the
+[GeoStats.jl](https://github.com/JuliaEarth/GeoStats.jl) framework.
+
+I have to say, it is not easy to swim against the wave when most people
+are still surfing ~20-year-old standards like the
+[simple features](https://www.iso.org/standard/40114.html).
+One thing I learned over the years is that geosciences is **not** simple,
+is **not** 2D, and is **not** advanced with sotware engineering mentality.
