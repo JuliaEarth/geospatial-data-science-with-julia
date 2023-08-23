@@ -13,7 +13,7 @@ This is **not** a book on geostatistics. Some chapters will
 cover basic concepts from geostatistical theory, but that is
 not the ultimate goal. This book will teach you a set of tools
 that you can use to answer practical questions with geospatial
-data, which would be very hard to answer with other existing
+data, which would be very hard to answer using other existing
 approaches and programming languages.
 
 ## How to read this book
