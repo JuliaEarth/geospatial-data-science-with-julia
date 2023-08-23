@@ -1,6 +1,6 @@
 # Welcome {.unnumbered}
 
-*Geospatial Data Science with Julia* provides a fresh
+*Geospatial Data Science with Julia* presents a fresh
 approach to data science with geospatial data and the
 [![](https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/b5551ca7946b4a25746c045c15fbb8806610f8d0/images/julia-logo-color.svg){fig-alt="Julia" width=40px}](https://julialang.org)
 programming language.
@@ -43,7 +43,7 @@ the [first contributions](https://github.com/firstcontributions/first-contributi
 
 Alternatively, you can render the book locally with the
 [Quarto VS Code Extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto),
-which is the recommended method for assessing more elaborate changes.
+which is the recommended method for reviewing more elaborate changes.
 
 ## Getting involved
 
