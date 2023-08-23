@@ -57,7 +57,7 @@ If you would like to get involved with the project, you can start by:
 
 - Reviewing the text for mispellings
 
-- Asking questions and making suggestions
+- [Asking questions](https://github.com/juliohm/geospatial-data-science-with-julia) and making suggestions
 
 Another great way to get involved is by suggesting entirely
 new code examples from geoscientific domains not covered in
