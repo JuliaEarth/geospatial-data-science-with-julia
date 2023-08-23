@@ -7,25 +7,24 @@ sitting in
 introductory course on GIS with R, and wondering why I had to be so
 "computer sciency":
 
-- What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite lenght?
+- What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite length?
 - Why do I need to learn this low-level distinction between "raster" and "vector" data?
 
 Something was off for sure, but it took me years after my PhD to envision
 a more general approach to geospatial data science through the consistent
 development of the
 [GeoStats.jl](https://github.com/JuliaEarth/GeoStats.jl) framework.
-
-I have to say, it is not easy to swim against the wave when most people
-are still surfing ~20-year-old standards like the
+I have to say, it is not easy to swim against the wave of
 [simple features](https://www.iso.org/standard/40114.html).
-One thing I learned over the years is that geoscience is **not** simple,
-is **not** 2D, and should **not** be developed **for** software engineers.
+Most software developers out there are still surfing this ~20-year-old
+standard in spite of pretty major limitations. Geoscience is **not**
+simple, is **not** 2D, and should **not** be treated as a software
+engineering endeavour.
 
 In that sense, I am one of the few rebels out there (hope you will join
 us!) that devotes energy and time to educate geoscientists about this new
 way of working with geospatial data. There is a long journey until the
 technology reaches its full potential, but we are getting there!
-
-We hope that the book will enlighten your understanding of some of these
+I hope that the book will enlighten your understanding of some of these
 issues and that you can benefit from all the **open source** software
 we built over the years.
