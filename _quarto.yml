@@ -8,7 +8,8 @@ book:
   date: today
   chapters:
     - index.qmd
-    - 0-preface.qmd
+    - foreword.qmd
+    - preface.qmd
     - 1-introduction.qmd
     - references.qmd
 
