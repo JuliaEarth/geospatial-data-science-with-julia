@@ -2,6 +2,20 @@
 
 ## Who this book is for
 
+Anyone interested in **geospatial data science** and
+**geostatistical modeling** will benefit from reading
+this book. If you don't know what geospatial data science
+is, that is already a good reason for reading it. If you
+have been exposed to the concept, you can still be surprised
+by the generality of the framework presented here.
+
+This is **not** a book on geostatistics. Some chapters will
+cover basic concepts from geostatistical theory, but that is
+not the ultimate goal. This book will teach you a set of tools
+that you can use to answer practical questions with geospatial
+data, which would be very hard to answer with other existing
+approaches and programming languages.
+
 ## How to read this book
 
 ## Why Julia?
