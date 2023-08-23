@@ -16,7 +16,7 @@ By reading this book, you will:
 2. Learn advanced geostatistical algorithms
 3. Reproduce practical **open source** examples
 
-It introduces a set of features much more rich than the
+It introduces a set of geospatial features much more rich than the
 [simple features](https://en.wikipedia.org/wiki/Simple_Features)
 implemented in traditional geographic information systems (GIS)
 and other programming languages.
