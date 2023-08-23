@@ -43,8 +43,7 @@ the [first contributions](https://github.com/firstcontributions/first-contributi
 
 Alternatively, you can render the book locally with the
 [Quarto VS Code Extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto),
-which is the recommended method for assessing more elaborate
-contributions.
+which is the recommended method for assessing more elaborate changes.
 
 ## Getting involved
 
