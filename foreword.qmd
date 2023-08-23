@@ -1,17 +1,17 @@
 # Foreword {.unnumbered}
 
-I've always felt that something was wrong with the current approaches
-to geospatial data science in other programming languages. I remember
-sitting in
+I've always felt that something was wrong with current approaches
+to geospatial data science in other programming languages.
+I remember sitting in the beautiful
 [Stanford's Green library](https://en.wikipedia.org/wiki/Cecil_H._Green_Library) after a short
-introductory course on GIS with R, and wondering why I had to be so
+introductory course on GIS with R, and wondering why it had to be so
 "computer sciency":
 
 - What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite length?
 - Why do I need to learn this low-level distinction between "raster" and "vector" data?
 
 Something was off for sure, but it took me years after my PhD to envision
-a more general approach to geospatial data science through the consistent
+a more general approach to geospatial data science through the continuous
 development of the
 [GeoStats.jl](https://github.com/JuliaEarth/GeoStats.jl) framework.
 I have to say, it is not easy to swim against the wave of
@@ -24,7 +24,7 @@ engineering endeavour.
 In that sense, I am one of the few rebels out there (hope you will join
 us!) that devotes energy and time to educate geoscientists about this new
 way of working with geospatial data. There is a long journey until the
-technology reaches its full potential, but we are getting there!
-I hope that the book will enlighten your understanding of some of these
-issues and that you can benefit from all the **open source** software
-we built over the years.
+technology reaches its full potential, but we are getting there! I hope
+that the book will enlighten your understanding of some of those issues
+and that you can benefit from all the **open source** software we built
+over the years.

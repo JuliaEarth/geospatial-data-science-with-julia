@@ -17,7 +17,7 @@ By reading this book, you will:
 3. Reproduce practical **open source** examples
 
 Most importantly, you will learn a set of geospatial features
-much more rich than the
+that is much richer than the
 [simple features](https://en.wikipedia.org/wiki/Simple_Features)
 implemented in traditional geographic information systems (GIS).
 
@@ -25,8 +25,8 @@ implemented in traditional geographic information systems (GIS).
 
 ## How to contribute?
 
-First off, thank you for considering contributing to the book.
-It's people like you that make this project so interesting.
+First off, thank you for considering contributing to this book.
+It's people like you that make open source projects so much fun.
 Below are a few suggestions to facilitate the review process:
 
 - Please be polite, we are here to help and learn from each other
@@ -50,15 +50,12 @@ which is the recommended method for reviewing more elaborate changes.
 If you would like to get involved with the project, you can start by:
 
 - Sharing the book on social media
-
 - [Starring](https://github.com/juliohm/geospatial-data-science-with-julia) the GitHub repository
-
-- [Citing](CITATION.bib) the project in publications
-
+- [Starring](https://github.com/JuliaEarth/GeoStats.jl) the related software
+- [Citing](CITATION.bib) the book in publications
 - Reviewing the text for mispellings
-
 - [Asking questions](https://github.com/juliohm/geospatial-data-science-with-julia) and making suggestions
 
-Another great way to get involved is by suggesting entirely
-new code examples from geoscientific domains not covered in
-the current version of the book.
+Another great way to get involved is by suggesting new code
+examples from geoscientific domains not covered in the current
+version of the book.
