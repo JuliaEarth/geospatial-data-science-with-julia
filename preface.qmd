@@ -46,6 +46,6 @@ website. If you are seeking more detailed information, consider
 reading the [official documentation](https://docs.julialang.org/en/v1).
 
 Assuming that you learned the basics of the language, you can proceed
-and read this book. It is organized in the following chapters:
+and read this book. It is organized in three parts as follows:
 
 ## Acknowledgements
