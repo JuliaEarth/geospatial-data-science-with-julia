@@ -2,22 +2,38 @@
 
 ## Who this book is for
 
-Anyone interested in **geospatial data science** and
-**geostatistical modeling** will benefit from reading
-this book. If you don't know what geospatial data science
-is, that is already a good reason for reading it. If you
-have been exposed to the concept, you can still be surprised
-by the generality of the framework presented here.
+Anyone interested in **geospatial data science** will benefit from
+reading this book. If you are a student with basic-to-intermediate
+programming experience, you will learn a valuable set of tools
+for your career. If you are an experienced data scientist, you
+can still be surprised by the generality of the framework
+presented here.
 
-This is **not** a book on geostatistics. Some chapters will
-cover basic concepts from geostatistical theory, but that is
-not the ultimate goal. This book will teach you a set of tools
-that you can use to answer practical questions with geospatial
-data, which would be very hard to answer using other existing
-approaches and programming languages.
+This is **not** a book on geostatistics. Although some chapters
+and examples will cover basic concepts from geostatistical theory,
+that is only to illustrate what is possible after you master
+geospatial data science with the
+[![](https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/b5551ca7946b4a25746c045c15fbb8806610f8d0/images/julia-logo-color.svg){fig-alt="Julia" width=40px}](https://julialang.org)
+programming language.
 
 ## How to read this book
 
+If this is your first encounter with the programming language,
+consider reading the open source book
+[*Think Julia: How to Think Like a Computer Scientist*](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
+by Lauwens, B. & Downey, A. 2018.
+
 ## Why Julia?
+
+An effective implementation of the framework presented in this book
+requires a language that can:
+
+- Generate high-performance code
+- Specialize on multiple arguments
+- Evaluate code interactively
+- Exploit parallel hardware
+
+This list of requirements eliminates Python, R and other
+mainstream languages used for data science.
 
 ## Acknowledgements

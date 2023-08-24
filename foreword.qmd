@@ -24,7 +24,7 @@ engineering endeavour.
 In that sense, I am one of the few rebels out there (hope you will join
 us!) that devotes energy and time to educate geoscientists about this new
 way of working with geospatial data. There is a long journey until the
-technology reaches its full potential, but we are getting there! I hope
+technology reaches its full potential, but it is getting there! I hope
 that the book will enlighten your understanding of some of those issues
 and that you can benefit from all the **open source** software we built
 over the years.

@@ -49,13 +49,8 @@ which is the recommended method for reviewing more elaborate changes.
 
 If you would like to get involved with the project, you can start by:
 
-- Sharing the book on social media
+- [Sharing]() the book on social media
 - [Starring](https://github.com/juliohm/geospatial-data-science-with-julia) the GitHub repository
-- [Starring](https://github.com/JuliaEarth/GeoStats.jl) the related software
+- [Starring](https://github.com/JuliaEarth/GeoStats.jl) the accompanying software
 - [Citing](CITATION.bib) the book in publications
-- Reviewing the text for mispellings
-- [Asking questions](https://github.com/juliohm/geospatial-data-science-with-julia) and making suggestions
-
-Another great way to get involved is by suggesting new code
-examples from geoscientific domains not covered in the current
-version of the book.
+- [Asking](https://github.com/juliohm/geospatial-data-science-with-julia) questions and making suggestions
