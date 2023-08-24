@@ -10,7 +10,14 @@ book:
     - index.qmd
     - foreword.qmd
     - preface.qmd
-    - 1-introduction.qmd
+    - 1-geodata.qmd
+    - 2-geoviz.qmd
+    - 3-geoio.qmd
+    - 4-feattrans.qmd
+    - 5-geomtrans.qmd
+    - 6-bothtrans.qmd
+    - 7-splitcombine.qmd
+    - 8-geojoins.qmd
     - references.qmd
 
 bibliography: references.bib
