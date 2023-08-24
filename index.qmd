@@ -26,8 +26,8 @@ implemented in traditional geographic information systems (GIS).
 ## How to contribute?
 
 First off, thank you for considering contributing to this book.
-It's people like you that make open source projects so much fun.
-Below are a few suggestions to facilitate the review process:
+It's people like you that make this project so much fun. Below
+are a few suggestions to facilitate the review process:
 
 - Please be polite, we are here to help and learn from each other
 - Try to explain your contribution with simple language

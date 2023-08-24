@@ -1,0 +1,441 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{svg}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Geospatial Data Science with Julia},
+  pdfauthor={Júlio Hoffimann},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Geospatial Data Science with Julia}
+\author{Júlio Hoffimann}
+\date{2023-08-24}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden, interior hidden, breakable, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\bookmarksetup{startatroot}
+
+\hypertarget{welcome}{%
+\chapter*{Welcome}\label{welcome}}
+\addcontentsline{toc}{chapter}{Welcome}
+
+\markboth{Welcome}{Welcome}
+
+\emph{Geospatial Data Science with Julia} presents a fresh approach to
+data science with geospatial data and the
+\href{https://julialang.org}{\includesvg[width=0.41667in,height=\textheight]{index_files/mediabag/julia-logo-color.svg}}
+programming language. It contains best practices for writting
+\emph{clean}, \emph{readable} and \emph{performant} code in
+geoscientific applications involving sophisticated representations of
+the (sub)surface of the Earth such as unstructured meshes made of 2D and
+3D geometries.
+
+By reading this book, you will:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Get a broader perspective on geospatial data
+\item
+  Learn advanced geostatistical algorithms
+\item
+  Reproduce practical \textbf{open source} examples
+\end{enumerate}
+
+Most importantly, you will learn a set of geospatial features that is
+much richer than the
+\href{https://en.wikipedia.org/wiki/Simple_Features}{simple features}
+implemented in traditional geographic information systems (GIS).
+
+This work is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License.
+
+\hypertarget{how-to-contribute}{%
+\section*{How to contribute?}\label{how-to-contribute}}
+\addcontentsline{toc}{section}{How to contribute?}
+
+\markright{How to contribute?}
+
+First off, thank you for considering contributing to this book. It's
+people like you that make open source projects so much fun. Below are a
+few suggestions to facilitate the review process:
+
+\begin{itemize}
+\tightlist
+\item
+  Please be polite, we are here to help and learn from each other
+\item
+  Try to explain your contribution with simple language
+\item
+  References to textbooks and papers are always welcome
+\item
+  Follow the code style in the examples as much as possible
+\end{itemize}
+
+This book is
+\href{https://github.com/juliohm/geospatial-data-science-with-julia}{open
+source} and fully reproducible thanks to the amazing
+\href{https://quarto.org}{Quarto} project. You can edit the pages
+directly on GitHub and submit a pull request for review. If you are not
+familiar with this process, consider reading the
+\href{https://github.com/firstcontributions/first-contributions}{first
+contributions} guide.
+
+Alternatively, you can render the book locally with the
+\href{https://marketplace.visualstudio.com/items?itemName=quarto.quarto}{Quarto
+VS Code Extension}, which is the recommended method for reviewing more
+elaborate changes.
+
+\hypertarget{getting-involved}{%
+\section*{Getting involved}\label{getting-involved}}
+\addcontentsline{toc}{section}{Getting involved}
+
+\markright{Getting involved}
+
+If you would like to get involved with the project, you can start by:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{}{Sharing} the book on social media
+\item
+  \href{https://github.com/juliohm/geospatial-data-science-with-julia}{Starring}
+  the GitHub repository
+\item
+  \href{https://github.com/JuliaEarth/GeoStats.jl}{Starring} the
+  accompanying software
+\item
+  \href{CITATION.bib}{Citing} the book in publications
+\item
+  \href{https://github.com/juliohm/geospatial-data-science-with-julia}{Asking}
+  questions and making suggestions
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{foreword}{%
+\chapter*{Foreword}\label{foreword}}
+\addcontentsline{toc}{chapter}{Foreword}
+
+\markboth{Foreword}{Foreword}
+
+I've always felt that something was wrong with current approaches to
+geospatial data science in other programming languages. I remember
+sitting in the beautiful
+\href{https://en.wikipedia.org/wiki/Cecil_H._Green_Library}{Stanford's
+Green library} after a short introductory course on GIS with R, and
+wondering why it had to be so ``computer sciency'':
+
+\begin{itemize}
+\tightlist
+\item
+  What on Earth is a ``LineString''? Isn't a ``Line'' a geometric object
+  with infinite length?
+\item
+  Why do I need to learn this low-level distinction between ``raster''
+  and ``vector'' data?
+\end{itemize}
+
+Something was off for sure, but it took me years after my PhD to
+envision a more general approach to geospatial data science through the
+continuous development of the
+\href{https://github.com/JuliaEarth/GeoStats.jl}{GeoStats.jl} framework.
+I have to say, it is not easy to swim against the wave of
+\href{https://www.iso.org/standard/40114.html}{simple features}. Most
+software developers out there are still surfing this
+\textasciitilde20-year-old standard in spite of pretty major
+limitations. Geoscience is \textbf{not} simple, is \textbf{not} 2D, and
+should \textbf{not} be treated as a software engineering endeavour.
+
+In that sense, I am one of the few rebels out there (hope you will join
+us!) that devotes energy and time to educate geoscientists about this
+new way of working with geospatial data. There is a long journey until
+the technology reaches its full potential, but it is getting there! I
+hope that the book will enlighten your understanding of some of those
+issues and that you can benefit from all the \textbf{open source}
+software we built over the years.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+\addcontentsline{toc}{chapter}{Preface}
+
+\markboth{Preface}{Preface}
+
+\hypertarget{who-this-book-is-for}{%
+\section*{Who this book is for}\label{who-this-book-is-for}}
+\addcontentsline{toc}{section}{Who this book is for}
+
+\markright{Who this book is for}
+
+Anyone interested in \textbf{geospatial data science} will benefit from
+reading this book. If you are a student with basic-to-intermediate
+programming experience, you will learn a valuable set of tools for your
+career. If you are an experienced data scientist, you can still be
+surprised by the generality of the framework presented here.
+
+This is \textbf{not} a book on geostatistics. Although some chapters and
+examples will cover basic concepts from geostatistical theory, that is
+only to illustrate what is possible after you master geospatial data
+science with the
+\href{https://julialang.org}{\includesvg[width=0.41667in,height=\textheight]{index_files/mediabag/julia-logo-color.svg}}
+programming language.
+
+\hypertarget{why-julia}{%
+\section*{Why Julia?}\label{why-julia}}
+\addcontentsline{toc}{section}{Why Julia?}
+
+\markright{Why Julia?}
+
+An effective implementation of the framework presented in this book
+requires a language that can:
+
+\begin{itemize}
+\tightlist
+\item
+  Generate high-performance code
+\item
+  Specialize on multiple arguments
+\item
+  Evaluate code interactively
+\item
+  Exploit parallel hardware
+\end{itemize}
+
+This list of requirements eliminates Python, R and other mainstream
+languages used for data science.
+
+\hypertarget{how-to-read-this-book}{%
+\section*{How to read this book}\label{how-to-read-this-book}}
+\addcontentsline{toc}{section}{How to read this book}
+
+\markright{How to read this book}
+
+If this is your first encounter with
+\href{https://julialang.org}{\includesvg[width=0.41667in,height=\textheight]{index_files/mediabag/julia-logo-color.svg}}
+or with programming in general, consider reading the open source book
+\href{https://benlauwens.github.io/ThinkJulia.jl/latest/book.html}{\emph{Think
+Julia: How to Think Like a Computer Scientist}} by Lauwens, B. \&
+Downey, A. 2018. It introduces the language to first-time programmers
+and explains basic concepts that you will need to know to master the
+material here.
+
+If you are an experienced programmer who just wants to quickly learn the
+syntax of the language, consider checking the
+\href{https://learnxinyminutes.com/docs/julia}{Learn Julia in Y minutes}
+website. If you are seeking more detailed information, consider reading
+the \href{https://docs.julialang.org/en/v1}{official documentation}.
+
+Assuming that you learned the basics of the language, you can proceed
+and read this book. It is organized in three parts as follows:
+
+\hypertarget{acknowledgements}{%
+\section*{Acknowledgements}\label{acknowledgements}}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+\markright{Acknowledgements}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+This is a book created from markdown and executable code.
+
+See Knuth (1984) for additional discussion of literate programming.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-knuth84}{}}%
+Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.} 27
+(2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
+
+\end{CSLReferences}
+
+
+
+\end{document}
