@@ -51,21 +51,21 @@ and read this book. It is organized in three parts as follows:
 ```{mermaid}
 flowchart LR
   preread["Julia basics ✅"] --> partI
-  subgraph partI["Part I. Foundations"]
+  subgraph partI["Part I: Foundations"]
     chapter1["1. What is geospatial data?"]
     chapter2["2. Scientific visualization"]
     chapter3["3. Interfacing with GIS"]
     chapter1 --> chapter2
     chapter2 --> chapter3
   end
-  subgraph partII["Part II. Transforms"]
+  subgraph partII["Part II: Transforms"]
     chapter4["4. Transforming features"]
     chapter5["5. Transforming geometries"]
     chapter6["6. Geospatial transforms"]
     chapter4 --> chapter5
     chapter5 --> chapter6
   end
-  subgraph partIII["Part III. Queries"]
+  subgraph partIII["Part III: Queries"]
     chapter7["7. Split-apply-combine"]
     chapter8["8. Geospatial joins"]
     chapter7 --> chapter8
