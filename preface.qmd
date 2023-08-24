@@ -35,7 +35,7 @@ If this is your first encounter with
 [![](images/julia.svg){fig-alt="Julia" width=40px}](https://julialang.org)
 or with programming in general, consider reading the open source book
 [*Think Julia: How to Think Like a Computer Scientist*](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
-by @LauwensDowney2018. It introduces the language to
+by @Lauwens2018. It introduces the language to
 first-time programmers and explains basic concepts that you will
 need to know to master the material here.
 
@@ -82,9 +82,9 @@ examples in **Part II** and **Part III**.
 
 ## Acknowledgements
 
-I would like to thank all the contributors of the
+I would like to acknowledge all the contributors of the
 [![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
-framework. This book only exists because of the hard
-work of its community over the years. You are the reason
-we fight everyday!
+framework. You are the reason we fight everyday!
 [![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
+The implementation of the framework is only possible thanks to
+the amazing programming language advances by @Benzanson2017.
