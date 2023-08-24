@@ -22,12 +22,12 @@ I have to say that it is not easy to swim against the wave of
 Most software developers out there are still surfing this ~20-year-old
 standard in spite of pretty major limitations. Geoscience is **not**
 simple, is **not** 2D, and should **not** be treated as a software
-engineering endeavour. In that sense, I am one of the few rebels out
+engineering endeavour that mixes high-level abstraction with low-level
+computer representations. In that sense, I am one of the few rebels out
 there (hope you will join me!) that devotes energy and time to educate
 geoscientists about this new way of working with geospatial data.
 
-There is a long journey until the
-technology reaches its full potential, but it is getting there! I hope
-that the book will enlighten your understanding of some of the issues
-above and that you can benefit from all the **open source** software
-we built over the years.
+There is a long journey until the technology reaches its full potential,
+but it is getting there! I hope that the book will enlighten your
+understanding of some of those issues and that you can benefit
+from all the **open source** software we built over the years.
