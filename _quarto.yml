@@ -19,7 +19,7 @@ format:
   html:
     theme:
       light: flatly
-      dark: darkly
+      dark: solar
   pdf:
     documentclass: scrreprt
 
