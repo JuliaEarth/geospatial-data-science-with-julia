@@ -13,9 +13,9 @@ introductory course on GIS with R, and wondering why it had to be so
 Even though I knew something was off, it took me years after my PhD
 to envision a more general approach to geospatial data science through
 the continuous development of the
-[GeoStats.jl](https://github.com/JuliaEarth/GeoStats.jl) framework.
-This book is the first attempt to share this vision with the broader
-scientific community.
+[![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
+framework. This book is the first attempt to share this vision with
+the broader scientific community.
 
 I have to say that it is not easy to swim against the wave of
 [simple features](https://www.iso.org/standard/40114.html).

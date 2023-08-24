@@ -13,7 +13,7 @@ This is **not** a book on geostatistics. Although some chapters
 and examples will cover basic concepts from geostatistical theory,
 that is only to illustrate what is possible after you master
 geospatial data science with the
-[![](https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/b5551ca7946b4a25746c045c15fbb8806610f8d0/images/julia-logo-color.svg){fig-alt="Julia" width=40px}](https://julialang.org)
+[![](images/julia.svg){fig-alt="Julia" width=40px}](https://julialang.org)
 programming language.
 
 ## Why Julia?
@@ -32,7 +32,7 @@ mainstream languages used for data science.
 ## How to read this book
 
 If this is your first encounter with
-[![](https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/b5551ca7946b4a25746c045c15fbb8806610f8d0/images/julia-logo-color.svg){fig-alt="Julia" width=40px}](https://julialang.org)
+[![](images/julia.svg){fig-alt="Julia" width=40px}](https://julialang.org)
 or with programming in general, consider reading the open source book
 [*Think Julia: How to Think Like a Computer Scientist*](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
 by @LauwensDowney2018. It introduces the language to
@@ -49,3 +49,10 @@ Assuming that you learned the basics of the language, you can proceed
 and read this book. It is organized in three parts as follows:
 
 ## Acknowledgements
+
+I would like to thank all the contributors of the
+[![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
+framework. This book only exists because of the hard
+work of its community over the years. You are the reason
+we fight everyday!
+[![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
