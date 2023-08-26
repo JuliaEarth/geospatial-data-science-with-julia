@@ -93,7 +93,7 @@ The concept of geospatial domain is formalized in
   Brazil is discretized into complex polygonal geometries
   that represent country states:
 
-  ![Brazil's states represented with complex polygonal geometries. See on [Google Maps](https://www.google.com/maps/place/Brasil/@-14.2009197,-62.5722989,4z).](images/brazil.png){#fig-brazil width=50%}
+  ![Brazil's states represented with complex polygonal geometries. See on [Google Maps](https://www.google.com/maps/place/Brasil/@-14.2009197,-62.5722989,4z).](images/brazil.png){#fig-brazil width=40%}
 
 - GIS books call this machine representation "vector data" because
   the geometries are stored as vectors of coordinates in memory.
