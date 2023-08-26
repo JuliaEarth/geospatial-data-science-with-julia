@@ -84,7 +84,7 @@ examples in **Part II** and **Part III**.
 
 I would like to acknowledge all the contributors of the
 [![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
-framework. You are the reason we fight everyday!
+framework. You are the reason this book exists!
 [![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
 The implementation of the framework is only possible thanks to
 the amazing programming language advances by @Benzanson2017.
