@@ -33,13 +33,13 @@ In Julia, the concept of table is formalized in
 [Tables.jl](https://github.com/JuliaData/Tables.jl) by 
 @Quinn2023. Notice that the concept of table is agnostic
 to the machine representation, and that various implementations
-can co-exist in the language. This will become clearer in
-the next section.
+can co-exist in the language. This will become clearer in the
+next section.
 
 The second definition that we need is that of a **geospatial domain**.
 In geosciences, questions are often formulated within a physical
-region of interest. This physical region can contemplate a small
-area of the surface of the Earth, the entire Earth surface, or any
+region of interest. This physical region can cover a small area
+of the surface of the Earth, the entire Earth surface, or any
 region of finite measure that can be discretized into smaller
 geometries (a.k.a. elements):
 
@@ -60,19 +60,23 @@ Islay Province, Peru. The domain in @fig-unisimII on the other hand
 is **not** considered in traditional GIS literature. It is a 3D domain
 that has been discretized into hexahedron geometries.
 
-Let's make a few important remarks:
+The concept of geospatial domain is formalized in
+[Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl) by
+@Hoffimann2021.
+
+### Important remarks
 
 - Images like the one depicted in @fig-islay-province are often
   implemented in terms of the
   [array](https://en.wikipedia.org/wiki/Array_(data_structure))
   data structure. GIS books call this machine representation
   "raster data", but we will avoid this term in our framework
-  in order to achieve a more general set of tools.
+  in order to obtain a more general set of tools.
 - According to our definition of geospatial data, "raster data"
   is simply a table with colors as variables (e.g., RGB values)
   combined with a Cartesian grid of quadrangle geometries.
-  We illustrate this concept in @fig-raster by zooming in the
-  image:
+  We illustrate this concept in @fig-raster by zooming in a
+  satellite image of the Lena delta:
 
   ::: {#fig-raster layout-ncol=2}
 
@@ -95,6 +99,25 @@ Let's make a few important remarks:
   the geometries are stored as vectors of coordinates in memory.
   We will also avoid this term in our framework given that it
   only highlights an implementation detail.
+
+### Geospatial vs. spatial
+
+Before we start discussing machine representation with actual Julia
+code, let's make a final (pedantic) distinction between the words
+*geospatial* and *spatial*. These words mean different things
+in different communities:
+
+- In geosciences, an object is *geospatial* if it lives in
+  *physical space*.
+- In statistics, a model is *spatial* if it exploits the
+  vicinity of samples in the *sample space*.
+
+Given that geospatial data science deals with both concepts,
+we must use these words carefully.
+
+In [Geostatistical Learning](https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full), models can exploit both spaces to
+improve prediction performance, but that is out of the scope
+for this first introductory book.
 
 ## Representation
 
