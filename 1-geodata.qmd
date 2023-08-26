@@ -1,3 +1,48 @@
 # What is geospatial data?
 
-This is a book created from markdown and executable code.
+## Definition
+
+In order to be effective as a geospatial data scientist, you need
+to be able to clearly define what **geospatial data** is and what it
+is not. Let's start with the most important definition of this book:
+
+> **(Discrete) geospatial data** is the combination of a
+> **table** of attributes (or features) with some discretization of a
+> **geospatial domain**. For each row (or measurement) in the **table**
+> there corresponds an element (or geometry) in the discretization of
+> the **geospatial domain**.
+
+The definition depends on two other definitions that we try to clarify
+further now. In data science the most natural data structure for working
+with data is the [table](https://en.wikipedia.org/wiki/Table_(database)).
+Without big formalities, a table is any object that can be structured into
+rows containing measurements and columns representing variables.
+For example, @tbl-example has 5 measurements of 4 variables:
+
+| NAME | AGE  | HEIGHT | GENDER |
+|:----:|:----:|:------:|:------:|
+| John |  34  | 1.78m  | male   |
+| Mary |  12  | 1.56m  | female |
+| Paul |  23  | 1.70m  | male   |
+| Anne |  39  | 1.80m  | female |
+| Kate |  28  | 1.72m  | female |
+
+: Example of table {#tbl-example .striped .hover}
+
+In Julia, the concept of table is formalized in
+[Tables.jl](https://github.com/JuliaData/Tables.jl) by 
+@Quinn2023. Notice that the concept of a table is
+agnostic to machine representation, and that various
+implementations can co-exist in the language. This
+will become clearer in the next section.
+
+The second definition that we need is that of a **geospatial domain**.
+In geosciences, questions are often formulated within a physical
+region of interest. This region of interest can be a small part of
+the surface of the Earth, the entire Earth surface, or any region
+of finite measure that can be discretized into smaller geometries
+(a.k.a., elements).
+
+## Representation
+
+## Manipulation
