@@ -117,7 +117,7 @@ we must use these words carefully.
 
 In [Geostatistical Learning](https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full), models can exploit both spaces to
 improve prediction performance, but that is out of the scope
-for this first introductory book.
+for this first book.
 
 ## Representation
 
