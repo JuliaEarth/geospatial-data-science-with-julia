@@ -31,17 +31,70 @@ For example, @tbl-example has 5 measurements of 4 variables:
 
 In Julia, the concept of table is formalized in
 [Tables.jl](https://github.com/JuliaData/Tables.jl) by 
-@Quinn2023. Notice that the concept of a table is
-agnostic to machine representation, and that various
-implementations can co-exist in the language. This
-will become clearer in the next section.
+@Quinn2023. Notice that the concept of table is agnostic
+to the machine representation, and that various implementations
+can co-exist in the language. This will become clearer in
+the next section.
 
 The second definition that we need is that of a **geospatial domain**.
 In geosciences, questions are often formulated within a physical
-region of interest. This region of interest can be a small part of
-the surface of the Earth, the entire Earth surface, or any region
-of finite measure that can be discretized into smaller geometries
-(a.k.a., elements).
+region of interest. This physical region can contemplate a small
+area of the surface of the Earth, the entire Earth surface, or any
+region of finite measure that can be discretized into smaller
+geometries (a.k.a. elements):
+
+::: {#fig-domains layout-ncol=2}
+
+![Coast line in Islay Province, Peru. See on [Google Maps](https://www.google.com/maps/@-17.279111,-71.49577,2041m/data=!3m1!1e3?entry=ttu)](http://www.gstatic.com/prettyearth/assets/full/1096.jpg){#fig-islay-province}
+
+![Synthetic carbonate reservoir model by @Correia2015. See [UNISIM-II](https://www.unisim.cepetro.unicamp.br/benchmarks/en/unisim-ii/overview) for more details](images/unisimII.png){#fig-unisimII}
+
+
+Example of geospatial domains
+:::
+
+@fig-domains illustrates two very different examples of geospatial
+domains. The domain in @fig-islay-province is widely studied
+in GIS books. It is a 2D domain that contemplates a small area near
+Islay Province, Peru. The domain in @fig-unisimII on the other hand
+is **not** considered in traditional GIS literature. It is a 3D domain
+that has been discretized into hexahedron geometries.
+
+Let's make a few important remarks:
+
+- Images like the one depicted in @fig-islay-province are often
+  implemented in terms of the
+  [array](https://en.wikipedia.org/wiki/Array_(data_structure))
+  data structure. GIS books call this machine representation
+  "raster data", but we will avoid this term in our framework
+  in order to achieve a more general set of tools.
+- According to our definition of geospatial data, "raster data"
+  is simply a table with colors as variables (e.g., RGB values)
+  combined with a Cartesian grid of quadrangle geometries.
+  We illustrate this concept in @fig-raster by zooming in the
+  image:
+
+  ::: {#fig-raster layout-ncol=2}
+
+  !["Raster data" of [Lena delta](https://en.wikipedia.org/wiki/Lena_Delta_Wildlife_Reserve)](images/lena.png){#fig-lena}
+
+  ![Zoom reveals quadrangle geometries](images/lena-zoom.png){#fig-lena-zoom}
+
+
+  Quadrangle geometries in "raster data"
+  :::
+
+- There are no constraints on the geometries used in the
+  discretization of the geospatial domain. In @fig-brazil,
+  Brazil is discretized into complex polygonal geometries
+  that represent country states:
+
+  ![Brazil's states represented with complex polygonal geometries. See on [Google Maps](https://www.google.com/maps/place/Brasil/@-14.2009197,-62.5722989,4z).](images/brazil.png){#fig-brazil width=50%}
+
+- GIS books call this machine representation "vector data" because
+  the geometries are stored as vectors of coordinates in memory.
+  We will also avoid this term in our framework given that it
+  only highlights an implementation detail.
 
 ## Representation
 
