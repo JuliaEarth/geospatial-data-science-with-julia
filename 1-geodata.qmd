@@ -45,7 +45,7 @@ geometries (a.k.a. elements):
 
 ::: {#fig-domains layout-ncol=2}
 
-![Coast line in Islay Province, Peru. See on [Google Maps](https://www.google.com/maps/@-17.279111,-71.49577,2041m/data=!3m1!1e3?entry=ttu)](http://www.gstatic.com/prettyearth/assets/full/1096.jpg){#fig-islay-province}
+![Coast line in Islay Province, Peru. View on [Google Maps](https://www.google.com/maps/@-17.279111,-71.49577,2041m/data=!3m1!1e3?entry=ttu)](http://www.gstatic.com/prettyearth/assets/full/1096.jpg){#fig-islay-province}
 
 ![Synthetic carbonate reservoir model by @Correia2015. See [UNISIM-II](https://www.unisim.cepetro.unicamp.br/benchmarks/en/unisim-ii/overview) for more details](images/unisimII.png){#fig-unisimII}
 
@@ -93,7 +93,7 @@ The concept of geospatial domain is formalized in
   Brazil is discretized into complex polygonal geometries
   that represent country states:
 
-  ![Brazil's states represented with complex polygonal geometries. See on [Google Maps](https://www.google.com/maps/place/Brasil/@-14.2009197,-62.5722989,4z).](images/brazil.png){#fig-brazil width=40%}
+  ![Brazil's states represented with complex polygonal geometries. View on [Google Maps](https://www.google.com/maps/place/Brasil/@-14.2009197,-62.5722989,4z).](images/brazil.png){#fig-brazil width=40%}
 
 - GIS books call this machine representation "vector data" because
   the geometries are stored as vectors of coordinates in memory.
