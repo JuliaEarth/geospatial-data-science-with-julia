@@ -1,1 +1,8 @@
 # Scientific visualization
+
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+```

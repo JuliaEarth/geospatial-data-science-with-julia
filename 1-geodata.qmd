@@ -524,6 +524,17 @@ for advanced geospatial data science.
 
 ::: {.callout-note}
 
+## Tip for all users
+
+The GeoStats.jl module reexports the full stack of modules for
+geospatial data science in Julia. There is no need to import
+modules like Meshes.jl explicitly. You are all set if you
+start your script with `using GeoStats`.
+
+:::
+
+::: {.callout-note}
+
 ## Tip for advanced users
 
 In Julia, a function is type-stable if the return type is known at compile
