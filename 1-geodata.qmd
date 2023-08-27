@@ -270,7 +270,7 @@ requirements of your application.
 
 All available domain representations come from the
 [Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl)
-package. Let's start illustrating the most common
+module. Let's start illustrating the most common
 domains in GIS, which are collections of disconnected
 2D geometries:
 
@@ -430,9 +430,9 @@ Let's make a few important remarks:
 
 Throughout the book we will have the chance to explore these domain and geometry
 types in depth with practical examples. Our goal in this section is to illustrate
-that you can construct arbitrarily complex domains in 2D and 3D in our framework.
-The last missing piece of the puzzle is the combination of tables with domains
-into geospatial data, which we discuss next.
+that you can construct arbitrarily complex domains in 2D and 3D. The last missing
+piece of the puzzle is the combination of tables with domains into geospatial data,
+which we discuss next.
 
 ### Data
 
