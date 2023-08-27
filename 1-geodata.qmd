@@ -268,4 +268,127 @@ requirements of your application.
 
 ### Domains
 
+In our framework, domains are represented as collections of
+geometries that can be connected to each other via a topological
+relation. This will become clearer after we see a few examples.
+
+All available domain representations come from the
+[Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl)
+package. Let's start illustrating the most common
+domains in GIS, which are collections of disconnected
+2D geometries:
+
+```{julia}
+using Meshes
+
+p = Point(1, 2)
+s = Segment((0, 2), (1, 3))
+t = Triangle((0, 0), (1, 0), (1, 1))
+b = Ball((2, 2), 1)
+
+geoms = [p, s, t, b]
+```
+
+Because these geometries are unaware of each other, we place
+them into a `GeometrySet`, informally known in computational
+geometry as the "soup of geometries" data structure:
+
+```{julia}
+gset = GeometrySet(geoms)
+```
+
+No additional knowledge is required to start working
+with these geometries. For example, we can compute the
+`length` of the `Segment`, the `area` of the `Triangle`
+and the `area` of the `Ball` with:
+
+```{julia}
+length(s), area(t), area(b)
+```
+
+More generally, we can compute the `measure` of the
+geometries in the domain:
+
+```{julia}
+[measure(g) for g in gset]
+```
+
+In the example above we iterated over the domain to apply the
+function of interest, but we could have used Julia's dot syntax
+for broadcasting the function over the geometries:
+
+```{julia}
+measure.(gset)
+```
+
+The list of supported geometries is very comprehensive. It
+encompasses all geometries from the
+[simple features](https://www.iso.org/standard/40114.html)
+standard and more. We recommend reading the Meshes.jl
+documentation to get familiar with all the options.
+
+One of the main limitations of GIS software today is the
+lack of explicit represention of [topology](https://en.wikipedia.org/wiki/Topology).
+A `GeometrySet` does not provide efficient topological relations
+[@Floriani2007], yet geospatial data science requires the definition
+of geospatial domains where geometries are aware of their neighbors.
+Let's illustrate this concept with the `CartesianGrid` domain:
+
+```{julia}
+grid = CartesianGrid(10, 10)
+```
+
+We can access the individual geometries of the domain as before:
+
+```{julia}
+grid[1]
+```
+
+The number of geometries (or elements) of a domain is obtained
+with the `nelements` function:
+
+```{julia}
+nelements(grid)
+```
+
+Even though we can operate on this domain as if it was a
+"soup of geometries", the major advantage this abstraction
+provides is the `topology` of the domain:
+
+```{julia}
+topo = topology(grid)
+```
+
+This data structure can be used by advanced users who wish
+to design algorithms with neighborhood information. We will
+cover this topic in a separate chapter. For now, keep
+in mind that working with the entire domain as opposed to
+with a vector or "soup of geometries" has major benefits.
+
+::: {.callout-note}
+
+The `CartesianGrid` domain is lazy meaning it only stores the
+start and end points of the grid together with the spacing
+between the elements. Therefore, we can easily create large
+3D grids of `Hexahedron` geometries without consuming all
+available memory:
+
+```{julia}
+grid = CartesianGrid(10000, 10000, 10000)
+```
+
+```{julia}
+grid[1]
+```
+
+:::
+
+In computational geometry, a `CartesianGrid` is a specific
+type of [mesh](https://en.wikipedia.org/wiki/Polygon_mesh).
+It can only represent "flat" domains sampled regularly along
+each dimension (e.g., images). To represent domains with
+curvature such as terrain elevation models or complex 3D
+domains like the one in @fig-unisimII, we can use the
+`SimpleMesh` domain.
+
 ## Manipulation
