@@ -1,16 +1,29 @@
 # What is geospatial data?
 
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+```
+
 ## Definition
 
 In order to be effective as a geospatial data scientist, you need
 to be able to clearly define what **geospatial data** is and what it
 is not. Let's start with the most important definition of this book:
 
-> **(Discrete) geospatial data** is the combination of a
-> **table** of attributes (or features) with some discretization of a
-> **geospatial domain**. For each row (or measurement) in the **table**
-> there corresponds an element (or geometry) in the discretization of
-> the **geospatial domain**.
+::: {.callout-tip}
+
+## Definition
+
+**(Discrete) geospatial data** is the combination of a
+**table** of attributes (or features) with some discretization of a
+**geospatial domain**. For each row (or measurement) in the **table**
+there corresponds an element (or geometry) in the discretization of
+the **geospatial domain**.
+
+:::
 
 The definition depends on two other definitions that we try to clarify
 further now. In data science the most natural data structure for working
@@ -117,8 +130,137 @@ we must use these words carefully.
 
 In [Geostatistical Learning](https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full), models can exploit both spaces to
 improve prediction performance, but that is out of the scope
-for this first book.
+for this book.
 
 ## Representation
+
+Based on the definition of geospatial data given in the previous
+section, we are now ready to proceed and discuss an efficient
+machine representation for it with actual Julia code.
+
+### Tables
+
+The Julia language comes with two built-in table representations:
+
+1. Named tuple of vectors
+2. Vector of named tuples
+
+The first representation focuses on the columns of the table:
+
+```{julia}
+coltable = (
+  NAME=["John", "Mary", "Paul", "Anne", "Kate"],
+  AGE=[34, 12, 23, 39, 28],
+  HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72],
+  GENDER=[:male, :female, :male, :female, :female]
+)
+```
+
+Given that data science is often performed with entire columns,
+this column-major representation of a table is very convenient.
+We can check that the representation is valid using the
+`Tables.istable` function:
+
+```{julia}
+using Tables
+
+Tables.istable(coltable)
+```
+
+The second representation focuses on the rows of the table:
+
+```{julia}
+rowtable = [
+  (NAME="John", AGE=34, HEIGHT=1.78, GENDER=:male),
+  (NAME="Mary", AGE=12, HEIGHT=1.56, GENDER=:female),
+  (NAME="Paul", AGE=23, HEIGHT=1.70, GENDER=:male),
+  (NAME="Anne", AGE=39, HEIGHT=1.80, GENDER=:female),
+  (NAME="Kate", AGE=28, HEIGHT=1.72, GENDER=:female)
+]
+```
+
+```{julia}
+Tables.istable(rowtable)
+```
+
+This row-major representation can be useful to process data that
+is potentially larger than the available computer memory, or even
+infinite streams of data.
+
+Although these two representations come built-in with Julia, they
+lack basic functionality for data science. The most widely used
+table representation for data science in Julia is available in
+[DataFrames.jl](https://github.com/JuliaData/DataFrames.jl)
+by @Bogumil2023.
+
+```{julia}
+using DataFrames
+
+df = DataFrame(
+  NAME=["John", "Mary", "Paul", "Anne", "Kate"],
+  AGE=[34, 12, 23, 39, 28],
+  HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72],
+  GENDER=[:male, :female, :male, :female, :female]
+)
+```
+
+This representation provides additional syntax for accessing
+rows and columns. For instance, we can access the first row:
+
+```{julia}
+df[1,:]
+```
+
+The column with the variable **NAME**:
+
+```{julia}
+df[:,"NAME"]
+```
+
+Or any subtable of interest:
+
+```{julia}
+df[1:3,["NAME","AGE"]]
+```
+
+The representation also provides direct column access with
+the following syntax:
+
+```{julia}
+df.HEIGHT
+```
+
+```{julia}
+df."HEIGHT"
+```
+
+::: {.callout-note}
+
+Unlike other languages, Julia makes a distinction between
+the the symbol `:HEIGHT` and the string `"HEIGHT"`. The
+`DataFrame` representation supports both types for
+column names, but that is not always the case with
+other table representations.
+
+:::
+
+Other popular table representations in Julia are associated
+with specific file formats:
+
+- `CSV.File` from [CSV.jl](https://github.com/JuliaData/CSV.jl)
+- `XLSX.Worksheet` from [XLSX.jl](https://github.com/felipenoris/XLSX.jl)
+- Databases from [JuliaDatabases](https://github.com/JuliaDatabases)
+
+Below we illustrate the table representation of a `table.csv` file
+stored in the `data` directory:
+
+```{julia}
+using CSV
+
+CSV.File("data/table.csv")
+```
+
+
+### Domains
 
 ## Manipulation
