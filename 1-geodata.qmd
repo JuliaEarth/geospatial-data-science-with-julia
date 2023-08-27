@@ -260,6 +260,11 @@ using CSV
 CSV.File("data/table.csv")
 ```
 
+The choice of representation is a function of the application.
+Julia provides a rich data science ecosystem that can adapt to
+different workloads, and you can always customize your own table
+representation if none of the available representations meet the
+requirements of your application.
 
 ### Domains
 
