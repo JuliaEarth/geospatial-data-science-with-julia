@@ -130,6 +130,23 @@ Mke.current_figure()
 
 ::: {.callout-note}
 
+## Tip for all users
+
+Makie.jl can set the aspect ratio of the axis after
+the visualization is created. The following code
+can be used to adjust the aspect ratio for the
+data in the scene:
+
+```{julia}
+ax = Mke.current_axis()
+ax.aspect = Mke.DataAspect()
+Mke.current_figure()
+```
+
+:::
+
+::: {.callout-note}
+
 ## Tip for advanced users
 
 Makie.jl dispatches the `viz` and `viz!` functions whenever it encounters
