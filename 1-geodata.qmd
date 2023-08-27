@@ -268,10 +268,6 @@ requirements of your application.
 
 ### Domains
 
-In our framework, domains are represented as collections of
-geometries that can be connected to each other via a topological
-relation. This will become clearer after we see a few examples.
-
 All available domain representations come from the
 [Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl)
 package. Let's start illustrating the most common
@@ -344,16 +340,16 @@ We can access the individual geometries of the domain as before:
 grid[1]
 ```
 
-The number of geometries (or elements) of a domain is obtained
-with the `nelements` function:
+And the number of geometries (or elements) of a domain is
+obtained with the `nelements` function:
 
 ```{julia}
 nelements(grid)
 ```
 
-Even though we can operate on this domain as if it was a
-"soup of geometries", the major advantage this abstraction
-provides is the `topology` of the domain:
+Even though we can manipulate this domain as if it was a
+"soup of geometries", the major advantage in this abstraction
+is the underlying `topology`:
 
 ```{julia}
 topo = topology(grid)
@@ -389,6 +385,55 @@ It can only represent "flat" domains sampled regularly along
 each dimension (e.g., images). To represent domains with
 curvature such as terrain elevation models or complex 3D
 domains like the one in @fig-unisimII, we can use the
-`SimpleMesh` domain.
+`SimpleMesh` domain:
+
+```{julia}
+# global vector of 2D points
+points = [(0.0, 0.0), (1.0, 0.0), (0.0, 1.0), (1.0, 1.0), (0.25, 0.5), (0.75, 0.5)]
+
+# connect the points into N-gons
+connec = connect.([(1, 2, 6, 5), (2, 4, 6), (4, 3, 5, 6), (3, 1, 5)])
+
+# 2D mesh made of N-gon elements
+mesh = SimpleMesh(points, connec)
+```
+
+The `connect` function takes a tuple of indices and a geometry type,
+and produces a connectivity. This object can be materialized later
+in the presence of actual points:
+
+```{julia}
+connect((1, 2, 6, 5), Quadrangle)
+```
+
+```{julia}
+connect((2, 4, 6), Triangle)
+```
+
+The geometry type can ommited in which case the function assumes that
+the geometry is a `Ngon` with vertices in counter clockwise order. This
+is what we did in the example above by passing a vector of tuples to
+`connect` without an explicit geometry type for each tuple.
+
+Let's make a few important remarks:
+
+- Flexibility comes with a price. To construct a `SimpleMesh` of connected
+  geometries we need to explicitly create a vector of vertices, and connect
+  these vertices into geometries using their indices in the vector.
+- Geometries in a `SimpleMesh` can be of different type. In this example,
+  we have both `Triangle` and `Quadrangle` geometries in the domain. This is
+  similar to what we had with `GeometrySet`, but now the geometries are
+  connected.
+- `SimpleMesh` are rarely constructed by hand. They are often the result of
+  a sophisticated geometric processing pipeline that is already stored in a
+  file on disk.
+
+Throughout the book we will have the chance to explore these domain and geometry
+types in depth with practical examples. Our goal in this section is to illustrate
+that you can construct arbitrarily complex domains in 2D and 3D in our framework.
+The last missing piece of the puzzle is the combination of tables with domains
+into geospatial data, which we discuss next.
+
+### Data
 
 ## Manipulation
