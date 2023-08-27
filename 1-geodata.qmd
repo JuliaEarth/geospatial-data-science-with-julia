@@ -513,7 +513,7 @@ using the [GeoTables.jl](https://github.com/JuliaEarth/GeoTables.jl) module:
 ```{julia}
 using GeoTables
 
-GeoTables.load("data/geotable.gpkg")
+GeoTables.load("data/geotable.geojson")
 ```
 
 We will give more examples in the chapter [Interfacing with GIS](3-geoio.qmd),
