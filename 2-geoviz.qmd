@@ -8,7 +8,7 @@ Pkg.activate(".")
 ```
 
 Now that we learned that geospatial data can be represented efficiently
-with the geotable data structure, let's produce our first visualizations.
+as geotables, let's produce our first visualizations of the data.
 
 The visualization ecosystem in Julia is evolving very quickly. Among the various
 visualization projects, [Makie.jl](https://github.com/MakieOrg/Makie.jl) by
@@ -19,11 +19,12 @@ visualization projects, [Makie.jl](https://github.com/MakieOrg/Makie.jl) by
 
 Makie.jl provides a plot recipe system developed after
 [Plots.jl](https://github.com/JuliaPlots/Plots.jl) by @Breloff2023,
-which enables automatic visualization of custom Julia types. Our
-framework is integrated with this recipe system, and provides a
-`viz`/`viz!` function for efficient visualization of geospatial data.
+which enables automatic visualization of custom Julia types.
+GeoStats.jl is integrated with this recipe system, and provides
+a `viz`/`viz!` function for efficient visualization of geotables.
 
-For illustration purposes, let's create a small geotable over a `CartesianGrid`:
+For illustration purposes, let's create a small geotable over a
+`CartesianGrid`:
 
 ```{julia}
 using GeoStats
@@ -76,7 +77,7 @@ viz(gdf.geometry, color = gdf.A)
 We could also pass a single color for all geometries:
 
 ```{julia}
-viz(gdf.geometry, color = :teal)
+viz(gdf.geometry, color = "teal")
 ```
 
 Or pass the other column in the geotable with a random vector of
@@ -97,7 +98,7 @@ gis = GeoTables.load("data/geotable.geojson")
 viz(gis.geometry, color = 1:4)
 ```
 
-We can easily visualize two or more geotables in the same scene
+We can visualize two or more geotables in the same scene
 by calling the `viz!` function:
 
 ```{julia}
@@ -132,10 +133,8 @@ Mke.current_figure()
 
 ## Tip for all users
 
-Makie.jl can set the aspect ratio of the axis after
-the visualization is created. The following code
-can be used to adjust the aspect ratio for the
-data in the scene:
+Makie.jl can set the aspect ratio of the axis after the visualization is created.
+The following code can be used to adjust the aspect ratio for the data in the scene:
 
 ```{julia}
 ax = Mke.current_axis()
@@ -156,10 +155,10 @@ in scripts and the result will be the same.
 
 :::
 
-The `viz`/`viz!` combo is very powerful. It can be used to
-visualize geospatial variables over multiple geospatial domains with
-a consistent set of aesthetic options. However, it is still not enough
-for geospatial data science.
+The `viz`/`viz!` function is very powerful. It can be used to visualize geospatial
+variables over multiple geospatial domains with a consistent set of aesthetic options.
+Nevertheless, it is still not enough for geospatial data science as explained in the
+next section.
 
 ## viewer
 
@@ -172,6 +171,13 @@ all "viewable" variables stored in a geotable:
 ```{julia}
 viewer(gdf)
 ```
+
+::: {.callout-note}
+
+A variable is "viewable" if its values can be converted into colors with
+the `ascolors` function.
+
+:::
 
 It adds interactive elements to the scene, including a menu to select the
 variable used as color, and a color bar that automatically updates upon
@@ -191,3 +197,8 @@ gdf = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
 
 gdf |> viewer
 ```
+
+You are now equiped with a set of visualization functions that can
+really improve the speed at which you explore and analyze geospatial data.
+Before we start learning the advanced features of the framework, we would
+like to say a few words about integration with existing GIS technology.

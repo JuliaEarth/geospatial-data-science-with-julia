@@ -458,10 +458,10 @@ gdf = georef(df, grid)
 ```
 
 The function combines any table with any domain into a geospatial data
-object that adheres to the Tables.jl interface. We call this object a
-**geotable** to distinguish it from a standard table. Besides the
-original columns, the geotable has a special `geometry` column with
-the underlying domain:
+representation that adheres to the Tables.jl interface. We call this
+representation a **geotable** to distinguish it from a standard table.
+Besides the original columns, the geotable has a special `geometry`
+column with the underlying domain:
 
 ```{julia}
 names(gdf)
