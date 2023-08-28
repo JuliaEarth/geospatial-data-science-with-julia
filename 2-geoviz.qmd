@@ -7,9 +7,6 @@ import Pkg
 Pkg.activate(".")
 ```
 
-Now that we learned that geospatial data can be represented efficiently
-as geotables, let's produce our first visualizations of the data.
-
 The visualization ecosystem in Julia is evolving very quickly. Among the various
 visualization projects, [Makie.jl](https://github.com/MakieOrg/Makie.jl) by
 @Danisch2021 is the most suited for
@@ -21,9 +18,10 @@ Makie.jl provides a plot recipe system developed after
 [Plots.jl](https://github.com/JuliaPlots/Plots.jl) by @Breloff2023,
 which enables automatic visualization of custom Julia types.
 GeoStats.jl is integrated with this recipe system, and provides
-a `viz`/`viz!` function for efficient visualization of geotables.
+a `viz`/`viz!` function for efficient visualization of geospatial
+data.
 
-For illustration purposes, let's create a small geotable over a
+For illustration purposes, let's create a small `GeoTable` over a
 `CartesianGrid`:
 
 ```{julia}
@@ -41,7 +39,7 @@ gdf = georef(tab)
 ```
 
 Notice how we omitted the domain in the `georef` function. By default,
-the function will check the size of the arrays in the named tuple and
+the function will check the `size` of the arrays in the named tuple and
 will create a `CartesianGrid` starting at the origin:
 
 ```{julia}
@@ -66,7 +64,7 @@ whenever a Makie.jl backend is loaded in the same session. The
 function can be used to display geometries within a domain using
 colors taken from any vector of
 [Colors.jl](https://github.com/JuliaGraphics/Colors.jl).
-Because it is common to use another column of the geotable as
+Because it is common to use another column of the `GeoTable` as
 the vector of colors, the framework will automatically convert
 (continuous and categorical) values into colors:
 
@@ -80,7 +78,7 @@ We could also pass a single color for all geometries:
 viz(gdf.geometry, color = "teal")
 ```
 
-Or pass the other column in the geotable with a random vector of
+Or pass the other column in the `GeoTable` with a random vector of
 transparencies:
 
 ```{julia}
@@ -98,7 +96,7 @@ gis = GeoTables.load("data/geotable.geojson")
 viz(gis.geometry, color = 1:4)
 ```
 
-We can visualize two or more geotables in the same scene
+We can visualize two or more `GeoTable`s in the same scene
 by calling the `viz!` function:
 
 ```{julia}
@@ -166,7 +164,7 @@ As geospatial data scientists we are often interested in quick inspection
 of intermediate results from multivariate statistical analysis. Visualizing
 all the variables manually with `viz`/`viz!` can be very time consuming.
 To address this issue, the framework provides a basic `viewer` that displays
-all "viewable" variables stored in a geotable:
+all "viewable" variables stored in a `GeoTable`:
 
 ```{julia}
 viewer(gdf)
@@ -182,7 +180,7 @@ the `ascolors` function.
 It adds interactive elements to the scene, including a menu to select the
 variable used as color, and a color bar that automatically updates upon
 selection of new variables on the menu. The `viewer` will be particularly
-useful when we start to work with transforms in [Part II](4-feattrans.qmd)
+useful when we start to work with geospatial transforms in [Part II](4-feattrans.qmd)
 of the book. The pipe operator (`|>`) in Julia will be preferred for reasons
 that will become clearer later:
 
