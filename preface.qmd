@@ -93,7 +93,7 @@ using Pkg
 pkg"add GeoStats"
 
 # input/output
-pkg"add GeoTables"
+pkg"add GeoIO"
 
 # visualization
 pkg"add CairoMakie"
