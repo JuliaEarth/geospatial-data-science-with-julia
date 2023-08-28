@@ -340,7 +340,7 @@ We can access the individual geometries of the domain as before:
 grid[1]
 ```
 
-And the number of geometries (or elements) of a domain is
+The number of geometries (elements) of a domain is
 obtained with the `nelements` function:
 
 ```{julia}
@@ -516,8 +516,9 @@ using GeoTables
 GeoTables.load("data/geotable.geojson")
 ```
 
-We will give more examples in the chapter [Interfacing with GIS](3-geoio.qmd),
-and will explain why file formats like
+We will give more examples of "vector data" in the chapter
+[Interfacing with GIS](3-geoio.qmd), and will explain why
+file formats like
 [Shapefile.jl](https://github.com/JuliaGeo/Shapefile.jl) and
 [GeoJSON.jl](https://github.com/JuliaGeo/GeoJSON.jl) are not enough
 for advanced geospatial data science.
@@ -545,6 +546,29 @@ code, use the functions `values` and `domain` instead.
 
 :::
 
-In the next chapter you will learn how to visualize geospatial data
-without effort in our framework. You will start to realize the benefits
-of treating "raster data" and "vector data" with the same representation.
+You will start to realize the benefits of treating "raster data" and
+"vector data" with the same representation in the next chapter with
+the introduction of a universal viewer for geospatial data.
+
+## Remarks
+
+What we learned in this chapter?
+
+- Geospatial data can be efficiently represented as a **geotable**.
+  This representation is universal meaning that it combines the
+  "raster" and "vector" representations found in traditional GIS.
+- Working with geospatial domains as opposed to working with vectors
+  of disconnected geometries has major benefits. In particular, it
+  preserves topological information.
+- Julia provides a rich ecosystem for customizing table representations,
+  and the flexibility of the language enabled us to create a new table
+  representation that is performant and simple.
+- A geotable provides all the data access patterns of a `DataFrame`.
+  In particular, we can use the syntax `gdf[rows,cols]` to retrieve
+  any subset of the data without creating copies of geometries.
+
+It is very convenient to manipulate a geotable as if it was a `DataFrame`.
+Nevertheless, we will learn that this is not enough. Advanced geospatial
+data science requires higher-level constructs to preserve geospatial
+information, which we will cover in [Part II](#4-feattrans.qmd) and
+[Part III](#7-splitcombine.qmd) of the book.
