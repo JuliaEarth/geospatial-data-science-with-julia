@@ -12,41 +12,13 @@ visualization projects, [Makie.jl](https://github.com/MakieOrg/Makie.jl) by
 @Danisch2021 is the most suited for
 [scientific visualization](https://en.wikipedia.org/wiki/Scientific_visualization).
 
-## viz/viz!
+Makie.jl is developed in terms of backend modules:
 
-Makie.jl provides a plot recipe system developed after
-[Plots.jl](https://github.com/JuliaPlots/Plots.jl) by @Breloff2023,
-which enables automatic visualization of custom Julia types.
-GeoStats.jl is integrated with this recipe system, and provides
-a `viz`/`viz!` function for efficient visualization of geospatial
-data.
+- **GLMakie.jl** is the preferred backend for interactive *high-performance* visualization.
+- **WGLMakie.jl** is the preferred backend for interactive visualization on the *web browser*.
+- **CairoMakie.jl** is the preferred backend for *publication-quality* static visualization.
 
-For illustration purposes, let's create a small `GeoTable` over a
-`CartesianGrid`:
-
-```{julia}
-using GeoStats
-
-# two images of size 10x10
-A = [sin(i+j) for i in 1:10, j in 1:10]
-B = [i for i in 1:10, j in 1:10]
-
-# place images in named tuple
-tab = (A=A, B=B)
-
-# omit the domain to get a grid
-gdf = georef(tab)
-```
-
-Notice how we omitted the domain in the `georef` function. By default,
-the function will check the `size` of the arrays in the named tuple and
-will create a `CartesianGrid` starting at the origin:
-
-```{julia}
-gdf.geometry
-```
-
-First, we need to import any of the Makie.jl backends for visualization:
+In this book, we use the **CairoMakie.jl** backend:
 
 ```{julia}
 import CairoMakie as Mke
@@ -59,72 +31,108 @@ session with names from the visualization stack.
 
 :::
 
-Julia will trigger the compilation of `viz`/`viz!` in GeoStats.jl
-whenever a Makie.jl backend is loaded in the same session. The
-function can be used to display geometries within a domain using
-colors taken from any vector of
-[Colors.jl](https://github.com/JuliaGraphics/Colors.jl).
-Because it is common to use another column of the `GeoTable` as
-the vector of colors, the framework will automatically convert
-(continuous and categorical) values into colors:
+## viz/viz!
+
+Makie.jl provides a plot recipe system developed after
+[Plots.jl](https://github.com/JuliaPlots/Plots.jl) by @Breloff2023,
+which enables automatic visualization of custom Julia types.
+GeoStats.jl is integrated with this recipe system, and provides
+a `viz`/`viz!` function for efficient visualization of geospatial
+data.
 
 ```{julia}
-viz(gdf.geometry, color = gdf.A)
+using GeoStats
+```
+
+::: {.callout-note}
+
+Julia will trigger the compilation of `viz`/`viz!` in GeoStats.jl
+whenever a Makie.jl backend is loaded in the same session.
+
+:::
+
+For illustration purposes, let's load "raster data" from disk using
+the GeoIO.jl module:
+
+```{julia}
+#using GeoIO
+
+#img = GeoIO.load("data/image.jpg")
+```
+
+Since the `.jpg` file format doesn't contain a coordinate reference
+system, the framework will assume that the `CartesianGrid` starts at
+the origin:
+
+```{julia}
+#img.geometry
+```
+
+The `viz` function can be used to visualize geometries within a domain
+using colors taken from any vector of [Colors.jl](https://github.com/JuliaGraphics/Colors.jl):
+
+```{julia}
+#viz(img.geometry, color = img.color)
+```
+
+Since it is common to use another column of the `GeoTable` as
+the vector of colors, the framework will automatically convert
+raw vectors of (continuous and categorical) values into color
+objects:
+
+```{julia}
+#viz(img.geometry, color = 1:length(img.color))
 ```
 
 We could also pass a single color for all geometries:
 
 ```{julia}
-viz(gdf.geometry, color = "teal")
+#viz(img.geometry, color = "teal")
 ```
 
-Or pass the other column in the `GeoTable` with a random vector of
-transparencies:
+Or pass a random vector of transparencies:
 
 ```{julia}
-viz(gdf.geometry, color = gdf.B, alpha = rand(100))
+#viz(img.geometry, color = img.color, alpha = rand(length(img.color)))
 ```
 
-To really see the benefits of the framework, let's load GIS
-data from disk and visualize it:
+To really see the benefits of the framework, let's load "vector data"
+from disk and visualize it:
 
 ```{julia}
-using GeoTables
+#gis = GeoIO.load("data/geotable.geojson")
 
-gis = GeoTables.load("data/geotable.geojson")
-
-viz(gis.geometry, color = 1:4)
+#viz(gis.geometry, color = 1:4)
 ```
 
-We can visualize two or more `GeoTable`s in the same scene
-by calling the `viz!` function:
+The `viz!` function can be used to visualize two or more objects in the scene:
 
 ```{julia}
-viz(gdf.geometry, color = gdf.A)
-viz!(gis.geometry, color = 1:4)
+#viz(img.geometry, color = img.color)
+#viz!(gis.geometry, color = 1:4)
 
 # display current figure
-Mke.current_figure()
+#Mke.current_figure()
 ```
 
-Let's add a set of points to the scene:
+Let's add an additional set of points:
 
 ```{julia}
-pts = [Point(-20, -10), Point(-20, 0), Point(-40, 10)]
+#pts = [Point(-20, -10), Point(-20, 0), Point(-40, 10)]
 
-viz!(pts, color = 1:3)
+#viz!(pts, color = 1:3)
 
-Mke.current_figure()
+#Mke.current_figure()
 ```
 
 And a set of line segments to conclude the example:
 
 ```{julia}
-seg = [Segment((-40, -10), (0, 0)), Segment((-40, 0), (-20, 10))]
+#seg = [Segment((-40, -10), (0, 0)), Segment((-40, 0), (-20, 10))]
 
-viz!(seg, color = 1:2)
+#viz!(seg, color = 1:2)
 
-Mke.current_figure()
+#Mke.current_figure()
 ```
 
 ::: {.callout-note}
@@ -135,9 +143,9 @@ Makie.jl can set the aspect ratio of the axis after the visualization is created
 The following code can be used to adjust the aspect ratio for the data in the scene:
 
 ```{julia}
-ax = Mke.current_axis()
-ax.aspect = Mke.DataAspect()
-Mke.current_figure()
+#ax = Mke.current_axis()
+#ax.aspect = Mke.DataAspect()
+#Mke.current_figure()
 ```
 
 :::
@@ -155,8 +163,6 @@ in scripts and the result will be the same.
 
 The `viz`/`viz!` function is very powerful. It can be used to visualize geospatial
 variables over multiple geospatial domains with a consistent set of aesthetic options.
-Nevertheless, it is still not enough for geospatial data science as explained in the
-next section.
 
 ## viewer
 
@@ -164,18 +170,13 @@ As geospatial data scientists we are often interested in quick inspection
 of intermediate results from multivariate statistical analysis. Visualizing
 all the variables manually with `viz`/`viz!` can be very time consuming.
 To address this issue, the framework provides a basic `viewer` that displays
-all "viewable" variables stored in a `GeoTable`:
+all variables stored in a `GeoTable`:
 
 ```{julia}
-viewer(gdf)
+geotable = georef((A=rand(1000), B=rand(1000)), rand(3, 1000))
+
+viewer(geotable)
 ```
-
-::: {.callout-note}
-
-A variable is "viewable" if its values can be converted into colors with
-the `ascolors` function.
-
-:::
 
 It adds interactive elements to the scene, including a menu to select the
 variable used as color, and a color bar that automatically updates upon
@@ -185,15 +186,9 @@ of the book. The pipe operator (`|>`) in Julia will be preferred for reasons
 that will become clearer later:
 
 ```{julia}
-gdf = georef((A=rand(1000), B=rand(1000)), rand(3, 1000))
+img = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
 
-gdf |> viewer
-```
-
-```{julia}
-gdf = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
-
-gdf |> viewer
+img |> viewer
 ```
 
 You are now equiped with a set of visualization functions that can
