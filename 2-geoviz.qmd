@@ -12,13 +12,13 @@ visualization projects, [Makie.jl](https://github.com/MakieOrg/Makie.jl) by
 @Danisch2021 is the most suited for
 [scientific visualization](https://en.wikipedia.org/wiki/Scientific_visualization).
 
-Makie.jl is developed in terms of backend modules:
+Makie.jl is currently organized in backend modules:
 
 - **GLMakie.jl** is the preferred backend for interactive *high-performance* visualization.
 - **WGLMakie.jl** is the preferred backend for interactive visualization on the *web browser*.
 - **CairoMakie.jl** is the preferred backend for *publication-quality* static visualization.
 
-In this book, we use the **CairoMakie.jl** backend:
+In this book, we use **CairoMakie.jl**:
 
 ```{julia}
 import CairoMakie as Mke
