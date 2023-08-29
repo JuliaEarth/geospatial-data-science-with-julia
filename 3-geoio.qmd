@@ -44,6 +44,6 @@ It creates a software ecosystem where Julia users can become
 contributors and maintainers of the framework, without any
 knowledge of a second programming language.
 
-## Input/Output
+## Simple features
 
 ## File formats
