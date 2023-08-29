@@ -69,16 +69,12 @@ the origin:
 ```
 
 The `viz` function can be used to visualize geometries within a domain
-using colors taken from any vector of [Colors.jl](https://github.com/JuliaGraphics/Colors.jl):
+using colors taken from any vector of [Colors.jl](https://github.com/JuliaGraphics/Colors.jl)
+or numbers (automatically converted to colors):
 
 ```{julia}
 #viz(img.geometry, color = img.color)
 ```
-
-Since it is common to use another column of the `GeoTable` as
-the vector of colors, the framework will automatically convert
-raw vectors of (continuous and categorical) values into color
-objects:
 
 ```{julia}
 #viz(img.geometry, color = 1:length(img.color))

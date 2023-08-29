@@ -336,13 +336,6 @@ We can access the individual geometries of the domain as before:
 grid[1]
 ```
 
-The number of geometries (or elements) in the domain is
-obtained with the `nelements` function:
-
-```{julia}
-nelements(grid)
-```
-
 Even though we can manipulate this domain as if it was a
 "soup of geometries", the major advantage in this abstraction
 is the underlying `topology`:
