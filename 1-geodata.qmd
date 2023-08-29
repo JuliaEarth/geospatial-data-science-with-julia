@@ -9,9 +9,9 @@ Pkg.activate(".")
 
 ## Definition
 
-In order to be effective as a geospatial data scientist, you need
-to be able to clearly define what **geospatial data** is and what it
-is not. Let's start with the most important definition of this book:
+Before we can start our journey in geospatial data science, we need to
+define what **geospatial data** is and what it is not. The following
+definition is simple and useful:
 
 ::: {.callout-tip}
 
@@ -19,15 +19,18 @@ is not. Let's start with the most important definition of this book:
 
 **(Discrete) geospatial data** is the combination of a
 **table** of attributes (or features) with a discretization of a
-**geospatial domain**. For each row (or measurement) in the **table**
+geospatial **domain**. For each row (or measurement) in the **table**
 there corresponds an element (or geometry) in the discretization of
-the **geospatial domain**.
+the geospatial **domain**.
 
 :::
 
-The definition depends on two other definitions that we try to clarify
-further now. In data science the most natural data structure for working
-with data is the [table](https://en.wikipedia.org/wiki/Table_(database)).
+The definition depends on two other definitions that we clarify next.
+
+### Table
+
+In data science the most natural data structure for working with data is the
+[table](https://en.wikipedia.org/wiki/Table_(database)).
 Without big formalities, a table is any object that can be structured into
 rows containing measurements and columns representing variables.
 For example, @tbl-example has 5 measurements of 4 variables:
@@ -44,12 +47,13 @@ For example, @tbl-example has 5 measurements of 4 variables:
 
 In Julia, the concept of table is formalized in
 [Tables.jl](https://github.com/JuliaData/Tables.jl) by 
-@Quinn2023. Notice that the concept of table is agnostic
-to the machine representation, and that various implementations
-can co-exist in the language. This will become clearer in the
-next section.
+@Quinn2023. The concept is independent of the machine
+representation, and various representations can co-exist
+in the language.
 
-The second definition that we need is that of a **geospatial domain**.
+### Domain
+
+The second definition that we need is that of a geospatial **domain**.
 In geosciences, questions are often formulated within a physical
 region of interest. This physical region can cover a small area
 of the surface of the Earth, the entire Earth surface, or any
@@ -77,7 +81,7 @@ The concept of geospatial domain is formalized in
 [Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl) by
 @Hoffimann2021.
 
-### Important remarks
+### Remarks
 
 - Images like the one depicted in @fig-islay-province are often
   implemented in terms of the
@@ -113,8 +117,6 @@ The concept of geospatial domain is formalized in
   We will also avoid this term in our framework given that it
   only highlights an implementation detail.
 
-### Geospatial vs. spatial
-
 Before we start discussing machine representation with actual Julia
 code, let's make a final (pedantic) distinction between the words
 *geospatial* and *spatial*. These words mean different things
@@ -142,7 +144,7 @@ Based on the definition of geospatial data given in the previous
 section, we are now ready to proceed and discuss an efficient
 machine representation for it with actual Julia code.
 
-### Tables
+### Table
 
 The Julia language comes with two built-in table representations:
 
@@ -162,8 +164,8 @@ coltable = (
 
 Given that data science is often performed with entire columns,
 this column-major representation of a table is very convenient.
-We can check that the representation is valid using the
-`Tables.istable` function:
+We can check that the representation is a valid representation
+of a table using the `Tables.istable` function:
 
 ```{julia}
 using Tables
@@ -188,7 +190,7 @@ Tables.istable(rowtable)
 ```
 
 This row-major representation can be useful to process data that
-is potentially larger than the available computer memory, or even
+is potentially larger than the available computer memory, or
 infinite streams of data.
 
 Although these two representations come built-in with Julia, they
@@ -209,26 +211,19 @@ df = DataFrame(
 ```
 
 This representation provides additional syntax for accessing
-rows and columns. For instance, we can access the first row:
+rows and columns of the table:
 
 ```{julia}
 df[1,:]
 ```
 
-The column with the variable **NAME**:
-
 ```{julia}
 df[:,"NAME"]
 ```
 
-Or any subtable of interest:
-
 ```{julia}
 df[1:3,["NAME","AGE"]]
 ```
-
-The representation also provides direct column access with
-the following syntax:
 
 ```{julia}
 df.HEIGHT
@@ -255,8 +250,8 @@ with specific file formats:
 - `XLSX.Worksheet` from [XLSX.jl](https://github.com/felipenoris/XLSX.jl)
 - Databases from [JuliaDatabases](https://github.com/JuliaDatabases)
 
-Below we illustrate the table representation of a `table.csv` file
-stored in the `data` directory:
+As an example, we consider the table representation of a `table.csv` file
+stored on disk:
 
 ```{julia}
 using CSV
@@ -265,12 +260,10 @@ CSV.File("data/table.csv")
 ```
 
 The choice of representation is a function of the application.
-Julia provides a rich data science ecosystem that can adapt to
-different workloads, and you can always customize your own table
-representation if none of the available representations meet the
-requirements of your application.
+It is easy to create new table representations in Julia if
+none of the available representations meet the requirements.
 
-### Domains
+### Domain
 
 All available domain representations come from the
 [Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl)
