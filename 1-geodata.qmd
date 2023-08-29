@@ -86,9 +86,9 @@ The concept of geospatial domain is formalized in
 - Images like the one depicted in @fig-islay-province are often
   implemented in terms of the
   [array](https://en.wikipedia.org/wiki/Array_(data_structure))
-  data structure. GIS books call this machine representation
-  "raster data", but we will avoid this term in our framework
-  in order to obtain a more general set of tools.
+  data structure. GIS books call it "raster data", but we will
+  avoid this term in our framework in order to obtain a more
+  general set of tools.
 - According to our definition of geospatial data, "raster data"
   is simply a table with colors as variables (e.g., RGB values)
   combined with a Cartesian grid of quadrangle geometries.
@@ -112,10 +112,10 @@ The concept of geospatial domain is formalized in
 
   ![Brazil's states represented with complex polygonal geometries. View on [Google Maps](https://www.google.com/maps/place/Brasil/@-14.2009197,-62.5722989,4z).](images/brazil.png){#fig-brazil width=40%}
 
-- GIS books call this machine representation "vector data" because
-  the geometries are stored as vectors of coordinates in memory.
-  We will also avoid this term in our framework given that it
-  only highlights an implementation detail.
+- GIS books call it "vector data" because the geometries are
+  stored as vectors of coordinates in memory. We will also avoid
+  this term in our framework given that it only highlights an
+  implementation detail.
 
 Before we start discussing machine representation with actual Julia
 code, let's make a final (pedantic) distinction between the words
@@ -304,7 +304,7 @@ geometries in the domain:
 [measure(g) for g in gset]
 ```
 
-In the example above we iterated over the domain to apply the
+In the example above, we iterated over the domain to apply the
 function of interest, but we could have used Julia's dot syntax
 for broadcasting the function over the geometries:
 
@@ -321,9 +321,10 @@ documentation to get familiar with all the options.
 One of the main limitations of GIS software today is the
 lack of explicit represention of [topology](https://en.wikipedia.org/wiki/Topology).
 A `GeometrySet` does not provide efficient topological relations
-[@Floriani2007], yet geospatial data science requires the definition
-of geospatial domains where geometries are aware of their neighbors.
-Let's illustrate this concept with the `CartesianGrid` domain:
+[@Floriani2007], yet advanced geospatial data science requires
+the definition of geospatial domains where geometries are aware
+of their neighbors. Let's illustrate this concept with the
+`CartesianGrid` domain:
 
 ```{julia}
 grid = CartesianGrid(10, 10)
@@ -394,28 +395,36 @@ mesh = SimpleMesh(points, connec)
 ```
 
 The `connect` function takes a tuple of indices and a geometry type,
-and produces a connectivity. This object can be materialized later
-in the presence of actual points:
+and produces a connectivity object. The geometry type can be ommitted,
+in which case it is assumed to be a `Ngon`:
 
 ```{julia}
-connect((1, 2, 6, 5), Quadrangle)
+c = connect((1, 2, 3))
 ```
+
+This connectivity object can be materialized into an actual geometry
+with a vector of points:
 
 ```{julia}
-connect((2, 4, 6), Triangle)
+materialize(c, [Point(0, 0), Point(1, 0), Point(1, 1)])
 ```
 
-The geometry type can be ommited in which case the function assumes that
-the geometry is a `Ngon` with vertices in counter clockwise order. This
-is what we did in the example above by passing a vector of tuples to
-`connect` without an explicit geometry type for each tuple.
+The `SimpleMesh` uses the `materialize` function above to construct
+geometries on the fly, similar to what we have seen with the `CartesianGrid`:
+
+```{julia}
+mesh[1]
+```
+
+Throughout the book, we will have the chance to explore these concepts
+in more detail.
 
 Let's make a few important remarks:
 
 - Flexibility comes with a price. To construct a `SimpleMesh` of connected
   geometries we need to explicitly create a vector of vertices, and connect
   these vertices into geometries using their indices in the vector.
-- Geometries in a `SimpleMesh` can be of different type. In this example,
+- Geometries in a `SimpleMesh` can be of different type. In the example,
   we have both `Triangle` and `Quadrangle` geometries in the domain. This is
   similar to what we had with `GeometrySet`, but now the geometries are
   connected.
@@ -423,11 +432,8 @@ Let's make a few important remarks:
   a sophisticated geometric processing pipeline that is already stored in a
   file on disk.
 
-Throughout the book we will have the chance to explore these domain and geometry
-types in depth with practical examples. Our goal in this section is to illustrate
-that you can construct arbitrarily complex domains in 2D and 3D. The last missing
-piece of the puzzle is the combination of tables with domains into geospatial data,
-which we discuss next.
+The last missing piece of the puzzle is the combination of tables with domains
+into geospatial data, which we discuss next.
 
 ### Data
 
@@ -449,17 +455,17 @@ df = DataFrame(
 
 grid = CartesianGrid(2, 2)
 
-gdf = georef(df, grid)
+geotable = georef(df, grid)
 ```
 
 The function combines any table with any domain into a geospatial data
 representation that adheres to the Tables.jl interface. We call this
 representation a `GeoTable` to distinguish it from a standard table.
-Besides the original columns, the geotable has a special `geometry`
+Besides the original columns, the `GeoTable` has a special `geometry`
 column with the underlying domain:
 
 ```{julia}
-names(gdf)
+names(geotable)
 ```
 
 Unlike a standard table, the `GeoTable` creates geometries on the fly
@@ -468,20 +474,20 @@ first measurement of the geotable and it will automatically construct
 the corresponding `Quadrangle`:
 
 ```{julia}
-gdf[1,:]
+geotable[1,:]
 ```
 
 If we request a subset of measurements, the geotable will avoid unnecessary creation
 of geometries, and will instead return a view into the original data:
 
 ```{julia}
-gdf[1:3,"geometry"]
+geotable[1:3,"geometry"]
 ```
 
 Finally, if we request the entire `geometry` column, we get back the original domain:
 
 ```{julia}
-gdf[:,"geometry"]
+geotable[:,"geometry"]
 ```
 
 All the data access patterns provided by a `DataFrame` are supported by a `GeoTable`,
@@ -554,7 +560,7 @@ What we learned in this chapter?
   This representation is universal meaning that it combines the
   "raster" and "vector" representations found in traditional GIS.
 - A `GeoTable` provides all the data access patterns of a `DataFrame`.
-  In particular, it supports the syntax `gdf[rows,cols]` without
+  In particular, it supports the syntax `geotable[rows,cols]` without
   without expensive copies of geometries.
 - Working with geospatial domains as opposed to working with vectors
   of disconnected geometries has major benefits. In particular, it
