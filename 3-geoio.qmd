@@ -28,8 +28,8 @@ programmers who have never studied GIS before, and who really
 struggle learning the technology as it is today. The widespread
 emphasis on machine representation and software engineering
 has created a gap between the developers and the users of GIS
-software. A typical gap to be closed with the features of the
-Julia language.
+software. A typical gap to be closed with the Julia programming
+language.
 
 In this scenario, we decided to limit our interface with GIS
 software to input/output of files. This gives users of the
@@ -40,9 +40,9 @@ framework the chance to
 3. Export results to widely used software (e.g., [QGIS](https://qgis.org),
    [ArcGIS](https://www.arcgis.com/index.html))
 
-It creates an environment where Julia users can become
-contributors and maintainers of the framework without
-any knowledge of a second programming language.
+It creates a software ecosystem where Julia users can become
+contributors and maintainers of the framework, without any
+knowledge of a second programming language.
 
 ## Input/Output
 
