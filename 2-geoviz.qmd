@@ -161,9 +161,6 @@ in scripts and the result will be the same.
 
 :::
 
-The `viz`/`viz!` function is very powerful. It can be used to visualize geospatial
-variables over multiple geospatial domains with a consistent set of aesthetic options.
-
 ## viewer
 
 As geospatial data scientists we are often interested in quick inspection
@@ -191,7 +188,10 @@ img = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
 img |> viewer
 ```
 
-You are now equiped with a set of visualization functions that can
-really improve the speed at which you explore and analyze geospatial data.
+We are now equiped with a set of visualization functions that can
+really improve the speed at which we explore and analyze geospatial data.
+These functions provide a consistent set of aesthetic options that we
+will cover in more detail with future examples.
+
 Before we start learning the advanced features of the framework, we would
 like to say a few words about integration with existing GIS technology.
