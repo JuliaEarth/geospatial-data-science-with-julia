@@ -7,6 +7,43 @@ import Pkg
 Pkg.activate(".")
 ```
 
+In order to disrupt existing practices and really develop
+something new in Julia, we had to make some hard decisions
+along the way. One of these decisions relates to how we are
+willing to interface our framework with existing GIS
+representations and workflows.
+
+On the one hand, we could have followed the path that was
+followed by other communities such as Python and R, and
+focus our energy in porting well-tested GIS libraries
+written in C/C++ (e.g., [GDAL](https://gdal.org/index.html),
+[GEOS](https://libgeos.org)) to Julia. This is precisely
+what the [JuliaGeo](https://github.com/JuliaGeo) organization
+has been doing over the years, and it is an important
+agenda to bring people from other languages that are
+used to the [OGC](https://www.ogc.org/standards) standards.
+
+On the other hand, we have geoscientists and first-time
+programmers who have never studied GIS before, and who really
+struggle learning the technology as it is today. The widespread
+emphasis on machine representation and software engineering
+has created a gap between the developers and the users of GIS
+software. A typical gap to be closed with the features of the
+Julia language.
+
+In this scenario, we decided to limit our interface with GIS
+software to input/output of files. This gives users of the
+framework the chance to
+
+1. Import geospatial data stored as simple features
+2. Perform geospatial data science with a rich set of tools
+3. Export results to widely used software (e.g., [QGIS](https://qgis.org),
+   [ArcGIS](https://www.arcgis.com/index.html))
+
+It creates an environment where Julia users can become
+contributors and maintainers of the framework without
+any knowledge of a second programming language.
+
 ## Input/Output
 
 ## File formats
