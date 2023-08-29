@@ -183,9 +183,9 @@ of the book. The pipe operator (`|>`) in Julia will be preferred for reasons
 that will become clearer later:
 
 ```{julia}
-img = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
+geotable = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
 
-img |> viewer
+geotable |> viewer
 ```
 
 We are now equiped with a set of visualization functions that can
