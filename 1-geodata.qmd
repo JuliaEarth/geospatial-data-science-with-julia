@@ -259,9 +259,7 @@ using CSV
 CSV.File("data/table.csv")
 ```
 
-The choice of representation is a function of the application.
-It is easy to create new table representations in Julia if
-none of the available representations meet the requirements.
+The choice of table representation is a function of the application.
 
 ### Domain
 
