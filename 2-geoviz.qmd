@@ -18,7 +18,7 @@ Makie.jl is currently organized in backend modules:
 - **WGLMakie.jl** is the preferred backend for interactive visualization on the *web browser*.
 - **CairoMakie.jl** is the preferred backend for *publication-quality* static visualization.
 
-In this book, we use **CairoMakie.jl**:
+In this book, we use **CairoMakie.jl** due to the large number of figures produced in code examples:
 
 ```{julia}
 import CairoMakie as Mke
@@ -173,10 +173,10 @@ viewer(geotable)
 
 It adds interactive elements to the scene, including a menu to select the
 variable used as color, and a color bar that automatically updates upon
-selection of new variables on the menu. The `viewer` will be particularly
-useful when we start to work with geospatial transforms in [Part II](4-feattrans.qmd)
-of the book. The pipe operator (`|>`) in Julia will be preferred for reasons
-that will become clearer later:
+menu selection. The `viewer` will be particularly useful when we start to
+work with geospatial transforms in [Part II](4-feattrans.qmd) of the book.
+The pipe operator (`|>`) in Julia will be preferred for reasons that will
+become clearer later:
 
 ```{julia}
 geotable = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))

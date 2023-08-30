@@ -541,10 +541,6 @@ code, use the functions `values` and `domain` instead.
 
 :::
 
-You will start to realize the benefits of treating "raster data" and
-"vector data" with the same representation in the next chapter with
-the introduction of a universal viewer for geospatial data.
-
 ## Remarks
 
 What we learned in this chapter?

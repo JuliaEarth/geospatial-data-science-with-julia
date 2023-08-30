@@ -11,39 +11,84 @@ In order to disrupt existing practices and really develop
 something new in Julia, we had to make some hard decisions
 along the way. One of these decisions relates to how we are
 willing to interface our framework with existing GIS
-representations and workflows.
+standards and workflows.
 
 On the one hand, we could have followed the path that was
 followed by other communities such as Python and R, and
-focus our energy in porting well-tested GIS libraries
+focus our energy interfacing with well-tested GIS libraries
 written in C/C++ (e.g., [GDAL](https://gdal.org/index.html),
-[GEOS](https://libgeos.org)) to Julia. This is precisely
-what the [JuliaGeo](https://github.com/JuliaGeo) organization
+[GEOS](https://libgeos.org)). This is precisely what the
+[JuliaGeo](https://github.com/JuliaGeo) organization
 has been doing over the years, and it is an important
 agenda to bring people from other languages that are
 used to the [OGC](https://www.ogc.org/standards) standards.
 
-On the other hand, we have geoscientists and first-time
-programmers who have never studied GIS before, and who really
-struggle learning the technology as it is today. The widespread
+On the other hand, we have young geoscientists and first-time
+programmers who have never studied GIS before, and who *really
+struggle* learning the technology as it is today. The widespread
 emphasis on machine representation and software engineering
 has created a gap between the developers and the users of GIS
 software. A typical gap to be closed with the Julia programming
 language.
 
-In this scenario, we decided to limit our interface with GIS
-software to input/output of files. This gives users of the
-framework the chance to
+We decided to limit our interface with existing GIS technology to
+input and output of files. This gives users of the framework the
+chance to
 
 1. Import geospatial data stored as simple features
 2. Perform geospatial data science with a rich set of tools
 3. Export results to widely used software (e.g., [QGIS](https://qgis.org),
    [ArcGIS](https://www.arcgis.com/index.html))
 
-It creates a software ecosystem where Julia users can become
+It creates a an ecosystem where Julia users can become
 contributors and maintainers of the framework, without any
 knowledge of a second programming language.
 
-## Simple features
+## GeoIO.jl
 
-## File formats
+The [GeoIO.jl](https://github.com/JuliaEarth/GeoIO.jl) module can load
+and save geospatial data on disk in a variety of formats, including the
+most popular formats in GIS (e.g., `.shp`, `.geojson`, `.kml`, `.parquet`)
+thanks to various backend packages spread across various Julia organizations.
+It is designed for end-users who just want to get their data ready for
+geospatial data science.
+
+To load a file from disk, we use `GeoIO.load`:
+
+```{julia}
+#| eval: false
+using GeoIO
+
+geotable = GeoIO.load("file.shp")
+```
+
+The function automatically selects the backend based on the file extension,
+converts the simple features into a geospatial domain, and returns a `GeoTable`.
+
+To save the `GeoTable` to disk, possibly in a different format, we use `GeoIO.save`:
+
+```{julia}
+#| eval: false
+GeoIO.save("file.geojson", geotable)
+```
+
+The module fixes inconsistencies between formats whenever possible. For
+example, the GeoJSON format writes `Date` columns as `String` because
+the JSON format has no date types. The Shapefile format has its own
+limitations, etc.
+
+Over time, we expect to improve the ecosystem as a whole by highlighing
+various issues with available standards and implementations.
+
+## Be aware
+
+Most GIS file formats do **not** preserve topological information.
+They store the geometries in a vector, and throw away any information
+about neighboring geometries. To illustrate this issue, we consider
+a perfectly connected `CartesianGrid` of `Quadrangle` geometries:
+
+```{julia}
+using GeoStats
+
+geotable = georef((A=rand(10,10), B=rand(10,10)))
+```
