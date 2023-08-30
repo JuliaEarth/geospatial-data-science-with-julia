@@ -83,12 +83,29 @@ various issues with available standards and implementations.
 ## Be aware
 
 Most GIS file formats do **not** preserve topological information.
-They store the geometries in a vector, and throw away any information
-about neighboring geometries. To illustrate this issue, we consider
-a perfectly connected `CartesianGrid` of `Quadrangle` geometries:
+This means that neighborhood information is lost as soon as geometries
+are saved to disk. To illustrate this issue, we consider a geotable over
+a `CartesianGrid`:
 
 ```{julia}
 using GeoStats
 
 geotable = georef((A=rand(10,10), B=rand(10,10)))
 ```
+
+If we save the geotable to a `.geojson` file on disk, and then load it back,
+we can observe that the `CartesianGrid` gets replaced by a `GeometrySet`:
+
+```{julia}
+#using GeoIO
+
+#fname = tempname()*".geojson"
+
+#GeoIO.save(fname, geotable)
+
+#GeoIO.load(fname)
+```
+
+Other file formats such as `.ply` and `.msh` are widely used in
+[computer graphics](https://en.wikipedia.org/wiki/Computer_graphics)
+to save geospatial data over meshes, and are recommended instead.
