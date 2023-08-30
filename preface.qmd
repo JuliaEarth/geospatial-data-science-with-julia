@@ -106,9 +106,12 @@ pkg"add CSV"
 
 ## Acknowledgements
 
-I would like to acknowledge all the contributors of the
-[![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
-framework. You are the reason this book exists!
-[![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
-The implementation of the framework is only possible thanks to
-the amazing programming language advances by @Benzanson2017.
+I would like to acknowledge all the [contributors](https://github.com/JuliaEarth/GeoStats.jl#contributors) of the
+[![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl) framework.
+You are the reason this book exists! [![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
+The implementation of the framework is only possible thanks to the amazing programming language advances by @Benzanson2017.
+
+A special thanks to [Elias Carvalho](https://github.com/eliascarv) for his outstanding contributions to the software stack,
+to Prof. [Douglas Mazzinghy](https://scholar.google.com.br/citations?user=yfnHmeEAAAAJ) for organizing the first training
+courses at UFMG, to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo) for organizing the
+[JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop, and to partners in industry who support this work.
