@@ -506,9 +506,9 @@ And can load vector geometries from files that store simple features
 using the [GeoIO.jl](https://github.com/JuliaEarth/GeoIO.jl) module:
 
 ```{julia}
-using GeoTables
+using GeoIO
 
-GeoTables.load("data/geotable.geojson")
+GeoIO.load("data/geotable.geojson")
 ```
 
 We will see more examples of "vector data" in the chapter
