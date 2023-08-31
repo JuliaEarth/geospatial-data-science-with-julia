@@ -372,17 +372,14 @@ Below we illustrate some of these algorithms, which will be useful in future exa
 
 ```{julia}
 points = rand(Point2, 100)
-bbox = boundingbox(points)
 
-viz(bbox)
+viz(boundingbox(points))
 viz!(points, color = "black")
 Mke.current_figure()
 ```
 
 ```{julia}
-chull = convexhull(points)
-
-viz(chull)
+viz(convexhull(points))
 viz!(points, color = "black")
 Mke.current_figure()
 ```
