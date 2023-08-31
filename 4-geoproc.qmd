@@ -91,7 +91,8 @@ A polygon `issimple` if it doesn't have holes nor self-intersections:
 issimple(q)
 ```
 
-We have seen the `isconvex` predicate already:
+It `isconvex` if all line segments connecting two points of the polygon
+are inside the polygon:
 
 ```{julia}
 isconvex(q)
