@@ -745,7 +745,7 @@ uuid = "68eda718-8dee-11e9-39e7-89f7f65f511f"
 version = "0.4.1"
 
 [[deps.GeoIO]]
-deps = ["ArchGDAL", "FileIO", "GADM", "GeoInterface", "GeoJSON", "GeoParquet", "ImageIO", "Meshes", "PrecompileTools", "Shapefile", "Tables"]
+deps = ["ArchGDAL", "FileIO", "GADM", "GeoInterface", "GeoJSON", "GeoParquet", "ImageIO", "Meshes", "PlyIO", "PrecompileTools", "Shapefile", "Tables"]
 path = "/home/juliohm/.julia/dev/GeoIO"
 uuid = "f5a160d5-e41d-4189-8b61-d57781c419e3"
 version = "1.0.0"
@@ -1207,9 +1207,9 @@ uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
 [[deps.LoggingExtras]]
 deps = ["Dates", "Logging"]
-git-tree-sha1 = "a03c77519ab45eb9a34d3cfe2ca223d79c064323"
+git-tree-sha1 = "0d097476b6c381ab7906460ef1ef1638fbce1d91"
 uuid = "e6f89c97-d47a-5376-807f-9c37f3926c36"
-version = "1.0.1"
+version = "1.0.2"
 
 [[deps.LossFunctions]]
 deps = ["Markdown", "Requires", "Statistics"]
@@ -1545,6 +1545,11 @@ deps = ["ColorSchemes", "Colors", "Dates", "PrecompileTools", "Printf", "Random"
 git-tree-sha1 = "f92e1315dadf8c46561fb9396e525f7200cdc227"
 uuid = "995b91a9-d308-5afd-9ec6-746e21dbc043"
 version = "1.3.5"
+
+[[deps.PlyIO]]
+git-tree-sha1 = "74619231a7aa262a76f82ae05c7385622d8a5945"
+uuid = "42171d58-473b-503a-8d5f-782019eb09ec"
+version = "1.1.2"
 
 [[deps.PointPatterns]]
 deps = ["Distributions", "Meshes", "Random"]
@@ -1998,9 +2003,9 @@ version = "1.0.1"
 
 [[deps.TableTransforms]]
 deps = ["AbstractTrees", "CategoricalArrays", "Distributions", "LinearAlgebra", "NelderMead", "PrettyTables", "Random", "ScientificTypes", "Statistics", "StatsBase", "Tables", "Transducers", "TransformsBase"]
-git-tree-sha1 = "dd95512a3aa7628f531348b73d46761283561ef1"
+git-tree-sha1 = "6eb5c43519dddbc7936c8222ee760c1f93387750"
 uuid = "0d432bfd-3ee1-4ac1-886a-39f05cc69a3e"
-version = "1.13.0"
+version = "1.14.0"
 
 [[deps.Tables]]
 deps = ["DataAPI", "DataValueInterfaces", "IteratorInterfaceExtensions", "LinearAlgebra", "OrderedCollections", "TableTraits", "Test"]
@@ -2161,10 +2166,10 @@ uuid = "76eceee3-57b5-4d4a-8e66-0e911cebbf60"
 version = "1.6.1"
 
 [[deps.XML2_jll]]
-deps = ["Artifacts", "JLLWrappers", "Libdl", "Libiconv_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "93c41695bc1c08c46c5899f4fe06d6ead504bb73"
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Libiconv_jll", "Zlib_jll"]
+git-tree-sha1 = "04a51d15436a572301b5abbb9d099713327e9fc4"
 uuid = "02c8fc9c-b97f-50b9-bbe4-9be30ff0a78a"
-version = "2.10.3+0"
+version = "2.10.4+0"
 
 [[deps.XSLT_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Libgcrypt_jll", "Libgpg_error_jll", "Libiconv_jll", "Pkg", "XML2_jll", "Zlib_jll"]

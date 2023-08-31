@@ -5,6 +5,9 @@
 #| output: false
 import Pkg
 Pkg.activate(".")
+
+using GeoStats
+import CairoMakie as Mke
 ```
 
 In order to disrupt existing practices and really develop
@@ -88,8 +91,6 @@ are saved to disk. To illustrate this issue, we consider a geotable over
 a `CartesianGrid`:
 
 ```{julia}
-using GeoStats
-
 geotable = georef((A=rand(10,10), B=rand(10,10)))
 ```
 
@@ -97,9 +98,7 @@ If we save the geotable to a `.geojson` file on disk, and then load it back,
 we can observe that the `CartesianGrid` gets replaced by a `GeometrySet`:
 
 ```{julia}
-using GeoIO
-
-fname = tempname()*".geojson"
+fname = tempname() * ".geojson"
 
 GeoIO.save(fname, geotable)
 
@@ -108,4 +107,10 @@ GeoIO.load(fname)
 
 Other file formats such as `.ply` and `.msh` are widely used in
 [computer graphics](https://en.wikipedia.org/wiki/Computer_graphics)
-to save geospatial data over meshes, and are recommended instead.
+to save geospatial data over meshes, and are recommended instead:
+
+```{julia}
+beethoven = GeoIO.load("data/beethoven.ply")
+
+viz(beethoven.geometry)
+```
