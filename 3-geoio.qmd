@@ -143,5 +143,5 @@ Notice how the `isconvex` function is compiled away to the constant `true` when 
 the triangle. The code for a generic polygon is much more evolved and requires runtime
 checks that are too expensive to afford, specially in 3D.
 
-Having cleared that up, we will now proceed to the final chapter of the first part of the
-book, which covers the advanced geometric processing features of the framework.
+Having cleared that up, we will now proceed to the last foundational chapter of the book,
+which covers the advanced geometric processing features of the framework.
