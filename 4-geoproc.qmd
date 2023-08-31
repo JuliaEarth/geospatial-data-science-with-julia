@@ -366,6 +366,23 @@ Please consult the official documentation for the full list of operations.
 
 Any other function that is not a predicate nor an operation is called a geometric
 processing "algorithm" in the framework. We provide a list of advanced algorithms
-for simplification, discretization, refinement, convex hull, etc.
+for discretization, simplification, refinement, convex hull, etc.
 
 Below we illustrate some of these algorithms, which will be useful in future examples:
+
+```{julia}
+points = rand(Point2, 100)
+bbox = boundingbox(points)
+
+viz(bbox)
+viz!(points, color = "black")
+Mke.current_figure()
+```
+
+```{julia}
+chull = convexhull(points)
+
+viz(chull)
+viz!(points, color = "black")
+Mke.current_figure()
+```
