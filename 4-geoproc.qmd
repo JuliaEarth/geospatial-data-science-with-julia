@@ -1,1 +1,137 @@
 # Geometric processing
+
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+```
+
+In this chapter we give an overview of some of the advanced geometric processing
+features of the framework, highlighting the ones that will be most useful in future
+chapters.
+
+From now on, we will assume that the main module of the framework is loaded in all
+code examples:
+
+```{julia}
+using GeoStats
+```
+
+We will also assume that the Makie.jl backend is loaded:
+
+```{julia}
+import CairoMakie as Mke
+```
+
+## Geometries
+
+## Predicates
+
+Julia provides support for unicode characters in variable and function names.
+We leverage this feature to define commonly used geometric predicates with
+intuitive mathematical notation:
+
+```{julia}
+p = Point(0.0, 0.0)
+b = Ball((0.5, 0.5), 1.0)
+
+viz(b)
+viz!(p, color = "black")
+Mke.current_figure()
+```
+
+```{julia}
+p ∈ b
+```
+
+```{julia}
+b1 = Box((0, 0), (1, 1))
+b2 = Box((0.5, 0.5), (2, 2))
+
+viz(b1)
+viz!(b2, color = "teal")
+Mke.current_figure()
+```
+
+```{julia}
+b1 ⊆ b2
+```
+
+::: {.callout-note}
+
+## Tip for all users
+
+The symbol `∈` is obtained in Julia by typing `\in` and pressing the TAB key
+on the keyboard. We could have used the syntax `p in b` or `in(p, b)` as well.
+Similarly, the symbol `⊆` is obtained by typing `\subseteq`. We could have used
+the syntax `issubseteq(b1, b2)` as well.
+
+If you don't know the $\LaTeX$ name of a symbol, you can copy/paste it in the
+Julia REPL in help mode:
+
+```{julia}
+#| eval: false
+?∈
+```
+
+:::
+
+Some predicates don't have well-established mathematical notation, for example:
+
+```{julia}
+q = Quadrangle((0, 0), (1, 0), (1, 1), (0.6, 0.4))
+
+viz(q)
+```
+
+```{julia}
+issimple(q)
+```
+
+```{julia}
+isconvex(q)
+```
+
+A very useful predicate is `instersects` (with a "s" at the end):
+
+```{julia}
+outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
+hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
+hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
+poly  = PolyArea(outer, [hole1, hole2])
+ball1 = Ball((0.5, 0.5), 0.05)
+ball2 = Ball((0.3, 0.3), 0.05)
+
+viz(poly)
+viz!(ball1, color = "teal")
+viz!(ball2, color = "brown")
+Mke.current_figure()
+```
+
+```{julia}
+intersects(poly, ball1)
+```
+
+```{julia}
+intersects(poly, ball2)
+```
+
+It tells whether or not the geometries intersect, without actually
+computing the intersection. The `intersection` itself is considered
+a geometric operation as discussed in the next section.
+
+Please check the official documentation for the full list of predicates.
+
+## Operations
+
+Geometric operations transform a geometry or a set of geometries into
+a new geometry. For example, the intersection of two segments can be
+a `Point`, a `Segment` or `nothing`:
+
+```{julia}
+s1 = Segment((0.0, 0.0), (1.0, 0.0))
+s2 = Segment((0.5, 0.0), (2.0, 0.0))
+
+s1 ∩ s2
+```
