@@ -29,8 +29,7 @@ import CairoMakie as Mke
 We provide a vast list of geometries, which are organized into two main classes,
 `Primitive` and `Polytope` geometries. A geometry is a `Primitive` if it can be
 represented efficiently without discretization. For example, we can represent
-a n-dimensional `Box` with the corner points or a n-dimensional `Ball` with
-the center and the radius:
+a `Box` with two corner points or a `Ball` with center and radius:
 
 ```{julia}
 box = Box((0, 0, 0), (1, 1, 1))
@@ -61,11 +60,11 @@ The full list can be obtained with Julia's `subtypes` function:
 subtypes(Primitive)
 ```
 
-On the other hand, a geometry is a `Polytope` if it can be represented
-as a combination of "flat sides", which are also `Polytope` themselves.
-A 3D `Polytope` is called a `Polyhedron`, a 2D `Polytope` is called a
-`Polygon` and a 1D `Polytope` is called a polygonal `Chain`. All these
-geometries are represented internally with a list of vertices.
+A geometry is a `Polytope` if it can be represented as a combination of
+"flat sides", which are also `Polytope` themselves. A 3D `Polytope` is
+called a `Polyhedron`, a 2D `Polytope` is called a `Polygon` and a
+1D `Polytope` is called a polygonal `Chain`. All these geometries
+are represented internally with a list of vertices.
 
 First, let's take a look into the `Polyhedron` geometries:
 
@@ -149,7 +148,7 @@ A `Ring` is closed meaning that its first and last `Point`s are connected
 with a `Segment`. A `Rope` is an open `Ring` without the closing `Segment`:
 
 ```{julia}
-viz(open(first(r)))
+viz(open.(r))
 ```
 
 We can obtain the list of segments of a `Chain` with the `segments` function:
@@ -168,6 +167,23 @@ The only 0-dimensional `Polytope` is the `Point`:
 
 ```{julia}
 viz(Point(0, 0))
+```
+
+Finally, there is the `Multi`-geometry, which is a set of
+geometries seen as a single geometry. This is very common
+in GIS to represent disconnected areas on a geographic map
+that are related to each other (e.g., political areas):
+
+```{julia}
+Multi([Point(1, 2), Point(2, 3)])
+```
+
+```{julia}
+Multi(r)
+```
+
+```{julia}
+Multi([t, q])
 ```
 
 ## Predicates
@@ -262,7 +278,7 @@ It tells whether or not the geometries intersect, without actually
 computing the intersection. The `intersection` itself is considered
 a geometric operation as discussed in the next section.
 
-Please check the official documentation for the full list of predicates.
+Please consult the official documentation for the full list of predicates.
 
 ## Operations
 
@@ -301,3 +317,55 @@ we reduce the number of branches and types, the more the Julia compiler
 will be able to infer the output type.
 
 :::
+
+Likewise, the intersection of two 2D geometries can be obtained with:
+
+```{julia}
+outer = [(8, 0), (4, 8), (2, 8), (-2, 0), (0, 0), (1, 2), (5, 2), (6, 0)]
+inner = [(4, 4), (2, 4), (3, 6)]
+poly  = PolyArea(outer, [inner])
+box   = Box((0, 1), (3, 7))
+
+int = clip(poly, box, SutherlandHodgman())
+
+viz([poly, box, boundary(int)],
+    color = ["slategray3", "teal", "red"],
+    alpha = [1.0, 0.2, 1.0])
+```
+
+The previous example makes use of the `boundary` of a geometry,
+which is very useful to know:
+
+```{julia}
+boundary(poly)
+```
+
+Some operations like `measure` (`length`, `area` or `volume`) produce
+numeric values. For example, the `area` of the letter "A" above is:
+
+```{julia}
+area(poly)
+```
+
+The `measure` of the `boundary` is known as the `perimeter` of the
+geometry:
+
+```{julia}
+perimeter(poly)
+```
+
+All `Polytope` geometries have `vertices`:
+
+```{julia}
+vertices(poly)
+```
+
+Please consult the official documentation for the full list of operations.
+
+## Algorithms
+
+Any other function that is not a predicate nor an operation is called a geometric
+processing "algorithm" in the framework. We provide a list of advanced algorithms
+for simplification, discretization, refinement, convex hull, etc.
+
+Below we illustrate some of these algorithms, which will be useful in future examples:
