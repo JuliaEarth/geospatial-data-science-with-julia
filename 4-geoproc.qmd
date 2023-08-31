@@ -403,3 +403,5 @@ learned so far:
   end of the script.
 - Geometric processing doesn't need to be complicated. It should be fun and read
   like math, not like computer science (e.g., "buffer", "clip", "pointer").
+
+We are finally ready to learn the advanced features of the framework. Let's get it started.
