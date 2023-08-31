@@ -26,6 +26,152 @@ import CairoMakie as Mke
 
 ## Geometries
 
+We provide a vast list of geometries, which are organized into two main classes,
+`Primitive` and `Polytope` geometries. A geometry is a `Primitive` if it can be
+represented efficiently without discretization. For example, we can represent
+a n-dimensional `Box` with the corner points or a n-dimensional `Ball` with
+the center and the radius:
+
+```{julia}
+box = Box((0, 0, 0), (1, 1, 1))
+ball = Ball((0, 0, 2), 0.5)
+
+viz([box, ball], color = ["teal", "slategray3"])
+```
+
+Other examples include the `Cylinder`:
+
+```{julia}
+cyl = Cylinder(1.0)
+
+viz(cyl)
+```
+
+And the `Torus`:
+
+```{julia}
+torus = Torus((1, 1, 0), (-1, -1, 0), (1, -1, 0), 0.5)
+
+viz(torus)
+```
+
+The full list can be obtained with Julia's `subtypes` function:
+
+```{julia}
+subtypes(Primitive)
+```
+
+On the other hand, a geometry is a `Polytope` if it can be represented
+as a combination of "flat sides", which are also `Polytope` themselves.
+A 3D `Polytope` is called a `Polyhedron`, a 2D `Polytope` is called a
+`Polygon` and a 1D `Polytope` is called a polygonal `Chain`. All these
+geometries are represented internally with a list of vertices.
+
+First, let's take a look into the `Polyhedron` geometries:
+
+```{julia}
+subtypes(Polyhedron)
+```
+
+The `Hexahedron` is a generalization of a 3D `Box` in the sense that it
+doesn't need to be aligned with the coordinate system:
+
+```{julia}
+hex = Hexahedron((0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0),
+                 (0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1))
+
+viz(hex)
+```
+
+In this case, we need to store all the 8 vertices instead of just the
+corner points. Other examples of `Polyhedron` include the
+`Tetrahedron` and the `Pyramid`.
+
+Now, let's move to the `Polygon` geometries:
+
+```{julia}
+subtypes(Polygon)
+```
+
+We provide two types of `Polygon` that meet different application requirements.
+
+The `Ngon` is a polygon without holes. Its vertices are stored in static
+memory, and they are mostly used for discretization of other geometries
+and geospatial domains. We provide type aliases to construct `Ngon` with
+a specific number `N` of vertices:
+
+`Triangle`, `Quadrangle`, `Pentagon`, ..., `Decagon`
+
+The `Quadrangle` is a generalization of the 2D `Box` in the sense that it
+doesn't need to be aligned with the coordinate system:
+
+```{julia}
+t = Triangle((0, 0), (1, 0), (1, 1))
+q = Quadrangle((1, 1), (2, 1), (2, 2), (1, 2))
+
+viz([t, q], color = ["teal", "slategray3"])
+```
+
+The `PolyArea` is a polygon with or without holes. Its vertices are
+stored in dynamic memory, and they are mostly used for representation of
+polygonal areas in GIS:
+
+```{julia}
+outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
+hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
+hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
+poly  = PolyArea(outer, [hole1, hole2])
+
+viz(poly)
+```
+
+In the example above, the first list of vertices represents the external
+boundary of the `PolyArea`, also known as the outer `Ring`. The other two
+lists represent the two internal boundaries, or inner rings. The vector
+of inner rings can be empty, in which case the `PolyArea` doesn't have holes.
+
+Finally, let's take a look into the polygonal `Chain`: 
+
+```{julia}
+subtypes(Chain)
+```
+
+These are 1-dimensional polytopes connecting `Point`s in sequence. We've
+seen the `Ring`s in the `PolyArea` and `Ngon` geometries:
+
+```{julia}
+r = rings(poly)
+
+viz(r)
+```
+
+A `Ring` is closed meaning that its first and last `Point`s are connected
+with a `Segment`. A `Rope` is an open `Ring` without the closing `Segment`:
+
+```{julia}
+viz(open(first(r)))
+```
+
+We can obtain the list of segments of a `Chain` with the `segments` function:
+
+```{julia}
+collect(segments(first(r)))
+```
+
+The `Segment` geometry is a `Chain` with just 2 vertices:
+
+```{julia}
+s = Segment((0, 0), (1, 1))
+
+viz(s)
+```
+
+The only 0-dimensional `Polytope` is the `Point`:
+
+```{julia}
+viz(Point(0, 0))
+```
+
 ## Predicates
 
 Julia provides support for unicode characters in variable and function names.
