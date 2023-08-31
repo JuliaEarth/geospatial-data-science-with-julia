@@ -161,9 +161,7 @@ collect(segments(first(r)))
 The `Segment` geometry is a `Chain` with just 2 vertices:
 
 ```{julia}
-s = Segment((0, 0), (1, 1))
-
-viz(s)
+viz(Segment((0, 0), (1, 1)))
 ```
 
 The only 0-dimensional `Polytope` is the `Point`:
@@ -182,9 +180,7 @@ intuitive mathematical notation:
 p = Point(0.0, 0.0)
 b = Ball((0.5, 0.5), 1.0)
 
-viz(b)
-viz!(p, color = "black")
-Mke.current_figure()
+viz([p, b], color = ["teal", "slategray3"])
 ```
 
 ```{julia}
@@ -195,9 +191,7 @@ p ∈ b
 b1 = Box((0, 0), (1, 1))
 b2 = Box((0.5, 0.5), (2, 2))
 
-viz(b1)
-viz!(b2, color = "teal")
-Mke.current_figure()
+viz([b1, b2], color = ["teal", "slategray3"])
 ```
 
 ```{julia}
@@ -223,15 +217,14 @@ Julia REPL in help mode:
 
 :::
 
-Some predicates don't have well-established mathematical notation, for example:
+Some predicates don't have well-established mathematical notation. For example,
+a polygon `issimple` if it doesn't have holes nor self-intersections:
 
 ```{julia}
 q = Quadrangle((0, 0), (1, 0), (1, 1), (0.6, 0.4))
 
 viz(q)
 ```
-
-A polygon `issimple` if it doesn't have holes nor self-intersections:
 
 ```{julia}
 issimple(q)
@@ -254,10 +247,7 @@ poly  = PolyArea(outer, [hole1, hole2])
 ball1 = Ball((0.5, 0.5), 0.05)
 ball2 = Ball((0.3, 0.3), 0.05)
 
-viz(poly)
-viz!(ball1, color = "teal")
-viz!(ball2, color = "brown")
-Mke.current_figure()
+viz([poly, ball1, ball2], color = ["slategray3", "teal", "brown"])
 ```
 
 ```{julia}
@@ -286,3 +276,28 @@ s2 = Segment((0.5, 0.0), (2.0, 0.0))
 
 s1 ∩ s2
 ```
+
+::: {.callout-note}
+
+## Tip for advanced users
+
+For performance-sensitive applications, it is wise to replace the
+`∩` operation by its the 3-argument version named `intersection`:
+
+```{julia}
+intersection(s1, s2) do I
+  if I == Crossing
+    return 1
+  else
+    return 0
+  end
+end
+```
+
+The example above uses Julia's do-syntax to define a function in place.
+The function takes the intersection type `I` and creates branches that
+return the same type (`Int` in this case) for type stability. The more
+we reduce the number of branches and types, the more the Julia compiler
+will be able to infer the output type.
+
+:::
