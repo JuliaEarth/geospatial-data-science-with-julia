@@ -383,3 +383,23 @@ viz(convexhull(points))
 viz!(points, color = "black")
 Mke.current_figure()
 ```
+
+We will have the chance to see more algorithms in action as we advance in the
+chapters of the book. 
+
+## Congratulations!
+
+Congratulations on finishing Part I of the book. Let's quickly review what we
+learned so far:
+
+- The main concept in geospatial data science is the concept of geospatial data,
+  represented in the GeoStats.jl framework as geotables over geospatial domains.
+- The geotable representation generalizes traditional GIS representations
+  ("raster" vs. "vector"), and enables an unified approach to visualization
+  and manipulation of geospatial data.
+- It is still possible to interface with existing GIS technology via input and
+  output of files using the GeoIO.jl module. A typical workflow will load GIS
+  data at the beginning of a script, and save the result of the analysis at the
+  end of the script.
+- Geometric processing doesn't need to be complicated. It should be fun and read
+  like math, not like computer science (e.g., "buffer", "clip", "pointer").
