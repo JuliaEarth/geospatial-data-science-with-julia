@@ -116,3 +116,32 @@ beethoven = GeoIO.load("data/beethoven.ply")
 
 viz(beethoven.geometry)
 ```
+
+Now that we did set the right expectations, let's address an important question
+that many readers might have coming from other communities:
+
+> **Do we gain anything by not adhering to existing interfaces?**
+
+The answer is an emphatic **YES**! It means that we have total freedom to innovate
+and improve the representation of various geometries and geospatial domains with
+Julia's amazing type system. To give a simple example, let's take a look at the
+`Triangle` geometry:
+
+```{julia}
+t = Triangle((0, 0), (1, 0), (1, 1))
+```
+
+If we treated this geometry as a generic polygon represented by a vector of vertices
+in memory, like it is done in [GeoInterface.jl](https://github.com/JuliaGeo/GeoInterface.jl)
+for example, we wouldn't be able to dispatch optimized code that is only valid for a triangle:
+
+```{julia}
+@code_llvm isconvex(t)
+```
+
+Notice how the `isconvex` function is compiled away to the constant `true` when called on
+the triangle. The code for a generic polygon is much more evolved and requires runtime
+checks that are too expensive to afford, specially in 3D.
+
+Having cleared that up, we will now proceed to the final chapter of the first part of the
+book, which covers the advanced geometric processing features of the framework.

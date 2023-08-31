@@ -15,15 +15,16 @@ book:
         - 1-geodata.qmd
         - 2-geoviz.qmd
         - 3-geoio.qmd
+        - 4-geoproc.qmd
     - part: "Part II: Transforms"
       chapters:
-        - 4-feattrans.qmd
-        - 5-geomtrans.qmd
-        - 6-bothtrans.qmd
+        - 5-feattrans.qmd
+        - 6-geomtrans.qmd
+        - 7-bothtrans.qmd
     - part: "Part III: Queries"
       chapters:
-        - 7-splitcombine.qmd
-        - 8-geojoins.qmd
+        - 8-splitcombine.qmd
+        - 9-geojoins.qmd
     - references.qmd
 
 bibliography: references.bib
