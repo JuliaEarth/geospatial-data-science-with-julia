@@ -55,20 +55,22 @@ flowchart LR
     chapter1["1. What is geospatial data?"]
     chapter2["2. Scientific visualization"]
     chapter3["3. Interfacing with GIS"]
+    chapter4["4. Geometric processing"]
     chapter1 --> chapter2
     chapter2 --> chapter3
+    chapter3 --> chapter4
   end
   subgraph partII["Part II: Transforms"]
-    chapter4["4. Transforming features"]
-    chapter5["5. Transforming geometries"]
-    chapter6["6. Geospatial transforms"]
-    chapter4 --> chapter5
+    chapter5["5. Transforming features"]
+    chapter6["6. Transforming geometries"]
+    chapter7["7. Geospatial transforms"]
     chapter5 --> chapter6
+    chapter6 --> chapter7
   end
   subgraph partIII["Part III: Queries"]
-    chapter7["7. Split-apply-combine"]
-    chapter8["8. Geospatial joins"]
-    chapter7 --> chapter8
+    chapter8["8. Split-apply-combine"]
+    chapter9["9. Geospatial joins"]
+    chapter8 --> chapter9
   end
   partI --> partII
   partI --> partIII

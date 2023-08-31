@@ -85,9 +85,13 @@ q = Quadrangle((0, 0), (1, 0), (1, 1), (0.6, 0.4))
 viz(q)
 ```
 
+A polygon `issimple` if it doesn't have holes nor self-intersections:
+
 ```{julia}
 issimple(q)
 ```
+
+We have seen the `isconvex` predicate already:
 
 ```{julia}
 isconvex(q)
