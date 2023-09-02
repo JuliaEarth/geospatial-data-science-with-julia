@@ -50,7 +50,7 @@ which is the recommended method for reviewing more elaborate changes.
 If you would like to get involved with the project, you can start by:
 
 - [Sharing]() the book on social media
-- [Starring](https://github.com/juliohm/geospatial-data-science-with-julia) the GitHub repository
-- [Starring](https://github.com/JuliaEarth/GeoStats.jl) the accompanying software
+- [Starring](https://github.com/JuliaEarth/geospatial-data-science-with-julia) the GitHub repository
+- [Starring](https://github.com/JuliaEarth/GeoStats.jl) the GeoStats.jl framework
 - [Citing](CITATION.bib) the book in publications
 - [Asking](https://github.com/juliohm/geospatial-data-science-with-julia) questions and making suggestions
