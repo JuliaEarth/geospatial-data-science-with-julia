@@ -84,12 +84,15 @@ examples in **Part II** and **Part III**.
 
 ## Software installation
 
-If you want to reproduce the examples in the book, you will
-need the following packages:
+If you want to reproduce the examples in the book, copy and paste
+the code below in the Julia REPL:
 
 ```{julia}
 #| eval: false
 using Pkg
+
+# fresh environment
+pkg"activate @gdsbook"
 
 # framework
 pkg"add GeoStats"
@@ -117,9 +120,9 @@ A special thanks to [Elias Carvalho](https://github.com/eliascarv) for his outst
 to Prof. [Douglas Mazzinghy](https://scholar.google.com.br/citations?user=yfnHmeEAAAAJ) for organizing the first training
 courses at UFMG, to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAAJ) for his contributions
 on high-performance computing, to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo) for organizing the
-[JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop, and to colleagues in industry who support this work:
+[JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop, and to colleagues in industry who support this work, including
 [Elisabeth Fonseca](https://www.linkedin.com/in/elisabeth-fonseca-geometallurgist),
 [Fernando Villanova](https://www.linkedin.com/in/fernando-villanova-46a56534),
 [Fabio Duarte](https://www.linkedin.com/in/fabio-terra-passos-duarte-89362555),
 [Mariana Menezes](https://www.linkedin.com/in/mariana-menezes-42085852),
-[Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior)
+[Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior).
