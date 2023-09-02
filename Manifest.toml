@@ -440,6 +440,12 @@ weakdeps = ["MakieCore"]
     [deps.DelaunayTriangulation.extensions]
     DelaunayTriangulationMakieCoreExt = "MakieCore"
 
+[[deps.DelimitedFiles]]
+deps = ["Mmap"]
+git-tree-sha1 = "9e2f36d3c96a820c678f2f1f1782582fcf685bae"
+uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+version = "1.9.1"
+
 [[deps.DensityRatioEstimation]]
 deps = ["LinearAlgebra", "Parameters", "Random", "Statistics", "StatsBase"]
 git-tree-sha1 = "f62c41b0e7363161e3ba81bbfde0d667f9b01710"
@@ -745,10 +751,10 @@ uuid = "68eda718-8dee-11e9-39e7-89f7f65f511f"
 version = "0.4.1"
 
 [[deps.GeoIO]]
-deps = ["ArchGDAL", "FileIO", "GADM", "GeoInterface", "GeoJSON", "GeoParquet", "ImageIO", "Meshes", "PlyIO", "PrecompileTools", "Shapefile", "Tables"]
-path = "/home/juliohm/.julia/dev/GeoIO"
+deps = ["ArchGDAL", "FileIO", "GADM", "GeoInterface", "GeoJSON", "GeoParquet", "GslibIO", "ImageIO", "Meshes", "PlyIO", "PrecompileTools", "Shapefile", "Tables"]
+git-tree-sha1 = "1541541756a9980e5690499c438d073099c3ca51"
 uuid = "f5a160d5-e41d-4189-8b61-d57781c419e3"
-version = "1.0.0"
+version = "1.0.1"
 
 [[deps.GeoInterface]]
 deps = ["Extents"]
@@ -836,6 +842,12 @@ version = "0.9.2"
 git-tree-sha1 = "53bb909d1151e57e2484c3d1b53e19552b887fb2"
 uuid = "42e2da0e-8278-4e71-bc24-59509adca0fe"
 version = "1.0.2"
+
+[[deps.GslibIO]]
+deps = ["DelimitedFiles", "Meshes", "Printf", "Tables"]
+git-tree-sha1 = "af5c06c0ef88377da300c5af069c704d26f73e25"
+uuid = "4610876b-9b01-57c8-9ad9-06315f1a66a5"
+version = "1.3.0"
 
 [[deps.HDF5_jll]]
 deps = ["Artifacts", "JLLWrappers", "LibCURL_jll", "Libdl", "OpenSSL_jll", "Pkg", "Zlib_jll"]
@@ -1222,10 +1234,10 @@ weakdeps = ["CategoricalArrays"]
     LossFunctionsCategoricalArraysExt = "CategoricalArrays"
 
 [[deps.Lz4_jll]]
-deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "5d494bc6e85c4c9b626ee0cab05daa4085486ab1"
+deps = ["Artifacts", "JLLWrappers", "Libdl"]
+git-tree-sha1 = "6c26c5e8a4203d43b5497be3ec5d4e0c3cde240a"
 uuid = "5ced341a-0733-55b8-9ab6-a4889d929147"
-version = "1.9.3+0"
+version = "1.9.4+0"
 
 [[deps.MKL_jll]]
 deps = ["Artifacts", "IntelOpenMP_jll", "JLLWrappers", "LazyArtifacts", "Libdl", "Pkg"]

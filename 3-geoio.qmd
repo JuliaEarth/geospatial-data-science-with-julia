@@ -35,17 +35,17 @@ software. A typical gap to be closed with the Julia programming
 language.
 
 We decided to limit our interface with existing GIS technology to
-input and output of files. This gives users of the framework the
-chance to
+input and output (IO) of files. This gives users of the framework
+the chance to
 
 1. Import geospatial data stored as simple features
 2. Perform geospatial data science with a rich set of tools
 3. Export results to widely used software (e.g., [QGIS](https://qgis.org),
    [ArcGIS](https://www.arcgis.com/index.html))
 
-It creates a an ecosystem where Julia users can become
-contributors and maintainers of the framework, without any
-knowledge of a second programming language.
+It creates an ecosystem where users can become contributors and
+maintainers of the framework, without any knowledge of a second
+programming language.
 
 ## GeoIO.jl
 
@@ -53,7 +53,7 @@ The [GeoIO.jl](https://github.com/JuliaEarth/GeoIO.jl) module can load
 and save geospatial data on disk in a variety of formats, including the
 most popular formats in GIS (e.g., `.shp`, `.geojson`, `.kml`, `.parquet`)
 thanks to various backend packages spread across various Julia organizations.
-It is designed for end-users who just want to get their data ready for
+It is designed for users who just want to get their data ready for
 geospatial data science.
 
 To load a file from disk, we use `GeoIO.load`:
@@ -81,9 +81,9 @@ the JSON format has no date types. The Shapefile format has its own
 limitations, etc.
 
 Over time, we expect to improve the ecosystem as a whole by highlighing
-various issues with available standards and implementations.
+various issues with available standards and backend implementations.
 
-## Be aware
+## File formats
 
 Most GIS file formats do **not** preserve topological information.
 This means that neighborhood information is lost as soon as geometries
@@ -117,10 +117,13 @@ beethoven = GeoIO.load("data/beethoven.ply")
 viz(beethoven.geometry)
 ```
 
-Now that we did set the right expectations, let's address an important question
-that many readers might have coming from other communities:
+## Rationale
 
-> **Do we gain anything by not adhering to existing interfaces?**
+Now that we did set the right expectations on our interface with GIS,
+let's address an important question that many readers might have coming
+from other communities:
+
+> Do we gain anything by not adhering to **programming interfaces**?
 
 The answer is an emphatic **YES**! It means that we have total freedom to innovate
 and improve the representation of various geometries and geospatial domains with

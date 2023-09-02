@@ -10,8 +10,7 @@ Pkg.activate(".")
 ## Definition
 
 Before we can start our journey in geospatial data science, we need to
-define what **geospatial data** is and what it is not. The following
-definition is simple and useful:
+define **geospatial data**. The following definition is simple and useful:
 
 ::: {.callout-tip}
 
@@ -47,7 +46,7 @@ For example, @tbl-example has 5 measurements of 4 variables:
 
 In Julia, the concept of table is formalized in
 [Tables.jl](https://github.com/JuliaData/Tables.jl) by 
-@Quinn2023. The concept is independent of the machine
+@Quinn2023. The definition is independent of the machine
 representation, and various representations can co-exist
 in the language.
 
@@ -288,7 +287,7 @@ geometry as the "soup of geometries" data structure:
 gset = GeometrySet(geoms)
 ```
 
-No additional knowledge is required to start working
+No advanced knowledge is required to start working
 with these geometries. For example, we can compute the
 `length` of the `Segment`, the `area` of the `Triangle`
 and the `area` of the `Ball` with:
@@ -315,8 +314,8 @@ measure.(gset)
 The list of supported geometries is very comprehensive. It
 encompasses all geometries from the
 [simple features](https://www.iso.org/standard/40114.html)
-standard and more. We recommend reading the Meshes.jl
-documentation to get familiar with all the options.
+standard and more. We will see more examples in the following
+chapters.
 
 One of the main limitations of GIS software today is the
 lack of explicit represention of [topology](https://en.wikipedia.org/wiki/Topology).
@@ -336,7 +335,7 @@ We can access the individual geometries of the domain as before:
 grid[1]
 ```
 
-Even though we can manipulate this domain as if it was a
+And even though we can manipulate this domain as if it was a
 "soup of geometries", the major advantage in this abstraction
 is the underlying `topology`:
 
@@ -409,8 +408,10 @@ geometries on the fly, similar to what we have seen with the `CartesianGrid`:
 mesh[1]
 ```
 
-Throughout the book, we will have the chance to explore these concepts
-in more detail.
+Don't worry if you feel overwhelmed by these concepts. We are only sharing
+them here to give you an idea of how complex 3D domains are represented in
+the framework. You can do geospatial data science without ever having to
+operate with these concepts explicitly.
 
 Let's make a few important remarks:
 
@@ -463,15 +464,16 @@ names(geotable)
 
 Unlike a standard table, the `GeoTable` creates geometries on the fly
 depending on the data access pattern. For example, we can request the
-first measurement of the geotable and it will automatically construct
+first measurement of the `GeoTable` and it will automatically construct
 the corresponding `Quadrangle`:
 
 ```{julia}
 geotable[1,:]
 ```
 
-If we request a subset of measurements, the geotable will avoid unnecessary creation
-of geometries, and will instead return a view into the original data:
+If we request a subset of measurements, the `GeoTable` will avoid
+unnecessary creation of geometries, and will instead return a view
+into the original data:
 
 ```{julia}
 geotable[1:3,"geometry"]
@@ -487,9 +489,9 @@ All the data access patterns provided by a `DataFrame` are supported by a `GeoTa
 with the main difference being the memory optimizations for high-performance geospatial
 data science.
 
-Notice that `GeoTable` representation is general enough to accommodate both "raster data"
-and "vector data" in traditional GIS. We can create very large rasters because the
-`CartesianGrid` is lazy:
+Notice that the `GeoTable` representation is general enough to accommodate both
+"raster data" and "vector data" in traditional GIS. We can create very large rasters
+because the `CartesianGrid` is lazy:
 
 ```{julia}
 georef(
@@ -550,7 +552,7 @@ What we learned in this chapter?
   "raster" and "vector" representations found in traditional GIS.
 - A `GeoTable` provides all the data access patterns of a `DataFrame`.
   In particular, it supports the syntax `geotable[rows,cols]` without
-  without expensive copies of geometries.
+  expensive copies of geometries.
 - Working with geospatial domains as opposed to working with vectors
   of disconnected geometries has major benefits. In particular, it
   preserves topological information.

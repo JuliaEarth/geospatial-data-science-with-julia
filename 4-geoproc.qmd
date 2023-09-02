@@ -283,8 +283,8 @@ Please consult the official documentation for the full list of predicates.
 ## Operations
 
 Geometric operations transform a geometry or a set of geometries into
-a new geometry. For example, the intersection of two segments can be
-a `Point`, a `Segment` or `nothing`:
+a new geometry or number. For example, the intersection of two segments
+can be a `Point`, a `Segment` or `nothing`:
 
 ```{julia}
 s1 = Segment((0.0, 0.0), (1.0, 0.0))
@@ -341,7 +341,8 @@ boundary(poly)
 ```
 
 Some operations like `measure` (`length`, `area` or `volume`) produce
-numeric values. For example, the `area` of the letter "A" above is:
+numbers instead of geometries. For example, the `area` of the letter
+"A" above is:
 
 ```{julia}
 area(poly)
@@ -372,7 +373,9 @@ Below we illustrate some of these algorithms, which will be useful in future exa
 
 ```{julia}
 points = rand(Point2, 100)
+```
 
+```{julia}
 viz(boundingbox(points))
 viz!(points, color = "black")
 Mke.current_figure()
@@ -402,6 +405,7 @@ learned so far:
   data at the beginning of a script, and save the result of the analysis at the
   end of the script.
 - Geometric processing doesn't need to be complicated. It should be fun and read
-  like math, not like computer science (e.g., "buffer", "clip", "pointer").
+  like math. If it feels "computer sciency", that is a limitation of the software
+  and programming language.
 
 We are finally ready to learn the advanced features of the framework. Let's get it started.

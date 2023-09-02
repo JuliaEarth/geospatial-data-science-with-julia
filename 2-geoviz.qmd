@@ -179,7 +179,7 @@ in scripts and the result will be the same.
 ## viewer
 
 As geospatial data scientists we are often interested in quick inspection
-of intermediate results from multivariate statistical analysis. Visualizing
+of intermediate results from multivariate geostatistical analysis. Visualizing
 all the variables manually with `viz`/`viz!` can be very time consuming.
 To address this issue, the framework provides a basic `viewer` that displays
 all variables stored in a geotable:
