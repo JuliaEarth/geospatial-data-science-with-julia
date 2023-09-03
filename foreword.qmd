@@ -9,6 +9,7 @@ why it had to be so "computer sciency":
 
 - What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite length?
 - Why do I need to learn this low-level distinction between "raster" and "vector" data?
+- ...
 
 After years of my PhD, I finally envisioned a more general approach,
 through the continuous design and development of the
