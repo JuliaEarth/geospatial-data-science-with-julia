@@ -10,8 +10,8 @@ why it had to be so "computer sciency":
 - What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite length?
 - Why do I need to learn this low-level distinction between "raster" and "vector" data?
 
-After years of my PhD I finally found a more general approach,
-through the continuous development of the
+After years of my PhD, I finally envisioned a more general approach,
+through the continuous design and development of the
 [![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
 framework. This book is the first attempt to share this vision with
 the broader scientific community.
