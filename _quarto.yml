@@ -19,8 +19,8 @@ book:
     - part: "Part II: Transforms"
       chapters:
         - 5-transforms.qmd
-        - 6-geomtrans.qmd
-        - 7-bothtrans.qmd
+        - 6-projections.qmd
+        - 7-pipelines.qmd
     - part: "Part III: Queries"
       chapters:
         - 8-splitcombine.qmd
