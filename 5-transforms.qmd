@@ -12,27 +12,31 @@ import CairoMakie as Mke
 In **Part I** of the book, we learned that our `GeoTable` representation
 of geospatial data provides the data access pattern of the `DataFrame`,
 a feature that is very convenient for data science. To recap, let's
-consider the following geotable with three random variables:
+consider the following geotable with four random variables:
 
 ```{julia}
-A = randn(100, 100)
-B = randn(100, 100)
-C = A .+ B
+N = 10000
+a = [2randn(N÷2) .+ 6; randn(N÷2)]
+b = [3randn(N÷2); 2randn(N÷2)]
+c = randn(N)
+d = c .+ 0.6randn(N)
 
-gt = georef((A=A, B=B, C=C))
+table = (; a, b, c, d)
+
+gt = georef(table, CartesianGrid(100, 100))
 ```
 
-We can easily retrieve the "A" column of the geotable as a vector,
+We can easily retrieve the "a" column of the geotable as a vector,
 and plot its histogram:
 
 ```{julia}
-Mke.hist(gt.A, color = "gray80")
+Mke.hist(gt.a, color = "gray80")
 ```
 
-We can compute the cross-correlation between columns "A" and "B":
+We can compute the cross-correlation between columns "a" and "b":
 
 ```{julia}
-cor(gt.A, gt.B)
+cor(gt.a, gt.b)
 ```
 
 And even inspect bivariate distributions of the `values` of the geotable
@@ -54,10 +58,67 @@ columns can be very frustrating. In particular, this approach is prone to
 unintentional removal of geospatial information:
 
 ```{julia}
-gt.A
+gt.a
 ```
 
-Given that any script that is written in terms of direct column access has
-the potential to discard the special `geometry` column, we propose a better
-approach to **geospatial** data science by introducing the concept of
-**geospatial transforms**.
+::: {.callout-note}
+
+Any script that is written in terms of direct column access has the potential
+to discard the special `geometry` column, and become unreadable very quickly
+with the use of auxiliary indices for rows.
+
+:::
+
+We propose a new approach to **geospatial** data science with the concept of
+**geospatial transforms**, which we introduce in three steps with practical
+examples:
+
+1. Feature transforms
+2. Geometric transforms
+3. Geospatial transforms
+
+## Feature transforms
+
+A feature transform is a function that takes the `values` of the geotable
+and produces a new set of values over the same geospatial `domain`. The
+framework provides over 30 such transforms, ranging from basic access to
+columns and data cleaning to advanced multivariate statistical transforms.
+
+Let's start with two basic and important transforms, `Select` and `Reject`.
+As the name implies, the `Select` transform can be used to select columns of
+interest for a given analysis:
+
+```{julia}
+gt |> Select("a", "b") # select columns "a" and "b"
+```
+
+In the example above, we selected the columns "a" and "b" explicitly, but 
+`Select` has various methods for more flexible column selection:
+
+```{julia}
+gt |> Select(1:3) # select columns 1 to 3
+```
+
+```{julia}
+gt |> Select(r"[bcd]") # columns matching regular expression
+```
+
+Similarly, the `Reject` transform can be used to reject columns
+that are not relevant for a given analysis. It supports the same
+column specification of `Select`:
+
+```{julia}
+gt |> Reject("b") # reject column "b"
+```
+
+::: {.callout-note}
+
+Unlike the direct column access discussed in the previous section,
+the `Select` and `Reject` transforms always preserve geospatial
+information.
+
+:::
+
+## Geometric transforms
+
+## Geospatial transforms
