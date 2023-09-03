@@ -9,6 +9,8 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+## Motivation
+
 In **Part I** of the book, we learned that our `GeoTable` representation
 of geospatial data provides the data access pattern of the `DataFrame`,
 a feature that is very convenient for data science. To recap, let's
@@ -83,6 +85,8 @@ A feature transform is a function that takes the `values` of the geotable
 and produces a new set of values over the same geospatial `domain`. The
 framework provides over 30 such transforms, ranging from basic access to
 columns and data cleaning to advanced multivariate statistical transforms.
+
+### Basic
 
 Let's start with two basic and important transforms, `Select` and `Reject`.
 As the name implies, the `Select` transform can be used to select columns of
