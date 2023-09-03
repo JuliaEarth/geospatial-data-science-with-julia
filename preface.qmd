@@ -61,9 +61,9 @@ flowchart LR
     chapter3 --> chapter4
   end
   subgraph partII["Part II: Transforms"]
-    chapter5["5. Transforming features"]
-    chapter6["6. Transforming geometries"]
-    chapter7["7. Geospatial transforms"]
+    chapter5["5. What are transforms?"]
+    chapter6["6. Geospatial projections"]
+    chapter7["7. Building pipelines"]
     chapter5 --> chapter6
     chapter6 --> chapter7
   end
