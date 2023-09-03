@@ -392,7 +392,7 @@ chapters of the book.
 
 ## Congratulations!
 
-Congratulations on finishing Part I of the book. Let's quickly review what we
+Congratulations on finishing **Part I** of the book. Let's quickly review what we
 learned so far:
 
 - The main concept in geospatial data science is the concept of geospatial data,
