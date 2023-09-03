@@ -1,18 +1,17 @@
 # Foreword {.unnumbered}
 
-I've always felt that something was wrong with current approaches
+I've always felt that something was off with existing approaches
 to geospatial data science in other programming languages.
 I remember sitting in the beautiful
-[Stanford's Green library](https://en.wikipedia.org/wiki/Cecil_H._Green_Library) after a short
-introductory course on GIS with R, and wondering why it had to be so
-"computer sciency":
+[Stanford's Green library](https://en.wikipedia.org/wiki/Cecil_H._Green_Library)
+after a short introductory course on GIS with R, and wondering
+why it had to be so "computer sciency":
 
 - What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite length?
 - Why do I need to learn this low-level distinction between "raster" and "vector" data?
 
-Even though I knew something was off, it took me years after my PhD
-to envision a more general approach to geospatial data science through
-the continuous development of the
+After years of my PhD I finally found a more general approach,
+through the continuous development of the
 [![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
 framework. This book is the first attempt to share this vision with
 the broader scientific community.
