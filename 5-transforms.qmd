@@ -113,9 +113,8 @@ gt |> Reject("b") # reject column "b"
 
 ::: {.callout-note}
 
-Unlike the direct column access discussed in the previous section,
-the `Select` and `Reject` transforms always preserve geospatial
-information.
+Unlike direct column access, the `Select` and `Reject` transforms
+preserve geospatial information.
 
 :::
 
