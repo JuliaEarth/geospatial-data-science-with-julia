@@ -119,6 +119,19 @@ information.
 
 :::
 
+::: {.callout-note}
+
+## Tip for all users
+
+The `Select` transform can be used in conjuntion with the `viewer`
+to quickly visualize a specific variable:
+
+```{julia}
+gt |> Select("a") |> viewer
+```
+
+:::
+
 ## Geometric transforms
 
 ## Geospatial transforms
