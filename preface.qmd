@@ -10,7 +10,7 @@ can still be surprised by the generality of the framework
 presented here.
 
 This is **not** a book on geostatistics. Although some chapters
-and examples will cover basic concepts from geostatistical theory,
+and examples will cover concepts from geostatistical theory,
 that is only to illustrate what is possible after you master
 geospatial data science with the
 [![](images/julia.svg){fig-alt="Julia" width=40px}](https://julialang.org)
