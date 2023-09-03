@@ -102,6 +102,7 @@ pkg"add GeoIO"
 
 # visualization
 pkg"add CairoMakie"
+pkg"add PairPlots"
 
 # miscellaneous
 pkg"add DataFrames"

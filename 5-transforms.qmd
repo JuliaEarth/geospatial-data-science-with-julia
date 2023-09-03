@@ -1,0 +1,63 @@
+# What are transforms?
+
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+import CairoMakie as Mke
+```
+
+In **Part I** of the book, we learned that our `GeoTable` representation
+of geospatial data provides the data access pattern of the `DataFrame`,
+a feature that is very convenient for data science. To recap, let's
+consider the following geotable with three random variables:
+
+```{julia}
+A = randn(100, 100)
+B = randn(100, 100)
+C = A .+ B
+
+gt = georef((A=A, B=B, C=C))
+```
+
+We can easily retrieve the "A" column of the geotable as a vector,
+and plot its histogram:
+
+```{julia}
+Mke.hist(gt.A, color = "gray80")
+```
+
+We can compute the cross-correlation between columns "A" and "B":
+
+```{julia}
+cor(gt.A, gt.B)
+```
+
+And even inspect bivariate distributions of the `values` of the geotable
+with [PairPlots.jl](https://github.com/sefffal/PairPlots.jl):
+
+```{julia}
+using PairPlots
+
+pairplot(values(gt))
+```
+
+The pattern is certainly useful to answer geoscientific questions that can
+be answered on the basis of marginal analysis (i.e. entire columns treated
+as measurements of a single random variable). However, the answers to many
+questions in geosciences depend on **where** the measurements were made.
+
+Attempting to answer geoscientific questions with basic access to rows and
+columns can be very frustrating. In particular, this approach is prone to
+unintentional removal of geospatial information:
+
+```{julia}
+gt.A
+```
+
+Given that any script that is written in terms of direct column access has
+the potential to discard the special `geometry` column, we propose a better
+approach to **geospatial** data science by introducing the concept of
+**geospatial transforms**.

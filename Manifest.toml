@@ -2,7 +2,7 @@
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "6608556d61765979603b33a5e8504dbc97d38646"
+project_hash = "48f23993eb387d4594099370350f0b604bbc2470"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -1075,6 +1075,20 @@ git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
 uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 version = "1.3.0"
 
+[[deps.Latexify]]
+deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "OrderedCollections", "Printf", "Requires"]
+git-tree-sha1 = "f428ae552340899a935973270b8d98e5a31c49fe"
+uuid = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
+version = "0.16.1"
+
+    [deps.Latexify.extensions]
+    DataFramesExt = "DataFrames"
+    SymEngineExt = "SymEngine"
+
+    [deps.Latexify.weakdeps]
+    DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+    SymEngine = "123dc426-2d89-5057-bbad-38513e3affd8"
+
 [[deps.LazyArrays]]
 deps = ["ArrayLayouts", "FillArrays", "LinearAlgebra", "MacroTools", "MatrixFactorizations", "SparseArrays"]
 git-tree-sha1 = "45700994c91a14c40b8e4f2e3ce7fc9716b0c7c8"
@@ -1141,10 +1155,10 @@ uuid = "7add5ba3-2f88-524e-9cd5-f83b8a55f7b8"
 version = "1.42.0+0"
 
 [[deps.Libiconv_jll]]
-deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "c7cb1f5d892775ba13767a87c7ada0b980ea0a71"
+deps = ["Artifacts", "JLLWrappers", "Libdl"]
+git-tree-sha1 = "f9557a255370125b405568f9767d6d195822a175"
 uuid = "94ce4f54-9a6c-5748-9c1c-f9c7231a4531"
-version = "1.16.1+2"
+version = "1.17.0+0"
 
 [[deps.Libmount_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1306,6 +1320,11 @@ deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
 version = "2.28.2+0"
 
+[[deps.Measures]]
+git-tree-sha1 = "c13304c81eec1ed3af7fc20e75fb6b26092a1102"
+uuid = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
+version = "0.3.2"
+
 [[deps.Meshes]]
 deps = ["Bessels", "CircularArrays", "Distances", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "SparseArrays", "StaticArrays", "StatsBase", "Tables", "TransformsBase"]
 git-tree-sha1 = "03c6e01970b4f2a81bf4788d96e19b3c62fc9b18"
@@ -1362,6 +1381,11 @@ deps = ["OpenLibm_jll"]
 git-tree-sha1 = "0877504529a3e5c3343c6f8b4c0381e57e4387e4"
 uuid = "77ba4419-2d1f-58cd-9bb1-8ffee604a2e3"
 version = "1.0.2"
+
+[[deps.NamedTupleTools]]
+git-tree-sha1 = "90914795fc59df44120fe3fff6742bb0d7adb1d0"
+uuid = "d9ec5142-1e00-5aa0-9d6a-321866360f50"
+version = "0.14.3"
 
 [[deps.NearestNeighbors]]
 deps = ["Distances", "StaticArrays"]
@@ -1504,6 +1528,18 @@ deps = ["OffsetArrays"]
 git-tree-sha1 = "0fac6313486baae819364c52b4f483450a9d793f"
 uuid = "5432bcbf-9aad-5242-b902-cca2824c8663"
 version = "0.5.12"
+
+[[deps.PairPlots]]
+deps = ["Contour", "Distributions", "KernelDensity", "Latexify", "LinearAlgebra", "Makie", "Measures", "NamedTupleTools", "OrderedCollections", "PolygonOps", "PrecompileTools", "Printf", "RecipesBase", "Requires", "StaticArrays", "Statistics", "StatsBase", "Tables"]
+git-tree-sha1 = "c45fc647b95b760abbd2df52b0c90e6c79991e42"
+uuid = "43a3c2be-4208-490b-832a-a21dcd55d7da"
+version = "1.1.1"
+
+    [deps.PairPlots.extensions]
+    MCMCChainsExt = "MCMCChains"
+
+    [deps.PairPlots.weakdeps]
+    MCMCChains = "c7f686f2-ff18-58e9-bc7b-31028e88f75d"
 
 [[deps.Pango_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "FriBidi_jll", "Glib_jll", "HarfBuzz_jll", "JLLWrappers", "Libdl", "Pkg"]
@@ -1743,9 +1779,9 @@ version = "0.7.0"
 
 [[deps.SQLite_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Zlib_jll"]
-git-tree-sha1 = "4619dd3363610d94fb42a95a6dc35b526a26d0ef"
+git-tree-sha1 = "81f7d934b52b2441f7b44520bd982fdb3607b0da"
 uuid = "76ed43ae-9a5d-5a62-8c75-30186b810ce8"
-version = "3.42.0+0"
+version = "3.43.0+0"
 
 [[deps.ScientificTypes]]
 deps = ["CategoricalArrays", "ColorTypes", "Dates", "Distributions", "PrettyTables", "Reexport", "ScientificTypesBase", "StatisticalTraits", "Tables"]
@@ -1940,9 +1976,9 @@ version = "1.6.0"
 
 [[deps.StatsBase]]
 deps = ["DataAPI", "DataStructures", "LinearAlgebra", "LogExpFunctions", "Missings", "Printf", "Random", "SortingAlgorithms", "SparseArrays", "Statistics", "StatsAPI"]
-git-tree-sha1 = "75ebe04c5bed70b91614d684259b661c9e6274a4"
+git-tree-sha1 = "d1bf48bfcc554a3761a133fe3a9bb01488e06916"
 uuid = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
-version = "0.34.0"
+version = "0.33.21"
 
 [[deps.StatsFuns]]
 deps = ["HypergeometricFunctions", "IrrationalConstants", "LogExpFunctions", "Reexport", "Rmath", "SpecialFunctions"]
@@ -2015,9 +2051,9 @@ version = "1.0.1"
 
 [[deps.TableTransforms]]
 deps = ["AbstractTrees", "CategoricalArrays", "Distributions", "LinearAlgebra", "NelderMead", "PrettyTables", "Random", "ScientificTypes", "Statistics", "StatsBase", "Tables", "Transducers", "TransformsBase"]
-git-tree-sha1 = "6eb5c43519dddbc7936c8222ee760c1f93387750"
+git-tree-sha1 = "9eaebdf3cf87204fe7543e799e45dfc3c1d7af64"
 uuid = "0d432bfd-3ee1-4ac1-886a-39f05cc69a3e"
-version = "1.14.0"
+version = "1.14.1"
 
 [[deps.Tables]]
 deps = ["DataAPI", "DataValueInterfaces", "IteratorInterfaceExtensions", "LinearAlgebra", "OrderedCollections", "TableTraits", "Test"]
