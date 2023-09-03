@@ -21,12 +21,12 @@ I have to say that it is not easy to swim against the wave of
 Most software developers out there are still surfing this ~20-year-old
 standard in spite of pretty major limitations. Geoscience is **not**
 simple, is **not** 2D, and should **not** be discussed as if it was
-software. Unfortunately, most GIS work nowadays focuses on computer
-representation and storage requirements as opposed to better abstraction.
-In this book, you learn *how to think with geospatial data*, which is
-much more important.
+a software specification. Unfortunately, most GIS work nowadays focuses
+on computer representation and storage requirements as opposed to better
+abstraction. In this book, you learn *how to think with geospatial data*,
+which is more important.
 
 There is a long journey until the technology reaches its full potential,
 but it is getting there! I hope that the book will enlighten your
 understanding of some of those issues and that you can benefit
-from the **open source framework** we built over the years.
+from the **open source** software we built over the years.
