@@ -560,5 +560,5 @@ What we learned in this chapter?
 It is very convenient to manipulate a `GeoTable` as if it was a `DataFrame`.
 Nevertheless, we will learn that advanced geospatial data science requires
 higher-level constructs to preserve geospatial information. We will cover
-these constructs in [Part II](#4-feattrans.qmd) and [Part III](#7-splitcombine.qmd)
+these constructs in [Part II](#5-feattrans.qmd) and [Part III](#8-splitcombine.qmd)
 of the book.
