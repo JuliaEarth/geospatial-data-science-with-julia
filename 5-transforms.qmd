@@ -178,8 +178,6 @@ gt |> Functional(cos) |> values |> pairplot
 gt |> Functional("a" => cos, "b" => sin) |> values |> pairplot
 ```
 
-### Advanced
-
 The `Map` transform can be used to create new columns from existing columns in the geotable.
 It takes a column specification, calls a function on the selected columns row-by-row, and returns
 the result as a new column:
@@ -202,6 +200,26 @@ that it always broadcasts the functions to the rows of the selected columns and 
 a single column for each function.
 
 ::: 
+
+To filter rows in the geotable based on a given predicate (i.e., a function that returns
+`true` or `false`), we can use the `Filter` transform:
+
+```{julia}
+gt |> Filter(row -> row.a < 0 && row.b > 0)
+```
+
+To sort rows based on specific columns we can use the `Sort` transform:
+
+```{julia}
+gt |> Sort("a", "b")
+```
+
+This transform accepts all options of the `sortperm` function in Julia, including the
+option to sort in reverse order:
+
+```{julia}
+gt |> Sort("a", "b", rev=true)
+```
 
 ### Cleaning
 
@@ -231,10 +249,36 @@ ut |> StdNames(:uppercamel)
 ut |> StdNames(:upperflat)
 ```
 
-The `Coalesce` transform can be used to replace `missing` values by a specific value:
+The `Replace` transform can be used to replace specific values in the geotable by new
+values that are meaningful to the analysis:
 
 ```{julia}
-georef((a=[1,missing,3], b=[4,5,6])) |> Coalesce(value=2)
+gt |> Replace(-999 => missing, NaN => missing)
+```
+
+Although it could be used to replace `missing` values by new values, there is a specific
+transform for this purpose named `Coalesce`:
+
+```{julia}
+ct = georef((a=[1,missing,3], b=[4,5,6])) |> Coalesce(value=2)
+```
+
+::: {.callout-note}
+
+Unlike `Replace`, the `Coalesce` transform also changes the column type to make sure that
+no `missing` values can be stored in the future:
+
+```{julia}
+typeof(ct.a)
+```
+
+:::
+
+In many applications, we simply want to drop all rows for which the selected column values
+are `missing`. This is the purpose of the `DropMissing` transform:
+
+```{julia}
+georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
 ```
 
 ### Statistical
