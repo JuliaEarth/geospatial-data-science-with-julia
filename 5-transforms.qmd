@@ -283,8 +283,41 @@ georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
 
 ### Statistical
 
-Sample
-Coerce
+The framework provides various feature transforms for statistical analysis. We will
+cover some of these transforms in more detail in **Part IV** of the book with real data.
+In the following examples we illustrate the most basic statistical transforms with
+synthetic data.
+
+The `Sample` transform can be used to sample rows of the geotable at random, with
+or without replacement depending on the `replace` option. Other options are available
+such as `rng` to set the random number generator and `ordered` to preserve the order
+of rows in the original geotable:
+
+```{julia}
+gt |> Sample(1000, replace=false) |> viewer
+```
+
+::: {.callout-note}
+
+Similar to `Filter` and `Sort`, the `Sample` transform is lazy.
+It simply stores the indices of sampled rows for future constrution
+of the new geotable.
+
+:::
+
+In statistics, scientific types are used to link data types to adequate statistical
+algorithms. The most popular scientific types encountered in geoscientific applications
+are the `Continuous` and the `Categorical` scientific types. The latter can be further
+divided into `Ordered` and `Multiclass`. All scientific types are currently documented
+at [ScientificTypes.jl](https://github.com/JuliaAI/ScientificTypes.jl).
+
+To convert (or coerce) the scientific types of columns in a geotable, we can use the
+`Coerce` transform:
+
+```{julia}
+gt |> Coerce(:b => Multiclass)
+```
+
 Levels
 Indicator
 OneHot
