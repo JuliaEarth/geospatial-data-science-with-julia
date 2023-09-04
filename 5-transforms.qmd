@@ -308,7 +308,6 @@ Translate
 Rotate
 Stretch
 StdCoords
-UniqueCoords
 
 ### Advanced
 
@@ -320,3 +319,4 @@ LambdaMuSmoothing, LapaceSmoothing, TaubinSmoothing
 
 Detrend
 Potrace
+UniqueCoords
