@@ -363,7 +363,7 @@ st |> OneHot("a")
 A similar transform for `Continuous` columns is the `Indicator` transform.
 It converts the column into multiple columns based on threshold values on
 the support of the data. By default, the threshold values are computed on
-a quantile `scale`, but that is an available option:
+a quantile `scale`:
 
 
 ```{julia}
