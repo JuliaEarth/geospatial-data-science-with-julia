@@ -71,6 +71,25 @@ img.geometry
 
 :::
 
+::: {.callout-note}
+
+## Tip for all users
+
+To create a named tuple with a single key in Julia, we need an
+extra comma after the key/value pair:
+
+```{julia}
+(A=rand(10, 10),)
+```
+
+or a semicolon before the key/value pair:
+
+```{julia}
+(; A=rand(10, 10))
+```
+
+:::
+
 By default, all geometries are displayed with a single color:
 
 ```{julia}
