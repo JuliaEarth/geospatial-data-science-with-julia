@@ -274,8 +274,8 @@ typeof(ct.a)
 
 :::
 
-In many applications, we simply want to drop all rows for which the selected column values
-are `missing`. This is the purpose of the `DropMissing` transform:
+In many applications, it is enough to simply drop all rows for which the selected column
+values are `missing`. This is the purpose of the `DropMissing` transform:
 
 ```{julia}
 georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
@@ -283,6 +283,40 @@ georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
 
 ### Statistical
 
+Sample
+Coerce
+Levels
+Indicator
+OneHot
+Center
+Scale
+MinMax
+Interquartile
+ZScore
+Quantile
+EigenAnalysis, PCA, DRS, SDS
+ProjectionPursuit
+Remainder
+Closure
+LogRatio, ALR, CLR, ILR
+
 ## Geometric transforms
 
+### Basic
+
+Translate
+Rotate
+Stretch
+StdCoords
+UniqueCoords
+
+### Advanced
+
+Repair
+Bridge
+LambdaMuSmoothing, LapaceSmoothing, TaubinSmoothing
+
 ## Geospatial transforms
+
+Detrend
+Potrace
