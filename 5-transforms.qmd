@@ -305,33 +305,75 @@ of the new geotable.
 
 :::
 
-In statistics, scientific types are used to link data types to adequate statistical
-algorithms. The most popular scientific types encountered in geoscientific applications
-are the `Continuous` and the `Categorical` scientific types. The latter can be further
-divided into `Ordered` and `Multiclass`. All scientific types are currently documented
-at [ScientificTypes.jl](https://github.com/JuliaAI/ScientificTypes.jl).
-
-To convert (or coerce) the scientific types of columns in a geotable, we can use the
-`Coerce` transform:
-
-```{julia}
-gt |> Coerce(:b => Multiclass)
-```
-
-Levels
-Indicator
-OneHot
 Center
 Scale
 MinMax
 Interquartile
 ZScore
 Quantile
-EigenAnalysis, PCA, DRS, SDS
-ProjectionPursuit
-Remainder
-Closure
-LogRatio, ALR, CLR, ILR
+
+In statistics, scientific types are used to link data types to adequate statistical
+algorithms. The most popular scientific types encountered in geoscientific applications
+are the `Continuous` and the `Categorical` scientific types. The latter can be further
+divided into `Ordered` and `Multiclass`. To convert (or coerce) the scientific types of
+columns in a geotable, we can use the `Coerce` transform:
+
+```{julia}
+st = georef((a=[1,2,2,2,3,3], b=[1,2,3,4,5,6])) |>
+     Coerce(:a => Multiclass, :b => Continuous)
+```
+
+```{julia}
+eltype(st.a)
+```
+
+```{julia}
+eltype(st.b)
+```
+
+::: {.callout-note}
+
+All scientific types are documented in the
+[ScientificTypes.jl](https://github.com/JuliaAI/ScientificTypes.jl)
+module. We will see more examples in future chapters with real data
+from geoscientific applications.
+
+:::
+
+The `Levels` transform can be used to adjust the categories (or levels)
+of `Categorical` columns in case the sampling process does not include
+all possible values:
+
+```{julia}
+st = st |> Levels("a" => [1,2,3,4])
+```
+
+```{julia}
+levels(st.a)
+```
+
+Another popular transform in statistical learning is the `OneHot` transform.
+It converts a `Categorical` column into multiple columns of `true`/`false`
+values, one column for each level:
+
+```{julia}
+st |> OneHot("a")
+```
+
+A similar transform for `Continuous` columns is the `Indicator` transform.
+It converts the column into multiple columns based on threshold values on
+the support of the data. By default, the threshold values are computed on
+a quantile `scale`, but that is an available option:
+
+
+```{julia}
+st |> Indicator("b", k=3, scale=:quantile)
+```
+
+More advanced statistical transforms such as `EigenAnalysis`, `PCA`,
+`DRS`, `SDS`, `ProjectionPursuit` for multivariate data analysis and
+`Remainder`, `Closure`, `LogRatio`, `ALR`, `CLR`, `ILR` for compositional
+data analysis will be covered in future chapters.
 
 ## Geometric transforms
 
