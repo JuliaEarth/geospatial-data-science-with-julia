@@ -171,11 +171,11 @@ Tables.isrowtable(values(rt))
 The `Functional` transform can be used to apply a function to columns of a geotable in place:
 
 ```{julia}
-gt |> Functional(cos)
+gt |> Functional(cos) |> values |> pairplot
 ```
 
 ```{julia}
-gt |> Functional("a" => cos, "b" => sin)
+gt |> Functional("a" => cos, "b" => sin) |> values |> pairplot
 ```
 
 ### Advanced
