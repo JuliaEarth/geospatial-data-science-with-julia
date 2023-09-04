@@ -148,8 +148,8 @@ It preserves all other columns that are not part of the column specification:
 gt |> Rename("a" => "A", "b" => "B")
 ```
 
-The `Identity` transform can be used to forward the geotable without modifications.
-It will be useful in future chapters after we introduce transform pipelines:
+The `Identity` transform can be used as a placeholder to forward the geotable
+without modifications to the next transform:
 
 ```{julia}
 gt |> Identity()
@@ -168,12 +168,47 @@ using Tables
 Tables.isrowtable(values(rt))
 ```
 
+The `Functional` transform can be used to apply a function to columns of a geotable in place:
+
+```{julia}
+gt |> Functional(cos)
+```
+
+```{julia}
+gt |> Functional("a" => cos, "b" => sin)
+```
+
+### Advanced
+
+The `Map` transform can be used to create new columns from existing columns in the geotable.
+It takes a column specification, calls a function on the selected columns row-by-row, and returns
+the result as a new column:
+
+```{julia}
+gt |> Map("a" => sin, "b" => cos => "cos(b)")
+```
+
+```{julia}
+gt |> Map([2, 3] => ((b, c) -> 2b + c) => "f(b, c)")
+```
+
+The name of the resulting column can be provided or omitted. If the name is omitted like in the
+example above with the column "a", it is created by concatenation of column and function names.
+
+::: {.callout-note}
+
+The `Map` transform mimicks the behavior of the `transform` function in DataFrames.jl, except
+that it always broadcasts the functions to the rows of the selected columns and always produces
+a single column for each function.
+
+::: 
+
 ### Cleaning
 
 Some feature transforms are used to clean the data before geostatistical analysis. 
 For example, the `StdNames` transform can be used to standardize variable names
-that are not very clear due to file format limitations. To illustrate this transform,
-let's create a geotable with unreadable variable names:
+that are not very readable due to file format limitations. To illustrate this
+transform, let's create a geotable with unreadable variable names:
 
 ```{julia}
 ut = gt |> Select("a" => "aBc De-F", "b" => "b_2 (1)")
@@ -189,7 +224,17 @@ By default the transform, uses the `:uppersnake` naming convention. Other conven
 can be specified depending on personal preference:
 
 ```{julia}
+ut |> StdNames(:uppercamel)
+```
+
+```{julia}
 ut |> StdNames(:upperflat)
+```
+
+The `Coalesce` transform can be used to replace `missing` values by a specific value:
+
+```{julia}
+georef((a=[1,missing,3], b=[4,5,6])) |> Coalesce(value=2)
 ```
 
 ### Statistical
