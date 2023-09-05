@@ -305,12 +305,39 @@ of the new geotable.
 
 :::
 
-Center
-Scale
-MinMax
-Interquartile
-ZScore
-Quantile
+The `Center` and `Scale` transforms can be used to standardize the range of values
+in a geotable. Aliases are provides for specific types of `Scale` such as `MinMax`
+and `Interquartile`. We can use the `describe` function to visualize basic statistics
+before and after the transforms:
+
+```{julia}
+gt |> describe
+```
+
+```{julia}
+gt |> Center("a") |> describe
+```
+
+```{julia}
+gt |> MinMax() |> describe
+```
+
+The `ZScore` transform is similar to the `Scale` transform, but it uses the mean
+and the standard deviation to standardize the range:
+
+```{julia}
+gt |> ZScore() |> describe
+```
+
+Another important univariate transform is the `Quantile` transform, which can be
+used to convert empirical distribution in a column of the geotable to any given
+distribution from [Distributions.jl](https://github.com/JuliaStats/Distributions.jl)
+by @Lin2023. Selected columns are converted to a `Normal` distribution by default,
+but more than 60 distributions are available:
+
+```{julia}
+gt |> Quantile() |> values |> pairplot
+```
 
 In statistics, scientific types are used to link data types to adequate statistical
 algorithms. The most popular scientific types encountered in geoscientific applications
