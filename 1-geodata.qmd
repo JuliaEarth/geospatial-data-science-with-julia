@@ -441,10 +441,10 @@ precisely what we get with the `georef` function:
 using GeoStats
 
 df = DataFrame(
-  NAME=["John", "Mary"],
-  AGE=[34, 12],
-  HEIGHT=[1.78, 1.56],
-  GENDER=[:male, :female]
+  NAME=["John", "Mary", "Paul", "Anne"],
+  AGE=[34, 12, 23, 39],
+  HEIGHT=[1.78, 1.56, 1.70, 1.80],
+  GENDER=[:male, :female, :male, :female]
 )
 
 grid = CartesianGrid(2, 2)
