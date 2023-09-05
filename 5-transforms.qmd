@@ -41,8 +41,8 @@ We can compute the cross-correlation between columns "a" and "b":
 cor(gt.a, gt.b)
 ```
 
-And even inspect bivariate distributions of the `values` of the geotable
-with [PairPlots.jl](https://github.com/sefffal/PairPlots.jl):
+And inspect bivariate distributions of the `values` of the geotable
+with [PairPlots.jl](https://github.com/sefffal/PairPlots.jl) by @Thompson2023:
 
 ```{julia}
 using PairPlots
