@@ -25,6 +25,10 @@ book:
       chapters:
         - 8-splitcombine.qmd
         - 9-geojoins.qmd
+    - part: "Part IV: Applications"
+      chapters:
+        - 10-agriculture.qmd
+        - 11-mining.qmd
     - references.qmd
 
 bibliography: references.bib
