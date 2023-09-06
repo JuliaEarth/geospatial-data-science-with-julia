@@ -404,14 +404,93 @@ data analysis will be covered in future chapters.
 
 ## Geometric transforms
 
-### Basic
+While feature transforms operate on the `values` of the geotable, geometric
+transforms operate on the geospatial `domain`. The framework provides various
+geometric transforms for 2D and 3D space.
 
-Translate
-Rotate
-Stretch
-StdCoords
+### Coordinate
 
-### Advanced
+A coordinate transform is a geometric transform that modifies the coordinates
+of all points in the domain without any advanced topological modification (i.e.,
+connectivities are preserved). The most prominent examples of coordinate
+transforms are `Translate`, `Rotate` and `Stretch`.
+
+Let's load an additional geotable to see these transforms in action:
+
+```{julia}
+using GeoIO
+
+bt = GeoIO.load("data/beethoven.ply")
+
+viz(bt.geometry)
+```
+
+The Beethoven domain has been saved in the `.ply` file in a position that is
+not ideal for visualization. We can rotate this domain with any active rotation
+specification from [Rotations.jl](https://github.com/JuliaGeometry/Rotations.jl)
+to improve the visualization. For example, we can specify that we want to rotate
+all points in the mesh by analogy with a rotation between coordinates `(0, 1, 0)`
+and coordinates `(0, 0, 1)` as follows:
+
+```{julia}
+rt = bt |> Rotate((0, 1, 0), (0, 0, 1))
+
+viz(rt.geometry)
+```
+
+Beethoven is now standing up, but still facing the wall. Let's rotate it once
+again by analogy between coordinates `(1, 0, 0)` and `(-1, 1, 0)`:
+
+```{julia}
+rt = rt |> Rotate((1, 0, 0), (-1, 1, 0))
+
+viz(rt.geometry)
+```
+
+Rotation specifications are also available in 2D space. As an example, we can
+rotate the 2D grid of our synthetic geotable by the counter clockwise angle `π/4`:
+
+```{julia}
+gt |> Rotate(Angle2d(π/4)) |> viewer
+```
+
+In GIS, this new geotable would be called a rotated "raster". As another example,
+let's translate the geotable to the origin of the coordinate system with the
+`Translate` transform:
+
+```{julia}
+c = centroid(gt.geometry)
+gt |> Translate(-coordinates(c)...) |> viewer
+```
+
+and stretch it with a positive factor for each dimension:
+
+```{julia}
+gt |> Stretch(0.1, 0.2) |> viewer
+```
+
+The `StdCoords` transform combines `Translate` and `Stretch` to standardize
+the coordinates of the domain to the interval `[-0.5, 0.5]`:
+
+```{julia}
+gt |> StdCoords() |> viewer
+```
+
+In GIS, another very important coordinate transform is the `Reproject` transform.
+We will cover this transform in the next chapter because it depends on the concept
+of [map projection](https://en.wikipedia.org/wiki/Map_projection), which deserves
+more attention.
+
+::: {.callout-note}
+
+In our framework, the `Reproject` transform is just another coordinate
+transform. It is implemented with the same code optimizations, and can
+be used in conjunction with many other transforms that are not available
+elsewhere.
+
+:::
+
+### General
 
 Repair
 Bridge
