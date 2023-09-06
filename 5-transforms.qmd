@@ -484,21 +484,110 @@ more attention.
 
 ::: {.callout-note}
 
-In our framework, the `Reproject` transform is just another coordinate
-transform. It is implemented with the same code optimizations, and can
-be used in conjunction with many other transforms that are not available
-elsewhere.
+In our framework, the `Reproject` transform is just another coordinate transform.
+It is implemented with the same code optimizations, and can be used in conjunction
+with many other transforms that are not available elsewhere.
 
 :::
 
-### General
+### Advanced
 
-Repair
-Bridge
-LambdaMuSmoothing, LapaceSmoothing, TaubinSmoothing
+Advanced geometric transforms are provided that change the topology of the `domain`
+besides the coordinates of points. Some of these transforms can be useful to repair
+problematic geometries acquired from sensors in the real world.
+
+The `Repair` transform is parameterized by an integer `K` that identifies the repair
+to be performed. For example, `Repair{0}()` is a transform that removes duplicated
+vertices and faces in a domain represented by a mesh. The `Repair{9}()` on the other
+hand fixes the orientation of rings in polygonal areas so that the external boundary
+is oriented counter clockwise and the inner boundaries are oriented clockwise. The
+list of available repairs will continue to grow with the implementation of new
+geometric algorithms in the framework.
+
+To understand why geometric transforms are more advanced than coordinate transforms,
+let's consider the following polygonal area with holes:
+
+```{julia}
+outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
+hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
+hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
+poly  = PolyArea([outer, hole1, hole2])
+
+viz(poly)
+```
+
+We can connect the holes with the external boundary (or ring) using the `Bridge` transform:
+
+```{julia}
+poly |> Bridge(0.01) |> viz
+```
+
+By looking at the visualization, we observe that the number of vertices changed to accommodate
+the so called "bridges" between the rings. The topology also changed as there are no holes in
+the resulting geometry.
+
+As a final example of advanced geometric transform, we illustrate the `TaubinSmoothing` transform,
+which gradually removes sharp boundaries of a manifold mesh:
+
+```{julia}
+st = bt |> TaubinSmoothing(30)
+
+fig = Mke.Figure()
+viz(fig[1,1], bt.geometry)
+viz(fig[1,2], st.geometry)
+fig
+```
+
+For more advanced geometric transforms, please consult the official documentation.
 
 ## Geospatial transforms
 
-Detrend
-Potrace
-UniqueCoords
+Geospatial transforms are those transforms that operate on both the `values` **and** the `domain`
+of the geotable. They are common in geostatistical workflows that need to remove geospatial "trends"
+or workflows that need to extract geometries from domains.
+
+As an example, let's consider the following geotable with a variable `z` that made of a trend component
+`μ` and a noise component `ϵ`:
+
+
+```{julia}
+# quadratic + noise
+r = range(-1, stop=1, length=100)
+μ = [x^2 + y^2 for x in r, y in r]
+ϵ = 0.1rand(100, 100)
+t = georef((z=μ+ϵ,))
+
+viewer(t)
+```
+
+We can use the `Detrend` transform to remove a trend of polynomial degree `2`:
+
+```{julia}
+t |> Detrend(degree=2) |> viewer
+```
+
+The remaining component can then be modeled with geostatistical models of geospatial correlation.
+
+Models of geospatial correlation such as variograms [@Hoffimann2019] require unique coordinates
+in the geotable, a that is the purpose of the `UniqueCoords` transform. It removes duplicate
+points in the geotable and aggregates the `values` with custom aggregation functions.
+
+As a final example of geospatial transform, let's consider the following geotable stored in a `.png` file:
+
+```{julia}
+letters = GeoIO.load("data/letters.png")
+```
+
+The `Potrace` transform can be used to extract complex geometries from a geotable over a 2D `Grid`.
+It transforms the `Grid` domain into a `GeometrySet` based on any column that contains a discrete
+set of marker values. In this example, we use the `color` as the column with markers:
+
+```{julia}
+Ab = letters |> Potrace("color")
+```
+
+We can visualize the resulting geometries as usual:
+
+```{julia}
+viz(Ab.geometry, color = ["teal", "slategray3"])
+```

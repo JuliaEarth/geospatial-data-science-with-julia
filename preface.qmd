@@ -74,8 +74,10 @@ flowchart LR
   end
   subgraph partIV["Part IV: Applications"]
     chapter10["10. Agricultural fields"]
-    chapter11["11. Mining deposits"]
+    chapter11["11. Mine deposits"]
+    chapter12["12. Oil reservrois"]
     chapter10 --> chapter11
+    chapter11 --> chapter12
   end
   partI --> partII
   partI --> partIII

@@ -29,6 +29,7 @@ book:
       chapters:
         - 10-agriculture.qmd
         - 11-mining.qmd
+        - 12-energy.qmd
     - references.qmd
 
 bibliography: references.bib
