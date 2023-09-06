@@ -460,6 +460,7 @@ let's translate the geotable to the origin of the coordinate system with the
 
 ```{julia}
 c = centroid(gt.geometry)
+
 gt |> Translate(-coordinates(c)...) |> viewer
 ```
 
