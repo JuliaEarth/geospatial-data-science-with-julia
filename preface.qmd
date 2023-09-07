@@ -89,7 +89,8 @@ The chapters were written to be read in sequence, but there is
 some flexibility on how to read the parts. I recommend reading
 **Part I** first to understand the framework and vision. After
 that, you will have the necessary background to follow the code
-examples in **Part II** and **Part III**.
+examples in **Part II** and **Part III**. Finally, you can explore
+the applications in **Part IV** to solidify the concepts.
 
 ## Software installation
 
