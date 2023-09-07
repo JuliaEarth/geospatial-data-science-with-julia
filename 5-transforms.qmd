@@ -72,8 +72,7 @@ with the use of auxiliary indices for rows.
 :::
 
 We propose a new approach to **geospatial** data science with the concept of
-**geospatial transforms**, which we introduce in three steps with practical
-examples:
+**transforms**, which we introduce in three classes with practical examples:
 
 1. Feature transforms
 2. Geometric transforms
@@ -591,3 +590,34 @@ We can visualize the resulting geometries as usual:
 ```{julia}
 viz(Ab.geometry, color = ["teal", "slategray3"])
 ```
+
+## Remarks
+
+In this chapter we learned the important concept of **transforms**,
+and saw examples of the concept in action with synthetic data. In
+order to leverage the large number of transforms implemented in the
+framework, all we need to do is load our geospatial data as a geotable
+using `georef` or GeoIO.jl.
+
+Some additional remarks:
+
+- One of the major advantages of transforms compared to traditional row/column
+  access in data science is that they **preserve geospatial information**.
+  There is no need to keep track of indices in arrays to repeatedly
+  reattach attributes to geometries.
+- Transforms can be organized into three classes---feature, geometric and
+  geospatial---depending on how they operate with the `values` and the
+  `domain` of the geotable:
+  - **Feature** transforms operate on the `values`. They include column selection,
+    data cleaning, statistical analysis and any transform designed for traditional
+    Tables.jl.
+  - **Geometric** transforms operate on the `domain`. They include coordinate
+    transforms that simply modify the coordinates of points as well as more
+    advanced transforms that can change the topology of the domain.
+  - **Geospatial** transforms operate on both the `values` and `domain`.
+    They include geostatistical transforms and transforms that use other
+    columns besides the `geometry` column to produce new columns and geometries.
+
+In the next chapters, we will review map projections with the `Reproject`
+coordinate transform, and will introduce one of the greatest features of
+the framework known as **transform pipelines**.
