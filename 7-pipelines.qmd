@@ -127,3 +127,66 @@ gt |> pipeline
 All 5 columns are present in the final geotable.
 
 ## Revertibility
+
+An important concept related to pipelines that is very useful in
+geospatial data science is **revertibility**. The concept is useful
+whenever we need to answer geoscientific questions in terms of
+variables that have been transformed for geostatistical analysis.
+
+Let's illustrate the concept with the following geotable and pipeline:
+
+```{julia}
+a = [-1.0, 4.0, 1.6, 3.4]
+b = [1.6, 3.4, -1.0, 4.0]
+c = [3.4, 2.0, 3.6, -1.0]
+table = (; a, b, c) 
+
+geotable = georef(table, rand(2, 4))
+```
+
+```{julia}
+pipeline = Select("a") → Center()
+``` 
+
+We saw that our pipelines can be evaluated with Julia's pipe operator:
+
+```{julia}
+geotable |> pipeline
+```
+
+In order to revert a pipeline, however; we need to save auxiliary constants that
+were used to transform the data (e.g., mean of selected columns). The `apply` function
+serves this purpose:
+
+```{julia}
+newtable, cache = apply(pipeline, geotable)
+
+newtable
+```
+
+The function produces the new geotable as usual and an additional `cache`
+with all the information needed to revert the transforms in the pipeline.
+We say that a pipeline `isrevertible`, if there is an efficient way to
+revert its transforms starting from any geotable that has the same schema
+of the geotable produced by the `apply` function:
+
+```{julia}
+isrevertible(pipeline)
+```
+
+```{julia}
+revert(pipeline, newtable, cache)
+```
+
+A very common workflow in geospatial data science consists of:
+
+1. Transforming the data to an appropriate sample space for geostatistical analysis
+2. Doing additional modeling to predict variables in new geospatial locations
+3. Reverting the modeling results with the saved pipeline and cache
+
+We will see examples of this workflow in **Part V** of the book.
+
+## Congratulations!
+
+Congratulations on finishing **Part II** of the book. Let’s quickly review what
+we learned so far:
