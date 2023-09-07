@@ -9,7 +9,7 @@ why it had to be so "computer sciency":
 
 - What on Earth is a "LineString"? Isn't a "Line" a geometric object with infinite length?
 - Why do I need to learn this low-level distinction between "raster" and "vector" data?
-- Many other questions...
+- And many other questions...
 
 After years of my PhD, I finally envisioned a more general approach,
 through the continuous design and development of the
@@ -21,3 +21,19 @@ There is a long journey until the technology reaches its full potential,
 but it is getting there! I hope that the book will enlighten your
 understanding of some of those issues and that you can benefit
 from the **open source** software we built over the years.
+
+::: {.callout-note}
+
+## Disclaimer
+
+Keep in mind that it is not easy to move away from ~20-year-old standards
+like [simple features](https://www.iso.org/standard/40114.html). You will
+encounter a great deal of reluctance to change in industry, and that is
+human nature.
+
+Always remind yourself that geoscience is **not** simple,
+is **not** 2D, and is **not** software engineering. There are greater
+challenges to address in the world with geospatial data science besides
+computational performance and software specifications.
+
+:::
