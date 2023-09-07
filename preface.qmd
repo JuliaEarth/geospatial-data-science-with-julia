@@ -72,25 +72,33 @@ flowchart LR
     chapter9["9. Geospatial joins"]
     chapter8 --> chapter9
   end
-  subgraph partIV["Part IV: Applications"]
-    chapter10["10. Agricultural fields"]
-    chapter11["11. Mine deposits"]
-    chapter12["12. Oil reservrois"]
+  subgraph partIV["Part IV: Interpolation"]
+    chapter10["10. Geospatial correlation"]
+    chapter11["11. Basic interpolation"]
     chapter10 --> chapter11
-    chapter11 --> chapter12
+  end
+  subgraph partV["Part V: Applications"]
+    chapter12["12. Agricultural fields"]
+    chapter13["13. Mine deposits"]
+    chapter14["14. Oil reservrois"]
+    chapter12 --> chapter13
+    chapter13 --> chapter14
   end
   partI --> partII
   partI --> partIII
-  partII --> partIV
-  partIII --> partIV
+  partI --> partIV
+  partII --> partV
+  partIII --> partV
+  partIV --> partV
 ```
 
 The chapters were written to be read in sequence, but there is
 some flexibility on how to read the parts. I recommend reading
 **Part I** first to understand the framework and vision. After
 that, you will have the necessary background to follow the code
-examples in **Part II** and **Part III**. Finally, you can explore
-the applications in **Part IV** to solidify the concepts.
+examples in **Part II**, **Part III** and **Part IV**. Finally,
+you can explore the applications in **Part IV** to solidify the
+concepts.
 
 ## Software installation
 

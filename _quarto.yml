@@ -25,11 +25,15 @@ book:
       chapters:
         - 8-splitcombine.qmd
         - 9-geojoins.qmd
-    - part: "Part IV: Applications"
+    - part: "Part IV: Interpolation"
       chapters:
-        - 10-agriculture.qmd
-        - 11-mining.qmd
-        - 12-energy.qmd
+        - 10-variography.qmd
+        - 11-interpolation.qmd
+    - part: "Part V: Applications"
+      chapters:
+        - 12-agriculture.qmd
+        - 13-mining.qmd
+        - 14-energy.qmd
     - references.qmd
 
 bibliography: references.bib
