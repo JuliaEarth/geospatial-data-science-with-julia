@@ -46,7 +46,7 @@ website. If you are seeking more detailed information, consider
 reading the [official documentation](https://docs.julialang.org/en/v1).
 
 Assuming that you learned the basics of the language, you can proceed
-and read this book. It is organized in three parts as follows:
+and read this book. It is organized in five parts as follows:
 
 ```{mermaid}
 flowchart LR
@@ -135,11 +135,17 @@ I would like to acknowledge all the [contributors](https://github.com/JuliaEarth
 You are the reason this book exists! [![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
 The implementation of the framework is only possible thanks to the amazing programming language advances by @Benzanson2017.
 
-A special thanks to [Elias Carvalho](https://github.com/eliascarv) for his outstanding contributions to the software stack,
-to Prof. [Douglas Mazzinghy](https://scholar.google.com.br/citations?user=yfnHmeEAAAAJ) for organizing the first training
-courses at UFMG, to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAAJ) for his contributions
-on high-performance computing, to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo) for organizing the
-[JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop, and to colleagues in industry who support this work, including
+A special thanks to [Elias Carvalho](https://github.com/eliascarv)
+for his outstanding contributions to the software stack,
+to Prof. [Douglas Mazzinghy](https://scholar.google.com.br/citations?user=yfnHmeEAAAAJ) (UFMG),
+Prof. [Leandro Martínez](https://scholar.google.com.br/citations?user=4eLEzHAAAAAJ&hl=pt-BR) (UNICAMP) and
+Prof. [Fernando Moraes](https://www.linkedin.com/in/fernando-sergio-de-moraes-3464014a) (UENF)
+for organizing the first training courses at universities,
+to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAAJ)
+for his contributions on high-performance computing,
+to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo)
+for organizing the [JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop,
+and to colleagues in industry who support this work, including
 [Elisabeth Fonseca](https://www.linkedin.com/in/elisabeth-fonseca-geometallurgist),
 [Fernando Villanova](https://www.linkedin.com/in/fernando-villanova-46a56534),
 [Fabio Duarte](https://www.linkedin.com/in/fabio-terra-passos-duarte-89362555),
