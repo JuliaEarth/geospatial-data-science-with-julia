@@ -190,3 +190,16 @@ We will see examples of this workflow in **Part V** of the book.
 
 Congratulations on finishing **Part II** of the book. Let’s quickly review what
 we learned so far:
+
+- Transforms and pipelines are powerful tools to achieve **reproducible**
+  geospatial data science.
+- Map projections are specific types of coordinate transforms. They can be
+  combined with many other transforms in the framework to produce advanced
+  geostatistical visualizations.
+- **Lazy pipelines** can always be optimized for computational performance, and the
+  Julia language really thrives to dispatch the appropriate optimizations when
+  they are available.
+
+There is a long journey until the technology reaches its full potential. In
+particular, we need more transforms and optimizations to really tackle big
+geospatial data.
