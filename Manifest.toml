@@ -2128,9 +2128,9 @@ version = "0.4.78"
 
 [[deps.TransformsBase]]
 deps = ["AbstractTrees"]
-git-tree-sha1 = "842dbeb762d090eb28824e40187110ea84ad4245"
+git-tree-sha1 = "53e92e907bd67eef12e319ca932a7dd036428bfc"
 uuid = "28dd2a49-a57a-4bfb-84ca-1a49db9b96b8"
-version = "1.2.0"
+version = "1.2.1"
 
 [[deps.TriplotBase]]
 git-tree-sha1 = "4d4ed7f294cda19382ff7de4c137d24d16adc89b"

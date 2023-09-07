@@ -1,1 +1,129 @@
 # Building pipelines
+
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+```
+
+In previous chapters, we learned a large number of transforms for
+manipulating and processing geotables. In all those code examples,
+we used Julia's pipe operator `|>` to apply the transform and send
+the resulting geotable to the next transform:
+
+```{julia}
+#| eval: false
+geotable |> transform1 |> transform2 |> ... |> viewer
+```
+
+In this chapter, we will learn two new powerful operators `→` and `⊔` to
+combine transforms into **pipelines** that can be optimized and reused with
+different geotables.
+
+## Motivation
+
+The pipe operator `|>` in Julia is very convenient for sequential application of functions.
+Given an input `x`, we can type `x |> f1 |> f2` to apply functions `f1` and `f2` in sequence,
+in a way that is equivalent to `f2(f1(x))` or, alternatively, to the function composition
+`(f2 ∘ f1)(x)`.
+Its syntax can drastically improve code readability when the number of functions is large.
+However, the operator has a major limitation in the context of geospatial data science:
+it evaluates all intermediate results as soon as the data is inserted in the pipe.
+This is known in computer science as [eager evaluation](https://en.wikipedia.org/wiki/Evaluation_strategy).
+
+Taking the expression above as an example, the operator will first evaluate `f1(x)` and store
+the result in a variable `y`. After `f1` is completed, the operator evaluates `f2(y)` and
+produces the final (desired) result. If `y` requires a lot of computer memory as it is usually
+the case with large geotables, the application of the pipeline will be slow.
+
+Another evaluation strategy known as **lazy evaluation** consists of building the entire
+pipeline without the data in it. The major advantage of this strategy is that it can analyze
+the functions, and potentially simplify the code before evaluation. For example, the pipeline
+`cos → acos` can be replaced by the much simpler pipeline `identity` for some values of the
+input `x`.
+
+## Operator → 
+
+In our framework, the operator `→` (`\to`) can be used in place of the pipe operator to build
+lazy **sequential pipelines** of transforms. Consider the synthetic data from previous chapters:
+
+```{julia}
+N = 10000
+a = [2randn(N÷2) .+ 6; randn(N÷2)]
+b = [3randn(N÷2); 2randn(N÷2)]
+c = randn(N)
+d = c .+ 0.6randn(N)
+
+table = (; a, b, c, d)
+
+gt = georef(table, CartesianGrid(100, 100))
+```
+
+And suppose that we are interested in converting the columns "a", "b" and "c" of the geotable with
+the `Quantile` transform. Instead of creating the intermediate geotable with the `Select` transform,
+and then sending the result to the `Quantile` transform, we can create the entire pipeline without
+reference to the data:
+
+```{julia}
+pipeline = Select("a", "b", "c") → Quantile()
+```
+
+The operator `→` creates a special `SequentialTransform`, which can be applied like any other
+transform in the framework:
+
+```{julia}
+gt |> pipeline
+```
+
+It will perform optimizations whenever possible. For instance, we know a priori that adding the
+`Identity` transform anywhere in the pipeline doesn't have any effect:
+
+```{julia}
+pipeline → Identity()
+```
+
+## Operator ⊔
+
+The operator `⊔` (`\sqcup`) can be used to create lazy **parallel transforms**. There is no
+equivalent in Julia as this operator is very specific to tables. It combines the geotables
+produced by two or more pipelines into a single geotable with the disjoint union of all
+columns.
+
+Let's illustrate this concept with two pipelines:
+
+```{julia}
+pipeline1 = Select("a") → Indicator("a", k=3)
+```
+
+```{julia}
+pipeline2 = Select("b", "c", "d") → PCA(maxdim=2)
+```
+
+The first pipeline creates 3 indicator variables from variable "a":
+
+```{julia}
+gt |> pipeline1
+```
+
+The second pipeline runs principal component analysis with variables "b", "c" and "d"
+and produces 2 principal components:
+
+```{julia}
+gt |> pipeline2
+```
+
+We can combine the two pipelines into a single pipeline that executes in parallel:
+
+```{julia}
+pipeline = pipeline1 ⊔ pipeline2
+```
+
+```{julia}
+gt |> pipeline
+```
+
+All 5 columns are present in the final geotable.
+
+## Revertibility
