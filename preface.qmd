@@ -109,20 +109,23 @@ the code below in the Julia REPL:
 #| eval: false
 using Pkg
 
-# fresh environment
+# assert Julia version
+@assert VERSION ≥ v"1.9" "requires Julia v1.9 or later"
+
+# create fresh environment
 pkg"activate @gdsbook"
 
-# framework
+# install framework
 pkg"add GeoStats"
 
-# input/output
+# install IO module
 pkg"add GeoIO"
 
-# visualization
+# install viz stack
 pkg"add CairoMakie"
 pkg"add PairPlots"
 
-# miscellaneous
+# instal other modules
 pkg"add DataFrames"
 pkg"add Tables"
 pkg"add CSV"
