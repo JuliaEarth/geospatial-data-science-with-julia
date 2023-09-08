@@ -476,14 +476,14 @@ the coordinates of the domain to the interval `[-0.5, 0.5]`:
 gt |> StdCoords() |> viewer
 ```
 
-In GIS, another very important coordinate transform is the `Reproject` transform.
+In GIS, another very important coordinate transform is the `Proj` transform.
 We will cover this transform in the next chapter because it depends on the concept
 of [map projection](https://en.wikipedia.org/wiki/Map_projection), which deserves
 more attention.
 
 ::: {.callout-note}
 
-In our framework, the `Reproject` transform is just another coordinate transform.
+In our framework, the `Proj` transform is just another coordinate transform.
 It is implemented with the same code optimizations, and can be used in conjunction
 with many other transforms that are not available elsewhere.
 
@@ -618,6 +618,6 @@ Some additional remarks:
     They include geostatistical transforms and transforms that use other
     columns besides the `geometry` column to produce new columns and geometries.
 
-In the next chapters, we will review map projections with the `Reproject`
+In the next chapters, we will review map projections with the `Proj`
 coordinate transform, and will introduce one of the greatest features of
 the framework known as **transform pipelines**.
