@@ -43,6 +43,8 @@ format:
     theme:
       light: flatly
       dark: solar
+    mermaid:
+      theme: dark
   pdf:
     documentclass: scrreprt
 

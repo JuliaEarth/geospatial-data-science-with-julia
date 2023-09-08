@@ -1,5 +1,14 @@
 # Split-apply-combine
 
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+import CairoMakie as Mke
+```
+
 In **Part II** of the book, we introduced **transform pipelines** to
 process the `values` and the `domain` of geotables using high-level
 abstractions that preserve geospatial information. In this chapter, we
@@ -11,14 +20,15 @@ pre-processed by pipelines.
 In geospatial data science, geoscientific questions are often posed in
 terms of both the `values` and the `domain` of a geotable. For example:
 
-1. **Where** are the areas with maximum probability of landslide?
+1. **Where** are the areas with high probability of landslide?
 2. What is the average rainfall **per watershed** over the last year?
 3. How much Lithium will be mined from each **geological unit**?
+4. What is the variation of log-permeability per **depositional facies**?
 
 The word "where" is often present in these questions to indicate that
-the answer must be georeferenced. We can effectively answer "where"
-questions using the `viewer` and the `Filter` transform from previous
-chapters if the variable of interest is already present in the geotable:
+answers must be georeferenced. If the variable of interest is already
+present in the geotable, then we can effectively answer "where" questions
+using the `viewer` and the `Filter` transform from previous chapters:
 
 ```{julia}
 #| eval: false
@@ -27,14 +37,77 @@ geotable |> Filter(row -> row.probability > 0.9) |> viewer
 
 If the variable of interest is not present in the geotable, or if the
 "where" word is not present in the original question, then there will
-be some reference to "geospatial units" where geostatistics must be
-computed. These questions can be answered with a geospatial version of
-the **split-apply-combine** strategy [@Wickham2011] from data science.
-
-Our framework provides three macros `@groupby`, `@transform` and `@combine`
-to split-apply-combine geotables without losing geospatial information.
+be some reference to "geospatial units" on which geostatistics must be
+computed. These questions can be answered with a **geospatial** version
+of the **split-apply-combine** strategy [@Wickham2011] from data science.
+Our framework provides the `@groupby`, `@transform` and `@combine` macros
+to split-apply-combine geotables.
 
 ## Splitting geotables
+
+We will illustrate the `@goupby` macro with the `Bonnie` data set:
+
+> The Bonnie Project Example is under copyright of Transmin Metallurgical Consultants, 2019.
+> It is issued under the Creative Commons Attribution-ShareAlike 4.0 International Public License.
+
+```{julia}
+using CSV
+
+gt = georef(CSV.File("data/bonnie.csv"), (:EAST, :NORTH, :RL))
+```
+
+Let's start by sending the geotable to the viewer:
+
+```{julia}
+gt |> viewer
+```
+
+It consists of a 3D mineral deposit with measurements of ore grades in
+parts per million (ppm), sulfur in percent, and other categorical
+variables:
+
+```{julia}
+names(gt)
+```
+
+Let's clean the data using what we learned in previous chapters. We will
+drop all missing values, will reject the column with the percentage of
+sulfur, will rename the variables for greater readability, and will
+change the scientific type of geological and lithological units:
+
+```{julia}
+clean = DropMissing() →
+        Reject("Sper") →
+        Rename("Auppm" => "Au", "Agppm" => "Ag",
+               "Cuppm" => "Cu", "Asppm" => "As",
+               "CODE" => "geo", "OX" => "litho",
+               "ISBD" => "ρ") →
+        Coerce("geo" => Multiclass,
+               "litho" => Multiclass)
+
+gt = clean(gt)
+```
+
+That is a lot better! We can now split this pre-processed geotable into
+multiple geotables, one per geological unit, using the `@groupby` macro:
+
+```{julia}
+groups = @groupby(gt, "geo")
+```
+
+There are two geological units in the mineral deposit, represented as `GeoTableView`:
+
+```{julia}
+groups[1]
+```
+
+Let's visualize the geometries in these geological units with our `viz` function:
+
+```{julia}
+viz(groups[1].geometry, color = "teal")
+viz!(groups[2].geometry, color = "slategray3")
+Mke.current_figure()
+```
 
 ## Applying expressions
 
