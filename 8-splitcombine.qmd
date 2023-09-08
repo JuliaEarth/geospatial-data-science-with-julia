@@ -16,15 +16,23 @@ terms of both the `values` and the `domain` of a geotable. For example:
 3. How much Lithium will be mined from each **geological unit**?
 
 The word "where" is often present in these questions to indicate that
-the answer must be georeferenced as a new geotable. If the word is not
-present, then there will be some reference to geospatial units where
-geostatistics must be computed.
+the answer must be georeferenced. We can effectively answer "where"
+questions using the `viewer` and the `Filter` transform from previous
+chapters if the variable of interest is already present in the geotable:
 
-The **split-apply-combine** strategy [@Wickham2011] from data
-science can be adapted to address such questions. Our framework
-provides three macros `@groupby`, `@transform` and `@combine`
-to split-apply-combine geotables in a way that preserves
-geospatial information.
+```{julia}
+#| eval: false
+geotable |> Filter(row -> row.probability > 0.9) |> viewer
+```
+
+If the variable of interest is not present in the geotable, or if the
+"where" word is not present in the original question, then there will
+be some reference to "geospatial units" where geostatistics must be
+computed. These questions can be answered with a geospatial version of
+the **split-apply-combine** strategy [@Wickham2011] from data science.
+
+Our framework provides three macros `@groupby`, `@transform` and `@combine`
+to split-apply-combine geotables without losing geospatial information.
 
 ## Splitting geotables
 
