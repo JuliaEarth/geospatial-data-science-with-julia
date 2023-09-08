@@ -193,17 +193,18 @@ we learned so far:
 
 - Transforms and pipelines are powerful tools to achieve **reproducible**
   geospatial data science.
-- Map projections are specific types of coordinate transforms. They can be
-  combined with many other transforms in the framework to produce advanced
-  geostatistical visualizations.
 - The operators `→` and `⊔` can be used to build **lazy pipelines**. After
   a pipeline is built, it can be applied to different geotables, which may
   have different types of geospatial domain.
-- Lazy pipelines can always be optimized for computational performance, and the
-  Julia language really thrives to dispatch the appropriate optimizations when
-  they are available.
+- Lazy pipelines can always be optimized for **computational performance**,
+  and the Julia language really thrives to dispatch the appropriate
+  optimizations when they are available.
+- Map projections are specific types of coordinate transforms. They can be
+  combined with many other transforms in the framework to produce advanced
+  geostatistical visualizations.
 
 There is a long journey until the technology reaches its full potential.
-The good news is that you can contribute your own transforms and code
-optimizations! Julia code is really easy to read and modify, and we hope
-that more users will become active contributors.
+The good news is that Julia code is really easy to read and modify, and
+you can become an active contributor after just a few weeks working with
+the language. We invite you to contribute new transforms and optimizations
+as soon as you feel comfortable with the framework.
