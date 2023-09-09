@@ -192,7 +192,7 @@ but expects valid reduction functions such as `sum`, `mean`, `std`. Reduction fu
 take a vector of values as input and produce a single scalar as output:
 
 ```{julia}
-groups = @groupby(gt, "geo")
+groups = @groupby(gt, :geo)
 
 @combine(groups, :μ = mean(:Au), :σ = std(:Au))
 ```
