@@ -22,7 +22,7 @@ terms of both the `values` and the `domain` of a geotable. For example:
 
 1. **Where** are the areas with high probability of landslide?
 2. What is the average rainfall **per watershed** over the last year?
-3. How much Lithium will be mined from each **geological unit**?
+3. How much lithium will be mined from each **geological unit**?
 4. What is the variation of log-permeability per **depositional facies**?
 
 The word "where" is often present in these questions to indicate that
@@ -43,9 +43,9 @@ of the **split-apply-combine** strategy [@Wickham2011] from data science.
 Our framework provides the `@groupby`, `@transform` and `@combine` macros
 to split-apply-combine geotables.
 
-## Splitting geotables
+## Bonnie data set
 
-We will illustrate the `@goupby` macro with the `Bonnie` data set:
+We will use the `Bonnie` data set to illustrate our geospatial split-apply-combine:
 
 > The Bonnie Project Example is under copyright of Transmin Metallurgical Consultants, 2019.
 > It is issued under the Creative Commons Attribution-ShareAlike 4.0 International Public License.
@@ -56,28 +56,30 @@ using CSV
 gt = georef(CSV.File("data/bonnie.csv"), (:EAST, :NORTH, :RL))
 ```
 
-Let's start by sending the geotable to the viewer:
-
-```{julia}
-gt |> viewer
-```
-
-It consists of a 3D mineral deposit with measurements of ore grades in
-parts per million (ppm), sulfur in percent, and other categorical
-variables:
+It represents a 3D mineral deposit with grades in parts per million (ppm),
+sulfur contaminant in percent, and other categorical variables with geological
+and lithological units:
 
 ```{julia}
 names(gt)
 ```
 
-Let's clean the data using what we learned in previous chapters. We will
-drop all missing values, will reject the column with the percentage of
-sulfur, will rename the variables for greater readability, and will
-change the scientific type of geological and lithological units:
+The "EAST", "NORTH" and "RL" coordinates used to `georef` the CSV file
+represent the centroids of the mining blocks. The sides of these blocks
+are provided as metadata (e.g., 4x4x4):
 
 ```{julia}
-clean = DropMissing() →
-        Reject("Sper") →
+gt |> viewer
+```
+
+Let's clean the geotable using what we learned in previous chapters.
+We will reject the column with sulfur, will drop missing values, will
+rename the variables for greater readability, and will change the
+scientific type of geological and lithological units:
+
+```{julia}
+clean = Reject("Sper") →
+        DropMissing() →
         Rename("Auppm" => "Au", "Agppm" => "Ag",
                "Cuppm" => "Cu", "Asppm" => "As",
                "CODE" => "geo", "OX" => "litho",
@@ -85,23 +87,31 @@ clean = DropMissing() →
         Coerce("geo" => Multiclass,
                "litho" => Multiclass)
 
-gt = clean(gt)
+gt = gt |> clean
 ```
 
-That is a lot better! We can now split this pre-processed geotable into
-multiple geotables, one per geological unit, using the `@groupby` macro:
+That is a lot better! Let's assume that we want to asnwer the following
+business question:
+
+*What is the total mass of gold that will be mined from each geological unit?*
+
+## Splitting geotables
+
+We can split geotables into lazy **geospatial partitions** based on values stored
+in a column. In this case, we want to split the mineral deposit in geological units
+stored in the `geo` column:
 
 ```{julia}
 groups = @groupby(gt, "geo")
 ```
 
-There are two geological units in the mineral deposit, represented as `GeoTableView`:
+There are two geological units in this deposit, represented as `GeoTableView`. We
+can access these units by indexing into the geospatial partition:
+
 
 ```{julia}
 groups[1]
 ```
-
-Let's visualize the geometries in these geological units with our `viz` function:
 
 ```{julia}
 viz(groups[1].geometry, color = "teal")
@@ -111,4 +121,114 @@ Mke.current_figure()
 
 ## Applying expressions
 
-## Combining geostatistics
+The mass of gold in a mining block is a function of the gold grade (`Au`), the rock
+density (`ρ`), and the `volume` of the block:
+
+$$
+m = Au \times \rho \times V
+$$
+
+Let's use an auxiliary function to convert the `Point`s in the `geometry` column into
+`Box`es of sides 4x4x4. The function takes a centroid point as input and produces a
+box centered at the point with corners that are 2x2x2 units away in both directions:
+
+```{julia}
+box(point) = Box(point - Vec(2, 2, 2), point + Vec(2, 2, 2))
+```
+
+```{julia}
+box.(gt.geometry)
+```
+
+The `@transform` macro modifies or creates new columns in the geotable based on
+expressions with existing column names. In this case, we want to replace the
+`geometry` column by calling the auxiliary function above:
+
+```{julia}
+gt = @transform(gt, :geometry = box(:geometry))
+```
+
+The macro will broadcast the expression to all rows of the geotable.
+
+::: {.callout-note}
+
+We used the `:geometry` symbol to refer to the `geometry` column instead of the usual
+`"geometry"` string. The `@transform` macro understands that strings can also appear
+as valid values in the right-hand-side of the expression, which are not columns in the
+geotable. To mark a string as a column name, we need to use curly braces:
+
+```{julia}
+#| eval: false
+@transform(gt, {"geometry"} = box({"geometry"}))
+```
+
+:::
+
+::: {.callout-note}
+
+## Tip for all users
+
+The use of symbols to represent column names is preferred in macros.
+
+:::
+
+The mass of gold on each mining block can be computed now that the geometries have `volume`:
+
+```{julia}
+@transform(gt, :m = :Au * :ρ * volume(:geometry))
+```
+
+::: {.callout-note}
+
+The `@transform` macro can be used with both geotables and geospatial partitions.
+
+:::
+
+## Combining results
+
+We can use the `@combine` macro to reduce columns of geotables in a geospatial partition
+obtained with the `@groupby` macro. The macro is similar to the `@transform` macro,
+but expects valid reduction functions such as `sum`, `mean`, `std`. Reduction functions
+take a vector of values as input and produce a single scalar as output:
+
+```{julia}
+groups = @groupby(gt, "geo")
+
+@combine(groups, :μ = mean(:Au), :σ = std(:Au))
+```
+
+Note that the macro reduces the geometry column and produces a new complex `Multi`
+geometry with all the `Box`es that are inside each geological unit. This is a very
+advanced feature of the framework that
+**cannot be represented with the simple features standard**.
+
+Let's recall our original business question:
+
+*What is the total mass of gold that will be mined from each geological unit?*
+
+We can now answer this question with three lines of code:
+
+```{julia}
+groups = @groupby(gt, :geo)
+
+mass = @transform(groups, :m = :Au * :ρ * volume(:geometry))
+
+answer = @combine(mass, :m = sum(:m))
+```
+
+::: {.callout-note}
+
+## Tip for all users
+
+We can simplify the code further using the `@chain` macro. It forwards the
+resulting geotable or geospatial partition to the next macro:
+
+```{julia}
+@chain gt begin
+  @groupby(:geo)
+  @transform(:m = :Au * :ρ * volume(:geometry))
+  @combine(:m = sum(:m))
+end
+```
+
+:::
