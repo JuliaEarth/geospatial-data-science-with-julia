@@ -58,8 +58,7 @@ geospatial data science.
 
 To load a file from disk, we use `GeoIO.load`:
 
-```{julia}
-#| eval: false
+```julia
 using GeoIO
 
 geotable = GeoIO.load("file.shp")
@@ -70,8 +69,7 @@ converts the simple features into a geospatial domain, and returns a `GeoTable`.
 
 To save the `GeoTable` to disk, possibly in a different format, we use `GeoIO.save`:
 
-```{julia}
-#| eval: false
+```julia
 GeoIO.save("file.geojson", geotable)
 ```
 

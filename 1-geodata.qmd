@@ -527,7 +527,11 @@ for advanced geospatial data science.
 The GeoStats.jl module reexports the full stack of modules for
 geospatial data science in Julia. There is no need to import
 modules like Meshes.jl explicitly. You are all set if you
-start your script with `using GeoStats`.
+start your script with
+
+```julia
+using GeoStats
+```
 
 :::
 
@@ -539,7 +543,15 @@ In Julia, a function is type-stable if the return type is known at compile
 time. Since the `GeoTable` has columns from the original table (e.g., numbers)
 and an additional special `geometry` column, the access to the data with the
 `DataFrame` syntax is **not** type stable. If you need to write type-stable
-code, use the functions `values` and `domain` instead.
+code, use the functions `values` and `domain` instead:
+
+```{julia}
+values(geotable)
+```
+
+```{julia}
+domain(geotable)
+```
 
 :::
 

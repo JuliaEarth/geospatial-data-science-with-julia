@@ -105,8 +105,7 @@ concepts.
 If you want to reproduce the examples in the book, copy and paste
 the code below in the Julia REPL:
 
-```{julia}
-#| eval: false
+```julia
 using Pkg
 
 # assert Julia version

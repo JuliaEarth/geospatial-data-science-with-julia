@@ -13,8 +13,7 @@ manipulating and processing geotables. In all those code examples,
 we used Julia's pipe operator `|>` to apply the transform and send
 the resulting geotable to the next transform:
 
-```{julia}
-#| eval: false
+```julia
 geotable |> transform1 |> transform2 |> ... |> viewer
 ```
 

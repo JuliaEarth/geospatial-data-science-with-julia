@@ -126,8 +126,8 @@ viz(poly)
 
 In the example above, the first list of vertices represents the external
 boundary of the `PolyArea`, also known as the outer `Ring`. The other two
-lists represent the two internal boundaries, or inner rings. The vector
-of inner rings can be empty, in which case the `PolyArea` doesn't have holes.
+lists represent the two internal boundaries, or inner rings. A single list
+of vertices can be used, in which case the `PolyArea` doesn't have holes.
 
 Finally, let's take a look into the polygonal `Chain`: 
 
@@ -161,12 +161,6 @@ The `Segment` geometry is a `Chain` with just 2 vertices:
 
 ```{julia}
 viz(Segment((0, 0), (1, 1)))
-```
-
-The only 0-dimensional `Polytope` is the `Point`:
-
-```{julia}
-viz(Point(0, 0))
 ```
 
 Finally, there is the `Multi`-geometry, which is a set of
@@ -226,8 +220,7 @@ the syntax `issubseteq(b1, b2)` as well.
 If you don't know the $\LaTeX$ name of a symbol, you can copy/paste it in the
 Julia REPL in help mode:
 
-```{julia}
-#| eval: false
+```julia
 ?∈
 ```
 
