@@ -12,19 +12,19 @@ book:
     - preface.qmd
     - part: "Part I: Foundations"
       chapters:
-        - 1-geodata.qmd
-        - 2-geoviz.qmd
-        - 3-geoio.qmd
-        - 4-geoproc.qmd
+        - 01-geodata.qmd
+        - 02-geoviz.qmd
+        - 03-geoio.qmd
+        - 04-geoproc.qmd
     - part: "Part II: Transforms"
       chapters:
-        - 5-transforms.qmd
-        - 6-projections.qmd
-        - 7-pipelines.qmd
+        - 05-transforms.qmd
+        - 06-projections.qmd
+        - 07-pipelines.qmd
     - part: "Part III: Queries"
       chapters:
-        - 8-splitcombine.qmd
-        - 9-geojoins.qmd
+        - 08-splitcombine.qmd
+        - 09-geojoins.qmd
     - part: "Part IV: Interpolation"
       chapters:
         - 10-variography.qmd

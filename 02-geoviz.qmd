@@ -224,9 +224,9 @@ geotable.geometry
 It adds interactive elements to the scene, including a menu to select the
 variable used as color, and a color bar that automatically updates upon
 menu selection. The `viewer` will be particularly useful when we start to
-work with geospatial transforms in [Part II](4-feattrans.qmd) of the book.
-The pipe operator (`|>`) in Julia will be preferred for reasons that will
-become clearer later:
+work with geospatial transforms in **Part II** of the book. The pipe
+operator (`|>`) in Julia will be preferred for reasons that will become
+clearer later:
 
 ```{julia}
 geotable = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))

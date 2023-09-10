@@ -514,7 +514,7 @@ GeoIO.load("data/geotable.geojson")
 ```
 
 We will see more examples of "vector data" in the chapter
-[Interfacing with GIS](3-geoio.qmd), and will explain why
+[Interfacing with GIS](03-geoio.qmd), and will explain why
 file formats like
 [Shapefile.jl](https://github.com/JuliaGeo/Shapefile.jl) and
 [GeoJSON.jl](https://github.com/JuliaGeo/GeoJSON.jl) are not enough
