@@ -30,8 +30,7 @@ answers must be georeferenced. If the variable of interest is already
 present in the geotable, then we can effectively answer "where" questions
 using the `viewer` and the `Filter` transform from previous chapters:
 
-```{julia}
-#| eval: false
+```julia
 geotable |> Filter(row -> row.probability > 0.9) |> viewer
 ```
 
@@ -157,8 +156,7 @@ We used the `:geometry` symbol to refer to the `geometry` column instead of the 
 as valid values in the right-hand-side of the expression, which are not columns in the
 geotable. To mark a string as a column name, we need to use curly braces:
 
-```{julia}
-#| eval: false
+```julia
 @transform(gt, {"geometry"} = box({"geometry"}))
 ```
 
