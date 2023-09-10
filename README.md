@@ -9,6 +9,10 @@ To build this book, you need:
 
 - Julia v1.9
 - IJulia (>= v1.24)
+  ```julia
+  import Pkg
+  Pkg.add("IJulia")
+  ```
 - Quarto VSCode extension
 
 1. Open the Julia REPL and instantiate the environment in this folder:
