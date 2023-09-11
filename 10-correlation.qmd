@@ -108,3 +108,7 @@ Even though the correlogram function is widely used in the literature, we will r
 an alternative statistic of association that is most useful in geospatial data science.
 
 ## Variography
+
+## Anisotropy
+
+## Models
