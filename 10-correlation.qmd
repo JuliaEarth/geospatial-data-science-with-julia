@@ -77,3 +77,7 @@ hscatter(sample, :Z, :Z, lag=5.0)
 ```{julia}
 hscatter(sample, :Z, :Z, lag=10.0)
 ```
+
+```{julia}
+hscatter(sample, :Z, :Z, lag=50.0)
+```
