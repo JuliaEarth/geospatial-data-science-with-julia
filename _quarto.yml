@@ -27,7 +27,7 @@ book:
         - 09-geojoins.qmd
     - part: "Part IV: Interpolation"
       chapters:
-        - 10-variography.qmd
+        - 10-correlation.qmd
         - 11-interpolation.qmd
     - part: "Part V: Applications"
       chapters:
