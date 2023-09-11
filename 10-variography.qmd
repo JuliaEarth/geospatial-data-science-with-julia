@@ -1,3 +1,79 @@
-# Geospatial correlation 🚧
+# Geospatial correlation
 
-## Coming soon...
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+import CairoMakie as Mke
+```
+
+In **Part II** and **Part III** of the book, we learned two important
+tools for *efficient* geospatial data science. We learned how transform
+pipelines can be used to prepare geospatial data for investigation, and
+how geospatial queries can be used to answer geoscientific questions.
+
+Before we can learn the third tool in our geospatial data science framework,
+we need to review the important concept of **geospatial correlation**:
+
+::: {.callout-tip}
+
+## Definition
+
+The **geospatial correlation** between two variables $X$ and $Y$ measured at
+a distance (or lag) $h$ along any direction is the sample
+[Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient).
+Given $n$ pairs $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$ of
+measurements, the coefficient is given by
+
+$$
+r_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
+$$
+
+:::
+
+We can illustrate this concept for different values of the lag $h$ using the
+`hscatter` plot.
+
+Let's consider the following synthetic image from the
+[GeoStatsImages.jl](https://github.com/JuliaEarth/GeoStatsImages.jl)
+module:
+
+```{julia}
+using GeoStatsImages
+
+img = geostatsimage("Gaussian30x10")
+
+img |> viewer
+```
+
+and let's sample this image to reduce the computational costs:
+
+```{julia}
+sample = img |> Sample(1000, replace=false)
+```
+
+If we plot the values of the variable `Z` in the horizontal axis and the values
+of the same variable measured at lag $h=0$ on the vertical axis, we get points
+along the identity line:
+
+```{julia}
+hscatter(sample, :Z, :Z, lag=0.0)
+```
+
+By increasing the value of the lag, we observe that the correlation is no longer
+equal to one, and that the linear fit through the points approaches the horizontal
+axis (i.e., zero correlation):
+
+```{julia}
+hscatter(sample, :Z, :Z, lag=3.0)
+```
+
+```{julia}
+hscatter(sample, :Z, :Z, lag=5.0)
+```
+
+```{julia}
+hscatter(sample, :Z, :Z, lag=10.0)
+```
