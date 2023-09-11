@@ -10,12 +10,11 @@ import CairoMakie as Mke
 ```
 
 In **Part II** and **Part III** of the book, we learned two important
-tools for *efficient* geospatial data science. We learned how transform
-pipelines can be used to prepare geospatial data for investigation, and
-how geospatial queries can be used to answer geoscientific questions.
-
-Before we can learn the third tool in our geospatial data science framework,
-we need to review the important concept of **geospatial correlation**:
+tools for *efficient* geospatial data science. We learned how **transform
+pipelines** can be used to prepare geospatial data for investigation, and
+how **geospatial queries** can be used to answer geoscientific questions.
+Before we can learn our third tool, we need to review the important concept
+of **geospatial correlation**:
 
 ::: {.callout-tip}
 
@@ -31,14 +30,13 @@ $$
 r_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
 $$
 
-:::
+where $\bar{x}$ and $\bar{y}$ are the mean values.
 
-We can illustrate this concept for different values of the lag $h$ using the
-`hscatter` plot.
+:::
 
 Let's consider the following synthetic image from the
 [GeoStatsImages.jl](https://github.com/JuliaEarth/GeoStatsImages.jl)
-module:
+module to illustrate the concept for different values of $h$:
 
 ```{julia}
 using GeoStatsImages
@@ -48,7 +46,12 @@ img = geostatsimage("Gaussian30x10")
 img |> viewer
 ```
 
-and let's sample this image to reduce the computational costs:
+The `hscatter` plot can be used to visualize the scatter of pairs
+$\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$ at a given lag $h$.
+We can choose a variable $X$ for the horizontal axis, a (possibly different)
+variable $Y$ for the vertical axis, and the value of the lag $h$. In
+order to reduce the computational costs associated with the plot, we
+will sample a subset of measurements from the image:
 
 ```{julia}
 sample = img |> Sample(1000, replace=false)
@@ -56,7 +59,7 @@ sample = img |> Sample(1000, replace=false)
 
 If we plot the values of the variable `Z` in the horizontal axis and the values
 of the same variable measured at lag $h=0$ on the vertical axis, we get points
-along the identity line:
+along the identity line (i.e. no scatter):
 
 ```{julia}
 hscatter(sample, :Z, :Z, lag=0.0)
@@ -81,3 +84,27 @@ hscatter(sample, :Z, :Z, lag=10.0)
 ```{julia}
 hscatter(sample, :Z, :Z, lag=50.0)
 ```
+
+The sample Pearson correlation coefficient studied as a function of the lag $h$
+is known as the **correlogram function**:
+
+```{julia}
+#| echo: false
+xs = range(0, stop=10, length=100)
+ys = exp.(-xs)
+Mke.lines(xs, ys, axis = (xlabel="h", ylabel="cor(h)"), color="black")
+```
+
+- The correlogram $cor(h)$ is often a non-increasing function
+- It coincides with the usual correlation in data science at $h=0$
+- $cor(h) \to 0$ as $h \to \infty$ in most practical cases
+
+The terms **auto-correlogram** ($X = Y$) and **cross-correlogram** ($X \ne Y$) are also
+encountered in the literature to differentiate the various geospatial correlations in
+the multivariate case. Similarly, the terms **auto-covariance** and **cross-covariance**
+are encountered by replacing the correlation by the covariance (non-normalized correlation).
+
+Even though the correlogram function is widely used in the literature, we will review
+an alternative statistic of association that is most useful in geospatial data science.
+
+## Variography
