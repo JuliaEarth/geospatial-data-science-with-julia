@@ -150,9 +150,13 @@ to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAA
 for his contributions on high-performance computing,
 to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo)
 for organizing the [JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop,
-and to colleagues in industry who support this work, including
+and to colleagues in industry who support this work through research and development projects, including
 [Elisabeth Fonseca](https://www.linkedin.com/in/elisabeth-fonseca-geometallurgist),
-[Fernando Villanova](https://www.linkedin.com/in/fernando-villanova-46a56534),
+[Patrice Mazzoni](https://www.linkedin.com/in/patrice-mazzoni),
+[Keila Gonçalves](https://www.linkedin.com/in/keila-gon%C3%A7alves-013a9512),
 [Fabio Duarte](https://www.linkedin.com/in/fabio-terra-passos-duarte-89362555),
 [Mariana Menezes](https://www.linkedin.com/in/mariana-menezes-42085852),
-[Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior).
+[Givago Azevedo](https://www.linkedin.com/in/givagovalentedeazevedo/),
+[Fernando Villanova](https://www.linkedin.com/in/fernando-villanova-46a56534),
+[Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior),
+[Rodrigo Leione](https://www.linkedin.com/in/rodrigo-leione-4a832a52).
