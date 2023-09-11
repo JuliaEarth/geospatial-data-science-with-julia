@@ -120,6 +120,9 @@ pkg"add GeoStats"
 # install IO module
 pkg"add GeoIO"
 
+# install datasets
+pkg"add GeoStatsImages"
+
 # install viz stack
 pkg"add CairoMakie"
 pkg"add PairPlots"

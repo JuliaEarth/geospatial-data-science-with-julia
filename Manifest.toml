@@ -2,7 +2,7 @@
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "48f23993eb387d4594099370350f0b604bbc2470"
+project_hash = "55b9bd7a7d6e426db71ec6424dfd062d4fd479f1"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -795,6 +795,12 @@ deps = ["Combinatorics", "DensityRatioEstimation", "Distances", "Distributed", "
 git-tree-sha1 = "6de88840a4a156d1196f736894cac437f6d39abc"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
 version = "0.35.0"
+
+[[deps.GeoStatsImages]]
+deps = ["GslibIO"]
+git-tree-sha1 = "0ce938a0fb16eb85491271f501d46fe400807a48"
+uuid = "7cd16168-b42c-5e7d-a585-4f59d326662d"
+version = "1.1.0"
 
 [[deps.GeoStatsSolvers]]
 deps = ["Bessels", "CpuId", "Distances", "Distributions", "FFTW", "GeoStatsBase", "GeoTables", "KrigingEstimators", "LinearAlgebra", "MLJModelInterface", "Meshes", "Random", "Statistics", "TableTransforms", "Tables", "Unitful", "Variography"]
