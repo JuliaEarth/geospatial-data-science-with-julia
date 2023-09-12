@@ -187,7 +187,7 @@ fig
 
 ### range
 
-The **range** (a.k.a. correlation length) of the variogram controls the average
+The **range** (a.k.a. correlation length) of the variogram determines the average
 size of "blobs" in the image. Let's consider two synthetic images with ranges
 10 and 30, respectively:
 
@@ -240,7 +240,7 @@ Mke.lines(fig[2,1], f.(d2.geometry), d2.Z, color = "black", axis = (; title="sil
 fig
 ```
 
-The **sill** controls the maximum variance of the process. If the sill is $\sigma^2$,
+The **sill** determines the maximum variance of the process. If the sill is $\sigma^2$,
 then a process with mean $\mu$ will oscillate within $\mu\pm3\sigma$ with 99.7% probability.
 The vertical amplitude in the second plot is (3x) larger than that of the first plot.
 In both plots, we have $\mu=0$. 
@@ -303,6 +303,63 @@ show as bright values in the 3D model of the mineral deposit.
 :::
 
 ### model
+
+Finally, the **model** of the variogram determines how the function inscreases
+near the origin. The GeoStats.jl framework provides dozens of such models of
+geospatial correlation. The most widely used are the `GaussianVariogram`, the
+`SphericalVariogram` and the `ExponentialVariogram`:
+
+```{julia}
+#| echo: false
+γ1 = GaussianVariogram()
+γ2 = SphericalVariogram()
+γ3 = ExponentialVariogram()
+
+fig = Mke.Figure()
+Mke.Axis(fig[1,1])
+Mke.plot!(γ1, maxlag=2, vcolor = "teal", label = "Gaussian")
+Mke.plot!(γ2, maxlag=2, vcolor = "slategray3", label = "Spherical")
+Mke.plot!(γ3, maxlag=2, vcolor = "brown", label = "Exponential")
+Mke.axislegend("Model", position = :rb)
+fig
+```
+
+All the four elements of the variogram function can be set in the constructors:
+
+```{julia}
+γ = GaussianVariogram(range=10.0, sill=2.0, nugget=0.1)
+```
+
+```{julia}
+range(γ), sill(γ), nugget(γ)
+```
+
+We can evaluate the variogram at any given lag:
+
+```{julia}
+γ(1.0)
+```
+
+Or evaluate the variogram between any two points:
+
+```{julia}
+γ(Point(0, 0), Point(1, 0))
+```
+
+In this case, the `Euclidean` metric is used by default to compute the lag
+between the points. More generally, we can evaluate the variogram between
+any two geometries:
+
+```{julia}
+γ(Point(0, 0), Triangle((0,0), (1,0), (1,1)))
+```
+
+::: {.callout-note}
+
+The evaluation of the variogram function between two geometries is known as
+variogram regularization, and implemented in terms of numerical integration.
+
+:::
 
 ## Anisotropy
 
