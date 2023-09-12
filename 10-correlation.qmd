@@ -163,9 +163,8 @@ from geostatistical theory that explains the generality of the variogram functio
 
 :::
 
-Our goal here is to gain intuition about the variogram function by learning its
-four basic elements---**range**, **sill**, **nugget** and **model**---which we
-explain below:
+Our main goal here is to gain intuition about the variogram function for interpolation
+purposes. It suffices to learn its four basic elements: **range**, **sill**, **nugget** and **model**.
 
 ```{julia}
 #| echo: false
