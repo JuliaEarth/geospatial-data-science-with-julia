@@ -324,7 +324,7 @@ Mke.axislegend("Model", position = :rb)
 fig
 ```
 
-All the four elements of the variogram function can be set in the constructors:
+All the four elements of the variogram function can be easily set:
 
 ```{julia}
 γ = GaussianVariogram(range=10.0, sill=2.0, nugget=0.1)
@@ -346,9 +346,8 @@ Or evaluate the variogram between any two points:
 γ(Point(0, 0), Point(1, 0))
 ```
 
-In this case, the `Euclidean` metric is used by default to compute the lag
-between the points. More generally, we can evaluate the variogram between
-any two geometries:
+In this case, the `Euclidean` metric is used by default to compute the lag.
+More generally, we can evaluate the variogram between any two geometries:
 
 ```{julia}
 γ(Point(0, 0), Triangle((0, 0), (1, 0), (1, 1)))
