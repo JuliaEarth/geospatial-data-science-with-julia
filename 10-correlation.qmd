@@ -104,11 +104,97 @@ encountered in the literature to differentiate the various geospatial correlatio
 the multivariate case. Similarly, the terms **auto-covariance** and **cross-covariance**
 are encountered by replacing the correlation by the covariance (non-normalized correlation).
 
-Even though the correlogram function is widely used in the literature, we will review
+Even though the correlogram function is widely used in other scientific fields, we will review
 an alternative statistic of association that is most useful in geospatial data science.
 
 ## Variography
 
+::: {.callout-tip}
+
+## Definition
+
+The **variogram function** is a more general alternative to the covariance function that
+that does **not** rely on the mean values $\bar{x}$ and $\bar{y}$. It is given by
+
+$$
+\gamma_x(h) \approx \frac{1}{2|N(h)|}\sum_{N(h)}(x_i-x_j)^2
+$$
+
+where $N(h) = \Big\{(i,j): i\underbrace{\longrightarrow}_{h \text{ units}} j\Big\}$ is the
+set of pairs of locations that are $h$ units apart.
+
+In the multivariate case, we can also define the **cross-variogram**:
+
+$$
+\gamma_{xy}(h) \approx \frac{1}{2|N(h)|}\sum_{N(h)}(x_i-x_j)(y_i-y_j)
+$$
+
+:::
+
+The value $\gamma(h)$ measures the "spread" of the `hscatter` plot. Usually,
+at $h=0$ there is no spread, and hence $\gamma(0) = 0$. In most practical
+cases $\gamma(h) \to \sigma^2$ as $h \to \infty$ where $\sigma^2$ is the
+maximum variance of the process. When this maximum variance exists, we
+can write the following relation:
+
+$$
+\gamma(h) = \sigma^2 - cov(h) 
+$$
+
+```{julia}
+#| echo: false
+xs = range(0, stop=10, length=100)
+ys = 1 .- exp.(-xs)
+Mke.lines(xs, ys, axis = (xlabel="h", ylabel="γ(h)"), color="black")
+```
+
+Explaining why the variogram is more general than the covariance is out
+of scope for this book, but it has to do with the fact that variograms
+operate on the "difference process" $(x_i - x_j)$ as opposed to the centered
+process $(x_i - \bar{x})$. In particular, it does not require a finite maximum
+variance $\sigma^2$.
+
+::: {.callout-note}
+
+The theory of intrinsic random functions of order k (IRF-k) is an advanced concept
+from geostatistical theory that explains the generality of the variogram function
+[@Chiles2012].
+
+:::
+
+Our goal here is to gain intuition about the variogram function by learning its
+four basic elements---**range**, **sill**, **nugget** and **model**---which we
+illustrate below:
+
+```{julia}
+#| echo: false
+r = 10.0
+s = 1.0
+n = 0.1
+m = GaussianVariogram
+g = m(range=r, sill=s, nugget=n)
+
+fig = Mke.Figure()
+Mke.Axis(fig[1,1], xlabel="h", ylabel="γ(h)")
+Mke.plot!(g, maxlag=25, label="model")
+Mke.vlines!(r, color="black", linestyle=:dash, label="range")
+Mke.hlines!(s, color="teal", linestyle=:dash, label="sill")
+Mke.hlines!(n, color="teal", linestyle=:dot, label="nugget")
+Mke.axislegend("Elements", position = :rc)
+fig
+```
+
+### range
+
+The **range** (a.k.a. correlation length) of the variogram controls the average
+size of "blobs" in the image.
+
+### sill
+
+### nugget
+
+### model
+
 ## Anisotropy
 
-## Models
+## Nesting
