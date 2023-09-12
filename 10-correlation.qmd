@@ -195,8 +195,8 @@ size of "blobs" in the image. Let's consider two synthetic images with ranges
 #| echo: false
 p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
 
-g1 = GaussianVariogram(range=10)
-g2 = GaussianVariogram(range=30)
+g1 = GaussianVariogram(range=10.0)
+g2 = GaussianVariogram(range=30.0)
 s1 = LUGS(:Z => (; variogram=g1))
 s2 = LUGS(:Z => (; variogram=g2))
 
@@ -211,12 +211,96 @@ fig
 ```
 
 In the first image, we can clearly visualize the average size of yellow and blue blobs
-around 10 pixels (or quadrangles). In the second image, the blobs have an average size
+around 10 pixels (i.e. quadrangles). In the second image, the blobs have an average size
 of 30 pixels, which is greater than one of the sides of the grid (100x25 pixels).
 
 ### sill
 
+To understand the **sill** of the variogram, let's consider a 1D grid as our domain, and
+let's represent the values of the variable with height instead of color:
+
+```{julia}
+#| echo: false
+p = SimulationProblem(CartesianGrid(100), :Z => Float64, 1)
+
+g1 = GaussianVariogram(range=10.0, sill=1.0)
+g2 = GaussianVariogram(range=10.0, sill=9.0)
+s1 = LUGS(:Z => (; variogram=g1))
+s2 = LUGS(:Z => (; variogram=g2))
+
+Random.seed!(2023)
+d1 = solve(p, s1)[1]
+d2 = solve(p, s2)[1]
+
+f(x) = first(coordinates(centroid(x)))
+
+fig = Mke.Figure()
+Mke.lines(fig[1,1], f.(d1.geometry), d1.Z, color = "black", axis = (; title="sill: 1"))
+Mke.lines(fig[2,1], f.(d2.geometry), d2.Z, color = "black", axis = (; title="sill: 9"))
+fig
+```
+
+The **sill** controls the maximum variance of the process. If the sill is $\sigma^2$,
+then a process with mean $\mu$ will oscillate within $\mu\pm3\sigma$ with 99.7% probability.
+The vertical amplitude in the second plot is (3x) larger than that of the first plot.
+In both plots, we have $\mu=0$. 
+
 ### nugget
+
+The **nugget** can be used to insert additional variance at scales that are smaller than
+the scale of measurements (i.e. pixel). It is known in the image processing liteature as
+[salt-and-pepper noise](https://en.wikipedia.org/wiki/Salt-and-pepper_noise):
+
+```{julia}
+#| echo: false
+p = SimulationProblem(CartesianGrid(100), :Z => Float64, 1)
+
+g1 = GaussianVariogram(range=10.0, nugget=0.1)
+g2 = GaussianVariogram(range=10.0, nugget=0.2)
+s1 = LUGS(:Z => (; variogram=g1))
+s2 = LUGS(:Z => (; variogram=g2))
+
+Random.seed!(2023)
+d1 = solve(p, s1)[1]
+d2 = solve(p, s2)[1]
+
+f(x) = first(coordinates(centroid(x)))
+
+fig = Mke.Figure()
+Mke.lines(fig[1,1], f.(d1.geometry), d1.Z, color = "black", axis = (; title="nugget: 0.1"))
+Mke.lines(fig[2,1], f.(d2.geometry), d2.Z, color = "black", axis = (; title="nugget: 0.2"))
+fig
+```
+
+We can visualize the nugget effect in our 2D grid with colors as before:
+
+```{julia}
+#| echo: false
+p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
+
+g1 = GaussianVariogram(range=10.0, nugget=0.0)
+g2 = GaussianVariogram(range=10.0, nugget=0.1)
+s1 = LUGS(:Z => (; variogram=g1))
+s2 = LUGS(:Z => (; variogram=g2))
+
+Random.seed!(2023)
+d1 = solve(p, s1)[1]
+Random.seed!(2023)
+d2 = solve(p, s2)[1]
+
+fig = Mke.Figure()
+viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="nugget: 0.0"))
+viz(fig[2,1], d2.geometry, color = d2.Z, axis = (; title="nugget: 0.1"))
+fig
+```
+
+::: {.callout-note}
+
+The name "nugget" comes from gold nuggets in mining geostatistics.
+These are often much smaller than selective mining units (SMUs), and
+show as bright values in the 3D model of the mineral deposit.
+
+:::
 
 ### model
 
