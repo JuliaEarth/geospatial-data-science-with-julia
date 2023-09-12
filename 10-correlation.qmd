@@ -5,6 +5,7 @@
 #| output: false
 import Pkg
 Pkg.activate(".")
+using Random
 using GeoStats
 import CairoMakie as Mke
 ```
@@ -164,7 +165,7 @@ from geostatistical theory that explains the generality of the variogram functio
 
 Our goal here is to gain intuition about the variogram function by learning its
 four basic elements---**range**, **sill**, **nugget** and **model**---which we
-illustrate below:
+explain below:
 
 ```{julia}
 #| echo: false
@@ -175,7 +176,7 @@ m = GaussianVariogram
 g = m(range=r, sill=s, nugget=n)
 
 fig = Mke.Figure()
-Mke.Axis(fig[1,1], xlabel="h", ylabel="γ(h)")
+Mke.Axis(fig[1,1], xlabel="h", ylabel="γ(h)", limits = (nothing, nothing, 0, 1.1))
 Mke.plot!(g, maxlag=25, label="model")
 Mke.vlines!(r, color="black", linestyle=:dash, label="range")
 Mke.hlines!(s, color="teal", linestyle=:dash, label="sill")
@@ -187,7 +188,31 @@ fig
 ### range
 
 The **range** (a.k.a. correlation length) of the variogram controls the average
-size of "blobs" in the image.
+size of "blobs" in the image. Let's consider two synthetic images with ranges
+10 and 30, respectively:
+
+```{julia}
+#| echo: false
+p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
+
+g1 = GaussianVariogram(range=10)
+g2 = GaussianVariogram(range=30)
+s1 = LUGS(:Z => (; variogram=g1))
+s2 = LUGS(:Z => (; variogram=g2))
+
+Random.seed!(2023)
+d1 = solve(p, s1)[1]
+d2 = solve(p, s2)[1]
+
+fig = Mke.Figure()
+viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="range: 10"))
+viz(fig[2,1], d2.geometry, color = d2.Z, axis = (; title="range: 30"))
+fig
+```
+
+In the first image, we can clearly visualize the average size of yellow and blue blobs
+around 10 pixels (or quadrangles). In the second image, the blobs have an average size
+of 30 pixels, which is greater than one of the sides of the grid (100x25 pixels).
 
 ### sill
 
