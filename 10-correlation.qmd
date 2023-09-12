@@ -359,6 +359,74 @@ variogram regularization, and implemented in terms of numerical integration.
 
 :::
 
-## Anisotropy
+Remind that the variogram value $\gamma(h)$ is a measure of spread in the
+`hscatter` plot. It tells how much variation is expected for a variable
+at a distance $h$ from a reference point.
 
-## Nesting
+## Fitting models
+
+Given geospatial data, how do we fit an appropriate variogram model for it?
+This practical question is traditionally answered in two steps as follows.
+
+### Empirical estimate
+
+Let's recap the synthetic image from the beginning of the chapter:
+
+```{julia}
+img |> viewer
+```
+
+We can use the `EmpiricalVariogram` to estimate the function at specific
+lag values:
+
+```{julia}
+g = EmpiricalVariogram(img, :Z, maxlag = 50.0)
+```
+
+```{julia}
+Mke.plot(g)
+```
+
+The `DirectionalVariogram` can be used to estimate the function along
+specific directions:
+
+```{julia}
+gₕ = DirectionalVariogram((1.0, 0.0), img, :Z, maxlag = 50.0)
+gᵥ = DirectionalVariogram((0.0, 1.0), img, :Z, maxlag = 50.0)
+
+Mke.plot(gₕ, hshow = false, vcolor = "maroon")
+Mke.plot!(gᵥ, hshow = false, vcolor = "slategray")
+Mke.current_figure()
+```
+
+In this example, we observe that the blobs are elongated with a horizontal
+range of 30 pixels and a vertical range of 10 pixels. This is known as
+geometric **anisotropy**.
+
+::: {.callout-note}
+
+The book by @Webster2007 and the article by @Cressie1980 are good resources
+to learn more about robust variogram estimation.
+
+:::
+
+### Least-squares fit
+
+After empirical estimation with geospatial data, the next step consists of
+fitting a theoretical model. This is done in order to be able to evaluate
+the variogram function at any lag $h$, not just the specific lags of the
+empirical variogram.
+
+We can fit a specific theoretical model:
+
+```{julia}
+fit(SphericalVariogram, g)
+```
+
+Or let the framework select the model with minimum weighted least-squares error:
+
+```{julia}
+γ = fit(Variogram, g)
+```
+
+## Remarks
