@@ -165,5 +165,6 @@ Thanks to all the reviewers of the first draft of the book, including
 [Maciel Zortea](https://www.linkedin.com/in/mzortea),
 [Max de Bayser](https://www.linkedin.com/in/max-de-bayser-13a44521),
 [Bogumił Kamiński](https://www.linkedin.com/in/bogumilkaminski),
-[Erick Montalvan](https://www.linkedin.com/in/erick-chacon-montalvan-7bba9141),
+[Ronan Arraes](https://www.linkedin.com/in/ronan-arraes),
+[Erick Chacón Montalván](https://www.linkedin.com/in/erick-chacon-montalvan-7bba9141),
 [Kyle Beggs](https://www.linkedin.com/in/kylebeggs).
