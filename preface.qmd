@@ -146,9 +146,9 @@ to Prof. [Douglas Mazzinghy](https://scholar.google.com.br/citations?user=yfnHme
 Prof. [Leandro Martínez](https://scholar.google.com.br/citations?user=4eLEzHAAAAAJ&hl=pt-BR) (UNICAMP) and
 Prof. [Fernando Moraes](https://www.linkedin.com/in/fernando-sergio-de-moraes-3464014a) (UENF)
 for organizing the first training courses at universities,
-to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAAJ)
+to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAAJ) (UFC)
 for his contributions on high-performance computing,
-to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo)
+to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo) (AIRCentre)
 for organizing the [JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop,
 and to colleagues in industry who support this work through research and development projects, including
 [Elisabeth Fonseca](https://www.linkedin.com/in/elisabeth-fonseca-geometallurgist),
@@ -160,3 +160,9 @@ and to colleagues in industry who support this work through research and develop
 [Fernando Villanova](https://www.linkedin.com/in/fernando-villanova-46a56534),
 [Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior),
 [Rodrigo Leione](https://www.linkedin.com/in/rodrigo-leione-4a832a52).
+
+Thanks to all colleagues and members of the Julia community who reviewed the first draft of the book, including
+[Maciel Zortea](https://scholar.google.com.br/citations?user=St9jWFIAAAAJ),
+[Max de Bayser](https://www.linkedin.com/in/max-de-bayser-13a44521),
+[Erick Montalvan](https://www.linkedin.com/in/erick-chacon-montalvan-7bba9141),
+[Kyle Beggs](https://www.linkedin.com/in/kylebeggs).
