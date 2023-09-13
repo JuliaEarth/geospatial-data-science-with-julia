@@ -21,11 +21,10 @@ of **geospatial correlation**:
 
 ## Definition
 
-The **geospatial correlation** between two variables $X$ and $Y$ measured at
-a distance (or lag) $h$ along any direction is the sample
-[Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient).
-Given $n$ pairs $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$ of
-measurements, the coefficient is given by
+Given $n$ pairs of measurements $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$
+from variables $X$ and $Y$ that are $h$ units of distance apart, we define
+**geospatial correlation** as the sample
+[Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient):
 
 $$
 r_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
@@ -114,8 +113,8 @@ an alternative statistic of association that is most useful in geospatial data s
 
 ## Definition
 
-The **variogram function** is a more general alternative to the covariance function that
-that does **not** rely on the mean values $\bar{x}$ and $\bar{y}$. It is given by
+The **variogram function** is a more general alternative to the correlogram and covariance
+functions that does **not** rely on the mean values $\bar{x}$ and $\bar{y}$. It is given by
 
 $$
 \gamma_x(h) \approx \frac{1}{2|N(h)|}\sum_{N(h)}(x_i-x_j)^2
@@ -323,11 +322,38 @@ Mke.axislegend("Model", position = :rb)
 fig
 ```
 
-All the four elements of the variogram function can be easily set:
+The faster is the increase of the function near the origin, the more "erratic" is the process:
+
+```{julia}
+#| echo: false
+p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
+
+g1 = GaussianVariogram(range=10.0)
+g2 = SphericalVariogram(range=10.0)
+g3 = ExponentialVariogram(range=10.0)
+s1 = LUGS(:Z => (; variogram=g1))
+s2 = LUGS(:Z => (; variogram=g2))
+s3 = LUGS(:Z => (; variogram=g3))
+
+Random.seed!(2023)
+d1 = solve(p, s1)[1]
+d2 = solve(p, s2)[1]
+d3 = solve(p, s3)[1]
+
+fig = Mke.Figure()
+viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="model: Gaussian"))
+viz(fig[2,1], d2.geometry, color = d2.Z, axis = (; title="model: Spherical"))
+viz(fig[3,1], d3.geometry, color = d3.Z, axis = (; title="model: Exponential"))
+fig
+```
+
+All the four elements of the variogram function can be easily set at construction time:
 
 ```{julia}
 γ = GaussianVariogram(range=10.0, sill=2.0, nugget=0.1)
 ```
+
+And queried later with the corresponding functions:
 
 ```{julia}
 range(γ), sill(γ), nugget(γ)
@@ -403,6 +429,24 @@ In this example, we observe that the blobs are elongated with a horizontal
 range of 30 pixels and a vertical range of 10 pixels. This is known as
 geometric **anisotropy**.
 
+We can also estimate the variogram in all directions on a plane with the
+`EmpiricalVarioplane`:
+
+```{julia}
+gₚ = EmpiricalVarioplane(img, :Z, maxlag = 50.0)
+```
+
+The varioplane is usually plotted on a polar axis to highlight the different
+ranges as a function of the polar angle. These ranges are illustrated with a
+solid curve over the heatmap:
+
+```{julia}
+fig = Mke.Figure()
+ax = Mke.PolarAxis(fig[1,1])
+Mke.plot!(ax, gₚ)
+fig
+```
+
 ::: {.callout-note}
 
 The book by @Webster2007 and the article by @Cressie1980 are good resources
@@ -412,18 +456,27 @@ to learn more about robust variogram estimation.
 
 ### Least-squares fit
 
-After empirical estimation with geospatial data, the next step consists of
-fitting a theoretical model. This is done in order to be able to evaluate
-the variogram function at any lag $h$, not just the specific lags of the
-empirical variogram.
+After empirical variogram estimation, the next step consists of fitting a
+theoretical model. This step is necessary for interpolation given that we need
+to be able to evaluate the variogram function at any lag $h$, not just the
+specific lags of the empirical variogram.
 
-We can fit a specific theoretical model:
+::: {.callout-note}
+
+Another reason to fit theoretical models is to ensure that variances of linear
+combinations of variables are always non-negative as discussed in @Myers1992.
+
+:::
+
+To fit a specific theoretical model, we can use the `fit` function with the
+model as the first argument:
 
 ```{julia}
 fit(SphericalVariogram, g)
 ```
 
-Or let the framework select the model with minimum weighted least-squares error:
+We can also let the framework select the model with minimum weighted least-squares
+error by passing the generic `Variogram` model to the function:
 
 ```{julia}
 γ = fit(Variogram, g)
