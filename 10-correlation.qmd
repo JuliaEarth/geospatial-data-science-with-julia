@@ -483,3 +483,24 @@ error by passing the generic `Variogram` model to the function:
 ```
 
 ## Remarks
+
+This chapter is definitely one of the most challenging ones for those with little
+background in geostatistics. Let's make a few important remarks to summarize what
+we learned:
+
+- Geospatial correlation can be represented with different functions, including
+  the **correlogram**, the **covariance** and the **variogram** functions. Among
+  these functions the variogram is the most general and easy to interpret as a
+  measure of "spread" in the `hscatter` plot.
+- The variogram value $\gamma(h)$ represents the expected variation of a variable
+  that is $h$ units of distance from a reference point. It usually starts at
+  $\gamma(0) = 0$, reaches a **sill** value $\sigma^2$ near the **range** and
+  stays at this value as $h \to \infty$.
+- The selection of an appropriate theoretical variogram model for interpolation of
+  geospatial data is often based on a two-step procedure. First, we estimate the
+  `EmpiricalVariogram`, and then we `fit` a theoretical model. The most widely
+  used models are the `GaussianVariogram`, the `SphericalVariogram` and the
+  `ExponentialVariogram`.
+
+In the next chapter, we will learn how to perform **geospatial interpolation** with
+the selected theoretical variogram model.
