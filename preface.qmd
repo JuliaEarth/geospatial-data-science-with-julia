@@ -148,7 +148,7 @@ Prof. [Fernando Moraes](https://www.linkedin.com/in/fernando-sergio-de-moraes-34
 for organizing the first training courses at universities,
 to Prof. [Francisco Heron](https://scholar.google.com/citations?user=6-kN0tMAAAAJ) (UFC)
 for his contributions on high-performance computing,
-to Dr. [João Pinelo](https://www.aircentre.org/joao-pinelo) (AIRCentre)
+to Dr. [João Pinelo](https://www.linkedin.com/in/joaopinelo) (AIRCentre)
 for organizing the [JuliaEO](https://github.com/Arpeggeo/JuliaEO2023) workshop,
 and to colleagues in industry who support this work through research and development projects, including
 [Elisabeth Fonseca](https://www.linkedin.com/in/elisabeth-fonseca-geometallurgist),
