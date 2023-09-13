@@ -104,7 +104,7 @@ stored in the `geo` column:
 groups = @groupby(gt, "geo")
 ```
 
-There are two geological units in this deposit, represented as `GeoTableView`. We
+There are two geological units in this deposit, represented as `SubGeoTable`. We
 can access these units by indexing into the geospatial partition:
 
 

@@ -800,9 +800,9 @@ version = "0.6.1"
 
 [[deps.GeoTables]]
 deps = ["DataAPI", "Meshes", "PrettyTables", "Random", "ScientificTypes", "Tables", "Unitful"]
-git-tree-sha1 = "d1b5f20d399b8e157820e160cef234c1536767c9"
+git-tree-sha1 = "8d332f0bcd61b1fa134e32820300298f950d02b4"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.6.8"
+version = "1.6.9"
 
 [[deps.GeometryBasics]]
 deps = ["EarCut_jll", "Extents", "GeoInterface", "IterTools", "LinearAlgebra", "StaticArrays", "StructArrays", "Tables"]
@@ -1329,9 +1329,9 @@ version = "0.3.2"
 
 [[deps.Meshes]]
 deps = ["Bessels", "CircularArrays", "Distances", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "SparseArrays", "StaticArrays", "StatsBase", "TransformsBase"]
-git-tree-sha1 = "ad66d2590adc4ebc702646c66387f71e498f7140"
+git-tree-sha1 = "f16d0b5be3857477675c9d5096662f977a5ae83a"
 uuid = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
-version = "0.35.5"
+version = "0.35.6"
 weakdeps = ["Makie"]
 
     [deps.Meshes.extensions]
