@@ -485,9 +485,16 @@ Finally, if we request the entire `geometry` column, we get back the original do
 geotable[:,"geometry"]
 ```
 
-All the data access patterns provided by a `DataFrame` are supported by a `GeoTable`,
-with the main difference being the memory optimizations for high-performance geospatial
-data science.
+Besides the data access patterns of the `DataFrame`, the `GeoTable` also provides
+an advanced method for retrieving all rows that intersect with a given geometry:
+
+```{julia}
+geotable[Segment((0, 0), (2, 0)), :]
+```
+
+This method is very useful to narrow the region of interest and quickly discard
+all measurements that are outside of it. For instance, it is common to discard
+all "pixels" outside of a polygon before exporting the geotable to a file on disk.
 
 Notice that the `GeoTable` representation is general enough to accommodate both
 "raster data" and "vector data" in traditional GIS. We can create very large rasters
