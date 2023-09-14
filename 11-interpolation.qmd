@@ -81,7 +81,7 @@ sol |> viewer
 ```
 
 To visualize the effect of the exponent, let's extract the solution along the
-the line segment between two of the measurements, and visualize it:
+line segment between two of the measurements, and visualize it:
 
 ```{julia}
 seg = Segment((25, 25), (50, 75))
