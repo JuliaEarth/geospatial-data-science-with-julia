@@ -102,7 +102,9 @@ $(50, 75)$.
 Let's repeat the process with increasing values of the exponent:
 
 ```{julia}
-for β in [2,3,4,5]
+fig = Mke.Figure()
+Mke.Axis(fig[1,1])
+for β in [1,2,3,4,5]
   idw = IDW(:z => (; exponent=β))
   sol = solve(prob, idw)
   Mke.lines!(sol[seg, :z], label = "β=$β")
@@ -122,7 +124,8 @@ solve(prob, idw) |> viewer
 ```
 
 Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
-may be used in place of the `Euclidean` distance:
+may be used in place of the `Euclidean` distance to meet specific application
+requirements (e.g. `Haversine` distance on the sphere):
 
 ```{julia}
 idw = IDW(:z => (; distance=Chebyshev()))
@@ -131,3 +134,74 @@ solve(prob, idw) |> viewer
 ```
 
 ## Kriging
+
+In Kriging [@Matheron1971], the weights are computed using **geospatial correlation**.
+More specifically, they are the solution to a linear system of equations produced
+with a theoretical variogram model $\gamma$:
+
+$$
+\begin{bmatrix}
+\mathbf{G} & \mathbf{1} \\
+\mathbf{1}^\top & 0
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{\lambda} \\
+\nu
+\end{bmatrix} =
+\begin{bmatrix}
+\mathbf{g} \\
+1
+\end{bmatrix}
+$$
+
+where $\mathbf{G}_{ij} = \gamma(u_i, u_j)$ and $\mathbf{g}_i = \gamma(u, u_i)$ and
+$\nu$ is the [Lagrange multiplier](https://en.wikipedia.org/wiki/Lagrange_multiplier)
+associated with the constraint $\mathbf{1}^\top \mathbf{\lambda} = 1$. The system
+of equations above is known as *Ordinary Kriging*, but many other variants are
+supported by the framework.
+
+::: {.callout-note}
+
+The book by @Olea1999 is a good resource to learn the different systems of
+of equations associated with Kriging interpolation. Names such as *Simple Kriging*
+*Ordinary Kriging*, *Universal Kriging* are quite popular.
+
+:::
+
+Unlike `IDW`, the `Kriging` solution is a function of pairwise evaluations of distances
+between geometries with measurements, represented in the matrix $\mathbf{G}$. The
+pairwise evaluations account for possible redundancy in the measurements, which leads
+to improvements in the estimates:
+
+```{julia}
+krig = Kriging(:z => (; variogram=GaussianVariogram(range=30.0)))
+
+solve(prob, krig) |> viewer
+```
+
+In the previous chapter, we learned how the **range** of the variogram determines
+the average size of the "blobs" in the image. Let's illustrate this concept again
+for increasing values of this parameter:
+
+```{julia}
+fig = Mke.Figure()
+Mke.Axis(fig[1,1])
+for r in [10,20,30,40,50]
+  γ = GaussianVariogram(range=r)
+  krig = Kriging(:z => (; variogram=γ))
+  sol = solve(prob, krig)
+  Mke.lines!(sol[seg, :z], label = "range=$r")
+end
+Mke.axislegend(position = :lb)
+Mke.current_figure()
+```
+
+The larger is the range, the less abrupt is the transition of values between the
+two locations. Similar visualizations can be produced by varying the **sill**, the
+**nugget** and the **model** of the variogram.
+
+## 3D example
+
+Coming soon...
+
+## Congratulations!
