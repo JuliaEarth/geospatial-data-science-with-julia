@@ -179,6 +179,32 @@ krig = Kriging(:z => (; variogram=GaussianVariogram(range=30.0)))
 solve(prob, krig) |> viewer
 ```
 
+::: {.callout-note}
+
+## Tip for all users
+
+In this example, the variogram matrix $\mathbf{G}$ is built with pairwise evaluations
+between `Quadrangle` geometries:
+
+```{julia}
+γ = GaussianVariogram()
+
+γ(grid[1], grid[2])
+```
+
+This automatic **change of support** from `Point` to `Quadrangle` geometries is possible
+with numerical integration, but can be computionally intensive for some applications with
+large domains.
+
+If computational performance is more important than accuracy, then a `GeometrySet` of
+centroid `Point`s can be used as the domain of interpolation:
+
+```{julia}
+pset = GeometrySet(centroid.(grid))
+```
+
+:::
+
 In the previous chapter, we learned how the **range** of the variogram determines
 the average size of the "blobs" in the image. Let's illustrate this concept again
 for increasing values of this parameter:
