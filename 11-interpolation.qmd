@@ -1,3 +1,47 @@
-# Basic interpolation 🚧
+# Basic interpolation
 
-## Coming soon...
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+import CairoMakie as Mke
+```
+
+A very common task in geospatial data science is **geospatial interpolation**,
+i.e., predicting variables on geometries that lie between two or more geometries that
+have measurements. In this chapter, we will exploit **geospatial correlation**
+to make good predictions of continuous variables over an entire domain based on
+sparse measurements, which are usually stored on a `GeometrySet`.
+
+The basic idea behind most geostatistical interpolation methods is weighted
+combination of values from neighboring geometries. Given a geometry $u$, we want
+to estimate the value of the variable at this geometry $z(u)$ using weighted
+combinations of measurements from neighboring geometries $u_i,\ i=1,2,\ldots,n$:
+
+$$
+z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
+$$
+
+The methods differ in the way they compute the weights $\lambda_i,\ i=1,2,\ldots,n$,
+and we will cover two basic methods from classical literature: IDW and Kriging.
+
+## IDW
+
+In Inverse Distance Weighting (IDW), the weights are computed in terms of
+distances to the neighboring geometries:
+
+$$
+\lambda_i = \frac{1}{\sum_{i=1}^n {d(u, u_i)}^p}
+$$
+
+This basic idea was proposed by @Shepard1968, who also studied the role of the
+exponent $p$ in the interpolation results. Here, we will visualize the results
+using synthetic data:
+
+```{julia}
+gt = georef((z=[1.,0.,1.],), [(25.,25.), (50.,75.), (75.,50.)])
+```
+
+## Kriging
