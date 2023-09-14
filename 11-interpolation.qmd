@@ -30,18 +30,95 @@ and we will cover two basic methods from classical literature: IDW and Kriging.
 ## IDW
 
 In Inverse Distance Weighting (IDW), the weights are computed in terms of
-distances to the neighboring geometries:
+distances $d(u, u_i)$ to the neighboring geometries:
 
 $$
-\lambda_i = \frac{1}{\sum_{i=1}^n {d(u, u_i)}^p}
+\lambda_i = \frac{1}{\sum_{i=1}^n {d(u, u_i)}^\beta}
 $$
 
-This basic idea was proposed by @Shepard1968, who also studied the role of the
-exponent $p$ in the interpolation results. Here, we will visualize the results
+This basic idea was proposed by @Shepard1968, who also studied the effect of the
+exponent $\beta$ in the interpolation results. Here, we will visualize the results
 using synthetic data:
 
 ```{julia}
-gt = georef((z=[1.,0.,1.],), [(25.,25.), (50.,75.), (75.,50.)])
+data = georef((z=[1, 0, 1],), [(25, 25), (50, 75), (75, 50)])
+```
+
+```{julia}
+data |> viewer
+```
+
+First, we need to the define the domain of interpolation, i.e., the geometries
+where we want to estimate the variable $z$. In this case, we will perform
+interpolation on a 2D `CartesianGrid`:
+
+```{julia}
+grid = CartesianGrid(100, 100)
+```
+
+With the measurements of the variable $z$ in the geotable, and the domain of
+interpolation, we can define the `EstimationProblem` for the variable:
+
+```{julia}
+prob = EstimationProblem(data, grid, :z)
+```
+
+The `IDW` solver provides options for the number of neighboring geometries and
+for the exponent:
+
+```{julia}
+idw = IDW(:z => (; exponent=1))
+```
+
+We can solve the problem and visualize the result:
+
+```{julia}
+sol = solve(prob, idw)
+```
+
+```{julia}
+sol |> viewer
+```
+
+To visualize the effect of the exponent, let's extract the solution along the
+the line segment between two of the measurements, and visualize it:
+
+```{julia}
+seg = Segment((25, 25), (50, 75))
+```
+
+```{julia}
+z = sol[seg, :z]
+```
+
+```{julia}
+Mke.lines(z, label = "β=1")
+```
+
+We observe that the exponent $\beta=1$ leads to a gradual transition
+from the value $1$ at location $(25, 25)$ to the value $0$ at location
+$(50, 75)$.
+
+Let's repeat the process with increasing values of the exponent:
+
+```{julia}
+for β in [2,3,4,5]
+  idw = IDW(:z => (; exponent=β))
+  sol = solve(prob, idw)
+  Mke.lines!(sol[seg, :z], label = "β=$β")
+end
+Mke.axislegend(position = :lb)
+Mke.current_figure()
+```
+
+The larger the is exponent, the more abrupt is the transition of values
+between the locations. The IDW solution will approximate the nearest
+neighbor solution as $\beta \to \infty$:
+
+```{julia}
+idw = IDW(:z => (; exponent=100))
+
+solve(prob, idw) |> viewer
 ```
 
 ## Kriging

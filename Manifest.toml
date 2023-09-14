@@ -484,9 +484,9 @@ version = "1.15.1"
 
 [[deps.DiskArrays]]
 deps = ["OffsetArrays"]
-git-tree-sha1 = "1eb57cdbf33f945ccfaf27f45bff461c47d9cab7"
+git-tree-sha1 = "ff14e3ab4b618d33eca0ee32eb389aacb0b67330"
 uuid = "3c3547ce-8d99-4f5e-a174-61eb10b00ae3"
-version = "0.3.16"
+version = "0.3.17"
 
 [[deps.Distances]]
 deps = ["LinearAlgebra", "Statistics", "StatsAPI"]
@@ -782,9 +782,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsBase]]
 deps = ["Combinatorics", "DensityRatioEstimation", "Distances", "Distributed", "Distributions", "GeoTables", "LinearAlgebra", "LossFunctions", "MLJModelInterface", "Meshes", "Optim", "ProgressMeter", "Random", "Rotations", "ScientificTypes", "Statistics", "StatsBase", "TableTransforms", "Tables", "Transducers", "TypedTables"]
-git-tree-sha1 = "6de88840a4a156d1196f736894cac437f6d39abc"
+git-tree-sha1 = "844016ba354e90933ef3c2ab56adab59c3f0f8c8"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.35.0"
+version = "0.35.1"
 
 [[deps.GeoStatsImages]]
 deps = ["GslibIO"]
@@ -794,9 +794,9 @@ version = "1.1.0"
 
 [[deps.GeoStatsSolvers]]
 deps = ["Bessels", "CpuId", "Distances", "Distributions", "FFTW", "GeoStatsBase", "GeoTables", "KrigingEstimators", "LinearAlgebra", "MLJModelInterface", "Meshes", "Random", "Statistics", "TableTransforms", "Tables", "Unitful", "Variography"]
-git-tree-sha1 = "c3c2a0f09048ba9b346b0871ae043fe9bb8164ce"
+git-tree-sha1 = "c648164c4d6d93caa296ab341e3f45f9a82ca934"
 uuid = "50e95529-e670-4fa6-84ad-e28f686cc091"
-version = "0.6.1"
+version = "0.6.2"
 
 [[deps.GeoTables]]
 deps = ["DataAPI", "Meshes", "PrettyTables", "Random", "ScientificTypes", "Tables", "Unitful"]
@@ -2135,9 +2135,9 @@ uuid = "981d1d27-644d-49a2-9326-4793e63143c3"
 version = "0.1.0"
 
 [[deps.TupleTools]]
-git-tree-sha1 = "dd0ee1e392438338abb678dacdcaef41724ec57a"
+git-tree-sha1 = "155515ed4c4236db30049ac1495e2969cc06be9d"
 uuid = "9d95972d-f1c8-5527-a6e0-b4b365fa01f6"
-version = "1.4.0"
+version = "1.4.3"
 
 [[deps.TypedTables]]
 deps = ["Adapt", "Dictionaries", "Indexing", "SplitApplyCombine", "Tables", "Unicode"]
@@ -2189,9 +2189,9 @@ version = "1.0.5"
 
 [[deps.Variography]]
 deps = ["Bessels", "Distances", "GeoStatsBase", "GeoTables", "InteractiveUtils", "LinearAlgebra", "Meshes", "NearestNeighbors", "Optim", "Printf", "Random", "Setfield", "Tables", "Transducers", "Unitful"]
-git-tree-sha1 = "0ceadbbe83fcd727c1712546e8525d32b27e90c9"
+git-tree-sha1 = "b62ad1095e9d31827da23474f497ee54e1c47a22"
 uuid = "04a0146e-e6df-5636-8d7f-62fa9eb0b20c"
-version = "0.18.1"
+version = "0.18.2"
 
 [[deps.WeakRefStrings]]
 deps = ["DataAPI", "InlineStrings", "Parsers"]
