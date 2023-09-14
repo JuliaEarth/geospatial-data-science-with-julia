@@ -111,12 +111,21 @@ Mke.axislegend(position = :lb)
 Mke.current_figure()
 ```
 
-The larger the is exponent, the more abrupt is the transition of values
-between the locations. The IDW solution will approximate the nearest
-neighbor solution as $\beta \to \infty$:
+The larger is the exponent, the more abrupt is the transition of values
+between the two locations. In addition, the IDW solution will converge
+to the nearest neighbor solution as $\beta \to \infty$:
 
 ```{julia}
 idw = IDW(:z => (; exponent=100))
+
+solve(prob, idw) |> viewer
+```
+
+Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
+may be used in place of the `Euclidean` distance:
+
+```{julia}
+idw = IDW(:z => (; distance=Chebyshev()))
 
 solve(prob, idw) |> viewer
 ```
