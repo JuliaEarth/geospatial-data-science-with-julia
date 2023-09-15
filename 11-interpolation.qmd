@@ -96,10 +96,8 @@ Mke.lines(z, label = "β=1")
 ```
 
 We observe that the exponent $\beta=1$ leads to a gradual transition
-from the value $1$ at location $(25, 25)$ to the value $0$ at location
-$(50, 75)$.
-
-Let's repeat the process with increasing values of the exponent:
+from the value $z=1$ to the value $z=0$. Let's repeat the process with
+increasing values of the exponent:
 
 ```{julia}
 fig = Mke.Figure()
