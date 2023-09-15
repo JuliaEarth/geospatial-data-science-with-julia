@@ -203,6 +203,16 @@ pset = GeometrySet(centroid.(grid))
 
 :::
 
+::: {.callout-note}
+
+## Tip for all users
+
+By default, **all** neighboring geometries are used for interpolation. In order to limit
+the number of neighboring geometries per estimation location, consider using the option
+`maxneighbors`. This option can drastically improve the runtime of solvers.
+
+:::
+
 In the previous chapter, we learned how the **range** of the variogram determines
 the average size of the "blobs" in the image. Let's illustrate this concept again
 for increasing values of this parameter:
@@ -224,8 +234,90 @@ The larger is the range, the less abrupt is the transition of values between the
 two locations. Similar visualizations can be produced by varying the **sill**, the
 **nugget** and the **model** of the variogram.
 
-## 3D example
+## Example
 
-Coming soon...
+In order to solidify the concepts learned so far, let's look into an example.
+We will cover all the steps that a geospatial data scientist has to perform to
+extract **geospatial correlation** from samples and to use this information in
+**geospatial interpolation**. In this example, we will also learn how to model
+**anisotropy** with theoretical variograms.
+
+Let's consider an image of the [Walker Lake](https://en.wikipedia.org/wiki/Walker_Lake_(Nevada))
+by @Mariethoz2014 as groundtruth. To avoid visualization of large images with CairoMakie.jl,
+we will consider a subdomain within a `Box`:
+
+
+```{julia}
+using GeoStatsImages
+
+img = geostatsimage("WalkerLakeTruth")
+
+img = img[Box((0, 0), (200, 200)), :]
+```
+
+```{julia}
+img |> viewer
+```
+
+Let's assume that we only have access to 10000 samples from the image:
+
+```{julia}
+using Random
+
+samples = img |> Sample(10000, replace=false, rng=MersenneTwister(123))
+
+samples |> viewer
+```
+
+Our goal is to interpolate the variable `Z` over the original domain.
+Let's start by estimating the `EmpiricalVariogram` from the samples.
+Because the distribution of values in the Walker Lake is skewed, the
+default `:matheron` estimator of the variogram shows a high nugget
+effect:
+
+```{julia}
+g = EmpiricalVariogram(samples, :Z, maxlag = 100.0)
+```
+
+```{julia}
+Mke.plot(g)
+```
+
+A better alternative in this case is to use the robust `:cressie`
+estimator:
+
+```{julia}
+g = EmpiricalVariogram(samples, :Z, maxlag = 100.0, estimator = :cressie)
+```
+
+```{julia}
+Mke.plot(g)
+```
+
+After estimating the empirical variogram, the next step consists of fitting
+a theoretical model. The behavior near the origin resembles a `SphericalVariogram`:
+
+```{julia}
+γ = fit(SphericalVariogram, g)
+```
+
+```{julia}
+Mke.plot(γ, maxlag = 100.0)
+```
+
+Now that we extracted the geospatial correlation from the samples, we can
+use this information in `Kriging` interpolation:
+
+```{julia}
+prob = EstimationProblem(samples, img.geometry, :Z)
+
+krig = Kriging(:Z => (variogram=γ, maxneighbors=10))
+
+sol = solve(prob, krig)
+```
+
+```{julia}
+sol |> viewer
+```
 
 ## Congratulations!
