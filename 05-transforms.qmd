@@ -571,7 +571,8 @@ Models of geospatial correlation such as variograms [@Hoffimann2019] require uni
 in the geotable, a that is the purpose of the `UniqueCoords` transform. It removes duplicate
 points in the geotable and aggregates the `values` with custom aggregation functions.
 
-As a final example of geospatial transform, let's consider the following geotable stored in a `.png` file:
+Let's consider the following geotable stored in a `.png` file to illustrate another geospatial
+transform:
 
 ```{julia}
 letters = GeoIO.load("data/letters.png")
@@ -592,11 +593,9 @@ The higher is the tolerance, the less is the number of segments in the boundary:
 viz(Ab.geometry[2], color = "black")
 ```
 
-In the opposite direction, we have the `Rasterize` transform, which takes a geotable over a `GeometrySet`
-and assigns the geometries to a `Grid`. In this transform, we can provide an external grid for the assignments
-or request a grid size to discretize the `boundingbox` of the geometries.
-
-Let's illustrate the transform with the following geotable:
+In the reverse direction, we have the `Rasterize` transform, which takes a geotable over a `GeometrySet`
+and assigns the geometries to a `Grid`. In this transform, we can either provide an external grid for the
+the assignments, or request a grid size to discretize the `boundingbox` of all geometries:
 
 ```{julia}
 A = [1, 2, 3, 4, 5]
@@ -609,13 +608,9 @@ p5 = PolyArea((1, 3), (5, 3), (6, 6), (3, 8), (0, 6))
 gt = georef((; A, B), [p1, p2, p3, p4, p5])
 ```
 
-There are five polygons in the domain:
-
 ```{julia}
 gt |> viewer
 ```
-
-We can discretize these polygons with a grid of size 20x20:
 
 ```{julia}
 nt = gt |> Rasterize(20, 20)
@@ -625,9 +620,8 @@ nt = gt |> Rasterize(20, 20)
 nt |> viewer
 ```
 
-The values of the variables are aggregated at geometric intersections
-using a default aggregation function, which can be overwritten with a
-user option.
+The values of the variables are aggregated at geometric intersections using a default aggregation function,
+which can be overwritten with an option.
 
 ## Remarks
 

@@ -49,14 +49,14 @@ data |> viewer
 ```
 
 First, we need to the define the domain of interpolation, i.e., the geometries
-where we want to estimate the variable $z$. In this case, we will perform
+where we want to estimate the variable `z`. In this case, we will perform
 interpolation on a 2D `CartesianGrid`:
 
 ```{julia}
 grid = CartesianGrid(100, 100)
 ```
 
-With the measurements of the variable $z$ in the geotable, and the domain of
+With the measurements of the variable `z` in the geotable, and the domain of
 interpolation, we can define the `EstimationProblem` for the variable:
 
 ```{julia}
