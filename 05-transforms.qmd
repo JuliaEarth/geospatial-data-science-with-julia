@@ -592,6 +592,43 @@ The higher is the tolerance, the less is the number of segments in the boundary:
 viz(Ab.geometry[2], color = "black")
 ```
 
+In the opposite direction, we have the `Rasterize` transform, which takes a geotable over a `GeometrySet`
+and assigns the geometries to a `Grid`. In this transform, we can provide an external grid for the assignments
+or request a grid size to discretize the `boundingbox` of the geometries.
+
+Let's illustrate the transform with the following geotable:
+
+```{julia}
+A = [1, 2, 3, 4, 5]
+B = [1.1, 2.2, 3.3, 4.4, 5.5]
+p1 = PolyArea((2, 0), (6, 2), (2, 2))
+p2 = PolyArea((0, 6), (3, 8), (0, 10))
+p3 = PolyArea((3, 6), (9, 6), (9, 9), (6, 9))
+p4 = PolyArea((7, 0), (10, 0), (10, 4), (7, 4))
+p5 = PolyArea((1, 3), (5, 3), (6, 6), (3, 8), (0, 6))
+gt = georef((; A, B), [p1, p2, p3, p4, p5])
+```
+
+There are five polygons in the domain:
+
+```{julia}
+gt |> viewer
+```
+
+We can discretize these polygons with a grid of size 20x20:
+
+```{julia}
+nt = gt |> Rasterize(20, 20)
+```
+
+```{julia}
+nt |> viewer
+```
+
+The values of the variables are aggregated at geometric intersections
+using a default aggregation function, which can be overwritten with a
+user option.
+
 ## Remarks
 
 In this chapter we learned the important concept of **transforms**,

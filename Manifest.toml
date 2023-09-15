@@ -782,9 +782,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsBase]]
 deps = ["Combinatorics", "DensityRatioEstimation", "Distances", "Distributed", "Distributions", "GeoTables", "LinearAlgebra", "LossFunctions", "MLJModelInterface", "Meshes", "Optim", "ProgressMeter", "Random", "Rotations", "ScientificTypes", "Statistics", "StatsBase", "TableTransforms", "Tables", "Transducers", "TypedTables"]
-git-tree-sha1 = "844016ba354e90933ef3c2ab56adab59c3f0f8c8"
+git-tree-sha1 = "4f678530ed8373d6cd4f3754750c167711461cd6"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.35.1"
+version = "0.35.2"
 
 [[deps.GeoStatsImages]]
 deps = ["GslibIO"]
@@ -2054,9 +2054,9 @@ version = "1.0.1"
 
 [[deps.TableTransforms]]
 deps = ["AbstractTrees", "CategoricalArrays", "Distributions", "LinearAlgebra", "NelderMead", "PrettyTables", "Random", "ScientificTypes", "Statistics", "StatsBase", "Tables", "Transducers", "TransformsBase"]
-git-tree-sha1 = "8ebd72d99ac596725fc33efb52909f0406871c0b"
+git-tree-sha1 = "29f636ee42a9d2ad663ce3c45b7ffbdb95cd6875"
 uuid = "0d432bfd-3ee1-4ac1-886a-39f05cc69a3e"
-version = "1.14.6"
+version = "1.15.0"
 
 [[deps.Tables]]
 deps = ["DataAPI", "DataValueInterfaces", "IteratorInterfaceExtensions", "LinearAlgebra", "OrderedCollections", "TableTraits", "Test"]
