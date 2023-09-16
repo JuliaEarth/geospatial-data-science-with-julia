@@ -33,7 +33,7 @@ In Inverse Distance Weighting (IDW), the weights are computed in terms of
 distances $d(u, u_i)$ to the neighboring geometries:
 
 $$
-\lambda_i = \frac{1}{\sum_{i=1}^n {d(u, u_i)}^\beta}
+\lambda_i = \frac{1}{{d(u, u_i)}^\beta}
 $$
 
 This basic idea was proposed by @Shepard1968, who also studied the effect of the
