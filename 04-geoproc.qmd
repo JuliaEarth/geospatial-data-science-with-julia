@@ -60,6 +60,18 @@ The full list can be obtained with Julia's `subtypes` function:
 subtypes(Primitive)
 ```
 
+::: {.callout-note}
+
+Geometries have their own documentation. For example,
+to learn more about the `Cylinder` geometry, its parameters
+and defaults, we can type the following in the Julia REPL:
+
+```julia
+?Cylinder
+```
+
+:::
+
 A geometry is a `Polytope` if it can be represented as a combination of
 "flat sides", which are also `Polytope` themselves. A 3D `Polytope` is
 called a `Polyhedron`, a 2D `Polytope` is called a `Polygon` and a
