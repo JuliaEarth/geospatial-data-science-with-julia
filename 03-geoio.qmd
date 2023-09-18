@@ -140,8 +140,16 @@ for example, we wouldn't be able to dispatch optimized code that is only valid f
 @code_llvm isconvex(t)
 ```
 
-Notice how the `isconvex` function is compiled away to the constant `true` when called on
-the triangle. The code for a generic polygon is much more evolved and requires runtime
+::: {.callout-note}
+
+In Julia, the macro `@code_llvm` shows the underlying code sent to the LLVM compiler.
+In this case, the code is the single line `ret i8 1`, which is the instruction to
+return the constant integer `1`.
+
+:::
+
+Notice how the `isconvex` function is compiled away to the **constant** `1` (i.e. `true`) when
+called on the triangle. The code for a generic polygon is much more evolved and requires runtime
 checks that are too expensive to afford, specially in 3D.
 
 Having cleared that up, we will now proceed to the last foundational chapter of the book,
