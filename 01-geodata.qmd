@@ -367,6 +367,16 @@ grid[1]
 
 :::
 
+::: {.callout-note}
+
+Geometries in a `domain` can be accessed with a single index 
+`domain[ind]` or with a collection of indices `domain[inds]`.
+Even though it is tempting to use `domain[i,j]` and `domain[i,j,k]`
+in the case of 2D and 3D `CartesianGrid`, this syntax is not supported.
+Many domains do **not** have `GridTopology`.
+
+:::
+
 In computational geometry, a `CartesianGrid` is a specific
 type of [mesh](https://en.wikipedia.org/wiki/Polygon_mesh).
 It can only represent "flat" domains sampled regularly along
@@ -388,7 +398,8 @@ mesh = SimpleMesh(points, connec)
 
 The `connect` function takes a tuple of indices and a geometry type,
 and produces a connectivity object. The geometry type can be ommitted,
-in which case it is assumed to be a `Ngon`:
+in which case it is assumed to be a `Ngon`, i.e., a polygon with `N`
+sides:
 
 ```{julia}
 c = connect((1, 2, 3))
