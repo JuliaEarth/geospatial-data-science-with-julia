@@ -245,7 +245,7 @@ other table representations.
 Other popular table representations in Julia are associated
 with specific file formats:
 
-- `CSV.File` from [CSV.jl](https://github.com/JuliaData/CSV.jl)
+- `CSV.File` from [CSV.jl](https://github.com/JuliaData/CSV.jl) [@Quinn2023]
 - `XLSX.Worksheet` from [XLSX.jl](https://github.com/felipenoris/XLSX.jl)
 - Databases from [JuliaDatabases](https://github.com/JuliaDatabases)
 
