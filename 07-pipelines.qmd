@@ -17,9 +17,9 @@ the resulting geotable to the next transform:
 geotable |> transform1 |> transform2 |> ... |> viewer
 ```
 
-In this chapter, we will learn two new powerful operators `→` and `⊔` to
-combine transforms into **pipelines** that can be optimized and reused with
-different geotables.
+In this chapter, we will learn two new powerful operators `→` and `⊔` provided
+by the framework to combine transforms into **pipelines** that can be optimized
+and reused with different geotables.
 
 ## Motivation
 
