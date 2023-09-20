@@ -1,4 +1,4 @@
-# Basic interpolation
+# Simple interpolation
 
 ```{julia}
 #| echo: false
@@ -280,3 +280,34 @@ hundreds of thousands of measurements and very large grids.
 :::
 
 ## Congratulations!
+
+Congratulations on finishing **Part IV** of the book. The interpolation
+models introduced here are simple, yet very useful. Before we start our
+journey with real-world applications of the framework, let's review what
+we learned:
+
+- **Geospatial interpolation** can be achieved with the `Interpolate`
+  and `InterpolateNeighbors` transforms, and geostatistical models such
+  as `IDW` and `Kriging`.
+- Models such as `Kriging` exploit **geospatial correlation** to improve
+  interpolation results. We can extract this information from samples using
+  a two-step procedure:
+  1. Estimate the `EmpiricalVariogram` from the available samples
+  2. Peform `fit` of theoretical model with result from previous step
+- `Interpolate` and `InterpolateNeighbors` are examples of geostatistical
+  transforms. They can be easily inserted in more advanced pipelines as
+  discussed in **Part II**.
+
+In the next chapters, we will use the framework that we learned with real
+data to illustrate how advanced geospatial data science can be done with just
+a few lines o code. Once a solution is written in terms of the high-level tools
+covered in previous chapters, it is trivial to improve computational performance
+in pure Julia.
+
+::: {.callout-note}
+
+Feature and performance requests are **very welcome**. We invite all users
+of the framework to [submit issues](https://github.com/JuliaEarth/GeoStats.jl/issues)
+and contribute with our open source software stack.
+
+:::
