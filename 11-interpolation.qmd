@@ -60,7 +60,7 @@ With the measurements of the variable `z` in the geotable, and the domain of
 interpolation, we can use the `Interpolate` transform with the `IDW` model:
 
 ```{julia}
-interp = data |> Interpolate(grid, "z" => IDW())
+interp = data |> Interpolate(grid, IDW())
 ```
 
 ```{julia}
@@ -75,7 +75,7 @@ seg = Segment((25, 25), (50, 75))
 ```
 
 ```{julia}
-z = interp[seg, :z]
+z = interp[seg, "z"]
 ```
 
 ```{julia}
@@ -91,8 +91,8 @@ fig = Mke.Figure()
 Mke.Axis(fig[1,1])
 for β in [1,2,3,4,5]
   model = IDW(β)
-  interp = data |> Interpolate(grid, "z" => model)
-  Mke.lines!(interp[seg, :z], label = "β=$β")
+  interp = data |> Interpolate(grid, model)
+  Mke.lines!(interp[seg, "z"], label = "β=$β")
 end
 Mke.axislegend(position = :lb)
 Mke.current_figure()
@@ -105,7 +105,7 @@ to the nearest neighbor solution as $\beta \to \infty$:
 ```{julia}
 model = IDW(100)
 
-data |> Interpolate(grid, "z" => model) |> viewer
+data |> Interpolate(grid, model) |> viewer
 ```
 
 Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
@@ -115,7 +115,7 @@ requirements (e.g. `Haversine` distance on the sphere):
 ```{julia}
 model = IDW(1, Chebyshev())
 
-data |> Interpolate(grid, "z" => model) |> viewer
+data |> Interpolate(grid, model) |> viewer
 ```
 
 ## Kriging
@@ -161,7 +161,7 @@ to improvements in the estimates:
 ```{julia}
 model = Kriging(GaussianVariogram(range=30.0))
 
-data |> Interpolate(grid, "z" => model) |> viewer
+data |> Interpolate(grid, model) |> viewer
 ```
 
 In the previous chapter, we learned how the **range** of the variogram determines
@@ -174,8 +174,8 @@ Mke.Axis(fig[1,1])
 for r in [10,20,30,40,50]
   γ = GaussianVariogram(range=r)
   model = Kriging(γ)
-  interp = data |> Interpolate(grid, "z" => model)
-  Mke.lines!(interp[seg, :z], label = "range=$r")
+  interp = data |> Interpolate(grid, model)
+  Mke.lines!(interp[seg, "z"], label = "range=$r")
 end
 Mke.axislegend(position = :lb)
 Mke.current_figure()
@@ -263,7 +263,7 @@ fit the `Kriging` model with a maximum number of neighbors with the
 `InterpolateNeighbors` transform:
 
 ```{julia}
-interp = samples |> InterpolateNeighbors(img.geometry, "Z" => Kriging(γ))
+interp = samples |> InterpolateNeighbors(img.geometry, Kriging(γ))
 ```
 
 ```{julia}
