@@ -57,38 +57,25 @@ grid = CartesianGrid(100, 100)
 ```
 
 With the measurements of the variable `z` in the geotable, and the domain of
-interpolation, we can define the `EstimationProblem` for the variable:
+interpolation, we can use the `Interpolate` transform with the `IDW` model:
 
 ```{julia}
-prob = EstimationProblem(data, grid, :z)
-```
-
-The `IDW` solver provides options for the number of neighboring geometries and
-for the exponent:
-
-```{julia}
-idw = IDW(:z => (; exponent=1))
-```
-
-We can solve the problem and visualize the result:
-
-```{julia}
-sol = solve(prob, idw)
+interp = data |> Interpolate(grid, "z" => IDW())
 ```
 
 ```{julia}
-sol |> viewer
+interp |> viewer
 ```
 
-To visualize the effect of the exponent, let's extract the solution along the
-line segment between two of the measurements, and visualize it:
+To visualize the effect of the exponent, let's extract the interpolation results
+along the line segment between two of the measurements, and visualize it:
 
 ```{julia}
 seg = Segment((25, 25), (50, 75))
 ```
 
 ```{julia}
-z = sol[seg, :z]
+z = interp[seg, :z]
 ```
 
 ```{julia}
@@ -103,9 +90,9 @@ increasing values of the exponent:
 fig = Mke.Figure()
 Mke.Axis(fig[1,1])
 for β in [1,2,3,4,5]
-  idw = IDW(:z => (; exponent=β))
-  sol = solve(prob, idw)
-  Mke.lines!(sol[seg, :z], label = "β=$β")
+  model = IDW(β)
+  interp = data |> Interpolate(grid, "z" => model)
+  Mke.lines!(interp[seg, :z], label = "β=$β")
 end
 Mke.axislegend(position = :lb)
 Mke.current_figure()
@@ -116,9 +103,9 @@ between the two locations. In addition, the IDW solution will converge
 to the nearest neighbor solution as $\beta \to \infty$:
 
 ```{julia}
-idw = IDW(:z => (; exponent=100))
+model = IDW(100)
 
-solve(prob, idw) |> viewer
+data |> Interpolate(grid, "z" => model) |> viewer
 ```
 
 Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
@@ -126,9 +113,9 @@ may be used in place of the `Euclidean` distance to meet specific application
 requirements (e.g. `Haversine` distance on the sphere):
 
 ```{julia}
-idw = IDW(:z => (; distance=Chebyshev()))
+model = IDW(1, Chebyshev())
 
-solve(prob, idw) |> viewer
+data |> Interpolate(grid, "z" => model) |> viewer
 ```
 
 ## Kriging
@@ -172,44 +159,19 @@ pairwise evaluations account for possible redundancy in the measurements, which 
 to improvements in the estimates:
 
 ```{julia}
-krig = Kriging(:z => (; variogram=GaussianVariogram(range=30.0)))
+model = Kriging(GaussianVariogram(range=30.0))
 
-solve(prob, krig) |> viewer
+data |> Interpolate(grid, "z" => model) |> viewer
 ```
 
 ::: {.callout-note}
 
 ## Tip for all users
 
-In this example, the variogram matrix $\mathbf{G}$ is built with pairwise evaluations
-between `Quadrangle` geometries:
-
-```{julia}
-γ = GaussianVariogram()
-
-γ(grid[1], grid[2])
-```
-
-This automatic **change of support** from `Point` to `Quadrangle` geometries is possible
-with numerical integration, but can be computionally intensive for some applications with
-large domains.
-
-If computational performance is more important than accuracy, then a `GeometrySet` of
-centroid `Point`s can be used as the domain of interpolation:
-
-```{julia}
-pset = GeometrySet(centroid.(grid))
-```
-
-:::
-
-::: {.callout-note}
-
-## Tip for all users
-
-By default, **all** neighboring geometries are used for interpolation. In order to limit
-the number of neighboring geometries per estimation location, consider using the option
-`maxneighbors`. This option can drastically improve the runtime of solvers.
+The `Interpolate` transform uses neighborhoods over th geospatial domain of the geotable
+for high-performance interpolation with big data. An alternative approach is provided by
+the `InterpolateGlobal` transform, wich uses all available data to "fit" the model before
+performing predictions.
 
 :::
 
@@ -222,9 +184,9 @@ fig = Mke.Figure()
 Mke.Axis(fig[1,1])
 for r in [10,20,30,40,50]
   γ = GaussianVariogram(range=r)
-  krig = Kriging(:z => (; variogram=γ))
-  sol = solve(prob, krig)
-  Mke.lines!(sol[seg, :z], label = "range=$r")
+  model = Kriging(γ)
+  interp = data |> Interpolate(grid, "z" => model)
+  Mke.lines!(interp[seg, :z], label = "range=$r")
 end
 Mke.axislegend(position = :lb)
 Mke.current_figure()
@@ -276,7 +238,7 @@ default `:matheron` estimator of the variogram shows a high nugget
 effect:
 
 ```{julia}
-g = EmpiricalVariogram(samples, :Z, maxlag = 100.0)
+g = EmpiricalVariogram(samples, "Z", maxlag = 100.0)
 ```
 
 ```{julia}
@@ -287,7 +249,7 @@ A better alternative in this case is to use the robust `:cressie`
 estimator:
 
 ```{julia}
-g = EmpiricalVariogram(samples, :Z, maxlag = 100.0, estimator = :cressie)
+g = EmpiricalVariogram(samples, "Z", maxlag = 100.0, estimator = :cressie)
 ```
 
 ```{julia}
@@ -309,15 +271,11 @@ Now that we extracted the geospatial correlation from the samples, we can
 use this information in `Kriging` interpolation:
 
 ```{julia}
-prob = EstimationProblem(samples, img.geometry, :Z)
-
-krig = Kriging(:Z => (variogram=γ, maxneighbors=10))
-
-sol = solve(prob, krig)
+interp = samples |> Interpolate(img.geometry, "Z" => Kriging(γ))
 ```
 
 ```{julia}
-sol |> viewer
+interp |> viewer
 ```
 
 ## Congratulations!
