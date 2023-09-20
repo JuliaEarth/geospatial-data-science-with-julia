@@ -164,17 +164,6 @@ model = Kriging(GaussianVariogram(range=30.0))
 data |> Interpolate(grid, "z" => model) |> viewer
 ```
 
-::: {.callout-note}
-
-## Tip for all users
-
-The `Interpolate` transform uses neighborhoods over th geospatial domain of the geotable
-for high-performance interpolation with big data. An alternative approach is provided by
-the `InterpolateGlobal` transform, wich uses all available data to "fit" the model before
-performing predictions.
-
-:::
-
 In the previous chapter, we learned how the **range** of the variogram determines
 the average size of the "blobs" in the image. Let's illustrate this concept again
 for increasing values of this parameter:
@@ -268,14 +257,26 @@ Mke.plot(γ, maxlag = 100.0)
 ```
 
 Now that we extracted the geospatial correlation from the samples, we can
-use this information in `Kriging` interpolation:
+use this information in `Kriging` interpolation. Instead of fitting all the
+samples at once like it is done in the `Interpolate` transform, we will
+fit the `Kriging` model with a maximum number of neighbors with the
+`InterpolateNeighbors` transform:
 
 ```{julia}
-interp = samples |> Interpolate(img.geometry, "Z" => Kriging(γ))
+interp = samples |> InterpolateNeighbors(img.geometry, "Z" => Kriging(γ))
 ```
 
 ```{julia}
 interp |> viewer
 ```
+
+::: {.callout-note}
+
+## Tip for all users
+
+The `InterpolateNeighbors` is recommended in 3D applications with
+hundreds of thousands of measurements and very large grids.
+
+:::
 
 ## Congratulations!
