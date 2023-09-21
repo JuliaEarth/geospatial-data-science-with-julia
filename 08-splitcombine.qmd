@@ -65,7 +65,7 @@ names(gt)
 
 The "EAST", "NORTH" and "RL" coordinates used to `georef` the CSV file
 represent the centroids of the mining blocks. The sides of these blocks
-are provided as metadata (e.g., 4x4x4):
+are provided as metadata (e.g., 5x5x5):
 
 ```{julia}
 gt |> viewer
@@ -129,10 +129,11 @@ $$
 
 Let's use an auxiliary function to convert the `Point`s in the `geometry` column into
 `Box`es of sides 4x4x4. The function takes a centroid point as input and produces a
-box centered at the point with corners that are 2x2x2 units away in both directions:
+box centered at the point with corners that are 2.5x2.5x2.5 units away in both
+directions:
 
 ```{julia}
-box(point) = Box(point - Vec(2, 2, 2), point + Vec(2, 2, 2))
+box(point) = Box(point - Vec(2.5, 2.5, 2.5), point + Vec(2.5, 2.5, 2.5))
 ```
 
 ```{julia}
