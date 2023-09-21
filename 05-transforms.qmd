@@ -427,9 +427,9 @@ viz(bt.geometry)
 The Beethoven domain has been saved in the `.ply` file in a position that is
 not ideal for visualization. We can rotate this domain with any active rotation
 specification from [Rotations.jl](https://github.com/JuliaGeometry/Rotations.jl)
-to improve the visualization. For example, we can specify that we want to rotate
-all points in the mesh by analogy with a rotation between coordinates `(0, 1, 0)`
-and coordinates `(0, 0, 1)` as follows:
+by @Koolen2023 to improve the visualization. For example, we can specify that we
+want to rotate all points in the mesh by analogy with a rotation between coordinates
+`(0, 1, 0)` and coordinates `(0, 0, 1)`:
 
 ```{julia}
 rt = bt |> Rotate((0, 1, 0), (0, 0, 1))
