@@ -21,10 +21,10 @@ followed by other communities such as Python and R, and
 focus our energy interfacing with well-tested GIS libraries
 written in C/C++ (e.g., [GDAL](https://gdal.org/index.html),
 [GEOS](https://libgeos.org)). This is precisely what the
-[JuliaGeo](https://github.com/JuliaGeo) organization
-has been doing over the years, and it is an important
-agenda to bring people from other languages that are
-used to the [OGC](https://www.ogc.org/standards) standards.
+JuliaGeo organization has been doing over the years, and it
+is an important agenda to bring people from other languages
+that are used to the [OGC](https://www.ogc.org/standards)
+standards.
 
 On the other hand, we have young geoscientists and first-time
 programmers who have never studied GIS before, and who *really
