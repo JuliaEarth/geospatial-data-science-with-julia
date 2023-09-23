@@ -1,3 +1,212 @@
-# Geospatial joins 🚧
+# Geospatial joins
 
-## Coming soon...
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+import CairoMakie as Mke
+```
+
+Another important tool in geospatial data science is the **geospatial join**.
+We will introduce the concept with a practical example, and will explain how it
+is related to the traditional [join](https://en.wikipedia.org/wiki/Join_(SQL)) of
+two tables.
+
+## Motivation
+
+The split-apply-combine pattern that we learned in the previous chapter requires a
+**single** geotable with all the relevant information in it. However, many questions
+in geospatial data science can only be answered with information that is spread across
+**multiple** geotables. Hence, the need to **join** these geotables before attempting
+to `@groupby`, `@transform` and `@combine` the information.
+
+Let's consider a simple example where we are given two geotables, one containing people
+who shared their latitude and longitude coordinates:
+
+```{julia}
+table = (
+  NAME=["John", "Mary", "Paul", "Anne", "Kate"],
+  AGE=[34, 12, 23, 39, 28]u"yr",
+  HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72]u"m",
+  LATITUDE=[-22.96710361241228, 37.42773662442142, -27.486220858775997, 39.90358408375064, -3.847311538763359],
+  LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -32.411372812211226]
+)
+
+people = georef(table, (:LONGITUDE, :LATITUDE))
+```
+
+And another containing countries in the world according to
+the [Natural Earth](https://www.naturalearthdata.com) project:
+
+```{julia}
+using GeoIO
+
+countries = GeoIO.load("data/countries.geojson", numbertype = Float64)
+```
+
+::: {.callout-note}
+
+The `georef` function has a method that accepts the names of
+columns with geospatial coordinates. In this example, the `table`
+already has the `LATITUDE` and `LONGITUDE` coordinates.
+
+:::
+
+::: {.callout-note}
+
+## Tip for all users
+
+It is always a good idea to provide units to all `values` in a
+geotable. The GeoStats.jl framework is integrated with the
+[Unitful.jl](https://github.com/PainterQubits/Unitful.jl) project.
+To add the unit "meter" to the numeric value `1`, we can write `1u"m"`.
+Similarly, we can add the unit to a vector of values:
+
+```{julia}
+[1.0, 2.0, 3.0]u"m"
+```
+
+:::
+
+Let's visualize the geometries of these two geotables:
+
+```{julia}
+fig = Mke.Figure()
+ax = Mke.Axis(fig[1,1], title = "People and countries",
+              xlabel = "longitude", ylabel = "latitude")
+viz!(countries.geometry)
+viz!(people.geometry, color = "teal")
+fig
+```
+
+Our goal in this example is to attach the "COUNTRY" and "REGION" information
+to each individual based on their location, represented as a point. In other
+words, we want to find the `countries` that **contain the location**, and then
+copy the columns to the `people`.
+
+## Joining geotables
+
+The `geojoin` function can be used to join two geotables using a **geometric predicate**
+function:
+
+```{julia}
+geojoin(people, countries, pred = ∈)
+```
+
+In the example above, we used the `∈` predicate to check if a `Point` in the `people`
+geotable is in a `MultiPolygon` in the `countries` geotable. The default predicate
+in `geojoin` is the `intersects` function that we covered in previous chapters.
+
+Notice that Kate's "COUNTRY" and "REGION" are `missing`. That is because Kate lives
+in the [Fernando de Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha) island,
+which is not present in the `countries` geotable. To retain just those people for which
+the geometric predicate evaluates `true`, we can use a different `kind` of `geojoin`
+known as `inner`:
+
+```{julia}
+geojoin(people, countries, kind = :inner)
+```
+
+By default, the `left` kind is used. Like in traditional join, the `geojoin` is not
+commutative. If we swap the order of the geotables, the result will be completely different:
+
+```{julia}
+geojoin(countries, people, kind = :inner)
+```
+
+::: {.callout-note}
+
+To learn more about the different `kind`s of database-style join, check the
+[DataFrames.jl](https://dataframes.juliadata.org/stable/man/joins) documentation.
+
+:::
+
+## Common predicates
+
+In geospatial data science, the most common geometric predicates used in `geojoin`
+are `∈`, `⊆`, `==`, `≈` and `intersects` as illustrated in @tbl-predicate. Specific
+applications may require custom predicates, which can be easily defined in pure Julia
+with the Meshes.jl module. For example, it is sometimes convenient to define geometric
+predicates in terms of a distance and a threshold:
+
+```julia
+pred(g1, g2) = distance(g1, g2) ≤ 1u"m"`
+```
+
+| PREDICATE  | EXAMPLE                      |
+|:----------:|:----------------------------:|
+|     ∈      | ![in](images/in.png)         |
+|     ⊆      | ![in](images/subseteq.png)   |
+|     ==     | ![in](images/isequal.png)    |
+|     ≈      | ![in](images/isapprox.png)   |
+| intersects | ![in](images/intersects.png) |
+
+: Common geometric predicates in geospatial join {#tbl-predicate}
+
+## Multiple matches
+
+Sometimes the predicate function will evaluate `true` for multiple rows of the geotables.
+In this case, we need to decide which value will be copied to the resulting geotable. The
+`geojoin` accepts reduction functions for each column. For example, suppose that Kate
+decided to move to the continent:
+
+```{julia}
+table = (
+  NAME=["John", "Mary", "Paul", "Anne", "Kate"],
+  AGE=[34, 12, 23, 39, 28]u"yr",
+  HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72]u"m",
+  LATITUDE=[-22.96710361241228, 37.42773662442142, -27.486220858775997, 39.90358408375064, -9.66628224039543],
+  LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -35.71261407423411]
+)
+
+people = georef(table, (:LONGITUDE, :LATITUDE))
+```
+
+Now, both John and Kate live in Brazil according the `countries` geotable:
+
+```{julia}
+geojoin(people, countries)
+```
+
+If we swap the order of the geotables in the `geojoin`, we need to decide how to reduce
+the multiple values of "NAME", "AGE" and "HEIGHT" in the resulting geotable. By default,
+the `mean` function is used to reduce `Continuous` variables, and the `first` function
+is used otherwise:
+
+```{julia}
+geojoin(countries, people, kind = :inner)
+```
+
+We can specify custom reduction functions using the following syntax:
+
+```{julia}
+geojoin(countries, people, "AGE" => maximum, "HEIGHT" => mean, kind = :inner)
+```
+
+::: {.callout-note}
+
+The keyword arguments `kind` and `pred` must appear at the end of the `geojoin`:
+
+```julia
+geojoin(gt1, gt2, var1 => red1, ..., varn => redn; kind = :left, pred = intersects)
+```
+
+:::
+
+## Congratulations!
+
+Congratulations on finishing **Part III** of the book. Let's quickly review what we learned so far:
+
+- In order to answer geoscientific questions with `@groupby`, `@transform` and `@combine`,
+  we need a single geotable with all the relevant information. This single geotable is often
+  the result of a `geojoin` with multiple geotables from different sources of information.
+- There are various `kind`s of `geojoin` such as `inner` and `left`, which match the behavior
+  of traditional join in databases. We recommend the DataFrames.j documentation to learn more.
+- The `geojoin` produces matches with **geometric predicate** functions. The most common are
+  illustrated in @tbl-predicate, but custom predicates can be easily defined in pure Julia
+  using functions defined in the Meshes.jl module.
+
+In the next part of the book, you will learn a final important tool that is missing in our toolkit
+for advanced geospatial data science. The concepts in the following chapters are extremely important.
