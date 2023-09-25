@@ -1,3 +1,121 @@
 # Mineral deposits 🚧
 
-## Coming soon...
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+```
+
+In the mining industry, **resource estimation** consists of interpolating
+measurements of metal and mineral grades from drill hole samples to a 3D block
+model. Due to highly skewed distributions, several pre-processing steps need to
+be done before the actual interpolation. In this chapter, we will cover different
+approaches to resource estimation and [geometallurgy](https://en.wikipedia.org/wiki/Geometallurgy).
+
+**TOOLS COVERED:** `geojoin`, `@groupby`, `@transform`, `@combine`,
+`ProjectionPursuit`, `EmpiricalVariogram`, `Kriging`, `InterpolateNeighbors`
+
+**MODULES:**
+
+```{julia}
+# load framework
+using GeoStats
+
+# IO packages
+using CSV
+
+# plotting packages
+using PairPlots
+import CairoMakie as Mke
+```
+
+## Data
+
+We will use the [GeoMet](https://zenodo.org/record/7051975) dataset by @Hoffimann2022_1,
+which consists of three geospatial tables stored as CSV files: **drillholes.csv**,
+**comminution.csv** and **flotation.csv**.
+
+### Drillholes
+
+The drill hole samples are always available in mining projects. They contain chemical
+information for each (1-meter-long) cylinder along the drill hole trajectories. In this
+case, the data has been processed, and only the "X", "Y", "Z" coordinates of the centroids
+of the cylinders were stored:
+
+```{julia}
+url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
+
+dtable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
+
+dtable |> viewer
+```
+
+```{julia}
+dtable |> describe
+```
+
+There are 18 chemical elements in the table, all measured in parts per million (ppm).
+The table also stores the an integer identifier for each hole trajectory in the
+"HOLEID" column. There are 119 such tajectories as shown in the `maximum` column
+of the `describe` output.
+
+::: {.callout-note}
+
+In most mining projects, the drill hole samples are available as "SURVEY",
+"COLLAR" and "INTERVAL" tables, which can be desurveyed and composited with
+[DrillHoles.jl](https://github.com/JuliaEarth/DrillHoles.jl).
+
+:::
+
+### Comminution
+
+The comminution samples are more expensive to obtain as they require external
+laboratorial analysis. In this case, they are available for (10-meter-long) cylinders:
+
+```{julia}
+url = "https://zenodo.org/record/7051975/files/comminution.csv?download=1"
+
+ctable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
+
+ctable |> viewer
+```
+
+```{julia}
+ctable |> describe
+```
+
+Besides the chemical elements, the table also contains specific parameters such
+as "th1", "th2", "th3", "F80", "P80", "M", "A", which are related to comminution
+tests [@Tavares2013]. Very informally, a comminution test measures the geomechanical
+"strength" or "fragility" of a sample.
+
+### Flotation
+
+Finally, flotation tests measure properties of the sample that are related to the
+separation of economic vs non-economic material through fluid dynamic processes.
+In this case, the metallurgical recovery in the locked-cycle-test (LCT) is important:
+
+```{julia}
+url = "https://zenodo.org/record/7051975/files/flotation.csv?download=1"
+
+ftable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
+
+ftable |> viewer
+```
+
+```{julia}
+ftable |> describe
+```
+
+::: {.callout-note}
+
+For more details about these variables, please refer to the corresponding paper by @Hoffimann2022_2.
+
+:::
+
+## Questions
+
+## Methodology
+
+## Answers
