@@ -269,7 +269,7 @@ domains in GIS, which are collections of disconnected
 2D geometries:
 
 ```{julia}
-using Meshes
+using GeoStats
 
 p = Point(1, 2)
 s = Segment((0, 2), (1, 3))

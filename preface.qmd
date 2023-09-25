@@ -115,22 +115,22 @@ using Pkg
 pkg"activate @gdsbook"
 
 # install framework
-pkg"add GeoStats"
+pkg"add GeoStats@0.45.2"
 
 # install IO module
-pkg"add GeoIO"
+pkg"add GeoIO@1.1.4"
 
 # install datasets
-pkg"add GeoStatsImages"
+pkg"add GeoStatsImages@1.1.0"
 
-# install viz stack
-pkg"add CairoMakie"
-pkg"add PairPlots"
+# install viz modules
+pkg"add CairoMakie@0.10.10"
+pkg"add PairPlots@1.1.1"
 
 # instal other modules
-pkg"add DataFrames"
-pkg"add Tables"
-pkg"add CSV"
+pkg"add DataFrames@1.6.1"
+pkg"add Tables@1.11.0"
+pkg"add CSV@0.10.11"
 ```
 
 ## Acknowledgements
