@@ -11,7 +11,7 @@ In the mining industry, **resource estimation** consists of interpolating
 measurements of metal and mineral grades from drill hole samples to a 3D block
 model. Due to highly skewed distributions, several pre-processing steps need to
 be done before the actual interpolation. In this chapter, we will cover different
-approaches to resource estimation and [geometallurgy](https://en.wikipedia.org/wiki/Geometallurgy).
+approaches to resource estimation and [geometallurgical modeling](https://en.wikipedia.org/wiki/Geometallurgy).
 
 **TOOLS COVERED:** `geojoin`, `@groupby`, `@transform`, `@combine`,
 `ProjectionPursuit`, `EmpiricalVariogram`, `Kriging`, `InterpolateNeighbors`
