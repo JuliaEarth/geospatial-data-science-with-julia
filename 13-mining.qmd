@@ -114,8 +114,8 @@ For more details about these variables, please refer to the corresponding paper 
 
 :::
 
-## Questions
+## Objectives
 
 ## Methodology
 
-## Answers
+## Resuts
