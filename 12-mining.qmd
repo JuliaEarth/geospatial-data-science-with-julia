@@ -16,16 +16,16 @@ approaches to resource estimation and [geometallurgical modeling](https://en.wik
 **TOOLS COVERED:** `geojoin`, `@groupby`, `@transform`, `@combine`,
 `ProjectionPursuit`, `EmpiricalVariogram`, `Kriging`, `InterpolateNeighbors`
 
-**MODULES:**
+**MODULES USED:**
 
 ```{julia}
-# load framework
+# framework
 using GeoStats
 
-# IO packages
+# IO modules
 using CSV
 
-# plotting packages
+# viz modules
 using PairPlots
 import CairoMakie as Mke
 ```
@@ -48,7 +48,7 @@ url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
 
 dtable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
 
-dtable |> viewer
+viewer(dtable, pointsize = 4)
 ```
 
 ```{julia}
@@ -78,7 +78,7 @@ url = "https://zenodo.org/record/7051975/files/comminution.csv?download=1"
 
 ctable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
 
-ctable |> viewer
+viewer(ctable, pointsize = 4)
 ```
 
 ```{julia}
@@ -101,7 +101,7 @@ url = "https://zenodo.org/record/7051975/files/flotation.csv?download=1"
 
 ftable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
 
-ftable |> viewer
+viewer(ftable, pointsize = 4)
 ```
 
 ```{julia}
@@ -116,6 +116,29 @@ For more details about these variables, please refer to the corresponding paper 
 
 ## Objectives
 
+Our main objective is to construct a 3D grid (or block) model with grades of different
+metals and geometallurgical variables. In particular, we might be interested in answering
+the following questions:
+
+1. How much copper "Cu" and gold "Au" there is in between the drill hole samples?
+2. Where are the regions with the highest grades of "Cu" and lowest grades of sulfur "S"?
+3. How much energy will be spent in the comminution stages of the mining plant?
+
 ## Methodology
 
-## Resuts
+To answer the questions above, we will follow a step-by-step process:
+
+1. Preliminary analysis and processing
+2. Definition of interpolation domain
+3. Multivariate geostatistical interpolation
+4. Report with resource and energy estimates
+
+### Preliminary analysis
+
+### Domain of interpolation
+
+### Multivariate interpolation
+
+### Resource and energy estimates
+
+## Summary
