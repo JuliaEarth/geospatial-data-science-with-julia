@@ -31,8 +31,8 @@ book:
         - 11-interpolation.qmd
     - part: "Part V: Applications"
       chapters:
-        - 12-agriculture.qmd
-        - 13-mining.qmd
+        - 12-mining.qmd
+        - 13-agriculture.qmd
         - 14-energy.qmd
     - references.qmd
 
