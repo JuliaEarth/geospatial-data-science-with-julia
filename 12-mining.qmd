@@ -101,7 +101,7 @@ a 3D block model, i.e. a `CartesianGrid` with `Hexahedron` geometries (the block
 economic value in U$ dollars is estimated in terms of various other geospatial variables:
 
 $$
-Value = \underbrace{V \times \rho \times Cu \times REC \times P}_{\text{revenue}} - \underbrace{V \times \rho \times (C_m + C_p)}_{\text{cost}}
+Value = \underbrace{V \times \rho \times Cu \times f \times P}_{\text{revenue}} - \underbrace{V \times \rho \times (C_m + C_p)}_{\text{cost}}
 $$
 
 where
@@ -109,7 +109,7 @@ where
 - $V$ is the volume of the block in $m^3$
 - $\rho$ is the rock density in $ton/m^3$
 - $Cu$ is the grade of copper in $[0,1]$
-- $REC$ is the recovery of copper in $[0,1]$
+- $f$ is the recovery of copper in $[0,1]$
 - $P$ is the selling price in $U\$/ton$
 - $C_m$ is the mining cost in $U\$/ton$
 - $C_p$ is the plant cost in $U\$/ton$
@@ -158,7 +158,7 @@ dclean = selectholeid ⊔ selectgrades
 ```
 
 ```{julia}
-selectrecovery = Select("LCT" => "REC") →
+selectrecovery = Select("LCT" => "f") →
                  Functional(x -> 100*x*u"percent") # 1 = 100 percent
 
 fclean = selectholeid ⊔ selectrecovery ⊔ selectgrades
