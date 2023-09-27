@@ -101,7 +101,7 @@ a 3D block model, i.e. a `CartesianGrid` with `Hexahedron` geometries (the block
 economic value in U$ dollars is estimated in terms of various other geospatial variables:
 
 $$
-Value = \underbrace{V \times \rho \times Cu \times LCT \times P}_{\text{revenue}} - \underbrace{V \times \rho \times (C_m + C_p)}_{\text{cost}}
+Value = \underbrace{V \times \rho \times Cu \times REC \times P}_{\text{revenue}} - \underbrace{V \times \rho \times (C_m + C_p)}_{\text{cost}}
 $$
 
 where
@@ -109,7 +109,7 @@ where
 - $V$ is the volume of the block in $m^3$
 - $\rho$ is the rock density in $ton/m^3$
 - $Cu$ is the grade of copper in $[0,1]$
-- $LCT$ is the recovery of copper in $[0,1]$
+- $REC$ is the recovery of copper in $[0,1]$
 - $P$ is the selling price in $U\$/ton$
 - $C_m$ is the mining cost in $U\$/ton$
 - $C_p$ is the plant cost in $U\$/ton$
@@ -138,6 +138,41 @@ The proposed methodology has the following steps:
 4. Economic assessment and visualizations
 
 ### Preliminary analysis
+
+We recommend to start any application discarding all information that is not relevant for the
+stated objectives. In this case, the two geotables contain measurements of various chemical elements
+that are not used in the economic assessment. We define **cleaning pipelines** that select and rename
+columns of interest:
+
+```{julia}
+selectholeid = Select("HOLEID") →
+               Coerce("HOLEID" => Multiclass)
+
+selectgrades = Select("Cu ppm" => "Cu",
+                      "Au ppm" => "Au",
+                      "Ag ppm" => "Ag",
+                      "S ppm"  => "S") →
+                      Functional(x -> 1e-4*x*u"percent") # 1 ppm = 1e-4 percent
+
+dclean = selectholeid ⊔ selectgrades
+```
+
+```{julia}
+selectrecovery = Select("LCT" => "REC") →
+                 Functional(x -> 100*x*u"percent") # 1 = 100 percent
+
+fclean = selectholeid ⊔ selectrecovery ⊔ selectgrades
+```
+
+The application of these pipelines leads to geotables that are easier to analyse:
+
+```{julia}
+dtable = dclean(dtable)
+```
+
+```{julia}
+ftable = fclean(ftable)
+```
 
 ### Domain of interpolation
 

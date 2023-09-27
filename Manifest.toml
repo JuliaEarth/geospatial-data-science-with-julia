@@ -484,9 +484,9 @@ version = "1.15.1"
 
 [[deps.DiskArrays]]
 deps = ["OffsetArrays"]
-git-tree-sha1 = "695b0a4163871ca0d030aa536671301e6c25bf3f"
+git-tree-sha1 = "7a6ada7a039841a8eac8fe22690d55b401f8b52c"
 uuid = "3c3547ce-8d99-4f5e-a174-61eb10b00ae3"
-version = "0.3.19"
+version = "0.3.20"
 
 [[deps.Distances]]
 deps = ["LinearAlgebra", "Statistics", "StatsAPI"]
@@ -504,9 +504,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.Distributions]]
 deps = ["FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SpecialFunctions", "Statistics", "StatsAPI", "StatsBase", "StatsFuns", "Test"]
-git-tree-sha1 = "938fe2981db009f531b6332e31c58e9584a2f9bd"
+git-tree-sha1 = "9e11104e7b41a8a5f04e8694467fc1f94a135bd7"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.100"
+version = "0.25.101"
 
     [deps.Distributions.extensions]
     DistributionsChainRulesCoreExt = "ChainRulesCore"
@@ -776,9 +776,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsBase]]
 deps = ["DensityRatioEstimation", "Distances", "Distributed", "Distributions", "GeoTables", "LinearAlgebra", "LossFunctions", "MLJModelInterface", "Meshes", "Optim", "ProgressMeter", "Random", "Rotations", "ScientificTypes", "Statistics", "StatsBase", "TableTransforms", "Tables", "Transducers", "TypedTables", "Unitful"]
-git-tree-sha1 = "f93e37528a4dd66ba96a6d07b6b421886e0d5ed0"
+git-tree-sha1 = "ebb35be3cee66930c65c04deccc29da2641e6fc0"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.37.3"
+version = "0.37.4"
 
 [[deps.GeoStatsImages]]
 deps = ["GslibIO"]
@@ -806,9 +806,9 @@ version = "0.1.5"
 
 [[deps.GeoTables]]
 deps = ["DataAPI", "Meshes", "PrettyTables", "Random", "ScientificTypes", "Tables", "Unitful"]
-git-tree-sha1 = "5e39d8fe180356286d9f91e971d1bad58f1796f8"
+git-tree-sha1 = "cf3a1924b3d1c54526c1dbf35f47ca922b3371c8"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.7.2"
+version = "1.7.3"
 
 [[deps.GeometryBasics]]
 deps = ["EarCut_jll", "Extents", "GeoInterface", "IterTools", "LinearAlgebra", "StaticArrays", "StructArrays", "Tables"]
