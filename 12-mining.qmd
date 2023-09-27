@@ -164,7 +164,7 @@ selectrecovery = Select("LCT" => "REC") →
 fclean = selectholeid ⊔ selectrecovery ⊔ selectgrades
 ```
 
-The application of these pipelines leads to geotables that are easier to analyse:
+The application of these pipelines leads to geotables that are easier to analyze:
 
 ```{julia}
 dtable = dclean(dtable)
@@ -173,6 +173,9 @@ dtable = dclean(dtable)
 ```{julia}
 ftable = fclean(ftable)
 ```
+
+In order to understand better understand the multivariate distribution of chemical
+elements, we visualize the `values` of the geotables with the `pairplot`:
 
 ### Domain of interpolation
 
