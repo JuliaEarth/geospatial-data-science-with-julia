@@ -11,7 +11,7 @@ import CairoMakie as Mke
 
 Another important tool in geospatial data science is the **geospatial join**.
 We will introduce the concept with a practical example, and will explain how it
-is related to the traditional [join](https://en.wikipedia.org/wiki/Join_(SQL)) of
+is related to the standard [join](https://en.wikipedia.org/wiki/Join_(SQL)) of
 two tables.
 
 ## Motivation
@@ -109,17 +109,21 @@ known as `inner`:
 geojoin(people, countries, kind = :inner)
 ```
 
-By default, the `left` kind is used. Like in traditional join, the `geojoin` is not
-commutative. If we swap the order of the geotables, the result will be completely different:
+By default, the `left` kind is used. Like in standard join, the `geojoin` is not
+commutative. If we swap the order of the geotables, the result will be different:
 
 ```{julia}
 geojoin(countries, people, kind = :inner)
 ```
 
+To learn about the different `kind`s of join, check DataFrames.jl's
+[documentation on joins](https://dataframes.juliadata.org/stable/man/joins).
+
 ::: {.callout-note}
 
-To learn more about the different `kind`s of database-style join, check the
-[DataFrames.jl](https://dataframes.juliadata.org/stable/man/joins) documentation.
+In database-style join, the predicate function `isequal` is applied to arbitrary
+columns of tables. In `geojoin`, **geometric predicate** functions are applied to
+the `geometry` column of geotables.
 
 :::
 
@@ -203,7 +207,7 @@ Congratulations on finishing **Part III** of the book. Let's quickly review what
   we need a single geotable with all the relevant information. This single geotable is often
   the result of a `geojoin` with multiple geotables from different sources of information.
 - There are various `kind`s of `geojoin` such as `inner` and `left`, which match the behavior
-  of traditional join in databases. We recommend the DataFrames.j documentation to learn more.
+  of standard join in databases. We recommend the DataFrames.jl documentation to learn more.
 - The `geojoin` produces matches with **geometric predicate** functions. The most common are
   illustrated in @tbl-predicate, but custom predicates can be easily defined in pure Julia
   using functions defined in the Meshes.jl module.
