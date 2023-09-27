@@ -161,7 +161,7 @@ dclean = selectholeid ⊔ selectgrades
 selectrecovery = Select("LCT" => "f") →
                  Functional(x -> 100*x*u"percent") # 1 = 100 percent
 
-fclean = selectholeid ⊔ selectrecovery ⊔ selectgrades
+fclean = selectholeid ⊔ selectgrades ⊔ selectrecovery
 ```
 
 The application of these pipelines leads to geotables that are easier to analyze:
