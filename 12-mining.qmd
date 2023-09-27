@@ -174,7 +174,7 @@ dtable = dclean(dtable)
 ftable = fclean(ftable)
 ```
 
-In order to understand better understand the multivariate distribution of chemical
+In order to better understand the multivariate distribution of chemical
 elements, we visualize the `values` of the geotables with the `pairplot`:
 
 ### Domain of interpolation
