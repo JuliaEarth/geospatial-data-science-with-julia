@@ -776,9 +776,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsBase]]
 deps = ["DensityRatioEstimation", "Distances", "Distributed", "Distributions", "GeoTables", "LinearAlgebra", "LossFunctions", "MLJModelInterface", "Meshes", "Optim", "ProgressMeter", "Random", "Rotations", "ScientificTypes", "Statistics", "StatsBase", "TableTransforms", "Tables", "Transducers", "TypedTables", "Unitful"]
-git-tree-sha1 = "ebb35be3cee66930c65c04deccc29da2641e6fc0"
+git-tree-sha1 = "1159c34075e16a82af8e2481962f2481ef4649ff"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.37.4"
+version = "0.37.5"
 
 [[deps.GeoStatsImages]]
 deps = ["GslibIO"]

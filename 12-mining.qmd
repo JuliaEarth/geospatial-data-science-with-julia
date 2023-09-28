@@ -261,7 +261,7 @@ We perform the interpolation of the "Z" coordinate on the projected centroids of
 ```{julia}
 centroids = unique(proj.(centroid.(blocks)))
 
-ztable = ztable |> Select("Z") |> Interpolate(GeometrySet(centroids))
+ztable = ztable |> Select("Z") |> Interpolate(centroids)
 ```
 
 ```{julia}
