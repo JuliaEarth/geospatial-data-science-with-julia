@@ -306,26 +306,24 @@ grades |> CLR() |> values |> pairplot
 ```
 
 After the transform, the variables are free to vary in the unbounded interval $[-\infty,\infty]$.
-The explanation of this transform is beyond the scope of this book. Nevertheless, it is a simple
+The theory behind this transform is beyond the scope of this book. Nevertheless, it is a simple
 mathematical expression in terms of logarithms of ratios (e.g., Cu/S).
 
-Next, we `Detrend` the samples to facilitate the inference of geospatial correlation models, and
-attempt to transform the multivariate distribution to a multivariate standard normal using the
-`ProjectionPursuit` transform:
+Next, we attempt to transform the multivariate distribution to a multivariate standard normal
+using the `ProjectionPursuit` transform:
 
 ```{julia}
-grades |> CLR() |> Detrend() |> ProjectionPursuit() |> values |> pairplot
+grades |> CLR() |> ProjectionPursuit() |> values |> pairplot
 ```
 
 The `ProjectionPursuit` is an advanced statistical transform that removes non-linear assocations
 between variables using an iterative procedure [@Friedman1987]. The result is a set of independent
 variables that can be interpolated separately.
 
-In order to "undo" all these transforms after the interpolation, we will create a revertible
-pipeline:
+In order to "undo" these transforms after the interpolation, we create a revertible pipeline:
 
 ```{julia}
-preproc = CLR() → Detrend() → ProjectionPursuit()
+preproc = CLR() → ProjectionPursuit()
 
 samples, cache = apply(preproc, grades)
 
@@ -400,14 +398,11 @@ In order to get the interpolated values in the original compositional space, we 
 `revert` the preprocessing pipeline:
 
 ```{julia}
-#estim = revert(preproc, interp, cache)
+estim = revert(preproc, interp, cache)
 ```
 
-Let's inspect the multivariate distribution to see if it resembles the original distribution
-in the drill hole samples:
-
 ```{julia}
-#estim |> Sample(10000) |> values |> pairplot
+estim |> Select("Cu") |> viewer
 ```
 
 ### Economic assessment
