@@ -23,6 +23,9 @@ economic assessment of a real mineral deposit.
 # framework
 using GeoStats
 
+# compositional data
+using CoDa
+
 # IO modules
 using CSV
 
@@ -179,7 +182,7 @@ elements, we visualize the `values` of the drill hole samples with the
 `pairplot`:
 
 ```{julia}
-dtable |> values |> Select("Cu", "Au", "Ag", "S") |> DropUnits() |> pairplot
+dtable |> Select("Cu", "Au", "Ag", "S") |> DropUnits() |> values |> pairplot
 ```
 
 We can observe that the distribution is very skewed.
@@ -279,12 +282,102 @@ blocks = view(blocks, active)
 ```
 
 ```{julia}
-viz(blocks)
+#viz(blocks)
 ```
 
 The filtered blocks constitute our domain of interpolation.
 
 ### Multivariate interpolation
+
+We saw that the distribution of chemical elements in the drill hole samples is very skewed.
+This is always the case in the mining industry. Another issue is that metal and mineral grades
+are examples of **compositional data** [@Aitchison1982]. The values in these variables are constrained to live in the interval $[0,1]$ and to sum up to 100% if all chemical elements are
+considered.
+
+#### Preprocessing
+
+In order to remove compositional data constraints, we will perform the centered log-ratio
+transform (`CLR`) from the [CoDa.jl](https://github.com/JuliaEarth/CoDa.jl) module:
+
+```{julia}
+grades = dtable |> Select("Cu", "Au", "Ag", "S") |> DropUnits()
+
+grades |> CLR() |> values |> pairplot
+```
+
+After the transform, the variables are free to vary in the unbounded interval $[-\infty,\infty]$.
+The explanation of this transform is beyond the scope of this book. Nevertheless, it is a simple
+mathematical expression in terms of logarithms of ratios (e.g., Cu/S).
+
+Next, we `Detrend` the samples to facilitate the inference of geospatial correlation models, and
+attempt to transform the multivariate distribution to a multivariate standard normal using the
+`ProjectionPursuit` transform:
+
+```{julia}
+grades |> CLR() |> Detrend() |> ProjectionPursuit() |> values |> pairplot
+```
+
+The `ProjectionPursuit` is an advanced statistical transform that removes non-linear assocations
+between variables using an iterative procedure. The result is a set of independent variables
+that can be interpolated separately.
+
+In order to "undo" all these transforms after the interpolation, we will create a revertible
+pipeline:
+
+```{julia}
+preproc = CLR() → Detrend() → ProjectionPursuit()
+
+samples, cache = apply(preproc, grades)
+
+samples
+```
+
+#### Geospatial correlation
+
+Let's fit a theoretical variogram for all four (independent) variables:
+
+```{julia}
+ns = setdiff(names(samples), ["geometry"])
+
+gs = [EmpiricalVariogram(samples, n, estimator = :cressie) for n in ns]
+
+γs = [fit(Variogram, g, h -> exp(-h/100)) for g in gs]
+```
+
+::: {.callout-note}
+
+We performed the `fit` of the variogram model using the weighting function
+`h -> exp(-h/100)` that penalizes the lag distance `h` with an exponential
+model. The constant `100` was chosen based on visual inspection of the
+`EmpiricalVariogram` estimates below.
+
+:::
+
+```{julia}
+function gammaplot(n, g, γ)
+  Mke.plot(g, axis = (; title = n))
+  Mke.plot!(γ, maxlag = 300, vcolor = "teal")
+  Mke.current_figure()
+end
+
+gammaplot(ns[1], gs[1], γs[1])
+```
+
+```{julia}
+gammaplot(ns[2], gs[2], γs[2])
+```
+
+```{julia}
+gammaplot(ns[3], gs[3], γs[3])
+```
+
+```{julia}
+gammaplot(ns[4], gs[4], γs[4])
+```
+
+#### Geostatistical interpolation
+
+#### Postprocessing
 
 ### Economic assessment
 
