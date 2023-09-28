@@ -175,7 +175,21 @@ ftable = fclean(ftable)
 ```
 
 In order to better understand the multivariate distribution of chemical
-elements, we visualize the `values` of the geotables with the `pairplot`:
+elements, we visualize the `values` of the drill hole samples with the
+`pairplot`:
+
+```{julia}
+dtable |> values |> Select("Cu", "Au", "Ag", "S") |> DropUnits() |> pairplot
+```
+
+We can observe that the distribution is very skewed.
+
+::: {.callout-note}
+
+The `DropUnits` transform can be useful to drop units from the columns of a
+table before calling functions that do not support units yet (e.g., `pairplot`).
+
+:::
 
 ### Domain of interpolation
 
