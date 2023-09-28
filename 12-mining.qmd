@@ -14,8 +14,9 @@ pre-processing steps need to be performed before the actual interpolation.
 In this chapter, we will cover simple steps for resource estimation and
 economic assessment of a real mineral deposit.
 
-**TOOLS COVERED:** `geojoin`, `@groupby`, `@transform`, `@combine`,
-`ProjectionPursuit`, `EmpiricalVariogram`, `Kriging`, `InterpolateNeighbors`
+**TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `CLR`, `ProjectionPursuit`,
+`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `boundingbox`,
+`convexhull`, `viewer`
 
 **MODULES:**
 
