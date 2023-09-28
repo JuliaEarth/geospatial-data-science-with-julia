@@ -318,8 +318,8 @@ grades |> CLR() |> Detrend() |> ProjectionPursuit() |> values |> pairplot
 ```
 
 The `ProjectionPursuit` is an advanced statistical transform that removes non-linear assocations
-between variables using an iterative procedure. The result is a set of independent variables
-that can be interpolated separately.
+between variables using an iterative procedure [@Friedman1987]. The result is a set of independent
+variables that can be interpolated separately.
 
 In order to "undo" all these transforms after the interpolation, we will create a revertible
 pipeline:
