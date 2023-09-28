@@ -375,9 +375,40 @@ gammaplot(ns[3], gs[3], γs[3])
 gammaplot(ns[4], gs[4], γs[4])
 ```
 
+Assuming that the variogram models are ok, we can proceed to interpolation.
+
 #### Geostatistical interpolation
 
+Given the domain of interpolation, the samples and the variogram models, we
+can perform interpolation with `InterpolateNeighbors`:
+
+```{julia}
+models = [n => Kriging(γ) for (n, γ) in zip(ns, γs)]
+
+interp = samples |> InterpolateNeighbors(blocks, models...)
+```
+
+Let's confirm that the interpolated values follow the same standard normal distribution:
+
+```{julia}
+interp |> Sample(10000) |> values |> pairplot
+```
+
 #### Postprocessing
+
+In order to get the interpolated values in the original compositional space, we need to
+`revert` the preprocessing pipeline:
+
+```{julia}
+#estim = revert(preproc, interp, cache)
+```
+
+Let's inspect the multivariate distribution to see if it resembles the original distribution
+in the drill hole samples:
+
+```{julia}
+#estim |> Sample(10000) |> values |> pairplot
+```
 
 ### Economic assessment
 

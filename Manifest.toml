@@ -800,9 +800,9 @@ version = "0.7.3"
 
 [[deps.GeoStatsTransforms]]
 deps = ["ArnoldiMethod", "CategoricalArrays", "Clustering", "Combinatorics", "Distances", "GeoStatsModels", "GeoTables", "LinearAlgebra", "Meshes", "ScientificTypes", "SparseArrays", "Statistics", "TableDistances", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "ca96ada1ee7771fcdc5f59e1f6a7e6632d21ada7"
+git-tree-sha1 = "fc7bf3a3a9d93310fcdadd3474a8961a9399bc4f"
 uuid = "725d9659-360f-4996-9c94-5f19c7e4a8a6"
-version = "0.1.5"
+version = "0.1.7"
 
 [[deps.GeoTables]]
 deps = ["DataAPI", "Meshes", "PrettyTables", "Random", "ScientificTypes", "Tables", "Unitful"]
@@ -1982,9 +1982,9 @@ version = "0.1.1"
 
 [[deps.StaticArrays]]
 deps = ["LinearAlgebra", "Random", "StaticArraysCore"]
-git-tree-sha1 = "d5fb407ec3179063214bc6277712928ba78459e2"
+git-tree-sha1 = "0adf069a2a490c47273727e029371b31d44b72b2"
 uuid = "90137ffa-7385-5640-81b9-e52037218182"
-version = "1.6.4"
+version = "1.6.5"
 weakdeps = ["Statistics"]
 
     [deps.StaticArrays.extensions]
@@ -2090,9 +2090,9 @@ version = "1.0.1"
 
 [[deps.TableTransforms]]
 deps = ["AbstractTrees", "CategoricalArrays", "Distributions", "LinearAlgebra", "NelderMead", "PrettyTables", "Random", "ScientificTypes", "Statistics", "StatsBase", "Tables", "Transducers", "TransformsBase", "Unitful"]
-git-tree-sha1 = "335a028c666ee475968155f1d28da7bc85435ec4"
+git-tree-sha1 = "0d7d423f4f95dadb8796976875cceb22daa39aec"
 uuid = "0d432bfd-3ee1-4ac1-886a-39f05cc69a3e"
-version = "1.15.2"
+version = "1.15.3"
 
 [[deps.Tables]]
 deps = ["DataAPI", "DataValueInterfaces", "IteratorInterfaceExtensions", "LinearAlgebra", "OrderedCollections", "TableTraits"]
