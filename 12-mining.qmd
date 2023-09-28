@@ -287,7 +287,7 @@ blocks = view(blocks, active)
 
 The filtered blocks constitute our domain of interpolation.
 
-### Multivariate interpolation
+### Interpolation of grades
 
 We saw that the distribution of chemical elements in the drill hole samples is very skewed.
 This is always the case in the mining industry. Another issue is that metal and mineral grades
@@ -402,8 +402,10 @@ estim = revert(preproc, interp, cache)
 ```
 
 ```{julia}
-estim |> Select("Cu") |> viewer
+#estim |> Select("Cu") |> viewer
 ```
+
+### Regression of recovery
 
 ### Economic assessment
 
