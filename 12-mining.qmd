@@ -193,6 +193,97 @@ table before calling functions that do not support units yet (e.g., `pairplot`).
 
 ### Domain of interpolation
 
+Before we can interpolate these variables, we need to define our domain of interpolation.
+In this application, we will define a 3D `CartesianGrid` in terms of the drill hole
+trajectories alone. Some of the `Hexahedron` geometries will be disabled whenever they
+are outside the `convexhull` of the points.
+
+First, let's create our full `CartesianGrid` using the `boundingbox` of the trajectories:
+
+```{julia}
+bbox = boundingbox(dtable.geometry)
+
+grid = CartesianGrid(extrema(bbox)..., dims=(100, 100, 100))
+```
+
+```{julia}
+viz(dtable.geometry, color = "black", pointsize = 4)
+viz!(grid, alpha = 0.2)
+Mke.current_figure()
+```
+
+Second, let's compute the `convexhull` of points projected on the horizontal plane:
+
+```{julia}
+function proj(point)
+  x, y, z = coordinates(point)
+  Point(x, y)
+end
+
+points = proj.(dtable.geometry)
+
+chull = convexhull(points)
+```
+
+```{julia}
+viz(chull)
+viz!(points, color = "black", pointsize = 4)
+Mke.current_figure()
+```
+
+We can filter the grid to retain `Hexahedron`s for which the projected centroid
+is inside the `convexhull`:
+
+```{julia}
+active = findall(h -> proj(centroid(h)) ∈ chull, grid)
+
+blocks = view(grid, active) 
+```
+
+We would also like to filter `Hexahedron`s that are above the terrain.
+Let's create a simple terrain elevation model by interpolating the vertical
+"Z" coordinate of the first point of each trajectory:
+
+```{julia}
+ztable = @chain dtable begin
+  @groupby(:HOLEID)
+  @transform(:Z = last(coordinates(:geometry)), :geometry = proj(:geometry))
+  @combine(:Z = first(:Z))
+  @transform(:geometry = first(parent(:geometry)))
+end
+```
+
+We perform the interpolation of the "Z" coordinate on the projected centroids of the blocks:
+
+```{julia}
+centroids = unique(proj.(centroid.(blocks)))
+
+ztable = ztable |> Select("Z") |> Interpolate(GeometrySet(centroids))
+```
+
+```{julia}
+ztable |> viewer
+```
+
+Finally, we can filter the blocks for which the "Z" coordinate is below the terrain:
+
+```{julia}
+p(h) = proj(centroid(h))
+Z(h) = last(coordinates(centroid(h)))
+
+zdict = Dict(ztable.geometry .=> ztable.Z)
+
+active = findall(h -> Z(h) < zdict[p(h)], blocks)
+
+blocks = view(blocks, active)
+```
+
+```{julia}
+viz(blocks)
+```
+
+The filtered blocks constitute our domain of interpolation.
+
 ### Multivariate interpolation
 
 ### Economic assessment
