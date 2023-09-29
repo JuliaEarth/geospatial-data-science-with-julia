@@ -252,8 +252,7 @@ Let's create a simple terrain elevation model by interpolating the vertical
 ztable = @chain dtable begin
   @groupby(:HOLEID)
   @transform(:Z = last(coordinates(:geometry)), :geometry = proj(:geometry))
-  @combine(:Z = first(:Z))
-  @transform(:geometry = first(parent(:geometry)))
+  @combine(:Z = first(:Z), :geometry = first(:geometry))
 end
 ```
 
