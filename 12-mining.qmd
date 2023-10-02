@@ -1,4 +1,4 @@
-# Mineral deposits 🚧
+# Mineral deposits
 
 ```{julia}
 #| echo: false
@@ -15,7 +15,7 @@ In this chapter, we will cover simple steps for resource estimation and
 economic assessment of a real mineral deposit.
 
 **TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `CLR`, `ProjectionPursuit`,
-`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `Map`,
+`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `Map`, `Filter`,
 `boundingbox`, `convexhull`, `viewer`
 
 **MODULES:**
@@ -406,6 +406,9 @@ We can then visualize all blocks with a positive economic value:
 ```{julia}
 estim |> Filter(x -> x.value > 0) |> Select("value") |> viewer
 ```
+
+Or any criterion of interest such as positive economic value and
+small fraction of contaminants `x.value > 0 && x.S < 0.25`.
 
 ## Summary
 
