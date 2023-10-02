@@ -39,14 +39,12 @@ import CairoMakie as Mke
 
 The [GeoMet](https://zenodo.org/record/7051975) dataset [@Hoffimann2022_1]
 consists of three geospatial tables stored as CSV files. In this chapter, we
-will use the **drillholes.csv** and the **flotation.csv** tables.
-
-### Drillholes
+will only use the **drillholes.csv** table.
 
 Drill hole samples are always available in mining projects. They contain chemical
-information for each (1-meter-long) cylinder along the drill hole trajectories. In this
-case, the data has been processed, and only the "X", "Y", "Z" coordinates of the centroids
-of the cylinders were stored:
+information for each rock sample (a cylinder) along the drill hole trajectories.
+In this case, the data has been processed, and only the "X", "Y", "Z" coordinates
+of the centroids of the cylinders were stored:
 
 ```{julia}
 url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
@@ -72,31 +70,6 @@ In most mining projects, the drill hole samples are available as "SURVEY",
 [DrillHoles.jl](https://github.com/JuliaEarth/DrillHoles.jl).
 
 :::
-
-### Flotation
-
-Flotation tests measure properties of the sample that are related to fluid dynamic
-processes at the processing plant. For instance, the metallurgical recovery in the
-locked-cycle-test (LCT) is the fraction of material that floats to the top of the
-equipament after various flotation cycles [@Hoffimann2022_2]. The material that
-floats is carried forward in the plant given its economic value (e.g., copper):
-
-```{julia}
-url = "https://zenodo.org/record/7051975/files/flotation.csv?download=1"
-
-ftable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
-
-viewer(ftable, pointsize = 4)
-```
-
-```{julia}
-ftable |> describe
-```
-
-In this table, the "LCT" column refers to the **recovery of copper**. The average
-recovery of copper is approximately 88% according to the `describe` output.
-Another important observation is that there are far less flotation samples
-than drill hole samples.
 
 ## Objectives
 
@@ -144,9 +117,9 @@ The proposed methodology has the following steps:
 ### Preliminary analysis
 
 We recommend to start any application discarding all information that is not relevant for the
-stated objectives. In this case, the two geotables contain measurements of various chemical elements
-that are not used in the economic assessment. We define **cleaning pipelines** that select and rename
-columns of interest:
+stated objectives. In this case, the geotable contains measurements of various chemical elements
+that are not used in the economic assessment. We define a **cleaning pipeline** that selects and
+renames columns of interest, and adds units to the measurements:
 
 ```{julia}
 selectholeid = Select("HOLEID") →
@@ -162,20 +135,7 @@ dclean = selectholeid ⊔ selectgrades
 ```
 
 ```{julia}
-selectrecovery = Select("LCT" => "f") →
-                 Functional(x -> 100*x*u"percent") # 1 = 100 percent
-
-fclean = selectholeid ⊔ selectgrades ⊔ selectrecovery
-```
-
-The application of these pipelines leads to geotables that are easier to analyze:
-
-```{julia}
 dtable = dclean(dtable)
-```
-
-```{julia}
-ftable = fclean(ftable)
 ```
 
 In order to better understand the multivariate distribution of chemical
@@ -405,7 +365,22 @@ estim = revert(preproc, interp, cache)
 #estim |> Select("Cu") |> viewer
 ```
 
-### Regression of recovery
+### Model of recovery
+
+We introduce a simplistic model of metallurgical recovery using the grade of copper estimated
+at the mining blocks. We assume that the logistic function represents an ideal behavior for the
+recovery as the grade of copper increases:
+
+```{julia}
+μ = mean(estim.Cu) - 0.1
+σ = std(estim.Cu)
+
+f(Cu) = 1 / (1 + exp(-(Cu - μ) / σ))
+```
+
+```{julia}
+estim = @transform(estim, :f = f(:Cu))
+```
 
 ### Economic assessment
 
