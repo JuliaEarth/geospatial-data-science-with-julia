@@ -382,6 +382,9 @@ f(Cu) = 1 / (1 + exp(-(Cu - μ) / σ))
 estim = estim |> Map("Cu" => f => "f")
 ```
 
+Please check the paper by @Hoffimann2022_2 for a more elaborate model of metallurgical
+recovery in the locked-cycle-test.
+
 ### Economic assessment
 
 ## Summary
