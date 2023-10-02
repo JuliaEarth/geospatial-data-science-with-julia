@@ -15,8 +15,8 @@ In this chapter, we will cover simple steps for resource estimation and
 economic assessment of a real mineral deposit.
 
 **TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `CLR`, `ProjectionPursuit`,
-`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `boundingbox`,
-`convexhull`, `viewer`
+`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `Map`,
+`boundingbox`, `convexhull`, `viewer`
 
 **MODULES:**
 
@@ -379,7 +379,7 @@ f(Cu) = 1 / (1 + exp(-(Cu - μ) / σ))
 ```
 
 ```{julia}
-estim = @transform(estim, :f = f(:Cu))
+estim = estim |> Map("Cu" => f => "f")
 ```
 
 ### Economic assessment
