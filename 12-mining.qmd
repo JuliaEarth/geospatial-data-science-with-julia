@@ -242,7 +242,7 @@ blocks = view(blocks, active)
 ```
 
 ```{julia}
-#viz(blocks)
+viz(blocks)
 ```
 
 The filtered blocks constitute our domain of interpolation.
@@ -362,7 +362,7 @@ estim = revert(preproc, interp, cache)
 ```
 
 ```{julia}
-#estim |> Select("Cu") |> viewer
+estim |> Select("Cu") |> viewer
 ```
 
 ### Model of recovery
@@ -387,4 +387,35 @@ recovery in the locked-cycle-test.
 
 ### Economic assessment
 
+Given the block model with the grade of copper and metallurgical recovery, we can proceed
+and apply the formula of economic value stated in our [objectives](#objectives):
+
+```{julia}
+ρ = 2.75 # ton / m^3
+P = 4000 # U$ / ton
+Cₘ = 4 # U$ / ton
+Cᵤ = 10 # U$ / ton
+
+estim = @transform(estim,
+  :value = volume(:geometry) * ρ * ((:Cu / 100) * :f * P - (Cₘ + Cᵤ))
+)
+```
+
+We can then visualize all blocks with a positive economic value:
+
+```{julia}
+estim |> Filter(x -> x.value > 0) |> Select("value") |> viewer
+```
+
 ## Summary
+
+In this chapter, we illustrated an application of the framework in the mining industry.
+Among other things, we learned how to
+
+- Perform simple economic assessment based on grades and metallurgical recoveries estimated
+  at mining blocks using simple interpolation of transformed variables from drill hole samples.
+- Use the tools covered in previous chapters to localize regions of interest in the mineral deposit.
+
+Although the mathematical model presented here is simple, it is what most mining companies do.
+There is opportunity to improve these types of estimates with more sophisticated geospatial
+data science pipelines.
