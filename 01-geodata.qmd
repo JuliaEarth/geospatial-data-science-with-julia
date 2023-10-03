@@ -7,10 +7,18 @@ import Pkg
 Pkg.activate(".")
 ```
 
-## Definition
+Welcome to **Part I** of the book. Before we can start our journey in
+geospatial data science, we need to introduce important concepts, which
+will be the foundations of **Part II**, **Part III** and **Part IV**.
 
-Before we can start our journey in geospatial data science, we need to
-define **geospatial data**. The following definition is simple and useful:
+In this chapter, we define **geospatial data** and introduce a
+**universal representation** for it that is ideal for geostatistical
+analysis. Unlike other representations in the literature (e.g., "raster",
+"vector" data), the proposed representation is suitable for encoding
+geospatial data over 3D unstructured meshes, 2D images embedded in 3D space,
+and other types of complex **geospatial domain**.
+
+## Definition
 
 ::: {.callout-tip}
 
