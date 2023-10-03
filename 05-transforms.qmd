@@ -71,7 +71,7 @@ with the use of auxiliary indices for rows.
 
 :::
 
-We propose a new approach to **geospatial** data science with the concept of
+We propose a new approach to geospatial data science with the concept of
 **transforms**, which we introduce in three classes with practical examples:
 
 1. Feature transforms
