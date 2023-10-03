@@ -27,7 +27,7 @@ from variables $X$ and $Y$ that are $h$ units of distance apart, we define
 [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient):
 
 $$
-r_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
+cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
 $$
 
 where $\bar{x}$ and $\bar{y}$ are the mean values.
@@ -86,7 +86,8 @@ hscatter(sample, :Z, :Z, lag=50.0)
 ```
 
 The sample Pearson correlation coefficient studied as a function of the lag $h$
-is known as the **correlogram function**:
+is known as the **correlogram function**. For example, consider the exponential
+correlogram function given by $cor(h) = \exp(-h)$:
 
 ```{julia}
 #| echo: false
@@ -147,6 +148,13 @@ xs = range(0, stop=10, length=100)
 ys = 1 .- exp.(-xs)
 Mke.lines(xs, ys, axis = (xlabel="h", ylabel="γ(h)"), color="black")
 ```
+
+where $cov(h)$ is the covariance function, a version of the correlogram 
+function that is scaled by the standard deviations of X and Y:
+
+$$
+cor(h) = \frac{cov(h)}{\sigma_x \sigma_y}
+$$
 
 Explaining why the variogram is more general than the covariance is out
 of scope for this book, but it has to do with the fact that variograms
@@ -412,6 +420,14 @@ g = EmpiricalVariogram(img, :Z, maxlag = 50.0)
 ```{julia}
 Mke.plot(g)
 ```
+
+::: {.callout-note}
+
+The numbers and bars in the empirical variogram plot represent the number
+of pairs used to estimate the value of the variogram at the corresponding bin.
+The larger the number, the more confident we can be in the estimate.
+
+:::
 
 The `DirectionalVariogram` can be used to estimate the function along
 specific directions:
