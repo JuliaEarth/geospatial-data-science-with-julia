@@ -35,6 +35,14 @@ using PairPlots
 import CairoMakie as Mke
 ```
 
+::: {.callout-note}
+
+Although we use CairoMakie.jl in this book, many of the 3D visualizations
+in this chapter demand a more performant Makie.jl backend. Consider using
+GLMakie.jl if you plan to reproduce the code locally.
+
+:::
+
 ## Data
 
 The [GeoMet](https://zenodo.org/record/7051975) dataset [@Hoffimann2022_1]
