@@ -107,7 +107,7 @@ For simplicity, we assume the following constants:
 - $\rho = 2.75\ ton / m^3$
 - $P = 4000\ U\$ / ton$
 - $C_m = 4\ U\$ / ton$
-- $C_u = 10\ U\$ / ton$
+- $C_p = 10\ U\$ / ton$
 
 ## Methodology
 
@@ -173,9 +173,14 @@ are outside the `convexhull` of the points.
 First, let's create our full `CartesianGrid` using the `boundingbox` of the trajectories:
 
 ```{julia}
+# compute bounding box
 bbox = boundingbox(dtable.geometry)
 
-grid = CartesianGrid(extrema(bbox)..., dims=(100, 100, 100))
+# size of blocks in meters
+bsize = (25.0, 25.0, 12.5)
+
+# define Cartesian grid
+grid = CartesianGrid(extrema(bbox)..., bsize)
 ```
 
 ```{julia}
@@ -402,10 +407,10 @@ and apply the formula of economic value stated in our [objectives](#objectives):
 ρ = 2.75 # ton / m^3
 P = 4000 # U$ / ton
 Cₘ = 4 # U$ / ton
-Cᵤ = 10 # U$ / ton
+Cₚ = 10 # U$ / ton
 
 estim = @transform(estim,
-  :value = volume(:geometry) * ρ * ((:Cu / 100) * :f * P - (Cₘ + Cᵤ))
+  :value = volume(:geometry) * ρ * ((:Cu / 100) * :f * P - (Cₘ + Cₚ))
 )
 ```
 
