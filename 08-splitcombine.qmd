@@ -200,6 +200,15 @@ Note that the macro reduces the geometry column and produces a new complex `Mult
 geometry with all the `Box`es that are inside each geological unit. This is a very
 advanced feature of the framework that
 **cannot be represented with the simple features standard**.
+It is also possible to use a custom reduction function for the `geometry` column:
+
+```{julia}
+groups = @groupby(gt, :geo)
+
+@combine(groups, :μ = mean(:Au), :σ = std(:Au), :geometry = first(:geometry))
+```
+
+## Answering questions
 
 Let's recall our original business question:
 
