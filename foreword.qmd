@@ -14,7 +14,9 @@ why it had to be so "computer sciency":
 After years of my PhD, I finally envisioned a more general approach,
 through the continuous design and development of the
 [![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl)
-framework. This book is the first attempt to share this vision with
+framework for the
+[![](images/julia.svg){fig-alt="Julia" width=40px}](https://julialang.org)
+programming language. This book is the first attempt to share this vision with
 the broader scientific community.
 
 There is a long journey until the technology reaches its full potential,
