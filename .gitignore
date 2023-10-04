@@ -1,2 +1,3 @@
-/.quarto/
+.quarto
 _book
+_site
