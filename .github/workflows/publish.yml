@@ -16,19 +16,19 @@ jobs:
       - name: Setup Julia
         uses: julia-actions/setup-julia@v1
 
-      - name: Install IJulia and Jupyter
+      - name: Setup IJulia and Jupyter
         run: |
           julia -e '
             using Pkg
             Pkg.add("IJulia")
             Pkg.add("Conda")
-            import Conda
+            using Conda
             Conda.add("jupyter")'
 
       - name: Instantiate environment
         run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate()'
 
-      - name: Set up Quarto
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render and Publish
