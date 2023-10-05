@@ -45,7 +45,5 @@ format:
       dark: solar
     mermaid:
       theme: dark
-  pdf:
-    documentclass: scrreprt
 
 jupyter: julia-1.9
