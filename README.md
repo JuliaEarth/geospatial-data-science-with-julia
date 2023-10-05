@@ -3,6 +3,9 @@
 This repository hosts the source code of the
 book *Geospatial Data Science with Julia*.
 
+The book is available online for free at
+[https://juliaearth.github.io/geospatial-data-science-with-julia](https://juliaearth.github.io/geospatial-data-science-with-julia)
+
 ## Build instructions
 
 To build this book, you need:
