@@ -771,9 +771,9 @@ Note
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>SphericalVariogram
-└─sill: 0.09816267114044011
-└─nugget: 3.640146095719743e-11
-└─range: 42.631545908546535
+└─sill: 0.09816267113825099
+└─nugget: 3.640146399591588e-11
+└─range: 42.631545896834375
 └─metric: Euclidean</code></pre>
 </div>
 </div>
@@ -880,11 +880,11 @@ Tip for all users
 <li>Models such as <code>Kriging</code> exploit <strong>geospatial correlation</strong> to improve interpolation results. We can extract this information from samples using a two-step procedure:
 <ol type="1">
 <li>Estimate the <code>EmpiricalVariogram</code> from the available samples</li>
-<li>Peform <code>fit</code> of theoretical model with result from previous step</li>
+<li>Perform <code>fit</code> of theoretical model with result from previous step</li>
 </ol></li>
 <li><code>Interpolate</code> and <code>InterpolateNeighbors</code> are examples of geostatistical transforms. They can be easily inserted in more advanced pipelines as discussed in <strong>Part II</strong>.</li>
 </ul>
-<p>In the next chapters, we will use the framework that we learned with real data to illustrate how advanced geospatial data science can be done with just a few lines o code. Once a solution is written in terms of the high-level tools covered in previous chapters, it is trivial to improve computational performance in pure Julia.</p>
+<p>In the next chapters, we will use the framework that we learned with real data to illustrate how advanced geospatial data science can be done with just a few lines of code. Once a solution is written in terms of the high-level tools covered in previous chapters, it is trivial to improve computational performance in pure Julia.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

@@ -405,7 +405,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">1000</span>, replace<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [5965, 8069, 5275, 1215, ..., 135, 8020, 9279, 9748])</caption>
+<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [6190, 7513, 7383, 5440, ..., 1897, 6952, 4605, 1636])</caption>
 <thead>
 <tr class="header header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
@@ -422,44 +422,44 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.912066</td>
-<td style="text-align: center;">Quadrangle((64.0, 59.0), ..., (64.0, 60.0))</td>
+<td style="text-align: center;">-0.125652</td>
+<td style="text-align: center;">Quadrangle((89.0, 61.0), ..., (89.0, 62.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.0645832</td>
-<td style="text-align: center;">Quadrangle((68.0, 80.0), ..., (68.0, 81.0))</td>
+<td style="text-align: center;">0.0379443</td>
+<td style="text-align: center;">Quadrangle((12.0, 75.0), ..., (12.0, 76.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.0332405</td>
-<td style="text-align: center;">Quadrangle((74.0, 52.0), ..., (74.0, 53.0))</td>
+<td style="text-align: center;">-0.220953</td>
+<td style="text-align: center;">Quadrangle((82.0, 73.0), ..., (82.0, 74.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.331847</td>
-<td style="text-align: center;">Quadrangle((14.0, 12.0), ..., (14.0, 13.0))</td>
+<td style="text-align: center;">-0.207575</td>
+<td style="text-align: center;">Quadrangle((39.0, 54.0), ..., (39.0, 55.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.908877</td>
-<td style="text-align: center;">Quadrangle((34.0, 77.0), ..., (34.0, 78.0))</td>
+<td style="text-align: center;">3.06314</td>
+<td style="text-align: center;">Quadrangle((93.0, 17.0), ..., (93.0, 18.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.41099</td>
-<td style="text-align: center;">Quadrangle((77.0, 67.0), ..., (77.0, 68.0))</td>
+<td style="text-align: center;">-0.514235</td>
+<td style="text-align: center;">Quadrangle((68.0, 82.0), ..., (68.0, 83.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.00171662</td>
-<td style="text-align: center;">Quadrangle((99.0, 68.0), ..., (99.0, 69.0))</td>
+<td style="text-align: center;">-0.474834</td>
+<td style="text-align: center;">Quadrangle((10.0, 25.0), ..., (10.0, 26.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.52948</td>
-<td style="text-align: center;">Quadrangle((30.0, 11.0), ..., (30.0, 12.0))</td>
+<td style="text-align: center;">-0.838255</td>
+<td style="text-align: center;">Quadrangle((70.0, 83.0), ..., (70.0, 84.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.112257</td>
-<td style="text-align: center;">Quadrangle((31.0, 37.0), ..., (31.0, 38.0))</td>
+<td style="text-align: center;">-0.957499</td>
+<td style="text-align: center;">Quadrangle((3.0, 49.0), ..., (3.0, 50.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.486211</td>
-<td style="text-align: center;">Quadrangle((58.0, 94.0), ..., (58.0, 95.0))</td>
+<td style="text-align: center;">-1.32004</td>
+<td style="text-align: center;">Quadrangle((6.0, 56.0), ..., (6.0, 57.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -592,7 +592,7 @@ Note
 </section>
 <section id="nugget" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="nugget"><span class="header-section-number">10.1.3</span> nugget</h3>
-<p>The <strong>nugget</strong> can be used to insert additional variance at scales that are smaller than the scale of measurements (i.e.&nbsp;pixel). It is known in the image processing liteature as <a href="https://en.wikipedia.org/wiki/Salt-and-pepper_noise">salt-and-pepper noise</a>:</p>
+<p>The <strong>nugget</strong> can be used to insert additional variance at scales that are smaller than the scale of measurements (i.e.&nbsp;pixel). It is known in the image processing literature as <a href="https://en.wikipedia.org/wiki/Salt-and-pepper_noise">salt-and-pepper noise</a>:</p>
 <div class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display" data-execution_count="15">
 <p><img src="10-correlation_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
@@ -620,7 +620,7 @@ Note
 </section>
 <section id="model" class="level3" data-number="10.1.4">
 <h3 data-number="10.1.4" class="anchored" data-anchor-id="model"><span class="header-section-number">10.1.4</span> model</h3>
-<p>Finally, the <strong>model</strong> of the variogram determines how the function inscreases near the origin. The GeoStats.jl framework provides dozens of such models of geospatial correlation. The most widely used are the <code>GaussianVariogram</code>, the <code>SphericalVariogram</code> and the <code>ExponentialVariogram</code>:</p>
+<p>Finally, the <strong>model</strong> of the variogram determines how the function increases near the origin. The GeoStats.jl framework provides dozens of such models of geospatial correlation. The most widely used are the <code>GaussianVariogram</code>, the <code>SphericalVariogram</code> and the <code>ExponentialVariogram</code>:</p>
 <div class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display" data-execution_count="17">
 <p><img src="10-correlation_files/figure-html/cell-17-output-1.svg" class="img-fluid"></p>
@@ -805,9 +805,9 @@ Note
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>SphericalVariogram
-└─sill: 0.8863386213342049
-└─nugget: 6.484924826260228e-11
-└─range: 18.350599790864358
+└─sill: 0.8863386213342846
+└─nugget: 6.484924860169837e-11
+└─range: 18.350599790889927
 └─metric: Euclidean</code></pre>
 </div>
 </div>
@@ -816,9 +816,9 @@ Note
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">fit</span>(Variogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>GaussianVariogram
-└─sill: 0.8864324257942706
-└─nugget: 0.062356834378664905
-└─range: 14.888520805906111
+└─sill: 0.8864324257941406
+└─nugget: 0.062356834376029395
+└─range: 14.888520805892924
 └─metric: Euclidean</code></pre>
 </div>
 </div>

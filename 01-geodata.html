@@ -852,7 +852,7 @@ Note
 </div>
 </div>
 <p>The list of supported geometries is very comprehensive. It encompasses all geometries from the <a href="https://www.iso.org/standard/40114.html">simple features</a> standard and more. We will see more examples in the following chapters.</p>
-<p>One of the main limitations of GIS software today is the lack of explicit represention of <a href="https://en.wikipedia.org/wiki/Topology">topology</a>. A <code>GeometrySet</code> does not provide efficient topological relations <span class="citation" data-cites="Floriani2007">(<a href="references.html#ref-Floriani2007" role="doc-biblioref">Floriani and Hui 2007</a>)</span>, yet advanced geospatial data science requires the definition of geospatial domains where geometries are aware of their neighbors. Let’s illustrate this concept with the <code>CartesianGrid</code> domain:</p>
+<p>One of the main limitations of GIS software today is the lack of explicit representation of <a href="https://en.wikipedia.org/wiki/Topology">topology</a>. A <code>GeometrySet</code> does not provide efficient topological relations <span class="citation" data-cites="Floriani2007">(<a href="references.html#ref-Floriani2007" role="doc-biblioref">Floriani and Hui 2007</a>)</span>, yet advanced geospatial data science requires the definition of geospatial domains where geometries are aware of their neighbors. Let’s illustrate this concept with the <code>CartesianGrid</code> domain:</p>
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10</span>, <span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
@@ -956,7 +956,7 @@ Note
   └─ Triangle(3, 1, 5)</code></pre>
 </div>
 </div>
-<p>The <code>connect</code> function takes a tuple of indices and a geometry type, and produces a connectivity object. The geometry type can be ommitted, in which case it is assumed to be a <code>Ngon</code>, i.e., a polygon with <code>N</code> sides:</p>
+<p>The <code>connect</code> function takes a tuple of indices and a geometry type, and produces a connectivity object. The geometry type can be omitted, in which case it is assumed to be a <code>Ngon</code>, i.e., a polygon with <code>N</code> sides:</p>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fu">connect</span>((<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -1224,63 +1224,63 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.498362</td>
-<td style="text-align: center;">0.211264</td>
-<td style="text-align: center;">0.558387</td>
+<td style="text-align: center;">0.687197</td>
+<td style="text-align: center;">0.476088</td>
+<td style="text-align: center;">0.559659</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.356363</td>
-<td style="text-align: center;">0.0367821</td>
-<td style="text-align: center;">0.582922</td>
+<td style="text-align: center;">0.962745</td>
+<td style="text-align: center;">0.211116</td>
+<td style="text-align: center;">0.0369247</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.0503559</td>
-<td style="text-align: center;">0.963224</td>
-<td style="text-align: center;">0.547744</td>
+<td style="text-align: center;">0.185848</td>
+<td style="text-align: center;">0.718191</td>
+<td style="text-align: center;">0.124995</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.383599</td>
-<td style="text-align: center;">0.430311</td>
-<td style="text-align: center;">0.809494</td>
+<td style="text-align: center;">0.891156</td>
+<td style="text-align: center;">0.0178093</td>
+<td style="text-align: center;">0.525663</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.865723</td>
-<td style="text-align: center;">0.7833</td>
-<td style="text-align: center;">0.00640184</td>
+<td style="text-align: center;">0.213122</td>
+<td style="text-align: center;">0.311525</td>
+<td style="text-align: center;">0.668153</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.55123</td>
-<td style="text-align: center;">0.488515</td>
-<td style="text-align: center;">0.198643</td>
+<td style="text-align: center;">0.0359129</td>
+<td style="text-align: center;">0.988812</td>
+<td style="text-align: center;">0.645801</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.421703</td>
-<td style="text-align: center;">0.686449</td>
-<td style="text-align: center;">0.556428</td>
+<td style="text-align: center;">0.114412</td>
+<td style="text-align: center;">0.797294</td>
+<td style="text-align: center;">0.404361</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.621384</td>
-<td style="text-align: center;">0.0501942</td>
-<td style="text-align: center;">0.532244</td>
+<td style="text-align: center;">0.337981</td>
+<td style="text-align: center;">0.603513</td>
+<td style="text-align: center;">0.172613</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.276311</td>
-<td style="text-align: center;">0.845168</td>
-<td style="text-align: center;">0.500821</td>
+<td style="text-align: center;">0.773664</td>
+<td style="text-align: center;">0.715478</td>
+<td style="text-align: center;">0.853813</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.471472</td>
-<td style="text-align: center;">0.660727</td>
-<td style="text-align: center;">0.528264</td>
+<td style="text-align: center;">0.215694</td>
+<td style="text-align: center;">0.645155</td>
+<td style="text-align: center;">0.115363</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">

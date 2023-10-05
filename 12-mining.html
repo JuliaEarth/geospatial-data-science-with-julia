@@ -440,7 +440,7 @@ Note
  19 │ U ppm     19.0894   0.21     10.825    521.49    0</code></pre>
 </div>
 </div>
-<p>There are 18 chemical elements in the table, all measured in parts per million (ppm). The table also stores an integer identifier for each hole trajectory in the “HOLEID” column. There are 119 such tajectories as shown in the “maximum” column of the <code>describe</code> output.</p>
+<p>There are 18 chemical elements in the table, all measured in parts per million (ppm). The table also stores an integer identifier for each hole trajectory in the “HOLEID” column. There are 119 such trajectories as shown in the “maximum” column of the <code>describe</code> output.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -511,7 +511,7 @@ Value = \underbrace{V \times \rho \times Cu \times f \times P}_{\text{revenue}} 
 │  └─ Coerce((:HOLEID=&gt;Multiclass,), false, 1)
 └─ SequentialTransform
    ├─ Select([Symbol("Cu ppm"), Symbol("Au ppm"), Symbol("Ag ppm"), Symbol("S ppm")], [:Cu, :Au, :Ag, :S])
-   └─ Functional(all, #15)</code></pre>
+   └─ Functional(all, #13)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="7">
@@ -951,7 +951,7 @@ Note
 <p><img src="12-mining_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>The <code>ProjectionPursuit</code> is an advanced statistical transform that removes non-linear assocations between variables using an iterative procedure <span class="citation" data-cites="Friedman1987">(<a href="references.html#ref-Friedman1987" role="doc-biblioref">Friedman 1987</a>)</span>. The result is a set of independent variables that can be interpolated separately.</p>
+<p>The <code>ProjectionPursuit</code> is an advanced statistical transform that removes non-linear associations between variables using an iterative procedure <span class="citation" data-cites="Friedman1987">(<a href="references.html#ref-Friedman1987" role="doc-biblioref">Friedman 1987</a>)</span>. The result is a set of independent variables that can be interpolated separately.</p>
 <p>In order to “undo” these transforms after the interpolation, we create a revertible pipeline:</p>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>preproc <span class="op">=</span> <span class="fu">CLR</span>() <span class="op">→</span> <span class="fu">ProjectionPursuit</span>()</span>
@@ -1079,10 +1079,10 @@ Note
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>γs <span class="op">=</span> [<span class="fu">fit</span>(Variogram, g, h <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span>h<span class="op">/</span><span class="fl">100</span>)) for g <span class="kw">in</span> gs]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>4-element Vector{Variogram}:
- ExponentialVariogram(sill=0.8817126853950338, nugget=0.25265438582279953, range=214.00098032191806, metric=Euclidean)
- MaternVariogram(sill=0.9502760254266789, nugget=0.581281502365227, order=1.0, range=59.24377470778944, metric=Euclidean)
- ExponentialVariogram(sill=0.8813800051327594, nugget=0.4458685878754256, range=130.86604439240932, metric=Euclidean)
- MaternVariogram(sill=0.9040062541258926, nugget=0.4983728801001083, order=1.0, range=84.36187340641834, metric=Euclidean)</code></pre>
+ ExponentialVariogram(sill=0.8817126853982205, nugget=0.2526543858248965, range=214.0009803254261, metric=Euclidean)
+ MaternVariogram(sill=0.9502760254148845, nugget=0.5812815023700579, order=1.0, range=59.24377470745613, metric=Euclidean)
+ ExponentialVariogram(sill=0.8813800051271037, nugget=0.44586858786559935, range=130.86604438520814, metric=Euclidean)
+ MaternVariogram(sill=0.9040062541246148, nugget=0.4983728801008191, order=1.0, range=84.36187340620518, metric=Euclidean)</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
