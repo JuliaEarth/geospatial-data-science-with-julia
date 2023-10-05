@@ -4,7 +4,7 @@
 approach to data science with geospatial data and the
 [![](images/julia.svg){fig-alt="Julia" width=40px}](https://julialang.org)
 programming language.
-It contains best practices for writting *clean*, *readable*
+It contains best practices for writing *clean*, *readable*
 and *performant* code in geoscientific applications
 involving sophisticated representations of the (sub)surface
 of the Earth such as unstructured meshes made of 2D and

@@ -89,7 +89,7 @@ clean = Reject("Sper") →
 gt = gt |> clean
 ```
 
-That is a lot better! Let's assume that we want to asnwer the following
+That is a lot better! Let's assume that we want to answer the following
 business question:
 
 *What is the total mass of gold that will be mined from each geological unit?*

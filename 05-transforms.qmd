@@ -131,7 +131,7 @@ preserve geospatial information.
 
 ## Tip for all users
 
-The `Select` transform can be used in conjuntion with the `viewer`
+The `Select` transform can be used in conjunction with the `viewer`
 to quickly visualize a specific variable:
 
 ```{julia}
@@ -194,7 +194,7 @@ example above with the column "a", it is created by concatenation of column and 
 
 ::: {.callout-note}
 
-The `Map` transform mimicks the behavior of the `transform` function in DataFrames.jl, except
+The `Map` transform mimics the behavior of the `transform` function in DataFrames.jl, except
 that it always broadcasts the functions to the rows of the selected columns and always produces
 a single column for each function.
 
@@ -299,7 +299,7 @@ gt |> Sample(1000, replace=false) |> viewer
 ::: {.callout-note}
 
 Similar to `Filter` and `Sort`, the `Sample` transform is lazy.
-It simply stores the indices of sampled rows for future constrution
+It simply stores the indices of sampled rows for future construction
 of the new geotable.
 
 :::

@@ -78,7 +78,7 @@ example, the GeoJSON format writes `Date` columns as `String` because
 the JSON format has no date types. The Shapefile format has its own
 limitations, etc.
 
-Over time, we expect to improve the ecosystem as a whole by highlighing
+Over time, we expect to improve the ecosystem as a whole by highlighting
 various issues with available standards and backend implementations.
 
 ## File formats

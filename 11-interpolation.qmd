@@ -293,14 +293,14 @@ we learned:
   interpolation results. We can extract this information from samples using
   a two-step procedure:
   1. Estimate the `EmpiricalVariogram` from the available samples
-  2. Peform `fit` of theoretical model with result from previous step
+  2. Perform `fit` of theoretical model with result from previous step
 - `Interpolate` and `InterpolateNeighbors` are examples of geostatistical
   transforms. They can be easily inserted in more advanced pipelines as
   discussed in **Part II**.
 
 In the next chapters, we will use the framework that we learned with real
 data to illustrate how advanced geospatial data science can be done with just
-a few lines o code. Once a solution is written in terms of the high-level tools
+a few lines of code. Once a solution is written in terms of the high-level tools
 covered in previous chapters, it is trivial to improve computational performance
 in pure Julia.
 
