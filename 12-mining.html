@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geospatial Data Science with Julia - 12&nbsp; Mineral deposits</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-agriculture.html" rel="next">
+<link href="./11-interpolation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-mining.html">Part V: Applications</a></li><li class="breadcrumb-item"><a href="./12-mining.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mineral deposits</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geospatial Data Science with Julia</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Foreword</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Part I: Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-geodata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is geospatial data?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-geoviz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Scientific visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-geoio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interfacing with GIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-geoproc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Geometric processing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Part II: Transforms</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-transforms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What are transforms?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-projections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Map projections 🚧</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-pipelines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Building pipelines</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Part III: Queries</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-splitcombine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Split-apply-combine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-geojoins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Part IV: Interpolation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Geospatial correlation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-interpolation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple interpolation</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Part V: Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-mining.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mineral deposits</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-agriculture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Agricultural fields 🚧</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Petroleum reservoirs 🚧</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data"><span class="header-section-number">12.1</span> Data</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">12.2</span> Objectives</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology"><span class="header-section-number">12.3</span> Methodology</a>
+  <ul class="collapse">
+  <li><a href="#preliminary-analysis" id="toc-preliminary-analysis" class="nav-link" data-scroll-target="#preliminary-analysis"><span class="header-section-number">12.3.1</span> Preliminary analysis</a></li>
+  <li><a href="#domain-of-interpolation" id="toc-domain-of-interpolation" class="nav-link" data-scroll-target="#domain-of-interpolation"><span class="header-section-number">12.3.2</span> Domain of interpolation</a></li>
+  <li><a href="#interpolation-of-grades" id="toc-interpolation-of-grades" class="nav-link" data-scroll-target="#interpolation-of-grades"><span class="header-section-number">12.3.3</span> Interpolation of grades</a></li>
+  <li><a href="#model-of-recovery" id="toc-model-of-recovery" class="nav-link" data-scroll-target="#model-of-recovery"><span class="header-section-number">12.3.4</span> Model of recovery</a></li>
+  <li><a href="#economic-assessment" id="toc-economic-assessment" class="nav-link" data-scroll-target="#economic-assessment"><span class="header-section-number">12.3.5</span> Economic assessment</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.4</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mineral deposits</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In the mining industry, resource estimation consists of interpolating measurements of metal and mineral grades from drill hole samples to 3D grids known as “block models”. Due to highly skewed distributions, several pre-processing steps need to be performed before the actual interpolation. In this chapter, we will cover simple steps for resource estimation and economic assessment of a real mineral deposit.</p>
+<p><strong>TOOLS COVERED:</strong> <code>@groupby</code>, <code>@transform</code>, <code>@combine</code>, <code>CLR</code>, <code>ProjectionPursuit</code>, <code>EmpiricalVariogram</code>, <code>Kriging</code>, <code>Interpolate</code>, <code>InterpolateNeighbors</code>, <code>Map</code>, <code>Filter</code>, <code>boundingbox</code>, <code>convexhull</code>, <code>viewer</code></p>
+<p><strong>MODULES:</strong></p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># framework</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># compositional data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CoDa</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># IO modules</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># viz modules</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PairPlots</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">CairoMakie </span>as Mke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although we use CairoMakie.jl in this book, many of the 3D visualizations in this chapter demand a more performant Makie.jl backend. Consider using GLMakie.jl if you plan to reproduce the code locally.</p>
+</div>
+</div>
+<section id="data" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="data"><span class="header-section-number">12.1</span> Data</h2>
+<p>The <a href="https://zenodo.org/record/7051975">GeoMet</a> dataset <span class="citation" data-cites="Hoffimann2022_1">(<a href="references.html#ref-Hoffimann2022_1" role="doc-biblioref">Hoffimann et al. 2022a</a>)</span> consists of three geospatial tables stored as CSV files. In this chapter, we will only use the <strong>drillholes.csv</strong> table.</p>
+<p>Drill hole samples are always available in mining projects. They contain chemical information for each rock sample (a cylinder) along the drill hole trajectories. In this case, the data has been processed, and only the “X”, “Y”, “Z” coordinates of the centroids of the cylinders were stored:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://zenodo.org/record/7051975/files/drillholes.csv?download=1"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dtable <span class="op">=</span> <span class="fu">georef</span>(CSV.<span class="fu">File</span>(<span class="fu">download</span>(url)), (<span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">viewer</span>(dtable, pointsize <span class="op">=</span> <span class="fl">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<p><img src="12-mining_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dtable <span class="op">|&gt;</span> describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Table with 6 columns and 19 rows:
+      variable  mean      minimum  median    maximum   nmissing
+    ┌──────────────────────────────────────────────────────────
+ 1  │ HOLEID    60.265    1        62.0      119       0
+ 2  │ Ag ppm    1.86199   0.01     1.14      15.38     0
+ 3  │ Al ppm    52374.8   2400.0   56100.0   103300.0  0
+ 4  │ Au ppm    0.470965  0.0      0.21      5.89      0
+ 5  │ C ppm     1117.7    100.0    700.0     20700.0   0
+ 6  │ Ca ppm    9900.6    100.0    6400.0    73700.0   0
+ 7  │ Cl ppm    2303.75   5.48     1756.23   14273.8   0
+ 8  │ Cu ppm    7540.4    0.0      5000.0    60200.0   0
+ 9  │ F ppm     2528.58   20.89    1610.47   19786.3   0
+ 10 │ Fe ppm    245452.0  9900.0   246000.0  500000.0  0
+ 11 │ K ppm     13610.9   100.0    12450.0   45500.0   0
+ 12 │ Mg ppm    17673.0   200.0    14000.0   88800.0   0
+ 13 │ Mn ppm    4282.96   88.95    3685.35   24812.8   0
+ 14 │ Na ppm    4404.8    100.0    1400.0    58900.0   0
+ 15 │ P ppm     720.896   38.08    630.705   5576.14   0
+ 16 │ Pb ppm    9.3938    0.8      6.005     247.83    0
+ 17 │ S ppm     2712.95   100.0    1700.0    21500.0   0
+ 18 │ Th ppm    8.37926   0.37     4.08      94.81     0
+ 19 │ U ppm     19.0894   0.21     10.825    521.49    0</code></pre>
+</div>
+</div>
+<p>There are 18 chemical elements in the table, all measured in parts per million (ppm). The table also stores an integer identifier for each hole trajectory in the “HOLEID” column. There are 119 such tajectories as shown in the “maximum” column of the <code>describe</code> output.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In most mining projects, the drill hole samples are available as “SURVEY”, “COLLAR” and “INTERVAL” tables, which can be desurveyed and composited with <a href="https://github.com/JuliaEarth/DrillHoles.jl">DrillHoles.jl</a>.</p>
+</div>
+</div>
+</section>
+<section id="objectives" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="objectives"><span class="header-section-number">12.2</span> Objectives</h2>
+<p>Our main objective is to estimate the economic value associated with each mining block in a 3D block model, i.e.&nbsp;a <code>CartesianGrid</code> with <code>Hexahedron</code> geometries (the blocks). This economic value in U$ dollars is estimated in terms of various other geospatial variables:</p>
+<p><span class="math display">\[
+Value = \underbrace{V \times \rho \times Cu \times f \times P}_{\text{revenue}} - \underbrace{V \times \rho \times (C_m + C_p)}_{\text{cost}}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(V\)</span> is the volume of the block in <span class="math inline">\(m^3\)</span></li>
+<li><span class="math inline">\(\rho\)</span> is the rock density in <span class="math inline">\(ton/m^3\)</span></li>
+<li><span class="math inline">\(Cu\)</span> is the grade of copper in <span class="math inline">\([0,1]\)</span></li>
+<li><span class="math inline">\(f\)</span> is the recovery of copper in <span class="math inline">\([0,1]\)</span></li>
+<li><span class="math inline">\(P\)</span> is the selling price in <span class="math inline">\(U\$/ton\)</span></li>
+<li><span class="math inline">\(C_m\)</span> is the mining cost in <span class="math inline">\(U\$/ton\)</span></li>
+<li><span class="math inline">\(C_p\)</span> is the plant cost in <span class="math inline">\(U\$/ton\)</span></li>
+</ul>
+<p>Secondary objectives include the localization (through 3D visualization) of blocks with high economic value, high grades of Au and Ag, and low grade of S.</p>
+<p>For simplicity, we assume the following constants:</p>
+<ul>
+<li><span class="math inline">\(\rho = 2.75\ ton / m^3\)</span></li>
+<li><span class="math inline">\(P = 4000\ U\$ / ton\)</span></li>
+<li><span class="math inline">\(C_m = 4\ U\$ / ton\)</span></li>
+<li><span class="math inline">\(C_p = 10\ U\$ / ton\)</span></li>
+</ul>
+</section>
+<section id="methodology" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="methodology"><span class="header-section-number">12.3</span> Methodology</h2>
+<p>In order to estimate the economic value of each mining block, we need to interpolate the grade of Cu. Because we also want to localize the blocks with high grades of Au and Ag, and low grade of S, we will perform <em>multivariate</em> geostatistical interpolation of Cu, Au, Ag and S.</p>
+<p>The proposed methodology has the following steps:</p>
+<ol type="1">
+<li>Preliminary analysis and processing</li>
+<li>Definition of interpolation domain</li>
+<li>Multivariate geostatistical interpolation</li>
+<li>Economic assessment and visualizations</li>
+</ol>
+<section id="preliminary-analysis" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="preliminary-analysis"><span class="header-section-number">12.3.1</span> Preliminary analysis</h3>
+<p>We recommend to start any application discarding all information that is not relevant for the stated objectives. In this case, the geotable contains measurements of various chemical elements that are not used in the economic assessment. We define a <strong>cleaning pipeline</strong> that selects and renames columns of interest, and adds units to the measurements:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>selectholeid <span class="op">=</span> <span class="fu">Select</span>(<span class="st">"HOLEID"</span>) <span class="op">→</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">Coerce</span>(<span class="st">"HOLEID"</span> <span class="op">=&gt;</span> Multiclass)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>selectgrades <span class="op">=</span> <span class="fu">Select</span>(<span class="st">"Cu ppm"</span> <span class="op">=&gt;</span> <span class="st">"Cu"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Au ppm"</span> <span class="op">=&gt;</span> <span class="st">"Au"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Ag ppm"</span> <span class="op">=&gt;</span> <span class="st">"Ag"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"S ppm"</span>  <span class="op">=&gt;</span> <span class="st">"S"</span>) <span class="op">→</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>               <span class="fu">Functional</span>(x <span class="op">-&gt;</span> <span class="fl">1e-4</span><span class="op">*</span>x<span class="op">*</span>u<span class="st">"percent"</span>) <span class="co"># 1 ppm = 1e-4 percent</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>dclean <span class="op">=</span> selectholeid <span class="op">⊔</span> selectgrades</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>ParallelTableTransform
+├─ SequentialTransform
+│  ├─ Select([:HOLEID], nothing)
+│  └─ Coerce((:HOLEID=&gt;Multiclass,), false, 1)
+└─ SequentialTransform
+   ├─ Select([Symbol("Cu ppm"), Symbol("Au ppm"), Symbol("Ag ppm"), Symbol("S ppm")], [:Cu, :Au, :Ag, :S])
+   └─ Functional(all, #15)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dtable <span class="op">=</span> <span class="fu">dclean</span>(dtable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>2000×6 GeoTable over 2000 PointSet{3,Float64}</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">HOLEID</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point3</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[%]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[%]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[%]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[%]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.72 %</td>
+<td style="text-align: center;">0.000104 %</td>
+<td style="text-align: center;">6.4e-5 %</td>
+<td style="text-align: center;">0.61 %</td>
+<td style="text-align: center;">(559.725, -513.31, 252.82)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.1 %</td>
+<td style="text-align: center;">6.0e-6 %</td>
+<td style="text-align: center;">2.0e-5 %</td>
+<td style="text-align: center;">0.06 %</td>
+<td style="text-align: center;">(558.955, -515.23, 246.87)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2.18 %</td>
+<td style="text-align: center;">0.000202 %</td>
+<td style="text-align: center;">0.000344 %</td>
+<td style="text-align: center;">1.17 %</td>
+<td style="text-align: center;">(557.225, -519.61, 233.37)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2.29 %</td>
+<td style="text-align: center;">0.000343 %</td>
+<td style="text-align: center;">0.000488 %</td>
+<td style="text-align: center;">1.1 %</td>
+<td style="text-align: center;">(555.375, -524.3, 218.92)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.59 %</td>
+<td style="text-align: center;">5.0e-5 %</td>
+<td style="text-align: center;">0.000125 %</td>
+<td style="text-align: center;">0.22 %</td>
+<td style="text-align: center;">(553.825, -528.21, 206.94)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.56 %</td>
+<td style="text-align: center;">9.0e-5 %</td>
+<td style="text-align: center;">9.0e-5 %</td>
+<td style="text-align: center;">0.28 %</td>
+<td style="text-align: center;">(552.075, -532.56, 193.91)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2.0 %</td>
+<td style="text-align: center;">0.000356 %</td>
+<td style="text-align: center;">9.3e-5 %</td>
+<td style="text-align: center;">1.96 %</td>
+<td style="text-align: center;">(550.305, -537.08, 180.8)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.28 %</td>
+<td style="text-align: center;">2.1e-5 %</td>
+<td style="text-align: center;">7.6e-5 %</td>
+<td style="text-align: center;">0.14 %</td>
+<td style="text-align: center;">(547.495, -544.31, 160.08)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.61 %</td>
+<td style="text-align: center;">2.0e-5 %</td>
+<td style="text-align: center;">0.000112 %</td>
+<td style="text-align: center;">0.28 %</td>
+<td style="text-align: center;">(544.335, -552.43, 137.08)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.25 %</td>
+<td style="text-align: center;">1.6e-5 %</td>
+<td style="text-align: center;">7.7e-5 %</td>
+<td style="text-align: center;">0.09 %</td>
+<td style="text-align: center;">(541.695, -559.19, 117.96)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>In order to better understand the multivariate distribution of chemical elements, we visualize the <code>values</code> of the drill hole samples with the <code>pairplot</code>:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dtable <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"Cu"</span>, <span class="st">"Au"</span>, <span class="st">"Ag"</span>, <span class="st">"S"</span>) <span class="op">|&gt;</span> <span class="fu">DropUnits</span>() <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<p><img src="12-mining_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can observe that the distribution is very skewed.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>DropUnits</code> transform can be useful to drop units from the columns of a table before calling functions that do not support units yet (e.g., <code>pairplot</code>).</p>
+</div>
+</div>
+</section>
+<section id="domain-of-interpolation" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="domain-of-interpolation"><span class="header-section-number">12.3.2</span> Domain of interpolation</h3>
+<p>Before we can interpolate these variables, we need to define our domain of interpolation. In this application, we will define a 3D <code>CartesianGrid</code> in terms of the drill hole trajectories alone. Some of the <code>Hexahedron</code> geometries will be disabled whenever they are outside the <code>convexhull</code> of the points.</p>
+<p>First, let’s create our full <code>CartesianGrid</code> using the <code>boundingbox</code> of the trajectories:</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute bounding box</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bbox <span class="op">=</span> <span class="fu">boundingbox</span>(dtable.geometry)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># size of blocks in meters</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>bsize <span class="op">=</span> (<span class="fl">25.0</span>, <span class="fl">25.0</span>, <span class="fl">12.5</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># define Cartesian grid</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fu">extrema</span>(bbox)<span class="op">...</span>, bsize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>85×66×66 CartesianGrid{3,Float64}
+  minimum: Point(-1150.004825000069, -882.9003199972212, -399.92)
+  maximum: Point(974.9951749999309, 767.0996800027788, 425.08)
+  spacing: (25.0, 25.0, 12.5)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(dtable.geometry, color <span class="op">=</span> <span class="st">"black"</span>, pointsize <span class="op">=</span> <span class="fl">4</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(grid, alpha <span class="op">=</span> <span class="fl">0.2</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<p><img src="12-mining_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Second, let’s compute the <code>convexhull</code> of points projected on the horizontal plane:</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">proj</span>(point)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  x, y, z <span class="op">=</span> <span class="fu">coordinates</span>(point)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Point</span>(x, y)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">proj</span>.(dtable.geometry)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>chull <span class="op">=</span> <span class="fu">convexhull</span>(points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>PolyArea{2,Float64}
+  outer
+  └─ Ring((-1150.0, 641.23), ..., (-1120.56, 701.22))</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(chull)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(points, color <span class="op">=</span> <span class="st">"black"</span>, pointsize <span class="op">=</span> <span class="fl">4</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><img src="12-mining_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can filter the grid to retain <code>Hexahedron</code>s for which the projected centroid is inside the <code>convexhull</code>:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>active <span class="op">=</span> <span class="fu">findall</span>(h <span class="op">-&gt;</span> <span class="fu">proj</span>(<span class="fu">centroid</span>(h)) <span class="op">∈</span> chull, grid)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>blocks <span class="op">=</span> <span class="fu">view</span>(grid, active) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>136422 view(::CartesianGrid{3,Float64}, [76, 77, 78, 79, ..., 370102, 370103, 370104, 370186])
+├─ Hexahedron((724.995, -882.9, -399.92), ..., (724.995, -857.9, -387.42))
+├─ Hexahedron((749.995, -882.9, -399.92), ..., (749.995, -857.9, -387.42))
+├─ Hexahedron((774.995, -882.9, -399.92), ..., (774.995, -857.9, -387.42))
+├─ Hexahedron((799.995, -882.9, -399.92), ..., (799.995, -857.9, -387.42))
+├─ Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))
+⋮
+├─ Hexahedron((-900.005, 717.1, 412.58), ..., (-900.005, 742.1, 425.08))
+├─ Hexahedron((-875.005, 717.1, 412.58), ..., (-875.005, 742.1, 425.08))
+├─ Hexahedron((-850.005, 717.1, 412.58), ..., (-850.005, 742.1, 425.08))
+├─ Hexahedron((-825.005, 717.1, 412.58), ..., (-825.005, 742.1, 425.08))
+└─ Hexahedron((-900.005, 742.1, 412.58), ..., (-900.005, 767.1, 425.08))</code></pre>
+</div>
+</div>
+<p>We would also like to filter <code>Hexahedron</code>s that are above the terrain. Let’s create a simple terrain elevation model by interpolating the vertical “Z” coordinate of the first point of each trajectory:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ztable <span class="op">=</span> <span class="pp">@chain</span> dtable <span class="cf">begin</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@groupby</span>(<span class="op">:</span>HOLEID)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@transform</span>(<span class="op">:</span>Z <span class="op">=</span> <span class="fu">last</span>(<span class="fu">coordinates</span>(<span class="op">:</span>geometry)), <span class="op">:</span>geometry <span class="op">=</span> <span class="fu">proj</span>(<span class="op">:</span>geometry))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@combine</span>(<span class="op">:</span>Z <span class="op">=</span> <span class="fu">first</span>(<span class="op">:</span>Z), <span class="op">:</span>geometry <span class="op">=</span> <span class="fu">first</span>(<span class="op">:</span>geometry))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>119×3 GeoTable over 119 PointSet{2,Float64}</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">HOLEID</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">252.82</td>
+<td style="text-align: center;">(559.725, -513.31)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">280.94</td>
+<td style="text-align: center;">(745.345, -280.6)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">281.09</td>
+<td style="text-align: center;">(-304.025, 318.13)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">256.16</td>
+<td style="text-align: center;">(-416.575, 570.35)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">324.65</td>
+<td style="text-align: center;">(198.815, -524.78)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">317.1</td>
+<td style="text-align: center;">(493.605, -530.83)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">245.13</td>
+<td style="text-align: center;">(-367.965, 394.78)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">250.67</td>
+<td style="text-align: center;">(17.6752, 33.4297)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">254.49</td>
+<td style="text-align: center;">(-514.305, 594.68)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">294.44</td>
+<td style="text-align: center;">(-674.415, 596.84)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We perform the interpolation of the “Z” coordinate on the projected centroids of the blocks:</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>centroids <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">proj</span>.(<span class="fu">centroid</span>.(blocks)))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ztable <span class="op">=</span> ztable <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"Z"</span>) <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(centroids)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>2067×2 GeoTable over 2067 PointSet{2,Float64}</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">315.273</td>
+<td style="text-align: center;">(737.495, -870.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">318.783</td>
+<td style="text-align: center;">(762.495, -870.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">321.816</td>
+<td style="text-align: center;">(787.495, -870.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">324.655</td>
+<td style="text-align: center;">(812.495, -870.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">327.816</td>
+<td style="text-align: center;">(837.495, -870.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">309.922</td>
+<td style="text-align: center;">(687.495, -845.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">314.0</td>
+<td style="text-align: center;">(712.495, -845.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">318.755</td>
+<td style="text-align: center;">(737.495, -845.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">323.911</td>
+<td style="text-align: center;">(762.495, -845.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">327.361</td>
+<td style="text-align: center;">(787.495, -845.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ztable <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<p><img src="12-mining_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Finally, we can filter the blocks for which the “Z” coordinate is below the terrain:</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p</span>(h) <span class="op">=</span> <span class="fu">proj</span>(<span class="fu">centroid</span>(h))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Z</span>(h) <span class="op">=</span> <span class="fu">last</span>(<span class="fu">coordinates</span>(<span class="fu">centroid</span>(h)))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>zdict <span class="op">=</span> <span class="fu">Dict</span>(ztable.geometry <span class="op">.=&gt;</span> ztable.Z)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>active <span class="op">=</span> <span class="fu">findall</span>(h <span class="op">-&gt;</span> <span class="fu">Z</span>(h) <span class="op">&lt;</span> zdict[<span class="fu">p</span>(h)], blocks)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>blocks <span class="op">=</span> <span class="fu">view</span>(blocks, active)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>110854 view(::CartesianGrid{3,Float64}, [76, 77, 78, 79, ..., 337107, 337109, 337193, 342719])
+├─ Hexahedron((724.995, -882.9, -399.92), ..., (724.995, -857.9, -387.42))
+├─ Hexahedron((749.995, -882.9, -399.92), ..., (749.995, -857.9, -387.42))
+├─ Hexahedron((774.995, -882.9, -399.92), ..., (774.995, -857.9, -387.42))
+├─ Hexahedron((799.995, -882.9, -399.92), ..., (799.995, -857.9, -387.42))
+├─ Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))
+⋮
+├─ Hexahedron((924.995, -682.9, 337.58), ..., (924.995, -657.9, 350.08))
+├─ Hexahedron((874.995, -757.9, 350.08), ..., (874.995, -732.9, 362.58))
+├─ Hexahedron((924.995, -757.9, 350.08), ..., (924.995, -732.9, 362.58))
+├─ Hexahedron((899.995, -732.9, 350.08), ..., (899.995, -707.9, 362.58))
+└─ Hexahedron((924.995, -757.9, 362.58), ..., (924.995, -732.9, 375.08))</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(blocks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<p><img src="12-mining_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The filtered blocks constitute our domain of interpolation.</p>
+</section>
+<section id="interpolation-of-grades" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="interpolation-of-grades"><span class="header-section-number">12.3.3</span> Interpolation of grades</h3>
+<p>We saw that the distribution of chemical elements in the drill hole samples is very skewed. This is always the case in the mining industry. Another issue is that metal and mineral grades are examples of <strong>compositional data</strong> <span class="citation" data-cites="Aitchison1982">(<a href="references.html#ref-Aitchison1982" role="doc-biblioref">Aitchison 1982</a>)</span>. The values in these variables are constrained to live in the interval <span class="math inline">\([0,1]\)</span> and to sum up to 100% if all chemical elements are considered.</p>
+<section id="preprocessing" class="level4" data-number="12.3.3.1">
+<h4 data-number="12.3.3.1" class="anchored" data-anchor-id="preprocessing"><span class="header-section-number">12.3.3.1</span> Preprocessing</h4>
+<p>In order to remove compositional data constraints, we will perform the centered log-ratio transform (<code>CLR</code>) from the <a href="https://github.com/JuliaEarth/CoDa.jl">CoDa.jl</a> module:</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> dtable <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"Cu"</span>, <span class="st">"Au"</span>, <span class="st">"Ag"</span>, <span class="st">"S"</span>) <span class="op">|&gt;</span> <span class="fu">DropUnits</span>()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>grades <span class="op">|&gt;</span> <span class="fu">CLR</span>() <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<p><img src="12-mining_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>After the transform, the variables are free to vary in the unbounded interval <span class="math inline">\([-\infty,\infty]\)</span>. The theory behind this transform is beyond the scope of this book. Nevertheless, it is a simple mathematical expression in terms of logarithms of ratios (e.g., Cu/S).</p>
+<p>Next, we attempt to transform the multivariate distribution to a multivariate standard normal using the <code>ProjectionPursuit</code> transform:</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>grades <span class="op">|&gt;</span> <span class="fu">CLR</span>() <span class="op">|&gt;</span> <span class="fu">ProjectionPursuit</span>() <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<p><img src="12-mining_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The <code>ProjectionPursuit</code> is an advanced statistical transform that removes non-linear assocations between variables using an iterative procedure <span class="citation" data-cites="Friedman1987">(<a href="references.html#ref-Friedman1987" role="doc-biblioref">Friedman 1987</a>)</span>. The result is a set of independent variables that can be interpolated separately.</p>
+<p>In order to “undo” these transforms after the interpolation, we create a revertible pipeline:</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>preproc <span class="op">=</span> <span class="fu">CLR</span>() <span class="op">→</span> <span class="fu">ProjectionPursuit</span>()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>samples, cache <span class="op">=</span> <span class="fu">apply</span>(preproc, grades)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>samples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>2000×5 GeoTable over 2000 PointSet{3,Float64}</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point3</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-0.892421</td>
+<td style="text-align: center;">1.34874</td>
+<td style="text-align: center;">-1.17571</td>
+<td style="text-align: center;">1.41326</td>
+<td style="text-align: center;">(559.725, -513.31, 252.82)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1.29173</td>
+<td style="text-align: center;">-0.428318</td>
+<td style="text-align: center;">-1.78427</td>
+<td style="text-align: center;">1.04532</td>
+<td style="text-align: center;">(558.955, -515.23, 246.87)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.4053</td>
+<td style="text-align: center;">1.08376</td>
+<td style="text-align: center;">0.428799</td>
+<td style="text-align: center;">1.2991</td>
+<td style="text-align: center;">(557.225, -519.61, 233.37)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1.45413</td>
+<td style="text-align: center;">1.36052</td>
+<td style="text-align: center;">-0.302736</td>
+<td style="text-align: center;">-0.464057</td>
+<td style="text-align: center;">(555.375, -524.3, 218.92)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.554641</td>
+<td style="text-align: center;">1.17999</td>
+<td style="text-align: center;">-0.585607</td>
+<td style="text-align: center;">-0.34912</td>
+<td style="text-align: center;">(553.825, -528.21, 206.94)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-0.904494</td>
+<td style="text-align: center;">1.75457</td>
+<td style="text-align: center;">-0.583399</td>
+<td style="text-align: center;">0.647997</td>
+<td style="text-align: center;">(552.075, -532.56, 193.91)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.798722</td>
+<td style="text-align: center;">1.28985</td>
+<td style="text-align: center;">-2.17889</td>
+<td style="text-align: center;">1.51407</td>
+<td style="text-align: center;">(550.305, -537.08, 180.8)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1.86277</td>
+<td style="text-align: center;">0.224009</td>
+<td style="text-align: center;">-0.56606</td>
+<td style="text-align: center;">0.615858</td>
+<td style="text-align: center;">(547.495, -544.31, 160.08)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.00608037</td>
+<td style="text-align: center;">-1.31451</td>
+<td style="text-align: center;">-1.09932</td>
+<td style="text-align: center;">1.21965</td>
+<td style="text-align: center;">(544.335, -552.43, 137.08)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1.28277</td>
+<td style="text-align: center;">-0.683946</td>
+<td style="text-align: center;">-0.206159</td>
+<td style="text-align: center;">-0.275457</td>
+<td style="text-align: center;">(541.695, -559.19, 117.96)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="geospatial-correlation" class="level4" data-number="12.3.3.2">
+<h4 data-number="12.3.3.2" class="anchored" data-anchor-id="geospatial-correlation"><span class="header-section-number">12.3.3.2</span> Geospatial correlation</h4>
+<p>Let’s fit a theoretical variogram for all four (independent) variables:</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(samples), [<span class="st">"geometry"</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> [<span class="fu">EmpiricalVariogram</span>(samples, n, estimator <span class="op">=</span> <span class="op">:</span>cressie) for n <span class="kw">in</span> ns]</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>γs <span class="op">=</span> [<span class="fu">fit</span>(Variogram, g, h <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span>h<span class="op">/</span><span class="fl">100</span>)) for g <span class="kw">in</span> gs]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>4-element Vector{Variogram}:
+ ExponentialVariogram(sill=0.8817126853950338, nugget=0.25265438582279953, range=214.00098032191806, metric=Euclidean)
+ MaternVariogram(sill=0.9502760254266789, nugget=0.581281502365227, order=1.0, range=59.24377470778944, metric=Euclidean)
+ ExponentialVariogram(sill=0.8813800051327594, nugget=0.4458685878754256, range=130.86604439240932, metric=Euclidean)
+ MaternVariogram(sill=0.9040062541258926, nugget=0.4983728801001083, order=1.0, range=84.36187340641834, metric=Euclidean)</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We performed the <code>fit</code> of the variogram model using the weighting function <code>h -&gt; exp(-h/100)</code> that penalizes the lag distance <code>h</code> with an exponential model. The constant <code>100</code> was chosen based on visual inspection of the <code>EmpiricalVariogram</code> estimates below.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gammaplot</span>(n, g, γ)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">plot</span>(g, axis <span class="op">=</span> (; title <span class="op">=</span> n))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">plot!</span>(γ, maxlag <span class="op">=</span> <span class="fl">300</span>, vcolor <span class="op">=</span> <span class="st">"teal"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">current_figure</span>()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gammaplot</span>(ns[<span class="fl">1</span>], gs[<span class="fl">1</span>], γs[<span class="fl">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<p><img src="12-mining_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gammaplot</span>(ns[<span class="fl">2</span>], gs[<span class="fl">2</span>], γs[<span class="fl">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<p><img src="12-mining_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gammaplot</span>(ns[<span class="fl">3</span>], gs[<span class="fl">3</span>], γs[<span class="fl">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<p><img src="12-mining_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gammaplot</span>(ns[<span class="fl">4</span>], gs[<span class="fl">4</span>], γs[<span class="fl">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<p><img src="12-mining_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Assuming that the variogram models are ok, we can proceed to interpolation.</p>
+</section>
+<section id="geostatistical-interpolation" class="level4" data-number="12.3.3.3">
+<h4 data-number="12.3.3.3" class="anchored" data-anchor-id="geostatistical-interpolation"><span class="header-section-number">12.3.3.3</span> Geostatistical interpolation</h4>
+<p>Given the domain of interpolation, the samples and the variogram models, we can perform interpolation with <code>InterpolateNeighbors</code>:</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [n <span class="op">=&gt;</span> <span class="fu">Kriging</span>(γ) for (n, γ) <span class="kw">in</span> <span class="fu">zip</span>(ns, γs)]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> samples <span class="op">|&gt;</span> <span class="fu">InterpolateNeighbors</span>(blocks, models<span class="op">...</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>110854×5 GeoTable over 110854 view(::CartesianGrid{3,Float64}, [76, 77, 78, 79, ..., 337107, 337109, 337193, 342719])</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hexahedron</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-0.297545</td>
+<td style="text-align: center;">-0.191618</td>
+<td style="text-align: center;">0.220786</td>
+<td style="text-align: center;">0.480499</td>
+<td style="text-align: center;">Hexahedron((724.995, -882.9, -399.92), ..., (724.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-0.0607828</td>
+<td style="text-align: center;">-0.00821222</td>
+<td style="text-align: center;">0.351907</td>
+<td style="text-align: center;">0.962611</td>
+<td style="text-align: center;">Hexahedron((749.995, -882.9, -399.92), ..., (749.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.0609221</td>
+<td style="text-align: center;">-0.00808407</td>
+<td style="text-align: center;">0.351916</td>
+<td style="text-align: center;">0.962398</td>
+<td style="text-align: center;">Hexahedron((774.995, -882.9, -399.92), ..., (774.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-0.0610213</td>
+<td style="text-align: center;">-0.00800458</td>
+<td style="text-align: center;">0.35192</td>
+<td style="text-align: center;">0.962235</td>
+<td style="text-align: center;">Hexahedron((799.995, -882.9, -399.92), ..., (799.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.0692372</td>
+<td style="text-align: center;">0.314719</td>
+<td style="text-align: center;">0.0148926</td>
+<td style="text-align: center;">-0.0528025</td>
+<td style="text-align: center;">Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-0.411406</td>
+<td style="text-align: center;">0.0502209</td>
+<td style="text-align: center;">0.422855</td>
+<td style="text-align: center;">0.473926</td>
+<td style="text-align: center;">Hexahedron((674.995, -857.9, -399.92), ..., (674.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.297572</td>
+<td style="text-align: center;">-0.191643</td>
+<td style="text-align: center;">0.220789</td>
+<td style="text-align: center;">0.480837</td>
+<td style="text-align: center;">Hexahedron((699.995, -857.9, -399.92), ..., (699.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-0.297619</td>
+<td style="text-align: center;">-0.191416</td>
+<td style="text-align: center;">0.220807</td>
+<td style="text-align: center;">0.480871</td>
+<td style="text-align: center;">Hexahedron((724.995, -857.9, -399.92), ..., (724.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-0.0609669</td>
+<td style="text-align: center;">-0.00799516</td>
+<td style="text-align: center;">0.351925</td>
+<td style="text-align: center;">0.962499</td>
+<td style="text-align: center;">Hexahedron((749.995, -857.9, -399.92), ..., (749.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-0.0611253</td>
+<td style="text-align: center;">-0.00783895</td>
+<td style="text-align: center;">0.351936</td>
+<td style="text-align: center;">0.96224</td>
+<td style="text-align: center;">Hexahedron((774.995, -857.9, -399.92), ..., (774.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let’s confirm that the interpolated values follow the same standard normal distribution:</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">10000</span>) <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<p><img src="12-mining_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="postprocessing" class="level4" data-number="12.3.3.4">
+<h4 data-number="12.3.3.4" class="anchored" data-anchor-id="postprocessing"><span class="header-section-number">12.3.3.4</span> Postprocessing</h4>
+<p>In order to get the interpolated values in the original compositional space, we need to <code>revert</code> the preprocessing pipeline:</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">=</span> <span class="fu">revert</span>(preproc, interp, cache)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>110854×5 GeoTable over 110854 view(::CartesianGrid{3,Float64}, [76, 77, 78, 79, ..., 337107, 337109, 337193, 342719])</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hexahedron</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.740714</td>
+<td style="text-align: center;">3.27804e-5</td>
+<td style="text-align: center;">0.000191661</td>
+<td style="text-align: center;">0.259062</td>
+<td style="text-align: center;">Hexahedron((724.995, -882.9, -399.92), ..., (724.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66245e-5</td>
+<td style="text-align: center;">0.00019621</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">Hexahedron((749.995, -882.9, -399.92), ..., (749.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66271e-5</td>
+<td style="text-align: center;">0.000196211</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">Hexahedron((774.995, -882.9, -399.92), ..., (774.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66282e-5</td>
+<td style="text-align: center;">0.000196212</td>
+<td style="text-align: center;">0.258006</td>
+<td style="text-align: center;">Hexahedron((799.995, -882.9, -399.92), ..., (799.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.749871</td>
+<td style="text-align: center;">3.66817e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249903</td>
+<td style="text-align: center;">Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.740122</td>
+<td style="text-align: center;">3.377e-5</td>
+<td style="text-align: center;">0.000195315</td>
+<td style="text-align: center;">0.259649</td>
+<td style="text-align: center;">Hexahedron((674.995, -857.9, -399.92), ..., (674.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.740678</td>
+<td style="text-align: center;">3.2786e-5</td>
+<td style="text-align: center;">0.000191417</td>
+<td style="text-align: center;">0.259098</td>
+<td style="text-align: center;">Hexahedron((699.995, -857.9, -399.92), ..., (699.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.7407</td>
+<td style="text-align: center;">3.28134e-5</td>
+<td style="text-align: center;">0.000191429</td>
+<td style="text-align: center;">0.259075</td>
+<td style="text-align: center;">Hexahedron((724.995, -857.9, -399.92), ..., (724.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66271e-5</td>
+<td style="text-align: center;">0.000196211</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">Hexahedron((749.995, -857.9, -399.92), ..., (749.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66285e-5</td>
+<td style="text-align: center;">0.000196213</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">Hexahedron((774.995, -857.9, -399.92), ..., (774.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"Cu"</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<p><img src="12-mining_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="model-of-recovery" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="model-of-recovery"><span class="header-section-number">12.3.4</span> Model of recovery</h3>
+<p>We introduce a simplistic model of metallurgical recovery using the grade of copper estimated at the mining blocks. We assume that the logistic function represents an ideal behavior for the recovery as the grade of copper increases:</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span> <span class="fu">mean</span>(estim.Cu) <span class="op">-</span> <span class="fl">0.1</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span> <span class="fu">std</span>(estim.Cu)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(Cu) <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fu">exp</span>(<span class="fu">-</span>(Cu <span class="op">-</span> μ) <span class="op">/</span> σ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>f (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">=</span> estim <span class="op">|&gt;</span> <span class="fu">Map</span>(<span class="st">"Cu"</span> <span class="op">=&gt;</span> f <span class="op">=&gt;</span> <span class="st">"f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>110854×6 GeoTable over 110854 view(::CartesianGrid{3,Float64}, [76, 77, 78, 79, ..., 337107, 337109, 337193, 342719])</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">f</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hexahedron</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.740714</td>
+<td style="text-align: center;">3.27804e-5</td>
+<td style="text-align: center;">0.000191661</td>
+<td style="text-align: center;">0.259062</td>
+<td style="text-align: center;">0.962894</td>
+<td style="text-align: center;">Hexahedron((724.995, -882.9, -399.92), ..., (724.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66245e-5</td>
+<td style="text-align: center;">0.00019621</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.964111</td>
+<td style="text-align: center;">Hexahedron((749.995, -882.9, -399.92), ..., (749.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66271e-5</td>
+<td style="text-align: center;">0.000196211</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">Hexahedron((774.995, -882.9, -399.92), ..., (774.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66282e-5</td>
+<td style="text-align: center;">0.000196212</td>
+<td style="text-align: center;">0.258006</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">Hexahedron((799.995, -882.9, -399.92), ..., (799.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.749871</td>
+<td style="text-align: center;">3.66817e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249903</td>
+<td style="text-align: center;">0.972226</td>
+<td style="text-align: center;">Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.740122</td>
+<td style="text-align: center;">3.377e-5</td>
+<td style="text-align: center;">0.000195315</td>
+<td style="text-align: center;">0.259649</td>
+<td style="text-align: center;">0.962196</td>
+<td style="text-align: center;">Hexahedron((674.995, -857.9, -399.92), ..., (674.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.740678</td>
+<td style="text-align: center;">3.2786e-5</td>
+<td style="text-align: center;">0.000191417</td>
+<td style="text-align: center;">0.259098</td>
+<td style="text-align: center;">0.962852</td>
+<td style="text-align: center;">Hexahedron((699.995, -857.9, -399.92), ..., (699.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.7407</td>
+<td style="text-align: center;">3.28134e-5</td>
+<td style="text-align: center;">0.000191429</td>
+<td style="text-align: center;">0.259075</td>
+<td style="text-align: center;">0.962879</td>
+<td style="text-align: center;">Hexahedron((724.995, -857.9, -399.92), ..., (724.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66271e-5</td>
+<td style="text-align: center;">0.000196211</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">Hexahedron((749.995, -857.9, -399.92), ..., (749.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66285e-5</td>
+<td style="text-align: center;">0.000196213</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">Hexahedron((774.995, -857.9, -399.92), ..., (774.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Please check the paper by <span class="citation" data-cites="Hoffimann2022_2">Hoffimann et al. (<a href="references.html#ref-Hoffimann2022_2" role="doc-biblioref">2022b</a>)</span> for a more elaborate model of metallurgical recovery in the locked-cycle-test.</p>
+</section>
+<section id="economic-assessment" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="economic-assessment"><span class="header-section-number">12.3.5</span> Economic assessment</h3>
+<p>Given the block model with the grade of copper and metallurgical recovery, we can proceed and apply the formula of economic value stated in our <a href="#objectives">objectives</a>:</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>ρ <span class="op">=</span> <span class="fl">2.75</span> <span class="co"># ton / m^3</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> <span class="fl">4000</span> <span class="co"># U$ / ton</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>Cₘ <span class="op">=</span> <span class="fl">4</span> <span class="co"># U$ / ton</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>Cₚ <span class="op">=</span> <span class="fl">10</span> <span class="co"># U$ / ton</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>estim <span class="op">=</span> <span class="pp">@transform</span>(estim,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span>value <span class="op">=</span> <span class="fu">volume</span>(<span class="op">:</span>geometry) <span class="op">*</span> ρ <span class="op">*</span> ((<span class="op">:</span>Cu <span class="op">/</span> <span class="fl">100</span>) <span class="op">*</span> <span class="op">:</span>f <span class="op">*</span> P <span class="op">-</span> (Cₘ <span class="op">+</span> Cₚ))</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>110854×7 GeoTable over 110854 view(::CartesianGrid{3,Float64}, [76, 77, 78, 79, ..., 337107, 337109, 337193, 342719])</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">f</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">value</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hexahedron</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.740714</td>
+<td style="text-align: center;">3.27804e-5</td>
+<td style="text-align: center;">0.000191661</td>
+<td style="text-align: center;">0.259062</td>
+<td style="text-align: center;">0.962894</td>
+<td style="text-align: center;">3.1215e5</td>
+<td style="text-align: center;">Hexahedron((724.995, -882.9, -399.92), ..., (724.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66245e-5</td>
+<td style="text-align: center;">0.00019621</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.964111</td>
+<td style="text-align: center;">3.13802e5</td>
+<td style="text-align: center;">Hexahedron((749.995, -882.9, -399.92), ..., (749.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66271e-5</td>
+<td style="text-align: center;">0.000196211</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">3.13801e5</td>
+<td style="text-align: center;">Hexahedron((774.995, -882.9, -399.92), ..., (774.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66282e-5</td>
+<td style="text-align: center;">0.000196212</td>
+<td style="text-align: center;">0.258006</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">3.138e5</td>
+<td style="text-align: center;">Hexahedron((799.995, -882.9, -399.92), ..., (799.995, -857.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.749871</td>
+<td style="text-align: center;">3.66817e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249903</td>
+<td style="text-align: center;">0.972226</td>
+<td style="text-align: center;">3.25741e5</td>
+<td style="text-align: center;">Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.740122</td>
+<td style="text-align: center;">3.377e-5</td>
+<td style="text-align: center;">0.000195315</td>
+<td style="text-align: center;">0.259649</td>
+<td style="text-align: center;">0.962196</td>
+<td style="text-align: center;">3.11216e5</td>
+<td style="text-align: center;">Hexahedron((674.995, -857.9, -399.92), ..., (674.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.740678</td>
+<td style="text-align: center;">3.2786e-5</td>
+<td style="text-align: center;">0.000191417</td>
+<td style="text-align: center;">0.259098</td>
+<td style="text-align: center;">0.962852</td>
+<td style="text-align: center;">3.12094e5</td>
+<td style="text-align: center;">Hexahedron((699.995, -857.9, -399.92), ..., (699.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.7407</td>
+<td style="text-align: center;">3.28134e-5</td>
+<td style="text-align: center;">0.000191429</td>
+<td style="text-align: center;">0.259075</td>
+<td style="text-align: center;">0.962879</td>
+<td style="text-align: center;">3.12129e5</td>
+<td style="text-align: center;">Hexahedron((724.995, -857.9, -399.92), ..., (724.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66271e-5</td>
+<td style="text-align: center;">0.000196211</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">3.13801e5</td>
+<td style="text-align: center;">Hexahedron((749.995, -857.9, -399.92), ..., (749.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.741772</td>
+<td style="text-align: center;">2.66285e-5</td>
+<td style="text-align: center;">0.000196213</td>
+<td style="text-align: center;">0.258005</td>
+<td style="text-align: center;">0.96411</td>
+<td style="text-align: center;">3.138e5</td>
+<td style="text-align: center;">Hexahedron((774.995, -857.9, -399.92), ..., (774.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We can then visualize all blocks with a positive economic value:</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">|&gt;</span> <span class="fu">Filter</span>(x <span class="op">-&gt;</span> x.value <span class="op">&gt;</span> <span class="fl">0</span>) <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"value"</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<p><img src="12-mining_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Or any criterion of interest such as positive economic value and small fraction of contaminants:</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">|&gt;</span> <span class="fu">Filter</span>(x <span class="op">-&gt;</span> x.value <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> x.S <span class="op">&lt;</span> <span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>48957×7 GeoTable over 48957 view(::CartesianGrid{3,Float64}, [80, 165, 166, 167, ..., 337107, 337109, 337193, 342719])</caption>
+<thead>
+<tr class="header header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">f</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">value</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Hexahedron</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.749871</td>
+<td style="text-align: center;">3.66817e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249903</td>
+<td style="text-align: center;">0.972226</td>
+<td style="text-align: center;">3.25741e5</td>
+<td style="text-align: center;">Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.749871</td>
+<td style="text-align: center;">3.66796e-5</td>
+<td style="text-align: center;">0.000189565</td>
+<td style="text-align: center;">0.249902</td>
+<td style="text-align: center;">0.972227</td>
+<td style="text-align: center;">3.25742e5</td>
+<td style="text-align: center;">Hexahedron((824.995, -857.9, -399.92), ..., (824.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.74987</td>
+<td style="text-align: center;">3.66826e-5</td>
+<td style="text-align: center;">0.000189568</td>
+<td style="text-align: center;">0.249904</td>
+<td style="text-align: center;">0.972226</td>
+<td style="text-align: center;">3.2574e5</td>
+<td style="text-align: center;">Hexahedron((849.995, -857.9, -399.92), ..., (849.995, -832.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.749867</td>
+<td style="text-align: center;">3.66867e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249907</td>
+<td style="text-align: center;">0.972223</td>
+<td style="text-align: center;">325736.0</td>
+<td style="text-align: center;">Hexahedron((874.995, -857.9, -399.92), ..., (874.995, -832.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.749894</td>
+<td style="text-align: center;">3.67088e-5</td>
+<td style="text-align: center;">0.000189557</td>
+<td style="text-align: center;">0.249879</td>
+<td style="text-align: center;">0.972247</td>
+<td style="text-align: center;">3.25774e5</td>
+<td style="text-align: center;">Hexahedron((849.995, -832.9, -399.92), ..., (849.995, -807.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.749871</td>
+<td style="text-align: center;">3.66795e-5</td>
+<td style="text-align: center;">0.000189565</td>
+<td style="text-align: center;">0.249902</td>
+<td style="text-align: center;">0.972227</td>
+<td style="text-align: center;">3.25742e5</td>
+<td style="text-align: center;">Hexahedron((874.995, -832.9, -399.92), ..., (874.995, -807.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.749867</td>
+<td style="text-align: center;">3.66866e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249906</td>
+<td style="text-align: center;">0.972223</td>
+<td style="text-align: center;">3.25736e5</td>
+<td style="text-align: center;">Hexahedron((899.995, -832.9, -399.92), ..., (899.995, -807.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.74987</td>
+<td style="text-align: center;">3.66815e-5</td>
+<td style="text-align: center;">0.000189567</td>
+<td style="text-align: center;">0.249903</td>
+<td style="text-align: center;">0.972226</td>
+<td style="text-align: center;">3.25741e5</td>
+<td style="text-align: center;">Hexahedron((899.995, -807.9, -399.92), ..., (899.995, -782.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.751298</td>
+<td style="text-align: center;">5.41028e-5</td>
+<td style="text-align: center;">0.000227739</td>
+<td style="text-align: center;">0.24842</td>
+<td style="text-align: center;">0.973459</td>
+<td style="text-align: center;">3.27729e5</td>
+<td style="text-align: center;">Hexahedron((574.995, -732.9, -399.92), ..., (574.995, -707.9, -387.42))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.75126</td>
+<td style="text-align: center;">5.41754e-5</td>
+<td style="text-align: center;">0.000227722</td>
+<td style="text-align: center;">0.248458</td>
+<td style="text-align: center;">0.973427</td>
+<td style="text-align: center;">3.27677e5</td>
+<td style="text-align: center;">Hexahedron((549.995, -707.9, -399.92), ..., (549.995, -682.9, -387.42))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="summary" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.4</span> Summary</h2>
+<p>In this chapter, we illustrated an application of the framework in the mining industry. Among other things, we learned how to</p>
+<ul>
+<li>Perform simple economic assessment based on grades and metallurgical recoveries estimated at mining blocks using simple interpolation of transformed variables from drill hole samples.</li>
+<li>Use the tools covered in previous chapters to localize regions of interest in the mineral deposit.</li>
+</ul>
+<p>Although the mathematical model presented here is simple, it is what most mining companies do. There is opportunity to improve these types of estimates with more sophisticated geospatial data science pipelines.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Aitchison1982" class="csl-entry" role="listitem">
+Aitchison, J. 1982. <span>“The Statistical Analysis of Compositional Data.”</span> <em>Journal of the Royal Statistical Society. Series B (Methodological)</em> 44 (2): 139–77. <a href="http://www.jstor.org/stable/2345821">http://www.jstor.org/stable/2345821</a>.
+</div>
+<div id="ref-Friedman1987" class="csl-entry" role="listitem">
+Friedman, Jerome H. 1987. <span>“Exploratory Projection Pursuit.”</span> <em>Journal of the American Statistical Association</em> 82 (397): 249–66. <a href="http://www.jstor.org/stable/2289161">http://www.jstor.org/stable/2289161</a>.
+</div>
+<div id="ref-Hoffimann2022_1" class="csl-entry" role="listitem">
+Hoffimann, Júlio, José Augusto, Lucas Resende, Marlon Mathias, Douglas Mazzinghy, Matheus Bianchetti, Mônica Mendes, et al. 2022a. <span>“GeoMet Dataset.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.7051975">https://doi.org/10.5281/zenodo.7051975</a>.
+</div>
+<div id="ref-Hoffimann2022_2" class="csl-entry" role="listitem">
+Hoffimann, Júlio, José Augusto, Lucas Resende, Marlon Mathias, Douglas Mazzinghy, Matheus Bianchetti, Mônica Mendes, et al. 2022b. <span>“Modeling Geospatial Uncertainty of Geometallurgical Variables with Bayesian Models and Hilbert<span></span>kriging.”</span> <em>Mathematical Geosciences</em> 54 (7): 1227–53. <a href="https://doi.org/10.1007/s11004-022-10013-1">https://doi.org/10.1007/s11004-022-10013-1</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-interpolation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple interpolation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-agriculture.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Agricultural fields 🚧</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
