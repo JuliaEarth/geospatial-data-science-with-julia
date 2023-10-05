@@ -234,7 +234,7 @@ geotable = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
 geotable |> viewer
 ```
 
-We are now equiped with a set of visualization functions that can
+We are now equipped with a set of visualization functions that can
 really improve the speed at which we explore and analyze geospatial data.
 These functions provide a consistent set of aesthetic options that we
 will cover in more detail with future examples.

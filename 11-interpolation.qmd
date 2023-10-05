@@ -293,7 +293,7 @@ we learned:
   interpolation results. We can extract this information from samples using
   a two-step procedure:
   1. Estimate the `EmpiricalVariogram` from the available samples
-  2. Peform `fit` of theoretical model with result from previous step
+  2. Perform `fit` of theoretical model with result from previous step
 - `Interpolate` and `InterpolateNeighbors` are examples of geostatistical
   transforms. They can be easily inserted in more advanced pipelines as
   discussed in **Part II**.

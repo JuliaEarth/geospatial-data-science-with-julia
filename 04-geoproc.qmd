@@ -258,7 +258,7 @@ are inside the polygon:
 isconvex(q)
 ```
 
-A very useful predicate is `instersects` (with a "s" at the end):
+A very useful predicate is `intersects` (with a "s" at the end):
 
 ```{julia}
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]

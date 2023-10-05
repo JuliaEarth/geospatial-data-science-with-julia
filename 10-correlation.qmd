@@ -254,7 +254,7 @@ In both plots, we have $\mu=0$.
 ### nugget
 
 The **nugget** can be used to insert additional variance at scales that are smaller than
-the scale of measurements (i.e. pixel). It is known in the image processing liteature as
+the scale of measurements (i.e. pixel). It is known in the image processing literature as
 [salt-and-pepper noise](https://en.wikipedia.org/wiki/Salt-and-pepper_noise):
 
 ```{julia}
@@ -310,7 +310,7 @@ show as bright values in the 3D model of the mineral deposit.
 
 ### model
 
-Finally, the **model** of the variogram determines how the function inscreases
+Finally, the **model** of the variogram determines how the function increases
 near the origin. The GeoStats.jl framework provides dozens of such models of
 geospatial correlation. The most widely used are the `GaussianVariogram`, the
 `SphericalVariogram` and the `ExponentialVariogram`:

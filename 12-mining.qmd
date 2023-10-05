@@ -74,7 +74,7 @@ dtable |> describe
 
 There are 18 chemical elements in the table, all measured in parts per million (ppm).
 The table also stores an integer identifier for each hole trajectory in the "HOLEID"
-column. There are 119 such tajectories as shown in the "maximum" column of the
+column. There are 119 such trajectories as shown in the "maximum" column of the
 `describe` output.
 
 ::: {.callout-note}
@@ -295,7 +295,7 @@ using the `ProjectionPursuit` transform:
 grades |> CLR() |> ProjectionPursuit() |> values |> pairplot
 ```
 
-The `ProjectionPursuit` is an advanced statistical transform that removes non-linear assocations
+The `ProjectionPursuit` is an advanced statistical transform that removes non-linear associations
 between variables using an iterative procedure [@Friedman1987]. The result is a set of independent
 variables that can be interpolated separately.
 
