@@ -35,6 +35,12 @@ using PairPlots
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 ::: {.callout-note}
 
 Although we use CairoMakie.jl in this book, many of the 3D visualizations
