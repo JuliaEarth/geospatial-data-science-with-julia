@@ -97,7 +97,7 @@ some flexibility on how to read the parts. I recommend reading
 **Part I** first to understand the framework and vision. After
 that, you will have the necessary background to follow the code
 examples in **Part II**, **Part III** and **Part IV**. Finally,
-you can explore the applications in **Part IV** to solidify the
+you can explore the applications in **Part V** to solidify the
 concepts.
 
 ## Software installation
