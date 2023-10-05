@@ -1,7 +1,7 @@
 on:
-  workflow_dispatch:
   push:
     branches: main
+  workflow_dispatch:
 
 name: Quarto Publish
 
@@ -13,6 +13,21 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Setup Julia
+        uses: julia-actions/setup-julia@v1
+
+      - name: Install IJulia and Jupyter
+        run: |
+          julia -e '
+            using Pkg
+            Pkg.add("IJulia")
+            Pkg.add("Conda")
+            import Conda
+            Conda.add("jupyter")'
+
+      - name: Instantiate environment
+        run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate()'
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
