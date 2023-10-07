@@ -580,7 +580,7 @@ Note
 </div>
 </div>
 <p>This row-major representation can be useful to process data that is potentially larger than the available computer memory, or infinite streams of data.</p>
-<p>Although these two representations come built-in with Julia, they lack basic functionality for data science. The most widely used table representation for data science in Julia is available in <a href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> by <span class="citation" data-cites="Bogumil2023">Kamiński et al. (<a href="references.html#ref-Bogumil2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p>Although these two representations come built-in with Julia, they lack basic functionality for data science. The most widely used table representation for data science in Julia is available in <a href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> by <span class="citation" data-cites="Bogumil2023">Bouchet-Valat and Kamiński (<a href="references.html#ref-Bogumil2023" role="doc-biblioref">2023</a>)</span>.</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DataFrames</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1224,63 +1224,63 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.454863</td>
-<td style="text-align: center;">0.524705</td>
-<td style="text-align: center;">0.963002</td>
+<td style="text-align: center;">0.439011</td>
+<td style="text-align: center;">0.673968</td>
+<td style="text-align: center;">0.619348</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.667676</td>
-<td style="text-align: center;">0.466988</td>
-<td style="text-align: center;">0.451424</td>
+<td style="text-align: center;">0.550197</td>
+<td style="text-align: center;">0.845839</td>
+<td style="text-align: center;">0.0250357</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.542941</td>
-<td style="text-align: center;">0.819781</td>
-<td style="text-align: center;">0.725416</td>
+<td style="text-align: center;">0.188226</td>
+<td style="text-align: center;">0.0265932</td>
+<td style="text-align: center;">0.3014</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.692685</td>
-<td style="text-align: center;">0.120454</td>
-<td style="text-align: center;">0.500512</td>
+<td style="text-align: center;">0.586615</td>
+<td style="text-align: center;">0.265559</td>
+<td style="text-align: center;">0.4207</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.637133</td>
-<td style="text-align: center;">0.184579</td>
-<td style="text-align: center;">0.47291</td>
+<td style="text-align: center;">0.942802</td>
+<td style="text-align: center;">0.0529097</td>
+<td style="text-align: center;">0.633131</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.0190587</td>
-<td style="text-align: center;">0.39358</td>
-<td style="text-align: center;">0.0390386</td>
+<td style="text-align: center;">0.30737</td>
+<td style="text-align: center;">0.986774</td>
+<td style="text-align: center;">0.775707</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.361713</td>
-<td style="text-align: center;">0.866463</td>
-<td style="text-align: center;">0.0786625</td>
+<td style="text-align: center;">0.36399</td>
+<td style="text-align: center;">0.499807</td>
+<td style="text-align: center;">0.884391</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.892983</td>
-<td style="text-align: center;">0.106128</td>
-<td style="text-align: center;">0.734421</td>
+<td style="text-align: center;">0.350007</td>
+<td style="text-align: center;">0.306321</td>
+<td style="text-align: center;">0.297324</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.515074</td>
-<td style="text-align: center;">0.344405</td>
-<td style="text-align: center;">0.377501</td>
+<td style="text-align: center;">0.626202</td>
+<td style="text-align: center;">0.0872273</td>
+<td style="text-align: center;">0.0252122</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.828559</td>
-<td style="text-align: center;">0.129264</td>
-<td style="text-align: center;">0.561506</td>
+<td style="text-align: center;">0.486521</td>
+<td style="text-align: center;">0.621972</td>
+<td style="text-align: center;">0.538254</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1442,6 +1442,9 @@ Tip for advanced users
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Bogumil2023" class="csl-entry" role="listitem">
+Bouchet-Valat, Milan, and Bogumił Kamiński. 2023. <span>“DataFrames.jl: Flexible and Fast Tabular Data in Julia.”</span> <em>Journal of Statistical Software</em> 107 (4): 1–32. <a href="https://doi.org/10.18637/jss.v107.i04">https://doi.org/10.18637/jss.v107.i04</a>.
+</div>
 <div id="ref-Correia2015" class="csl-entry" role="listitem">
 Correia, M.., J.. Hohendorff, A. T. Gaspar, and D.. Schiozer. 2015. <em><span class="nocase">UNISIM-II-D: Benchmark Case Proposal Based on a Carbonate Reservoir</span></em>. Vol. Day 3 Fri, November 20, 2015. SPE Latin America and Caribbean Petroleum Engineering Conference. <a href="https://doi.org/10.2118/177140-MS">https://doi.org/10.2118/177140-MS</a>.
 </div>
@@ -1450,9 +1453,6 @@ Floriani, L. De, and A. Hui. 2007. <span>“<span class="nocase">Shape Represent
 </div>
 <div id="ref-Hoffimann2021" class="csl-entry" role="listitem">
 Hoffimann, Júlio, Maciel Zortea, Breno de Carvalho, and Bianca Zadrozny. 2021. <span>“Geostatistical Learning: Challenges and Opportunities.”</span> <em>Frontiers in Applied Mathematics and Statistics</em> 7. <a href="https://doi.org/10.3389/fams.2021.689393">https://doi.org/10.3389/fams.2021.689393</a>.
-</div>
-<div id="ref-Bogumil2023" class="csl-entry" role="listitem">
-Kamiński, Bogumił, John Myles White, Milan Bouchet-Valat, powerdistribution, Sean Garborg, Jacob Quinn, Simon Kornblith, et al. 2023. <span>“JuliaData/DataFrames.jl: V1.6.1.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.8174885">https://doi.org/10.5281/zenodo.8174885</a>.
 </div>
 <div id="ref-Quinn2023" class="csl-entry" role="listitem">
 Quinn, Jacob, Bogumił Kamiński, David Anthoff, Milan Bouchet-Valat, Tamas K. Papp, Takafumi Arakaki, Rafael Schouten, et al. 2023. <span>“JuliaData/Tables.jl: V1.10.1.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.7730968">https://doi.org/10.5281/zenodo.7730968</a>.
