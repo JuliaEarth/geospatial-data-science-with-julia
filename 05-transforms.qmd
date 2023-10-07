@@ -283,7 +283,7 @@ georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
 ### Statistical
 
 The framework provides various feature transforms for statistical analysis. We will
-cover some of these transforms in more detail in **Part IV** of the book with real data.
+cover some of these transforms in more detail in **Part V** of the book with real data.
 In the following examples we illustrate the most basic statistical transforms with
 synthetic data.
 
@@ -503,7 +503,7 @@ is oriented counter clockwise and the inner boundaries are oriented clockwise. T
 list of available repairs will continue to grow with the implementation of new
 geometric algorithms in the framework.
 
-To understand why geometric transforms are more advanced than coordinate transforms,
+To understand why geometric transforms are more general than coordinate transforms,
 let's consider the following polygonal area with holes:
 
 ```{julia}
