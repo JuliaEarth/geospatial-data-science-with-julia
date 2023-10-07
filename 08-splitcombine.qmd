@@ -128,7 +128,7 @@ m = Au \times \rho \times V
 $$
 
 Let's use an auxiliary function to convert the `Point`s in the `geometry` column into
-`Box`es of sides 4x4x4. The function takes a centroid point as input and produces a
+`Box`es of sides 5x5x5. The function takes a centroid point as input and produces a
 box centered at the point with corners that are 2.5x2.5x2.5 units away in both
 directions:
 
