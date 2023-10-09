@@ -920,7 +920,7 @@ metadata: rows, names</code></pre>
 <p><span class="math display">\[
 m = Au \times \rho \times V
 \]</span></p>
-<p>Let’s use an auxiliary function to convert the <code>Point</code>s in the <code>geometry</code> column into <code>Box</code>es of sides 4x4x4. The function takes a centroid point as input and produces a box centered at the point with corners that are 2.5x2.5x2.5 units away in both directions:</p>
+<p>Let’s use an auxiliary function to convert the <code>Point</code>s in the <code>geometry</code> column into <code>Box</code>es of sides 5x5x5. The function takes a centroid point as input and produces a box centered at the point with corners that are 2.5x2.5x2.5 units away in both directions:</p>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(point) <span class="op">=</span> <span class="fu">Box</span>(point <span class="op">-</span> <span class="fu">Vec</span>(<span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>), point <span class="op">+</span> <span class="fu">Vec</span>(<span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
