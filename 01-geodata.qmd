@@ -171,15 +171,6 @@ coltable = (
 
 Given that data science is often performed with entire columns,
 this column-major representation of a table is very convenient.
-We can check that the representation is a valid representation
-of a table using the `Tables.istable` function:
-
-```{julia}
-using Tables
-
-Tables.istable(coltable)
-```
-
 The second representation focuses on the rows of the table:
 
 ```{julia}
@@ -192,11 +183,7 @@ rowtable = [
 ]
 ```
 
-```{julia}
-Tables.istable(rowtable)
-```
-
-This row-major representation can be useful to process data that
+The row-major representation can be useful to process data that
 is potentially larger than the available computer memory, or
 infinite streams of data.
 

@@ -162,9 +162,7 @@ rt = gt |> RowTable()
 ```
 
 ```{julia}
-using Tables
-
-Tables.isrowtable(values(rt))
+rt |> values |> typeof
 ```
 
 The `Functional` transform can be used to apply a function to columns of a geotable in place:

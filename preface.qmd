@@ -130,7 +130,6 @@ pkg"add PairPlots@1.1.1"
 # install other modules
 pkg"add CoDa@1.0.8"
 pkg"add DataFrames@1.6.1"
-pkg"add Tables@1.11.0"
 pkg"add CSV@0.10.11"
 ```
 
