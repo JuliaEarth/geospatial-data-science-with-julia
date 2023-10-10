@@ -566,7 +566,7 @@ t |> Detrend(degree=2) |> viewer
 The remaining component can then be modeled with geostatistical models of geospatial correlation.
 
 Models of geospatial correlation such as variograms [@Hoffimann2019] require unique coordinates
-in the geotable, a that is the purpose of the `UniqueCoords` transform. It removes duplicate
+in the geotable and that is the purpose of the `UniqueCoords` transform. It removes duplicate
 points in the geotable and aggregates the `values` with custom aggregation functions.
 
 Let's consider the following geotable stored in a `.png` file to illustrate another geospatial
