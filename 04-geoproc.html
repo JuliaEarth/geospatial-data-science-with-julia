@@ -317,7 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#predicates" id="toc-predicates" class="nav-link" data-scroll-target="#predicates"><span class="header-section-number">4.2</span> Predicates</a></li>
   <li><a href="#operations" id="toc-operations" class="nav-link" data-scroll-target="#operations"><span class="header-section-number">4.3</span> Operations</a></li>
   <li><a href="#algorithms" id="toc-algorithms" class="nav-link" data-scroll-target="#algorithms"><span class="header-section-number">4.4</span> Algorithms</a></li>
-  <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations"><span class="header-section-number">4.5</span> Congratulations!</a></li>
+  <li><a href="#domains" id="toc-domains" class="nav-link" data-scroll-target="#domains"><span class="header-section-number">4.5</span> Domains</a></li>
+  <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations"><span class="header-section-number">4.6</span> Congratulations!</a></li>
   </ul>
 </nav>
     </div>
@@ -752,32 +753,32 @@ Tip for advanced users
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">rand</span>(Point2, <span class="fl">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>100-element Vector{Point2}:
- Point(0.09547880464662384, 0.04274657432498352)
- Point(0.13189832365684295, 0.6261274483287353)
- Point(0.6414638344175914, 0.14736464834013385)
- Point(0.23168962228149748, 0.6568137767149536)
- Point(0.04759907212111625, 0.6845545777827136)
- Point(0.617157751122935, 0.020851366843767538)
- Point(0.051579314760954786, 0.5344006558141637)
- Point(0.9618407831315922, 0.4558885163060834)
- Point(0.31946931403644874, 0.4097893543895583)
- Point(0.44178452725824546, 0.2330957611429081)
- Point(0.05553257593023675, 0.3903004310174326)
- Point(0.07073148075088287, 0.15219261181922517)
- Point(0.18505140865342784, 0.4320189575337241)
+ Point(0.5607939586372486, 0.46676008723537543)
+ Point(0.18068813789805305, 0.3515225651822196)
+ Point(0.4969773390143857, 0.026600938318927403)
+ Point(0.32876641687556685, 0.550085473522866)
+ Point(0.24958271361933448, 0.621732486690918)
+ Point(0.9913966982863824, 0.8790286909181152)
+ Point(0.41299367976423285, 0.6940248583005837)
+ Point(0.9814711949861252, 0.03151509117711038)
+ Point(0.9431429736499872, 0.4715583245213141)
+ Point(0.14299325193874923, 0.45023702018437495)
+ Point(0.6962400995875246, 0.16437211106512484)
+ Point(0.4326767121699995, 0.9627167931907784)
+ Point(0.4231485033150427, 0.2193864557001164)
  ⋮
- Point(0.002135890531916318, 0.336062019296936)
- Point(0.603827516517798, 0.7425297278928257)
- Point(0.905432555132831, 0.057977820325826324)
- Point(0.45716014754766343, 0.3276019547246758)
- Point(0.7810742821308867, 0.8599909625499463)
- Point(0.13953522731438361, 0.7163307712496524)
- Point(0.4377007050867302, 0.2837618267875003)
- Point(0.23817982246130165, 0.7829275217543158)
- Point(0.21423798623116497, 0.6039702685109699)
- Point(0.6794939832856273, 0.5857654665545141)
- Point(0.6537795931657087, 0.6746974468162866)
- Point(0.3187895101924928, 0.9934497210981648)</code></pre>
+ Point(0.14887246127677134, 0.49232035523416495)
+ Point(0.3588527753631382, 0.6069801731573564)
+ Point(0.909934532968514, 0.3986772903095769)
+ Point(0.974338282891366, 0.6270119250405642)
+ Point(0.9343468883401277, 0.6602669023075829)
+ Point(0.5914145504744636, 0.8715886433146199)
+ Point(0.5182353488811099, 0.18140474073004142)
+ Point(0.6223525095941462, 0.3172280719181477)
+ Point(0.95521964007142, 0.41460025341288687)
+ Point(0.24271454955282268, 0.13066601956250345)
+ Point(0.47088333522789927, 0.2603116330807276)
+ Point(0.8548751406915496, 0.9694527641392912)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="39">
@@ -798,8 +799,96 @@ Tip for advanced users
 </div>
 <p>We will have the chance to see more algorithms in action as we advance in the chapters of the book.</p>
 </section>
-<section id="congratulations" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="congratulations"><span class="header-section-number">4.5</span> Congratulations!</h2>
+<section id="domains" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="domains"><span class="header-section-number">4.5</span> Domains</h2>
+<p>Geometries can be discretized into geospatial domains (i.e., collections of geometries). We have seen some of these domains in previous chapters, including the <code>GeometrySet</code> and the <code>CartesianGrid</code>. Here, we will focus on the <code>Mesh</code> subtypes:</p>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Mesh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>2-element Vector{Any}:
+ Grid
+ SimpleMesh</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>2-element Vector{Any}:
+ CartesianGrid
+ RectilinearGrid</code></pre>
+</div>
+</div>
+<p>For most purposes, these domains can be manipulated as if they were Julia vectors of geometries. As an example, we can compute the <code>centroid</code> of each geometry in the domain by broadcasting the function:</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">3</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">centroid</span>.(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>6-element Vector{Point2}:
+ Point(0.5, 0.5)
+ Point(1.5, 0.5)
+ Point(0.5, 1.5)
+ Point(1.5, 1.5)
+ Point(0.5, 2.5)
+ Point(1.5, 2.5)</code></pre>
+</div>
+</div>
+<p>In some cases, however, it is important to know which geometries are adjacent to a given geometry; or which geometries make up the boundary of a given geometry. This is where the <code>topology</code> is useful:</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">topology</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>2×3 GridTopology(aperiodic, aperiodic)</code></pre>
+</div>
+</div>
+<p>We can create an <code>Adjacency</code> topological relation to find which quadrangles are adjacent to quadrangle <code>1</code> in the domain:</p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{2}</span>(topo)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>2-element Vector{Int64}:
+ 2
+ 3</code></pre>
+</div>
+</div>
+<p>The number <code>2</code> that appears in the <code>Adjacency</code> relation is known as the parametric dimension. In this case, we are interested in the adjacency of 2D geometries. The quadrangle <code>1</code> is the first quadrangle in the bottom-left corner of the grid, and it is adjacent to quadrangles <code>2</code> and <code>3</code>. As another example, the quadrangle <code>3</code> is adjacent to quadrangles <code>4</code>, <code>1</code> and <code>5</code>:</p>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>3-element Vector{Int64}:
+ 4
+ 1
+ 5</code></pre>
+</div>
+</div>
+<p>We can also query the adjacency of vertices, which have parametric dimension <code>0</code>:</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{0}</span>(topo)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>2-element Vector{Int64}:
+ 2
+ 4</code></pre>
+</div>
+</div>
+<p>Or query the vertices that are on the boundary of a given quadrangle with the <code>Boundary</code> topological relation. In this case, we specify the parametric dimension of the input and output geometries:</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Boundary</span><span class="dt">{2,0}</span>(topo)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">B</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>4-element Vector{Int64}:
+ 1
+ 2
+ 5
+ 4</code></pre>
+</div>
+</div>
+<p>Topological relations are an advanced feature of the framework. They are mostly used by developers of geostatistical algorithms, or in geospatial queries that will be covered in <strong>Part III</strong> of the book.</p>
+</section>
+<section id="congratulations" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="congratulations"><span class="header-section-number">4.6</span> Congratulations!</h2>
 <p>Congratulations on finishing <strong>Part I</strong> of the book. Let’s quickly review what we learned so far:</p>
 <ul>
 <li>The main concept in geospatial data science is the concept of geospatial data, represented in the GeoStats.jl framework as geotables over geospatial domains.</li>

@@ -980,7 +980,7 @@ Note
 </section>
 <section id="data" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2.3</span> Data</h3>
-<p>Wouldn’t it be nice if we had a representation of geospatial data that behaved like a table as discussed in the <a href="#tables">Tables</a> section, but preserved topological information as discussed in the <a href="#domains">Domains</a> section? In the <a href="https://github.com/JuliaEarth/GeoStats.jl">GeoStats.jl</a> framework, this is precisely what we get with the <code>georef</code> function:</p>
+<p>Wouldn’t it be nice if we had a representation of geospatial data that behaved like a table as discussed in the <a href="#tables">Tables</a> section, but preserved topological information as discussed in the <a href="04-geoproc.html#domains">Domains</a> section? In the <a href="https://github.com/JuliaEarth/GeoStats.jl">GeoStats.jl</a> framework, this is precisely what we get with the <code>georef</code> function:</p>
 <div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1209,63 +1209,63 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.949873</td>
-<td style="text-align: center;">0.836719</td>
-<td style="text-align: center;">0.71118</td>
+<td style="text-align: center;">0.808795</td>
+<td style="text-align: center;">0.733564</td>
+<td style="text-align: center;">0.652195</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.706062</td>
-<td style="text-align: center;">0.247945</td>
-<td style="text-align: center;">0.424835</td>
+<td style="text-align: center;">0.718178</td>
+<td style="text-align: center;">0.463128</td>
+<td style="text-align: center;">0.699434</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.513444</td>
-<td style="text-align: center;">0.648017</td>
-<td style="text-align: center;">0.550648</td>
+<td style="text-align: center;">0.154079</td>
+<td style="text-align: center;">0.965787</td>
+<td style="text-align: center;">0.297519</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.220664</td>
-<td style="text-align: center;">0.784281</td>
-<td style="text-align: center;">0.0155537</td>
+<td style="text-align: center;">0.757491</td>
+<td style="text-align: center;">0.90998</td>
+<td style="text-align: center;">0.42225</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.168193</td>
-<td style="text-align: center;">0.475083</td>
-<td style="text-align: center;">0.258906</td>
+<td style="text-align: center;">0.0562946</td>
+<td style="text-align: center;">0.0433767</td>
+<td style="text-align: center;">0.113054</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.973928</td>
-<td style="text-align: center;">0.256106</td>
-<td style="text-align: center;">0.386085</td>
+<td style="text-align: center;">0.0316693</td>
+<td style="text-align: center;">0.358579</td>
+<td style="text-align: center;">0.351156</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.94474</td>
-<td style="text-align: center;">0.775648</td>
-<td style="text-align: center;">0.311325</td>
+<td style="text-align: center;">0.346946</td>
+<td style="text-align: center;">0.831326</td>
+<td style="text-align: center;">0.038426</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.787123</td>
-<td style="text-align: center;">0.418815</td>
-<td style="text-align: center;">0.876008</td>
+<td style="text-align: center;">0.272161</td>
+<td style="text-align: center;">0.632231</td>
+<td style="text-align: center;">0.65479</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.670754</td>
-<td style="text-align: center;">0.487064</td>
-<td style="text-align: center;">0.916717</td>
+<td style="text-align: center;">0.478735</td>
+<td style="text-align: center;">0.214436</td>
+<td style="text-align: center;">0.115428</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.945151</td>
-<td style="text-align: center;">0.165663</td>
-<td style="text-align: center;">0.15507</td>
+<td style="text-align: center;">0.301773</td>
+<td style="text-align: center;">0.680067</td>
+<td style="text-align: center;">0.650998</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
