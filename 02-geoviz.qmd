@@ -136,6 +136,13 @@ gis = GeoIO.load("data/geotable.geojson")
 viz(gis.geometry, color = 1:4)
 ```
 
+::: {.callout-note}
+
+The "data" folder is stored on GitHub.
+Check the [Preface](preface.qmd) for download instructions.
+
+:::
+
 As already mentioned, the `viz!` function can be used to add more
 geometries to an existing scene. We can create a scene with the
 geometries from the first geotable ("raster data"), and then add

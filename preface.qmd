@@ -133,6 +133,11 @@ pkg"add DataFrames@1.6.1"
 pkg"add CSV@0.10.11"
 ```
 
+Some examples require data files that are stored on GitHub at
+[this link](https://github.com/JuliaEarth/geospatial-data-science-with-julia/tree/main/data).
+
+Click on any file of interest and press the download button.
+
 ## Acknowledgements
 
 I would like to acknowledge all the [contributors](https://github.com/JuliaEarth/GeoStats.jl#contributors) of the
