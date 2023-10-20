@@ -405,7 +405,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">1000</span>, replace<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [3919, 2023, 2894, 7088, ..., 2061, 5717, 8592, 6066])</caption>
+<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [3100, 5494, 1782, 5022, ..., 2617, 5879, 8668, 7363])</caption>
 <thead>
 <tr class="header header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
@@ -422,44 +422,44 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.130244</td>
-<td style="text-align: center;">Quadrangle((18.0, 39.0), ..., (18.0, 40.0))</td>
+<td style="text-align: center;">0.0375267</td>
+<td style="text-align: center;">Quadrangle((99.0, 30.0), ..., (99.0, 31.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.166336</td>
-<td style="text-align: center;">Quadrangle((22.0, 20.0), ..., (22.0, 21.0))</td>
+<td style="text-align: center;">-0.602034</td>
+<td style="text-align: center;">Quadrangle((93.0, 54.0), ..., (93.0, 55.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.664291</td>
-<td style="text-align: center;">Quadrangle((93.0, 28.0), ..., (93.0, 29.0))</td>
+<td style="text-align: center;">1.88816</td>
+<td style="text-align: center;">Quadrangle((81.0, 17.0), ..., (81.0, 18.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.07006</td>
-<td style="text-align: center;">Quadrangle((87.0, 70.0), ..., (87.0, 71.0))</td>
+<td style="text-align: center;">-1.20948</td>
+<td style="text-align: center;">Quadrangle((21.0, 50.0), ..., (21.0, 51.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.416496</td>
-<td style="text-align: center;">Quadrangle((65.0, 33.0), ..., (65.0, 34.0))</td>
+<td style="text-align: center;">-0.204436</td>
+<td style="text-align: center;">Quadrangle((45.0, 43.0), ..., (45.0, 44.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.938874</td>
-<td style="text-align: center;">Quadrangle((2.0, 3.0), ..., (2.0, 4.0))</td>
+<td style="text-align: center;">1.59806</td>
+<td style="text-align: center;">Quadrangle((47.0, 99.0), ..., (47.0, 100.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.78153</td>
-<td style="text-align: center;">Quadrangle((78.0, 15.0), ..., (78.0, 16.0))</td>
+<td style="text-align: center;">0.493179</td>
+<td style="text-align: center;">Quadrangle((71.0, 64.0), ..., (71.0, 65.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.03686</td>
-<td style="text-align: center;">Quadrangle((27.0, 8.0), ..., (27.0, 9.0))</td>
+<td style="text-align: center;">1.17331</td>
+<td style="text-align: center;">Quadrangle((59.0, 64.0), ..., (59.0, 65.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.00602073</td>
-<td style="text-align: center;">Quadrangle((44.0, 51.0), ..., (44.0, 52.0))</td>
+<td style="text-align: center;">-0.0627424</td>
+<td style="text-align: center;">Quadrangle((29.0, 98.0), ..., (29.0, 99.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.65052</td>
-<td style="text-align: center;">Quadrangle((32.0, 81.0), ..., (32.0, 82.0))</td>
+<td style="text-align: center;">1.33206</td>
+<td style="text-align: center;">Quadrangle((41.0, 30.0), ..., (41.0, 31.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -805,9 +805,9 @@ Note
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>SphericalVariogram
-└─sill: 0.8863386213342049
-└─nugget: 6.484924826260228e-11
-└─range: 18.350599790864358
+└─sill: 0.8863386213342846
+└─nugget: 6.484924860169837e-11
+└─range: 18.350599790889927
 └─metric: Euclidean</code></pre>
 </div>
 </div>
@@ -816,9 +816,9 @@ Note
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">fit</span>(Variogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>GaussianVariogram
-└─sill: 0.8864324257942706
-└─nugget: 0.062356834378664905
-└─range: 14.888520805906111
+└─sill: 0.8864324257941406
+└─nugget: 0.062356834376029395
+└─range: 14.888520805892924
 └─metric: Euclidean</code></pre>
 </div>
 </div>
