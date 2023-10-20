@@ -16,7 +16,7 @@ In this chapter, we define **geospatial data** and introduce a
 analysis. Unlike other representations in the literature (e.g., "raster",
 "vector" data), the proposed representation is suitable for encoding
 geospatial data over 3D unstructured meshes, 2D images embedded in 3D space,
-and other types of complex **geospatial domain**.
+and other types of complex **geospatial domains**.
 
 ## Definition
 
