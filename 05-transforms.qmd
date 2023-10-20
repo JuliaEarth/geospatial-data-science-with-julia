@@ -303,7 +303,7 @@ of the new geotable.
 :::
 
 The `Center` and `Scale` transforms can be used to standardize the range of values
-in a geotable. Aliases are provides for specific types of `Scale` such as `MinMax`
+in a geotable. Aliases are provided for specific types of `Scale` such as `MinMax`
 and `Interquartile`. We can use the `describe` function to visualize basic statistics
 before and after the transforms:
 
@@ -563,7 +563,8 @@ We can use the `Detrend` transform to remove a trend of polynomial degree `2`:
 t |> Detrend(degree=2) |> viewer
 ```
 
-The remaining component can then be modeled with geostatistical models of geospatial correlation.
+The remaining component can then be modeled with geostatistical models of geospatial correlation,
+which will be covered in **Part IV** of the book.
 
 Models of geospatial correlation such as variograms [@Hoffimann2019] require unique coordinates
 in the geotable and that is the purpose of the `UniqueCoords` transform. It removes duplicate
