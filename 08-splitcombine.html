@@ -409,8 +409,8 @@ div.csl-indent {
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Textual</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Textual</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point3</th>
 </tr>
@@ -575,18 +575,16 @@ div.csl-indent {
 <p><img src="08-splitcombine_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
-<p>Let’s clean the geotable using what we learned in previous chapters. We will reject the column with sulfur, will drop missing values, will rename the variables for greater readability, and will change the scientific type of geological and lithological units:</p>
+<p>Let’s clean the geotable using what we learned in previous chapters. We will reject the column with sulfur, will drop missing values, and will rename the variables for greater readability:</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> <span class="fu">Reject</span>(<span class="st">"Sper"</span>) <span class="op">→</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">DropMissing</span>() <span class="op">→</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Rename</span>(<span class="st">"Auppm"</span> <span class="op">=&gt;</span> <span class="st">"Au"</span>, <span class="st">"Agppm"</span> <span class="op">=&gt;</span> <span class="st">"Ag"</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Cuppm"</span> <span class="op">=&gt;</span> <span class="st">"Cu"</span>, <span class="st">"Asppm"</span> <span class="op">=&gt;</span> <span class="st">"As"</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>               <span class="st">"CODE"</span> <span class="op">=&gt;</span> <span class="st">"geo"</span>, <span class="st">"OX"</span> <span class="op">=&gt;</span> <span class="st">"litho"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">"ISBD"</span> <span class="op">=&gt;</span> <span class="st">"ρ"</span>) <span class="op">→</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Coerce</span>(<span class="st">"geo"</span> <span class="op">=&gt;</span> Multiclass,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>               <span class="st">"litho"</span> <span class="op">=&gt;</span> Multiclass)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> gt <span class="op">|&gt;</span> clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">"ISBD"</span> <span class="op">=&gt;</span> <span class="st">"ρ"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> gt <span class="op">|&gt;</span> clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>19548×8 GeoTable over 19548 view(::PointSet{3,Float64}, [1, 2, 3, 4, ..., 19615, 19616, 19617, 19618])</caption>
@@ -606,8 +604,8 @@ div.csl-indent {
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point3</th>
 </tr>
@@ -774,8 +772,8 @@ metadata: rows, names</code></pre>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point3</th>
 </tr>
@@ -981,8 +979,8 @@ m = Au \times \rho \times V
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Box</th>
 </tr>
@@ -1163,8 +1161,8 @@ Tip for all users
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Box</th>
@@ -1339,7 +1337,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
 <tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Multi</th>
@@ -1384,7 +1382,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
 <tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Box</th>
@@ -1435,7 +1433,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
 <tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Multi</th>
 </tr>
@@ -1487,7 +1485,7 @@ Tip for all users
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
 <tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiclass</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Multi</th>
 </tr>

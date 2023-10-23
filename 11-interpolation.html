@@ -386,7 +386,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
 <tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Count</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
 </tr>
 <tr class="header subheader headerLastRow">
@@ -554,30 +554,25 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> β <span class="kw">in</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  model <span class="op">=</span> <span class="fu">IDW</span>(β)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  interp <span class="op">=</span> data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, model)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">lines!</span>(interp[seg, <span class="st">"z"</span>], label <span class="op">=</span> <span class="st">"β=</span><span class="sc">$</span><span class="st">β")</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>end</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">axislegend</span>(position <span class="op">=</span> <span class="op">:</span>lb)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  interp <span class="op">=</span> data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(β))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">lines!</span>(interp[seg, <span class="st">"z"</span>], label <span class="op">=</span> <span class="st">"β=</span><span class="sc">$</span><span class="st">β")</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>end</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">axislegend</span>(position <span class="op">=</span> <span class="op">:</span>lb)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <p><img src="11-interpolation_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>The larger is the exponent, the more abrupt is the transition of values between the two locations. In addition, the IDW solution will converge to the nearest neighbor solution as <span class="math inline">\(\beta \to \infty\)</span>:</p>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">IDW</span>(<span class="fl">100</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, model) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">100</span>)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <p><img src="11-interpolation_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>Custom distances from <a href="https://github.com/JuliaStats/Distances.jl">Distances.jl</a> may be used in place of the <code>Euclidean</code> distance to meet specific application requirements (e.g.&nbsp;<code>Haversine</code> distance on the sphere):</p>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">IDW</span>(<span class="fl">1</span>, <span class="fu">Chebyshev</span>())</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, model) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">1</span>, <span class="fu">Chebyshev</span>())) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <p><img src="11-interpolation_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
 </div>
@@ -616,9 +611,9 @@ Note
 </div>
 <p>Unlike <code>IDW</code>, the <code>Kriging</code> solution is a function of pairwise evaluations of distances between geometries with measurements, represented in the matrix <span class="math inline">\(\mathbf{G}\)</span>. The pairwise evaluations account for possible redundancy in the measurements, which leads to improvements in the estimates:</p>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">Kriging</span>(<span class="fu">GaussianVariogram</span>(range<span class="op">=</span><span class="fl">30.0</span>))</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">GaussianVariogram</span>(range<span class="op">=</span><span class="fl">30.0</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, model) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">Kriging</span>(γ)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <p><img src="11-interpolation_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
 </div>
@@ -629,12 +624,11 @@ Note
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span>]</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  γ <span class="op">=</span> <span class="fu">GaussianVariogram</span>(range<span class="op">=</span>r)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  model <span class="op">=</span> <span class="fu">Kriging</span>(γ)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  interp <span class="op">=</span> data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, model)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">lines!</span>(interp[seg, <span class="st">"z"</span>], label <span class="op">=</span> <span class="st">"range=</span><span class="sc">$</span>r<span class="st">"</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">axislegend</span>(position <span class="op">=</span> <span class="op">:</span>lb)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  interp <span class="op">=</span> data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">Kriging</span>(γ))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  Mke.<span class="fu">lines!</span>(interp[seg, <span class="st">"z"</span>], label <span class="op">=</span> <span class="st">"range=</span><span class="sc">$</span>r<span class="st">"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">axislegend</span>(position <span class="op">=</span> <span class="op">:</span>lb)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <p><img src="11-interpolation_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
 </div>
@@ -646,9 +640,9 @@ Note
 <p>In order to solidify the concepts learned so far, let’s look into an example. We will cover all the steps that a geospatial data scientist has to perform to extract <strong>geospatial correlation</strong> from samples and to use this information in <strong>geospatial interpolation</strong>. In this example, we will also learn how to model <strong>anisotropy</strong> with theoretical variograms.</p>
 <p>Let’s consider an image of the <a href="https://en.wikipedia.org/wiki/Walker_Lake_(Nevada)">Walker Lake</a> by <span class="citation" data-cites="Mariethoz2014">Mariethoz and Caers (<a href="references.html#ref-Mariethoz2014" role="doc-biblioref">2014</a>)</span> as groundtruth. To avoid visualization of large images with CairoMakie.jl, we will consider a subdomain within a <code>Box</code>:</p>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStatsImages</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoArtifacts</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> <span class="fu">geostatsimage</span>(<span class="st">"WalkerLakeTruth"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> GeoArtifacts.<span class="fu">geostatsimage</span>(<span class="st">"WalkerLakeTruth"</span>)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> img[<span class="fu">Box</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">200</span>, <span class="fl">200</span>)), <span class="op">:</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
