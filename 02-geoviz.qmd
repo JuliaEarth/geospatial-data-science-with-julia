@@ -241,6 +241,23 @@ geotable = georef((A=rand(1000), B=rand(1000)), CartesianGrid(10, 10, 10))
 geotable |> viewer
 ```
 
+::: {.callout-note}
+
+The `viz/viz!` and the `viewer` automatically select color schemes
+for variables based on data science traits from the
+[DataScienceTraits.jl](https://github.com/JuliaML/DataScienceTraits.jl)
+module. Additionally, the `viewer` recognizes units from the
+[Unitful.jl](https://github.com/PainterQubits/Unitful.jl)
+module:
+
+```{julia}
+geotable = georef((; A=[1,2,3,4]u"m"), CartesianGrid(2, 2))
+
+geotable |> viewer
+```
+
+:::
+
 We are now equipped with a set of visualization functions that can
 really improve the speed at which we explore and analyze geospatial data.
 These functions provide a consistent set of aesthetic options that we

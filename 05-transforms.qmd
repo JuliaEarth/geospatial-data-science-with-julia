@@ -355,8 +355,7 @@ eltype(st.b)
 
 All scientific traits are documented in the
 [DataScienceTraits.jl](https://github.com/JuliaML/DataScienceTraits.jl)
-module. We will see more examples in future chapters with real data
-from geoscientific applications.
+module.
 
 :::
 
