@@ -336,19 +336,15 @@ but more than 60 distributions are available:
 gt |> Quantile() |> values |> pairplot
 ```
 
-In statistics, scientific types are used to link data types to adequate statistical
-algorithms. The most popular scientific types encountered in geoscientific applications
-are the `Continuous` and the `Categorical` scientific types. The latter can be further
-divided into `Ordered` and `Multiclass`. To convert (or coerce) the scientific types of
-columns in a geotable, we can use the `Coerce` transform:
+In data science, scientific traits are used to link data types to adequate statistical
+algorithms. The most popular scientific traits encountered in geoscientific applications
+are the `Continuous` and the `Categorical` scientific traits. To convert (or coerce) the
+scientific traits of columns in a geotable, we can use the `Coerce` transform:
 
 ```{julia}
-st = georef((a=[1,2,2,2,3,3], b=[1,2,3,4,5,6])) |>
-     Coerce("a" => Multiclass, "b" => Continuous)
-```
+using GeoStats.DataScienceTraits: Continuous
 
-```{julia}
-eltype(st.a)
+st = georef((a=[1,2,2,2,3,3], b=[1,2,3,4,5,6])) |> Coerce("b" => Continuous)
 ```
 
 ```{julia}
@@ -357,8 +353,8 @@ eltype(st.b)
 
 ::: {.callout-note}
 
-All scientific types are documented in the
-[ScientificTypes.jl](https://github.com/JuliaAI/ScientificTypes.jl)
+All scientific traits are documented in the
+[DataScienceTraits.jl](https://github.com/JuliaML/DataScienceTraits.jl)
 module. We will see more examples in future chapters with real data
 from geoscientific applications.
 

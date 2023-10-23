@@ -90,8 +90,7 @@ increasing values of the exponent:
 fig = Mke.Figure()
 Mke.Axis(fig[1,1])
 for β in [1,2,3,4,5]
-  model = IDW(β)
-  interp = data |> Interpolate(grid, model)
+  interp = data |> Interpolate(grid, IDW(β))
   Mke.lines!(interp[seg, "z"], label = "β=$β")
 end
 Mke.axislegend(position = :lb)
@@ -103,9 +102,7 @@ between the two locations. In addition, the IDW solution will converge
 to the nearest neighbor solution as $\beta \to \infty$:
 
 ```{julia}
-model = IDW(100)
-
-data |> Interpolate(grid, model) |> viewer
+data |> Interpolate(grid, IDW(100)) |> viewer
 ```
 
 Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
@@ -113,9 +110,7 @@ may be used in place of the `Euclidean` distance to meet specific application
 requirements (e.g. `Haversine` distance on the sphere):
 
 ```{julia}
-model = IDW(1, Chebyshev())
-
-data |> Interpolate(grid, model) |> viewer
+data |> Interpolate(grid, IDW(1, Chebyshev())) |> viewer
 ```
 
 ## Kriging
@@ -159,9 +154,9 @@ pairwise evaluations account for possible redundancy in the measurements, which 
 to improvements in the estimates:
 
 ```{julia}
-model = Kriging(GaussianVariogram(range=30.0))
+γ = GaussianVariogram(range=30.0)
 
-data |> Interpolate(grid, model) |> viewer
+data |> Interpolate(grid, Kriging(γ)) |> viewer
 ```
 
 In the previous chapter, we learned how the **range** of the variogram determines
@@ -173,8 +168,7 @@ fig = Mke.Figure()
 Mke.Axis(fig[1,1])
 for r in [10,20,30,40,50]
   γ = GaussianVariogram(range=r)
-  model = Kriging(γ)
-  interp = data |> Interpolate(grid, model)
+  interp = data |> Interpolate(grid, Kriging(γ))
   Mke.lines!(interp[seg, "z"], label = "range=$r")
 end
 Mke.axislegend(position = :lb)
@@ -199,9 +193,9 @@ we will consider a subdomain within a `Box`:
 
 
 ```{julia}
-using GeoStatsImages
+using GeoArtifacts
 
-img = geostatsimage("WalkerLakeTruth")
+img = GeoArtifacts.geostatsimage("WalkerLakeTruth")
 
 img = img[Box((0, 0), (200, 200)), :]
 ```

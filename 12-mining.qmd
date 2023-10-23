@@ -24,9 +24,6 @@ economic assessment of a real mineral deposit.
 # framework
 using GeoStats
 
-# compositional data
-using CoDa
-
 # IO modules
 using CSV
 
@@ -65,7 +62,7 @@ url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
 
 dtable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
 
-viewer(dtable, pointsize = 4)
+viewer(dtable |> Select("Cu ppm"), pointsize = 4)
 ```
 
 ```{julia}
@@ -136,8 +133,7 @@ that are not used in the economic assessment. We define a **cleaning pipeline** 
 renames columns of interest, and adds units to the measurements:
 
 ```{julia}
-selectholeid = Select("HOLEID") →
-               Coerce("HOLEID" => Multiclass)
+selectholeid = Select("HOLEID")
 
 selectgrades = Select("Cu ppm" => "Cu",
                       "Au ppm" => "Au",

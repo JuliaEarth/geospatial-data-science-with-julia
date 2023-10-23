@@ -28,7 +28,7 @@ who shared their latitude and longitude coordinates:
 ```{julia}
 table = (
   NAME=["John", "Mary", "Paul", "Anne", "Kate"],
-  AGE=[34, 12, 23, 39, 28]u"yr",
+  AGE=[34.0, 12.0, 23.0, 39.0, 28.0]u"yr",
   HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72]u"m",
   LATITUDE=[-22.96710361241228, 37.42773662442142, -27.486220858775997, 39.90358408375064, -3.847311538763359],
   LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -32.411372812211226]
@@ -51,22 +51,6 @@ countries = GeoIO.load("data/countries.geojson", numbertype = Float64)
 The `georef` function has a method that accepts the names of
 columns with geospatial coordinates. In this example, the `table`
 already has the `LATITUDE` and `LONGITUDE` coordinates.
-
-:::
-
-::: {.callout-note}
-
-## Tip for all users
-
-It is always a good idea to provide units to all `values` in a
-geotable. The GeoStats.jl framework is integrated with the
-[Unitful.jl](https://github.com/PainterQubits/Unitful.jl) project.
-To add the unit "meter" to the numeric value `1`, we can write `1u"m"`.
-Similarly, we can add the unit to a vector of values:
-
-```{julia}
-[1.0, 2.0, 3.0]u"m"
-```
 
 :::
 
@@ -159,7 +143,7 @@ decided to move to the continent:
 ```{julia}
 table = (
   NAME=["John", "Mary", "Paul", "Anne", "Kate"],
-  AGE=[34, 12, 23, 39, 28]u"yr",
+  AGE=[34.0, 12.0, 23.0, 39.0, 28.0]u"yr",
   HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72]u"m",
   LATITUDE=[-22.96710361241228, 37.42773662442142, -27.486220858775997, 39.90358408375064, -9.66628224039543],
   LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -35.71261407423411]

@@ -165,7 +165,7 @@ coltable = (
   NAME=["John", "Mary", "Paul", "Anne", "Kate"],
   AGE=[34, 12, 23, 39, 28],
   HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72],
-  GENDER=[:male, :female, :male, :female, :female]
+  GENDER=["male", "female", "male", "female", "female"]
 )
 ```
 
@@ -175,11 +175,11 @@ The second representation focuses on the rows of the table:
 
 ```{julia}
 rowtable = [
-  (NAME="John", AGE=34, HEIGHT=1.78, GENDER=:male),
-  (NAME="Mary", AGE=12, HEIGHT=1.56, GENDER=:female),
-  (NAME="Paul", AGE=23, HEIGHT=1.70, GENDER=:male),
-  (NAME="Anne", AGE=39, HEIGHT=1.80, GENDER=:female),
-  (NAME="Kate", AGE=28, HEIGHT=1.72, GENDER=:female)
+  (NAME="John", AGE=34, HEIGHT=1.78, GENDER="male"),
+  (NAME="Mary", AGE=12, HEIGHT=1.56, GENDER="female"),
+  (NAME="Paul", AGE=23, HEIGHT=1.70, GENDER="male"),
+  (NAME="Anne", AGE=39, HEIGHT=1.80, GENDER="female"),
+  (NAME="Kate", AGE=28, HEIGHT=1.72, GENDER="female")
 ]
 ```
 
@@ -200,7 +200,7 @@ df = DataFrame(
   NAME=["John", "Mary", "Paul", "Anne", "Kate"],
   AGE=[34, 12, 23, 39, 28],
   HEIGHT=[1.78, 1.56, 1.70, 1.80, 1.72],
-  GENDER=[:male, :female, :male, :female, :female]
+  GENDER=["male", "female", "male", "female", "female"]
 )
 ```
 
@@ -448,15 +448,29 @@ using GeoStats
 
 df = DataFrame(
   NAME=["John", "Mary", "Paul", "Anne"],
-  AGE=[34, 12, 23, 39],
-  HEIGHT=[1.78, 1.56, 1.70, 1.80],
-  GENDER=[:male, :female, :male, :female]
+  AGE=[34.0, 12.0, 23.0, 39.0]u"yr",
+  HEIGHT=[1.78, 1.56, 1.70, 1.80]u"m",
+  GENDER=["male", "female", "male", "female"]
 )
 
 grid = CartesianGrid(2, 2)
 
 geotable = georef(df, grid)
 ```
+
+::: {.callout-note}
+
+## Tip for all users
+
+The framework is integrated with the [Unitful.jl](https://github.com/PainterQubits/Unitful.jl)
+module. To add the unit "meter" to the numeric value `1.0`, we can write `1.0u"m"`.
+Similarly, we can add units to vectors of values:
+
+```{julia}
+[1.0, 2.0, 3.0]u"m"
+```
+
+:::
 
 The function combines any table with any domain into a geospatial data
 representation that adheres to the Tables.jl interface. We call this

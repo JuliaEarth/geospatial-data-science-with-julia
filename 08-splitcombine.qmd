@@ -72,9 +72,8 @@ gt |> viewer
 ```
 
 Let's clean the geotable using what we learned in previous chapters.
-We will reject the column with sulfur, will drop missing values, will
-rename the variables for greater readability, and will change the
-scientific type of geological and lithological units:
+We will reject the column with sulfur, will drop missing values, and
+will rename the variables for greater readability:
 
 ```{julia}
 clean = Reject("Sper") →
@@ -82,9 +81,7 @@ clean = Reject("Sper") →
         Rename("Auppm" => "Au", "Agppm" => "Ag",
                "Cuppm" => "Cu", "Asppm" => "As",
                "CODE" => "geo", "OX" => "litho",
-               "ISBD" => "ρ") →
-        Coerce("geo" => Multiclass,
-               "litho" => Multiclass)
+               "ISBD" => "ρ")
 
 gt = gt |> clean
 ```

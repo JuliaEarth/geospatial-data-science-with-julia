@@ -35,13 +35,13 @@ where $\bar{x}$ and $\bar{y}$ are the mean values.
 :::
 
 Let's consider the following synthetic image from the
-[GeoStatsImages.jl](https://github.com/JuliaEarth/GeoStatsImages.jl)
+[GeoArtifacts.jl](https://github.com/JuliaEarth/GeoArtifacts.jl)
 module to illustrate the concept for different values of $h$:
 
 ```{julia}
-using GeoStatsImages
+using GeoArtifacts
 
-img = geostatsimage("Gaussian30x10")
+img = GeoArtifacts.geostatsimage("Gaussian30x10")
 
 img |> viewer
 ```
