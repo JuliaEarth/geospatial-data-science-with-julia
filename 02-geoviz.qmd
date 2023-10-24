@@ -202,6 +202,25 @@ in scripts and the result will be the same.
 
 :::
 
+::: {.callout-note}
+
+## Tip for advanced users
+
+In the case of `Mesh` domains, it is also possible to specify a color for each vertex
+of the mesh. In this case, the `viz` and `viz!` functions fill in the domain with using
+the interpolation routine from the graphics library:
+
+```{julia}
+grid = CartesianGrid(10, 10)
+
+fig = Mke.Figure()
+viz(fig[1,1], grid, color = 1:nelements(grid))
+viz(fig[1,2], grid, color = 1:nvertices(grid))
+fig
+```
+
+:::
+
 ## viewer
 
 As geospatial data scientists we are often interested in quick inspection
