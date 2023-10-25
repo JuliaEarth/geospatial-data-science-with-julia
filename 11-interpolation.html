@@ -376,7 +376,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 \]</span></p>
 <p>This basic idea was proposed by <span class="citation" data-cites="Shepard1968">Shepard (<a href="references.html#ref-Shepard1968" role="doc-biblioref">1968</a>)</span>, who also studied the effect of the exponent <span class="math inline">\(\beta\)</span> in the interpolation results. Here, we will visualize the results using synthetic data:</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">georef</span>((z<span class="op">=</span>[<span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>],), [(<span class="fl">25</span>, <span class="fl">25</span>), (<span class="fl">50</span>, <span class="fl">75</span>), (<span class="fl">75</span>, <span class="fl">50</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">georef</span>((z<span class="op">=</span>[<span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>],), [(<span class="fl">25</span>, <span class="fl">25</span>), (<span class="fl">50</span>, <span class="fl">75</span>), (<span class="fl">75</span>, <span class="fl">50</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>3×2 GeoTable over 3 PointSet{2,Float64}</caption>
@@ -386,7 +386,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
 <tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
 </tr>
 <tr class="header subheader headerLastRow">
@@ -396,15 +396,15 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">1</td>
+<td style="text-align: center;">1.0</td>
 <td style="text-align: center;">(25.0, 25.0)</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.0</td>
 <td style="text-align: center;">(50.0, 75.0)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1</td>
+<td style="text-align: center;">1.0</td>
 <td style="text-align: center;">(75.0, 50.0)</td>
 </tr>
 </tbody>
@@ -544,7 +544,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">lines</span>(z, label <span class="op">=</span> <span class="st">"β=1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">lines</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <p><img src="11-interpolation_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
 </div>
