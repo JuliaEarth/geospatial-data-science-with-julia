@@ -41,7 +41,7 @@ exponent $\beta$ in the interpolation results. Here, we will visualize the resul
 using synthetic data:
 
 ```{julia}
-data = georef((z=[1, 0, 1],), [(25, 25), (50, 75), (75, 50)])
+data = georef((z=[1.0, 0.0, 1.0],), [(25, 25), (50, 75), (75, 50)])
 ```
 
 ```{julia}
@@ -79,7 +79,7 @@ z = interp[seg, "z"]
 ```
 
 ```{julia}
-Mke.lines(z, label = "β=1")
+Mke.lines(z)
 ```
 
 We observe that the exponent $\beta=1$ leads to a gradual transition
