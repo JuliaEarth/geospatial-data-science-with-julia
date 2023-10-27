@@ -392,11 +392,6 @@ viz!(points, color = "black")
 Mke.current_figure()
 ```
 
-We will have the chance to see more algorithms in action as we advance in the
-chapters of the book. 
-
-## Domains
-
 Geometries can be discretized into geospatial domains (i.e., collections of geometries).
 We have seen some of these domains in previous chapters, including the `GeometrySet` and
 the `CartesianGrid`. Here, we will focus on the `Mesh` subtypes:
@@ -409,9 +404,64 @@ subtypes(Mesh)
 subtypes(Grid)
 ```
 
-For most purposes, these domains can be manipulated as if they were Julia vectors
-of geometries. As an example, we can compute the `centroid` of each geometry in the
-domain by broadcasting the function:
+There are two main functions to perform discretization: `discretize` and `simplexify`.
+The `discretize` function takes a geometry and a discretization algorithm as input,
+and produces a `Mesh`. For example, we can discretize a 2D ball with regular spacing
+along each parametric dimension (i.e., polar coordinates):
+
+```{julia}
+ball = Ball((0, 0), 1)
+
+mesh = discretize(ball, RegularDiscretization(20, 50))
+```
+
+We can visualize the elements of the mesh with the `showfacets` option:
+
+```{julia}
+viz(mesh, showfacets = true)
+```
+
+The meshes produced by the `discretize` function can have mixed element types.
+In this case, the mesh is made of `Quadrangle` and `Triangle` geometries. The
+function `simplexify` is preferred if the application requires a mesh of simplices
+(i.e., triangles or tetrahedra):
+
+```{julia}
+tmesh = simplexify(ball)
+```
+
+```{julia}
+viz(tmesh, showfacets = true)
+```
+
+Various triangulation algorithms are provided such as `Dehn1899` [@Devadoss2011],
+and `FIST` [@Held2001]. After the mesh is created, it is possible to `refine` the
+elements:
+
+```{julia}
+mesh = discretize(Box((0, 0), (1, 1)))
+```
+
+```{julia}
+tmesh = refine(mesh, TriRefinement())
+
+viz(tmesh, showfacets = true)
+```
+
+```{julia}
+qmesh = refine(mesh, QuadRefinement())
+
+viz(qmesh, showfacets = true)
+```
+
+We will have the chance to see more algorithms in action as we advance in the
+chapters of the book. 
+
+## Domains
+
+For most purposes, domains can be manipulated as if they were Julia vectors of geometries.
+As an example, we can compute the `centroid` of each geometry in the domain by broadcasting
+the function:
 
 ```{julia}
 grid = CartesianGrid(2, 3)
@@ -445,7 +495,7 @@ first quadrangle in the bottom-left corner of the grid, and it is adjacent to qu
 A(3)
 ```
 
-We can also query the adjacency of vertices, which have parametric dimension `0`:
+In order to query the adjacency of vertices, we create a relation with parametric dimension `0`:
 
 ```{julia}
 A = Adjacency{0}(topo)
@@ -453,8 +503,9 @@ A = Adjacency{0}(topo)
 A(1)
 ```
 
-Or query the vertices that are on the boundary of a given quadrangle with the `Boundary` topological
-relation. In this case, we specify the parametric dimension of the input and output geometries:
+We can also query the vertices that are on the boundary of a given quadrangle with the `Boundary`
+topological relation. In this case, we specify the parametric dimension of the input and output
+geometries:
 
 ```{julia}
 B = Boundary{2,0}(topo)
