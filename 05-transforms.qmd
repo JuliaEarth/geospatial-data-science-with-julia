@@ -250,7 +250,7 @@ The `Replace` transform can be used to replace specific values in the geotable b
 values that are meaningful to the analysis:
 
 ```{julia}
-gt |> Replace(-999 => missing, NaN => missing)
+georef((a=[1,-999,3], b=[NaN,5,6])) |> Replace(-999 => missing, NaN => missing)
 ```
 
 Although it could be used to replace `missing` values by new values, there is a specific
