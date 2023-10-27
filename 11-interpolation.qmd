@@ -184,8 +184,7 @@ two locations. Similar visualizations can be produced by varying the **sill**, t
 In order to solidify the concepts learned so far, let's look into an example.
 We will cover all the steps that a geospatial data scientist has to perform to
 extract **geospatial correlation** from samples and to use this information in
-**geospatial interpolation**. In this example, we will also learn how to model
-**anisotropy** with theoretical variograms.
+**geospatial interpolation**.
 
 Let's consider an image of the [Walker Lake](https://en.wikipedia.org/wiki/Walker_Lake_(Nevada))
 by @Mariethoz2014 as groundtruth. To avoid visualization of large images with CairoMakie.jl,

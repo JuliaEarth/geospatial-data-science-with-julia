@@ -85,7 +85,7 @@ hscatter(sample, :Z, :Z, lag=10.0)
 hscatter(sample, :Z, :Z, lag=50.0)
 ```
 
-The sample Pearson correlation coefficient studied as a function of the lag $h$
+The Pearson correlation coefficient studied as a function of the lag $h$
 is known as the **correlogram function**. For example, consider the exponential
 correlogram function given by $cor(h) = \exp(-h)$:
 
