@@ -348,7 +348,7 @@ gammaplot(ns[3], gs[3], γs[3])
 gammaplot(ns[4], gs[4], γs[4])
 ```
 
-Assuming that the variogram models are ok, we can proceed to interpolation.
+Assuming that the variogram models are adequate, we can proceed to interpolation.
 
 #### Geostatistical interpolation
 
