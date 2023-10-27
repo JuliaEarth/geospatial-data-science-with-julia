@@ -1073,10 +1073,10 @@ Note
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>γs <span class="op">=</span> [<span class="fu">fit</span>(Variogram, g, h <span class="op">-&gt;</span> <span class="fu">exp</span>(<span class="op">-</span>h<span class="op">/</span><span class="fl">100</span>)) for g <span class="kw">in</span> gs]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>4-element Vector{Variogram}:
- ExponentialVariogram(sill=0.8919937711722483, nugget=0.30294044141621157, range=200.8257900047328, metric=Euclidean)
- MaternVariogram(sill=0.9495754499288485, nugget=0.5689876832576198, order=1.0, range=53.09772704045114, metric=Euclidean)
- ExponentialVariogram(sill=0.8960759055565514, nugget=0.46794670972087077, range=173.44751760686336, metric=Euclidean)
- ExponentialVariogram(sill=0.9031635968842477, nugget=0.37175778540838794, range=271.9581252299812, metric=Euclidean)</code></pre>
+ ExponentialVariogram(sill=0.8919937711706506, nugget=0.3029404414148772, range=200.82579000274038, metric=Euclidean)
+ MaternVariogram(sill=0.949575450008046, nugget=0.5689876831602544, order=1.0, range=53.09772705399888, metric=Euclidean)
+ ExponentialVariogram(sill=0.8960759055597176, nugget=0.4679467097213728, range=173.44751760951638, metric=Euclidean)
+ ExponentialVariogram(sill=0.9031635968844642, nugget=0.3717577854081748, range=271.9581252299812, metric=Euclidean)</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1663,141 +1663,9 @@ Note
 </div>
 <p>Or any criterion of interest such as positive economic value and small fraction of contaminants:</p>
 <div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">|&gt;</span> <span class="fu">Filter</span>(x <span class="op">-&gt;</span> x.value <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> x.S <span class="op">&lt;</span> <span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>estim <span class="op">|&gt;</span> <span class="fu">Filter</span>(x <span class="op">-&gt;</span> x.value <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> x.S <span class="op">&lt;</span> <span class="fl">0.25</span>) <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"value"</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
-<table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>43800×7 GeoTable over 43800 view(::CartesianGrid{3,Float64}, [80, 165, 166, 167, ..., 337107, 337109, 337193, 342719])</caption>
-<thead>
-<tr class="header header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">S</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">f</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">value</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
-</tr>
-<tr class="odd subheader">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Hexahedron</th>
-</tr>
-<tr class="header subheader headerLastRow">
-<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0.750712</td>
-<td style="text-align: center;">3.62968e-5</td>
-<td style="text-align: center;">0.000196758</td>
-<td style="text-align: center;">0.249055</td>
-<td style="text-align: center;">0.98971</td>
-<td style="text-align: center;">3.37723e5</td>
-<td style="text-align: center;">Hexahedron((824.995, -882.9, -399.92), ..., (824.995, -857.9, -387.42))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.750713</td>
-<td style="text-align: center;">3.62979e-5</td>
-<td style="text-align: center;">0.000196758</td>
-<td style="text-align: center;">0.249054</td>
-<td style="text-align: center;">0.98971</td>
-<td style="text-align: center;">3.37724e5</td>
-<td style="text-align: center;">Hexahedron((824.995, -857.9, -399.92), ..., (824.995, -832.9, -387.42))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0.750891</td>
-<td style="text-align: center;">3.63189e-5</td>
-<td style="text-align: center;">0.000196832</td>
-<td style="text-align: center;">0.248876</td>
-<td style="text-align: center;">0.989786</td>
-<td style="text-align: center;">3.37925e5</td>
-<td style="text-align: center;">Hexahedron((849.995, -857.9, -399.92), ..., (849.995, -832.9, -387.42))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.75089</td>
-<td style="text-align: center;">3.6319e-5</td>
-<td style="text-align: center;">0.000196832</td>
-<td style="text-align: center;">0.248877</td>
-<td style="text-align: center;">0.989786</td>
-<td style="text-align: center;">3.37924e5</td>
-<td style="text-align: center;">Hexahedron((874.995, -857.9, -399.92), ..., (874.995, -832.9, -387.42))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0.750898</td>
-<td style="text-align: center;">3.63156e-5</td>
-<td style="text-align: center;">0.000196825</td>
-<td style="text-align: center;">0.248869</td>
-<td style="text-align: center;">0.98979</td>
-<td style="text-align: center;">3.37933e5</td>
-<td style="text-align: center;">Hexahedron((849.995, -832.9, -399.92), ..., (849.995, -807.9, -387.42))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.750897</td>
-<td style="text-align: center;">3.63165e-5</td>
-<td style="text-align: center;">0.000196826</td>
-<td style="text-align: center;">0.24887</td>
-<td style="text-align: center;">0.989789</td>
-<td style="text-align: center;">337932.0</td>
-<td style="text-align: center;">Hexahedron((874.995, -832.9, -399.92), ..., (874.995, -807.9, -387.42))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0.750894</td>
-<td style="text-align: center;">3.63187e-5</td>
-<td style="text-align: center;">0.000196832</td>
-<td style="text-align: center;">0.248872</td>
-<td style="text-align: center;">0.989788</td>
-<td style="text-align: center;">3.37929e5</td>
-<td style="text-align: center;">Hexahedron((899.995, -832.9, -399.92), ..., (899.995, -807.9, -387.42))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.750898</td>
-<td style="text-align: center;">3.63159e-5</td>
-<td style="text-align: center;">0.000196825</td>
-<td style="text-align: center;">0.248869</td>
-<td style="text-align: center;">0.98979</td>
-<td style="text-align: center;">337933.0</td>
-<td style="text-align: center;">Hexahedron((899.995, -807.9, -399.92), ..., (899.995, -782.9, -387.42))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0.754129</td>
-<td style="text-align: center;">4.84146e-5</td>
-<td style="text-align: center;">0.000202576</td>
-<td style="text-align: center;">0.24562</td>
-<td style="text-align: center;">0.991076</td>
-<td style="text-align: center;">3.41515e5</td>
-<td style="text-align: center;">Hexahedron((649.995, -407.9, -399.92), ..., (649.995, -382.9, -387.42))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.754174</td>
-<td style="text-align: center;">4.84057e-5</td>
-<td style="text-align: center;">0.000202475</td>
-<td style="text-align: center;">0.245575</td>
-<td style="text-align: center;">0.991093</td>
-<td style="text-align: center;">3.41564e5</td>
-<td style="text-align: center;">Hexahedron((674.995, -382.9, -399.92), ..., (674.995, -357.9, -387.42))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-</tr>
-</tbody>
-</table>
+<p><img src="12-mining_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
