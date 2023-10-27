@@ -426,7 +426,7 @@ Or any criterion of interest such as positive economic value and
 small fraction of contaminants:
 
 ```{julia}
-estim |> Filter(x -> x.value > 0 && x.S < 0.25)
+estim |> Filter(x -> x.value > 0 && x.S < 0.25) |> Select("value") |> viewer
 ```
 
 ## Summary
