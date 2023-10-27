@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -753,32 +772,32 @@ Tip for advanced users
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">rand</span>(Point2, <span class="fl">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>100-element Vector{Point2}:
- Point(0.24238382830940264, 0.9231244834696926)
- Point(0.03879206814610292, 0.9404802680126163)
- Point(0.12781538527938974, 0.479474422045878)
- Point(0.9037949620986925, 0.1976958916766326)
- Point(0.5423892210150866, 0.8640379617062669)
- Point(0.22821484125497626, 0.08765296197935246)
- Point(0.6364608991493229, 0.8870536691898698)
- Point(0.9450288564422027, 0.5006514235835369)
- Point(0.5682151406334429, 0.31149267885836684)
- Point(0.09513377744509655, 0.06254263156204065)
- Point(0.9924636296902349, 0.07414700531940699)
- Point(0.6715574392334066, 0.670861694148588)
- Point(0.3009321278994127, 0.3752766902098611)
+ Point(0.8589986409922347, 0.16416706386000668)
+ Point(0.5435632061515909, 0.014408263915132946)
+ Point(0.14175231125296572, 0.9087967483625806)
+ Point(0.5592475650612018, 0.39695554480774653)
+ Point(0.3853878905326087, 0.06320896463497838)
+ Point(0.3550724695658948, 0.9543292490625687)
+ Point(0.08464213982192692, 0.13902019718920844)
+ Point(0.5477790763068987, 0.8165024624114364)
+ Point(0.5361154102508943, 0.39172043317093597)
+ Point(0.5078089296559183, 0.13374030179871277)
+ Point(0.165123420627605, 0.3800549485119231)
+ Point(0.3357645168254919, 0.003682719877132423)
+ Point(0.2758591857951562, 0.2548105423150615)
  ⋮
- Point(0.3599591155439248, 0.497908364698498)
- Point(0.33092505909384917, 0.2507204752857103)
- Point(0.9631429705804525, 0.24125038677806931)
- Point(0.5899403403386243, 0.5267924350445942)
- Point(0.970515130409402, 0.14824077365789978)
- Point(0.7627497551410167, 0.5421664343003371)
- Point(0.7779189977689466, 0.6347039324841931)
- Point(0.3895338748373771, 0.27904681139175247)
- Point(0.25982315848621884, 0.7204204570960621)
- Point(0.5365896097671482, 0.19353163385486905)
- Point(0.0003148306784068744, 0.8971841495274652)
- Point(0.39754406816557963, 0.6612922402259804)</code></pre>
+ Point(0.8682226264281859, 0.5951445681718085)
+ Point(0.33111406528600396, 0.6742922740261657)
+ Point(0.7628319024818153, 0.7232712863114592)
+ Point(0.3496490980757446, 0.8819548427380204)
+ Point(0.4455306342981663, 0.6236564995290994)
+ Point(0.008807652239474661, 0.7011877717348958)
+ Point(0.6886162286230406, 0.2193471235881571)
+ Point(0.7386690068411036, 0.15683006227543828)
+ Point(0.8962250104523481, 0.6857284865762622)
+ Point(0.5002418845052973, 0.23486183525117077)
+ Point(0.6778574541232603, 0.6075365082489955)
+ Point(0.7220053781516026, 0.7366202517780507)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="39">
@@ -797,10 +816,6 @@ Tip for advanced users
 <p><img src="04-geoproc_files/figure-html/cell-41-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
-<p>We will have the chance to see more algorithms in action as we advance in the chapters of the book.</p>
-</section>
-<section id="domains" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="domains"><span class="header-section-number">4.5</span> Domains</h2>
 <p>Geometries can be discretized into geospatial domains (i.e., collections of geometries). We have seen some of these domains in previous chapters, including the <code>GeometrySet</code> and the <code>CartesianGrid</code>. Here, we will focus on the <code>Mesh</code> subtypes:</p>
 <div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Mesh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -818,12 +833,124 @@ Tip for advanced users
  RectilinearGrid</code></pre>
 </div>
 </div>
-<p>For most purposes, these domains can be manipulated as if they were Julia vectors of geometries. As an example, we can compute the <code>centroid</code> of each geometry in the domain by broadcasting the function:</p>
+<p>There are two main functions to perform discretization: <code>discretize</code> and <code>simplexify</code>. The <code>discretize</code> function takes a geometry and a discretization algorithm as input, and produces a <code>Mesh</code>. For example, we can discretize a 2D ball with regular spacing along each parametric dimension (i.e., polar coordinates):</p>
 <div class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">3</span>)</span>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>ball <span class="op">=</span> <span class="fu">Ball</span>((<span class="fl">0</span>, <span class="fl">0</span>), <span class="fl">1</span>)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">centroid</span>.(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>mesh <span class="op">=</span> <span class="fu">discretize</span>(ball, <span class="fu">RegularDiscretization</span>(<span class="fl">20</span>, <span class="fl">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>1000 SimpleMesh{2,Float64}
+  1001 vertices
+  ├─ Point(0.047619047619047616, 0.0)
+  ├─ Point(0.09774436090225563, 0.0)
+  ├─ Point(0.14786967418546365, 0.0)
+  ├─ Point(0.19799498746867167, 0.0)
+  ├─ Point(0.24812030075187969, 0.0)
+  ⋮
+  ├─ Point(0.8429245206656841, -0.10648613077267989)
+  ├─ Point(0.8926545808819487, -0.11276849836988814)
+  ├─ Point(0.9423846410982132, -0.1190508659670964)
+  ├─ Point(0.9921147013144778, -0.12533323356430465)
+  └─ Point(0.0, 0.0)
+  1000 elements
+  ├─ Quadrangle(1, 2, 22, 21)
+  ├─ Quadrangle(2, 3, 23, 22)
+  ├─ Quadrangle(3, 4, 24, 23)
+  ├─ Quadrangle(4, 5, 25, 24)
+  ├─ Quadrangle(5, 6, 26, 25)
+  ⋮
+  ├─ Triangle(1001, 901, 921)
+  ├─ Triangle(1001, 921, 941)
+  ├─ Triangle(1001, 941, 961)
+  ├─ Triangle(1001, 961, 981)
+  └─ Triangle(1001, 981, 1)</code></pre>
+</div>
+</div>
+<p>We can visualize the elements of the mesh with the <code>showfacets</code> option:</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(mesh, showfacets <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<p><img src="04-geoproc_files/figure-html/cell-45-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>The meshes produced by the <code>discretize</code> function can have mixed element types. In this case, the mesh is made of <code>Quadrangle</code> and <code>Triangle</code> geometries. The function <code>simplexify</code> is preferred if the application requires a mesh of simplices (i.e., triangles or tetrahedra):</p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>tmesh <span class="op">=</span> <span class="fu">simplexify</span>(ball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>4950 SimpleMesh{2,Float64}
+  2501 vertices
+  ├─ Point(0.0196078431372549, 0.0)
+  ├─ Point(0.03961584633853541, 0.0)
+  ├─ Point(0.05962384953981593, 0.0)
+  ├─ Point(0.07963185274109644, 0.0)
+  ├─ Point(0.09963985594237695, 0.0)
+  ⋮
+  ├─ Point(0.9325639989546651, -0.1178102303491603)
+  ├─ Point(0.9524142330746027, -0.12031789808754176)
+  ├─ Point(0.9722644671945403, -0.1228255658259232)
+  ├─ Point(0.9921147013144778, -0.12533323356430465)
+  └─ Point(0.0, 0.0)
+  4950 elements
+  ├─ Triangle(1, 2, 52)
+  ├─ Triangle(1, 52, 51)
+  ├─ Triangle(2, 3, 53)
+  ├─ Triangle(2, 53, 52)
+  ├─ Triangle(3, 4, 54)
+  ⋮
+  ├─ Triangle(2501, 2251, 2301)
+  ├─ Triangle(2501, 2301, 2351)
+  ├─ Triangle(2501, 2351, 2401)
+  ├─ Triangle(2501, 2401, 2451)
+  └─ Triangle(2501, 2451, 1)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(tmesh, showfacets <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<p><img src="04-geoproc_files/figure-html/cell-47-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>Various triangulation algorithms are provided such as <code>Dehn1899</code> <span class="citation" data-cites="Devadoss2011">(<a href="references.html#ref-Devadoss2011" role="doc-biblioref">Devadoss and O’Rourke 2011</a>)</span>, and <code>FIST</code> <span class="citation" data-cites="Held2001">(<a href="references.html#ref-Held2001" role="doc-biblioref">Held 2001</a>)</span>. After the mesh is created, it is possible to <code>refine</code> the elements:</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>mesh <span class="op">=</span> <span class="fu">discretize</span>(<span class="fu">Box</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>2 SimpleMesh{2,Float64}
+  4 vertices
+  ├─ Point(0.0, 0.0)
+  ├─ Point(1.0, 0.0)
+  ├─ Point(1.0, 1.0)
+  └─ Point(0.0, 1.0)
+  2 elements
+  ├─ Triangle(1, 2, 3)
+  └─ Triangle(1, 3, 4)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>tmesh <span class="op">=</span> <span class="fu">refine</span>(mesh, <span class="fu">TriRefinement</span>())</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(tmesh, showfacets <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<p><img src="04-geoproc_files/figure-html/cell-49-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>qmesh <span class="op">=</span> <span class="fu">refine</span>(mesh, <span class="fu">QuadRefinement</span>())</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(qmesh, showfacets <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<p><img src="04-geoproc_files/figure-html/cell-50-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>We will have the chance to see more algorithms in action as we advance in the chapters of the book.</p>
+</section>
+<section id="domains" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="domains"><span class="header-section-number">4.5</span> Domains</h2>
+<p>For most purposes, domains can be manipulated as if they were Julia vectors of geometries. As an example, we can compute the <code>centroid</code> of each geometry in the domain by broadcasting the function:</p>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">3</span>)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">centroid</span>.(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>6-element Vector{Point2}:
  Point(0.5, 0.5)
  Point(1.5, 0.5)
@@ -834,50 +961,50 @@ Tip for advanced users
 </div>
 </div>
 <p>In some cases, however, it is important to know which geometries are adjacent to a given geometry; or which geometries make up the boundary of a given geometry. This is where the <code>topology</code> is useful:</p>
-<div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">topology</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">topology</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>2×3 GridTopology(aperiodic, aperiodic)</code></pre>
 </div>
 </div>
 <p>We can create an <code>Adjacency</code> topological relation to find which quadrangles are adjacent to quadrangle <code>1</code> in the domain:</p>
-<div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{2}</span>(topo)</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{2}</span>(topo)</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>2-element Vector{Int64}:
  2
  3</code></pre>
 </div>
 </div>
 <p>The number <code>2</code> that appears in the <code>Adjacency</code> relation is known as the parametric dimension. In this case, we are interested in the adjacency of 2D geometries. The quadrangle <code>1</code> is the first quadrangle in the bottom-left corner of the grid, and it is adjacent to quadrangles <code>2</code> and <code>3</code>. As another example, the quadrangle <code>3</code> is adjacent to quadrangles <code>4</code>, <code>1</code> and <code>5</code>:</p>
-<div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>3-element Vector{Int64}:
  4
  1
  5</code></pre>
 </div>
 </div>
-<p>We can also query the adjacency of vertices, which have parametric dimension <code>0</code>:</p>
-<div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{0}</span>(topo)</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
+<p>In order to query the adjacency of vertices, we create a relation with parametric dimension <code>0</code>:</p>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{0}</span>(topo)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>2-element Vector{Int64}:
  2
  4</code></pre>
 </div>
 </div>
-<p>Or query the vertices that are on the boundary of a given quadrangle with the <code>Boundary</code> topological relation. In this case, we specify the parametric dimension of the input and output geometries:</p>
-<div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Boundary</span><span class="dt">{2,0}</span>(topo)</span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">B</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<p>We can also query the vertices that are on the boundary of a given quadrangle with the <code>Boundary</code> topological relation. In this case, we specify the parametric dimension of the input and output geometries:</p>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Boundary</span><span class="dt">{2,0}</span>(topo)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="fu">B</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>4-element Vector{Int64}:
  1
  2
@@ -899,6 +1026,14 @@ Tip for advanced users
 <p>We are finally ready to learn the advanced features of the framework. Let’s get it started.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Devadoss2011" class="csl-entry" role="listitem">
+Devadoss, Satyan L, and Joseph O’Rourke. 2011. <em>Discrete and Computational Geometry</em>. Princeton, NJ: Princeton University Press.
+</div>
+<div id="ref-Held2001" class="csl-entry" role="listitem">
+Held, M. 2001. <span>“<span>FIST</span>: Fast Industrial-Strength Triangulation of Polygons.”</span> <em>Algorithmica</em> 30 (4): 563–96. <a href="https://doi.org/10.1007/s00453-001-0028-4">https://doi.org/10.1007/s00453-001-0028-4</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
