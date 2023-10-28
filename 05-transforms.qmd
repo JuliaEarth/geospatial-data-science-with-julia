@@ -247,14 +247,31 @@ ut |> StdNames(:upperflat)
 ```
 
 The `Replace` transform can be used to replace specific values in the geotable by new
-values that are meaningful to the analysis:
+values that are meaningful to the analysis. For example, we can replace the values
+`-999` and `NaN` that are used to represent `missing` values in some file formats:
 
 ```{julia}
-gt |> Replace(-999 => missing, NaN => missing)
+rt = georef((a=[1,-999,3], b=[NaN,5,6]))
 ```
 
-Although it could be used to replace `missing` values by new values, there is a specific
-transform for this purpose named `Coalesce`:
+```{julia}
+rt |> Replace(-999 => missing, NaN => missing)
+```
+
+or replace all negative values using a predicate function:
+
+```{julia}
+rt |> Replace(<(0) => missing)
+```
+
+::: {.callout-note}
+
+In Julia, the expression `<(0)` is equivalent to the predicate function `x -> x < 0`.
+
+:::
+
+Although `Replace` could be used to replace `missing` values by new values, there is
+a specific transform for this purpose named `Coalesce`:
 
 ```{julia}
 ct = georef((a=[1,missing,3], b=[4,5,6])) |> Coalesce(value=2)
