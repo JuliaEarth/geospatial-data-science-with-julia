@@ -12,7 +12,7 @@ geospatial data science, we need to introduce important concepts, which
 will be the foundations of **Part II**, **Part III** and **Part IV**.
 
 In this chapter, we define **geospatial data** and introduce a
-**universal representation** for it that is ideal for geostatistical
+**universal representation** for such data which is ideal for geostatistical
 analysis. Unlike other representations in the literature (e.g., "raster",
 "vector" data), the proposed representation is suitable for encoding
 geospatial data over 3D unstructured meshes, 2D images embedded in 3D space,
@@ -26,8 +26,8 @@ and other types of complex **geospatial domains**.
 
 **(Discrete) geospatial data** is the combination of a
 **table** of attributes (or features) with a discretization of a
-geospatial **domain**. For each row (or measurement) in the **table**
-there corresponds an element (or geometry) in the discretization of
+geospatial **domain**. Each row (or measurement) in the **table**
+corresponds to an element (or geometry) in the discretization of
 the geospatial **domain**.
 
 :::
@@ -38,7 +38,7 @@ The definition depends on two other definitions that we clarify next.
 
 In data science the most natural data structure for working with data is the
 [table](https://en.wikipedia.org/wiki/Table_(database)).
-Without big formalities, a table is any object that can be structured into
+Generally speaking, a table is any object that can be structured into
 rows containing measurements and columns representing variables.
 For example, @tbl-example has 5 measurements of 4 variables:
 
@@ -207,34 +207,22 @@ df = DataFrame(
 
 ```{julia}
 #| echo: false
-show(stdout, MIME("text/html"), df; header_alignment = :s)
+show(stdout, MIME("text/html"), df; header_alignment=:s)
 ```
 
 This representation provides additional syntax for accessing
 rows and columns of the table:
 
 ```{julia}
-#| output: false
-df[1,:]
+df[1, :]
 ```
 
 ```{julia}
-#| echo: false
-show(stdout, MIME("text/html"), df[1,:]; header_alignment = :s)
+df[:, "NAME"]
 ```
 
 ```{julia}
-df[:,"NAME"]
-```
-
-```{julia}
-#| output: false
-df[1:3,["NAME","AGE"]]
-```
-
-```{julia}
-#| echo: false
-show(stdout, MIME("text/html"), df[1:3,["NAME","AGE"]]; header_alignment = :s)
+df[1:3, ["NAME", "AGE"]]
 ```
 
 ```{julia}
@@ -364,7 +352,7 @@ with a vector or "soup of geometries" has major benefits.
 
 ::: {.callout-note}
 
-The `CartesianGrid` domain is lazy meaning it only stores the
+The `CartesianGrid` domain is *lazy*, meaning it only stores the
 start and end points of the grid together with the spacing
 between the elements. Therefore, we can easily create large
 3D grids of `Hexahedron` geometries without consuming all
@@ -506,7 +494,7 @@ first measurement of the `GeoTable` and it will automatically construct
 the corresponding `Quadrangle`:
 
 ```{julia}
-geotable[1,:]
+geotable[1, :]
 ```
 
 If we request a subset of measurements, the `GeoTable` will avoid
@@ -514,13 +502,13 @@ unnecessary creation of geometries, and will instead return a view
 into the original data:
 
 ```{julia}
-geotable[1:3,["NAME","AGE"]]
+geotable[1:3, ["NAME", "AGE"]]
 ```
 
 Finally, if we request the entire `geometry` column, we get back the original domain:
 
 ```{julia}
-geotable[:,"geometry"]
+geotable[:, "geometry"]
 ```
 
 Besides the data access patterns of the `DataFrame`, the `GeoTable` also provides
@@ -539,14 +527,7 @@ Notice that the `GeoTable` representation is general enough to accommodate both
 because the `CartesianGrid` is lazy:
 
 ```{julia}
-georef(
-  (
-    R=rand(1000000),
-    G=rand(1000000),
-    B=rand(1000000)
-  ),
-  CartesianGrid(1000, 1000)
-)
+georef((R=rand(1000000), G=rand(1000000), B=rand(1000000)), CartesianGrid(1000, 1000))
 ```
 
 And can load vector geometries from files that store simple features
@@ -602,10 +583,10 @@ domain(geotable)
 
 ## Remarks
 
-What we learned in this chapter?
+What did we learn in this chapter?
 
 - Geospatial data can be efficiently represented as a `GeoTable`.
-  This representation is universal meaning that it combines the
+  This representation is universal - it combines the
   "raster" and "vector" representations found in traditional GIS.
 - A `GeoTable` provides all the data access patterns of a `DataFrame`.
   In particular, it supports the syntax `geotable[rows,cols]` without

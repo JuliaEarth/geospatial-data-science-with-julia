@@ -3,7 +3,7 @@
 I've always felt that something was off with existing approaches
 to geospatial data science in other programming languages.
 I remember sitting in the beautiful
-[Stanford's Green library](https://en.wikipedia.org/wiki/Cecil_H._Green_Library)
+[Cecil H. Green library at Stanford](https://en.wikipedia.org/wiki/Cecil_H._Green_Library)
 after a short introductory course on GIS with R, and wondering
 why it had to be so "computer sciency":
 
@@ -20,6 +20,5 @@ programming language. This book is the first attempt to share this vision with
 the broader scientific community.
 
 There is a long journey until the technology reaches its full potential,
-but it is getting there! I hope that the book will enlighten your
-understanding of some of those issues and that you can benefit
-from the **open source** software we built over the years.
+but it is getting there! I hope that the book will enlighten you on some of those issues
+and that you can benefit from the **open source** software we built over the years.

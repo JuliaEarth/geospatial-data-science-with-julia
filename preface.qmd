@@ -6,7 +6,7 @@ Anyone interested in **geospatial data science** will benefit from
 reading this book. If you are a student with basic-to-intermediate
 programming experience, you will learn a valuable set of tools
 for your career. If you are an experienced data scientist, you
-can still be surprised by the generality of the framework
+may still be surprised by the generality of the framework
 presented here.
 
 This is **not** a book on geostatistics. Although some chapters
@@ -93,7 +93,8 @@ flowchart LR
 ```
 
 The chapters were written to be read in sequence, but there is
-some flexibility on how to read the parts. I recommend reading
+some flexibility on how to read the parts. Although you could read **Parts II-IV** in any
+order, I recommend reading
 **Part I** first to understand the framework and vision. After
 that, you will have the necessary background to follow the code
 examples in **Part II**, **Part III** and **Part IV**. Finally,
