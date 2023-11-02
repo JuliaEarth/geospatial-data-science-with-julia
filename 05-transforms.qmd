@@ -370,9 +370,6 @@ using GeoStats.DataScienceTraits: Continuous
 st = georef((a=[1, 2, 2, 2, 3, 3], b=[1, 2, 3, 4, 5, 6])) |> Coerce("b" => Continuous)
 ```
 
-st = georef((a=[1,2,2,2,3,3], b=[1,2,3,4,5,6])) |> Coerce("b" => Continuous)
-```
-
 ```{julia}
 eltype(st.b)
 ```
