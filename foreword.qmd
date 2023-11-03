@@ -3,7 +3,7 @@
 I've always felt that something was off with existing approaches
 to geospatial data science in other programming languages.
 I remember sitting in the beautiful
-[Cecil H. Green library at Stanford](https://en.wikipedia.org/wiki/Cecil_H._Green_Library)
+[Green library at Stanford](https://en.wikipedia.org/wiki/Cecil_H._Green_Library)
 after a short introductory course on GIS with R, and wondering
 why it had to be so "computer sciency":
 

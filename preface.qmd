@@ -93,8 +93,7 @@ flowchart LR
 ```
 
 The chapters were written to be read in sequence, but there is
-some flexibility on how to read the parts. Although you could read **Parts II-IV** in any
-order, I recommend reading
+some flexibility on how to read the parts. I recommend reading
 **Part I** first to understand the framework and vision. After
 that, you will have the necessary background to follow the code
 examples in **Part II**, **Part III** and **Part IV**. Finally,
