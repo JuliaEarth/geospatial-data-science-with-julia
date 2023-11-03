@@ -37,7 +37,7 @@ the result in a variable `y`. After `f1` is completed, the operator evaluates `f
 produces the final (desired) result. If `y` requires a lot of computer memory as it is usually
 the case with large geotables, the application of the pipeline will be slow.
 
-Another evaluation strategy known as **lazy evaluation** consists of building the entire
+Another evaluation strategy, known as **lazy evaluation**, consists of building the entire
 pipeline without the data in it. The major advantage of this strategy is that it can analyze
 the functions, and potentially simplify the code before evaluation. For example, the pipeline
 `cos → acos` can be replaced by the much simpler pipeline `identity` for some values of the
@@ -138,7 +138,7 @@ Let's illustrate the concept with the following geotable and pipeline:
 a = [-1.0, 4.0, 1.6, 3.4]
 b = [1.6, 3.4, -1.0, 4.0]
 c = [3.4, 2.0, 3.6, -1.0]
-table = (; a, b, c) 
+table = (; a, b, c)
 
 geotable = georef(table, rand(2, 4))
 ```
@@ -203,7 +203,7 @@ we learned so far:
   geostatistical visualizations.
 
 There is a long journey until the technology reaches its full potential.
-The good news is that Julia code is really easy to read and modify, and
+The good news is that Julia code is easy to read and modify, and
 you can become an active contributor after just a few weeks working with
 the language. We invite you to contribute new transforms and optimizations
 as soon as you feel comfortable with the framework.

@@ -50,8 +50,8 @@ using PairPlots
 pairplot(values(gt))
 ```
 
-The pattern is certainly useful to address geoscientific questions that can
-be resolved on the basis of marginal analysis (i.e. entire columns treated
+This pattern is useful to answer geoscientific questions via marginal
+analysis (i.e. entire columns treated
 as measurements of a single random variable). However, the answers to many
 questions in geosciences depend on **where** the measurements were made.
 

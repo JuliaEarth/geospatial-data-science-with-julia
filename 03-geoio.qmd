@@ -31,8 +31,7 @@ programmers who have never studied GIS before, and who *really
 struggle* learning the technology as it is today. The widespread
 emphasis on machine representation and software engineering
 has created a gap between the developers and the users of GIS
-software. A typical gap to be closed with the Julia programming
-language.
+software. A typical gap the Julia programming language helps to close.
 
 We decided to limit our interface with existing GIS technology to
 input and output (IO) of files. This gives users of the framework
@@ -117,7 +116,7 @@ viz(beethoven.geometry)
 
 ## Rationale
 
-Now that we did set the right expectations on our interface with GIS,
+Now that we have set expectations for our interface with GIS,
 let's address an important question that many readers might have coming
 from other communities:
 
@@ -149,8 +148,8 @@ return the constant integer `1`.
 :::
 
 Notice how the `isconvex` function is compiled away to the **constant** `1` (i.e. `true`) when
-called on the triangle. The code for a generic polygon is much more evolved and requires runtime
-checks that are too expensive to afford, specially in 3D.
+called on the triangle. The code for a generic polygon is much more complicated and
+requires runtime checks that are too expensive to afford, especially in 3D.
 
 Having cleared that up, we will now proceed to the last foundational chapter of the book,
 which covers the advanced geometric processing features of the framework.

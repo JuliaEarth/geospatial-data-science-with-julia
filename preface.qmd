@@ -6,7 +6,7 @@ Anyone interested in **geospatial data science** will benefit from
 reading this book. If you are a student with basic-to-intermediate
 programming experience, you will learn a valuable set of tools
 for your career. If you are an experienced data scientist, you
-can still be surprised by the generality of the framework
+may still be surprised by the generality of the framework
 presented here.
 
 This is **not** a book on geostatistics. Although some chapters
