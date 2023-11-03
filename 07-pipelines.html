@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="7.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">7.1</span> Motivation</h2>
 <p>The pipe operator <code>|&gt;</code> in Julia is very convenient for sequential application of functions. Given an input <code>x</code>, we can type <code>x |&gt; f1 |&gt; f2</code> to apply functions <code>f1</code> and <code>f2</code> in sequence, in a way that is equivalent to <code>f2(f1(x))</code> or, alternatively, to the function composition <code>(f2 ∘ f1)(x)</code>. Its syntax can drastically improve code readability when the number of functions is large. However, the operator has a major limitation in the context of geospatial data science: it evaluates all intermediate results as soon as the data is inserted in the pipe. This is known in computer science as <a href="https://en.wikipedia.org/wiki/Evaluation_strategy">eager evaluation</a>.</p>
 <p>Taking the expression above as an example, the operator will first evaluate <code>f1(x)</code> and store the result in a variable <code>y</code>. After <code>f1</code> is completed, the operator evaluates <code>f2(y)</code> and produces the final (desired) result. If <code>y</code> requires a lot of computer memory as it is usually the case with large geotables, the application of the pipeline will be slow.</p>
-<p>Another evaluation strategy known as <strong>lazy evaluation</strong> consists of building the entire pipeline without the data in it. The major advantage of this strategy is that it can analyze the functions, and potentially simplify the code before evaluation. For example, the pipeline <code>cos → acos</code> can be replaced by the much simpler pipeline <code>identity</code> for some values of the input <code>x</code>.</p>
+<p>Another evaluation strategy, known as <strong>lazy evaluation</strong>, consists of building the entire pipeline without the data in it. The major advantage of this strategy is that it can analyze the functions, and potentially simplify the code before evaluation. For example, the pipeline <code>cos → acos</code> can be replaced by the much simpler pipeline <code>identity</code> for some values of the input <code>x</code>.</p>
 </section>
 <section id="operator" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="operator"><span class="header-section-number">7.2</span> Operator →</h2>
@@ -392,73 +392,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">3.91419</td>
-<td style="text-align: center;">-3.10319</td>
-<td style="text-align: center;">0.477028</td>
-<td style="text-align: center;">-0.51289</td>
+<td style="text-align: center;">6.02067</td>
+<td style="text-align: center;">-1.33707</td>
+<td style="text-align: center;">-1.0057</td>
+<td style="text-align: center;">0.26865</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23145</td>
-<td style="text-align: center;">-1.25989</td>
-<td style="text-align: center;">-0.657216</td>
-<td style="text-align: center;">0.106387</td>
+<td style="text-align: center;">6.48593</td>
+<td style="text-align: center;">-3.02532</td>
+<td style="text-align: center;">2.22012</td>
+<td style="text-align: center;">1.44051</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">6.69779</td>
-<td style="text-align: center;">5.09389</td>
-<td style="text-align: center;">0.769428</td>
-<td style="text-align: center;">0.937756</td>
+<td style="text-align: center;">4.40933</td>
+<td style="text-align: center;">-1.63499</td>
+<td style="text-align: center;">1.4045</td>
+<td style="text-align: center;">1.69123</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.0872</td>
-<td style="text-align: center;">-3.69585</td>
-<td style="text-align: center;">-1.29069</td>
-<td style="text-align: center;">-2.02363</td>
+<td style="text-align: center;">6.70017</td>
+<td style="text-align: center;">0.121606</td>
+<td style="text-align: center;">-0.978572</td>
+<td style="text-align: center;">-0.0943927</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">7.25998</td>
-<td style="text-align: center;">-0.916756</td>
-<td style="text-align: center;">-0.160772</td>
-<td style="text-align: center;">-0.276242</td>
+<td style="text-align: center;">3.35971</td>
+<td style="text-align: center;">0.495672</td>
+<td style="text-align: center;">-0.403951</td>
+<td style="text-align: center;">-0.470776</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.95215</td>
-<td style="text-align: center;">1.67467</td>
-<td style="text-align: center;">0.0073184</td>
-<td style="text-align: center;">0.0668714</td>
+<td style="text-align: center;">2.91146</td>
+<td style="text-align: center;">-1.08823</td>
+<td style="text-align: center;">-1.34666</td>
+<td style="text-align: center;">0.423947</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">4.67361</td>
-<td style="text-align: center;">1.41937</td>
-<td style="text-align: center;">-0.300506</td>
-<td style="text-align: center;">-1.00042</td>
+<td style="text-align: center;">6.85407</td>
+<td style="text-align: center;">3.432</td>
+<td style="text-align: center;">-0.719226</td>
+<td style="text-align: center;">-0.85703</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.63491</td>
-<td style="text-align: center;">-8.76855</td>
-<td style="text-align: center;">-0.570071</td>
-<td style="text-align: center;">-0.60067</td>
+<td style="text-align: center;">4.20122</td>
+<td style="text-align: center;">4.18483</td>
+<td style="text-align: center;">0.34194</td>
+<td style="text-align: center;">0.662781</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">8.63474</td>
-<td style="text-align: center;">-0.781992</td>
-<td style="text-align: center;">0.00225107</td>
-<td style="text-align: center;">0.123345</td>
+<td style="text-align: center;">4.73591</td>
+<td style="text-align: center;">-1.77165</td>
+<td style="text-align: center;">0.777703</td>
+<td style="text-align: center;">0.967439</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.47716</td>
-<td style="text-align: center;">3.28512</td>
-<td style="text-align: center;">1.51923</td>
-<td style="text-align: center;">0.954674</td>
+<td style="text-align: center;">5.57205</td>
+<td style="text-align: center;">-3.90206</td>
+<td style="text-align: center;">-0.0587403</td>
+<td style="text-align: center;">0.724987</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -509,63 +509,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.174847</td>
-<td style="text-align: center;">-1.27136</td>
-<td style="text-align: center;">0.467978</td>
+<td style="text-align: center;">0.702769</td>
+<td style="text-align: center;">-0.556016</td>
+<td style="text-align: center;">-1.01648</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.448212</td>
-<td style="text-align: center;">-0.530161</td>
-<td style="text-align: center;">-0.684277</td>
+<td style="text-align: center;">0.853829</td>
+<td style="text-align: center;">-1.21649</td>
+<td style="text-align: center;">2.21734</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.912701</td>
-<td style="text-align: center;">1.96512</td>
-<td style="text-align: center;">0.749095</td>
+<td style="text-align: center;">0.276974</td>
+<td style="text-align: center;">-0.671346</td>
+<td style="text-align: center;">1.39373</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.405105</td>
-<td style="text-align: center;">-1.49774</td>
-<td style="text-align: center;">-1.3041</td>
+<td style="text-align: center;">0.930717</td>
+<td style="text-align: center;">0.0499026</td>
+<td style="text-align: center;">-0.991995</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.1198</td>
-<td style="text-align: center;">-0.389914</td>
-<td style="text-align: center;">-0.188353</td>
+<td style="text-align: center;">0.12061</td>
+<td style="text-align: center;">0.204708</td>
+<td style="text-align: center;">-0.40293</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.38779</td>
-<td style="text-align: center;">0.688084</td>
-<td style="text-align: center;">-0.0142883</td>
+<td style="text-align: center;">0.0785381</td>
+<td style="text-align: center;">-0.447935</td>
+<td style="text-align: center;">-1.369</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.306269</td>
-<td style="text-align: center;">0.578984</td>
-<td style="text-align: center;">-0.326561</td>
+<td style="text-align: center;">0.987903</td>
+<td style="text-align: center;">1.36073</td>
+<td style="text-align: center;">-0.738518</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.549008</td>
-<td style="text-align: center;">-3.09023</td>
-<td style="text-align: center;">-0.592374</td>
+<td style="text-align: center;">0.235011</td>
+<td style="text-align: center;">1.65561</td>
+<td style="text-align: center;">0.353385</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.6891</td>
-<td style="text-align: center;">-0.335564</td>
-<td style="text-align: center;">-0.0190515</td>
+<td style="text-align: center;">0.343796</td>
+<td style="text-align: center;">-0.721503</td>
+<td style="text-align: center;">0.784068</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.61922</td>
-<td style="text-align: center;">1.33584</td>
-<td style="text-align: center;">1.50626</td>
+<td style="text-align: center;">0.566874</td>
+<td style="text-align: center;">-1.51726</td>
+<td style="text-align: center;">-0.0546717</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -638,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
@@ -650,43 +650,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
@@ -731,53 +731,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">-0.0100689</td>
-<td style="text-align: center;">-1.23552</td>
+<td style="text-align: center;">0.549509</td>
+<td style="text-align: center;">-0.543192</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.41534</td>
-<td style="text-align: center;">-0.506061</td>
+<td style="text-align: center;">-2.47396</td>
+<td style="text-align: center;">-1.11465</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-1.08347</td>
-<td style="text-align: center;">2.00441</td>
+<td style="text-align: center;">-2.03215</td>
+<td style="text-align: center;">-0.587116</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2.13742</td>
-<td style="text-align: center;">-1.4707</td>
+<td style="text-align: center;">0.765971</td>
+<td style="text-align: center;">0.0218393</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.296405</td>
-<td style="text-align: center;">-0.371187</td>
+<td style="text-align: center;">0.590094</td>
+<td style="text-align: center;">0.175723</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.0267688</td>
-<td style="text-align: center;">0.65291</td>
+<td style="text-align: center;">0.700083</td>
+<td style="text-align: center;">-0.45169</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.829652</td>
-<td style="text-align: center;">0.550896</td>
+<td style="text-align: center;">1.07934</td>
+<td style="text-align: center;">1.30936</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.776292</td>
-<td style="text-align: center;">-3.47329</td>
+<td style="text-align: center;">-0.591423</td>
+<td style="text-align: center;">1.64657</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.0577695</td>
-<td style="text-align: center;">-0.317536</td>
+<td style="text-align: center;">-1.14785</td>
+<td style="text-align: center;">-0.663849</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.62062</td>
-<td style="text-align: center;">1.28954</td>
+<td style="text-align: center;">-0.427661</td>
+<td style="text-align: center;">-1.51693</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -837,82 +837,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">-0.0100689</td>
-<td style="text-align: center;">-1.23552</td>
+<td style="text-align: center;">0.549509</td>
+<td style="text-align: center;">-0.543192</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">0.41534</td>
-<td style="text-align: center;">-0.506061</td>
+<td style="text-align: center;">-2.47396</td>
+<td style="text-align: center;">-1.11465</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-1.08347</td>
-<td style="text-align: center;">2.00441</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">-2.03215</td>
+<td style="text-align: center;">-0.587116</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">2.13742</td>
-<td style="text-align: center;">-1.4707</td>
+<td style="text-align: center;">0.765971</td>
+<td style="text-align: center;">0.0218393</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">0.296405</td>
-<td style="text-align: center;">-0.371187</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">0.590094</td>
+<td style="text-align: center;">0.175723</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-0.0267688</td>
-<td style="text-align: center;">0.65291</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">0.700083</td>
+<td style="text-align: center;">-0.45169</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">0.829652</td>
-<td style="text-align: center;">0.550896</td>
+<td style="text-align: center;">1.07934</td>
+<td style="text-align: center;">1.30936</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">0.776292</td>
-<td style="text-align: center;">-3.47329</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">-0.591423</td>
+<td style="text-align: center;">1.64657</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-0.0577695</td>
-<td style="text-align: center;">-0.317536</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">-1.14785</td>
+<td style="text-align: center;">-0.663849</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-1.62062</td>
-<td style="text-align: center;">1.28954</td>
+<td style="text-align: center;">-0.427661</td>
+<td style="text-align: center;">-1.51693</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -937,7 +937,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="op">-</span><span class="fl">1.0</span>, <span class="fl">4.0</span>, <span class="fl">1.6</span>, <span class="fl">3.4</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="fl">1.6</span>, <span class="fl">3.4</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">4.0</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> [<span class="fl">3.4</span>, <span class="fl">2.0</span>, <span class="fl">3.6</span>, <span class="op">-</span><span class="fl">1.0</span>]</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (; a, b, c) </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (; a, b, c)</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>(table, <span class="fu">rand</span>(<span class="fl">2</span>, <span class="fl">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -968,25 +968,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">3.4</td>
-<td style="text-align: center;">(0.00492113, 0.687052)</td>
+<td style="text-align: center;">(0.109858, 0.789805)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">2.0</td>
-<td style="text-align: center;">(0.0967939, 0.572989)</td>
+<td style="text-align: center;">(0.238141, 0.264638)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">3.6</td>
-<td style="text-align: center;">(0.423105, 0.365644)</td>
+<td style="text-align: center;">(0.219824, 0.430809)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">-1.0</td>
-<td style="text-align: center;">(0.394927, 0.595181)</td>
+<td style="text-align: center;">(0.910379, 0.038204)</td>
 </tr>
 </tbody>
 </table>
@@ -1023,19 +1023,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">-3.0</td>
-<td style="text-align: center;">(0.00492113, 0.687052)</td>
+<td style="text-align: center;">(0.109858, 0.789805)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2.0</td>
-<td style="text-align: center;">(0.0967939, 0.572989)</td>
+<td style="text-align: center;">(0.238141, 0.264638)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">-0.4</td>
-<td style="text-align: center;">(0.423105, 0.365644)</td>
+<td style="text-align: center;">(0.219824, 0.430809)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">1.4</td>
-<td style="text-align: center;">(0.394927, 0.595181)</td>
+<td style="text-align: center;">(0.910379, 0.038204)</td>
 </tr>
 </tbody>
 </table>
@@ -1066,19 +1066,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">-3.0</td>
-<td style="text-align: center;">(0.00492113, 0.687052)</td>
+<td style="text-align: center;">(0.109858, 0.789805)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2.0</td>
-<td style="text-align: center;">(0.0967939, 0.572989)</td>
+<td style="text-align: center;">(0.238141, 0.264638)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">-0.4</td>
-<td style="text-align: center;">(0.423105, 0.365644)</td>
+<td style="text-align: center;">(0.219824, 0.430809)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">1.4</td>
-<td style="text-align: center;">(0.394927, 0.595181)</td>
+<td style="text-align: center;">(0.910379, 0.038204)</td>
 </tr>
 </tbody>
 </table>
@@ -1121,25 +1121,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">3.4</td>
-<td style="text-align: center;">(0.00492113, 0.687052)</td>
+<td style="text-align: center;">(0.109858, 0.789805)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">2.0</td>
-<td style="text-align: center;">(0.0967939, 0.572989)</td>
+<td style="text-align: center;">(0.238141, 0.264638)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">3.6</td>
-<td style="text-align: center;">(0.423105, 0.365644)</td>
+<td style="text-align: center;">(0.219824, 0.430809)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">-1.0</td>
-<td style="text-align: center;">(0.394927, 0.595181)</td>
+<td style="text-align: center;">(0.910379, 0.038204)</td>
 </tr>
 </tbody>
 </table>
@@ -1162,7 +1162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Lazy pipelines can always be optimized for <strong>computational performance</strong>, and the Julia language really thrives to dispatch the appropriate optimizations when they are available.</li>
 <li>Map projections are specific types of coordinate transforms. They can be combined with many other transforms in the framework to produce advanced geostatistical visualizations.</li>
 </ul>
-<p>There is a long journey until the technology reaches its full potential. The good news is that Julia code is really easy to read and modify, and you can become an active contributor after just a few weeks working with the language. We invite you to contribute new transforms and optimizations as soon as you feel comfortable with the framework.</p>
+<p>There is a long journey until the technology reaches its full potential. The good news is that Julia code is easy to read and modify, and you can become an active contributor after just a few weeks working with the language. We invite you to contribute new transforms and optimizations as soon as you feel comfortable with the framework.</p>
 
 
 </section>

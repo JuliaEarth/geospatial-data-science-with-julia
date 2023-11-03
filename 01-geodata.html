@@ -370,7 +370,7 @@ div.csl-indent {
 </header>
 
 <p>Welcome to <strong>Part I</strong> of the book. Before we can start our journey in geospatial data science, we need to introduce important concepts, which will be the foundations of <strong>Part II</strong>, <strong>Part III</strong> and <strong>Part IV</strong>.</p>
-<p>In this chapter, we define <strong>geospatial data</strong> and introduce a <strong>universal representation</strong> for it that is ideal for geostatistical analysis. Unlike other representations in the literature (e.g., “raster”, “vector” data), the proposed representation is suitable for encoding geospatial data over 3D unstructured meshes, 2D images embedded in 3D space, and other types of complex <strong>geospatial domains</strong>.</p>
+<p>In this chapter, we define <strong>geospatial data</strong> and introduce a <strong>universal representation</strong> for it which is ideal for geostatistical analysis. Unlike other representations in the literature (e.g., “raster”, “vector” data), the proposed representation is suitable for encoding geospatial data over 3D unstructured meshes, 2D images embedded in 3D space, and other types of complex <strong>geospatial domains</strong>.</p>
 <section id="definition" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">1.1</span> Definition</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -383,13 +383,13 @@ Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>(Discrete) geospatial data</strong> is the combination of a <strong>table</strong> of attributes (or features) with a discretization of a geospatial <strong>domain</strong>. For each row (or measurement) in the <strong>table</strong> there corresponds an element (or geometry) in the discretization of the geospatial <strong>domain</strong>.</p>
+<p><strong>(Discrete) geospatial data</strong> is the combination of a <strong>table</strong> of attributes (or features) with a discretization of a geospatial <strong>domain</strong>. Each row (or measurement) in the <strong>table</strong> corresponds to an element (or geometry) in the discretization of the geospatial <strong>domain</strong>.</p>
 </div>
 </div>
 <p>The definition depends on two other definitions that we clarify next.</p>
 <section id="table" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="table"><span class="header-section-number">1.1.1</span> Table</h3>
-<p>In data science the most natural data structure for working with data is the <a href="https://en.wikipedia.org/wiki/Table_(database)">table</a>. Without big formalities, a table is any object that can be structured into rows containing measurements and columns representing variables. For example, <a href="#tbl-example">Table&nbsp;<span>1.1</span></a> has 5 measurements of 4 variables:</p>
+<p>In data science the most natural data structure for working with data is the <a href="https://en.wikipedia.org/wiki/Table_(database)">table</a>. Generally speaking, a table is any object that can be structured into rows containing measurements and columns representing variables. For example, <a href="#tbl-example">Table&nbsp;<span>1.1</span></a> has 5 measurements of 4 variables:</p>
 <div id="tbl-example" class="anchored">
 <table class="table-striped table-hover table">
 <caption>Table&nbsp;1.1: Example of table</caption>
@@ -882,7 +882,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>CartesianGrid</code> domain is lazy meaning it only stores the start and end points of the grid together with the spacing between the elements. Therefore, we can easily create large 3D grids of <code>Hexahedron</code> geometries without consuming all available memory:</p>
+<p>The <code>CartesianGrid</code> domain is <em>lazy</em>, meaning it only stores the start and end points of the grid together with the spacing between the elements. Therefore, we can easily create large 3D grids of <code>Hexahedron</code> geometries without consuming all available memory:</p>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10000</span>, <span class="fl">10000</span>, <span class="fl">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
@@ -1237,63 +1237,63 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.182436</td>
-<td style="text-align: center;">0.393868</td>
-<td style="text-align: center;">0.536851</td>
+<td style="text-align: center;">0.631893</td>
+<td style="text-align: center;">0.940909</td>
+<td style="text-align: center;">0.903411</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.337507</td>
-<td style="text-align: center;">0.294408</td>
-<td style="text-align: center;">0.228854</td>
+<td style="text-align: center;">0.709457</td>
+<td style="text-align: center;">0.12794</td>
+<td style="text-align: center;">0.118649</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.749393</td>
-<td style="text-align: center;">0.371787</td>
-<td style="text-align: center;">0.192181</td>
+<td style="text-align: center;">0.700724</td>
+<td style="text-align: center;">0.876817</td>
+<td style="text-align: center;">0.614917</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.636885</td>
-<td style="text-align: center;">0.437199</td>
-<td style="text-align: center;">0.422704</td>
+<td style="text-align: center;">0.547639</td>
+<td style="text-align: center;">0.824407</td>
+<td style="text-align: center;">0.0143374</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.474749</td>
-<td style="text-align: center;">0.572449</td>
-<td style="text-align: center;">0.260245</td>
+<td style="text-align: center;">0.056653</td>
+<td style="text-align: center;">0.938391</td>
+<td style="text-align: center;">0.972738</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.93701</td>
-<td style="text-align: center;">0.385495</td>
-<td style="text-align: center;">0.782877</td>
+<td style="text-align: center;">0.773433</td>
+<td style="text-align: center;">0.0238721</td>
+<td style="text-align: center;">0.0450653</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.543382</td>
-<td style="text-align: center;">0.611898</td>
-<td style="text-align: center;">0.89008</td>
+<td style="text-align: center;">0.808854</td>
+<td style="text-align: center;">0.800792</td>
+<td style="text-align: center;">0.226855</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.131773</td>
-<td style="text-align: center;">0.706926</td>
-<td style="text-align: center;">0.762353</td>
+<td style="text-align: center;">0.524673</td>
+<td style="text-align: center;">0.829502</td>
+<td style="text-align: center;">0.300062</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.751983</td>
-<td style="text-align: center;">0.791693</td>
-<td style="text-align: center;">0.967616</td>
+<td style="text-align: center;">0.0286991</td>
+<td style="text-align: center;">0.896201</td>
+<td style="text-align: center;">0.863511</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.597686</td>
-<td style="text-align: center;">0.164402</td>
-<td style="text-align: center;">0.624011</td>
+<td style="text-align: center;">0.301655</td>
+<td style="text-align: center;">0.0484113</td>
+<td style="text-align: center;">0.404411</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1445,9 +1445,9 @@ Tip for advanced users
 </section>
 <section id="remarks-1" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="remarks-1"><span class="header-section-number">1.3</span> Remarks</h2>
-<p>What we learned in this chapter?</p>
+<p>What did we learn in this chapter?</p>
 <ul>
-<li>Geospatial data can be efficiently represented as a <code>GeoTable</code>. This representation is universal meaning that it combines the “raster” and “vector” representations found in traditional GIS.</li>
+<li>Geospatial data can be efficiently represented as a <code>GeoTable</code>. This representation is universal, meaning it combines the “raster” and “vector” representations found in traditional GIS.</li>
 <li>A <code>GeoTable</code> provides all the data access patterns of a <code>DataFrame</code>. In particular, it supports the syntax <code>geotable[rows,cols]</code> without expensive copies of geometries.</li>
 <li>Working with geospatial domains as opposed to working with vectors of disconnected geometries has major benefits. In particular, it preserves topological information.</li>
 </ul>
