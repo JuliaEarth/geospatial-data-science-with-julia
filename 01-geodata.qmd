@@ -12,7 +12,7 @@ geospatial data science, we need to introduce important concepts, which
 will be the foundations of **Part II**, **Part III** and **Part IV**.
 
 In this chapter, we define **geospatial data** and introduce a
-**universal representation** for such data which is ideal for geostatistical
+**universal representation** for it which is ideal for geostatistical
 analysis. Unlike other representations in the literature (e.g., "raster",
 "vector" data), the proposed representation is suitable for encoding
 geospatial data over 3D unstructured meshes, 2D images embedded in 3D space,
@@ -207,7 +207,7 @@ df = DataFrame(
 
 ```{julia}
 #| echo: false
-show(stdout, MIME("text/html"), df; header_alignment=:s)
+show(stdout, MIME("text/html"), df; header_alignment = :s)
 ```
 
 This representation provides additional syntax for accessing
@@ -215,26 +215,26 @@ rows and columns of the table:
 
 ```{julia}
 #| output: false
-df[1, :]
+df[1,:]
 ```
 
 ```{julia}
 #| echo: false
-show(stdout, MIME("text/html"), df[1, :]; header_alignment=:s)
+show(stdout, MIME("text/html"), df[1,:]; header_alignment = :s)
 ```
 
 ```{julia}
-df[:, "NAME"]
+df[:,"NAME"]
 ```
 
 ```{julia}
 #| output: false
-df[1:3, ["NAME", "AGE"]]
+df[1:3,["NAME","AGE"]]
 ```
 
 ```{julia}
 #| echo: false
-show(stdout, MIME("text/html"), df[1:3, ["NAME", "AGE"]]; header_alignment=:s)
+show(stdout, MIME("text/html"), df[1:3,["NAME","AGE"]]; header_alignment = :s)
 ```
 
 ```{julia}
@@ -506,7 +506,7 @@ first measurement of the `GeoTable` and it will automatically construct
 the corresponding `Quadrangle`:
 
 ```{julia}
-geotable[1, :]
+geotable[1,:]
 ```
 
 If we request a subset of measurements, the `GeoTable` will avoid
@@ -514,13 +514,13 @@ unnecessary creation of geometries, and will instead return a view
 into the original data:
 
 ```{julia}
-geotable[1:3, ["NAME", "AGE"]]
+geotable[1:3,["NAME","AGE"]]
 ```
 
 Finally, if we request the entire `geometry` column, we get back the original domain:
 
 ```{julia}
-geotable[:, "geometry"]
+geotable[:,"geometry"]
 ```
 
 Besides the data access patterns of the `DataFrame`, the `GeoTable` also provides
@@ -539,7 +539,14 @@ Notice that the `GeoTable` representation is general enough to accommodate both
 because the `CartesianGrid` is lazy:
 
 ```{julia}
-georef((R=rand(1000000), G=rand(1000000), B=rand(1000000)), CartesianGrid(1000, 1000))
+georef(
+  (
+    R=rand(1000000),
+    G=rand(1000000),
+    B=rand(1000000)
+  ),
+  CartesianGrid(1000, 1000)
+)
 ```
 
 And can load vector geometries from files that store simple features

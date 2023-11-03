@@ -18,8 +18,8 @@ consider the following geotable with four random variables:
 
 ```{julia}
 N = 10000
-a = [2randn(N ÷ 2) .+ 6; randn(N ÷ 2)]
-b = [3randn(N ÷ 2); 2randn(N ÷ 2)]
+a = [2randn(N÷2) .+ 6; randn(N÷2)]
+b = [3randn(N÷2); 2randn(N÷2)]
 c = randn(N)
 d = c .+ 0.6randn(N)
 
@@ -28,17 +28,11 @@ table = (; a, b, c, d)
 gt = georef(table, CartesianGrid(100, 100))
 ```
 
-::: {.callout-tip}
-
-The `÷` operator in Julia performs *interger* division, so `10÷2` yields `5`. Conversely, `10/2` performs *floating point* division and yields a float, `5.0`.
-
-:::
-
 We can easily retrieve the "a" column of the geotable as a vector,
 and plot its histogram:
 
 ```{julia}
-Mke.hist(gt.a, color="gray80")
+Mke.hist(gt.a, color = "gray80")
 ```
 
 We can compute the cross-correlation between columns "a" and "b":
@@ -257,7 +251,7 @@ values that are meaningful to the analysis. For example, we can replace the valu
 `-999` and `NaN` that are used to represent `missing` values in some file formats:
 
 ```{julia}
-rt = georef((a=[1, -999, 3], b=[NaN, 5, 6]))
+rt = georef((a=[1,-999,3], b=[NaN,5,6]))
 ```
 
 ```{julia}
@@ -280,7 +274,7 @@ Although `Replace` could be used to replace `missing` values by new values, ther
 a specific transform for this purpose named `Coalesce`:
 
 ```{julia}
-ct = georef((a=[1, missing, 3], b=[4, 5, 6])) |> Coalesce(value=2)
+ct = georef((a=[1,missing,3], b=[4,5,6])) |> Coalesce(value=2)
 ```
 
 ::: {.callout-note}
@@ -298,7 +292,7 @@ In many applications, it is enough to simply drop all rows for which the selecte
 values are `missing`. This is the purpose of the `DropMissing` transform:
 
 ```{julia}
-georef((a=[1, missing, 3], b=[4, 5, 6])) |> DropMissing()
+georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
 ```
 
 ### Statistical
@@ -367,7 +361,7 @@ scientific traits of columns in a geotable, we can use the `Coerce` transform:
 ```{julia}
 using GeoStats.DataScienceTraits: Continuous
 
-st = georef((a=[1, 2, 2, 2, 3, 3], b=[1, 2, 3, 4, 5, 6])) |> Coerce("b" => Continuous)
+st = georef((a=[1,2,2,2,3,3], b=[1,2,3,4,5,6])) |> Coerce("b" => Continuous)
 ```
 
 ```{julia}
@@ -387,7 +381,7 @@ of `Categorical` columns in case the sampling process does not include
 all possible values:
 
 ```{julia}
-st = st |> Levels("a" => [1, 2, 3, 4])
+st = st |> Levels("a" => [1,2,3,4])
 ```
 
 ```{julia}
@@ -466,7 +460,7 @@ Rotation specifications are also available in 2D space. As an example, we can
 rotate the 2D grid of our synthetic geotable by the counter clockwise angle `π/4`:
 
 ```{julia}
-gt |> Rotate(Angle2d(π / 4)) |> viewer
+gt |> Rotate(Angle2d(π/4)) |> viewer
 ```
 
 In GIS, this new geotable would be called a rotated "raster". As another example,
@@ -526,7 +520,7 @@ let's consider the following polygonal area with holes:
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
 hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
 hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
-poly = PolyArea([outer, hole1, hole2])
+poly  = PolyArea([outer, hole1, hole2])
 
 viz(poly)
 ```
@@ -548,8 +542,8 @@ which gradually removes sharp boundaries of a manifold mesh:
 st = bt |> TaubinSmoothing(30)
 
 fig = Mke.Figure()
-viz(fig[1, 1], bt.geometry)
-viz(fig[1, 2], st.geometry)
+viz(fig[1,1], bt.geometry)
+viz(fig[1,2], st.geometry)
 fig
 ```
 
@@ -570,7 +564,7 @@ As an example, let's consider the following geotable with a variable `z` that ma
 r = range(-1, stop=1, length=100)
 μ = [x^2 + y^2 for x in r, y in r]
 ϵ = 0.1rand(100, 100)
-t = georef((z=μ + ϵ,))
+t = georef((z=μ+ϵ,))
 
 viewer(t)
 ```
@@ -604,10 +598,10 @@ Ab = letters |> Potrace("color", ϵ=0.8)
 ```
 
 The option `ϵ` controls the deviation tolerance used to simplify the boundaries of the geometries.
-The higher the tolerance, the less the number of segments in the boundary:
+The higher is the tolerance, the less is the number of segments in the boundary:
 
 ```{julia}
-viz(Ab.geometry[2], color="black")
+viz(Ab.geometry[2], color = "black")
 ```
 
 In the reverse direction, we have the `Rasterize` transform, which takes a geotable over a `GeometrySet`

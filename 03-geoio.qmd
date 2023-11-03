@@ -10,18 +10,21 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
-Several hard decisions lied in the path of disrupting existing practices and
-developing something groundbreaking in Julia. One of these decisions relates to
-how we are willing to interface our framework with existing GIS standards and workflows.
+In order to disrupt existing practices and really develop
+something new in Julia, we had to make some hard decisions
+along the way. One of these decisions relates to how we are
+willing to interface our framework with existing GIS
+standards and workflows.
 
 On the one hand, we could have followed the path that was
 followed by other communities such as Python and R, and
 focus our energy interfacing with well-tested GIS libraries
 written in C/C++ (e.g., [GDAL](https://gdal.org/index.html),
 [GEOS](https://libgeos.org)). This is precisely what the
-JuliaGeo organization has been doing over the years which
-encourages people from other languages who are used to 
-the [OGC](https://www.ogc.org/standards) standards - an important endeavor.
+JuliaGeo organization has been doing over the years, and it
+is an important agenda to bring people from other languages
+that are used to the [OGC](https://www.ogc.org/standards)
+standards.
 
 On the other hand, we have young geoscientists and first-time
 programmers who have never studied GIS before, and who *really
