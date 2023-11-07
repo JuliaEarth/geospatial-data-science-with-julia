@@ -115,16 +115,16 @@ using Pkg
 pkg"activate @gdsbook"
 
 # install framework
-pkg"add GeoStats@0.46.0"
+pkg"add GeoStats@0.47.1"
 
 # install IO module
 pkg"add GeoIO@1.2.0"
 
 # install artifacts
-pkg"add GeoArtifacts@0.1.0"
+pkg"add GeoArtifacts@0.2.0"
 
 # install viz modules
-pkg"add CairoMakie@0.10.10"
+pkg"add CairoMakie@0.10.12"
 pkg"add PairPlots@1.1.2"
 
 # install other modules

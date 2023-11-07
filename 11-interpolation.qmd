@@ -194,7 +194,7 @@ we will consider a subdomain within a `Box`:
 ```{julia}
 using GeoArtifacts
 
-img = GeoArtifacts.geostatsimage("WalkerLakeTruth")
+img = GeoArtifacts.image("WalkerLakeTruth")
 
 img = img[Box((0, 0), (200, 200)), :]
 ```

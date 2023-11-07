@@ -41,7 +41,7 @@ module to illustrate the concept for different values of $h$:
 ```{julia}
 using GeoArtifacts
 
-img = GeoArtifacts.geostatsimage("Gaussian30x10")
+img = GeoArtifacts.image("Gaussian30x10")
 
 img |> viewer
 ```
@@ -199,16 +199,14 @@ size of "blobs" in the image. Let's consider two synthetic images with ranges
 
 ```{julia}
 #| echo: false
-p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
+g = CartesianGrid(100, 25)
 
-g1 = GaussianVariogram(range=10.0)
-g2 = GaussianVariogram(range=30.0)
-s1 = LUGS(:Z => (; variogram=g1))
-s2 = LUGS(:Z => (; variogram=g2))
+p1 = GaussianProcess(GaussianVariogram(range=10.0))
+p2 = GaussianProcess(GaussianVariogram(range=30.0))
 
 Random.seed!(2023)
-d1 = solve(p, s1)[1]
-d2 = solve(p, s2)[1]
+d1 = rand(p1, g, [:Z => Float64], LUMethod())
+d2 = rand(p2, g, [:Z => Float64], LUMethod())
 
 fig = Mke.Figure()
 viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="range: 10"))
@@ -227,16 +225,14 @@ let's represent the values of the variable with height instead of color:
 
 ```{julia}
 #| echo: false
-p = SimulationProblem(CartesianGrid(100), :Z => Float64, 1)
+g = CartesianGrid(100)
 
-g1 = GaussianVariogram(range=10.0, sill=1.0)
-g2 = GaussianVariogram(range=10.0, sill=9.0)
-s1 = LUGS(:Z => (; variogram=g1))
-s2 = LUGS(:Z => (; variogram=g2))
+p1 = GaussianProcess(GaussianVariogram(range=10.0, sill=1.0))
+p2 = GaussianProcess(GaussianVariogram(range=10.0, sill=9.0))
 
 Random.seed!(2023)
-d1 = solve(p, s1)[1]
-d2 = solve(p, s2)[1]
+d1 = rand(p1, g, [:Z => Float64], LUMethod())
+d2 = rand(p2, g, [:Z => Float64], LUMethod())
 
 f(x) = first(coordinates(centroid(x)))
 
@@ -259,16 +255,14 @@ the scale of measurements (i.e. pixel). It is known in the image processing lite
 
 ```{julia}
 #| echo: false
-p = SimulationProblem(CartesianGrid(100), :Z => Float64, 1)
+g = CartesianGrid(100)
 
-g1 = GaussianVariogram(range=10.0, nugget=0.1)
-g2 = GaussianVariogram(range=10.0, nugget=0.2)
-s1 = LUGS(:Z => (; variogram=g1))
-s2 = LUGS(:Z => (; variogram=g2))
+p1 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.1))
+p2 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.2))
 
 Random.seed!(2023)
-d1 = solve(p, s1)[1]
-d2 = solve(p, s2)[1]
+d1 = rand(p1, g, [:Z => Float64], LUMethod())
+d2 = rand(p2, g, [:Z => Float64], LUMethod())
 
 f(x) = first(coordinates(centroid(x)))
 
@@ -282,17 +276,15 @@ We can visualize the nugget effect in our 2D grid with colors as before:
 
 ```{julia}
 #| echo: false
-p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
+g = CartesianGrid(100, 25)
 
-g1 = GaussianVariogram(range=10.0, nugget=0.0)
-g2 = GaussianVariogram(range=10.0, nugget=0.1)
-s1 = LUGS(:Z => (; variogram=g1))
-s2 = LUGS(:Z => (; variogram=g2))
+p1 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.0))
+p2 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.1))
 
 Random.seed!(2023)
-d1 = solve(p, s1)[1]
+d1 = rand(p1, g, [:Z => Float64], LUMethod())
 Random.seed!(2023)
-d2 = solve(p, s2)[1]
+d2 = rand(p2, g, [:Z => Float64], LUMethod())
 
 fig = Mke.Figure()
 viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="nugget: 0.0"))
@@ -334,19 +326,16 @@ The faster is the increase of the function near the origin, the more "erratic" i
 
 ```{julia}
 #| echo: false
-p = SimulationProblem(CartesianGrid(100, 25), :Z => Float64, 1)
+g = CartesianGrid(100, 25)
 
-g1 = GaussianVariogram(range=10.0)
-g2 = SphericalVariogram(range=10.0)
-g3 = ExponentialVariogram(range=10.0)
-s1 = LUGS(:Z => (; variogram=g1))
-s2 = LUGS(:Z => (; variogram=g2))
-s3 = LUGS(:Z => (; variogram=g3))
+p1 = GaussianProcess(GaussianVariogram(range=10.0))
+p2 = GaussianProcess(SphericalVariogram(range=10.0))
+p3 = GaussianProcess(ExponentialVariogram(range=10.0))
 
 Random.seed!(2023)
-d1 = solve(p, s1)[1]
-d2 = solve(p, s2)[1]
-d3 = solve(p, s3)[1]
+d1 = rand(p1, g, [:Z => Float64], LUMethod())
+d2 = rand(p2, g, [:Z => Float64], LUMethod())
+d3 = rand(p3, g, [:Z => Float64], LUMethod())
 
 fig = Mke.Figure()
 viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="model: Gaussian"))
