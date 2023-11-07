@@ -393,7 +393,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoArtifacts</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> GeoArtifacts.<span class="fu">geostatsimage</span>(<span class="st">"Gaussian30x10"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> GeoArtifacts.<span class="fu">image</span>(<span class="st">"Gaussian30x10"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -405,7 +405,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">1000</span>, replace<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [616, 5706, 2214, 9133, ..., 3911, 8593, 7591, 257])</caption>
+<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [5576, 7870, 54, 5596, ..., 6375, 7358, 7800, 3499])</caption>
 <thead>
 <tr class="header header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
@@ -422,44 +422,44 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.298261</td>
-<td style="text-align: center;">Quadrangle((15.0, 6.0), ..., (15.0, 7.0))</td>
+<td style="text-align: center;">0.187036</td>
+<td style="text-align: center;">Quadrangle((75.0, 55.0), ..., (75.0, 56.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.964439</td>
-<td style="text-align: center;">Quadrangle((5.0, 57.0), ..., (5.0, 58.0))</td>
+<td style="text-align: center;">0.487031</td>
+<td style="text-align: center;">Quadrangle((69.0, 78.0), ..., (69.0, 79.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.113181</td>
-<td style="text-align: center;">Quadrangle((13.0, 22.0), ..., (13.0, 23.0))</td>
+<td style="text-align: center;">-0.736857</td>
+<td style="text-align: center;">Quadrangle((53.0, 0.0), ..., (53.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.380767</td>
-<td style="text-align: center;">Quadrangle((32.0, 91.0), ..., (32.0, 92.0))</td>
+<td style="text-align: center;">-0.724235</td>
+<td style="text-align: center;">Quadrangle((95.0, 55.0), ..., (95.0, 56.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.0267371</td>
-<td style="text-align: center;">Quadrangle((69.0, 51.0), ..., (69.0, 52.0))</td>
+<td style="text-align: center;">1.0384</td>
+<td style="text-align: center;">Quadrangle((0.0, 60.0), ..., (0.0, 61.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.28689</td>
-<td style="text-align: center;">Quadrangle((71.0, 39.0), ..., (71.0, 40.0))</td>
+<td style="text-align: center;">-0.209223</td>
+<td style="text-align: center;">Quadrangle((35.0, 19.0), ..., (35.0, 20.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.89759</td>
-<td style="text-align: center;">Quadrangle((0.0, 71.0), ..., (0.0, 72.0))</td>
+<td style="text-align: center;">-1.85961</td>
+<td style="text-align: center;">Quadrangle((46.0, 82.0), ..., (46.0, 83.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.1416</td>
-<td style="text-align: center;">Quadrangle((95.0, 44.0), ..., (95.0, 45.0))</td>
+<td style="text-align: center;">0.855517</td>
+<td style="text-align: center;">Quadrangle((20.0, 94.0), ..., (20.0, 95.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.118475</td>
-<td style="text-align: center;">Quadrangle((69.0, 53.0), ..., (69.0, 54.0))</td>
+<td style="text-align: center;">-1.0466</td>
+<td style="text-align: center;">Quadrangle((78.0, 65.0), ..., (78.0, 66.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.803277</td>
-<td style="text-align: center;">Quadrangle((79.0, 36.0), ..., (79.0, 37.0))</td>
+<td style="text-align: center;">0.37636</td>
+<td style="text-align: center;">Quadrangle((25.0, 22.0), ..., (25.0, 23.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
