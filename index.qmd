@@ -63,6 +63,7 @@ If you would like to get involved with the project, you can start by
     title = {Geospatial Data Science with {{Julia}}},
     author = {Hoffimann, Júlio},
     year = {2023},
+    doi = {10.5281/zenodo.10150870},
     url = {https://juliaearth.github.io/geospatial-data-science-with-julia}
   }
   ```
