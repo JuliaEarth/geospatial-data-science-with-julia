@@ -16,7 +16,7 @@ To build this book, you need:
   import Pkg
   Pkg.add("IJulia")
   ```
-- Quarto VSCode extension
+- Quarto
 
 1. Open the Julia REPL and instantiate the environment in this folder:
 
@@ -26,11 +26,15 @@ To build this book, you need:
     Pkg.instantiate()
     ```
 
-2. Go to any `*.qmd` file and press `render` on VSCode.
-   Alternatively, run the following in the terminal:
+2. Go to any `*.qmd` file and run the following in the terminal:
 
     ```sh
     quarto preview index.qmd
     ```
 
 Your web browser will open a tab with the book rendered.
+
+### Optional
+
+If you prefer to work with VSCode, install the Quarto VSCode extension.
+Edit the files and press the `render` button.
