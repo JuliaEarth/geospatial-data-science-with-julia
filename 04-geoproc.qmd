@@ -326,16 +326,15 @@ will be able to infer the output type.
 Likewise, the intersection of two 2D geometries can be obtained with:
 
 ```{julia}
-outer = [(8, 0), (4, 8), (2, 8), (-2, 0), (0, 0), (1, 2), (5, 2), (6, 0)]
-inner = [(4, 4), (2, 4), (3, 6)]
-poly  = PolyArea([outer, inner])
-quad  = Quadrangle((0, 1), (3, 1), (3, 7), (0, 7))
+poly1 = Ngon((0, 1), (1, 0), (2, 1), (3, 0), (4, 1), (2, 2))
+poly2 = Ngon((1.0, 0.5), (3.5, 0.0), (3.5, 1.5), (1.0, 1.5))
 
-int = poly ∩ quad
+poly  = poly1 ∩ poly2
 
-viz([poly, quad, boundary(int)],
-    color = ["slategray3", "teal", "red"],
-    alpha = [1.0, 0.2, 1.0])
+viz(poly1)
+viz!(poly2, color = "teal", alpha = 0.2)
+viz!(boundary(poly), color = "red")
+Mke.current_figure()
 ```
 
 The previous example makes use of the `boundary` of a geometry,
@@ -346,8 +345,8 @@ boundary(poly)
 ```
 
 Some operations like `measure` (`length`, `area` or `volume`) produce
-numbers instead of geometries. For example, the `area` of the letter
-"A" above is:
+numbers instead of geometries. For example, the `area` of the polygon
+above is:
 
 ```{julia}
 area(poly)
