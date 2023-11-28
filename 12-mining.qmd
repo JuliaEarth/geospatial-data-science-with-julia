@@ -62,7 +62,7 @@ url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
 
 dtable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
 
-viewer(dtable |> Select("Cu ppm"), pointsize = 4)
+dtable |> Select("Cu ppm") |> viewer
 ```
 
 ```{julia}
@@ -186,7 +186,7 @@ grid = CartesianGrid(extrema(bbox)..., bsize)
 ```
 
 ```{julia}
-viz(dtable.geometry, color = "black", pointsize = 4)
+viz(dtable.geometry, color = "black")
 viz!(grid, alpha = 0.2)
 Mke.current_figure()
 ```
@@ -206,7 +206,7 @@ chull = convexhull(points)
 
 ```{julia}
 viz(chull)
-viz!(points, color = "black", pointsize = 4)
+viz!(points, color = "black")
 Mke.current_figure()
 ```
 

@@ -45,7 +45,7 @@ data = georef((z=[1.0, 0.0, 1.0],), [(25, 25), (50, 75), (75, 50)])
 ```
 
 ```{julia}
-data |> viewer
+viewer(data, pointsize = 10)
 ```
 
 First, we need to the define the domain of interpolation, i.e., the geometries

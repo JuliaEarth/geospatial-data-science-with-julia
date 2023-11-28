@@ -61,7 +61,7 @@ fig = Mke.Figure()
 ax = Mke.Axis(fig[1,1], title = "People and countries",
               xlabel = "longitude", ylabel = "latitude")
 viz!(countries.geometry)
-viz!(people.geometry, color = "teal")
+viz!(people.geometry, color = "teal", pointsize = 10)
 fig
 ```
 
