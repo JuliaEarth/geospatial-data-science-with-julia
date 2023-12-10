@@ -847,9 +847,9 @@ version = "0.2.1"
 
 [[deps.GeoStats]]
 deps = ["CategoricalArrays", "Chain", "CoDa", "DataScienceTraits", "Dates", "DensityRatioEstimation", "Distances", "Distributions", "GeoStatsBase", "GeoStatsModels", "GeoStatsProcesses", "GeoStatsSolvers", "GeoStatsTransforms", "GeoTables", "LossFunctions", "Meshes", "Reexport", "Rotations", "Statistics", "StatsLearnModels", "TableTransforms", "Tables", "Unitful", "Variography"]
-git-tree-sha1 = "169368d46e92576fba78d7cfe56b54539867f108"
+git-tree-sha1 = "3f89b63450a05cd5dbbfc36fb581ae77d6a1aabe"
 uuid = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"
-version = "0.48.1"
+version = "0.48.2"
 weakdeps = ["Makie"]
 
     [deps.GeoStats.extensions]

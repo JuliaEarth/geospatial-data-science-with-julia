@@ -115,7 +115,7 @@ using Pkg
 pkg"activate @gdsbook"
 
 # install framework
-pkg"add GeoStats@0.48.1"
+pkg"add GeoStats@0.48.2"
 
 # install IO module
 pkg"add GeoIO@1.7.0"
