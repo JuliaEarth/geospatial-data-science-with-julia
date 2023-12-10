@@ -236,7 +236,7 @@ We perform the interpolation of the "Z" coordinate on the projected centroids of
 ```{julia}
 centroids = unique(proj.(centroid.(blocks)))
 
-ztable = ztable |> Select("Z") |> Interpolate(centroids)
+ztable = ztable |> Select("Z") |> Interpolate(centroids, IDW())
 ```
 
 ```{julia}
@@ -314,7 +314,7 @@ ns = setdiff(names(samples), ["geometry"])
 
 gs = [EmpiricalVariogram(samples, n, estimator = :cressie) for n in ns]
 
-γs = [fit(Variogram, g, h -> exp(-h/100)) for g in gs]
+γs = [Variography.fit(Variogram, g, h -> exp(-h/100)) for g in gs]
 ```
 
 ::: {.callout-note}

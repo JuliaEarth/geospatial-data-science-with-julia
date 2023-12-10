@@ -477,14 +477,14 @@ To fit a specific theoretical model, we can use the `fit` function with the
 model as the first argument:
 
 ```{julia}
-fit(SphericalVariogram, g)
+Variography.fit(SphericalVariogram, g)
 ```
 
 We can also let the framework select the model with minimum weighted least-squares
 error by passing the generic `Variogram` model to the function:
 
 ```{julia}
-γ = fit(Variogram, g)
+γ = Variography.fit(Variogram, g)
 ```
 
 ## Remarks
