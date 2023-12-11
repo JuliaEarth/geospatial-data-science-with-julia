@@ -903,9 +903,9 @@ version = "0.2.12"
 
 [[deps.GeoTables]]
 deps = ["CategoricalArrays", "ColumnSelectors", "DataAPI", "DataScienceTraits", "Dates", "Distributions", "Meshes", "PrettyTables", "Random", "Statistics", "Tables", "Unitful"]
-git-tree-sha1 = "9bd5ae66d1fc1f74ff9be4c4ba0b4776fa0a43e7"
+git-tree-sha1 = "57ac4562575671c9fbb1417200e12ae1a7cd2502"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.12.1"
+version = "1.12.2"
 weakdeps = ["Makie", "TableTransforms"]
 
     [deps.GeoTables.extensions]

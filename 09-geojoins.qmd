@@ -111,6 +111,48 @@ the `geometry` column of geotables.
 
 :::
 
+::: {.callout-note}
+
+## Tip for all users
+
+Besides `geojoin`, the framework also provides vertical and horizontal concatenation
+of geotables. Vertical concatenation is achieved with `vcat` as follows:
+
+```{julia}
+gt1 = georef((a=[1,2,3], b=[4,5,6]))
+gt2 = georef((b=[4,5,6], c=[7,8,9]))
+
+vcat(gt1, gt2)
+```
+
+All columns are preserved by default, which corresponds to the option `kind = :union`.
+Absent columns are filled with `missing` values. The option `kind = :intersect` can be
+used to retain only the columns that are present in all geotables:
+
+```{julia}
+vcat(gt1, gt2, kind = :intersect)
+```
+
+Horizontal concatenation is achieved with `hcat` as follows:
+
+```{julia}
+hcat(gt1, gt2)
+```
+
+Unique column names are produced with underscore suffixes whenever a column appears in
+multiple geotables. Julia provides convenient syntax for `vcat` and `hcat`:
+
+```{julia}
+[gt1
+ gt2]
+```
+
+```{julia}
+[gt1 gt2]
+```
+
+:::
+
 ## Common predicates
 
 In geospatial data science, the most common geometric predicates used in `geojoin`
