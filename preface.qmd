@@ -109,27 +109,27 @@ the code below in the Julia REPL:
 using Pkg
 
 # assert Julia version
-@assert VERSION ≥ v"1.9" "requires Julia v1.9 or later"
+@assert VERSION ≥ v"1.10" "requires Julia v1.10 or later"
 
 # create fresh environment
 pkg"activate @gdsbook"
 
 # install framework
-pkg"add GeoStats@0.48.2"
+pkg"add GeoStats@0.49.2"
 
 # install IO module
-pkg"add GeoIO@1.7.0"
+pkg"add GeoIO@1.12.6"
 
 # install artifacts
-pkg"add GeoArtifacts@0.2.2"
+pkg"add GeoArtifacts@0.2.4"
 
 # install viz modules
-pkg"add CairoMakie@0.11.3"
-pkg"add PairPlots@2.1.0"
+pkg"add CairoMakie@0.11.5"
+pkg"add PairPlots@2.3.1"
 
 # install other modules
 pkg"add DataFrames@1.6.1"
-pkg"add CSV@0.10.11"
+pkg"add CSV@0.10.12"
 ```
 
 If you need to reproduce the exact same environment with

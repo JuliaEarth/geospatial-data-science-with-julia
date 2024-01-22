@@ -144,7 +144,7 @@ geotable = georef(table, rand(2, 4))
 ```
 
 ```{julia}
-pipeline = Select("a") → Center()
+pipeline = Center()
 ``` 
 
 We saw that our pipelines can be evaluated with Julia's pipe operator:

@@ -162,7 +162,7 @@ with the Meshes.jl module. For example, it is sometimes convenient to define geo
 predicates in terms of a distance and a threshold:
 
 ```julia
-pred(g1, g2) = distance(g1, g2) ≤ 1u"m"`
+pred(g1, g2) = evaluate(Euclidean(), centroid(g1), centroid(g2)) ≤ 1u"m"`
 ```
 
 | PREDICATE  | EXAMPLE                      |
