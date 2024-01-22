@@ -523,7 +523,7 @@ Note
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <p><img src="09-geojoins_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
@@ -1075,7 +1075,7 @@ Tip for all users
 <section id="common-predicates" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="common-predicates"><span class="header-section-number">9.3</span> Common predicates</h2>
 <p>In geospatial data science, the most common geometric predicates used in <code>geojoin</code> are <code>∈</code>, <code>⊆</code>, <code>==</code>, <code>≈</code> and <code>intersects</code> as illustrated in <a href="#tbl-predicate">Table&nbsp;<span>9.1</span></a>. Specific applications may require custom predicates, which can be easily defined in pure Julia with the Meshes.jl module. For example, it is sometimes convenient to define geometric predicates in terms of a distance and a threshold:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">distance</span>(g1, g2) <span class="op">≤</span> <span class="fl">1</span>u<span class="st">"m"</span><span class="ss">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">evaluate</span>(<span class="fu">Euclidean</span>(), <span class="fu">centroid</span>(g1), <span class="fu">centroid</span>(g2)) <span class="op">≤</span> <span class="fl">1</span>u<span class="st">"m"</span><span class="ss">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="tbl-predicate" class="anchored">
 <table class="table">
 <caption>Table&nbsp;9.1: Common geometric predicates in geospatial join</caption>

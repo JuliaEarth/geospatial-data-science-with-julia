@@ -398,7 +398,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <p><img src="10-correlation_files/figure-html/cell-3-output-2.svg" class="img-fluid"></p>
@@ -409,7 +409,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">1000</span>, replace<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [7492, 687, 9691, 3919, ..., 4171, 6014, 3030, 5020])</caption>
+<caption>1000×2 GeoTable over 1000 view(::CartesianGrid{2,Float64}, [8168, 1073, 9021, 8380, ..., 1025, 3733, 107, 2778])</caption>
 <thead>
 <tr class="header header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
@@ -426,44 +426,44 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">-0.266542</td>
-<td style="text-align: center;">Quadrangle((91.0, 74.0), ..., (91.0, 75.0))</td>
+<td style="text-align: center;">-0.265391</td>
+<td style="text-align: center;">Quadrangle((67.0, 81.0), ..., (67.0, 82.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.372806</td>
-<td style="text-align: center;">Quadrangle((86.0, 6.0), ..., (86.0, 7.0))</td>
+<td style="text-align: center;">0.489895</td>
+<td style="text-align: center;">Quadrangle((72.0, 10.0), ..., (72.0, 11.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-2.23957</td>
-<td style="text-align: center;">Quadrangle((90.0, 96.0), ..., (90.0, 97.0))</td>
+<td style="text-align: center;">0.369988</td>
+<td style="text-align: center;">Quadrangle((20.0, 90.0), ..., (20.0, 91.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.130244</td>
-<td style="text-align: center;">Quadrangle((18.0, 39.0), ..., (18.0, 40.0))</td>
+<td style="text-align: center;">-1.2731</td>
+<td style="text-align: center;">Quadrangle((79.0, 83.0), ..., (79.0, 84.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.06844</td>
-<td style="text-align: center;">Quadrangle((34.0, 8.0), ..., (34.0, 9.0))</td>
+<td style="text-align: center;">0.198433</td>
+<td style="text-align: center;">Quadrangle((77.0, 19.0), ..., (77.0, 20.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.87453</td>
-<td style="text-align: center;">Quadrangle((0.0, 41.0), ..., (0.0, 42.0))</td>
+<td style="text-align: center;">-1.50684</td>
+<td style="text-align: center;">Quadrangle((74.0, 94.0), ..., (74.0, 95.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.406061</td>
-<td style="text-align: center;">Quadrangle((21.0, 6.0), ..., (21.0, 7.0))</td>
+<td style="text-align: center;">-0.259882</td>
+<td style="text-align: center;">Quadrangle((28.0, 70.0), ..., (28.0, 71.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.0434212</td>
-<td style="text-align: center;">Quadrangle((20.0, 87.0), ..., (20.0, 88.0))</td>
+<td style="text-align: center;">-2.9653</td>
+<td style="text-align: center;">Quadrangle((86.0, 98.0), ..., (86.0, 99.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.204928</td>
-<td style="text-align: center;">Quadrangle((18.0, 25.0), ..., (18.0, 26.0))</td>
+<td style="text-align: center;">-1.50027</td>
+<td style="text-align: center;">Quadrangle((26.0, 49.0), ..., (26.0, 50.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.742697</td>
-<td style="text-align: center;">Quadrangle((8.0, 72.0), ..., (8.0, 73.0))</td>
+<td style="text-align: center;">0.298261</td>
+<td style="text-align: center;">Quadrangle((15.0, 6.0), ..., (15.0, 7.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -478,7 +478,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">0.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <p><img src="10-correlation_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
@@ -489,7 +489,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">3.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <p><img src="10-correlation_files/figure-html/cell-6-output-2.svg" class="img-fluid"></p>
@@ -499,7 +499,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">5.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <p><img src="10-correlation_files/figure-html/cell-7-output-2.svg" class="img-fluid"></p>
@@ -509,7 +509,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">10.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <p><img src="10-correlation_files/figure-html/cell-8-output-2.svg" class="img-fluid"></p>
@@ -519,7 +519,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">50.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <p><img src="10-correlation_files/figure-html/cell-9-output-2.svg" class="img-fluid"></p>
@@ -529,7 +529,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 <div class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <p><img src="10-correlation_files/figure-html/cell-10-output-2.svg" class="img-fluid"></p>
@@ -572,7 +572,7 @@ Definition
 <div class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <p><img src="10-correlation_files/figure-html/cell-11-output-2.svg" class="img-fluid"></p>
@@ -600,7 +600,7 @@ Note
 <div class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <p><img src="10-correlation_files/figure-html/cell-12-output-2.svg" class="img-fluid"></p>
@@ -612,7 +612,7 @@ Note
 <div class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <p><img src="10-correlation_files/figure-html/cell-13-output-2.svg" class="img-fluid"></p>
@@ -626,7 +626,7 @@ Note
 <div class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <p><img src="10-correlation_files/figure-html/cell-14-output-2.svg" class="img-fluid"></p>
@@ -640,7 +640,7 @@ Note
 <div class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <p><img src="10-correlation_files/figure-html/cell-15-output-2.svg" class="img-fluid"></p>
@@ -650,7 +650,7 @@ Note
 <div class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <p><img src="10-correlation_files/figure-html/cell-16-output-2.svg" class="img-fluid"></p>
@@ -676,7 +676,7 @@ Note
 <div class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <p><img src="10-correlation_files/figure-html/cell-17-output-2.svg" class="img-fluid"></p>
@@ -686,7 +686,7 @@ Note
 <div class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <p><img src="10-correlation_files/figure-html/cell-18-output-2.svg" class="img-fluid"></p>
@@ -757,7 +757,7 @@ Note
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <p><img src="10-correlation_files/figure-html/cell-24-output-2.svg" class="img-fluid"></p>
@@ -779,7 +779,7 @@ Note
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <p><img src="10-correlation_files/figure-html/cell-26-output-2.svg" class="img-fluid"></p>
@@ -808,7 +808,7 @@ Note
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <p><img src="10-correlation_files/figure-html/cell-27-output-2.svg" class="img-fluid"></p>
@@ -842,7 +842,7 @@ Note
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <p><img src="10-correlation_files/figure-html/cell-29-output-2.svg" class="img-fluid"></p>

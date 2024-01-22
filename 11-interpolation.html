@@ -415,7 +415,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viewer</span>(data, pointsize <span class="op">=</span> <span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <p><img src="11-interpolation_files/figure-html/cell-4-output-2.svg" class="img-fluid"></p>
@@ -504,7 +504,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <p><img src="11-interpolation_files/figure-html/cell-7-output-2.svg" class="img-fluid"></p>
@@ -555,7 +555,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">lines</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <p><img src="11-interpolation_files/figure-html/cell-10-output-2.svg" class="img-fluid"></p>
@@ -573,7 +573,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <p><img src="11-interpolation_files/figure-html/cell-11-output-2.svg" class="img-fluid"></p>
@@ -584,7 +584,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">100</span>)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <p><img src="11-interpolation_files/figure-html/cell-12-output-2.svg" class="img-fluid"></p>
@@ -595,7 +595,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">1</span>, <span class="fu">Chebyshev</span>())) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <p><img src="11-interpolation_files/figure-html/cell-13-output-2.svg" class="img-fluid"></p>
@@ -640,7 +640,7 @@ Note
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">Kriging</span>(γ)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <p><img src="11-interpolation_files/figure-html/cell-14-output-2.svg" class="img-fluid"></p>
@@ -659,7 +659,7 @@ Note
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <p><img src="11-interpolation_files/figure-html/cell-15-output-2.svg" class="img-fluid"></p>
@@ -747,7 +747,7 @@ Note
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <p><img src="11-interpolation_files/figure-html/cell-17-output-2.svg" class="img-fluid"></p>
@@ -762,7 +762,7 @@ Note
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>samples <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <p><img src="11-interpolation_files/figure-html/cell-18-output-2.svg" class="img-fluid"></p>
@@ -784,7 +784,7 @@ Note
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <p><img src="11-interpolation_files/figure-html/cell-20-output-2.svg" class="img-fluid"></p>
@@ -806,7 +806,7 @@ Note
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <p><img src="11-interpolation_files/figure-html/cell-22-output-2.svg" class="img-fluid"></p>
@@ -827,7 +827,7 @@ Note
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(γ, maxlag <span class="op">=</span> <span class="fl">100.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <p><img src="11-interpolation_files/figure-html/cell-24-output-2.svg" class="img-fluid"></p>
@@ -906,7 +906,7 @@ Note
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/6NLuU/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <p><img src="11-interpolation_files/figure-html/cell-26-output-2.svg" class="img-fluid"></p>

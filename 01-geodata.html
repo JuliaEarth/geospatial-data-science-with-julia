@@ -556,7 +556,7 @@ Note
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  (NAME<span class="op">=</span><span class="st">"Kate"</span>, AGE<span class="op">=</span><span class="fl">28</span>, HEIGHT<span class="op">=</span><span class="fl">1.72</span>, GENDER<span class="op">=</span><span class="st">"female"</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>5-element Vector{NamedTuple{(:NAME, :AGE, :HEIGHT, :GENDER), Tuple{String, Int64, Float64, String}}}:
+<pre><code>5-element Vector{@NamedTuple{NAME::String, AGE::Int64, HEIGHT::Float64, GENDER::String}}:
  (NAME = "John", AGE = 34, HEIGHT = 1.78, GENDER = "male")
  (NAME = "Mary", AGE = 12, HEIGHT = 1.56, GENDER = "female")
  (NAME = "Paul", AGE = 23, HEIGHT = 1.7, GENDER = "male")
@@ -908,19 +908,6 @@ Note
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Geometries in a <code>domain</code> can be accessed with a single index <code>domain[ind]</code> or with a collection of indices <code>domain[inds]</code>. Even though it is tempting to use <code>domain[i,j]</code> and <code>domain[i,j,k]</code> in the case of 2D and 3D <code>CartesianGrid</code>, this syntax is not supported. Many domains do <strong>not</strong> have <code>GridTopology</code>.</p>
-</div>
-</div>
 <p>In computational geometry, a <code>CartesianGrid</code> is a specific type of <a href="https://en.wikipedia.org/wiki/Polygon_mesh">mesh</a>. It can only represent “flat” domains sampled regularly along each dimension (e.g., images). To represent domains with curvature such as terrain elevation models or complex 3D domains like the one in <a href="#fig-unisimII">Figure&nbsp;<span>1.1 (b)</span></a>, we can use the <code>SimpleMesh</code> domain:</p>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global vector of 2D points</span></span>
@@ -1237,63 +1224,63 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.724974</td>
-<td style="text-align: center;">0.71628</td>
-<td style="text-align: center;">0.0756661</td>
+<td style="text-align: center;">0.138103</td>
+<td style="text-align: center;">0.0947464</td>
+<td style="text-align: center;">0.746274</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.671009</td>
-<td style="text-align: center;">0.266458</td>
-<td style="text-align: center;">0.487559</td>
+<td style="text-align: center;">0.151849</td>
+<td style="text-align: center;">0.384524</td>
+<td style="text-align: center;">0.744024</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.424281</td>
-<td style="text-align: center;">0.815383</td>
-<td style="text-align: center;">0.0984025</td>
+<td style="text-align: center;">0.060313</td>
+<td style="text-align: center;">0.069319</td>
+<td style="text-align: center;">0.132966</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.152979</td>
-<td style="text-align: center;">0.120153</td>
-<td style="text-align: center;">0.203611</td>
+<td style="text-align: center;">0.447742</td>
+<td style="text-align: center;">0.375996</td>
+<td style="text-align: center;">0.84458</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.992869</td>
-<td style="text-align: center;">0.889259</td>
-<td style="text-align: center;">0.213467</td>
+<td style="text-align: center;">0.359461</td>
+<td style="text-align: center;">0.213272</td>
+<td style="text-align: center;">0.860423</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.33368</td>
-<td style="text-align: center;">0.697778</td>
-<td style="text-align: center;">0.734017</td>
+<td style="text-align: center;">0.385321</td>
+<td style="text-align: center;">0.453765</td>
+<td style="text-align: center;">0.389257</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.579363</td>
-<td style="text-align: center;">0.350091</td>
-<td style="text-align: center;">0.414339</td>
+<td style="text-align: center;">0.614585</td>
+<td style="text-align: center;">0.35969</td>
+<td style="text-align: center;">0.434952</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.426261</td>
-<td style="text-align: center;">0.758305</td>
-<td style="text-align: center;">0.781711</td>
+<td style="text-align: center;">0.607252</td>
+<td style="text-align: center;">0.244609</td>
+<td style="text-align: center;">0.909677</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.338474</td>
-<td style="text-align: center;">0.523223</td>
-<td style="text-align: center;">0.579869</td>
+<td style="text-align: center;">0.937849</td>
+<td style="text-align: center;">0.773647</td>
+<td style="text-align: center;">0.955768</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.208402</td>
-<td style="text-align: center;">0.280643</td>
-<td style="text-align: center;">0.665637</td>
+<td style="text-align: center;">0.426241</td>
+<td style="text-align: center;">0.037715</td>
+<td style="text-align: center;">0.348355</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
