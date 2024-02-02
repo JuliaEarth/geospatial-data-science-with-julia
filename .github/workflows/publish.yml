@@ -16,14 +16,16 @@ jobs:
       - name: Setup Julia
         uses: julia-actions/setup-julia@v1
 
-      - name: Setup IJulia and Jupyter
-        run: |
-          julia -e '
-            using Pkg
-            Pkg.add("IJulia")
-            Pkg.add("Conda")
-            using Conda
-            Conda.add("jupyter")'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Setup Jupyter
+        run: pip install jupyter
+
+      - name: Setup IJulia
+        run: julia -e 'using Pkg; Pkg.add("IJulia")'
 
       - name: Instantiate environment
         run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate()'
