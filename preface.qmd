@@ -115,17 +115,17 @@ using Pkg
 pkg"activate @gdsbook"
 
 # install framework
-pkg"add GeoStats@0.49.2"
+pkg"add GeoStats@0.50.2"
 
 # install IO module
-pkg"add GeoIO@1.12.6"
+pkg"add GeoIO@1.12.7"
 
 # install artifacts
-pkg"add GeoArtifacts@0.2.4"
+pkg"add GeoArtifacts@0.2.5"
 
 # install viz modules
-pkg"add CairoMakie@0.11.5"
-pkg"add PairPlots@2.3.1"
+pkg"add CairoMakie@0.11.6"
+pkg"add PairPlots@2.4.0"
 
 # install other modules
 pkg"add DataFrames@1.6.1"
@@ -167,8 +167,7 @@ and to colleagues in industry who support this work through research and develop
 [Mariana Menezes](https://www.linkedin.com/in/mariana-menezes-42085852),
 [Givago Azevedo](https://www.linkedin.com/in/givagovalentedeazevedo/),
 [Fernando Villanova](https://www.linkedin.com/in/fernando-villanova-46a56534),
-[Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior),
-[Rodrigo Leione](https://www.linkedin.com/in/rodrigo-leione-4a832a52).
+[Luis Gomide](https://www.linkedin.com/in/luis-gomide-junior).
 
 Thanks to all the reviewers of the first draft, including
 [Maciel Zortea](https://www.linkedin.com/in/mzortea),

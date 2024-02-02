@@ -314,7 +314,7 @@ ns = setdiff(names(samples), ["geometry"])
 
 gs = [EmpiricalVariogram(samples, n, estimator = :cressie) for n in ns]
 
-γs = [Variography.fit(Variogram, g, h -> exp(-h/100)) for g in gs]
+γs = [GeoStatsFunctions.fit(Variogram, g, h -> exp(-h/100)) for g in gs]
 ```
 
 ::: {.callout-note}

@@ -242,7 +242,7 @@ After estimating the empirical variogram, the next step consists of fitting
 a theoretical model. The behavior near the origin resembles a `SphericalVariogram`:
 
 ```{julia}
-γ = Variography.fit(SphericalVariogram, g)
+γ = GeoStatsFunctions.fit(SphericalVariogram, g)
 ```
 
 ```{julia}

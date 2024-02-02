@@ -422,7 +422,7 @@ geometric transforms for 2D and 3D space.
 A coordinate transform is a geometric transform that modifies the coordinates
 of all points in the domain without any advanced topological modification (i.e.,
 connectivities are preserved). The most prominent examples of coordinate
-transforms are `Translate`, `Rotate` and `Stretch`.
+transforms are `Translate`, `Rotate` and `Scale`.
 
 Let's load an additional geotable to see these transforms in action:
 
@@ -473,13 +473,13 @@ c = centroid(gt.geometry)
 gt |> Translate(-coordinates(c)...) |> viewer
 ```
 
-and stretch it with a positive factor for each dimension:
+and scale it with a positive factor for each dimension:
 
 ```{julia}
-gt |> Stretch(0.1, 0.2) |> viewer
+gt |> Scale(0.1, 0.2) |> viewer
 ```
 
-The `StdCoords` transform combines `Translate` and `Stretch` to standardize
+The `StdCoords` transform combines `Translate` and `Scale` to standardize
 the coordinates of the domain to the interval `[-0.5, 0.5]`:
 
 ```{julia}
