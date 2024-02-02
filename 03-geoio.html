@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,13 +98,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -110,12 +117,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-geodata.html">Part I: Foundations</a></li><li class="breadcrumb-item"><a href="./03-geoio.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interfacing with GIS</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-geodata.html">Part I: Foundations</a></li><li class="breadcrumb-item"><a href="./03-geoio.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interfacing with GIS</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -125,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Geospatial Data Science with Julia</a> 
@@ -307,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -323,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-geodata.html">Part I: Foundations</a></li><li class="breadcrumb-item"><a href="./03-geoio.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interfacing with GIS</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Interfacing with GIS</span></h1>
 </div>
@@ -338,7 +345,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>In order to disrupt existing practices and really develop something new in Julia, we had to make some hard decisions along the way. One of these decisions relates to how we are willing to interface our framework with existing GIS standards and workflows.</p>
 <p>On the one hand, we could have followed the path that was followed by other communities such as Python and R, and focus our energy interfacing with well-tested GIS libraries written in C/C++ (e.g., <a href="https://gdal.org/index.html">GDAL</a>, <a href="https://libgeos.org">GEOS</a>). This is precisely what the JuliaGeo organization has been doing over the years, and it is an important agenda to bring people from other languages that are used to the <a href="https://www.ogc.org/standards">OGC</a> standards.</p>
@@ -366,13 +375,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="file-formats" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">3.2</span> File formats</h2>
 <p>Most GIS file formats do <strong>not</strong> preserve topological information. This means that neighborhood information is lost as soon as geometries are saved to disk. To illustrate this issue, we consider a geotable over a <code>CartesianGrid</code>:</p>
-<div class="cell" data-execution_count="2">
+<div id="74f557b8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>((A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>), B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>100×3 GeoTable over 10×10 CartesianGrid{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">A</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">B</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
@@ -390,53 +399,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.470612</td>
-<td style="text-align: center;">0.533366</td>
+<td style="text-align: center;">0.0316702</td>
+<td style="text-align: center;">0.510653</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.0815026</td>
-<td style="text-align: center;">0.597238</td>
+<td style="text-align: center;">0.356966</td>
+<td style="text-align: center;">0.58635</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.107006</td>
-<td style="text-align: center;">0.276915</td>
+<td style="text-align: center;">0.457211</td>
+<td style="text-align: center;">0.35491</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.433636</td>
-<td style="text-align: center;">0.0583416</td>
+<td style="text-align: center;">0.606699</td>
+<td style="text-align: center;">0.722507</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.887815</td>
-<td style="text-align: center;">0.028529</td>
+<td style="text-align: center;">0.380378</td>
+<td style="text-align: center;">0.478594</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.927811</td>
-<td style="text-align: center;">0.440286</td>
+<td style="text-align: center;">0.515783</td>
+<td style="text-align: center;">0.946612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.202638</td>
-<td style="text-align: center;">0.17145</td>
+<td style="text-align: center;">0.268108</td>
+<td style="text-align: center;">0.304221</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.559069</td>
-<td style="text-align: center;">0.778512</td>
+<td style="text-align: center;">0.445392</td>
+<td style="text-align: center;">0.126787</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.093528</td>
-<td style="text-align: center;">0.0330671</td>
+<td style="text-align: center;">0.34935</td>
+<td style="text-align: center;">0.625682</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.804267</td>
-<td style="text-align: center;">0.180609</td>
+<td style="text-align: center;">0.580544</td>
+<td style="text-align: center;">0.488156</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -449,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we save the geotable to a <code>.geojson</code> file on disk, and then load it back, we observe that the <code>CartesianGrid</code> gets replaced by a <code>GeometrySet</code>:</p>
-<div class="cell" data-execution_count="3">
+<div id="6688d951" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="fu">tempname</span>() <span class="op">*</span> <span class="st">".geojson"</span></span>
@@ -461,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>100×3 GeoTable over 100 GeometrySet{2,Float32}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">A</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">B</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
@@ -479,53 +488,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.470612</td>
-<td style="text-align: center;">0.533366</td>
+<td style="text-align: center;">0.0316702</td>
+<td style="text-align: center;">0.510653</td>
 <td style="text-align: center;">PolyArea((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.0815026</td>
-<td style="text-align: center;">0.597238</td>
+<td style="text-align: center;">0.356966</td>
+<td style="text-align: center;">0.58635</td>
 <td style="text-align: center;">PolyArea((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.107006</td>
-<td style="text-align: center;">0.276915</td>
+<td style="text-align: center;">0.457211</td>
+<td style="text-align: center;">0.35491</td>
 <td style="text-align: center;">PolyArea((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.433636</td>
-<td style="text-align: center;">0.0583416</td>
+<td style="text-align: center;">0.606699</td>
+<td style="text-align: center;">0.722507</td>
 <td style="text-align: center;">PolyArea((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.887815</td>
-<td style="text-align: center;">0.028529</td>
+<td style="text-align: center;">0.380378</td>
+<td style="text-align: center;">0.478594</td>
 <td style="text-align: center;">PolyArea((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.927811</td>
-<td style="text-align: center;">0.440286</td>
+<td style="text-align: center;">0.515783</td>
+<td style="text-align: center;">0.946612</td>
 <td style="text-align: center;">PolyArea((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.202638</td>
-<td style="text-align: center;">0.17145</td>
+<td style="text-align: center;">0.268108</td>
+<td style="text-align: center;">0.304221</td>
 <td style="text-align: center;">PolyArea((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.559069</td>
-<td style="text-align: center;">0.778512</td>
+<td style="text-align: center;">0.445392</td>
+<td style="text-align: center;">0.126787</td>
 <td style="text-align: center;">PolyArea((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.093528</td>
-<td style="text-align: center;">0.0330671</td>
+<td style="text-align: center;">0.34935</td>
+<td style="text-align: center;">0.625682</td>
 <td style="text-align: center;">PolyArea((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.804267</td>
-<td style="text-align: center;">0.180609</td>
+<td style="text-align: center;">0.580544</td>
+<td style="text-align: center;">0.488156</td>
 <td style="text-align: center;">PolyArea((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -538,16 +547,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Other file formats such as <code>.ply</code> and <code>.msh</code> are widely used in <a href="https://en.wikipedia.org/wiki/Computer_graphics">computer graphics</a> to save geospatial data over meshes, and preserve topological information:</p>
-<div class="cell" data-execution_count="4">
+<div id="0134759b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>beethoven <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/beethoven.ply"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(beethoven.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<p><img src="03-geoio_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="03-geoio_files/figure-html/cell-5-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -558,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Do we gain anything by not adhering to <strong>programming interfaces</strong>?</p>
 </blockquote>
 <p>The answer is an emphatic <strong>YES</strong>! It means that we have total freedom to innovate and improve the representation of various geometries and geospatial domains with Julia’s amazing type system. To give a simple example, let’s take a look at the <code>Triangle</code> geometry:</p>
-<div class="cell" data-execution_count="5">
+<div id="c8801e6c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">Triangle</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Triangle{2,Float64}
@@ -568,14 +581,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we treated this geometry as a generic polygon represented by a vector of vertices in memory, like it is done in <a href="https://github.com/JuliaGeo/GeoInterface.jl">GeoInterface.jl</a> for example, we wouldn’t be able to dispatch optimized code that is only valid for a triangle:</p>
-<div class="cell" data-execution_count="6">
+<div id="5934ad25" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@code_llvm</span> <span class="fu">isconvex</span>(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>;  @ /home/runner/.julia/packages/Meshes/iPz5o/src/predicates/isconvex.jl:57 within `isconvex`
-define i8 @julia_isconvex_4236([1 x [3 x [1 x [1 x</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [2 x double]]]]]* nocapture readonly %0) #0 {
+<pre><code>;  @ /home/runner/.julia/packages/Meshes/BrUGO/src/predicates/isconvex.jl:57 within `isconvex`
+define i8 @julia_isconvex_3913([1 x [3 x [1 x [1 x [2 x double]]]]]* nocapture readonly %0) #0 {
 top:
   ret i8 1
 }</code></pre>
@@ -644,6 +654,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -710,13 +747,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -795,10 +834,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -808,8 +846,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -822,6 +869,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -865,6 +1031,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -890,6 +1057,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -951,17 +1144,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-geoviz.html" class="pagination-link">
+      <a href="./02-geoviz.html" class="pagination-link  aria-label=" &lt;span="" visualization&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Scientific visualization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-geoproc.html" class="pagination-link">
+      <a href="./04-geoproc.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Geometric processing</span>">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Geometric processing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

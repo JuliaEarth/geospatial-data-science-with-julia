@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -76,7 +77,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,17 +118,45 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -131,12 +166,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-correlation.html">Part IV: Interpolation</a></li><li class="breadcrumb-item"><a href="./11-interpolation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple interpolation</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-correlation.html">Part IV: Interpolation</a></li><li class="breadcrumb-item"><a href="./11-interpolation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple interpolation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -146,7 +181,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Geospatial Data Science with Julia</a> 
@@ -328,7 +363,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -345,7 +380,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-correlation.html">Part IV: Interpolation</a></li><li class="breadcrumb-item"><a href="./11-interpolation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple interpolation</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simple interpolation</span></h1>
 </div>
@@ -360,7 +395,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>A very common task in geospatial data science is <strong>geospatial interpolation</strong>, i.e., predicting variables on geometries that lie between two or more geometries that have measurements. In this chapter, we will exploit <strong>geospatial correlation</strong> to make good predictions of continuous variables over an entire domain based on sparse measurements, which are usually stored on a <code>GeometrySet</code>.</p>
 <p>The basic idea behind most geostatistical interpolation methods is weighted combination of values from neighboring geometries. Given a geometry <span class="math inline">\(u\)</span>, we want to estimate the value of the variable at this geometry <span class="math inline">\(z(u)\)</span> using weighted combinations of measurements from neighboring geometries <span class="math inline">\(u_i,\ i=1,2,\ldots,n\)</span>:</p>
@@ -375,13 +412,13 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 \lambda_i = \frac{1}{{d(u, u_i)}^\beta}
 \]</span></p>
 <p>This basic idea was proposed by <span class="citation" data-cites="Shepard1968">Shepard (<a href="references.html#ref-Shepard1968" role="doc-biblioref">1968</a>)</span>, who also studied the effect of the exponent <span class="math inline">\(\beta\)</span> in the interpolation results. Here, we will visualize the results using synthetic data:</p>
-<div class="cell" data-execution_count="2">
+<div id="345a1ee3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">georef</span>((z<span class="op">=</span>[<span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>],), [(<span class="fl">25</span>, <span class="fl">25</span>), (<span class="fl">50</span>, <span class="fl">75</span>), (<span class="fl">75</span>, <span class="fl">50</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>3×2 GeoTable over 3 PointSet{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">z</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
@@ -411,18 +448,22 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="08f7179c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viewer</span>(data, pointsize <span class="op">=</span> <span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<p><img src="11-interpolation_files/figure-html/cell-4-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>First, we need to the define the domain of interpolation, i.e., the geometries where we want to estimate the variable <code>z</code>. In this case, we will perform interpolation on a 2D <code>CartesianGrid</code>:</p>
-<div class="cell" data-execution_count="4">
+<div id="80325432" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">100</span>, <span class="fl">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>100×100 CartesianGrid{2,Float64}
@@ -432,13 +473,13 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <p>With the measurements of the variable <code>z</code> in the geotable, and the domain of interpolation, we can use the <code>Interpolate</code> transform with the <code>IDW</code> model:</p>
-<div class="cell" data-execution_count="5">
+<div id="123d82c5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>10000×2 GeoTable over 100×100 CartesianGrid{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">z</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
@@ -500,18 +541,22 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="8786f255" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<p><img src="11-interpolation_files/figure-html/cell-7-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-7-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To visualize the effect of the exponent, let’s extract the interpolation results along the line segment between two of the measurements, and visualize it:</p>
-<div class="cell" data-execution_count="7">
+<div id="9515f200" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>seg <span class="op">=</span> <span class="fu">Segment</span>((<span class="fl">25</span>, <span class="fl">25</span>), (<span class="fl">50</span>, <span class="fl">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Segment{2,Float64}
@@ -519,7 +564,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 └─ Point(50.0, 75.0)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="d6f4b17a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> interp[seg, <span class="st">"z"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>51-element Vector{Float64}:
@@ -551,18 +596,22 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
  0.03175705173700492</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="7365dc58" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">lines</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<p><img src="11-interpolation_files/figure-html/cell-10-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-10-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We observe that the exponent <span class="math inline">\(\beta=1\)</span> leads to a gradual transition from the value <span class="math inline">\(z=1\)</span> to the value <span class="math inline">\(z=0\)</span>. Let’s repeat the process with increasing values of the exponent:</p>
-<div class="cell" data-execution_count="10">
+<div id="38414486" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> β <span class="kw">in</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
@@ -573,32 +622,44 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<p><img src="11-interpolation_files/figure-html/cell-11-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-11-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The larger is the exponent, the more abrupt is the transition of values between the two locations. In addition, the IDW solution will converge to the nearest neighbor solution as <span class="math inline">\(\beta \to \infty\)</span>:</p>
-<div class="cell" data-execution_count="11">
+<div id="e1532c11" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">100</span>)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<p><img src="11-interpolation_files/figure-html/cell-12-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-12-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Custom distances from <a href="https://github.com/JuliaStats/Distances.jl">Distances.jl</a> may be used in place of the <code>Euclidean</code> distance to meet specific application requirements (e.g.&nbsp;<code>Haversine</code> distance on the sphere):</p>
-<div class="cell" data-execution_count="12">
+<div id="beba9e21" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">1</span>, <span class="fu">Chebyshev</span>())) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<p><img src="11-interpolation_files/figure-html/cell-13-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-13-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -634,20 +695,24 @@ Note
 </div>
 </div>
 <p>Unlike <code>IDW</code>, the <code>Kriging</code> solution is a function of pairwise evaluations of distances between geometries with measurements, represented in the matrix <span class="math inline">\(\mathbf{G}\)</span>. The pairwise evaluations account for possible redundancy in the measurements, which leads to improvements in the estimates:</p>
-<div class="cell" data-execution_count="13">
+<div id="2b4a3ca0" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">GaussianVariogram</span>(range<span class="op">=</span><span class="fl">30.0</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">Kriging</span>(γ)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<p><img src="11-interpolation_files/figure-html/cell-14-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-14-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>In the previous chapter, we learned how the <strong>range</strong> of the variogram determines the average size of the “blobs” in the image. Let’s illustrate this concept again for increasing values of this parameter:</p>
-<div class="cell" data-execution_count="14">
+<div id="4cdf4c6f" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span>]</span>
@@ -659,10 +724,14 @@ Note
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-<p><img src="11-interpolation_files/figure-html/cell-15-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-15-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The larger is the range, the less abrupt is the transition of values between the two locations. Similar visualizations can be produced by varying the <strong>sill</strong>, the <strong>nugget</strong> and the <strong>model</strong> of the variogram.</p>
@@ -671,7 +740,7 @@ Note
 <h2 data-number="11.3" class="anchored" data-anchor-id="example"><span class="header-section-number">11.3</span> Example</h2>
 <p>In order to solidify the concepts learned so far, let’s look into an example. We will cover all the steps that a geospatial data scientist has to perform to extract <strong>geospatial correlation</strong> from samples and to use this information in <strong>geospatial interpolation</strong>.</p>
 <p>Let’s consider an image of the <a href="https://en.wikipedia.org/wiki/Walker_Lake_(Nevada)">Walker Lake</a> by <span class="citation" data-cites="Mariethoz2014">Mariethoz and Caers (<a href="references.html#ref-Mariethoz2014" role="doc-biblioref">2014</a>)</span> as groundtruth. To avoid visualization of large images with CairoMakie.jl, we will consider a subdomain within a <code>Box</code>:</p>
-<div class="cell" data-execution_count="15">
+<div id="e70900a8" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoArtifacts</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> GeoArtifacts.<span class="fu">image</span>(<span class="st">"WalkerLakeTruth"</span>)</span>
@@ -681,7 +750,7 @@ Note
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>40401×2 GeoTable over 40401 view(::CartesianGrid{2,Float64}, [1, 2, 3, 4, ..., 60198, 60199, 60200, 60201])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
@@ -743,18 +812,22 @@ Note
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="5f2ad607" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<p><img src="11-interpolation_files/figure-html/cell-17-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-17-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s assume that we only have access to 10000 samples from the image:</p>
-<div class="cell" data-execution_count="17">
+<div id="c000e6e3" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">10000</span>, replace<span class="op">=</span><span class="cn">false</span>, rng<span class="op">=</span><span class="fu">MersenneTwister</span>(<span class="fl">123</span>))</span>
@@ -762,14 +835,18 @@ Note
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>samples <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<p><img src="11-interpolation_files/figure-html/cell-18-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-18-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Our goal is to interpolate the variable <code>Z</code> over the original domain. Let’s start by estimating the <code>EmpiricalVariogram</code> from the samples. Because the distribution of values in the Walker Lake is skewed, the default <code>:matheron</code> estimator of the variogram shows a high nugget effect:</p>
-<div class="cell" data-execution_count="18">
+<div id="d9926e9a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fu">EmpiricalVariogram</span>(samples, <span class="st">"Z"</span>, maxlag <span class="op">=</span> <span class="fl">100.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>EmpiricalVariogram
@@ -780,18 +857,22 @@ Note
 └─ npairs: 24150788</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="be1263f0" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<p><img src="11-interpolation_files/figure-html/cell-20-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-20-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>A better alternative in this case is to use the robust <code>:cressie</code> estimator:</p>
-<div class="cell" data-execution_count="20">
+<div id="42b42b27" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fu">EmpiricalVariogram</span>(samples, <span class="st">"Z"</span>, maxlag <span class="op">=</span> <span class="fl">100.0</span>, estimator <span class="op">=</span> <span class="op">:</span>cressie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>EmpiricalVariogram
@@ -802,19 +883,23 @@ Note
 └─ npairs: 24150788</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="508fa1db" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<p><img src="11-interpolation_files/figure-html/cell-22-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-22-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>After estimating the empirical variogram, the next step consists of fitting a theoretical model. The behavior near the origin resembles a <code>SphericalVariogram</code>:</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> Variography.<span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4639b2ce" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> GeoStatsFunctions.<span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>SphericalVariogram
 ├─ sill: 0.09816267067372791
@@ -823,24 +908,28 @@ Note
 └─ distance: Euclidean</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="23">
+<div id="b697335a" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(γ, maxlag <span class="op">=</span> <span class="fl">100.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-<p><img src="11-interpolation_files/figure-html/cell-24-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-24-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now that we extracted the geospatial correlation from the samples, we can use this information in <code>Kriging</code> interpolation. Instead of fitting all the samples at once like it is done in the <code>Interpolate</code> transform, we will fit the <code>Kriging</code> model with a maximum number of neighbors with the <code>InterpolateNeighbors</code> transform:</p>
-<div class="cell" data-execution_count="24">
+<div id="d52a0fde" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> samples <span class="op">|&gt;</span> <span class="fu">InterpolateNeighbors</span>(img.geometry, <span class="fu">Kriging</span>(γ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>40401×2 GeoTable over 40401 view(::CartesianGrid{2,Float64}, [1, 2, 3, 4, ..., 60198, 60199, 60200, 60201])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
@@ -902,14 +991,18 @@ Note
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="bdff0fc5" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="26">
-<p><img src="11-interpolation_files/figure-html/cell-26-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="11-interpolation_files/figure-html/cell-26-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -954,7 +1047,7 @@ Note
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Mariethoz2014" class="csl-entry" role="listitem">
 Mariethoz, Gregoire, and Jef Caers. 2014. <em>Multiple-Point Geostatistics: Stochastic Modeling with Training Images</em>. <a href="https://www.wiley.com/en-gb/Multiple+point+Geostatistics%3A+Stochastic+Modeling+with+Training+Images-p-9781118662755">https://www.wiley.com/en-gb/Multiple+point+Geostatistics%3A+Stochastic+Modeling+with+Training+Images-p-9781118662755</a>.
 </div>
@@ -1012,6 +1105,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1080,13 +1200,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1165,10 +1287,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1178,8 +1299,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1192,6 +1322,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1235,6 +1484,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1260,6 +1510,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1321,17 +1597,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-correlation.html" class="pagination-link">
+      <a href="./10-correlation.html" class="pagination-link  aria-label=" &lt;span="" correlation&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Geospatial correlation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./12-mining.html" class="pagination-link">
+      <a href="./12-mining.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Mineral deposits</span>">
         <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mineral deposits</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

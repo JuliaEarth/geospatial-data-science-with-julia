@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,13 +98,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -110,12 +117,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./09-geojoins.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./09-geojoins.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -125,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Geospatial Data Science with Julia</a> 
@@ -307,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -325,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./09-geojoins.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></h1>
 </div>
@@ -340,14 +347,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Another important tool in geospatial data science is the <strong>geospatial join</strong>. We will introduce the concept with a practical example, and will explain how it is related to the standard <a href="https://en.wikipedia.org/wiki/Join_(SQL)">join</a> of two tables.</p>
 <section id="motivation" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">9.1</span> Motivation</h2>
 <p>The split-apply-combine pattern that we learned in the previous chapter requires a <strong>single</strong> geotable with all the relevant information in it. However, many questions in geospatial data science can only be answered with information that is spread across <strong>multiple</strong> geotables. Hence, the need to <strong>join</strong> these geotables before attempting to <code>@groupby</code>, <code>@transform</code> and <code>@combine</code> the information.</p>
 <p>Let’s consider a simple example where we are given two geotables, one containing people who shared their latitude and longitude coordinates:</p>
-<div class="cell" data-execution_count="2">
+<div id="f497d0f2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
@@ -361,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>5×4 GeoTable over 5 PointSet{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
@@ -416,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And another containing countries in the world according to the <a href="https://www.naturalearthdata.com">Natural Earth</a> project:</p>
-<div class="cell" data-execution_count="3">
+<div id="5bd53fcc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>, numbertype <span class="op">=</span> <span class="dt">Float64</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -424,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>177×3 GeoTable over 177 GeometrySet{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
@@ -514,7 +523,7 @@ Note
 </div>
 </div>
 <p>Let’s visualize the geometries of these two geotables:</p>
-<div class="cell" data-execution_count="4">
+<div id="57da8160" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], title <span class="op">=</span> <span class="st">"People and countries"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              xlabel <span class="op">=</span> <span class="st">"longitude"</span>, ylabel <span class="op">=</span> <span class="st">"latitude"</span>)</span>
@@ -523,10 +532,14 @@ Note
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<p><img src="09-geojoins_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="09-geojoins_files/figure-html/cell-5-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Our goal in this example is to attach the “COUNTRY” and “REGION” information to each individual based on their location, represented as a point. In other words, we want to find the <code>countries</code> that <strong>contain the location</strong>, and then copy the columns to the <code>people</code>.</p>
@@ -534,13 +547,13 @@ Note
 <section id="joining-geotables" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="joining-geotables"><span class="header-section-number">9.2</span> Joining geotables</h2>
 <p>The <code>geojoin</code> function can be used to join two geotables using a <strong>geometric predicate</strong> function:</p>
-<div class="cell" data-execution_count="5">
+<div id="fe801cc6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, pred <span class="op">=</span> <span class="op">∈</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>5×6 GeoTable over 5 PointSet{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
@@ -612,13 +625,13 @@ Note
 </div>
 <p>In the example above, we used the <code>∈</code> predicate to check if a <code>Point</code> in the <code>people</code> geotable is in a <code>MultiPolygon</code> in the <code>countries</code> geotable. The default predicate in <code>geojoin</code> is the <code>intersects</code> function that we covered in previous chapters.</p>
 <p>Notice that Kate’s “COUNTRY” and “REGION” are <code>missing</code>. That is because Kate lives in the <a href="https://en.wikipedia.org/wiki/Fernando_de_Noronha">Fernando de Noronha</a> island, which is not present in the <code>countries</code> geotable. To retain just those people for which the geometric predicate evaluates <code>true</code>, we can use a different <code>kind</code> of <code>geojoin</code> known as <code>inner</code>:</p>
-<div class="cell" data-execution_count="6">
+<div id="03f3be27" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>4×6 GeoTable over 4 view(::PointSet{2,Float64}, [1, 2, 3, 4])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
@@ -681,13 +694,13 @@ Note
 </div>
 </div>
 <p>By default, the <code>left</code> kind is used. Like in standard join, the <code>geojoin</code> is not commutative. If we swap the order of the geotables, the result will be different:</p>
-<div class="cell" data-execution_count="7">
+<div id="f8c09ed8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>4×6 GeoTable over 4 view(::GeometrySet{2,Float64}, [5, 30, 138, 140])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -774,7 +787,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>Besides <code>geojoin</code>, the framework also provides vertical and horizontal concatenation of geotables. Vertical concatenation is achieved with <code>vcat</code> as follows:</p>
-<div class="cell" data-execution_count="8">
+<div id="ffbab74a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gt1 <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>]))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gt2 <span class="op">=</span> <span class="fu">georef</span>((b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>], c<span class="op">=</span>[<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>]))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -783,7 +796,7 @@ Tip for all users
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>6×4 GeoTable over 6 GeometrySet{1,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">c</th>
@@ -844,13 +857,13 @@ Tip for all users
 </div>
 </div>
 <p>All columns are preserved by default, which corresponds to the option <code>kind = :union</code>. Absent columns are filled with <code>missing</code> values. The option <code>kind = :intersect</code> can be used to retain only the columns that are present in all geotables:</p>
-<div class="cell" data-execution_count="9">
+<div id="62ee9eba" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2, kind <span class="op">=</span> <span class="op">:</span>intersect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>6×2 GeoTable over 6 GeometrySet{1,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
 </tr>
@@ -893,13 +906,13 @@ Tip for all users
 </div>
 </div>
 <p>Horizontal concatenation is achieved with <code>hcat</code> as follows:</p>
-<div class="cell" data-execution_count="10">
+<div id="90d45bb7" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hcat</span>(gt1, gt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>3×5 GeoTable over 3 CartesianGrid{1,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">b_</th>
@@ -948,14 +961,14 @@ Tip for all users
 </div>
 </div>
 <p>Unique column names are produced with underscore suffixes whenever a column appears in multiple geotables. Julia provides convenient syntax for <code>vcat</code> and <code>hcat</code>:</p>
-<div class="cell" data-execution_count="11">
+<div id="0b5cdc99" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[gt1</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>6×4 GeoTable over 6 GeometrySet{1,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">c</th>
@@ -1015,13 +1028,13 @@ Tip for all users
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+<div id="5eb35999" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[gt1 gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>3×5 GeoTable over 3 CartesianGrid{1,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">b_</th>
@@ -1074,11 +1087,15 @@ Tip for all users
 </section>
 <section id="common-predicates" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="common-predicates"><span class="header-section-number">9.3</span> Common predicates</h2>
-<p>In geospatial data science, the most common geometric predicates used in <code>geojoin</code> are <code>∈</code>, <code>⊆</code>, <code>==</code>, <code>≈</code> and <code>intersects</code> as illustrated in <a href="#tbl-predicate">Table&nbsp;<span>9.1</span></a>. Specific applications may require custom predicates, which can be easily defined in pure Julia with the Meshes.jl module. For example, it is sometimes convenient to define geometric predicates in terms of a distance and a threshold:</p>
+<p>In geospatial data science, the most common geometric predicates used in <code>geojoin</code> are <code>∈</code>, <code>⊆</code>, <code>==</code>, <code>≈</code> and <code>intersects</code> as illustrated in <a href="#tbl-predicate" class="quarto-xref">Table&nbsp;<span>9.1</span></a>. Specific applications may require custom predicates, which can be easily defined in pure Julia with the Meshes.jl module. For example, it is sometimes convenient to define geometric predicates in terms of a distance and a threshold:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">evaluate</span>(<span class="fu">Euclidean</span>(), <span class="fu">centroid</span>(g1), <span class="fu">centroid</span>(g2)) <span class="op">≤</span> <span class="fl">1</span>u<span class="st">"m"</span><span class="ss">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-predicate" class="anchored">
+<div id="tbl-predicate" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-predicate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.1: Common geometric predicates in geospatial join
+</figcaption>
+<div aria-describedby="tbl-predicate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Table&nbsp;9.1: Common geometric predicates in geospatial join</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">PREDICATE</th>
@@ -1088,32 +1105,34 @@ Tip for all users
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">∈</td>
-<td style="text-align: center;"><img src="images/in.png" class="img-fluid" alt="in"></td>
+<td style="text-align: center;"><img src="images/in.png" class="img-fluid figure-img"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">⊆</td>
-<td style="text-align: center;"><img src="images/subseteq.png" class="img-fluid" alt="in"></td>
+<td style="text-align: center;"><img src="images/subseteq.png" class="img-fluid figure-img"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">==</td>
-<td style="text-align: center;"><img src="images/isequal.png" class="img-fluid" alt="in"></td>
+<td style="text-align: center;"><img src="images/isequal.png" class="img-fluid figure-img"></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">≈</td>
-<td style="text-align: center;"><img src="images/isapprox.png" class="img-fluid" alt="in"></td>
+<td style="text-align: center;"><img src="images/isapprox.png" class="img-fluid figure-img"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">intersects</td>
-<td style="text-align: center;"><img src="images/intersects.png" class="img-fluid" alt="in"></td>
+<td style="text-align: center;"><img src="images/intersects.png" class="img-fluid figure-img"></td>
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
 </div>
 </section>
 <section id="multiple-matches" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="multiple-matches"><span class="header-section-number">9.4</span> Multiple matches</h2>
 <p>Sometimes the predicate function will evaluate <code>true</code> for multiple rows of the geotables. In this case, we need to decide which value will be copied to the resulting geotable. The <code>geojoin</code> accepts reduction functions for each column. For example, suppose that Kate decided to move to the continent:</p>
-<div class="cell" data-execution_count="13">
+<div id="3cb08bfb" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
@@ -1127,7 +1146,7 @@ Tip for all users
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>5×4 GeoTable over 5 PointSet{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
@@ -1182,13 +1201,13 @@ Tip for all users
 </div>
 </div>
 <p>Now, both John and Kate live in Brazil according the <code>countries</code> geotable:</p>
-<div class="cell" data-execution_count="14">
+<div id="da3fdf1a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>5×6 GeoTable over 5 PointSet{2,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
@@ -1259,13 +1278,13 @@ Tip for all users
 </div>
 </div>
 <p>If we swap the order of the geotables in the <code>geojoin</code>, we need to decide how to reduce the multiple values of “NAME”, “AGE” and “HEIGHT” in the resulting geotable. By default, the <code>mean</code> function is used to reduce <code>Continuous</code> variables, and the <code>first</code> function is used otherwise:</p>
-<div class="cell" data-execution_count="15">
+<div id="5978ff41" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>4×6 GeoTable over 4 view(::GeometrySet{2,Float64}, [5, 30, 138, 140])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -1328,13 +1347,13 @@ Tip for all users
 </div>
 </div>
 <p>We can specify custom reduction functions using the following syntax:</p>
-<div class="cell" data-execution_count="16">
+<div id="93dcd855" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, <span class="st">"AGE"</span> <span class="op">=&gt;</span> maximum, <span class="st">"HEIGHT"</span> <span class="op">=&gt;</span> mean, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>4×6 GeoTable over 4 view(::GeometrySet{2,Float64}, [5, 30, 138, 140])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -1417,7 +1436,7 @@ Note
 <ul>
 <li>In order to answer geoscientific questions with <code>@groupby</code>, <code>@transform</code> and <code>@combine</code>, we need a single geotable with all the relevant information. This single geotable is often the result of a <code>geojoin</code> with multiple geotables from different sources of information.</li>
 <li>There are various <code>kind</code>s of <code>geojoin</code> such as <code>inner</code> and <code>left</code>, which match the behavior of standard join in databases. We recommend the DataFrames.jl documentation to learn more.</li>
-<li>The <code>geojoin</code> produces matches with <strong>geometric predicate</strong> functions. The most common are illustrated in <a href="#tbl-predicate">Table&nbsp;<span>9.1</span></a>, but custom predicates can be easily defined in pure Julia using functions defined in the Meshes.jl module.</li>
+<li>The <code>geojoin</code> produces matches with <strong>geometric predicate</strong> functions. The most common are illustrated in <a href="#tbl-predicate" class="quarto-xref">Table&nbsp;<span>9.1</span></a>, but custom predicates can be easily defined in pure Julia using functions defined in the Meshes.jl module.</li>
 </ul>
 <p>In the next part of the book, you will learn a final important tool that is missing in our toolkit for advanced geospatial data science. The concepts in the following chapters are extremely important.</p>
 
@@ -1466,6 +1485,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1534,13 +1580,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1619,10 +1667,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1632,8 +1679,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1646,6 +1702,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1689,6 +1864,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1714,6 +1890,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1775,17 +1977,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./08-splitcombine.html" class="pagination-link">
+      <a href="./08-splitcombine.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Split-apply-combine</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-correlation.html" class="pagination-link">
+      <a href="./10-correlation.html" class="pagination-link" aria-label="<span class='chapter-number'>10</span>&nbsp; <span class='chapter-title'>Geospatial correlation</span>">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Geospatial correlation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

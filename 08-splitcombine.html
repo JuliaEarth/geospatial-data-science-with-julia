@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -76,7 +77,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,17 +118,45 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -131,12 +166,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./08-splitcombine.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Split-apply-combine</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./08-splitcombine.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Split-apply-combine</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -146,7 +181,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Geospatial Data Science with Julia</a> 
@@ -328,7 +363,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -347,7 +382,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./08-splitcombine.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Split-apply-combine</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Split-apply-combine</span></h1>
 </div>
@@ -362,7 +397,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>In <strong>Part II</strong> of the book, we introduced <strong>transform pipelines</strong> to process the <code>values</code> and the <code>domain</code> of geotables using high-level abstractions that preserve geospatial information. In this chapter, we start to introduce other tools to <strong>query</strong> geotables after they have been pre-processed by pipelines.</p>
 <section id="motivation" class="level2" data-number="8.1">
@@ -384,7 +421,7 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>The Bonnie Project Example is under copyright of Transmin Metallurgical Consultants, 2019. It is issued under the Creative Commons Attribution-ShareAlike 4.0 International Public License.</p>
 </blockquote>
-<div class="cell" data-execution_count="2">
+<div id="60bb6495" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> <span class="fu">georef</span>(CSV.<span class="fu">File</span>(<span class="st">"data/bonnie.csv"</span>), (<span class="op">:</span>EAST, <span class="op">:</span>NORTH, <span class="op">:</span>RL))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -392,7 +429,7 @@ div.csl-indent {
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>19618×9 GeoTable over 19618 PointSet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Auppm</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Agppm</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Cuppm</th>
@@ -553,7 +590,7 @@ div.csl-indent {
 </div>
 </div>
 <p>It represents a 3D mineral deposit with grades in parts per million (ppm), sulfur contaminant in percent, and other categorical variables with geological and lithological units:</p>
-<div class="cell" data-execution_count="3">
+<div id="142bb973" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>9-element Vector{String}:
@@ -569,18 +606,22 @@ div.csl-indent {
 </div>
 </div>
 <p>The “EAST”, “NORTH” and “RL” coordinates used to <code>georef</code> the CSV file represent the centroids of the mining blocks. The sides of these blocks are provided as metadata (e.g., 5x5x5):</p>
-<div class="cell" data-execution_count="4">
+<div id="c0ec5df2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<p><img src="08-splitcombine_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="08-splitcombine_files/figure-html/cell-5-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s clean the geotable using what we learned in previous chapters. We will reject the column with sulfur, will drop missing values, and will rename the variables for greater readability:</p>
-<div class="cell" data-execution_count="5">
+<div id="e97f0f87" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> <span class="fu">Reject</span>(<span class="st">"Sper"</span>) <span class="op">→</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">DropMissing</span>() <span class="op">→</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Rename</span>(<span class="st">"Auppm"</span> <span class="op">=&gt;</span> <span class="st">"Au"</span>, <span class="st">"Agppm"</span> <span class="op">=&gt;</span> <span class="st">"Ag"</span>,</span>
@@ -593,7 +634,7 @@ div.csl-indent {
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>19548×8 GeoTable over 19548 view(::PointSet{3,Float64}, [1, 2, 3, 4, ..., 19615, 19616, 19617, 19618])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
@@ -745,7 +786,7 @@ div.csl-indent {
 <section id="splitting-geotables" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="splitting-geotables"><span class="header-section-number">8.3</span> Splitting geotables</h2>
 <p>We can split geotables into lazy <strong>geospatial partitions</strong> based on values stored in a column. In this case, we want to split the mineral deposit in geological units stored in the <code>geo</code> column:</p>
-<div class="cell" data-execution_count="6">
+<div id="d73fd4a2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="st">"geo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>2 Partition
@@ -755,13 +796,13 @@ metadata: rows, names</code></pre>
 </div>
 </div>
 <p>There are two geological units in this deposit, represented as <code>SubGeoTable</code>. We can access these units by indexing into the geospatial partition:</p>
-<div class="cell" data-execution_count="7">
+<div id="8c3277e6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groups[<span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>17153×8 SubGeoTable over 17153 view(::PointSet{3,Float64}, [1, 2, 3, 4, ..., 17203, 17204, 17205, 17206])</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
@@ -907,16 +948,20 @@ metadata: rows, names</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="199e6857" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(groups[<span class="fl">1</span>].geometry, color <span class="op">=</span> <span class="st">"teal"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(groups[<span class="fl">2</span>].geometry, color <span class="op">=</span> <span class="st">"slategray3"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
-└ @ Makie ~/.julia/packages/Makie/fyNiH/src/scenes.jl:220</code></pre>
+└ @ Makie ~/.julia/packages/Makie/QGPt0/src/scenes.jl:220</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<p><img src="08-splitcombine_files/figure-html/cell-9-output-2.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="08-splitcombine_files/figure-html/cell-9-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -927,13 +972,13 @@ metadata: rows, names</code></pre>
 m = Au \times \rho \times V
 \]</span></p>
 <p>Let’s use an auxiliary function to convert the <code>Point</code>s in the <code>geometry</code> column into <code>Box</code>es of sides 5x5x5. The function takes a centroid point as input and produces a box centered at the point with corners that are 2.5x2.5x2.5 units away in both directions:</p>
-<div class="cell" data-execution_count="9">
+<div id="fd421fa0" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(point) <span class="op">=</span> <span class="fu">Box</span>(point <span class="op">-</span> <span class="fu">Vec</span>(<span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>), point <span class="op">+</span> <span class="fu">Vec</span>(<span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>box (generic function with 1 method)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="7fda33ee" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>.(gt.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>19548-element Vector{Box{3, Float64}}:
@@ -966,13 +1011,13 @@ m = Au \times \rho \times V
 </div>
 </div>
 <p>The <code>@transform</code> macro modifies or creates new columns in the geotable based on expressions with existing column names. In this case, we want to replace the <code>geometry</code> column by calling the auxiliary function above:</p>
-<div class="cell" data-execution_count="11">
+<div id="078530f0" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> <span class="pp">@transform</span>(gt, <span class="op">:</span>geometry <span class="op">=</span> <span class="fu">box</span>(<span class="op">:</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>19548×8 GeoTable over 19548 GeometrySet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
@@ -1147,13 +1192,13 @@ Tip for all users
 </div>
 </div>
 <p>The mass of gold on each mining block can be computed now that the geometries have <code>volume</code>:</p>
-<div class="cell" data-execution_count="12">
+<div id="e1260901" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@transform</span>(gt, <span class="op">:</span>m <span class="op">=</span> <span class="op">:</span>Au <span class="op">*</span> <span class="op">:</span>ρ <span class="op">*</span> <span class="fu">volume</span>(<span class="op">:</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>19548×9 GeoTable over 19548 GeometrySet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Au</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Ag</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Cu</th>
@@ -1330,7 +1375,7 @@ Note
 <section id="combining-results" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="combining-results"><span class="header-section-number">8.5</span> Combining results</h2>
 <p>We can use the <code>@combine</code> macro to reduce columns of geotables in a geospatial partition obtained with the <code>@groupby</code> macro. The macro is similar to the <code>@transform</code> macro, but expects valid reduction functions such as <code>sum</code>, <code>mean</code>, <code>std</code>. Reduction functions take a vector of values as input and produce a single scalar as output:</p>
-<div class="cell" data-execution_count="13">
+<div id="17e56123" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="op">:</span>geo)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@combine</span>(groups, <span class="op">:</span>μ <span class="op">=</span> <span class="fu">mean</span>(<span class="op">:</span>Au), <span class="op">:</span>σ <span class="op">=</span> <span class="fu">std</span>(<span class="op">:</span>Au))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1338,7 +1383,7 @@ Note
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>2×4 GeoTable over 2 GeometrySet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">geo</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">μ</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">σ</th>
@@ -1375,7 +1420,7 @@ Note
 </div>
 </div>
 <p>Note that the macro reduces the geometry column and produces a new complex <code>Multi</code> geometry with all the <code>Box</code>es that are inside each geological unit. This is a very advanced feature of the framework that <strong>cannot be represented with the simple features standard</strong>. It is also possible to use a custom reduction function for the <code>geometry</code> column:</p>
-<div class="cell" data-execution_count="14">
+<div id="73232b7e" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="op">:</span>geo)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@combine</span>(groups, <span class="op">:</span>μ <span class="op">=</span> <span class="fu">mean</span>(<span class="op">:</span>Au), <span class="op">:</span>σ <span class="op">=</span> <span class="fu">std</span>(<span class="op">:</span>Au), <span class="op">:</span>geometry <span class="op">=</span> <span class="fu">first</span>(<span class="op">:</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1383,7 +1428,7 @@ Note
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>2×4 GeoTable over 2 GeometrySet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">geo</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">μ</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">σ</th>
@@ -1425,7 +1470,7 @@ Note
 <p>Let’s recall our original business question:</p>
 <p><em>What is the total mass of gold that will be mined from each geological unit?</em></p>
 <p>We can now answer this question with three lines of code:</p>
-<div class="cell" data-execution_count="15">
+<div id="64f3a83f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="op">:</span>geo)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> <span class="pp">@transform</span>(groups, <span class="op">:</span>m <span class="op">=</span> <span class="op">:</span>Au <span class="op">*</span> <span class="op">:</span>ρ <span class="op">*</span> <span class="fu">volume</span>(<span class="op">:</span>geometry))</span>
@@ -1435,7 +1480,7 @@ Note
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>2×3 GeoTable over 2 GeometrySet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">geo</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">m</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
@@ -1477,7 +1522,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>We can simplify the code further using the <code>@chain</code> macro. It forwards the resulting geotable or geospatial partition to the next macro:</p>
-<div class="cell" data-execution_count="16">
+<div id="81f34e4d" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@chain</span> gt <span class="cf">begin</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@groupby</span>(<span class="op">:</span>geo)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@transform</span>(<span class="op">:</span>m <span class="op">=</span> <span class="op">:</span>Au <span class="op">*</span> <span class="op">:</span>ρ <span class="op">*</span> <span class="fu">volume</span>(<span class="op">:</span>geometry))</span>
@@ -1487,7 +1532,7 @@ Tip for all users
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <caption>2×3 GeoTable over 2 GeometrySet{3,Float64}</caption>
 <thead>
-<tr class="header header">
+<tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">geo</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">m</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
@@ -1522,7 +1567,7 @@ Tip for all users
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Wickham2011" class="csl-entry" role="listitem">
 Wickham, Hadley. 2011. <span>“The Split-Apply-Combine Strategy for Data Analysis.”</span> <em>Journal of Statistical Software</em> 40 (1): 1–29. <a href="https://doi.org/10.18637/jss.v040.i01">https://doi.org/10.18637/jss.v040.i01</a>.
 </div>
@@ -1571,6 +1616,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1639,13 +1711,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1724,10 +1798,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1737,8 +1810,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1751,6 +1833,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1794,6 +1995,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1819,6 +2021,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1880,17 +2108,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./07-pipelines.html" class="pagination-link">
+      <a href="./07-pipelines.html" class="pagination-link  aria-label=" &lt;span="" pipelines&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Building pipelines</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./09-geojoins.html" class="pagination-link">
+      <a href="./09-geojoins.html" class="pagination-link" aria-label="<span class='chapter-number'>9</span>&nbsp; <span class='chapter-title'>Geospatial joins</span>">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
