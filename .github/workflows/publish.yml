@@ -21,11 +21,9 @@ jobs:
           julia -e '
             using Pkg
             Pkg.add("IJulia")
-            Pkg.build("IJulia")
             Pkg.add("Conda")
             using Conda
             Conda.add("jupyter")'
-          jupyter kernelspec list
 
       - name: Instantiate environment
         run: julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate()'
