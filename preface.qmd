@@ -115,21 +115,21 @@ using Pkg
 pkg"activate @gdsbook"
 
 # install framework
-pkg"add GeoStats@0.50.2"
+pkg"add GeoStats@0.51.2"
 
 # install IO module
-pkg"add GeoIO@1.12.7"
+pkg"add GeoIO@1.12.8"
 
 # install artifacts
 pkg"add GeoArtifacts@0.2.5"
 
 # install viz modules
-pkg"add CairoMakie@0.11.6"
-pkg"add PairPlots@2.4.0"
+pkg"add CairoMakie@0.11.9"
+pkg"add PairPlots@2.6.1"
 
 # install other modules
 pkg"add DataFrames@1.6.1"
-pkg"add CSV@0.10.12"
+pkg"add CSV@0.10.13"
 ```
 
 If you need to reproduce the exact same environment with

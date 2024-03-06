@@ -162,6 +162,18 @@ geotable. To mark a string as a column name, we need to use curly braces:
 
 ::: {.callout-note}
 
+Alternatively, we could have used the following syntax to update the `geometry` column:
+
+```julia
+gt.geometry = box.(gt.geometry)
+```
+
+Currently, this syntax does **not** work with other columns.
+
+:::
+
+::: {.callout-note}
+
 ## Tip for all users
 
 The use of symbols to represent column names is preferred in macros.
