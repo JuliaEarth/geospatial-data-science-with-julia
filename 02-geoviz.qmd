@@ -189,6 +189,12 @@ ax.aspect = Mke.DataAspect()
 Mke.current_figure()
 ```
 
+Alternatively, it is possible to set the aspect ratio in the `viz/viz!` call directly:
+
+```{julia}
+viz(CartesianGrid(20, 10), color = 1:200, axis = (; aspect = Mke.DataAspect()))
+```
+
 :::
 
 ::: {.callout-note}

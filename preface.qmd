@@ -112,20 +112,20 @@ using Pkg
 @assert VERSION ≥ v"1.10" "requires Julia v1.10 or later"
 
 # create fresh environment
-pkg"activate @gdsbook"
+pkg"activate @GDSJL"
 
 # install framework
-pkg"add GeoStats@0.51.2"
+pkg"add GeoStats@0.53.0"
 
 # install IO module
-pkg"add GeoIO@1.12.8"
+pkg"add GeoIO@1.12.11"
 
 # install artifacts
-pkg"add GeoArtifacts@0.2.5"
+pkg"add GeoArtifacts@0.3.0"
 
 # install viz modules
-pkg"add CairoMakie@0.11.9"
-pkg"add PairPlots@2.6.1"
+pkg"add CairoMakie@0.11.10"
+pkg"add PairPlots@2.7.1"
 
 # install other modules
 pkg"add DataFrames@1.6.1"

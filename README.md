@@ -10,7 +10,7 @@ The book is available online for free at
 
 To build this book, you need:
 
-- Julia v1.9
+- Julia v1.10
 - IJulia (>= v1.24)
   ```julia
   import Pkg
@@ -20,17 +20,16 @@ To build this book, you need:
 
 1. Open the Julia REPL and instantiate the environment in this folder:
 
-    ```julia
-    import Pkg
-    Pkg.activate(".")
-    Pkg.instantiate()
-    ```
-
+   ```julia
+   import Pkg
+   Pkg.activate(".")
+   Pkg.instantiate()
+   ```
 2. Go to any `*.qmd` file and run the following in the terminal:
 
-    ```sh
-    quarto preview index.qmd
-    ```
+   ```sh
+   quarto preview index.qmd
+   ```
 
 Your web browser will open a tab with the book rendered.
 
