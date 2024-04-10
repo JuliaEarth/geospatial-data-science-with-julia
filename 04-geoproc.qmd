@@ -414,10 +414,10 @@ ball = Ball((0, 0), 1)
 mesh = discretize(ball, RegularDiscretization(20, 50))
 ```
 
-We can visualize the elements of the mesh with the `showfacets` option:
+We can visualize the elements of the mesh with the `showsegments` option:
 
 ```{julia}
-viz(mesh, showfacets = true)
+viz(mesh, showsegments = true)
 ```
 
 The meshes produced by the `discretize` function can have mixed element types.
@@ -430,7 +430,7 @@ tmesh = simplexify(ball)
 ```
 
 ```{julia}
-viz(tmesh, showfacets = true)
+viz(tmesh, showsegments = true)
 ```
 
 Various triangulation algorithms are provided such as `Dehn1899` [@Devadoss2011],
@@ -444,13 +444,13 @@ mesh = discretize(Box((0, 0), (1, 1)))
 ```{julia}
 tmesh = refine(mesh, TriRefinement())
 
-viz(tmesh, showfacets = true)
+viz(tmesh, showsegments = true)
 ```
 
 ```{julia}
 qmesh = refine(mesh, QuadRefinement())
 
-viz(qmesh, showfacets = true)
+viz(qmesh, showsegments = true)
 ```
 
 We will have the chance to see more algorithms in action as we advance in the

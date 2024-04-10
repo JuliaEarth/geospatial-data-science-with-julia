@@ -111,9 +111,9 @@ version = "7.9.0"
 
 [[deps.ArrayLayouts]]
 deps = ["FillArrays", "LinearAlgebra"]
-git-tree-sha1 = "0330bc3e828a05d1073553fb56f9695d73077370"
+git-tree-sha1 = "33207a8be6267bc389d0701e97a9bce6a4de68eb"
 uuid = "4c555306-a7a7-4459-81d9-ec55ddd5c99a"
-version = "1.9.1"
+version = "1.9.2"
 weakdeps = ["SparseArrays"]
 
     [deps.ArrayLayouts.extensions]
@@ -219,9 +219,9 @@ version = "1.0.1+0"
 
 [[deps.CSV]]
 deps = ["CodecZlib", "Dates", "FilePathsBase", "InlineStrings", "Mmap", "Parsers", "PooledArrays", "PrecompileTools", "SentinelArrays", "Tables", "Unicode", "WeakRefStrings", "WorkerUtilities"]
-git-tree-sha1 = "a44910ceb69b0d44fe262dd451ab11ead3ed0be8"
+git-tree-sha1 = "6c834533dc1fabd820c1db03c839bf97e45a3fab"
 uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
-version = "0.10.13"
+version = "0.10.14"
 
 [[deps.Cairo]]
 deps = ["Cairo_jll", "Colors", "Glib_jll", "Graphics", "Libdl", "Pango_jll"]
@@ -339,6 +339,18 @@ weakdeps = ["SpecialFunctions"]
     [deps.ColorVectorSpace.extensions]
     SpecialFunctionsExt = "SpecialFunctions"
 
+[[deps.Colorfy]]
+deps = ["ColorSchemes", "Colors", "Dates"]
+git-tree-sha1 = "a5848900db241a94af4e6573dcb1d6dcdd999bd2"
+uuid = "03fe91ce-8ec6-4610-8e8d-e7491ccca690"
+version = "0.1.4"
+weakdeps = ["CategoricalArrays", "Distributions", "Unitful"]
+
+    [deps.Colorfy.extensions]
+    ColorfyCategoricalArraysExt = "CategoricalArrays"
+    ColorfyDistributionsExt = "Distributions"
+    ColorfyUnitfulExt = "Unitful"
+
 [[deps.Colors]]
 deps = ["ColorTypes", "FixedPointNumbers", "Reexport"]
 git-tree-sha1 = "fc08e5930ee9a4e03f84bfb5211cb54e7769758a"
@@ -449,9 +461,9 @@ version = "1.6.1"
 
 [[deps.DataScienceTraits]]
 deps = ["Dates"]
-git-tree-sha1 = "e920a516194ba5817181fea1ea808d295ddf1d91"
+git-tree-sha1 = "1f34cb564f06d810ae3f49709feb97cfcdf2a02e"
 uuid = "6cb2f572-2d2b-4ba6-bdb3-e710fa044d6c"
-version = "0.2.5"
+version = "0.2.6"
 
     [deps.DataScienceTraits.extensions]
     DataScienceTraitsCategoricalArraysExt = "CategoricalArrays"
@@ -823,9 +835,9 @@ version = "0.3.2"
 
 [[deps.GeoArtifacts]]
 deps = ["GADM", "GeoIO", "GeoStatsImages", "GeoTables", "INMET", "Meshes", "Unitful"]
-git-tree-sha1 = "c3eb1b05fd438758a3b118ebbfeb0ee9d0fb6ce9"
+git-tree-sha1 = "f3bb7baa513e853619d07d9388421daefe112461"
 uuid = "2a3f1dca-97a5-4513-bfd8-b69f0106a87e"
-version = "0.3.0"
+version = "0.3.1"
 
 [[deps.GeoFormatTypes]]
 git-tree-sha1 = "59107c179a586f0fe667024c5eb7033e81333271"
@@ -834,9 +846,9 @@ version = "0.4.2"
 
 [[deps.GeoIO]]
 deps = ["ArchGDAL", "CSV", "Colors", "CommonDataModel", "FileIO", "Format", "GRIBDatasets", "GeoInterface", "GeoJSON", "GeoParquet", "GeoTables", "GslibIO", "ImageIO", "Meshes", "NCDatasets", "PlyIO", "PrecompileTools", "PrettyTables", "ReadVTK", "Rotations", "Shapefile", "StaticArrays", "Tables", "TransformsBase", "VTKBase", "WriteVTK"]
-git-tree-sha1 = "e60894599898d3a2fe0aca153bc29af15827e0e2"
+git-tree-sha1 = "8b17b0d519e252e0218fd4b72359ab84603b94bf"
 uuid = "f5a160d5-e41d-4189-8b61-d57781c419e3"
-version = "1.12.11"
+version = "1.12.12"
 
 [[deps.GeoInterface]]
 deps = ["Extents"]
@@ -874,15 +886,15 @@ version = "0.2.1"
 
 [[deps.GeoStats]]
 deps = ["CategoricalArrays", "Chain", "CoDa", "DataScienceTraits", "Dates", "DensityRatioEstimation", "Distances", "Distributions", "GeoStatsBase", "GeoStatsFunctions", "GeoStatsModels", "GeoStatsProcesses", "GeoStatsTransforms", "GeoStatsValidation", "GeoTables", "LossFunctions", "Meshes", "Reexport", "Rotations", "Statistics", "StatsLearnModels", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "a6a9e1a5732d2b5a3e8c9293fff7030916801af1"
+git-tree-sha1 = "21b7266cc60faf2386bc1d68fcddd57aad618f61"
 uuid = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"
-version = "0.53.0"
+version = "0.56.0"
 
 [[deps.GeoStatsBase]]
 deps = ["CategoricalArrays", "ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "Distances", "GeoTables", "LinearAlgebra", "Meshes", "Optim", "Rotations", "StaticArrays", "Statistics", "StatsBase", "Tables", "TypedTables"]
-git-tree-sha1 = "5f810b477aff466a38d615070bfb53bdb1102dfa"
+git-tree-sha1 = "c70632005e74cd67760f777975c5da6d06207e8b"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.43.8"
+version = "0.43.9"
 weakdeps = ["Makie"]
 
     [deps.GeoStatsBase.extensions]
@@ -890,9 +902,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsFunctions]]
 deps = ["Bessels", "Distances", "GeoTables", "InteractiveUtils", "LinearAlgebra", "Meshes", "NearestNeighbors", "Optim", "Printf", "Random", "Setfield", "Statistics", "Tables", "Transducers", "Unitful"]
-git-tree-sha1 = "6bbf12aff2655fc79caa3e8d732662977ccf0559"
+git-tree-sha1 = "f774fc585d4969de797a1488eb4e63d1aa6f2125"
 uuid = "6771c435-bc22-4842-b0c3-41852a255103"
-version = "0.2.4"
+version = "0.2.5"
 weakdeps = ["Makie"]
 
     [deps.GeoStatsFunctions.extensions]
@@ -906,15 +918,15 @@ version = "1.1.0"
 
 [[deps.GeoStatsModels]]
 deps = ["Combinatorics", "Distances", "Distributions", "GeoStatsFunctions", "GeoTables", "LinearAlgebra", "Meshes", "Statistics", "Tables", "Unitful"]
-git-tree-sha1 = "8ba182f5d9433e96cf293a288f7ceed97a2a83e8"
+git-tree-sha1 = "2d9dd0273019670ab5a21408a84a36ad6cdfe275"
 uuid = "ad987403-13c5-47b5-afee-0a48f6ac4f12"
-version = "0.3.2"
+version = "0.3.3"
 
 [[deps.GeoStatsProcesses]]
 deps = ["Bessels", "CpuId", "Distances", "Distributed", "Distributions", "FFTW", "GeoStatsBase", "GeoStatsFunctions", "GeoStatsModels", "GeoTables", "LinearAlgebra", "Meshes", "ProgressMeter", "Random", "Statistics", "Tables"]
-git-tree-sha1 = "3e5ca048bc45a3cd2532c8791f364601073736ca"
+git-tree-sha1 = "ef40d8f29602ade676437c3febf395c3af29660b"
 uuid = "aa102bde-5a27-4b0c-b2c1-e7a7dcc4c3e7"
-version = "0.5.9"
+version = "0.5.10"
 
     [deps.GeoStatsProcesses.extensions]
     GeoStatsProcessesImageQuiltingExt = "ImageQuilting"
@@ -928,21 +940,21 @@ version = "0.5.9"
 
 [[deps.GeoStatsTransforms]]
 deps = ["ArnoldiMethod", "CategoricalArrays", "Clustering", "ColumnSelectors", "Combinatorics", "DataScienceTraits", "Distances", "GeoStatsModels", "GeoStatsProcesses", "GeoTables", "LinearAlgebra", "Meshes", "Random", "SparseArrays", "Statistics", "TableDistances", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "476b96c36c261f7ef11d67bbeb47a882393516e6"
+git-tree-sha1 = "eb16d7cad60e381d57fc3f496cd51105f45be871"
 uuid = "725d9659-360f-4996-9c94-5f19c7e4a8a6"
-version = "0.4.1"
+version = "0.6.0"
 
 [[deps.GeoStatsValidation]]
 deps = ["ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "GeoStatsBase", "GeoStatsModels", "GeoStatsTransforms", "GeoTables", "LossFunctions", "Meshes", "StatsLearnModels", "Transducers"]
-git-tree-sha1 = "2d0a98a1441271c4aef04981e0f9ddfbebffacda"
+git-tree-sha1 = "8443d5c167e90c05b6d87cd0f88b80959e7a9e14"
 uuid = "36f43c0d-3673-45fc-9557-6860e708e7aa"
-version = "0.2.2"
+version = "0.2.5"
 
 [[deps.GeoTables]]
-deps = ["CategoricalArrays", "ColumnSelectors", "DataAPI", "DataScienceTraits", "Dates", "Distributions", "Meshes", "PrettyTables", "Random", "Statistics", "Tables", "TransformsBase", "Unitful"]
-git-tree-sha1 = "995e2012e39f3df485d78ebec8e8a2d4fd896b97"
+deps = ["CategoricalArrays", "Colorfy", "ColumnSelectors", "DataAPI", "DataScienceTraits", "Dates", "Distributions", "Meshes", "PrettyTables", "Random", "Statistics", "Tables", "TransformsBase", "Unitful"]
+git-tree-sha1 = "16afa3da01d1957bc590ac0ac65ebe281ac9f63a"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.18.5"
+version = "1.20.1"
 weakdeps = ["Makie", "TableTransforms"]
 
     [deps.GeoTables.extensions]
@@ -998,9 +1010,9 @@ version = "1.0.2"
 
 [[deps.GslibIO]]
 deps = ["DelimitedFiles", "GeoTables", "Meshes", "Printf", "Tables"]
-git-tree-sha1 = "846228a1fd9be1de61479ee022e2785da4c4085b"
+git-tree-sha1 = "815af1e1e1acf6e7c15ccc00db60e172420d62c6"
 uuid = "4610876b-9b01-57c8-9ad9-06315f1a66a5"
-version = "1.4.10"
+version = "1.4.11"
 
 [[deps.HDF5_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "JLLWrappers", "LLVMOpenMP_jll", "LazyArtifacts", "LibCURL_jll", "Libdl", "MPICH_jll", "MPIPreferences", "MPItrampoline_jll", "MicrosoftMPI_jll", "OpenMPI_jll", "OpenSSL_jll", "TOML", "Zlib_jll", "libaec_jll"]
@@ -1504,9 +1516,9 @@ version = "0.5.7"
 
 [[deps.MatrixFactorizations]]
 deps = ["ArrayLayouts", "LinearAlgebra", "Printf", "Random"]
-git-tree-sha1 = "fd4530d3c921d85c2fefce7e75d34d7acfefca61"
+git-tree-sha1 = "eecef9daff3b2b58cc666ee0c85d1b9889b6e98e"
 uuid = "a3b82374-2e81-5b9e-98ce-41277c0e4c87"
-version = "2.1.1"
+version = "2.1.2"
 
 [[deps.MbedTLS]]
 deps = ["Dates", "MbedTLS_jll", "MozillaCACerts_jll", "NetworkOptions", "Random", "Sockets"]
@@ -1525,10 +1537,10 @@ uuid = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
 version = "0.3.2"
 
 [[deps.Meshes]]
-deps = ["Bessels", "CircularArrays", "Distances", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "SparseArrays", "StaticArrays", "StatsBase", "Transducers", "TransformsBase", "Unitful"]
-git-tree-sha1 = "9a44b67d809aace5340c6e3c98141ad81ff50772"
+deps = ["Bessels", "CircularArrays", "Colorfy", "Distances", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "SparseArrays", "StaticArrays", "StatsBase", "Transducers", "TransformsBase", "Unitful"]
+git-tree-sha1 = "94b91dd304caed9c71b320c3962a66026b7130e0"
 uuid = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
-version = "0.41.1"
+version = "0.42.0"
 weakdeps = ["Makie"]
 
     [deps.Meshes.extensions]
@@ -2314,9 +2326,9 @@ version = "1.0.1"
 
 [[deps.TableTransforms]]
 deps = ["AbstractTrees", "CategoricalArrays", "CoDa", "ColumnSelectors", "DataScienceTraits", "Distributions", "InverseFunctions", "LinearAlgebra", "NelderMead", "PrettyTables", "Random", "Statistics", "StatsBase", "Tables", "Transducers", "TransformsBase", "Unitful"]
-git-tree-sha1 = "fa65286954d01676163c5dc18c01bfd8b7278998"
+git-tree-sha1 = "98c6200d84f78cf65abc036591ad845443af44ef"
 uuid = "0d432bfd-3ee1-4ac1-886a-39f05cc69a3e"
-version = "1.30.0"
+version = "1.31.0"
 
 [[deps.Tables]]
 deps = ["DataAPI", "DataValueInterfaces", "IteratorInterfaceExtensions", "LinearAlgebra", "OrderedCollections", "TableTraits"]
