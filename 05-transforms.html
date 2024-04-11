@@ -383,7 +383,7 @@ div.csl-indent {
 <section id="motivation" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">5.1</span> Motivation</h2>
 <p>In <strong>Part I</strong> of the book, we learned that our <code>GeoTable</code> representation of geospatial data provides the data access pattern of the <code>DataFrame</code>, a feature that is very convenient for data science. To recap, let’s consider the following geotable with four random variables:</p>
-<div id="7a106a2b" class="cell" data-execution_count="2">
+<div id="36a364c8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">10000</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="fl">2</span><span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>) <span class="op">.+</span> <span class="fl">6</span>; <span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>)]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="fl">3</span><span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>); <span class="fl">2</span><span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>)]</span>
@@ -422,73 +422,73 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -504,7 +504,7 @@ div.csl-indent {
 </div>
 </div>
 <p>We can easily retrieve the “a” column of the geotable as a vector, and plot its histogram:</p>
-<div id="e69f74ee" class="cell" data-execution_count="3">
+<div id="3b88093b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">hist</span>(gt.a, color <span class="op">=</span> <span class="st">"gray80"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -519,14 +519,14 @@ div.csl-indent {
 </div>
 </div>
 <p>We can compute the cross-correlation between columns “a” and “b”:</p>
-<div id="a636634b" class="cell" data-execution_count="4">
+<div id="0791932a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(gt.a, gt.b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>0.008400226324772695</code></pre>
+<pre><code>-0.01481505243941332</code></pre>
 </div>
 </div>
 <p>And inspect bivariate distributions of the <code>values</code> of the geotable with <a href="https://github.com/sefffal/PairPlots.jl">PairPlots.jl</a> by <span class="citation" data-cites="Thompson2023">Thompson (<a href="references.html#ref-Thompson2023" role="doc-biblioref">2023</a>)</span>:</p>
-<div id="b57ba243" class="cell" data-execution_count="5">
+<div id="acba268f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PairPlots</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairplot</span>(<span class="fu">values</span>(gt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -544,36 +544,36 @@ div.csl-indent {
 </div>
 <p>This pattern is useful to answer geoscientific questions via marginal analysis (i.e.&nbsp;entire columns treated as measurements of a single random variable). However, the answers to many questions in geosciences depend on <strong>where</strong> the measurements were made.</p>
 <p>Attempting to answer geoscientific questions with basic access to rows and columns can be very frustrating. In particular, this approach is prone to unintentional removal of geospatial information:</p>
-<div id="81fb991d" class="cell" data-execution_count="6">
+<div id="263ef165" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gt.a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>10000-element Vector{Float64}:
-  2.1121978486888775
-  8.309229294045966
-  5.961957335443544
-  4.753593558092138
-  5.612770565568802
-  5.2378136977739835
-  0.18011738163722057
-  4.91638323850267
-  5.0075702313945
-  7.200539878659809
-  4.792945430003792
-  4.119007875398067
-  4.662452121598268
+  7.729729636689711
+  3.5454240606989607
+  8.666416066468749
+  6.021091480500998
+  3.817288363293307
+  5.770214710132351
+  5.137094547102521
+  4.120506368840877
+  4.3586252400147405
+  2.555939390466459
+  5.863521066692015
+  6.231974566788677
+  1.5584746755507153
   ⋮
- -0.14579499387261632
- -1.2342349226325438
-  0.9225499182261194
-  0.938060061627862
- -0.9225834648453441
-  0.557320102234609
- -0.6959239851766025
-  1.4167483265725989
-  0.16520843326944118
- -0.05750515817497419
- -0.2846911147731976
-  0.19230099651286428</code></pre>
+ -0.6820204827937975
+  1.0746880550523643
+  1.1256807831922517
+  1.3847561014367236
+ -0.5592296214568214
+  0.09365225001325155
+ -0.9224791854622876
+ -0.12929672065934888
+ -0.2765224983434802
+  0.3693110203571327
+ -1.5349251627510367
+  1.9653006716125976</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -602,7 +602,7 @@ Note
 <section id="basic" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="basic"><span class="header-section-number">5.2.1</span> Basic</h3>
 <p>Let’s start with two basic and important transforms, <code>Select</code> and <code>Reject</code>. The <code>Select</code> transform can be used to select columns of interest from a geotable:</p>
-<div id="51568287" class="cell" data-execution_count="7">
+<div id="506c22dc" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"a"</span>, <span class="st">"b"</span>) <span class="co"># select columns "a" and "b"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -627,53 +627,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -687,7 +687,7 @@ Note
 </div>
 </div>
 <p>In the example above, we selected the columns “a” and “b” explicitly, but <code>Select</code> has various methods for more flexible column selection:</p>
-<div id="2dd7abc6" class="cell" data-execution_count="8">
+<div id="8ed0618f" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>) <span class="co"># select columns 1 to 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
@@ -715,63 +715,63 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -785,7 +785,7 @@ Note
 </div>
 </div>
 </div>
-<div id="0df9fab2" class="cell" data-execution_count="9">
+<div id="32440ed6" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">r"</span><span class="ch">[</span><span class="st">bcd</span><span class="ch">]</span><span class="st">"</span>) <span class="co"># columns matching regular expression</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -813,63 +813,63 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -884,7 +884,7 @@ Note
 </div>
 </div>
 <p>A convenient method is also provided to select and rename columns:</p>
-<div id="7997af25" class="cell" data-execution_count="10">
+<div id="a171917b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="st">"A"</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
@@ -909,53 +909,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -969,7 +969,7 @@ Note
 </div>
 </div>
 <p>The <code>Reject</code> transform can be used to reject columns from a geotable that are not relevant for a given analysis. It supports the same column specification of <code>Select</code>:</p>
-<div id="cae6fd76" class="cell" data-execution_count="11">
+<div id="c886f98c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Reject</span>(<span class="st">"b"</span>) <span class="co"># reject column "b"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
@@ -997,63 +997,63 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1091,7 +1091,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>Select</code> transform can be used in conjunction with the <code>viewer</code> to quickly visualize a specific variable:</p>
-<div id="a0c3d0be" class="cell" data-execution_count="12">
+<div id="d04fab42" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"a"</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -1108,7 +1108,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>Rename</code> transform can be used to rename specific columns of a geotable. It preserves all other columns that are not part of the column specification:</p>
-<div id="c9fdb87a" class="cell" data-execution_count="13">
+<div id="be615564" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Rename</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="st">"A"</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
@@ -1139,73 +1139,73 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1221,7 +1221,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>Identity</code> transform can be used as a placeholder to forward the geotable without modifications to the next transform:</p>
-<div id="6355a59b" class="cell" data-execution_count="14">
+<div id="6fd655be" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
@@ -1252,73 +1252,73 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1334,7 +1334,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>RowTable</code> and <code>ColTable</code> transforms change the underlying table representation of the <code>values</code> of the geotable as discussed in the first chapter of the book:</p>
-<div id="e5805c03" class="cell" data-execution_count="15">
+<div id="bf87c102" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> gt <span class="op">|&gt;</span> <span class="fu">RowTable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
@@ -1365,73 +1365,73 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1446,7 +1446,7 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="bfe0588e" class="cell" data-execution_count="16">
+<div id="fc97a312" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">|&gt;</span> values <span class="op">|&gt;</span> typeof</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div class="ansi-escaped-output">
@@ -1455,7 +1455,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>Functional</code> transform can be used to apply a function to columns of a geotable in place:</p>
-<div id="432fc812" class="cell" data-execution_count="17">
+<div id="0844e351" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Functional</span>(cos) <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -1469,7 +1469,7 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="c550b3b1" class="cell" data-execution_count="18">
+<div id="93420642" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Functional</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> cos, <span class="st">"b"</span> <span class="op">=&gt;</span> sin) <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -1484,7 +1484,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>Map</code> transform can be used to create new columns from existing columns in the geotable. It takes a column specification, calls a function on the selected columns row-by-row, and returns the result as a new column:</p>
-<div id="be648303" class="cell" data-execution_count="19">
+<div id="5f568d4a" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Map</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> sin, <span class="st">"b"</span> <span class="op">=&gt;</span> cos <span class="op">=&gt;</span> <span class="st">"cos(b)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
@@ -1521,93 +1521,93 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
-<td style="text-align: center;">0.856987</td>
-<td style="text-align: center;">-0.888519</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
+<td style="text-align: center;">0.992291</td>
+<td style="text-align: center;">0.236597</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
-<td style="text-align: center;">0.898152</td>
-<td style="text-align: center;">-0.368107</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
+<td style="text-align: center;">-0.392944</td>
+<td style="text-align: center;">-0.311169</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
-<td style="text-align: center;">-0.315732</td>
-<td style="text-align: center;">0.999948</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
+<td style="text-align: center;">0.687733</td>
+<td style="text-align: center;">0.982174</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
-<td style="text-align: center;">-0.999151</td>
-<td style="text-align: center;">-0.997556</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
+<td style="text-align: center;">-0.259103</td>
+<td style="text-align: center;">0.557707</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
-<td style="text-align: center;">-0.621311</td>
-<td style="text-align: center;">-0.530646</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
+<td style="text-align: center;">-0.62544</td>
+<td style="text-align: center;">-0.438493</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
-<td style="text-align: center;">-0.865111</td>
-<td style="text-align: center;">-0.478092</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
+<td style="text-align: center;">-0.490768</td>
+<td style="text-align: center;">0.78282</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
-<td style="text-align: center;">0.179145</td>
-<td style="text-align: center;">-0.992673</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
+<td style="text-align: center;">-0.91116</td>
+<td style="text-align: center;">-0.923268</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
-<td style="text-align: center;">-0.979265</td>
-<td style="text-align: center;">0.51762</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
+<td style="text-align: center;">-0.829892</td>
+<td style="text-align: center;">0.163952</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
-<td style="text-align: center;">-0.956749</td>
-<td style="text-align: center;">-0.889913</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
+<td style="text-align: center;">-0.938075</td>
+<td style="text-align: center;">-0.702461</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
-<td style="text-align: center;">0.793996</td>
-<td style="text-align: center;">0.160181</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
+<td style="text-align: center;">0.552744</td>
+<td style="text-align: center;">0.985284</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1624,7 +1624,7 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="eb24836e" class="cell" data-execution_count="20">
+<div id="b9483448" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Map</span>([<span class="fl">2</span>, <span class="fl">3</span>] <span class="op">=&gt;</span> ((b, c) <span class="op">-&gt;</span> <span class="fl">2</span>b <span class="op">+</span> c) <span class="op">=&gt;</span> <span class="st">"f(b, c)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
@@ -1658,83 +1658,83 @@ Tip for all users
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
-<td style="text-align: center;">1.44252</td>
-<td style="text-align: center;">2.07396</td>
-<td style="text-align: center;">-5.79404</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
+<td style="text-align: center;">-1.47826</td>
+<td style="text-align: center;">-0.400725</td>
+<td style="text-align: center;">1.18561</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
-<td style="text-align: center;">-1.14136</td>
-<td style="text-align: center;">-0.525571</td>
-<td style="text-align: center;">7.52947</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
+<td style="text-align: center;">0.197564</td>
+<td style="text-align: center;">0.920811</td>
+<td style="text-align: center;">3.972</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
-<td style="text-align: center;">1.34069</td>
-<td style="text-align: center;">1.31519</td>
-<td style="text-align: center;">1.36101</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
+<td style="text-align: center;">-0.777391</td>
+<td style="text-align: center;">-0.447808</td>
+<td style="text-align: center;">-1.15559</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
-<td style="text-align: center;">-0.00257731</td>
-<td style="text-align: center;">-0.220104</td>
-<td style="text-align: center;">-6.42561</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
+<td style="text-align: center;">0.427542</td>
+<td style="text-align: center;">0.300505</td>
+<td style="text-align: center;">-1.53081</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
-<td style="text-align: center;">-1.49507</td>
-<td style="text-align: center;">-1.38581</td>
-<td style="text-align: center;">6.81098</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
+<td style="text-align: center;">0.686756</td>
+<td style="text-align: center;">-0.122766</td>
+<td style="text-align: center;">-3.36268</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
-<td style="text-align: center;">1.01614</td>
-<td style="text-align: center;">1.77381</td>
-<td style="text-align: center;">5.1547</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
+<td style="text-align: center;">-0.867933</td>
+<td style="text-align: center;">-0.784613</td>
+<td style="text-align: center;">-2.21116</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
-<td style="text-align: center;">0.981573</td>
-<td style="text-align: center;">-0.0172321</td>
-<td style="text-align: center;">-5.05936</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
+<td style="text-align: center;">-0.642056</td>
+<td style="text-align: center;">-0.617634</td>
+<td style="text-align: center;">17.4189</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
-<td style="text-align: center;">-0.117749</td>
-<td style="text-align: center;">-1.09406</td>
-<td style="text-align: center;">1.93571</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
+<td style="text-align: center;">-1.39249</td>
+<td style="text-align: center;">-1.01661</td>
+<td style="text-align: center;">-4.20469</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
-<td style="text-align: center;">-0.273846</td>
-<td style="text-align: center;">-1.54716</td>
-<td style="text-align: center;">-7.50432</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
+<td style="text-align: center;">-0.185023</td>
+<td style="text-align: center;">-0.862575</td>
+<td style="text-align: center;">4.51427</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
-<td style="text-align: center;">-0.112503</td>
-<td style="text-align: center;">0.147943</td>
-<td style="text-align: center;">-2.93235</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
+<td style="text-align: center;">0.715439</td>
+<td style="text-align: center;">0.353071</td>
+<td style="text-align: center;">1.05898</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -1765,12 +1765,12 @@ Note
 </div>
 </div>
 <p>To filter rows in the geotable based on a given predicate (i.e., a function that returns <code>true</code> or <code>false</code>), we can use the <code>Filter</code> transform:</p>
-<div id="d716b1a9" class="cell" data-execution_count="21">
+<div id="8fd0e61a" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Filter</span>(row <span class="op">-&gt;</span> row.a <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> row.b <span class="op">&gt;</span> <span class="fl">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>1242×5 GeoTable over 1242 view(::CartesianGrid{2,Float64}, [4335, 4812, 5014, 5018, ..., 9981, 9985, 9987, 9995])</caption>
+<caption>1244×5 GeoTable over 1244 view(::CartesianGrid{2,Float64}, [203, 978, 5010, 5013, ..., 9995, 9996, 9997, 9999])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1796,74 +1796,74 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">-0.366633</td>
-<td style="text-align: center;">1.69188</td>
-<td style="text-align: center;">-0.599209</td>
-<td style="text-align: center;">-1.06081</td>
-<td style="text-align: center;">Quadrangle((34.0, 43.0), ..., (34.0, 44.0))</td>
+<td style="text-align: center;">-0.253715</td>
+<td style="text-align: center;">1.75571</td>
+<td style="text-align: center;">-0.873999</td>
+<td style="text-align: center;">-0.361707</td>
+<td style="text-align: center;">Quadrangle((2.0, 2.0), ..., (2.0, 3.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.702359</td>
-<td style="text-align: center;">3.47747</td>
-<td style="text-align: center;">0.832726</td>
-<td style="text-align: center;">0.0773468</td>
-<td style="text-align: center;">Quadrangle((11.0, 48.0), ..., (11.0, 49.0))</td>
+<td style="text-align: center;">-0.431547</td>
+<td style="text-align: center;">2.31275</td>
+<td style="text-align: center;">0.218085</td>
+<td style="text-align: center;">1.22821</td>
+<td style="text-align: center;">Quadrangle((77.0, 9.0), ..., (77.0, 10.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.0827435</td>
-<td style="text-align: center;">0.031269</td>
-<td style="text-align: center;">1.04826</td>
-<td style="text-align: center;">0.561808</td>
-<td style="text-align: center;">Quadrangle((13.0, 50.0), ..., (13.0, 51.0))</td>
+<td style="text-align: center;">-0.841495</td>
+<td style="text-align: center;">0.316306</td>
+<td style="text-align: center;">0.726517</td>
+<td style="text-align: center;">0.242415</td>
+<td style="text-align: center;">Quadrangle((9.0, 50.0), ..., (9.0, 51.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.580213</td>
-<td style="text-align: center;">3.98938</td>
-<td style="text-align: center;">0.066387</td>
-<td style="text-align: center;">-0.342411</td>
-<td style="text-align: center;">Quadrangle((17.0, 50.0), ..., (17.0, 51.0))</td>
+<td style="text-align: center;">-1.17677</td>
+<td style="text-align: center;">0.226792</td>
+<td style="text-align: center;">-1.68733</td>
+<td style="text-align: center;">-2.10866</td>
+<td style="text-align: center;">Quadrangle((12.0, 50.0), ..., (12.0, 51.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.154134</td>
-<td style="text-align: center;">2.16939</td>
-<td style="text-align: center;">2.33752</td>
-<td style="text-align: center;">3.00999</td>
-<td style="text-align: center;">Quadrangle((26.0, 50.0), ..., (26.0, 51.0))</td>
+<td style="text-align: center;">-0.211387</td>
+<td style="text-align: center;">2.42288</td>
+<td style="text-align: center;">0.413754</td>
+<td style="text-align: center;">1.03073</td>
+<td style="text-align: center;">Quadrangle((19.0, 50.0), ..., (19.0, 51.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.474598</td>
-<td style="text-align: center;">2.72718</td>
-<td style="text-align: center;">-0.945055</td>
-<td style="text-align: center;">-0.715511</td>
-<td style="text-align: center;">Quadrangle((29.0, 50.0), ..., (29.0, 51.0))</td>
+<td style="text-align: center;">-0.255019</td>
+<td style="text-align: center;">1.14577</td>
+<td style="text-align: center;">-0.67196</td>
+<td style="text-align: center;">-0.685092</td>
+<td style="text-align: center;">Quadrangle((21.0, 50.0), ..., (21.0, 51.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.998068</td>
-<td style="text-align: center;">1.41654</td>
-<td style="text-align: center;">0.958462</td>
-<td style="text-align: center;">0.769279</td>
-<td style="text-align: center;">Quadrangle((31.0, 50.0), ..., (31.0, 51.0))</td>
+<td style="text-align: center;">-0.18751</td>
+<td style="text-align: center;">2.16836</td>
+<td style="text-align: center;">-0.998783</td>
+<td style="text-align: center;">-1.11346</td>
+<td style="text-align: center;">Quadrangle((24.0, 50.0), ..., (24.0, 51.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.57266</td>
-<td style="text-align: center;">0.677028</td>
-<td style="text-align: center;">-0.836735</td>
-<td style="text-align: center;">-0.426884</td>
+<td style="text-align: center;">-0.559758</td>
+<td style="text-align: center;">0.915861</td>
+<td style="text-align: center;">0.877921</td>
+<td style="text-align: center;">1.39686</td>
 <td style="text-align: center;">Quadrangle((34.0, 50.0), ..., (34.0, 51.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.912886</td>
-<td style="text-align: center;">0.530873</td>
-<td style="text-align: center;">0.00266221</td>
-<td style="text-align: center;">-1.48565</td>
-<td style="text-align: center;">Quadrangle((37.0, 50.0), ..., (37.0, 51.0))</td>
+<td style="text-align: center;">-0.1763</td>
+<td style="text-align: center;">0.894489</td>
+<td style="text-align: center;">0.73028</td>
+<td style="text-align: center;">0.89243</td>
+<td style="text-align: center;">Quadrangle((35.0, 50.0), ..., (35.0, 51.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.453362</td>
-<td style="text-align: center;">0.856394</td>
-<td style="text-align: center;">0.285423</td>
-<td style="text-align: center;">0.0418021</td>
-<td style="text-align: center;">Quadrangle((48.0, 50.0), ..., (48.0, 51.0))</td>
+<td style="text-align: center;">-0.0228853</td>
+<td style="text-align: center;">0.0351305</td>
+<td style="text-align: center;">-1.22606</td>
+<td style="text-align: center;">-1.36628</td>
+<td style="text-align: center;">Quadrangle((41.0, 50.0), ..., (41.0, 51.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -1878,12 +1878,12 @@ Note
 </div>
 </div>
 <p>To sort rows based on specific columns we can use the <code>Sort</code> transform:</p>
-<div id="438335cd" class="cell" data-execution_count="22">
+<div id="84ff7fd9" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Sort</span>(<span class="st">"a"</span>, <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×5 GeoTable over 10000 view(::CartesianGrid{2,Float64}, [8277, 5320, 7698, 8185, ..., 4923, 88, 2064, 117])</caption>
+<caption>10000×5 GeoTable over 10000 view(::CartesianGrid{2,Float64}, [1506, 5427, 8396, 6267, ..., 3490, 4992, 3948, 4886])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1909,74 +1909,74 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">-3.84029</td>
-<td style="text-align: center;">2.52955</td>
-<td style="text-align: center;">1.03821</td>
-<td style="text-align: center;">2.01943</td>
-<td style="text-align: center;">Quadrangle((76.0, 82.0), ..., (76.0, 83.0))</td>
+<td style="text-align: center;">-4.61515</td>
+<td style="text-align: center;">-6.29771</td>
+<td style="text-align: center;">0.500298</td>
+<td style="text-align: center;">0.470254</td>
+<td style="text-align: center;">Quadrangle((5.0, 15.0), ..., (5.0, 16.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-3.11258</td>
-<td style="text-align: center;">-0.698387</td>
-<td style="text-align: center;">0.964395</td>
-<td style="text-align: center;">0.832464</td>
-<td style="text-align: center;">Quadrangle((19.0, 53.0), ..., (19.0, 54.0))</td>
+<td style="text-align: center;">-3.68265</td>
+<td style="text-align: center;">-1.637</td>
+<td style="text-align: center;">0.69967</td>
+<td style="text-align: center;">1.68775</td>
+<td style="text-align: center;">Quadrangle((26.0, 54.0), ..., (26.0, 55.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-3.06551</td>
-<td style="text-align: center;">0.346</td>
-<td style="text-align: center;">-0.163783</td>
-<td style="text-align: center;">0.262498</td>
-<td style="text-align: center;">Quadrangle((97.0, 76.0), ..., (97.0, 77.0))</td>
+<td style="text-align: center;">-3.27653</td>
+<td style="text-align: center;">-0.603192</td>
+<td style="text-align: center;">-0.486839</td>
+<td style="text-align: center;">-0.880114</td>
+<td style="text-align: center;">Quadrangle((95.0, 83.0), ..., (95.0, 84.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-3.01988</td>
-<td style="text-align: center;">-3.37464</td>
-<td style="text-align: center;">0.785389</td>
-<td style="text-align: center;">1.59657</td>
-<td style="text-align: center;">Quadrangle((84.0, 81.0), ..., (84.0, 82.0))</td>
+<td style="text-align: center;">-3.27304</td>
+<td style="text-align: center;">0.851458</td>
+<td style="text-align: center;">1.1352</td>
+<td style="text-align: center;">1.93506</td>
+<td style="text-align: center;">Quadrangle((66.0, 62.0), ..., (66.0, 63.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-2.96954</td>
-<td style="text-align: center;">-0.704964</td>
-<td style="text-align: center;">0.273115</td>
-<td style="text-align: center;">0.26389</td>
-<td style="text-align: center;">Quadrangle((8.0, 71.0), ..., (8.0, 72.0))</td>
+<td style="text-align: center;">-3.22091</td>
+<td style="text-align: center;">2.66131</td>
+<td style="text-align: center;">-1.45647</td>
+<td style="text-align: center;">-1.40521</td>
+<td style="text-align: center;">Quadrangle((28.0, 53.0), ..., (28.0, 54.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-2.932</td>
-<td style="text-align: center;">-2.54146</td>
-<td style="text-align: center;">-0.217912</td>
-<td style="text-align: center;">-0.778349</td>
-<td style="text-align: center;">Quadrangle((6.0, 94.0), ..., (6.0, 95.0))</td>
+<td style="text-align: center;">-3.10752</td>
+<td style="text-align: center;">-2.49715</td>
+<td style="text-align: center;">-0.362762</td>
+<td style="text-align: center;">0.252078</td>
+<td style="text-align: center;">Quadrangle((40.0, 65.0), ..., (40.0, 66.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-2.93061</td>
-<td style="text-align: center;">0.0596848</td>
-<td style="text-align: center;">-1.54083</td>
-<td style="text-align: center;">-1.72212</td>
-<td style="text-align: center;">Quadrangle((81.0, 50.0), ..., (81.0, 51.0))</td>
+<td style="text-align: center;">-3.06263</td>
+<td style="text-align: center;">-1.29816</td>
+<td style="text-align: center;">-0.25661</td>
+<td style="text-align: center;">-0.2488</td>
+<td style="text-align: center;">Quadrangle((81.0, 58.0), ..., (81.0, 59.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-2.9116</td>
-<td style="text-align: center;">-1.14378</td>
-<td style="text-align: center;">-0.367932</td>
-<td style="text-align: center;">0.508978</td>
-<td style="text-align: center;">Quadrangle((9.0, 85.0), ..., (9.0, 86.0))</td>
+<td style="text-align: center;">-3.04523</td>
+<td style="text-align: center;">0.332051</td>
+<td style="text-align: center;">0.822012</td>
+<td style="text-align: center;">1.13462</td>
+<td style="text-align: center;">Quadrangle((63.0, 53.0), ..., (63.0, 54.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-2.89525</td>
-<td style="text-align: center;">3.15311</td>
-<td style="text-align: center;">-1.0034</td>
-<td style="text-align: center;">-1.3898</td>
-<td style="text-align: center;">Quadrangle((63.0, 86.0), ..., (63.0, 87.0))</td>
+<td style="text-align: center;">-3.00312</td>
+<td style="text-align: center;">0.312139</td>
+<td style="text-align: center;">1.10723</td>
+<td style="text-align: center;">1.13273</td>
+<td style="text-align: center;">Quadrangle((96.0, 89.0), ..., (96.0, 90.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-2.86957</td>
-<td style="text-align: center;">-0.091178</td>
-<td style="text-align: center;">0.15033</td>
-<td style="text-align: center;">1.36618</td>
-<td style="text-align: center;">Quadrangle((32.0, 72.0), ..., (32.0, 73.0))</td>
+<td style="text-align: center;">-2.83092</td>
+<td style="text-align: center;">-1.5697</td>
+<td style="text-align: center;">0.926901</td>
+<td style="text-align: center;">1.60067</td>
+<td style="text-align: center;">Quadrangle((25.0, 63.0), ..., (25.0, 64.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -1991,12 +1991,12 @@ Note
 </div>
 </div>
 <p>This transform accepts all options of the <code>sortperm</code> function in Julia, including the option to sort in reverse order:</p>
-<div id="72895e51" class="cell" data-execution_count="23">
+<div id="1e9d59a3" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Sort</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, rev<span class="op">=</span><span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×5 GeoTable over 10000 view(::CartesianGrid{2,Float64}, [117, 2064, 88, 4923, ..., 8185, 7698, 5320, 8277])</caption>
+<caption>10000×5 GeoTable over 10000 view(::CartesianGrid{2,Float64}, [4886, 3948, 4992, 3490, ..., 6267, 8396, 5427, 1506])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -2022,74 +2022,74 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">12.6096</td>
-<td style="text-align: center;">-0.842632</td>
-<td style="text-align: center;">0.591476</td>
-<td style="text-align: center;">0.623489</td>
-<td style="text-align: center;">Quadrangle((16.0, 1.0), ..., (16.0, 2.0))</td>
+<td style="text-align: center;">14.0519</td>
+<td style="text-align: center;">0.719331</td>
+<td style="text-align: center;">-0.471941</td>
+<td style="text-align: center;">-0.616578</td>
+<td style="text-align: center;">Quadrangle((85.0, 48.0), ..., (85.0, 49.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">12.5256</td>
-<td style="text-align: center;">3.72785</td>
-<td style="text-align: center;">-0.0330936</td>
-<td style="text-align: center;">0.407799</td>
-<td style="text-align: center;">Quadrangle((63.0, 20.0), ..., (63.0, 21.0))</td>
+<td style="text-align: center;">12.5837</td>
+<td style="text-align: center;">-0.0664202</td>
+<td style="text-align: center;">0.644796</td>
+<td style="text-align: center;">0.942697</td>
+<td style="text-align: center;">Quadrangle((47.0, 39.0), ..., (47.0, 40.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">12.4968</td>
-<td style="text-align: center;">5.20173</td>
-<td style="text-align: center;">0.207761</td>
-<td style="text-align: center;">0.170723</td>
-<td style="text-align: center;">Quadrangle((87.0, 0.0), ..., (87.0, 1.0))</td>
+<td style="text-align: center;">12.5718</td>
+<td style="text-align: center;">0.748662</td>
+<td style="text-align: center;">-0.524617</td>
+<td style="text-align: center;">-0.029746</td>
+<td style="text-align: center;">Quadrangle((91.0, 49.0), ..., (91.0, 50.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">12.2224</td>
-<td style="text-align: center;">3.1084</td>
-<td style="text-align: center;">-1.01639</td>
-<td style="text-align: center;">-1.39364</td>
-<td style="text-align: center;">Quadrangle((22.0, 49.0), ..., (22.0, 50.0))</td>
+<td style="text-align: center;">12.4869</td>
+<td style="text-align: center;">-0.491366</td>
+<td style="text-align: center;">0.336979</td>
+<td style="text-align: center;">-0.995781</td>
+<td style="text-align: center;">Quadrangle((89.0, 34.0), ..., (89.0, 35.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">12.1411</td>
-<td style="text-align: center;">-1.57166</td>
-<td style="text-align: center;">0.3006</td>
-<td style="text-align: center;">-0.543434</td>
-<td style="text-align: center;">Quadrangle((95.0, 10.0), ..., (95.0, 11.0))</td>
+<td style="text-align: center;">12.4725</td>
+<td style="text-align: center;">1.22926</td>
+<td style="text-align: center;">-0.112064</td>
+<td style="text-align: center;">-0.451808</td>
+<td style="text-align: center;">Quadrangle((38.0, 43.0), ..., (38.0, 44.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">12.0834</td>
-<td style="text-align: center;">-3.39622</td>
-<td style="text-align: center;">-0.819898</td>
-<td style="text-align: center;">-0.294403</td>
-<td style="text-align: center;">Quadrangle((58.0, 5.0), ..., (58.0, 6.0))</td>
+<td style="text-align: center;">12.2563</td>
+<td style="text-align: center;">-6.328</td>
+<td style="text-align: center;">0.402264</td>
+<td style="text-align: center;">1.24381</td>
+<td style="text-align: center;">Quadrangle((86.0, 25.0), ..., (86.0, 26.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">11.9015</td>
-<td style="text-align: center;">1.82443</td>
-<td style="text-align: center;">-0.970273</td>
-<td style="text-align: center;">-1.65491</td>
-<td style="text-align: center;">Quadrangle((90.0, 3.0), ..., (90.0, 4.0))</td>
+<td style="text-align: center;">12.1531</td>
+<td style="text-align: center;">-1.13236</td>
+<td style="text-align: center;">0.389827</td>
+<td style="text-align: center;">0.806105</td>
+<td style="text-align: center;">Quadrangle((35.0, 41.0), ..., (35.0, 42.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">11.894</td>
-<td style="text-align: center;">4.14299</td>
-<td style="text-align: center;">-0.0478385</td>
-<td style="text-align: center;">-0.816562</td>
-<td style="text-align: center;">Quadrangle((77.0, 29.0), ..., (77.0, 30.0))</td>
+<td style="text-align: center;">12.0941</td>
+<td style="text-align: center;">3.60167</td>
+<td style="text-align: center;">-0.118166</td>
+<td style="text-align: center;">-0.992468</td>
+<td style="text-align: center;">Quadrangle((80.0, 8.0), ..., (80.0, 9.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">11.8684</td>
-<td style="text-align: center;">1.61888</td>
-<td style="text-align: center;">-0.591243</td>
-<td style="text-align: center;">-0.206275</td>
-<td style="text-align: center;">Quadrangle((66.0, 22.0), ..., (66.0, 23.0))</td>
+<td style="text-align: center;">12.0811</td>
+<td style="text-align: center;">2.07642</td>
+<td style="text-align: center;">2.10222</td>
+<td style="text-align: center;">2.34546</td>
+<td style="text-align: center;">Quadrangle((31.0, 16.0), ..., (31.0, 17.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">11.7815</td>
-<td style="text-align: center;">-0.642649</td>
-<td style="text-align: center;">0.902502</td>
-<td style="text-align: center;">1.12919</td>
-<td style="text-align: center;">Quadrangle((91.0, 37.0), ..., (91.0, 38.0))</td>
+<td style="text-align: center;">11.9674</td>
+<td style="text-align: center;">3.88601</td>
+<td style="text-align: center;">0.655391</td>
+<td style="text-align: center;">1.10562</td>
+<td style="text-align: center;">Quadrangle((70.0, 46.0), ..., (70.0, 47.0))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -2107,7 +2107,7 @@ Note
 <section id="cleaning" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="cleaning"><span class="header-section-number">5.2.2</span> Cleaning</h3>
 <p>Some feature transforms are used to clean the data before geostatistical analysis. For example, the <code>StdNames</code> transform can be used to standardize variable names that are not very readable due to file format limitations. To illustrate this transform, let’s create a geotable with unreadable variable names:</p>
-<div id="1cae2be0" class="cell" data-execution_count="24">
+<div id="1c0bcc8e" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ut <span class="op">=</span> gt <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="st">"aBc De-F"</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="st">"b_2 (1)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
@@ -2132,53 +2132,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -2192,7 +2192,7 @@ Note
 </div>
 </div>
 <p>We can standardize the names with:</p>
-<div id="bffafd88" class="cell" data-execution_count="25">
+<div id="54787419" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ut <span class="op">|&gt;</span> <span class="fu">StdNames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
@@ -2217,53 +2217,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -2277,7 +2277,7 @@ Note
 </div>
 </div>
 <p>By default the transform, uses the <code>:uppersnake</code> naming convention. Other conventions can be specified depending on personal preference:</p>
-<div id="812cff8f" class="cell" data-execution_count="26">
+<div id="021f3d5b" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ut <span class="op">|&gt;</span> <span class="fu">StdNames</span>(<span class="op">:</span>uppercamel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
@@ -2302,53 +2302,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -2361,7 +2361,7 @@ Note
 </div>
 </div>
 </div>
-<div id="12bc0b33" class="cell" data-execution_count="27">
+<div id="a58db06a" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ut <span class="op">|&gt;</span> <span class="fu">StdNames</span>(<span class="op">:</span>upperflat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
@@ -2386,53 +2386,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">2.1122</td>
-<td style="text-align: center;">-3.61828</td>
+<td style="text-align: center;">7.72973</td>
+<td style="text-align: center;">1.33193</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.30923</td>
-<td style="text-align: center;">4.33542</td>
+<td style="text-align: center;">3.54542</td>
+<td style="text-align: center;">1.88722</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.96196</td>
-<td style="text-align: center;">0.0101584</td>
+<td style="text-align: center;">8.66642</td>
+<td style="text-align: center;">-0.1891</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.75359</td>
-<td style="text-align: center;">-3.21152</td>
+<td style="text-align: center;">6.02109</td>
+<td style="text-align: center;">-0.979176</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.61277</td>
-<td style="text-align: center;">4.15303</td>
+<td style="text-align: center;">3.81729</td>
+<td style="text-align: center;">-2.02472</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">5.23781</td>
-<td style="text-align: center;">2.06928</td>
+<td style="text-align: center;">5.77021</td>
+<td style="text-align: center;">-0.671612</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.180117</td>
-<td style="text-align: center;">-3.02047</td>
+<td style="text-align: center;">5.13709</td>
+<td style="text-align: center;">9.03048</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">4.91638</td>
-<td style="text-align: center;">1.02673</td>
+<td style="text-align: center;">4.12051</td>
+<td style="text-align: center;">-1.4061</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">5.00757</td>
-<td style="text-align: center;">-3.61524</td>
+<td style="text-align: center;">4.35863</td>
+<td style="text-align: center;">2.34965</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">7.20054</td>
-<td style="text-align: center;">-1.40992</td>
+<td style="text-align: center;">2.55594</td>
+<td style="text-align: center;">0.171771</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -2446,7 +2446,7 @@ Note
 </div>
 </div>
 <p>The <code>Replace</code> transform can be used to replace specific values in the geotable by new values that are meaningful to the analysis. For example, we can replace the values <code>-999</code> and <code>NaN</code> that are used to represent <code>missing</code> values in some file formats:</p>
-<div id="213499ae" class="cell" data-execution_count="28">
+<div id="ae784c45" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="op">-</span><span class="fl">999</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="cn">NaN</span>,<span class="fl">5</span>,<span class="fl">6</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
@@ -2490,7 +2490,7 @@ Note
 </div>
 </div>
 </div>
-<div id="200a2081" class="cell" data-execution_count="29">
+<div id="696fcaf7" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">|&gt;</span> <span class="fu">Replace</span>(<span class="op">-</span><span class="fl">999</span> <span class="op">=&gt;</span> <span class="cn">missing</span>, <span class="cn">NaN</span> <span class="op">=&gt;</span> <span class="cn">missing</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <div>
@@ -2535,7 +2535,7 @@ Note
 </div>
 </div>
 <p>or replace all negative values using a predicate function:</p>
-<div id="33acad93" class="cell" data-execution_count="30">
+<div id="325b6f82" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">|&gt;</span> <span class="fu">Replace</span>(<span class="fu">&lt;</span>(<span class="fl">0</span>) <span class="op">=&gt;</span> <span class="cn">missing</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
@@ -2593,7 +2593,7 @@ Note
 </div>
 </div>
 <p>Although <code>Replace</code> could be used to replace <code>missing</code> values by new values, there is a specific transform for this purpose named <code>Coalesce</code>:</p>
-<div id="e9cc3126" class="cell" data-execution_count="31">
+<div id="731d00b8" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="cn">missing</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>])) <span class="op">|&gt;</span> <span class="fu">Coalesce</span>(value<span class="op">=</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <div>
@@ -2648,7 +2648,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Unlike <code>Replace</code>, the <code>Coalesce</code> transform also changes the column type to make sure that no <code>missing</code> values can be stored in the future:</p>
-<div id="d02fbf9b" class="cell" data-execution_count="32">
+<div id="a2d11dd2" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(ct.a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <div class="ansi-escaped-output">
@@ -2659,7 +2659,7 @@ Note
 </div>
 </div>
 <p>In many applications, it is enough to simply drop all rows for which the selected column values are <code>missing</code>. This is the purpose of the <code>DropMissing</code> transform:</p>
-<div id="4a65ae51" class="cell" data-execution_count="33">
+<div id="60d5f891" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="cn">missing</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>])) <span class="op">|&gt;</span> <span class="fu">DropMissing</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
@@ -2703,7 +2703,7 @@ Note
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="statistical"><span class="header-section-number">5.2.3</span> Statistical</h3>
 <p>The framework provides various feature transforms for statistical analysis. We will cover some of these transforms in more detail in <strong>Part V</strong> of the book with real data. In the following examples we illustrate the most basic statistical transforms with synthetic data.</p>
 <p>The <code>Sample</code> transform can be used to sample rows of the geotable at random, with or without replacement depending on the <code>replace</code> option. Other options are available such as <code>rng</code> to set the random number generator and <code>ordered</code> to preserve the order of rows in the original geotable:</p>
-<div id="5d082614" class="cell" data-execution_count="34">
+<div id="8243368d" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">1000</span>, replace<span class="op">=</span><span class="cn">false</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -2731,57 +2731,57 @@ Note
 </div>
 </div>
 <p>The <code>Center</code> and <code>Scale</code> transforms can be used to standardize the range of values in a geotable. Aliases are provided for specific types of <code>Scale</code> such as <code>MinMax</code> and <code>Interquartile</code>. We can use the <code>describe</code> function to visualize basic statistics before and after the transforms:</p>
-<div id="3016cb62" class="cell" data-execution_count="35">
+<div id="bba85b58" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Table with 6 columns and 4 rows:
-     variable  mean         minimum   median       maximum  nmissing
-   ┌────────────────────────────────────────────────────────────────
- 1 │ a         2.98575      -3.84029  1.97722      12.6096  0
- 2 │ b         -0.00969193  -12.8885  0.00669734   11.7046  0
- 3 │ c         0.00474277   -3.64335  -0.00652733  3.27924  0
- 4 │ d         0.0165201    -4.00926  0.0175138    4.11412  0</code></pre>
+     variable  mean        minimum   median       maximum  nmissing
+   ┌───────────────────────────────────────────────────────────────
+ 1 │ a         2.99626     -4.61515  2.01708      14.0519  0
+ 2 │ b         -0.0348925  -11.1543  -0.00139158  9.67667  0
+ 3 │ c         -0.0116352  -3.40699  -0.00519763  3.88635  0
+ 4 │ d         -0.0158529  -4.07425  -0.0056525   4.29059  0</code></pre>
 </div>
 </div>
-<div id="76647406" class="cell" data-execution_count="36">
+<div id="e295c144" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Center</span>(<span class="st">"a"</span>) <span class="op">|&gt;</span> describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Table with 6 columns and 4 rows:
      variable  mean          minimum   median       maximum  nmissing
    ┌─────────────────────────────────────────────────────────────────
- 1 │ a         -3.63798e-16  -6.82604  -1.00853     9.62382  0
- 2 │ b         -0.00969193   -12.8885  0.00669734   11.7046  0
- 3 │ c         0.00474277    -3.64335  -0.00652733  3.27924  0
- 4 │ d         0.0165201     -4.00926  0.0175138    4.11412  0</code></pre>
+ 1 │ a         -3.63798e-16  -7.6114   -0.979173    11.0556  0
+ 2 │ b         -0.0348925    -11.1543  -0.00139158  9.67667  0
+ 3 │ c         -0.0116352    -3.40699  -0.00519763  3.88635  0
+ 4 │ d         -0.0158529    -4.07425  -0.0056525   4.29059  0</code></pre>
 </div>
 </div>
-<div id="ed395fb3" class="cell" data-execution_count="37">
+<div id="b275e92e" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">MinMax</span>() <span class="op">|&gt;</span> describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>Table with 6 columns and 4 rows:
      variable  mean      minimum  median    maximum  nmissing
    ┌─────────────────────────────────────────────────────────
- 1 │ a         0.41496   0.0      0.353651  1.0      0
- 2 │ b         0.523675  0.0      0.524342  1.0      0
- 3 │ c         0.526984  0.0      0.525356  1.0      0
- 4 │ d         0.495579  0.0      0.495702  1.0      0</code></pre>
+ 1 │ a         0.407746  0.0      0.355292  1.0      0
+ 2 │ b         0.533791  0.0      0.5354    1.0      0
+ 3 │ c         0.465542  0.0      0.466424  1.0      0
+ 4 │ d         0.485173  0.0      0.486393  1.0      0</code></pre>
 </div>
 </div>
 <p>The <code>ZScore</code> transform is similar to the <code>Scale</code> transform, but it uses the mean and the standard deviation to standardize the range:</p>
-<div id="c4606ecb" class="cell" data-execution_count="38">
+<div id="045c76f7" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">ZScore</span>() <span class="op">|&gt;</span> describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>Table with 6 columns and 4 rows:
-     variable  mean          minimum   median       maximum  nmissing
-   ┌─────────────────────────────────────────────────────────────────
- 1 │ a         -1.81899e-16  -2.01971  -0.298408    2.84753  0
- 2 │ b         -3.48166e-17  -5.08009  0.0064648    4.62075  0
- 3 │ c         2.34479e-17   -3.68507  -0.0113843   3.30769  0
- 4 │ d         3.55271e-19   -3.45936  0.000853913  3.52108  0</code></pre>
+     variable  mean          minimum   median      maximum  nmissing
+   ┌────────────────────────────────────────────────────────────────
+ 1 │ a         0.0           -2.2591   -0.290623   3.28135  0
+ 2 │ b         1.35003e-17   -4.34099  0.0130787   3.79138  0
+ 3 │ c         -1.10134e-17  -3.40145  0.00644909  3.90498  0
+ 4 │ d         3.55271e-18   -3.49271  0.0087786   3.70618  0</code></pre>
 </div>
 </div>
 <p>Another important univariate transform is the <code>Quantile</code> transform, which can be used to convert empirical distribution in a column of the geotable to any given distribution from <a href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> by <span class="citation" data-cites="Lin2023">Lin et al. (<a href="references.html#ref-Lin2023" role="doc-biblioref">2023</a>)</span>. Selected columns are converted to a <code>Normal</code> distribution by default, but more than 60 distributions are available:</p>
-<div id="d5cda2e2" class="cell" data-execution_count="39">
+<div id="666571d5" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Quantile</span>() <span class="op">|&gt;</span> values <span class="op">|&gt;</span> pairplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -2796,7 +2796,7 @@ Note
 </div>
 </div>
 <p>In data science, scientific traits are used to link data types to adequate statistical algorithms. The most popular scientific traits encountered in geoscientific applications are the <code>Continuous</code> and the <code>Categorical</code> scientific traits. To convert (or coerce) the scientific traits of columns in a geotable, we can use the <code>Coerce</code> transform:</p>
-<div id="03459896" class="cell" data-execution_count="40">
+<div id="c3301a78" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats.DataScienceTraits</span>: Continuous</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>st <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>])) <span class="op">|&gt;</span> <span class="fu">Coerce</span>(<span class="st">"b"</span> <span class="op">=&gt;</span> Continuous)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2857,7 +2857,7 @@ Note
 </div>
 </div>
 </div>
-<div id="923c05c7" class="cell" data-execution_count="41">
+<div id="41fca99a" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eltype</span>(st.b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>Float64</code></pre>
@@ -2877,7 +2877,7 @@ Note
 </div>
 </div>
 <p>The <code>Levels</code> transform can be used to adjust the categories (or levels) of <code>Categorical</code> columns in case the sampling process does not include all possible values:</p>
-<div id="936575f5" class="cell" data-execution_count="42">
+<div id="bd2daff3" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>st <span class="op">=</span> st <span class="op">|&gt;</span> <span class="fu">Levels</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <div>
@@ -2936,7 +2936,7 @@ Note
 </div>
 </div>
 </div>
-<div id="4231676e" class="cell" data-execution_count="43">
+<div id="210e8821" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(st.a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>4-element Vector{Int64}:
@@ -2947,7 +2947,7 @@ Note
 </div>
 </div>
 <p>Another popular transform in statistical learning is the <code>OneHot</code> transform. It converts a <code>Categorical</code> column into multiple columns of <code>true</code>/<code>false</code> values, one column for each level:</p>
-<div id="baf6ab52" class="cell" data-execution_count="44">
+<div id="c109169f" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>st <span class="op">|&gt;</span> <span class="fu">OneHot</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <div>
@@ -3034,7 +3034,7 @@ Note
 </div>
 </div>
 <p>A similar transform for <code>Continuous</code> columns is the <code>Indicator</code> transform. It converts the column into multiple columns based on threshold values on the support of the data. By default, the threshold values are computed on a quantile <code>scale</code>:</p>
-<div id="493e3b2e" class="cell" data-execution_count="45">
+<div id="c5c30651" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>st <span class="op">|&gt;</span> <span class="fu">Indicator</span>(<span class="st">"b"</span>, k<span class="op">=</span><span class="fl">3</span>, scale<span class="op">=:</span>quantile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <div>
@@ -3121,7 +3121,7 @@ Note
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="coordinate"><span class="header-section-number">5.3.1</span> Coordinate</h3>
 <p>A coordinate transform is a geometric transform that modifies the coordinates of all points in the domain without any advanced topological modification (i.e., connectivities are preserved). The most prominent examples of coordinate transforms are <code>Translate</code>, <code>Rotate</code> and <code>Scale</code>.</p>
 <p>Let’s load an additional geotable to see these transforms in action:</p>
-<div id="f3c31d48" class="cell" data-execution_count="46">
+<div id="b241d87f" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>bt <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/beethoven.ply"</span>)</span>
@@ -3140,7 +3140,7 @@ Note
 </div>
 </div>
 <p>The Beethoven domain has been saved in the <code>.ply</code> file in a position that is not ideal for visualization. We can rotate this domain with any active rotation specification from <a href="https://github.com/JuliaGeometry/Rotations.jl">Rotations.jl</a> by <span class="citation" data-cites="Koolen2023">Koolen et al. (<a href="references.html#ref-Koolen2023" role="doc-biblioref">2023</a>)</span> to improve the visualization. For example, we can specify that we want to rotate all points in the mesh by analogy with a rotation between coordinates <code>(0, 1, 0)</code> and coordinates <code>(0, 0, 1)</code>:</p>
-<div id="d8c48d03" class="cell" data-execution_count="47">
+<div id="219e176e" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> bt <span class="op">|&gt;</span> <span class="fu">Rotate</span>((<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>))</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(rt.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3157,7 +3157,7 @@ Note
 </div>
 </div>
 <p>Beethoven is now standing up, but still facing the wall. Let’s rotate it once again by analogy between coordinates <code>(1, 0, 0)</code> and <code>(-1, 1, 0)</code>:</p>
-<div id="ba4c783e" class="cell" data-execution_count="48">
+<div id="6522ee71" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> rt <span class="op">|&gt;</span> <span class="fu">Rotate</span>((<span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>), (<span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>))</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(rt.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3174,7 +3174,7 @@ Note
 </div>
 </div>
 <p>Rotation specifications are also available in 2D space. As an example, we can rotate the 2D grid of our synthetic geotable by the counter clockwise angle <code>π/4</code>:</p>
-<div id="44633880" class="cell" data-execution_count="49">
+<div id="5548349d" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Rotate</span>(<span class="fu">Angle2d</span>(<span class="cn">π</span><span class="op">/</span><span class="fl">4</span>)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3189,7 +3189,7 @@ Note
 </div>
 </div>
 <p>In GIS, this new geotable would be called a rotated “raster”. As another example, let’s translate the geotable to the origin of the coordinate system with the <code>Translate</code> transform:</p>
-<div id="d123b357" class="cell" data-execution_count="50">
+<div id="71c9702a" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fu">centroid</span>(gt.geometry)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Translate</span>(<span class="fu">-coordinates</span>(c)<span class="op">...</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3206,7 +3206,7 @@ Note
 </div>
 </div>
 <p>and scale it with a positive factor for each dimension:</p>
-<div id="784e4fb6" class="cell" data-execution_count="51">
+<div id="900ae9c9" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">Scale</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3221,7 +3221,7 @@ Note
 </div>
 </div>
 <p>The <code>StdCoords</code> transform combines <code>Translate</code> and <code>Scale</code> to standardize the coordinates of the domain to the interval <code>[-0.5, 0.5]</code>:</p>
-<div id="5bdd9746" class="cell" data-execution_count="52">
+<div id="9e093ff0" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> <span class="fu">StdCoords</span>() <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3255,7 +3255,7 @@ Note
 <p>Advanced geometric transforms are provided that change the topology of the <code>domain</code> besides the coordinates of points. Some of these transforms can be useful to repair problematic geometries acquired from sensors in the real world.</p>
 <p>The <code>Repair</code> transform is parameterized by an integer <code>K</code> that identifies the repair to be performed. For example, <code>Repair{0}()</code> is a transform that removes duplicated vertices and faces in a domain represented by a mesh. The <code>Repair{9}()</code> on the other hand fixes the orientation of rings in polygonal areas so that the external boundary is oriented counter clockwise and the inner boundaries are oriented clockwise. The list of available repairs will continue to grow with the implementation of new geometric algorithms in the framework.</p>
 <p>To understand why geometric transforms are more general than coordinate transforms, let’s consider the following polygonal area with holes:</p>
-<div id="f894b509" class="cell" data-execution_count="53">
+<div id="b6259be4" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>outer <span class="op">=</span> [(<span class="fl">0.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.0</span>, <span class="fl">1.0</span>)]</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>hole1 <span class="op">=</span> [(<span class="fl">0.2</span>, <span class="fl">0.2</span>), (<span class="fl">0.4</span>, <span class="fl">0.2</span>), (<span class="fl">0.4</span>, <span class="fl">0.4</span>), (<span class="fl">0.2</span>, <span class="fl">0.4</span>)]</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>hole2 <span class="op">=</span> [(<span class="fl">0.6</span>, <span class="fl">0.2</span>), (<span class="fl">0.8</span>, <span class="fl">0.2</span>), (<span class="fl">0.8</span>, <span class="fl">0.4</span>), (<span class="fl">0.6</span>, <span class="fl">0.4</span>)]</span>
@@ -3275,7 +3275,7 @@ Note
 </div>
 </div>
 <p>We can connect the holes with the external boundary (or ring) using the <code>Bridge</code> transform:</p>
-<div id="730d250c" class="cell" data-execution_count="54">
+<div id="f557d3db" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>poly <span class="op">|&gt;</span> <span class="fu">Bridge</span>(<span class="fl">0.01</span>) <span class="op">|&gt;</span> viz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3291,7 +3291,7 @@ Note
 </div>
 <p>By looking at the visualization, we observe that the number of vertices changed to accommodate the so called “bridges” between the rings. The topology also changed as there are no holes in the resulting geometry.</p>
 <p>As a final example of advanced geometric transform, we illustrate the <code>TaubinSmoothing</code> transform, which gradually removes sharp boundaries of a manifold mesh:</p>
-<div id="39222c56" class="cell" data-execution_count="55">
+<div id="c9b4698a" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>st <span class="op">=</span> bt <span class="op">|&gt;</span> <span class="fu">TaubinSmoothing</span>(<span class="fl">30</span>)</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
@@ -3317,7 +3317,7 @@ Note
 <h2 data-number="5.4" class="anchored" data-anchor-id="geospatial-transforms"><span class="header-section-number">5.4</span> Geospatial transforms</h2>
 <p>Geospatial transforms are those transforms that operate on both the <code>values</code> <strong>and</strong> the <code>domain</code> of the geotable. They are common in geostatistical workflows that need to remove geospatial “trends” or workflows that need to extract geometries from domains.</p>
 <p>As an example, let’s consider the following geotable with a variable <code>z</code> that made of a trend component <code>μ</code> and a noise component <code>ϵ</code>:</p>
-<div id="a42bab58" class="cell" data-execution_count="56">
+<div id="ba436019" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quadratic + noise</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">range</span>(<span class="op">-</span><span class="fl">1</span>, stop<span class="op">=</span><span class="fl">1</span>, length<span class="op">=</span><span class="fl">100</span>)</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span> [x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span> for x <span class="kw">in</span> r, y <span class="kw">in</span> r]</span>
@@ -3338,7 +3338,7 @@ Note
 </div>
 </div>
 <p>We can use the <code>Detrend</code> transform to remove a trend of polynomial degree <code>2</code>:</p>
-<div id="fb2033a6" class="cell" data-execution_count="57">
+<div id="6ce75abf" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">|&gt;</span> <span class="fu">Detrend</span>(degree<span class="op">=</span><span class="fl">2</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3355,7 +3355,7 @@ Note
 <p>The remaining component can then be modeled with geostatistical models of geospatial correlation, which will be covered in <strong>Part IV</strong> of the book.</p>
 <p>Models of geospatial correlation such as variograms <span class="citation" data-cites="Hoffimann2019">(<a href="references.html#ref-Hoffimann2019" role="doc-biblioref">Hoffimann and Zadrozny 2019</a>)</span> require unique coordinates in the geotable and that is the purpose of the <code>UniqueCoords</code> transform. It removes duplicate points in the geotable and aggregates the <code>values</code> with custom aggregation functions.</p>
 <p>Let’s consider the following geotable stored in a <code>.png</code> file to illustrate another geospatial transform:</p>
-<div id="81d6e4e7" class="cell" data-execution_count="58">
+<div id="9874f4eb" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>letters <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/letters.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
@@ -3426,7 +3426,7 @@ Note
 </div>
 </div>
 <p>The <code>Potrace</code> transform can be used to extract complex geometries from a geotable over a 2D <code>Grid</code>. It transforms the <code>Grid</code> domain into a <code>GeometrySet</code> based on any column that contains a discrete set of marker values. In this example, we use the <code>color</code> as the column with markers:</p>
-<div id="3de0f35c" class="cell" data-execution_count="59">
+<div id="b0f3cd47" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>Ab <span class="op">=</span> letters <span class="op">|&gt;</span> <span class="fu">Potrace</span>(<span class="st">"color"</span>, ϵ<span class="op">=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <div>
@@ -3461,7 +3461,7 @@ Note
 </div>
 </div>
 <p>The option <code>ϵ</code> controls the deviation tolerance used to simplify the boundaries of the geometries. The higher is the tolerance, the less is the number of segments in the boundary:</p>
-<div id="46059e38" class="cell" data-execution_count="60">
+<div id="8885b56f" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(Ab.geometry[<span class="fl">2</span>], color <span class="op">=</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3476,7 +3476,7 @@ Note
 </div>
 </div>
 <p>In the reverse direction, we have the <code>Rasterize</code> transform, which takes a geotable over a <code>GeometrySet</code> and assigns the geometries to a <code>Grid</code>. In this transform, we can either provide an external grid for the the assignments, or request a grid size to discretize the <code>boundingbox</code> of all geometries:</p>
-<div id="3b9818a5" class="cell" data-execution_count="61">
+<div id="576012e4" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>]</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span>, <span class="fl">4.4</span>, <span class="fl">5.5</span>]</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> <span class="fu">PolyArea</span>((<span class="fl">2</span>, <span class="fl">0</span>), (<span class="fl">6</span>, <span class="fl">2</span>), (<span class="fl">2</span>, <span class="fl">2</span>))</span>
@@ -3537,7 +3537,7 @@ Note
 </div>
 </div>
 </div>
-<div id="8452af86" class="cell" data-execution_count="62">
+<div id="c7e4c759" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -3551,7 +3551,7 @@ Note
 </div>
 </div>
 </div>
-<div id="1a418164" class="cell" data-execution_count="63">
+<div id="86cfe1e7" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>nt <span class="op">=</span> gt <span class="op">|&gt;</span> <span class="fu">Rasterize</span>(<span class="fl">20</span>, <span class="fl">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <div>
@@ -3635,7 +3635,7 @@ Note
 </div>
 </div>
 </div>
-<div id="d406dd29" class="cell" data-execution_count="64">
+<div id="8a5ffb2c" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>nt <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
