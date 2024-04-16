@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="file-formats" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">3.2</span> File formats</h2>
 <p>Most GIS file formats do <strong>not</strong> preserve topological information. This means that neighborhood information is lost as soon as geometries are saved to disk. To illustrate this issue, we consider a geotable over a <code>CartesianGrid</code>:</p>
-<div id="733c4905" class="cell" data-execution_count="2">
+<div id="f0e75279" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>((A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>), B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -400,53 +400,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.82902</td>
-<td style="text-align: center;">0.891578</td>
+<td style="text-align: center;">0.164241</td>
+<td style="text-align: center;">0.562948</td>
 <td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.294748</td>
-<td style="text-align: center;">0.82181</td>
+<td style="text-align: center;">0.59019</td>
+<td style="text-align: center;">0.509818</td>
 <td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.853588</td>
-<td style="text-align: center;">0.996605</td>
+<td style="text-align: center;">0.720319</td>
+<td style="text-align: center;">0.0188277</td>
 <td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.550732</td>
-<td style="text-align: center;">0.11183</td>
+<td style="text-align: center;">0.0416395</td>
+<td style="text-align: center;">0.511655</td>
 <td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.566036</td>
-<td style="text-align: center;">0.484851</td>
+<td style="text-align: center;">0.59616</td>
+<td style="text-align: center;">0.392176</td>
 <td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.752605</td>
-<td style="text-align: center;">0.774172</td>
+<td style="text-align: center;">0.75092</td>
+<td style="text-align: center;">0.730826</td>
 <td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.0703109</td>
-<td style="text-align: center;">0.976915</td>
+<td style="text-align: center;">0.00279647</td>
+<td style="text-align: center;">0.636113</td>
 <td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.873204</td>
-<td style="text-align: center;">0.595318</td>
+<td style="text-align: center;">0.72922</td>
+<td style="text-align: center;">0.384358</td>
 <td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.751166</td>
-<td style="text-align: center;">0.738556</td>
+<td style="text-align: center;">0.534746</td>
+<td style="text-align: center;">0.261772</td>
 <td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.776049</td>
-<td style="text-align: center;">0.847659</td>
+<td style="text-align: center;">0.357367</td>
+<td style="text-align: center;">0.712609</td>
 <td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -460,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we save the geotable to a <code>.geojson</code> file on disk, and then load it back, we observe that the <code>CartesianGrid</code> gets replaced by a <code>GeometrySet</code>:</p>
-<div id="4d33b892" class="cell" data-execution_count="3">
+<div id="a03a2ecd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="fu">tempname</span>() <span class="op">*</span> <span class="st">".geojson"</span></span>
@@ -491,53 +491,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.82902</td>
-<td style="text-align: center;">0.891578</td>
+<td style="text-align: center;">0.164241</td>
+<td style="text-align: center;">0.562948</td>
 <td style="text-align: center;">PolyArea((0.0, 0.0), ..., (0.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.294748</td>
-<td style="text-align: center;">0.82181</td>
+<td style="text-align: center;">0.59019</td>
+<td style="text-align: center;">0.509818</td>
 <td style="text-align: center;">PolyArea((1.0, 0.0), ..., (1.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.853588</td>
-<td style="text-align: center;">0.996605</td>
+<td style="text-align: center;">0.720319</td>
+<td style="text-align: center;">0.0188277</td>
 <td style="text-align: center;">PolyArea((2.0, 0.0), ..., (2.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.550732</td>
-<td style="text-align: center;">0.11183</td>
+<td style="text-align: center;">0.0416395</td>
+<td style="text-align: center;">0.511655</td>
 <td style="text-align: center;">PolyArea((3.0, 0.0), ..., (3.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.566036</td>
-<td style="text-align: center;">0.484851</td>
+<td style="text-align: center;">0.59616</td>
+<td style="text-align: center;">0.392176</td>
 <td style="text-align: center;">PolyArea((4.0, 0.0), ..., (4.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.752605</td>
-<td style="text-align: center;">0.774172</td>
+<td style="text-align: center;">0.75092</td>
+<td style="text-align: center;">0.730826</td>
 <td style="text-align: center;">PolyArea((5.0, 0.0), ..., (5.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.0703109</td>
-<td style="text-align: center;">0.976915</td>
+<td style="text-align: center;">0.00279647</td>
+<td style="text-align: center;">0.636113</td>
 <td style="text-align: center;">PolyArea((6.0, 0.0), ..., (6.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.873204</td>
-<td style="text-align: center;">0.595318</td>
+<td style="text-align: center;">0.72922</td>
+<td style="text-align: center;">0.384358</td>
 <td style="text-align: center;">PolyArea((7.0, 0.0), ..., (7.0, 1.0))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.751166</td>
-<td style="text-align: center;">0.738556</td>
+<td style="text-align: center;">0.534746</td>
+<td style="text-align: center;">0.261772</td>
 <td style="text-align: center;">PolyArea((8.0, 0.0), ..., (8.0, 1.0))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.776049</td>
-<td style="text-align: center;">0.847659</td>
+<td style="text-align: center;">0.357367</td>
+<td style="text-align: center;">0.712609</td>
 <td style="text-align: center;">PolyArea((9.0, 0.0), ..., (9.0, 1.0))</td>
 </tr>
 <tr class="odd">
@@ -551,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Other file formats such as <code>.ply</code> and <code>.msh</code> are widely used in <a href="https://en.wikipedia.org/wiki/Computer_graphics">computer graphics</a> to save geospatial data over meshes, and preserve topological information:</p>
-<div id="8c6944b4" class="cell" data-execution_count="4">
+<div id="f0ea8264" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>beethoven <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/beethoven.ply"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(beethoven.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -575,7 +575,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Do we gain anything by not adhering to <strong>programming interfaces</strong>?</p>
 </blockquote>
 <p>The answer is an emphatic <strong>YES</strong>! It means that we have total freedom to innovate and improve the representation of various geometries and geospatial domains with Julia’s amazing type system. To give a simple example, let’s take a look at the <code>Triangle</code> geometry:</p>
-<div id="fcf3279a" class="cell" data-execution_count="5">
+<div id="8909cb7c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">Triangle</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Triangle{2,Float64}
@@ -585,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we treated this geometry as a generic polygon represented by a vector of vertices in memory, like it is done in <a href="https://github.com/JuliaGeo/GeoInterface.jl">GeoInterface.jl</a> for example, we wouldn’t be able to dispatch optimized code that is only valid for a triangle:</p>
-<div id="d77d44b8" class="cell" data-execution_count="6">
+<div id="1a788610" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@code_llvm</span> <span class="fu">isconvex</span>(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>;  @ /home/runner/.julia/packages/Meshes/5T0qz/src/predicates/isconvex.jl:57 within `isconvex`
