@@ -109,6 +109,11 @@ In database-style join, the predicate function `isequal` is applied to arbitrary
 columns of tables. In `geojoin`, **geometric predicate** functions are applied to
 the `geometry` column of geotables.
 
+The `tablejoin` function can be used for database-style join between a geotable
+and a simple table (e.g., `DataFrame`). The result will be a new geotable over a
+subset of geometries from the first argument. Please check the documentation for
+more details.
+
 :::
 
 ::: {.callout-note}

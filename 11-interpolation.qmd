@@ -272,6 +272,16 @@ hundreds of thousands of measurements and very large grids.
 
 :::
 
+::: {.callout-note}
+
+## Tip for all users
+
+The `InterpolateMissing` transform can be used to interpolate `missing`
+values in a geotable using the same algorithm of `InterpolateNeighbors`.
+Likewise, the `InterpolateNaN` can be used to interpolate `NaN` values.
+
+:::
+
 ## Congratulations!
 
 Congratulations on finishing **Part IV** of the book. The interpolation
