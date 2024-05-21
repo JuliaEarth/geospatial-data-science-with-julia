@@ -41,7 +41,7 @@ module to illustrate the concept for different values of $h$:
 ```{julia}
 using GeoArtifacts
 
-img = GeoArtifacts.image("Gaussian30x10")
+img = GeoStatsImages.get("Gaussian30x10")
 
 img |> viewer
 ```

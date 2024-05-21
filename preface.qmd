@@ -118,14 +118,14 @@ pkg"activate @GDSJL"
 pkg"add GeoStats@0.56.0"
 
 # install IO module
-pkg"add GeoIO@1.12.12"
+pkg"add GeoIO@1.12.15"
 
 # install artifacts
-pkg"add GeoArtifacts@0.3.1"
+pkg"add GeoArtifacts@0.5.0"
 
 # install viz modules
-pkg"add CairoMakie@0.11.10"
-pkg"add PairPlots@2.7.1"
+pkg"add CairoMakie@0.11.11"
+pkg"add PairPlots@2.7.3"
 
 # install other modules
 pkg"add DataFrames@1.6.1"
