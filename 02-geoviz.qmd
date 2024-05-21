@@ -110,13 +110,6 @@ but any vector with the same length can be passed:
 viz(img.geometry, color = 1:length(img.A))
 ```
 
-::: {.callout-note}
-
-Any vector of Julia objects implementing the `ascolors` function can be
-passed to the `color` option.
-
-:::
-
 The `alpha` option can be used to control the transparency of each geometry
 in the domain:
 
@@ -282,6 +275,29 @@ geotable |> viewer
 ```
 
 :::
+
+## cbar
+
+Any vector of Julia objects implementing the `getcolors`
+function from the [Colorfy.jl](https://github.com/JuliaGraphics/Colorfy.jl)
+module can be passed to the `color` option of `viz`/`viz!`.
+The final vector of colors will be a function of the `colormap`
+and `colorrange` options.
+
+To reproduce this behavior in the colorbar, the framework provides
+the `cbar` function. It is similar to Makie's colorbar, but addresses
+various practical challenges with `missing` values, units, etc.
+
+```{julia}
+grid = CartesianGrid(2, 2)
+vals = [1, missing, 3, 4]
+cmap = "cividis"
+
+fig = Mke.Figure()
+viz(fig[1,1], grid, color = vals, colormap = cmap)
+cbar(fig[1,2], vals, colormap = cmap)
+fig
+```
 
 We are now equipped with a set of visualization functions that can
 really improve the speed at which we explore and analyze geospatial data.

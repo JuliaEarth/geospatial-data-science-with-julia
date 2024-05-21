@@ -295,6 +295,9 @@ values are `missing`. This is the purpose of the `DropMissing` transform:
 georef((a=[1,missing,3], b=[4,5,6])) |> DropMissing()
 ```
 
+The `DropNaN` is an alternative to drop all rows for which the selected column values
+are `NaN`.
+
 ### Statistical
 
 The framework provides various feature transforms for statistical analysis. We will
@@ -632,7 +635,11 @@ nt |> viewer
 ```
 
 The values of the variables are aggregated at geometric intersections using a default aggregation function,
-which can be overwritten with an option.
+which can be overwritten with an option. Once the geotable is defined over a `Grid`, it is possible to
+refine or coarsen the grid with the `Downscale` and `Upscale` transforms.
+
+The `Transfer` of values to a new geospatial domain is another very useful geospatial transform. The
+`Aggregate` transform is related, but aggregates the values with given aggregation functions.
 
 ## Remarks
 
@@ -647,7 +654,7 @@ Some additional remarks:
 - One of the major advantages of transforms compared to traditional row/column
   access in data science is that they **preserve geospatial information**.
   There is no need to keep track of indices in arrays to repeatedly
-  reattach attributes to geometries.
+  reattach values to geometries.
 - Transforms can be organized into three classes---feature, geometric and
   geospatial---depending on how they operate with the `values` and the
   `domain` of the geotable:
