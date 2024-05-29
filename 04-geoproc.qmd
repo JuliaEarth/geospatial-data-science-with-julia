@@ -376,7 +376,7 @@ for discretization, simplification, refinement, convex hull, etc.
 Below we illustrate some of these algorithms, which will be useful in future examples:
 
 ```{julia}
-points = rand(Point2, 100)
+points = rand(Point{2}, 100)
 ```
 
 ```{julia}

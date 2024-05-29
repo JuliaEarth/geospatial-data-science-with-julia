@@ -195,7 +195,7 @@ Second, let's compute the `convexhull` of points projected on the horizontal pla
 
 ```{julia}
 function proj(point)
-  x, y, z = coordinates(point)
+  x, y, z = to(point)
   Point(x, y)
 end
 
@@ -226,7 +226,7 @@ Let's create a simple terrain elevation model by interpolating the vertical
 ```{julia}
 ztable = @chain dtable begin
   @groupby(:HOLEID)
-  @transform(:Z = last(coordinates(:geometry)), :geometry = proj(:geometry))
+  @transform(:Z = last(to(:geometry)), :geometry = proj(:geometry))
   @combine(:Z = first(:Z), :geometry = first(:geometry))
 end
 ```
@@ -247,7 +247,7 @@ Finally, we can filter the blocks for which the "Z" coordinate is below the terr
 
 ```{julia}
 p(h) = proj(centroid(h))
-Z(h) = last(coordinates(centroid(h)))
+Z(h) = last(to(centroid(h)))
 
 zdict = Dict(ztable.geometry .=> ztable.Z)
 
