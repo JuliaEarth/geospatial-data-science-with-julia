@@ -440,9 +440,9 @@ version = "0.6.3"
 
 [[deps.CoordRefSystems]]
 deps = ["Random", "Rotations", "StaticArrays", "Unitful", "Zygote"]
-git-tree-sha1 = "2c70878103f14dd757c61c7a738fc756d465f530"
+git-tree-sha1 = "fa717360424dbe43a788b15eceb1c5f0aedcafc2"
 uuid = "b46f11dc-f210-4604-bfba-323c1ec968cb"
-version = "0.7.1"
+version = "0.7.2"
 
 [[deps.CpuId]]
 deps = ["Markdown"]
@@ -613,9 +613,9 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[deps.Distributions]]
 deps = ["AliasTables", "FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SpecialFunctions", "Statistics", "StatsAPI", "StatsBase", "StatsFuns"]
-git-tree-sha1 = "22c595ca4146c07b16bcf9c8bea86f731f7109d2"
+git-tree-sha1 = "9c405847cc7ecda2dc921ccf18b47ca150d7317e"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.108"
+version = "0.25.109"
 
     [deps.Distributions.extensions]
     DistributionsChainRulesCoreExt = "ChainRulesCore"
@@ -1140,9 +1140,9 @@ uuid = "9b13fd28-a010-5f03-acff-a1bbcff69959"
 version = "1.0.0"
 
 [[deps.Inflate]]
-git-tree-sha1 = "ea8031dea4aff6bd41f1df8f2fdfb25b33626381"
+git-tree-sha1 = "d1b1b796e47d94588b3757fe84fbf65a5ec4a80d"
 uuid = "d25df0c9-e2be-5dd7-82c8-3ad0b3e990b9"
-version = "0.1.4"
+version = "0.1.5"
 
 [[deps.InitialValues]]
 git-tree-sha1 = "4da0f88e9a39111c2fa3add390ab15f3a44f3ca3"
@@ -1582,9 +1582,9 @@ version = "0.3.2"
 
 [[deps.Meshes]]
 deps = ["Bessels", "CircularArrays", "Colorfy", "CoordRefSystems", "Distances", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "SparseArrays", "StaticArrays", "StatsBase", "Transducers", "TransformsBase", "Unitful"]
-git-tree-sha1 = "75f003f5b6b60f653944e0e7fc65a84c2e93a821"
+git-tree-sha1 = "b2a1c88dba3b5dd9b9395d1b06953420035a064c"
 uuid = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
-version = "0.43.3"
+version = "0.43.4"
 weakdeps = ["Makie"]
 
     [deps.Meshes.extensions]
