@@ -234,7 +234,7 @@ Random.seed!(2023)
 d1 = rand(p1, g, [:Z => Float64], LUMethod())
 d2 = rand(p2, g, [:Z => Float64], LUMethod())
 
-f(x) = first(coordinates(centroid(x)))
+f(x) = ustrip(first(to(centroid(x))))
 
 fig = Mke.Figure()
 Mke.lines(fig[1,1], f.(d1.geometry), d1.Z, color = "black", axis = (; title="sill: 1"))
@@ -264,7 +264,7 @@ Random.seed!(2023)
 d1 = rand(p1, g, [:Z => Float64], LUMethod())
 d2 = rand(p2, g, [:Z => Float64], LUMethod())
 
-f(x) = first(coordinates(centroid(x)))
+f(x) = ustrip(first(to(centroid(x))))
 
 fig = Mke.Figure()
 Mke.lines(fig[1,1], f.(d1.geometry), d1.Z, color = "black", axis = (; title="nugget: 0.1"))

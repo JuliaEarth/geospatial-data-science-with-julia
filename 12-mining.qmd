@@ -195,7 +195,7 @@ Second, let's compute the `convexhull` of points projected on the horizontal pla
 
 ```{julia}
 function proj(point)
-  x, y, z = coordinates(point)
+  x, y, z = to(point)
   Point(x, y)
 end
 
@@ -226,7 +226,7 @@ Let's create a simple terrain elevation model by interpolating the vertical
 ```{julia}
 ztable = @chain dtable begin
   @groupby(:HOLEID)
-  @transform(:Z = last(coordinates(:geometry)), :geometry = proj(:geometry))
+  @transform(:Z = last(to(:geometry)), :geometry = proj(:geometry))
   @combine(:Z = first(:Z), :geometry = first(:geometry))
 end
 ```
@@ -247,7 +247,7 @@ Finally, we can filter the blocks for which the "Z" coordinate is below the terr
 
 ```{julia}
 p(h) = proj(centroid(h))
-Z(h) = last(coordinates(centroid(h)))
+Z(h) = last(to(centroid(h)))
 
 zdict = Dict(ztable.geometry .=> ztable.Z)
 
@@ -314,7 +314,7 @@ ns = setdiff(names(samples), ["geometry"])
 
 gs = [EmpiricalVariogram(samples, n, estimator = :cressie) for n in ns]
 
-γs = [GeoStatsFunctions.fit(Variogram, g, h -> exp(-h/100)) for g in gs]
+γs = [GeoStatsFunctions.fit(Variogram, g, h -> 1 / h^2) for g in gs]
 ```
 
 ::: {.callout-note}
@@ -406,10 +406,12 @@ Given the block model with the grade of copper and metallurgical recovery, we ca
 and apply the formula of economic value stated in our [objectives](#objectives):
 
 ```{julia}
-ρ = 2.75 # ton / m^3
-P = 4000 # U$ / ton
-Cₘ = 4 # U$ / ton
-Cₚ = 10 # U$ / ton
+ton = 1000u"kg"
+
+ρ = 2.75 * ton / 1u"m^3"
+P = 4000 / ton
+Cₘ = 4 / ton
+Cₚ = 10 / ton
 
 estim = @transform(estim,
   :value = volume(:geometry) * ρ * ((:Cu / 100) * :f * P - (Cₘ + Cₚ))

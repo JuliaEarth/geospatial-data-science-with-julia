@@ -473,7 +473,7 @@ let's translate the geotable to the origin of the coordinate system with the
 ```{julia}
 c = centroid(gt.geometry)
 
-gt |> Translate(-coordinates(c)...) |> viewer
+gt |> Translate(-to(c)...) |> viewer
 ```
 
 and scale it with a positive factor for each dimension:
