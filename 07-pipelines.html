@@ -363,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="operator" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="operator"><span class="header-section-number">7.2</span> Operator →</h2>
 <p>In our framework, the operator <code>→</code> (<code>\to</code>) can be used in place of the pipe operator to build lazy <strong>sequential pipelines</strong> of transforms. Consider the synthetic data from previous chapters:</p>
-<div id="49909904" class="cell" data-execution_count="2">
+<div id="7267b867" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">10000</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="fl">2</span><span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>) <span class="op">.+</span> <span class="fl">6</span>; <span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>)]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="fl">3</span><span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>); <span class="fl">2</span><span class="fu">randn</span>(N<span class="op">÷</span><span class="fl">2</span>)]</span>
@@ -376,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×5 GeoTable over 100×100 CartesianGrid{2,Float64}</caption>
+<caption>10000×5 GeoTable over 100×100 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -402,74 +402,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">6.74935</td>
-<td style="text-align: center;">-0.742962</td>
-<td style="text-align: center;">-0.118157</td>
-<td style="text-align: center;">-0.58245</td>
-<td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
+<td style="text-align: center;">5.61287</td>
+<td style="text-align: center;">-1.79882</td>
+<td style="text-align: center;">0.816882</td>
+<td style="text-align: center;">1.18608</td>
+<td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">3.89944</td>
-<td style="text-align: center;">7.3174</td>
-<td style="text-align: center;">0.817359</td>
-<td style="text-align: center;">1.32482</td>
-<td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
+<td style="text-align: center;">6.44026</td>
+<td style="text-align: center;">2.13886</td>
+<td style="text-align: center;">-1.7524</td>
+<td style="text-align: center;">-0.903515</td>
+<td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">7.03608</td>
-<td style="text-align: center;">3.9894</td>
-<td style="text-align: center;">-1.06085</td>
-<td style="text-align: center;">-1.24485</td>
-<td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
+<td style="text-align: center;">7.05358</td>
+<td style="text-align: center;">3.706</td>
+<td style="text-align: center;">-0.649298</td>
+<td style="text-align: center;">-0.880805</td>
+<td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">3.43296</td>
-<td style="text-align: center;">2.02846</td>
-<td style="text-align: center;">-0.272352</td>
-<td style="text-align: center;">-0.373822</td>
-<td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
+<td style="text-align: center;">6.14997</td>
+<td style="text-align: center;">0.427797</td>
+<td style="text-align: center;">-0.313374</td>
+<td style="text-align: center;">-1.10672</td>
+<td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">6.67986</td>
-<td style="text-align: center;">-3.87741</td>
-<td style="text-align: center;">0.380659</td>
-<td style="text-align: center;">0.863059</td>
-<td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
+<td style="text-align: center;">4.9732</td>
+<td style="text-align: center;">0.605719</td>
+<td style="text-align: center;">0.0166028</td>
+<td style="text-align: center;">-0.57307</td>
+<td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">8.2645</td>
-<td style="text-align: center;">3.78806</td>
-<td style="text-align: center;">-0.926606</td>
-<td style="text-align: center;">-0.818534</td>
-<td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
+<td style="text-align: center;">7.26674</td>
+<td style="text-align: center;">3.02622</td>
+<td style="text-align: center;">-3.32719</td>
+<td style="text-align: center;">-3.00985</td>
+<td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">4.93876</td>
-<td style="text-align: center;">-1.32222</td>
-<td style="text-align: center;">1.54047</td>
-<td style="text-align: center;">2.29844</td>
-<td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
+<td style="text-align: center;">6.13643</td>
+<td style="text-align: center;">1.02251</td>
+<td style="text-align: center;">-0.632118</td>
+<td style="text-align: center;">-0.144256</td>
+<td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2.14703</td>
-<td style="text-align: center;">-0.285699</td>
-<td style="text-align: center;">-0.250807</td>
-<td style="text-align: center;">-0.219861</td>
-<td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
+<td style="text-align: center;">4.4188</td>
+<td style="text-align: center;">-2.22979</td>
+<td style="text-align: center;">0.988618</td>
+<td style="text-align: center;">1.63186</td>
+<td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">3.28554</td>
-<td style="text-align: center;">-0.243026</td>
-<td style="text-align: center;">-1.24466</td>
-<td style="text-align: center;">-1.0756</td>
-<td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
+<td style="text-align: center;">6.34155</td>
+<td style="text-align: center;">1.73756</td>
+<td style="text-align: center;">0.0349829</td>
+<td style="text-align: center;">-1.1973</td>
+<td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">3.91252</td>
-<td style="text-align: center;">-0.80502</td>
-<td style="text-align: center;">-0.852234</td>
-<td style="text-align: center;">-0.311361</td>
-<td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
+<td style="text-align: center;">2.0967</td>
+<td style="text-align: center;">6.55379</td>
+<td style="text-align: center;">-0.75886</td>
+<td style="text-align: center;">0.441282</td>
+<td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -484,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And suppose that we are interested in converting the columns “a”, “b” and “c” of the geotable with the <code>Quantile</code> transform. Instead of creating the intermediate geotable with the <code>Select</code> transform, and then sending the result to the <code>Quantile</code> transform, we can create the entire pipeline without reference to the data:</p>
-<div id="6d5c6c27" class="cell" data-execution_count="3">
+<div id="2f21e5e7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> <span class="fu">Select</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>) <span class="op">→</span> <span class="fu">Quantile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>SequentialTransform
@@ -493,12 +493,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The operator <code>→</code> creates a special <code>SequentialTransform</code>, which can be applied like any other transform in the framework:</p>
-<div id="abfd46d1" class="cell" data-execution_count="4">
+<div id="2cc659ea" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×4 GeoTable over 100×100 CartesianGrid{2,Float64}</caption>
+<caption>10000×4 GeoTable over 100×100 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -521,64 +521,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.914984</td>
-<td style="text-align: center;">-0.311001</td>
-<td style="text-align: center;">-0.123388</td>
-<td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
+<td style="text-align: center;">0.547551</td>
+<td style="text-align: center;">-0.735558</td>
+<td style="text-align: center;">0.817575</td>
+<td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.184017</td>
-<td style="text-align: center;">2.62756</td>
-<td style="text-align: center;">0.811289</td>
-<td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
+<td style="text-align: center;">0.804688</td>
+<td style="text-align: center;">0.868355</td>
+<td style="text-align: center;">-1.76241</td>
+<td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.02704</td>
-<td style="text-align: center;">1.55898</td>
-<td style="text-align: center;">-1.04289</td>
-<td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
+<td style="text-align: center;">1.03087</td>
+<td style="text-align: center;">1.42416</td>
+<td style="text-align: center;">-0.638728</td>
+<td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.124146</td>
-<td style="text-align: center;">0.823542</td>
-<td style="text-align: center;">-0.276974</td>
-<td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
+<td style="text-align: center;">0.712105</td>
+<td style="text-align: center;">0.165945</td>
+<td style="text-align: center;">-0.301806</td>
+<td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.890495</td>
-<td style="text-align: center;">-1.5423</td>
-<td style="text-align: center;">0.383701</td>
-<td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
+<td style="text-align: center;">0.380196</td>
+<td style="text-align: center;">0.243265</td>
+<td style="text-align: center;">0.0288302</td>
+<td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.51253</td>
-<td style="text-align: center;">1.50083</td>
-<td style="text-align: center;">-0.907391</td>
-<td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
+<td style="text-align: center;">1.11325</td>
+<td style="text-align: center;">1.20346</td>
+<td style="text-align: center;">-3.09023</td>
+<td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.381813</td>
-<td style="text-align: center;">-0.542608</td>
-<td style="text-align: center;">1.54395</td>
-<td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
+<td style="text-align: center;">0.706624</td>
+<td style="text-align: center;">0.418201</td>
+<td style="text-align: center;">-0.623433</td>
+<td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.0142883</td>
-<td style="text-align: center;">-0.130463</td>
-<td style="text-align: center;">-0.258009</td>
-<td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
+<td style="text-align: center;">0.264493</td>
+<td style="text-align: center;">-0.913461</td>
+<td style="text-align: center;">0.987495</td>
+<td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.10623</td>
-<td style="text-align: center;">-0.113543</td>
-<td style="text-align: center;">-1.20864</td>
-<td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
+<td style="text-align: center;">0.772193</td>
+<td style="text-align: center;">0.709201</td>
+<td style="text-align: center;">0.0481459</td>
+<td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.185292</td>
-<td style="text-align: center;">-0.335564</td>
-<td style="text-align: center;">-0.834854</td>
-<td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
+<td style="text-align: center;">0.00902398</td>
+<td style="text-align: center;">2.36562</td>
+<td style="text-align: center;">-0.749095</td>
+<td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -592,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It will perform optimizations whenever possible. For instance, we know a priori that adding the <code>Identity</code> transform anywhere in the pipeline doesn’t have any effect:</p>
-<div id="8a1d09a3" class="cell" data-execution_count="5">
+<div id="4b727311" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">→</span> <span class="fu">Identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>SequentialTransform
@@ -605,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="7.3" class="anchored" data-anchor-id="operator-1"><span class="header-section-number">7.3</span> Operator ⊔</h2>
 <p>The operator <code>⊔</code> (<code>\sqcup</code>) can be used to create lazy <strong>parallel transforms</strong>. There is no equivalent in Julia as this operator is very specific to tables. It combines the geotables produced by two or more pipelines into a single geotable with the disjoint union of all columns.</p>
 <p>Let’s illustrate this concept with two pipelines:</p>
-<div id="9380a417" class="cell" data-execution_count="6">
+<div id="b9ed0bdd" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline1 <span class="op">=</span> <span class="fu">Select</span>(<span class="st">"a"</span>) <span class="op">→</span> <span class="fu">Indicator</span>(<span class="st">"a"</span>, k<span class="op">=</span><span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>SequentialTransform
@@ -613,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └─ Indicator(:a, 3, :quantile, false)</code></pre>
 </div>
 </div>
-<div id="2d6f2ec4" class="cell" data-execution_count="7">
+<div id="aedadf9c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pipeline2 <span class="op">=</span> <span class="fu">Select</span>(<span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>) <span class="op">→</span> <span class="fu">PCA</span>(maxdim<span class="op">=</span><span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>SequentialTransform
@@ -623,12 +623,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The first pipeline creates 3 indicator variables from variable “a”:</p>
-<div id="0b14cd47" class="cell" data-execution_count="8">
+<div id="29f20feb" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> pipeline1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×4 GeoTable over 100×100 CartesianGrid{2,Float64}</caption>
+<caption>10000×4 GeoTable over 100×100 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a_1</th>
@@ -654,61 +654,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
+<td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -722,12 +722,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The second pipeline runs principal component analysis with variables “b”, “c” and “d” and produces 2 principal components:</p>
-<div id="a870f9c8" class="cell" data-execution_count="9">
+<div id="21f52c8c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> pipeline2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×3 GeoTable over 100×100 CartesianGrid{2,Float64}</caption>
+<caption>10000×3 GeoTable over 100×100 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">PC1</th>
@@ -747,54 +747,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.420657</td>
-<td style="text-align: center;">-0.306115</td>
-<td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
+<td style="text-align: center;">-1.30411</td>
+<td style="text-align: center;">-0.705705</td>
+<td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.29903</td>
-<td style="text-align: center;">2.88187</td>
-<td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
+<td style="text-align: center;">1.7843</td>
+<td style="text-align: center;">0.815191</td>
+<td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.5284</td>
-<td style="text-align: center;">1.51047</td>
-<td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
+<td style="text-align: center;">0.995355</td>
+<td style="text-align: center;">1.42745</td>
+<td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.431916</td>
-<td style="text-align: center;">0.773855</td>
-<td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
+<td style="text-align: center;">0.89266</td>
+<td style="text-align: center;">0.153745</td>
+<td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.829214</td>
-<td style="text-align: center;">-1.50045</td>
-<td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
+<td style="text-align: center;">0.335054</td>
+<td style="text-align: center;">0.224513</td>
+<td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1.17618</td>
-<td style="text-align: center;">1.44</td>
-<td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
+<td style="text-align: center;">4.17888</td>
+<td style="text-align: center;">1.15305</td>
+<td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-2.47919</td>
-<td style="text-align: center;">-0.460281</td>
-<td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
+<td style="text-align: center;">0.530975</td>
+<td style="text-align: center;">0.385306</td>
+<td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.300802</td>
-<td style="text-align: center;">-0.126563</td>
-<td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
+<td style="text-align: center;">-1.69739</td>
+<td style="text-align: center;">-0.872184</td>
+<td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1.51276</td>
-<td style="text-align: center;">-0.142771</td>
-<td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
+<td style="text-align: center;">0.704076</td>
+<td style="text-align: center;">0.66373</td>
+<td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.772738</td>
-<td style="text-align: center;">-0.344043</td>
-<td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
+<td style="text-align: center;">0.2697</td>
+<td style="text-align: center;">2.5359</td>
+<td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -807,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can combine the two pipelines into a single pipeline that executes in parallel:</p>
-<div id="cdd41bdb" class="cell" data-execution_count="10">
+<div id="36d95968" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> pipeline1 <span class="op">⊔</span> pipeline2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>ParallelTableTransform
@@ -820,12 +820,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    └─ EigenAnalysis(:V, 2, 1.0)</code></pre>
 </div>
 </div>
-<div id="e24d3cb6" class="cell" data-execution_count="11">
+<div id="151794f4" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>10000×6 GeoTable over 100×100 CartesianGrid{2,Float64}</caption>
+<caption>10000×6 GeoTable over 100×100 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a_1</th>
@@ -857,81 +857,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">0.420657</td>
-<td style="text-align: center;">-0.306115</td>
-<td style="text-align: center;">Quadrangle((0.0, 0.0), ..., (0.0, 1.0))</td>
+<td style="text-align: center;">-1.30411</td>
+<td style="text-align: center;">-0.705705</td>
+<td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">-1.29903</td>
-<td style="text-align: center;">2.88187</td>
-<td style="text-align: center;">Quadrangle((1.0, 0.0), ..., (1.0, 1.0))</td>
+<td style="text-align: center;">1.7843</td>
+<td style="text-align: center;">0.815191</td>
+<td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">1.5284</td>
-<td style="text-align: center;">1.51047</td>
-<td style="text-align: center;">Quadrangle((2.0, 0.0), ..., (2.0, 1.0))</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">0.431916</td>
-<td style="text-align: center;">0.773855</td>
-<td style="text-align: center;">Quadrangle((3.0, 0.0), ..., (3.0, 1.0))</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">-0.829214</td>
-<td style="text-align: center;">-1.50045</td>
-<td style="text-align: center;">Quadrangle((4.0, 0.0), ..., (4.0, 1.0))</td>
+<td style="text-align: center;">0.995355</td>
+<td style="text-align: center;">1.42745</td>
+<td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">1.17618</td>
-<td style="text-align: center;">1.44</td>
-<td style="text-align: center;">Quadrangle((5.0, 0.0), ..., (5.0, 1.0))</td>
+<td style="text-align: center;">0.89266</td>
+<td style="text-align: center;">0.153745</td>
+<td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-2.47919</td>
-<td style="text-align: center;">-0.460281</td>
-<td style="text-align: center;">Quadrangle((6.0, 0.0), ..., (6.0, 1.0))</td>
+<td style="text-align: center;">0.335054</td>
+<td style="text-align: center;">0.224513</td>
+<td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">0.300802</td>
-<td style="text-align: center;">-0.126563</td>
-<td style="text-align: center;">Quadrangle((7.0, 0.0), ..., (7.0, 1.0))</td>
+<td style="text-align: center;">4.17888</td>
+<td style="text-align: center;">1.15305</td>
+<td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">1.51276</td>
-<td style="text-align: center;">-0.142771</td>
-<td style="text-align: center;">Quadrangle((8.0, 0.0), ..., (8.0, 1.0))</td>
+<td style="text-align: center;">0.530975</td>
+<td style="text-align: center;">0.385306</td>
+<td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">0.772738</td>
-<td style="text-align: center;">-0.344043</td>
-<td style="text-align: center;">Quadrangle((9.0, 0.0), ..., (9.0, 1.0))</td>
+<td style="text-align: center;">-1.69739</td>
+<td style="text-align: center;">-0.872184</td>
+<td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">0.704076</td>
+<td style="text-align: center;">0.66373</td>
+<td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">0.2697</td>
+<td style="text-align: center;">2.5359</td>
+<td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -952,7 +952,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="7.4" class="anchored" data-anchor-id="revertibility"><span class="header-section-number">7.4</span> Revertibility</h2>
 <p>An important concept related to pipelines that is very useful in geospatial data science is <strong>revertibility</strong>. The concept is useful whenever we need to answer geoscientific questions in terms of variables that have been transformed for geostatistical analysis.</p>
 <p>Let’s illustrate the concept with the following geotable and pipeline:</p>
-<div id="30ed99d4" class="cell" data-execution_count="12">
+<div id="255c4f7c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="op">-</span><span class="fl">1.0</span>, <span class="fl">4.0</span>, <span class="fl">1.6</span>, <span class="fl">3.4</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="fl">1.6</span>, <span class="fl">3.4</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">4.0</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> [<span class="fl">3.4</span>, <span class="fl">2.0</span>, <span class="fl">3.6</span>, <span class="op">-</span><span class="fl">1.0</span>]</span>
@@ -962,7 +962,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×4 GeoTable over 4 PointSet{2,Float64}</caption>
+<caption>4×4 GeoTable over 4 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -974,7 +974,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -988,32 +988,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">3.4</td>
-<td style="text-align: center;">(0.207162, 0.233484)</td>
+<td style="text-align: center;">(x: 0.886209 m, y: 0.967635 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">2.0</td>
-<td style="text-align: center;">(0.658892, 0.0844183)</td>
+<td style="text-align: center;">(x: 0.901862 m, y: 0.768065 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">3.6</td>
-<td style="text-align: center;">(0.642792, 0.47791)</td>
+<td style="text-align: center;">(x: 0.540021 m, y: 0.993512 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">-1.0</td>
-<td style="text-align: center;">(0.0670844, 0.429661)</td>
+<td style="text-align: center;">(x: 0.330735 m, y: 0.50596 m)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="de215316" class="cell" data-execution_count="13">
+<div id="9f080b70" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> <span class="fu">Center</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Center transform
@@ -1021,12 +1021,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We saw that our pipelines can be evaluated with Julia’s pipe operator:</p>
-<div id="62e7b95c" class="cell" data-execution_count="14">
+<div id="0e1a9a35" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">|&gt;</span> pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×4 GeoTable over 4 PointSet{2,Float64}</caption>
+<caption>4×4 GeoTable over 4 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1038,7 +1038,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1052,25 +1052,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">-3.0</td>
 <td style="text-align: center;">-0.4</td>
 <td style="text-align: center;">1.4</td>
-<td style="text-align: center;">(0.207162, 0.233484)</td>
+<td style="text-align: center;">(x: 0.886209 m, y: 0.967635 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2.0</td>
 <td style="text-align: center;">1.4</td>
 <td style="text-align: center;">0.0</td>
-<td style="text-align: center;">(0.658892, 0.0844183)</td>
+<td style="text-align: center;">(x: 0.901862 m, y: 0.768065 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">-0.4</td>
 <td style="text-align: center;">-3.0</td>
 <td style="text-align: center;">1.6</td>
-<td style="text-align: center;">(0.642792, 0.47791)</td>
+<td style="text-align: center;">(x: 0.540021 m, y: 0.993512 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">1.4</td>
 <td style="text-align: center;">2.0</td>
 <td style="text-align: center;">-3.0</td>
-<td style="text-align: center;">(0.0670844, 0.429661)</td>
+<td style="text-align: center;">(x: 0.330735 m, y: 0.50596 m)</td>
 </tr>
 </tbody>
 </table>
@@ -1078,14 +1078,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In order to revert a pipeline, however; we need to save auxiliary constants that were used to transform the data (e.g., mean of selected columns). The <code>apply</code> function serves this purpose:</p>
-<div id="874bcb6a" class="cell" data-execution_count="15">
+<div id="b4c160b0" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>newtable, cache <span class="op">=</span> <span class="fu">apply</span>(pipeline, geotable)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>newtable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×4 GeoTable over 4 PointSet{2,Float64}</caption>
+<caption>4×4 GeoTable over 4 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1097,7 +1097,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1111,25 +1111,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">-3.0</td>
 <td style="text-align: center;">-0.4</td>
 <td style="text-align: center;">1.4</td>
-<td style="text-align: center;">(0.207162, 0.233484)</td>
+<td style="text-align: center;">(x: 0.886209 m, y: 0.967635 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2.0</td>
 <td style="text-align: center;">1.4</td>
 <td style="text-align: center;">0.0</td>
-<td style="text-align: center;">(0.658892, 0.0844183)</td>
+<td style="text-align: center;">(x: 0.901862 m, y: 0.768065 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">-0.4</td>
 <td style="text-align: center;">-3.0</td>
 <td style="text-align: center;">1.6</td>
-<td style="text-align: center;">(0.642792, 0.47791)</td>
+<td style="text-align: center;">(x: 0.540021 m, y: 0.993512 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">1.4</td>
 <td style="text-align: center;">2.0</td>
 <td style="text-align: center;">-3.0</td>
-<td style="text-align: center;">(0.0670844, 0.429661)</td>
+<td style="text-align: center;">(x: 0.330735 m, y: 0.50596 m)</td>
 </tr>
 </tbody>
 </table>
@@ -1137,18 +1137,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The function produces the new geotable as usual and an additional <code>cache</code> with all the information needed to revert the transforms in the pipeline. We say that a pipeline <code>isrevertible</code>, if there is an efficient way to revert its transforms starting from any geotable that has the same schema of the geotable produced by the <code>apply</code> function:</p>
-<div id="7fa3111a" class="cell" data-execution_count="16">
+<div id="5a954140" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">isrevertible</span>(pipeline)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>true</code></pre>
 </div>
 </div>
-<div id="77d6c565" class="cell" data-execution_count="17">
+<div id="b5bc6f42" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">revert</span>(pipeline, newtable, cache)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×4 GeoTable over 4 PointSet{2,Float64}</caption>
+<caption>4×4 GeoTable over 4 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1160,7 +1160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1174,25 +1174,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">3.4</td>
-<td style="text-align: center;">(0.207162, 0.233484)</td>
+<td style="text-align: center;">(x: 0.886209 m, y: 0.967635 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">2.0</td>
-<td style="text-align: center;">(0.658892, 0.0844183)</td>
+<td style="text-align: center;">(x: 0.901862 m, y: 0.768065 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">1.6</td>
 <td style="text-align: center;">-1.0</td>
 <td style="text-align: center;">3.6</td>
-<td style="text-align: center;">(0.642792, 0.47791)</td>
+<td style="text-align: center;">(x: 0.540021 m, y: 0.993512 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">3.4</td>
 <td style="text-align: center;">4.0</td>
 <td style="text-align: center;">-1.0</td>
-<td style="text-align: center;">(0.0670844, 0.429661)</td>
+<td style="text-align: center;">(x: 0.330735 m, y: 0.50596 m)</td>
 </tr>
 </tbody>
 </table>

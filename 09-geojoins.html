@@ -356,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="9.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">9.1</span> Motivation</h2>
 <p>The split-apply-combine pattern that we learned in the previous chapter requires a <strong>single</strong> geotable with all the relevant information in it. However, many questions in geospatial data science can only be answered with information that is spread across <strong>multiple</strong> geotables. Hence, the need to <strong>join</strong> these geotables before attempting to <code>@groupby</code>, <code>@transform</code> and <code>@combine</code> the information.</p>
 <p>Let’s consider a simple example where we are given two geotables, one containing people who shared their latitude and longitude coordinates:</p>
-<div id="516f9296" class="cell" data-execution_count="2">
+<div id="967f20c6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>5×4 GeoTable over 5 PointSet{2,Float64}</caption>
+<caption>5×4 GeoTable over 5 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -381,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -395,31 +395,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
-<td style="text-align: center;">(-43.1789, -22.9671)</td>
+<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
-<td style="text-align: center;">(-122.17, 37.4277)</td>
+<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
-<td style="text-align: center;">(153.044, -27.4862)</td>
+<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
-<td style="text-align: center;">(116.408, 39.9036)</td>
+<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
-<td style="text-align: center;">(-32.4114, -3.84731)</td>
+<td style="text-align: center;">(x: -32.4114 m, y: -3.84731 m)</td>
 </tr>
 </tbody>
 </table>
@@ -427,14 +427,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>And another containing countries in the world according to the <a href="https://www.naturalearthdata.com">Natural Earth</a> project:</p>
-<div id="564c6cc3" class="cell" data-execution_count="3">
+<div id="90f90f75" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>, numbertype <span class="op">=</span> <span class="dt">Float64</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>177×3 GeoTable over 177 GeometrySet{2,Float64}</caption>
+<caption>177×3 GeoTable over 177 GeometrySet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
@@ -527,7 +527,7 @@ Note
 </div>
 </div>
 <p>Let’s visualize the geometries of these two geotables:</p>
-<div id="986fd789" class="cell" data-execution_count="4">
+<div id="9ae7f1a7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], title <span class="op">=</span> <span class="st">"People and countries"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              xlabel <span class="op">=</span> <span class="st">"longitude"</span>, ylabel <span class="op">=</span> <span class="st">"latitude"</span>)</span>
@@ -551,12 +551,12 @@ Note
 <section id="joining-geotables" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="joining-geotables"><span class="header-section-number">9.2</span> Joining geotables</h2>
 <p>The <code>geojoin</code> function can be used to join two geotables using a <strong>geometric predicate</strong> function:</p>
-<div id="28ecfa0c" class="cell" data-execution_count="5">
+<div id="f02f45ff" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, pred <span class="op">=</span> <span class="op">∈</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>5×6 GeoTable over 5 PointSet{2,Float64}</caption>
+<caption>5×6 GeoTable over 5 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -572,7 +572,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -590,7 +590,7 @@ Note
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(-43.1789, -22.9671)</td>
+<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
@@ -598,7 +598,7 @@ Note
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
-<td style="text-align: center;">(-122.17, 37.4277)</td>
+<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
@@ -606,7 +606,7 @@ Note
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
-<td style="text-align: center;">(153.044, -27.4862)</td>
+<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
@@ -614,7 +614,7 @@ Note
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
-<td style="text-align: center;">(116.408, 39.9036)</td>
+<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
@@ -622,7 +622,7 @@ Note
 <td style="text-align: center;">1.72 m</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">(-32.4114, -3.84731)</td>
+<td style="text-align: center;">(x: -32.4114 m, y: -3.84731 m)</td>
 </tr>
 </tbody>
 </table>
@@ -631,12 +631,12 @@ Note
 </div>
 <p>In the example above, we used the <code>∈</code> predicate to check if a <code>Point</code> in the <code>people</code> geotable is in a <code>MultiPolygon</code> in the <code>countries</code> geotable. The default predicate in <code>geojoin</code> is the <code>intersects</code> function that we covered in previous chapters.</p>
 <p>Notice that Kate’s “COUNTRY” and “REGION” are <code>missing</code>. That is because Kate lives in the <a href="https://en.wikipedia.org/wiki/Fernando_de_Noronha">Fernando de Noronha</a> island, which is not present in the <code>countries</code> geotable. To retain just those people for which the geometric predicate evaluates <code>true</code>, we can use a different <code>kind</code> of <code>geojoin</code> known as <code>inner</code>:</p>
-<div id="e7eaf026" class="cell" data-execution_count="6">
+<div id="929e069d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×6 GeoTable over 4 view(::PointSet{2,Float64}, [1, 2, 3, 4])</caption>
+<caption>4×6 GeoTable over 4 view(::PointSet, [1, 2, 3, 4])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -652,7 +652,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -670,7 +670,7 @@ Note
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(-43.1789, -22.9671)</td>
+<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
@@ -678,7 +678,7 @@ Note
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
-<td style="text-align: center;">(-122.17, 37.4277)</td>
+<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
@@ -686,7 +686,7 @@ Note
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
-<td style="text-align: center;">(153.044, -27.4862)</td>
+<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
@@ -694,7 +694,7 @@ Note
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
-<td style="text-align: center;">(116.408, 39.9036)</td>
+<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
 </tr>
 </tbody>
 </table>
@@ -702,12 +702,12 @@ Note
 </div>
 </div>
 <p>By default, the <code>left</code> kind is used. Like in standard join, the <code>geojoin</code> is not commutative. If we swap the order of the geotables, the result will be different:</p>
-<div id="648ad8ec" class="cell" data-execution_count="7">
+<div id="0685ba89" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×6 GeoTable over 4 view(::GeometrySet{2,Float64}, [5, 30, 138, 140])</caption>
+<caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
@@ -798,7 +798,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>Besides <code>geojoin</code>, the framework also provides vertical and horizontal concatenation of geotables. Vertical concatenation is achieved with <code>vcat</code> as follows:</p>
-<div id="8024d3c9" class="cell" data-execution_count="8">
+<div id="706bbbb0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gt1 <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>]))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gt2 <span class="op">=</span> <span class="fu">georef</span>((b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>], c<span class="op">=</span>[<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>]))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -806,7 +806,7 @@ Tip for all users
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>6×4 GeoTable over 6 GeometrySet{1,Float64}</caption>
+<caption>6×4 GeoTable over 6 GeometrySet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -832,37 +832,37 @@ Tip for all users
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">9</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 </tbody>
 </table>
@@ -870,12 +870,12 @@ Tip for all users
 </div>
 </div>
 <p>All columns are preserved by default, which corresponds to the option <code>kind = :union</code>. Absent columns are filled with <code>missing</code> values. The option <code>kind = :intersect</code> can be used to retain only the columns that are present in all geotables:</p>
-<div id="b4124076" class="cell" data-execution_count="9">
+<div id="2de3b965" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2, kind <span class="op">=</span> <span class="op">:</span>intersect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>6×2 GeoTable over 6 GeometrySet{1,Float64}</caption>
+<caption>6×2 GeoTable over 6 GeometrySet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
@@ -893,27 +893,27 @@ Tip for all users
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">4</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">5</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">6</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">5</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">6</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 </tbody>
 </table>
@@ -921,12 +921,12 @@ Tip for all users
 </div>
 </div>
 <p>Horizontal concatenation is achieved with <code>hcat</code> as follows:</p>
-<div id="969ec77b" class="cell" data-execution_count="10">
+<div id="ce0b2671" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hcat</span>(gt1, gt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>3×5 GeoTable over 3 CartesianGrid{1,Float64}</caption>
+<caption>3×5 GeoTable over 3 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -956,21 +956,21 @@ Tip for all users
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">9</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 </tbody>
 </table>
@@ -978,13 +978,13 @@ Tip for all users
 </div>
 </div>
 <p>Unique column names are produced with underscore suffixes whenever a column appears in multiple geotables. Julia provides convenient syntax for <code>vcat</code> and <code>hcat</code>:</p>
-<div id="775ba897" class="cell" data-execution_count="11">
+<div id="6c7e481f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[gt1</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>6×4 GeoTable over 6 GeometrySet{1,Float64}</caption>
+<caption>6×4 GeoTable over 6 GeometrySet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1010,49 +1010,49 @@ Tip for all users
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">9</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="e370ec5e" class="cell" data-execution_count="12">
+<div id="c411a617" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[gt1 gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>3×5 GeoTable over 3 CartesianGrid{1,Float64}</caption>
+<caption>3×5 GeoTable over 3 CartesianGrid</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
@@ -1082,21 +1082,21 @@ Tip for all users
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
-<td style="text-align: center;">Segment((0.0,), (1.0,))</td>
+<td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
-<td style="text-align: center;">Segment((1.0,), (2.0,))</td>
+<td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">9</td>
-<td style="text-align: center;">Segment((2.0,), (3.0,))</td>
+<td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
 </tbody>
 </table>
@@ -1153,7 +1153,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <section id="multiple-matches" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="multiple-matches"><span class="header-section-number">9.4</span> Multiple matches</h2>
 <p>Sometimes the predicate function will evaluate <code>true</code> for multiple rows of the geotables. In this case, we need to decide which value will be copied to the resulting geotable. The <code>geojoin</code> accepts reduction functions for each column. For example, suppose that Kate decided to move to the continent:</p>
-<div id="2416663d" class="cell" data-execution_count="13">
+<div id="c79f9387" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
@@ -1166,7 +1166,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>5×4 GeoTable over 5 PointSet{2,Float64}</caption>
+<caption>5×4 GeoTable over 5 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -1178,7 +1178,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1192,31 +1192,31 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
-<td style="text-align: center;">(-43.1789, -22.9671)</td>
+<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
-<td style="text-align: center;">(-122.17, 37.4277)</td>
+<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
-<td style="text-align: center;">(153.044, -27.4862)</td>
+<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
-<td style="text-align: center;">(116.408, 39.9036)</td>
+<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
-<td style="text-align: center;">(-35.7126, -9.66628)</td>
+<td style="text-align: center;">(x: -35.7126 m, y: -9.66628 m)</td>
 </tr>
 </tbody>
 </table>
@@ -1224,12 +1224,12 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 </div>
 <p>Now, both John and Kate live in Brazil according the <code>countries</code> geotable:</p>
-<div id="fca9b786" class="cell" data-execution_count="14">
+<div id="a33782d2" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>5×6 GeoTable over 5 PointSet{2,Float64}</caption>
+<caption>5×6 GeoTable over 5 PointSet</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
@@ -1245,7 +1245,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Point2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1263,7 +1263,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(-43.1789, -22.9671)</td>
+<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
@@ -1271,7 +1271,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
-<td style="text-align: center;">(-122.17, 37.4277)</td>
+<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
@@ -1279,7 +1279,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
-<td style="text-align: center;">(153.044, -27.4862)</td>
+<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
@@ -1287,7 +1287,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
-<td style="text-align: center;">(116.408, 39.9036)</td>
+<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
@@ -1295,7 +1295,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.72 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(-35.7126, -9.66628)</td>
+<td style="text-align: center;">(x: -35.7126 m, y: -9.66628 m)</td>
 </tr>
 </tbody>
 </table>
@@ -1303,12 +1303,12 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 </div>
 <p>If we swap the order of the geotables in the <code>geojoin</code>, we need to decide how to reduce the multiple values of “NAME”, “AGE” and “HEIGHT” in the resulting geotable. By default, the <code>mean</code> function is used to reduce <code>Continuous</code> variables, and the <code>first</code> function is used otherwise:</p>
-<div id="12ec92ff" class="cell" data-execution_count="15">
+<div id="42ef962b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×6 GeoTable over 4 view(::GeometrySet{2,Float64}, [5, 30, 138, 140])</caption>
+<caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
@@ -1374,12 +1374,12 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 </div>
 <p>We can specify custom reduction functions using the following syntax:</p>
-<div id="95bcedad" class="cell" data-execution_count="16">
+<div id="c6900bb8" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, <span class="st">"AGE"</span> <span class="op">=&gt;</span> maximum, <span class="st">"HEIGHT"</span> <span class="op">=&gt;</span> mean, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
-<caption>4×6 GeoTable over 4 view(::GeometrySet{2,Float64}, [5, 30, 138, 140])</caption>
+<caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
