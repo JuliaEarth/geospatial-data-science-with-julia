@@ -377,7 +377,7 @@ div.csl-indent {
 <li><strong>CairoMakie.jl</strong> is the preferred backend for <em>publication-quality</em> static visualization.</li>
 </ul>
 <p>In this book, we use <strong>CairoMakie.jl</strong>:</p>
-<div id="fcacf051" class="cell" data-execution_count="2">
+<div id="5526c8ab" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">CairoMakie</span> as Mke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -395,14 +395,14 @@ Note
 </div>
 <p>Makie.jl provides a plot recipe system developed after <a href="https://github.com/JuliaPlots/Plots.jl">Plots.jl</a> by <span class="citation" data-cites="Breloff2023">Breloff (<a href="references.html#ref-Breloff2023" role="doc-biblioref">2023</a>)</span>, which enables automatic visualization of custom Julia types. The GeoStats.jl framework is integrated with this system, and provides powerful visualization functions for geospatial data.</p>
 <p>Julia will automatically trigger the compilation of these visualization functions whenever GeoStats.jl and Makie.jl are loaded in the same session:</p>
-<div id="a5abc7c7" class="cell" data-execution_count="3">
+<div id="6208dceb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="vizviz" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="vizviz"><span class="header-section-number">2.1</span> viz/viz!</h2>
 <p>The main visualization function that the framework provides is the <code>viz</code>/<code>viz!</code> function. The <code>viz</code> function <em>creates a scene</em> and displays geometries within a geospatial domain. On the other hand, the <code>viz!</code> function adds more geometries to an <em>existing scene</em>.</p>
 <p>Let’s create a small geotable over a Cartesian grid for illustration purposes:</p>
-<div id="d74cb9c9" class="cell" data-execution_count="4">
+<div id="4b415e72" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> <span class="fu">georef</span>((A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>), B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -426,53 +426,53 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.398798</td>
-<td style="text-align: center;">0.418897</td>
+<td style="text-align: center;">0.479192</td>
+<td style="text-align: center;">0.728554</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.896181</td>
-<td style="text-align: center;">0.169362</td>
+<td style="text-align: center;">0.412049</td>
+<td style="text-align: center;">0.24115</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.206514</td>
-<td style="text-align: center;">0.902426</td>
+<td style="text-align: center;">0.84913</td>
+<td style="text-align: center;">0.57052</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.00374368</td>
-<td style="text-align: center;">0.554222</td>
+<td style="text-align: center;">0.513637</td>
+<td style="text-align: center;">0.91678</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.763712</td>
-<td style="text-align: center;">0.0897606</td>
+<td style="text-align: center;">0.0124553</td>
+<td style="text-align: center;">0.303383</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.102354</td>
-<td style="text-align: center;">0.626982</td>
+<td style="text-align: center;">0.1548</td>
+<td style="text-align: center;">0.407064</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.83351</td>
-<td style="text-align: center;">0.612709</td>
+<td style="text-align: center;">0.347767</td>
+<td style="text-align: center;">0.911303</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.243587</td>
-<td style="text-align: center;">0.726766</td>
+<td style="text-align: center;">0.826638</td>
+<td style="text-align: center;">0.861042</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.863027</td>
-<td style="text-align: center;">0.0650792</td>
+<td style="text-align: center;">0.544913</td>
+<td style="text-align: center;">0.772469</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.640597</td>
-<td style="text-align: center;">0.724882</td>
+<td style="text-align: center;">0.892454</td>
+<td style="text-align: center;">0.0136175</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
@@ -495,7 +495,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>georef</code> function will create a <code>CartesianGrid</code> starting at the origin whenever the domain is omitted. The size of the grid is taken as the size of the first array in the named tuple:</p>
-<div id="e4220df8" class="cell" data-execution_count="5">
+<div id="5e35d995" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>img.geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>10×10 CartesianGrid
@@ -517,23 +517,23 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>To create a named tuple with a single key in Julia, we need an extra comma after the key/value pair:</p>
-<div id="893aed92" class="cell" data-execution_count="6">
+<div id="3fe4ac6c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>),)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>(A = [0.010725880558779877 0.09573260502571701 … 0.08699121181761271 0.12287478875592195; 0.004080852807632374 0.989613693752656 … 0.34036835811828137 0.07332603005947014; … ; 0.6908449870403345 0.1789323361678431 … 0.5693425943533859 0.028357399687399032; 0.3208031752980499 0.6582640278291486 … 0.8237331751650109 0.4061985772334584],)</code></pre>
+<pre><code>(A = [0.8287761224203412 0.8000970907778387 … 0.20850023903258275 0.8668815134549616; 0.2948498749446724 0.305998670125852 … 0.7521332916257507 0.8721887725209643; … ; 0.17219251819451598 0.5313515921501736 … 0.24271709168545552 0.9286328228804055; 0.736164786941575 0.42313488150703027 … 0.44630046395319023 0.5381329666492977],)</code></pre>
 </div>
 </div>
 <p>or a semicolon before the key/value pair:</p>
-<div id="5f12bbf1" class="cell" data-execution_count="7">
+<div id="a25f350c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(; A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">10</span>, <span class="fl">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>(A = [0.9053086473107828 0.6718395355233979 … 0.08731268576897355 0.485768341178075; 0.05253352374191844 0.750004267446283 … 0.33025427019615106 0.8298835020605657; … ; 0.7648230314679748 0.007123691969921686 … 0.9895966285187674 0.21597544580597683; 0.7703768025420857 0.7786661527388874 … 0.0717110124232968 0.015449554608556126],)</code></pre>
+<pre><code>(A = [0.7791452949933262 0.5180076570080424 … 0.3717255345738971 0.8345820589903052; 0.843727215149587 0.3824133631767134 … 0.021730159738337473 0.9502881880591483; … ; 0.9472495218729005 0.947841696305915 … 0.7009365932348541 0.15176331479311334; 0.9964339388685385 0.3266574241274345 … 0.042648231760295974 0.6221798255113362],)</code></pre>
 </div>
 </div>
 </div>
 </div>
 <p>By default, all geometries are displayed with a single color:</p>
-<div id="4117b38d" class="cell" data-execution_count="8">
+<div id="88631b03" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(img.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -548,7 +548,7 @@ Tip for all users
 </div>
 </div>
 <p>We can pass any vector of <a href="https://github.com/JuliaGraphics/Colors.jl">Colors.jl</a> or numbers (automatically converted to colors) to the function via the <code>color</code> option. It is common to pass colors from another column of the geotable:</p>
-<div id="8ee79f85" class="cell" data-execution_count="9">
+<div id="98f04061" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(img.geometry, color <span class="op">=</span> img.A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -563,7 +563,7 @@ Tip for all users
 </div>
 </div>
 <p>but any vector with the same length can be passed:</p>
-<div id="72c07393" class="cell" data-execution_count="10">
+<div id="456c0637" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(img.geometry, color <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(img.A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -578,7 +578,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>alpha</code> option can be used to control the transparency of each geometry in the domain:</p>
-<div id="7047751e" class="cell" data-execution_count="11">
+<div id="37ece7ad" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(img.geometry, color <span class="op">=</span> img.B, alpha <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">length</span>(img.B)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -593,7 +593,7 @@ Tip for all users
 </div>
 </div>
 <p>Other aesthetic options are available in the official documentation. To really see the benefits of the framework, let’s load data from a GeoJSON file and visualize it:</p>
-<div id="2b73ff80" class="cell" data-execution_count="12">
+<div id="13e71fe5" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>gis <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/geotable.geojson"</span>)</span>
@@ -625,7 +625,7 @@ Note
 </div>
 </div>
 <p>As already mentioned, the <code>viz!</code> function can be used to add more geometries to an existing scene. We can create a scene with the geometries from the first geotable (“raster data”), and then add the geometries from the second geotable (“vector data”):</p>
-<div id="83c900fe" class="cell" data-execution_count="13">
+<div id="853da270" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(img.geometry, color <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(gis.geometry, color <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -644,7 +644,7 @@ Note
 </div>
 </div>
 <p>Let’s add an additional set of points:</p>
-<div id="3083a172" class="cell" data-execution_count="14">
+<div id="e9326fb7" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pts <span class="op">=</span> [<span class="fu">Point</span>(<span class="op">-</span><span class="fl">20</span>, <span class="op">-</span><span class="fl">10</span>), <span class="fu">Point</span>(<span class="op">-</span><span class="fl">20</span>, <span class="fl">0</span>), <span class="fu">Point</span>(<span class="op">-</span><span class="fl">40</span>, <span class="fl">10</span>)]</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(pts, color <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>)</span>
@@ -659,7 +659,7 @@ Note
 </div>
 </div>
 <p>And a set of line segments to conclude the example:</p>
-<div id="aa39f426" class="cell" data-execution_count="15">
+<div id="46d9b52a" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>seg <span class="op">=</span> [<span class="fu">Segment</span>((<span class="op">-</span><span class="fl">40</span>, <span class="op">-</span><span class="fl">10</span>), (<span class="fl">0</span>, <span class="fl">0</span>)), <span class="fu">Segment</span>((<span class="op">-</span><span class="fl">40</span>, <span class="fl">0</span>), (<span class="op">-</span><span class="fl">20</span>, <span class="fl">10</span>))]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(seg, color <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>)</span>
@@ -684,7 +684,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>Makie.jl can set the aspect ratio of the axis after the visualization is created. The following code can be used to adjust the aspect ratio for the data in the scene:</p>
-<div id="e2dc050e" class="cell" data-execution_count="16">
+<div id="5dd89609" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> Mke.<span class="fu">current_axis</span>()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.aspect <span class="op">=</span> Mke.<span class="fu">DataAspect</span>()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -697,7 +697,7 @@ Tip for all users
 </div>
 </div>
 <p>Alternatively, it is possible to set the aspect ratio in the <code>viz/viz!</code> call directly:</p>
-<div id="9fa4fded" class="cell" data-execution_count="17">
+<div id="af4dbbad" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="fu">CartesianGrid</span>(<span class="fl">20</span>, <span class="fl">10</span>), color <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">200</span>, axis <span class="op">=</span> (; aspect <span class="op">=</span> Mke.<span class="fu">DataAspect</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -737,7 +737,7 @@ Tip for advanced users
 </div>
 <div class="callout-body-container callout-body">
 <p>In the case of <code>Mesh</code> domains, it is also possible to specify a color for each vertex of the mesh. In this case, the <code>viz</code> and <code>viz!</code> functions fill in the domain with using the interpolation routine from the graphics library:</p>
-<div id="79ff448e" class="cell" data-execution_count="18">
+<div id="c032f705" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10</span>, <span class="fl">10</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
@@ -762,7 +762,7 @@ Tip for advanced users
 <section id="viewer" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="viewer"><span class="header-section-number">2.2</span> viewer</h2>
 <p>As geospatial data scientists we are often interested in quick inspection of intermediate results from multivariate geostatistical analysis. Visualizing all the variables manually with <code>viz</code>/<code>viz!</code> can be very time consuming. To address this issue, the framework provides a basic <code>viewer</code> that displays all variables stored in a geotable:</p>
-<div id="ccace910" class="cell" data-execution_count="19">
+<div id="a235ef3c" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>((A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000</span>), B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000</span>)), <span class="fu">rand</span>(<span class="fl">3</span>, <span class="fl">1000</span>))</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viewer</span>(geotable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -789,27 +789,27 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>georef</code> function will create a <code>PointSet</code> whenever its second argument is a <code>Matrix</code> of coordinates. In this case, the points are represented in the columns of the matrix:</p>
-<div id="9a9adc7d" class="cell" data-execution_count="20">
+<div id="db8c4659" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>geotable.geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>1000 PointSet
-├─ Point(x: 0.5896915291244567 m, y: 0.28474020827220836 m, z: 0.9797962929324399 m)
-├─ Point(x: 0.7027875033198074 m, y: 0.31085968406298303 m, z: 0.9964822413600077 m)
-├─ Point(x: 0.625413762013424 m, y: 0.3609842008700115 m, z: 0.4583324994016308 m)
-├─ Point(x: 0.3264976464158599 m, y: 0.40243557795043994 m, z: 0.43931133819353974 m)
-├─ Point(x: 0.9207452880172636 m, y: 0.36484480276345976 m, z: 0.0860687941612579 m)
+├─ Point(x: 0.26345126713846456 m, y: 0.693499406199473 m, z: 0.7310358117082045 m)
+├─ Point(x: 0.1795493859613725 m, y: 0.5424847024277886 m, z: 0.44878937945534303 m)
+├─ Point(x: 0.5816131534715866 m, y: 0.20544621616202952 m, z: 0.7536486421889749 m)
+├─ Point(x: 0.9425676960243262 m, y: 0.7418200985747746 m, z: 0.0024520181405729424 m)
+├─ Point(x: 0.974464184677343 m, y: 0.7587646470736505 m, z: 0.2915707492311521 m)
 ⋮
-├─ Point(x: 0.9623866727677579 m, y: 0.9368567914846224 m, z: 0.7933354723167212 m)
-├─ Point(x: 0.3960527398426925 m, y: 0.5314916236112098 m, z: 0.9123165367169306 m)
-├─ Point(x: 0.9713105234193281 m, y: 0.053973307848733 m, z: 0.39079607872895195 m)
-├─ Point(x: 0.8841240582833081 m, y: 0.5619006682155858 m, z: 0.7224815042480304 m)
-└─ Point(x: 0.25685194152956825 m, y: 0.6790387721345759 m, z: 0.13971454975567732 m)</code></pre>
+├─ Point(x: 0.9419985356347621 m, y: 0.7087055045271325 m, z: 0.6833412237115625 m)
+├─ Point(x: 0.666409664632119 m, y: 0.7238901346335622 m, z: 0.4434695436660083 m)
+├─ Point(x: 0.226718030234476 m, y: 0.45856423889075926 m, z: 0.5671768761722659 m)
+├─ Point(x: 0.00837022901774176 m, y: 0.7480387288723506 m, z: 0.8922847803005303 m)
+└─ Point(x: 0.0362650309638467 m, y: 0.7018002998681175 m, z: 0.9325333665928992 m)</code></pre>
 </div>
 </div>
 </div>
 </div>
 <p>It adds interactive elements to the scene, including a menu to select the variable used as color, and a color bar that automatically updates upon menu selection. The <code>viewer</code> will be particularly useful when we start to work with geospatial transforms in <strong>Part II</strong> of the book. The pipe operator (<code>|&gt;</code>) in Julia will be preferred for reasons that will become clear later:</p>
-<div id="1bc0104c" class="cell" data-execution_count="21">
+<div id="37594c86" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>((A<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000</span>), B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000</span>)), <span class="fu">CartesianGrid</span>(<span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span>))</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -836,7 +836,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>viz/viz!</code> and the <code>viewer</code> automatically select color schemes for variables based on data science traits from the <a href="https://github.com/JuliaML/DataScienceTraits.jl">DataScienceTraits.jl</a> module. Additionally, the <code>viewer</code> recognizes units from the <a href="https://github.com/PainterQubits/Unitful.jl">Unitful.jl</a> module:</p>
-<div id="77ff62e5" class="cell" data-execution_count="22">
+<div id="5f6784ca" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>((; A<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>]u<span class="st">"m"</span>), <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">2</span>))</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -859,7 +859,7 @@ Note
 <h2 data-number="2.3" class="anchored" data-anchor-id="cbar"><span class="header-section-number">2.3</span> cbar</h2>
 <p>Any vector of Julia objects implementing the <code>getcolors</code> function from the <a href="https://github.com/JuliaGraphics/Colorfy.jl">Colorfy.jl</a> module can be passed to the <code>color</code> option of <code>viz</code>/<code>viz!</code>. The final vector of colors will be a function of the <code>colormap</code> and <code>colorrange</code> options.</p>
 <p>To reproduce this behavior in the colorbar, the framework provides the <code>cbar</code> function. It is similar to Makie’s colorbar, but addresses various practical challenges with <code>missing</code> values, units, etc.</p>
-<div id="854fb149" class="cell" data-execution_count="23">
+<div id="ac58cb77" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">2</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> [<span class="fl">1</span>, <span class="cn">missing</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> <span class="st">"cividis"</span></span>

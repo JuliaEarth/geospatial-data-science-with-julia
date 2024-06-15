@@ -427,7 +427,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 <p>Let’s consider the following synthetic image from the <a href="https://github.com/JuliaEarth/GeoArtifacts.jl">GeoArtifacts.jl</a> module to illustrate the concept for different values of <span class="math inline">\(h\)</span>:</p>
-<div id="6ae71f64" class="cell" data-execution_count="2">
+<div id="e044973e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoArtifacts</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> GeoStatsImages.<span class="fu">get</span>(<span class="st">"Gaussian30x10"</span>)</span>
@@ -446,11 +446,11 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 <p>The <code>hscatter</code> plot can be used to visualize the scatter of pairs <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}\)</span> at a given lag <span class="math inline">\(h\)</span>. We can choose a variable <span class="math inline">\(X\)</span> for the horizontal axis, a (possibly different) variable <span class="math inline">\(Y\)</span> for the vertical axis, and the value of the lag <span class="math inline">\(h\)</span>. In order to reduce the computational costs associated with the plot, we will sample a subset of measurements from the image:</p>
-<div id="16cb9ca3" class="cell" data-execution_count="3">
+<div id="884a909a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">1000</span>, replace<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>1000×2 GeoTable over 1000 view(::CartesianGrid, [7477, 726, 7409, 7719, ..., 3806, 4762, 7179, 8527])</caption>
+<caption>1000×2 GeoTable over 1000 view(::CartesianGrid, [5743, 4763, 3682, 2180, ..., 3548, 1950, 4258, 7588])</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Z</th>
@@ -467,44 +467,44 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.506923</td>
-<td style="text-align: center;">Quadrangle((x: 76.0 m, y: 74.0 m), ..., (x: 76.0 m, y: 75.0 m))</td>
+<td style="text-align: center;">-0.430316</td>
+<td style="text-align: center;">Quadrangle((x: 42.0 m, y: 57.0 m), ..., (x: 42.0 m, y: 58.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.784391</td>
-<td style="text-align: center;">Quadrangle((x: 25.0 m, y: 7.0 m), ..., (x: 25.0 m, y: 8.0 m))</td>
+<td style="text-align: center;">0.38263</td>
+<td style="text-align: center;">Quadrangle((x: 62.0 m, y: 47.0 m), ..., (x: 62.0 m, y: 48.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.821613</td>
-<td style="text-align: center;">Quadrangle((x: 8.0 m, y: 74.0 m), ..., (x: 8.0 m, y: 75.0 m))</td>
+<td style="text-align: center;">-0.532078</td>
+<td style="text-align: center;">Quadrangle((x: 81.0 m, y: 36.0 m), ..., (x: 81.0 m, y: 37.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.486568</td>
-<td style="text-align: center;">Quadrangle((x: 18.0 m, y: 77.0 m), ..., (x: 18.0 m, y: 78.0 m))</td>
+<td style="text-align: center;">-0.485919</td>
+<td style="text-align: center;">Quadrangle((x: 79.0 m, y: 21.0 m), ..., (x: 79.0 m, y: 22.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-0.36994</td>
-<td style="text-align: center;">Quadrangle((x: 72.0 m, y: 69.0 m), ..., (x: 72.0 m, y: 70.0 m))</td>
+<td style="text-align: center;">0.324638</td>
+<td style="text-align: center;">Quadrangle((x: 22.0 m, y: 36.0 m), ..., (x: 22.0 m, y: 37.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-1.04058</td>
-<td style="text-align: center;">Quadrangle((x: 19.0 m, y: 60.0 m), ..., (x: 19.0 m, y: 61.0 m))</td>
+<td style="text-align: center;">0.196896</td>
+<td style="text-align: center;">Quadrangle((x: 53.0 m, y: 59.0 m), ..., (x: 53.0 m, y: 60.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">2.03575</td>
-<td style="text-align: center;">Quadrangle((x: 99.0 m, y: 18.0 m), ..., (x: 99.0 m, y: 19.0 m))</td>
+<td style="text-align: center;">-0.60075</td>
+<td style="text-align: center;">Quadrangle((x: 75.0 m, y: 6.0 m), ..., (x: 75.0 m, y: 7.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-0.0988975</td>
-<td style="text-align: center;">Quadrangle((x: 11.0 m, y: 62.0 m), ..., (x: 11.0 m, y: 63.0 m))</td>
+<td style="text-align: center;">-0.109803</td>
+<td style="text-align: center;">Quadrangle((x: 10.0 m, y: 79.0 m), ..., (x: 10.0 m, y: 80.0 m))</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">-2.11933</td>
-<td style="text-align: center;">Quadrangle((x: 52.0 m, y: 90.0 m), ..., (x: 52.0 m, y: 91.0 m))</td>
+<td style="text-align: center;">-0.143149</td>
+<td style="text-align: center;">Quadrangle((x: 84.0 m, y: 38.0 m), ..., (x: 84.0 m, y: 39.0 m))</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.951426</td>
-<td style="text-align: center;">Quadrangle((x: 21.0 m, y: 32.0 m), ..., (x: 21.0 m, y: 33.0 m))</td>
+<td style="text-align: center;">-0.824705</td>
+<td style="text-align: center;">Quadrangle((x: 59.0 m, y: 90.0 m), ..., (x: 59.0 m, y: 91.0 m))</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">⋮</td>
@@ -515,7 +515,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 <p>If we plot the values of the variable <code>Z</code> in the horizontal axis and the values of the same variable measured at lag <span class="math inline">\(h=0\)</span> on the vertical axis, we get points along the identity line (i.e.&nbsp;no scatter):</p>
-<div id="96fe33b7" class="cell" data-execution_count="4">
+<div id="5aeaa0dc" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">0.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -530,7 +530,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 <p>By increasing the value of the lag, we observe that the correlation is no longer equal to one, and that the linear fit through the points approaches the horizontal axis (i.e., zero correlation):</p>
-<div id="6c3d11ac" class="cell" data-execution_count="5">
+<div id="1994eb25" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">3.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -544,7 +544,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 </div>
-<div id="5e4a974a" class="cell" data-execution_count="6">
+<div id="9bde14b7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">5.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -558,7 +558,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 </div>
-<div id="17f827dc" class="cell" data-execution_count="7">
+<div id="20b3cb12" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">10.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -572,7 +572,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 </div>
-<div id="11363f9a" class="cell" data-execution_count="8">
+<div id="1e505b50" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hscatter</span>(sample, <span class="op">:</span>Z, <span class="op">:</span>Z, lag<span class="op">=</span><span class="fl">50.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -587,7 +587,7 @@ cor_{xy} = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^
 </div>
 </div>
 <p>The Pearson correlation coefficient studied as a function of the lag <span class="math inline">\(h\)</span> is known as the <strong>correlogram function</strong>. For example, consider the exponential correlogram function given by <span class="math inline">\(cor(h) = \exp(-h)\)</span>:</p>
-<div id="e4cb3a07" class="cell" data-execution_count="9">
+<div id="21337500" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -634,7 +634,7 @@ Definition
 <p><span class="math display">\[
 \gamma(h) = \sigma^2 - cov(h)
 \]</span></p>
-<div id="d51d8627" class="cell" data-execution_count="10">
+<div id="ddfcbaee" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -666,7 +666,7 @@ Note
 </div>
 </div>
 <p>Our main goal here is to gain intuition about the variogram function for interpolation purposes. It suffices to learn its four basic elements: <strong>range</strong>, <strong>sill</strong>, <strong>nugget</strong> and <strong>model</strong>.</p>
-<div id="816bd999" class="cell" data-execution_count="11">
+<div id="fd6a939b" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -682,7 +682,7 @@ Note
 <section id="range" class="level3" data-number="10.1.1">
 <h3 data-number="10.1.1" class="anchored" data-anchor-id="range"><span class="header-section-number">10.1.1</span> range</h3>
 <p>The <strong>range</strong> (a.k.a. correlation length) of the variogram determines the average size of “blobs” in the image. Let’s consider two synthetic images with ranges 10 and 30, respectively:</p>
-<div id="efad4fad" class="cell" data-execution_count="12">
+<div id="1694c6ce" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -700,7 +700,7 @@ Note
 <section id="sill" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="sill"><span class="header-section-number">10.1.2</span> sill</h3>
 <p>To understand the <strong>sill</strong> of the variogram, let’s consider a 1D grid as our domain, and let’s represent the values of the variable with height instead of color:</p>
-<div id="b00bf752" class="cell" data-execution_count="13">
+<div id="51f35ac7" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -718,7 +718,7 @@ Note
 <section id="nugget" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="nugget"><span class="header-section-number">10.1.3</span> nugget</h3>
 <p>The <strong>nugget</strong> can be used to insert additional variance at scales that are smaller than the scale of measurements (i.e.&nbsp;pixel). It is known in the image processing literature as <a href="https://en.wikipedia.org/wiki/Salt-and-pepper_noise">salt-and-pepper noise</a>:</p>
-<div id="27aaecf1" class="cell" data-execution_count="14">
+<div id="7f4adf92" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -732,7 +732,7 @@ Note
 </div>
 </div>
 <p>We can visualize the nugget effect in our 2D grid with colors as before:</p>
-<div id="ef6f2f93" class="cell" data-execution_count="15">
+<div id="f8efcd4a" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -762,7 +762,7 @@ Note
 <section id="model" class="level3" data-number="10.1.4">
 <h3 data-number="10.1.4" class="anchored" data-anchor-id="model"><span class="header-section-number">10.1.4</span> model</h3>
 <p>Finally, the <strong>model</strong> of the variogram determines how the function increases near the origin. The GeoStats.jl framework provides dozens of such models of geospatial correlation. The most widely used are the <code>GaussianVariogram</code>, the <code>SphericalVariogram</code> and the <code>ExponentialVariogram</code>:</p>
-<div id="803abfa7" class="cell" data-execution_count="16">
+<div id="4621564d" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -776,7 +776,7 @@ Note
 </div>
 </div>
 <p>The faster is the increase of the function near the origin, the more “erratic” is the process:</p>
-<div id="eceda266" class="cell" data-execution_count="17">
+<div id="71160559" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
 └ @ Makie ~/.julia/packages/Makie/We6MY/src/scenes.jl:227</code></pre>
@@ -790,7 +790,7 @@ Note
 </div>
 </div>
 <p>All the four elements of the variogram function can be easily set at construction time:</p>
-<div id="224a816e" class="cell" data-execution_count="18">
+<div id="43b4966d" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">GaussianVariogram</span>(range<span class="op">=</span><span class="fl">10.0</span>, sill<span class="op">=</span><span class="fl">2.0</span>, nugget<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>GaussianVariogram
@@ -801,28 +801,28 @@ Note
 </div>
 </div>
 <p>And queried later with the corresponding functions:</p>
-<div id="0d9da5ba" class="cell" data-execution_count="19">
+<div id="bc8f506e" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(γ), <span class="fu">sill</span>(γ), <span class="fu">nugget</span>(γ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>(10.0 m, 2.0, 0.1)</code></pre>
 </div>
 </div>
 <p>We can evaluate the variogram at any given lag:</p>
-<div id="778a09b0" class="cell" data-execution_count="20">
+<div id="51dd43b8" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">γ</span>(<span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>0.15615445670336806</code></pre>
 </div>
 </div>
 <p>Or evaluate the variogram between any two points:</p>
-<div id="75e14175" class="cell" data-execution_count="21">
+<div id="075d8877" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">γ</span>(<span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>), <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>0.15615445670336806</code></pre>
 </div>
 </div>
 <p>In this case, the <code>Euclidean</code> metric is used by default to compute the lag. More generally, we can evaluate the variogram between any two geometries:</p>
-<div id="8dc1ef45" class="cell" data-execution_count="22">
+<div id="a9765de5" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">γ</span>(<span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>), <span class="fu">Triangle</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>0.1370712764063879</code></pre>
@@ -850,7 +850,7 @@ Note
 <section id="empirical-estimate" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="empirical-estimate"><span class="header-section-number">10.2.1</span> Empirical estimate</h3>
 <p>Let’s recap the synthetic image from the beginning of the chapter:</p>
-<div id="2362a96c" class="cell" data-execution_count="23">
+<div id="92f23c85" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -865,7 +865,7 @@ Note
 </div>
 </div>
 <p>We can use the <code>EmpiricalVariogram</code> to estimate the function at specific lag values:</p>
-<div id="3ced5a75" class="cell" data-execution_count="24">
+<div id="2b807358" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fu">EmpiricalVariogram</span>(img, <span class="op">:</span>Z, maxlag <span class="op">=</span> <span class="fl">50.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>EmpiricalVariogram
@@ -876,7 +876,7 @@ Note
 └─ npairs: 24138788</code></pre>
 </div>
 </div>
-<div id="35505c6e" class="cell" data-execution_count="25">
+<div id="b78449f0" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -904,7 +904,7 @@ Note
 </div>
 </div>
 <p>The <code>DirectionalVariogram</code> can be used to estimate the function along specific directions:</p>
-<div id="f6df8687" class="cell" data-execution_count="26">
+<div id="c30b12cc" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>gₕ <span class="op">=</span> <span class="fu">DirectionalVariogram</span>((<span class="fl">1.0</span>, <span class="fl">0.0</span>), img, <span class="op">:</span>Z, maxlag <span class="op">=</span> <span class="fl">50.0</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>gᵥ <span class="op">=</span> <span class="fu">DirectionalVariogram</span>((<span class="fl">0.0</span>, <span class="fl">1.0</span>), img, <span class="op">:</span>Z, maxlag <span class="op">=</span> <span class="fl">50.0</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -925,7 +925,7 @@ Note
 </div>
 <p>In this example, we observe that the blobs are elongated with a horizontal range of 30 pixels and a vertical range of 10 pixels. This is known as geometric <strong>anisotropy</strong>.</p>
 <p>We can also estimate the variogram in all directions on a plane with the <code>EmpiricalVarioplane</code>:</p>
-<div id="3a5d6b8a" class="cell" data-execution_count="27">
+<div id="89c06188" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>gₚ <span class="op">=</span> <span class="fu">EmpiricalVarioplane</span>(img, <span class="op">:</span>Z, maxlag <span class="op">=</span> <span class="fl">50.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>EmpiricalVarioplane
@@ -944,7 +944,7 @@ Note
 </div>
 </div>
 <p>The varioplane is usually plotted on a polar axis to highlight the different ranges as a function of the polar angle. These ranges are illustrated with a solid curve over the heatmap:</p>
-<div id="5468aef3" class="cell" data-execution_count="28">
+<div id="e45fd9a7" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> Mke.<span class="fu">PolarAxis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot!</span>(ax, gₚ)</span>
@@ -992,7 +992,7 @@ Note
 </div>
 </div>
 <p>To fit a specific theoretical model, we can use the <code>fit</code> function with the model as the first argument:</p>
-<div id="6ecd93fd" class="cell" data-execution_count="29">
+<div id="9d332c9c" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>GeoStatsFunctions.<span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>SphericalVariogram
@@ -1003,7 +1003,7 @@ Note
 </div>
 </div>
 <p>We can also let the framework select the model with minimum weighted least-squares error by passing the generic <code>Variogram</code> model to the function:</p>
-<div id="284fa4fd" class="cell" data-execution_count="30">
+<div id="8e73ac0a" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> GeoStatsFunctions.<span class="fu">fit</span>(Variogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>GaussianVariogram
