@@ -433,9 +433,9 @@ tmesh = simplexify(ball)
 viz(tmesh, showsegments = true)
 ```
 
-Various triangulation algorithms are provided such as `Dehn1899` [@Devadoss2011],
-and `FIST` [@Held2001]. After the mesh is created, it is possible to `refine` the
-elements:
+Various triangulation algorithms are provided such as `DehnTriangulation` [@Devadoss2011],
+`DelaunayTriangulation` [@Cheng2012] and `HeldTriangulation` [@Held2001]. After the mesh
+is created, it is possible to `refine` the elements:
 
 ```{julia}
 mesh = discretize(Box((0, 0), (1, 1)))
