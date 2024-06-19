@@ -50,9 +50,9 @@ We will use the `Bonnie` data set to illustrate our geospatial split-apply-combi
 > It is issued under the Creative Commons Attribution-ShareAlike 4.0 International Public License.
 
 ```{julia}
-using CSV
+using GeoIO
 
-gt = georef(CSV.File("data/bonnie.csv"), (:EAST, :NORTH, :RL))
+gt = GeoIO.load("data/bonnie.csv", coords = ("EAST", "NORTH", "RL"))
 ```
 
 It represents a 3D mineral deposit with grades in parts per million (ppm),
@@ -72,19 +72,32 @@ gt |> viewer
 ```
 
 Let's clean the geotable using what we learned in previous chapters.
-We will reject the column with sulfur, will drop missing values, and
-will rename the variables for greater readability:
+We will reject the column with sulfur, will rename the variables for
+greater readability, and will drop missing values. We will also add
+units to some of the variables using bracket notation:
 
 ```{julia}
 clean = Reject("Sper") →
+        Rename("Agppm" => "Ag [ppm]",
+               "Auppm" => "Au [ppm]",
+               "Asppm" => "As [ppm]",
+               "Cuppm" => "Cu [ppm]",
+               "ISBD" => "ρ [Mg/m^3]",
+               "CODE" => "geo",
+               "OX" => "litho") →
         DropMissing() →
-        Rename("Auppm" => "Au", "Agppm" => "Ag",
-               "Cuppm" => "Cu", "Asppm" => "As",
-               "CODE" => "geo", "OX" => "litho",
-               "ISBD" => "ρ")
+        Unitify()
 
 gt = gt |> clean
 ```
+
+::: {.callout-note}
+
+The `Unitify` transform recognizes unit bracket notation in column names.
+It adds the units specified within brackets to the values of the columns,
+and removes the brackets from the column names.
+
+:::
 
 That is a lot better! Let's assume that we want to answer the following
 business question:

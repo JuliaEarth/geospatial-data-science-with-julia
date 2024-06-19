@@ -15,8 +15,8 @@ In this chapter, we will cover simple steps for resource estimation and
 economic assessment of a real mineral deposit.
 
 **TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `CLR`, `ProjectionPursuit`,
-`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `Map`, `Filter`,
-`boundingbox`, `convexhull`, `viewer`
+`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `Shadow`,
+`Map`, `Filter`, `boundingbox`, `convexhull`, `viewer`
 
 **MODULES:**
 
@@ -25,7 +25,7 @@ economic assessment of a real mineral deposit.
 using GeoStats
 
 # IO modules
-using CSV
+using GeoIO
 
 # viz modules
 using PairPlots
@@ -60,7 +60,9 @@ of the centroids of the cylinders were stored:
 ```{julia}
 url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
 
-dtable = georef(CSV.File(download(url)), ("X", "Y", "Z"))
+csv = download(url, tempname()*".csv")
+
+dtable = GeoIO.load(csv, coords = ("X", "Y", "Z"))
 
 dtable |> Select("Cu ppm") |> viewer
 ```
@@ -191,15 +193,12 @@ viz!(grid, alpha = 0.2)
 Mke.current_figure()
 ```
 
-Second, let's compute the `convexhull` of points projected on the horizontal plane:
+Second, let's compute the `convexhull` of the `Shadow` of all points on the xy plane:
 
 ```{julia}
-function proj(point)
-  x, y, z = to(point)
-  Point(x, y)
-end
+shadow(point) = point |> Shadow("xy")
 
-points = proj.(dtable.geometry)
+points = shadow.(dtable.geometry)
 
 chull = convexhull(points)
 ```
@@ -214,7 +213,7 @@ We can filter the grid to retain `Hexahedron`s for which the projected centroid
 is inside the `convexhull`:
 
 ```{julia}
-active = findall(h -> proj(centroid(h)) ∈ chull, grid)
+active = findall(h -> shadow(centroid(h)) ∈ chull, grid)
 
 blocks = view(grid, active) 
 ```
@@ -226,7 +225,7 @@ Let's create a simple terrain elevation model by interpolating the vertical
 ```{julia}
 ztable = @chain dtable begin
   @groupby(:HOLEID)
-  @transform(:Z = last(to(:geometry)), :geometry = proj(:geometry))
+  @transform(:Z = last(to(:geometry)), :geometry = shadow(:geometry))
   @combine(:Z = first(:Z), :geometry = first(:geometry))
 end
 ```
@@ -234,7 +233,7 @@ end
 We perform the interpolation of the "Z" coordinate on the projected centroids of the blocks:
 
 ```{julia}
-centroids = unique(proj.(centroid.(blocks)))
+centroids = unique(shadow.(centroid.(blocks)))
 
 ztable = ztable |> Select("Z") |> Interpolate(centroids, IDW())
 ```
@@ -246,7 +245,7 @@ ztable |> viewer
 Finally, we can filter the blocks for which the "Z" coordinate is below the terrain:
 
 ```{julia}
-p(h) = proj(centroid(h))
+p(h) = shadow(centroid(h))
 Z(h) = last(to(centroid(h)))
 
 zdict = Dict(ztable.geometry .=> ztable.Z)

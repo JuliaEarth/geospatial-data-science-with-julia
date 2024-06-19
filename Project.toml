@@ -1,5 +1,4 @@
 [deps]
-CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 Cairo_jll = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"

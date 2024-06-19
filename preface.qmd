@@ -118,7 +118,7 @@ pkg"activate @GDSJL"
 pkg"add GeoStats@0.59.0"
 
 # install IO module
-pkg"add GeoIO@1.13.3"
+pkg"add GeoIO@1.13.4"
 
 # install artifacts
 pkg"add GeoArtifacts@0.6.2"
@@ -129,7 +129,6 @@ pkg"add PairPlots@2.7.3"
 
 # install other modules
 pkg"add DataFrames@1.6.1"
-pkg"add CSV@0.10.14"
 ```
 
 If you need to reproduce the exact same environment with
