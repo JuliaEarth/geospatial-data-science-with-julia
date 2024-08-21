@@ -404,7 +404,7 @@ points = rand(Point, 100, crs=Cartesian2D)
 
 The `crs` option specifies the Coordinate Reference System (CRS) of the points.
 It will be explored in the chapter [Map projections](06-projections.qmd).
-By default, the `rand` function generates geometries with `Cartesian3D` crs:
+By default, the `rand` function generates geometries with `Cartesian3D` CRS:
 
 ```{julia}
 rand(Triangle, 3)

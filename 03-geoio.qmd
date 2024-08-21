@@ -152,7 +152,7 @@ called on the triangle. The code for a generic polygon is much more complicated 
 requires runtime checks that are too expensive to afford, especially in 3D.
 
 Another reason to not adhere to a generic interface is that we can store information
-in the geometry types themselves (e.g., coordinate reference system) that is relevant to
+in the geometry types themselves (e.g., coordinate reference system) that is relevant
 to design advanced scientific visualization features illustrated in the previous chapter,
 and to dispatch specialized algorithms from geodesic geometry.
 
