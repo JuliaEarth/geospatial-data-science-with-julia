@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Geospatial Data Science with Julia - 9&nbsp; Geospatial joins</title>
+<title>9&nbsp; Geospatial joins – Geospatial Data Science with Julia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -117,13 +117,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-splitcombine.html">Part III: Queries</a></li><li class="breadcrumb-item"><a href="./09-geojoins.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geospatial joins</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -168,9 +168,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Part I: Foundations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -203,9 +203,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Part II: Transforms</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -232,9 +232,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Part III: Queries</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -255,9 +255,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Part IV: Interpolation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -278,9 +278,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Part V: Applications</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -356,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="9.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">9.1</span> Motivation</h2>
 <p>The split-apply-combine pattern that we learned in the previous chapter requires a <strong>single</strong> geotable with all the relevant information in it. However, many questions in geospatial data science can only be answered with information that is spread across <strong>multiple</strong> geotables. Hence, the need to <strong>join</strong> these geotables before attempting to <code>@groupby</code>, <code>@transform</code> and <code>@combine</code> the information.</p>
 <p>Let’s consider a simple example where we are given two geotables, one containing people who shared their latitude and longitude coordinates:</p>
-<div id="0930c863" class="cell" data-execution_count="2">
+<div id="541f49c3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
@@ -365,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  LONGITUDE<span class="op">=</span>[<span class="op">-</span><span class="fl">43.17891118844475</span>, <span class="op">-</span><span class="fl">122.17007072663823</span>, <span class="fl">153.04380578036657</span>, <span class="fl">116.40764745941036</span>, <span class="op">-</span><span class="fl">32.411372812211226</span>]</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(Robinson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>5×4 GeoTable over 5 PointSet</caption>
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -394,41 +394,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
-<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
+<td style="text-align: center;">(x: -3.98576e6 m, y: -2.45638e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
-<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
+<td style="text-align: center;">(x: -1.07687e7 m, y: 4.0025e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
-<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
+<td style="text-align: center;">(x: 1.39834e7 m, y: -2.93968e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
-<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
+<td style="text-align: center;">(x: 1.01405e7 m, y: 4.2661e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
-<td style="text-align: center;">(x: -32.4114 m, y: -3.84731 m)</td>
+<td style="text-align: center;">(x: -3.05942e6 m, y: -4.11477e5 m)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>And another containing countries in the world according to the <a href="https://www.naturalearthdata.com">Natural Earth</a> project:</p>
-<div id="5008beb1" class="cell" data-execution_count="3">
+<div id="b1286ae7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>, numbertype <span class="op">=</span> <span class="dt">Float64</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>, numbertype <span class="op">=</span> <span class="dt">Float64</span>) <span class="op">|&gt;</span> <span class="fu">Proj</span>(Robinson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>177×3 GeoTable over 177 GeometrySet</caption>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header subheader headerLastRow">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -519,14 +519,27 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>georef</code> function has a method that accepts the names of columns with geospatial coordinates. In this example, the <code>table</code> already has the <code>LATITUDE</code> and <code>LONGITUDE</code> coordinates.</p>
+<p>The <code>georef</code> function has a method that accepts the names of columns with geospatial coordinates. In this example, the <code>table</code> already has the <code>LATITUDE</code> and <code>LONGITUDE</code> coordinates, which we project to a <code>Robinson</code> CRS as discussed in the chapter <a href="./06-projections.html">Map projections</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>numbertype</code> of the coordinates is specified to avoid the default floating point type used by the GeoJSON backend, which is <code>Float32</code>.</p>
 </div>
 </div>
 <p>Let’s visualize the geometries of these two geotables:</p>
-<div id="9e6faa31" class="cell" data-execution_count="4">
+<div id="001edcc1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], title <span class="op">=</span> <span class="st">"People and countries"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              xlabel <span class="op">=</span> <span class="st">"longitude"</span>, ylabel <span class="op">=</span> <span class="st">"latitude"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              xlabel <span class="op">=</span> <span class="st">"Easting [m]"</span>, ylabel <span class="op">=</span> <span class="st">"Northing [m]"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(countries.geometry)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(people.geometry, color <span class="op">=</span> <span class="st">"teal"</span>, pointsize <span class="op">=</span> <span class="fl">10</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -547,7 +560,7 @@ Note
 <section id="joining-geotables" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="joining-geotables"><span class="header-section-number">9.2</span> Joining geotables</h2>
 <p>The <code>geojoin</code> function can be used to join two geotables using a <strong>geometric predicate</strong> function:</p>
-<div id="d03fc6a4" class="cell" data-execution_count="5">
+<div id="16a07669" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, pred <span class="op">=</span> <span class="op">∈</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -575,7 +588,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -585,7 +598,7 @@ Note
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
+<td style="text-align: center;">(x: -3.98576e6 m, y: -2.45638e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
@@ -593,7 +606,7 @@ Note
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
-<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
+<td style="text-align: center;">(x: -1.07687e7 m, y: 4.0025e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
@@ -601,7 +614,7 @@ Note
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
-<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
+<td style="text-align: center;">(x: 1.39834e7 m, y: -2.93968e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
@@ -609,7 +622,7 @@ Note
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
-<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
+<td style="text-align: center;">(x: 1.01405e7 m, y: 4.2661e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
@@ -617,15 +630,15 @@ Note
 <td style="text-align: center;">1.72 m</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">missing</td>
-<td style="text-align: center;">(x: -32.4114 m, y: -3.84731 m)</td>
+<td style="text-align: center;">(x: -3.05942e6 m, y: -4.11477e5 m)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>In the example above, we used the <code>∈</code> predicate to check if a <code>Point</code> in the <code>people</code> geotable is in a <code>MultiPolygon</code> in the <code>countries</code> geotable. The default predicate in <code>geojoin</code> is the <code>intersects</code> function that we covered in previous chapters.</p>
-<p>Notice that Kate’s “COUNTRY” and “REGION” are <code>missing</code>. That is because Kate lives in the <a href="https://en.wikipedia.org/wiki/Fernando_de_Noronha">Fernando de Noronha</a> island, which is not present in the <code>countries</code> geotable. To retain just those people for which the geometric predicate evaluates <code>true</code>, we can use a different <code>kind</code> of <code>geojoin</code> known as <code>inner</code>:</p>
-<div id="7aad4f4c" class="cell" data-execution_count="6">
+<p>Notice that Kate’s “COUNTRY” and “REGION” are <code>missing</code>. That is because Kate lives in the <a href="https://en.wikipedia.org/wiki/Fernando_de_Noronha">Fernando de Noronha</a> island, which is not present in the <code>countries</code> geotable. To retain just those people for which the geometric predicate evaluates <code>true</code>, we can use a different <code>kind</code> of <code>geojoin</code> known as <code>:inner</code>:</p>
+<div id="ef2bbad9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -653,7 +666,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -663,7 +676,7 @@ Note
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
+<td style="text-align: center;">(x: -3.98576e6 m, y: -2.45638e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
@@ -671,7 +684,7 @@ Note
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
-<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
+<td style="text-align: center;">(x: -1.07687e7 m, y: 4.0025e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
@@ -679,7 +692,7 @@ Note
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
-<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
+<td style="text-align: center;">(x: 1.39834e7 m, y: -2.93968e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
@@ -687,14 +700,14 @@ Note
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
-<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
+<td style="text-align: center;">(x: 1.01405e7 m, y: 4.2661e6 m)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>By default, the <code>left</code> kind is used. Like in standard join, the <code>geojoin</code> is not commutative. If we swap the order of the geotables, the result will be different:</p>
-<div id="67c9df09" class="cell" data-execution_count="7">
+<p>By default, the <code>:left</code> kind is used. Like in standard join, the <code>geojoin</code> is not commutative. If we swap the order of the geotables, the result will be different:</p>
+<div id="38c5ba1b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -722,7 +735,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -788,7 +801,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>Besides <code>geojoin</code>, the framework also provides vertical and horizontal concatenation of geotables. Vertical concatenation is achieved with <code>vcat</code> as follows:</p>
-<div id="2b1ee6a6" class="cell" data-execution_count="8">
+<div id="a44588f8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gt1 <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>]))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gt2 <span class="op">=</span> <span class="fu">georef</span>((b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>], c<span class="op">=</span>[<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>]))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -858,7 +871,7 @@ Tip for all users
 </div>
 </div>
 <p>All columns are preserved by default, which corresponds to the option <code>kind = :union</code>. Absent columns are filled with <code>missing</code> values. The option <code>kind = :intersect</code> can be used to retain only the columns that are present in all geotables:</p>
-<div id="72bfe8ec" class="cell" data-execution_count="9">
+<div id="812914a2" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2, kind <span class="op">=</span> <span class="op">:</span>intersect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -907,7 +920,7 @@ Tip for all users
 </div>
 </div>
 <p>Horizontal concatenation is achieved with <code>hcat</code> as follows:</p>
-<div id="ea3df928" class="cell" data-execution_count="10">
+<div id="f06b5378" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hcat</span>(gt1, gt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -962,7 +975,7 @@ Tip for all users
 </div>
 </div>
 <p>Unique column names are produced with underscore suffixes whenever a column appears in multiple geotables. Julia provides convenient syntax for <code>vcat</code> and <code>hcat</code>:</p>
-<div id="c8905115" class="cell" data-execution_count="11">
+<div id="a56aacb6" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[gt1</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1029,7 +1042,7 @@ Tip for all users
 </table>
 </div>
 </div>
-<div id="5f8e3f76" class="cell" data-execution_count="12">
+<div id="416fd4d1" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[gt1 gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1089,8 +1102,61 @@ Tip for all users
 <section id="common-predicates" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="common-predicates"><span class="header-section-number">9.3</span> Common predicates</h2>
 <p>In geospatial data science, the most common geometric predicates used in <code>geojoin</code> are <code>∈</code>, <code>⊆</code>, <code>==</code>, <code>≈</code> and <code>intersects</code> as illustrated in <a href="#tbl-predicate" class="quarto-xref">Table&nbsp;<span>9.1</span></a>. Specific applications may require custom predicates, which can be easily defined in pure Julia with the Meshes.jl module. For example, it is sometimes convenient to define geometric predicates in terms of a distance and a threshold:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">evaluate</span>(<span class="fu">Euclidean</span>(), <span class="fu">centroid</span>(g1), <span class="fu">centroid</span>(g2)) <span class="op">≤</span> <span class="fl">1</span>u<span class="st">"m"</span><span class="ss">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-predicate" class="quarto-float anchored">
+<div id="d4f99400" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">evaluate</span>(<span class="fu">Euclidean</span>(), <span class="fu">centroid</span>(g1), <span class="fu">centroid</span>(g2)) <span class="op">≤</span> <span class="fl">1500</span>u<span class="st">"km"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner, pred <span class="op">=</span> pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>2×6 GeoTable over 2 view(::PointSet, [1, 4])</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+</tr>
+<tr class="odd subheader">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
+</tr>
+<tr class="header subheader headerLastRow">
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">John</td>
+<td style="text-align: center;">34.0 yr</td>
+<td style="text-align: center;">1.78 m</td>
+<td style="text-align: center;">Uruguay</td>
+<td style="text-align: center;">South America</td>
+<td style="text-align: center;">(x: -3.98576e6 m, y: -2.45638e6 m)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Anne</td>
+<td style="text-align: center;">39.0 yr</td>
+<td style="text-align: center;">1.8 m</td>
+<td style="text-align: center;">North Korea</td>
+<td style="text-align: center;">Eastern Asia</td>
+<td style="text-align: center;">(x: 1.01405e7 m, y: 4.2661e6 m)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="tbl-predicate" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-predicate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;9.1: Common geometric predicates in geospatial join
@@ -1133,7 +1199,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <section id="multiple-matches" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="multiple-matches"><span class="header-section-number">9.4</span> Multiple matches</h2>
 <p>Sometimes the predicate function will evaluate <code>true</code> for multiple rows of the geotables. In this case, we need to decide which value will be copied to the resulting geotable. The <code>geojoin</code> accepts reduction functions for each column. For example, suppose that Kate decided to move to the continent:</p>
-<div id="8fac07ab" class="cell" data-execution_count="13">
+<div id="ca68df61" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
@@ -1142,8 +1208,8 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  LONGITUDE<span class="op">=</span>[<span class="op">-</span><span class="fl">43.17891118844475</span>, <span class="op">-</span><span class="fl">122.17007072663823</span>, <span class="fl">153.04380578036657</span>, <span class="fl">116.40764745941036</span>, <span class="op">-</span><span class="fl">35.71261407423411</span>]</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(Robinson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>5×4 GeoTable over 5 PointSet</caption>
 <thead>
@@ -1163,7 +1229,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -1171,40 +1237,40 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
-<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
+<td style="text-align: center;">(x: -3.98576e6 m, y: -2.45638e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
-<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
+<td style="text-align: center;">(x: -1.07687e7 m, y: 4.0025e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
-<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
+<td style="text-align: center;">(x: 1.39834e7 m, y: -2.93968e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
-<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
+<td style="text-align: center;">(x: 1.01405e7 m, y: 4.2661e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
-<td style="text-align: center;">(x: -35.7126 m, y: -9.66628 m)</td>
+<td style="text-align: center;">(x: -3.35941e6 m, y: -1.03383e6 m)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>Now, both John and Kate live in Brazil according the <code>countries</code> geotable:</p>
-<div id="760eaae5" class="cell" data-execution_count="14">
+<div id="32b24801" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>5×6 GeoTable over 5 PointSet</caption>
 <thead>
@@ -1230,7 +1296,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -1240,7 +1306,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(x: -43.1789 m, y: -22.9671 m)</td>
+<td style="text-align: center;">(x: -3.98576e6 m, y: -2.45638e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Mary</td>
@@ -1248,7 +1314,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
-<td style="text-align: center;">(x: -122.17 m, y: 37.4277 m)</td>
+<td style="text-align: center;">(x: -1.07687e7 m, y: 4.0025e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Paul</td>
@@ -1256,7 +1322,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
-<td style="text-align: center;">(x: 153.044 m, y: -27.4862 m)</td>
+<td style="text-align: center;">(x: 1.39834e7 m, y: -2.93968e6 m)</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Anne</td>
@@ -1264,7 +1330,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
-<td style="text-align: center;">(x: 116.408 m, y: 39.9036 m)</td>
+<td style="text-align: center;">(x: 1.01405e7 m, y: 4.2661e6 m)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kate</td>
@@ -1272,16 +1338,16 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.72 m</td>
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
-<td style="text-align: center;">(x: -35.7126 m, y: -9.66628 m)</td>
+<td style="text-align: center;">(x: -3.35941e6 m, y: -1.03383e6 m)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>If we swap the order of the geotables in the <code>geojoin</code>, we need to decide how to reduce the multiple values of “NAME”, “AGE” and “HEIGHT” in the resulting geotable. By default, the <code>mean</code> function is used to reduce <code>Continuous</code> variables, and the <code>first</code> function is used otherwise:</p>
-<div id="a91b894c" class="cell" data-execution_count="15">
+<div id="ae3a9b62" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
 <thead>
@@ -1307,7 +1373,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -1348,9 +1414,9 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 </div>
 <p>We can specify custom reduction functions using the following syntax:</p>
-<div id="40f3af0b" class="cell" data-execution_count="16">
+<div id="488192ba" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, <span class="st">"AGE"</span> <span class="op">=&gt;</span> maximum, <span class="st">"HEIGHT"</span> <span class="op">=&gt;</span> mean, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
 <thead>
@@ -1376,7 +1442,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Robinson{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
@@ -1624,18 +1690,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1667,7 +1722,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1675,7 +1752,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
