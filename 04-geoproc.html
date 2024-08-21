@@ -400,17 +400,17 @@ window.Quarto = {
 
 <p>In this chapter we give an overview of some of the advanced geometric processing features of the framework, highlighting the ones that will be most useful in future chapters.</p>
 <p>From now on, we will assume that the main module of the framework is loaded in all code examples:</p>
-<div id="5739c3f3" class="cell" data-execution_count="2">
+<div id="191d32f0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will also assume that the Makie.jl backend is loaded:</p>
-<div id="84e2cdf4" class="cell" data-execution_count="3">
+<div id="8076b3c7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">CairoMakie</span> as Mke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="geometries" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="geometries"><span class="header-section-number">4.1</span> Geometries</h2>
 <p>We provide a vast list of geometries, which are organized into two main classes, <code>Primitive</code> and <code>Polytope</code> geometries. A geometry is a <code>Primitive</code> if it can be represented efficiently without discretization. For example, we can represent a <code>Box</code> with two corner points or a <code>Ball</code> with center and radius:</p>
-<div id="e09b6237" class="cell" data-execution_count="4">
+<div id="23c8a9a3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">Box</span>((<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ball <span class="op">=</span> <span class="fu">Ball</span>((<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">2</span>), <span class="fl">0.5</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -428,7 +428,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Other examples include the <code>Cylinder</code>:</p>
-<div id="ecdd145b" class="cell" data-execution_count="5">
+<div id="f8773cbf" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cyl <span class="op">=</span> <span class="fu">Cylinder</span>(<span class="fl">1.0</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -445,7 +445,7 @@ window.Quarto = {
 </div>
 </div>
 <p>And the <code>Torus</code>:</p>
-<div id="6a59d15d" class="cell" data-execution_count="6">
+<div id="d67278a6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>torus <span class="op">=</span> <span class="fu">Torus</span>((<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>), (<span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>), <span class="fl">0.5</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(torus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -462,7 +462,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The full list can be obtained with Julia’s <code>subtypes</code> function:</p>
-<div id="21d160c1" class="cell" data-execution_count="7">
+<div id="12055a29" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Primitive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>19-element Vector{Any}:
@@ -503,7 +503,7 @@ Note
 </div>
 <p>A geometry is a <code>Polytope</code> if it can be represented as a combination of “flat sides”, which are also <code>Polytope</code> themselves. A 3D <code>Polytope</code> is called a <code>Polyhedron</code>, a 2D <code>Polytope</code> is called a <code>Polygon</code> and a 1D <code>Polytope</code> is called a polygonal <code>Chain</code>. All these geometries are represented internally with a list of vertices.</p>
 <p>First, let’s take a look into the <code>Polyhedron</code> geometries:</p>
-<div id="678edc2f" class="cell" data-execution_count="8">
+<div id="fc831789" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Polyhedron)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>4-element Vector{Any}:
@@ -514,7 +514,7 @@ Note
 </div>
 </div>
 <p>The <code>Hexahedron</code> is a generalization of a 3D <code>Box</code> in the sense that it doesn’t need to be aligned with the coordinate system:</p>
-<div id="550bcf1c" class="cell" data-execution_count="9">
+<div id="f8e1d593" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>hex <span class="op">=</span> <span class="fu">Hexahedron</span>((<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>),</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                 (<span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>), (<span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>), (<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>), (<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -533,7 +533,7 @@ Note
 </div>
 <p>In this case, we need to store all the 8 vertices instead of just the corner points. Other examples of <code>Polyhedron</code> include the <code>Tetrahedron</code> and the <code>Pyramid</code>.</p>
 <p>Now, let’s move to the <code>Polygon</code> geometries:</p>
-<div id="d08e53cb" class="cell" data-execution_count="10">
+<div id="f168a29f" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Polygon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>2-element Vector{Any}:
@@ -545,7 +545,7 @@ Note
 <p>The <code>Ngon</code> is a polygon without holes. Its vertices are stored in static memory, and they are mostly used for discretization of other geometries and geospatial domains. We provide type aliases to construct <code>Ngon</code> with a specific number <code>N</code> of vertices:</p>
 <p><code>Triangle</code>, <code>Quadrangle</code>, <code>Pentagon</code>, …, <code>Decagon</code></p>
 <p>The <code>Quadrangle</code> is a generalization of the 2D <code>Box</code> in the sense that it doesn’t need to be aligned with the coordinate system:</p>
-<div id="972e2a8a" class="cell" data-execution_count="11">
+<div id="efb52590" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">Triangle</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>))</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fu">Quadrangle</span>((<span class="fl">1</span>, <span class="fl">1</span>), (<span class="fl">2</span>, <span class="fl">1</span>), (<span class="fl">2</span>, <span class="fl">2</span>), (<span class="fl">1</span>, <span class="fl">2</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -563,7 +563,7 @@ Note
 </div>
 </div>
 <p>The <code>PolyArea</code> is a polygon with or without holes. Its vertices are stored in dynamic memory, and they are mostly used for representation of polygonal areas in GIS:</p>
-<div id="bfb35032" class="cell" data-execution_count="12">
+<div id="ea83136b" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>outer <span class="op">=</span> [(<span class="fl">0.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.0</span>, <span class="fl">1.0</span>)]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>hole1 <span class="op">=</span> [(<span class="fl">0.2</span>, <span class="fl">0.2</span>), (<span class="fl">0.2</span>, <span class="fl">0.4</span>), (<span class="fl">0.4</span>, <span class="fl">0.4</span>), (<span class="fl">0.4</span>, <span class="fl">0.2</span>)]</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>hole2 <span class="op">=</span> [(<span class="fl">0.6</span>, <span class="fl">0.2</span>), (<span class="fl">0.6</span>, <span class="fl">0.4</span>), (<span class="fl">0.8</span>, <span class="fl">0.4</span>), (<span class="fl">0.8</span>, <span class="fl">0.2</span>)]</span>
@@ -594,7 +594,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The topology of a 2D <code>Polygon</code> is defined by the <code>orientation</code> of its rings. Most geometric processing algorithms expect counter clockwise (<code>CCW</code>) orientation for the outer ring, and clockwise (<code>CW</code>) orientation for the inner rings:</p>
-<div id="da03da94" class="cell" data-execution_count="13">
+<div id="3ad267ae" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">rings</span>(poly)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">orientation</span>.(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -621,7 +621,7 @@ Tip for all users
 </div>
 </div>
 <p>Finally, let’s take a look into the polygonal <code>Chain</code>:</p>
-<div id="a673834c" class="cell" data-execution_count="14">
+<div id="22fb7977" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Chain)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>3-element Vector{Any}:
@@ -631,7 +631,7 @@ Tip for all users
 </div>
 </div>
 <p>These are 1-dimensional polytopes connecting <code>Point</code>s in sequence. We’ve seen the <code>Ring</code>s in the <code>PolyArea</code> and <code>Ngon</code> geometries:</p>
-<div id="e4f7c17a" class="cell" data-execution_count="15">
+<div id="b37f28ab" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -646,7 +646,7 @@ Tip for all users
 </div>
 </div>
 <p>A <code>Ring</code> is closed meaning that its first and last <code>Point</code>s are connected with a <code>Segment</code>. A <code>Rope</code> is an open <code>Ring</code> without the closing <code>Segment</code>:</p>
-<div id="444e004d" class="cell" data-execution_count="16">
+<div id="370b7b66" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="fu">open</span>.(r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -661,7 +661,7 @@ Tip for all users
 </div>
 </div>
 <p>We can obtain the list of segments of a <code>Chain</code> with the <code>segments</code> function:</p>
-<div id="e907daea" class="cell" data-execution_count="17">
+<div id="355e508b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect</span>(<span class="fu">segments</span>(<span class="fu">first</span>(r)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>4-element Vector{Segment{𝔼{2}, Cartesian2D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}:
@@ -672,7 +672,7 @@ Tip for all users
 </div>
 </div>
 <p>The <code>Segment</code> geometry is a <code>Chain</code> with just 2 vertices:</p>
-<div id="3b00563b" class="cell" data-execution_count="18">
+<div id="5ec307b2" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="fu">Segment</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -687,7 +687,7 @@ Tip for all users
 </div>
 </div>
 <p>Finally, there is the <code>Multi</code>-geometry, which is a set of geometries seen as a single geometry. This is very common in GIS to represent disconnected areas on a geographic map that are related to each other (e.g., political areas):</p>
-<div id="5194653d" class="cell" data-execution_count="19">
+<div id="165cc971" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Multi</span>([<span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">2</span>), <span class="fu">Point</span>(<span class="fl">2</span>, <span class="fl">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>MultiPoint
@@ -695,7 +695,7 @@ Tip for all users
 └─ Point(x: 2.0 m, y: 3.0 m)</code></pre>
 </div>
 </div>
-<div id="1af5a45e" class="cell" data-execution_count="20">
+<div id="e68545f4" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Multi</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>MultiRing
@@ -704,7 +704,7 @@ Tip for all users
 └─ Ring((x: 0.6 m, y: 0.2 m), ..., (x: 0.8 m, y: 0.2 m))</code></pre>
 </div>
 </div>
-<div id="87516b76" class="cell" data-execution_count="21">
+<div id="b98840b9" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Multi</span>([t, q])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>MultiNgon
@@ -716,7 +716,7 @@ Tip for all users
 <section id="predicates" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="predicates"><span class="header-section-number">4.2</span> Predicates</h2>
 <p>Julia provides support for unicode characters in variable and function names. We leverage this feature to define commonly used geometric predicates with intuitive mathematical notation:</p>
-<div id="bfbc0dc0" class="cell" data-execution_count="22">
+<div id="df786553" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">0.0</span>, <span class="fl">0.0</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fu">Ball</span>((<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="fl">1.0</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -733,13 +733,13 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="84d59696" class="cell" data-execution_count="23">
+<div id="6bdd1812" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">∈</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>true</code></pre>
 </div>
 </div>
-<div id="0848029a" class="cell" data-execution_count="24">
+<div id="625912d5" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> <span class="fu">Box</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>))</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="op">=</span> <span class="fu">Box</span>((<span class="fl">0.5</span>, <span class="fl">0.5</span>), (<span class="fl">2</span>, <span class="fl">2</span>))</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -756,7 +756,7 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="45c20849" class="cell" data-execution_count="25">
+<div id="e6bd40bf" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">⊆</span> b2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>false</code></pre>
@@ -778,7 +778,7 @@ Tip for all users
 </div>
 </div>
 <p>Some predicates don’t have well-established mathematical notation. For example, a polygon <code>issimple</code> if it doesn’t have holes nor self-intersections:</p>
-<div id="6527bb1c" class="cell" data-execution_count="26">
+<div id="23505904" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fu">Quadrangle</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>), (<span class="fl">0.6</span>, <span class="fl">0.4</span>))</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -794,21 +794,21 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="fb938532" class="cell" data-execution_count="27">
+<div id="b9d0ba71" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">issimple</span>(q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>true</code></pre>
 </div>
 </div>
 <p>It <code>isconvex</code> if all line segments connecting two points of the polygon are inside the polygon:</p>
-<div id="bb394a27" class="cell" data-execution_count="28">
+<div id="3be0b971" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">isconvex</span>(q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>false</code></pre>
 </div>
 </div>
 <p>A very useful predicate is <code>intersects</code> (with a “s” at the end):</p>
-<div id="b550b47e" class="cell" data-execution_count="29">
+<div id="25e2b6c3" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>outer <span class="op">=</span> [(<span class="fl">0.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.0</span>, <span class="fl">1.0</span>)]</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>hole1 <span class="op">=</span> [(<span class="fl">0.2</span>, <span class="fl">0.2</span>), (<span class="fl">0.2</span>, <span class="fl">0.4</span>), (<span class="fl">0.4</span>, <span class="fl">0.4</span>), (<span class="fl">0.4</span>, <span class="fl">0.2</span>)]</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>hole2 <span class="op">=</span> [(<span class="fl">0.6</span>, <span class="fl">0.2</span>), (<span class="fl">0.6</span>, <span class="fl">0.4</span>), (<span class="fl">0.8</span>, <span class="fl">0.4</span>), (<span class="fl">0.8</span>, <span class="fl">0.2</span>)]</span>
@@ -829,13 +829,13 @@ Tip for all users
 </div>
 </div>
 </div>
-<div id="0cad3e30" class="cell" data-execution_count="30">
+<div id="569ea7d9" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intersects</span>(poly, ball1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>true</code></pre>
 </div>
 </div>
-<div id="3df6ec46" class="cell" data-execution_count="31">
+<div id="283d2826" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intersects</span>(poly, ball2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>false</code></pre>
@@ -847,7 +847,7 @@ Tip for all users
 <section id="operations" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="operations"><span class="header-section-number">4.3</span> Operations</h2>
 <p>Geometric operations transform a geometry or a set of geometries into a new geometry or number. For example, the intersection of two segments can be a <code>Point</code>, a <code>Segment</code> or <code>nothing</code>:</p>
-<div id="caab5367" class="cell" data-execution_count="32">
+<div id="66ba75e9" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="fu">Segment</span>((<span class="fl">0.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">0.0</span>))</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="fu">Segment</span>((<span class="fl">0.5</span>, <span class="fl">0.0</span>), (<span class="fl">2.0</span>, <span class="fl">0.0</span>))</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -869,7 +869,7 @@ Tip for advanced users
 </div>
 <div class="callout-body-container callout-body">
 <p>For performance-sensitive applications, it is wise to replace the <code>∩</code> operation by its the 3-argument version named <code>intersection</code>:</p>
-<div id="fbb72621" class="cell" data-execution_count="33">
+<div id="5a13d815" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intersection</span>(s1, s2) <span class="cf">do</span> I</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> I <span class="op">==</span> Crossing</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1</span></span>
@@ -885,7 +885,7 @@ Tip for advanced users
 </div>
 </div>
 <p>Likewise, the intersection of two 2D geometries can be obtained with:</p>
-<div id="66622212" class="cell" data-execution_count="34">
+<div id="736f24ab" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>poly1 <span class="op">=</span> <span class="fu">Ngon</span>((<span class="fl">0</span>, <span class="fl">1</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">2</span>, <span class="fl">1</span>), (<span class="fl">3</span>, <span class="fl">0</span>), (<span class="fl">4</span>, <span class="fl">1</span>), (<span class="fl">2</span>, <span class="fl">2</span>))</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>poly2 <span class="op">=</span> <span class="fu">Ngon</span>((<span class="fl">1.0</span>, <span class="fl">0.5</span>), (<span class="fl">3.5</span>, <span class="fl">0.0</span>), (<span class="fl">3.5</span>, <span class="fl">1.5</span>), (<span class="fl">1.0</span>, <span class="fl">1.5</span>))</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -908,7 +908,7 @@ Tip for advanced users
 </div>
 </div>
 <p>The previous example makes use of the <code>boundary</code> of a geometry, which is very useful to know:</p>
-<div id="8b038172" class="cell" data-execution_count="35">
+<div id="89bd4159" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boundary</span>(poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Ring
@@ -924,21 +924,21 @@ Tip for advanced users
 </div>
 </div>
 <p>Some operations like <code>measure</code> (<code>length</code>, <code>area</code> or <code>volume</code>) produce numbers instead of geometries. For example, the <code>area</code> of the polygon above is:</p>
-<div id="0210e30e" class="cell" data-execution_count="36">
+<div id="99a87e73" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">area</span>(poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>2.4479166666666665 m^2</code></pre>
 </div>
 </div>
 <p>The <code>measure</code> of the <code>boundary</code> is known as the <code>perimeter</code> of the geometry:</p>
-<div id="ee8aebe2" class="cell" data-execution_count="37">
+<div id="54452799" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perimeter</span>(poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>7.598044863023599 m</code></pre>
 </div>
 </div>
 <p>All <code>Polytope</code> geometries have <code>vertices</code>:</p>
-<div id="c2907375" class="cell" data-execution_count="38">
+<div id="6d6113e9" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vertices</span>(poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>9-element CircularVector(::Vector{Point{𝔼{2}, Cartesian2D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}):
@@ -959,36 +959,36 @@ Tip for advanced users
 <h2 data-number="4.4" class="anchored" data-anchor-id="algorithms"><span class="header-section-number">4.4</span> Algorithms</h2>
 <p>Any other function that is not a predicate nor an operation is called a geometric processing “algorithm” in the framework. We provide a list of advanced algorithms for discretization, simplification, refinement, convex hull, etc.</p>
 <p>Below we illustrate some of these algorithms, which will be useful in future examples:</p>
-<div id="59a362ee" class="cell" data-execution_count="39">
+<div id="c129ae28" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">rand</span>(Point, <span class="fl">100</span>, crs<span class="op">=</span>Cartesian2D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>100-element Vector{Point{𝔼{2}, Cartesian2D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}:
- Point(x: 0.7721327744774165 m, y: 0.8050799779710447 m)
- Point(x: 0.69911116580442 m, y: 0.043976300964931436 m)
- Point(x: 0.29306095634824003 m, y: 0.5984231070428189 m)
- Point(x: 0.981111769358676 m, y: 0.5356204711910545 m)
- Point(x: 0.4154664950985757 m, y: 0.4594635806501536 m)
- Point(x: 0.7165265587038777 m, y: 0.6176671140609362 m)
- Point(x: 0.4954353841518242 m, y: 0.8243825658029094 m)
- Point(x: 0.4895636215950563 m, y: 0.7706878602901082 m)
- Point(x: 0.7869233878943899 m, y: 0.8774621439988404 m)
- Point(x: 0.2358890252853013 m, y: 0.4070538259173373 m)
- Point(x: 0.8697316396356067 m, y: 0.8064340349441429 m)
- Point(x: 0.6746475611365029 m, y: 0.25980483703086976 m)
- Point(x: 0.26820224728576914 m, y: 0.3173144322241571 m)
+ Point(x: 0.48593271457711595 m, y: 0.2794456263302396 m)
+ Point(x: 0.9343168395500562 m, y: 0.023517348290611362 m)
+ Point(x: 0.6877909968383527 m, y: 0.6861156002026457 m)
+ Point(x: 0.43181011181301476 m, y: 0.40635286763690226 m)
+ Point(x: 0.2861404269724749 m, y: 0.3617488224916775 m)
+ Point(x: 0.9160539959750595 m, y: 0.10077412855824008 m)
+ Point(x: 0.06103371096490551 m, y: 0.27843834747810503 m)
+ Point(x: 0.4089087297594355 m, y: 0.49318138539282097 m)
+ Point(x: 0.8617445833833839 m, y: 0.21084583386562172 m)
+ Point(x: 0.4008212293125417 m, y: 0.6340596392241158 m)
+ Point(x: 0.39724050091298524 m, y: 0.6146653352227412 m)
+ Point(x: 0.45990004873365353 m, y: 0.7147891944101523 m)
+ Point(x: 0.1989281571807614 m, y: 0.952070689370139 m)
  ⋮
- Point(x: 0.3623545907209492 m, y: 0.00904941383814628 m)
- Point(x: 0.9365411176319164 m, y: 0.8300777740040307 m)
- Point(x: 0.20517661847948243 m, y: 0.24101661881458536 m)
- Point(x: 0.15105930721053074 m, y: 0.08715244087274565 m)
- Point(x: 0.2845207688214829 m, y: 0.7425133970860577 m)
- Point(x: 0.48558294683906933 m, y: 0.5118733406972288 m)
- Point(x: 0.8865479854791688 m, y: 0.5960647570184189 m)
- Point(x: 0.6834174534901372 m, y: 0.6502289313483725 m)
- Point(x: 0.44265332444366856 m, y: 0.7232936433284206 m)
- Point(x: 0.13908541880645664 m, y: 0.5964484356092056 m)
- Point(x: 0.703966466898788 m, y: 0.6090968072030498 m)
- Point(x: 0.9699844578264186 m, y: 0.07481766448369154 m)</code></pre>
+ Point(x: 0.7797394632078278 m, y: 0.34612987953929464 m)
+ Point(x: 0.7528340262937839 m, y: 0.8231250245062836 m)
+ Point(x: 0.03783966000211447 m, y: 0.8567726092144549 m)
+ Point(x: 0.027899350848622717 m, y: 0.1416350983569954 m)
+ Point(x: 0.40542900635397794 m, y: 0.23088681426451207 m)
+ Point(x: 0.44166036228744965 m, y: 0.6336147640061705 m)
+ Point(x: 0.4417551989236851 m, y: 0.0954714178926318 m)
+ Point(x: 0.9050863882145045 m, y: 0.458302138330552 m)
+ Point(x: 0.32593114765697095 m, y: 0.9004083370481745 m)
+ Point(x: 0.16959591066369195 m, y: 0.6779254323062691 m)
+ Point(x: 0.49214137554680715 m, y: 0.5250836611995654 m)
+ Point(x: 0.0010509564146071737 m, y: 0.0811394951355282 m)</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1001,19 +1001,19 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>crs</code> option specifies the Coordinate Reference System (CRS) of the points. It will be explored in the chapter <a href="./06-projections.html">Map projections</a>. By default, the <code>rand</code> function generates geometries with <code>Cartesian3D</code> crs:</p>
-<div id="88fda885" class="cell" data-execution_count="40">
+<p>The <code>crs</code> option specifies the Coordinate Reference System (CRS) of the points. It will be explored in the chapter <a href="./06-projections.html">Map projections</a>. By default, the <code>rand</code> function generates geometries with <code>Cartesian3D</code> CRS:</p>
+<div id="9db340c6" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(Triangle, <span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>3-element Vector{Triangle{𝔼{3}, Cartesian3D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}:
- Triangle((x: 0.748578 m, y: 0.0387338 m, z: 0.0243664 m), (x: 0.338815 m, y: 0.581001 m, z: 0.798409 m), (x: 0.433327 m, y: 0.224519 m, z: 0.415645 m))
- Triangle((x: 0.820793 m, y: 0.21139 m, z: 0.643154 m), (x: 0.133969 m, y: 0.549408 m, z: 0.241939 m), (x: 0.83061 m, y: 0.785534 m, z: 0.121179 m))
- Triangle((x: 0.571518 m, y: 0.0386588 m, z: 0.2345 m), (x: 0.799553 m, y: 0.797413 m, z: 0.756394 m), (x: 0.541526 m, y: 0.635867 m, z: 0.101002 m))</code></pre>
+ Triangle((x: 0.789878 m, y: 0.673082 m, z: 0.265465 m), (x: 0.509037 m, y: 0.185371 m, z: 0.842316 m), (x: 0.25487 m, y: 0.396351 m, z: 0.0530105 m))
+ Triangle((x: 0.33338 m, y: 0.399934 m, z: 0.469337 m), (x: 0.0418607 m, y: 0.939488 m, z: 0.497148 m), (x: 0.89462 m, y: 0.91513 m, z: 0.932128 m))
+ Triangle((x: 0.0263748 m, y: 0.909119 m, z: 0.810794 m), (x: 0.236047 m, y: 0.293634 m, z: 0.0567513 m), (x: 0.0667363 m, y: 0.526685 m, z: 0.117041 m))</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="f4980bfd" class="cell" data-execution_count="41">
+<div id="21ba23df" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="fu">boundingbox</span>(points))</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(points, color <span class="op">=</span> <span class="st">"black"</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1029,7 +1029,7 @@ Note
 </div>
 </div>
 </div>
-<div id="b47f658f" class="cell" data-execution_count="42">
+<div id="148b724d" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(<span class="fu">convexhull</span>(points))</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(points, color <span class="op">=</span> <span class="st">"black"</span>)</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1046,7 +1046,7 @@ Note
 </div>
 </div>
 <p>Geometries can be discretized into geospatial domains (i.e., collections of geometries). We have seen some of these domains in previous chapters, including the <code>GeometrySet</code> and the <code>CartesianGrid</code>. Here, we will focus on the <code>Mesh</code> subtypes:</p>
-<div id="2f4cf750" class="cell" data-execution_count="43">
+<div id="fa1b32b0" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Mesh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>5-element Vector{Any}:
@@ -1057,7 +1057,7 @@ Note
  TransformedMesh</code></pre>
 </div>
 </div>
-<div id="2044565f" class="cell" data-execution_count="44">
+<div id="928fd5d7" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subtypes</span>(Grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>5-element Vector{Any}:
@@ -1069,7 +1069,7 @@ Note
 </div>
 </div>
 <p>There are two main functions to perform discretization: <code>discretize</code> and <code>simplexify</code>. The <code>discretize</code> function takes a geometry and a discretization algorithm as input, and produces a <code>Mesh</code>. For example, we can discretize a 2D ball with regular spacing along each parametric dimension (i.e., polar coordinates):</p>
-<div id="55091950" class="cell" data-execution_count="45">
+<div id="bd1517d0" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>ball <span class="op">=</span> <span class="fu">Ball</span>((<span class="fl">0</span>, <span class="fl">0</span>), <span class="fl">1</span>)</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>mesh <span class="op">=</span> <span class="fu">discretize</span>(ball, <span class="fu">RegularDiscretization</span>(<span class="fl">20</span>, <span class="fl">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1102,7 +1102,7 @@ Note
 </div>
 </div>
 <p>We can visualize the elements of the mesh with the <code>showsegments</code> option:</p>
-<div id="54e82d99" class="cell" data-execution_count="46">
+<div id="6f1f49a4" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(mesh, showsegments <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -1117,7 +1117,7 @@ Note
 </div>
 </div>
 <p>The meshes produced by the <code>discretize</code> function can have mixed element types. In this case, the mesh is made of <code>Quadrangle</code> and <code>Triangle</code> geometries. The function <code>simplexify</code> is preferred if the application requires a mesh of simplices (i.e., triangles or tetrahedra):</p>
-<div id="5f89c3bb" class="cell" data-execution_count="47">
+<div id="2c4561dc" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>tmesh <span class="op">=</span> <span class="fu">simplexify</span>(ball)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>5050 SimpleMesh
@@ -1147,7 +1147,7 @@ Note
   └─ Triangle(2551, 2500, 1)</code></pre>
 </div>
 </div>
-<div id="9eddb796" class="cell" data-execution_count="48">
+<div id="3e6dbfb3" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(tmesh, showsegments <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -1162,7 +1162,7 @@ Note
 </div>
 </div>
 <p>Various triangulation algorithms are provided such as <code>DehnTriangulation</code> <span class="citation" data-cites="Devadoss2011">(<a href="references.html#ref-Devadoss2011" role="doc-biblioref">Devadoss and O’Rourke 2011</a>)</span>, <code>DelaunayTriangulation</code> <span class="citation" data-cites="Cheng2012">(<a href="references.html#ref-Cheng2012" role="doc-biblioref">Cheng, Dey, and Shewchuk 2012</a>)</span> and <code>HeldTriangulation</code> <span class="citation" data-cites="Held2001">(<a href="references.html#ref-Held2001" role="doc-biblioref">Held 2001</a>)</span>. After the mesh is created, it is possible to <code>refine</code> the elements:</p>
-<div id="0201be7d" class="cell" data-execution_count="49">
+<div id="d90c5929" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>mesh <span class="op">=</span> <span class="fu">discretize</span>(<span class="fu">Box</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>2 SimpleMesh
@@ -1176,7 +1176,7 @@ Note
   └─ Triangle(1, 3, 4)</code></pre>
 </div>
 </div>
-<div id="a43b850f" class="cell" data-execution_count="50">
+<div id="c85e5518" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>tmesh <span class="op">=</span> <span class="fu">refine</span>(mesh, <span class="fu">TriRefinement</span>())</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(tmesh, showsegments <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1192,7 +1192,7 @@ Note
 </div>
 </div>
 </div>
-<div id="7eadca15" class="cell" data-execution_count="51">
+<div id="3fa54bad" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>qmesh <span class="op">=</span> <span class="fu">refine</span>(mesh, <span class="fu">QuadRefinement</span>())</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(qmesh, showsegments <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1213,7 +1213,7 @@ Note
 <section id="domains" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="domains"><span class="header-section-number">4.5</span> Domains</h2>
 <p>For most purposes, domains can be manipulated as if they were Julia vectors of geometries. As an example, we can compute the <code>centroid</code> of each geometry in the domain by broadcasting the function:</p>
-<div id="a25adbe2" class="cell" data-execution_count="52">
+<div id="d97efe29" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">3</span>)</span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">centroid</span>.(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1228,14 +1228,14 @@ Note
 </div>
 </div>
 <p>In some cases, however, it is important to know which geometries are adjacent to a given geometry; or which geometries make up the boundary of a given geometry. This is where the <code>topology</code> is useful:</p>
-<div id="9e91f8e7" class="cell" data-execution_count="53">
+<div id="8a89703a" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">topology</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>2×3 GridTopology(aperiodic, aperiodic)</code></pre>
 </div>
 </div>
 <p>We can create an <code>Adjacency</code> topological relation to find which quadrangles are adjacent to quadrangle <code>1</code> in the domain:</p>
-<div id="5b6dc36f" class="cell" data-execution_count="54">
+<div id="dabe8e01" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{2}</span>(topo)</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1244,14 +1244,14 @@ Note
 </div>
 </div>
 <p>The number <code>2</code> that appears in the <code>Adjacency</code> relation is known as the parametric dimension. In this case, we are interested in the adjacency of 2D geometries. The quadrangle <code>1</code> is the first quadrangle in the bottom-left corner of the grid, and it is adjacent to quadrangles <code>2</code> and <code>3</code>. As another example, the quadrangle <code>3</code> is adjacent to quadrangles <code>4</code>, <code>1</code> and <code>5</code>:</p>
-<div id="6f56ecca" class="cell" data-execution_count="55">
+<div id="316050c9" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>(4, 1, 5)</code></pre>
 </div>
 </div>
 <p>In order to query the adjacency of vertices, we create a relation with parametric dimension <code>0</code>:</p>
-<div id="3491f043" class="cell" data-execution_count="56">
+<div id="2ea2d8e2" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Adjacency</span><span class="dt">{0}</span>(topo)</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1260,7 +1260,7 @@ Note
 </div>
 </div>
 <p>We can also query the vertices that are on the boundary of a given quadrangle with the <code>Boundary</code> topological relation. In this case, we specify the parametric dimension of the input and output geometries:</p>
-<div id="c013cdc6" class="cell" data-execution_count="57">
+<div id="f2e41c8e" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Boundary</span><span class="dt">{2,0}</span>(topo)</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">B</span>(<span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
