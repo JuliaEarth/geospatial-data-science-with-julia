@@ -107,11 +107,7 @@ data |> Interpolate(grid, IDW(100)) |> viewer
 
 Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
 may be used in place of the `Euclidean` distance to meet specific application
-requirements (e.g. `Haversine` distance on the sphere):
-
-```{julia}
-data |> Interpolate(grid, IDW(1, Chebyshev())) |> viewer
-```
+requirements (e.g. `Haversine` distance on the sphere).
 
 ## Kriging
 
@@ -192,9 +188,9 @@ we will consider a subdomain within a `Box`:
 
 
 ```{julia}
-using GeoArtifacts
+using GeoIO
 
-img = GeoStatsImages.get("WalkerLakeTruth")
+img = GeoIO.load("data/walkerlake.gslib")
 
 img = img[Box((0, 0), (200, 200)), :]
 ```

@@ -525,8 +525,8 @@ let's consider the following polygonal area with holes:
 
 ```{julia}
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
-hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
-hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
+hole1 = [(0.2, 0.2), (0.2, 0.4), (0.4, 0.4), (0.4, 0.2)]
+hole2 = [(0.6, 0.2), (0.6, 0.4), (0.8, 0.4), (0.8, 0.2)]
 poly  = PolyArea([outer, hole1, hole2])
 
 viz(poly)
@@ -618,11 +618,11 @@ the assignments, or request a grid size to discretize the `boundingbox` of all g
 ```{julia}
 A = [1, 2, 3, 4, 5]
 B = [1.1, 2.2, 3.3, 4.4, 5.5]
-p1 = PolyArea((2, 0), (6, 2), (2, 2))
-p2 = PolyArea((0, 6), (3, 8), (0, 10))
-p3 = PolyArea((3, 6), (9, 6), (9, 9), (6, 9))
-p4 = PolyArea((7, 0), (10, 0), (10, 4), (7, 4))
-p5 = PolyArea((1, 3), (5, 3), (6, 6), (3, 8), (0, 6))
+p1 = Triangle((2, 0), (6, 2), (2, 2))
+p2 = Triangle((0, 6), (3, 8), (0, 10))
+p3 = Quadrangle((3, 6), (9, 6), (9, 9), (6, 9))
+p4 = Quadrangle((7, 0), (10, 0), (10, 4), (7, 4))
+p5 = Pentagon((1, 3), (5, 3), (6, 6), (3, 8), (0, 6))
 gt = georef((; A, B), [p1, p2, p3, p4, p5])
 ```
 

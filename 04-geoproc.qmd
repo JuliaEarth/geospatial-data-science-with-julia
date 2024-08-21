@@ -129,8 +129,8 @@ polygonal areas in GIS:
 
 ```{julia}
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
-hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
-hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
+hole1 = [(0.2, 0.2), (0.2, 0.4), (0.4, 0.4), (0.4, 0.2)]
+hole2 = [(0.6, 0.2), (0.6, 0.4), (0.8, 0.4), (0.8, 0.2)]
 poly  = PolyArea([outer, hole1, hole2])
 
 viz(poly)
@@ -140,6 +140,29 @@ In the example above, the first list of vertices represents the external
 boundary of the `PolyArea`, also known as the outer `Ring`. The other two
 lists represent the two internal boundaries, or inner rings. A single list
 of vertices can be used, in which case the `PolyArea` doesn't have holes.
+
+::: callout-note
+
+The topology of a 2D `Polygon` is defined by the `orientation` of its rings.
+Most geometric processing algorithms expect counter clockwise (`CCW`) orientation
+for the outer ring, and clockwise (`CW`) orientation for the inner rings:
+
+```{julia}
+r = rings(poly)
+
+orientation.(r)
+```
+
+:::
+
+::: {.callout-note}
+
+## Tip for all users
+
+The `Repair` transform covered in the next chapter can be used to repair the
+orientations of rings in polygons.
+
+:::
 
 Finally, let's take a look into the polygonal `Chain`: 
 
@@ -151,8 +174,6 @@ These are 1-dimensional polytopes connecting `Point`s in sequence. We've
 seen the `Ring`s in the `PolyArea` and `Ngon` geometries:
 
 ```{julia}
-r = rings(poly)
-
 viz(r)
 ```
 
@@ -262,8 +283,8 @@ A very useful predicate is `intersects` (with a "s" at the end):
 
 ```{julia}
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
-hole1 = [(0.2, 0.2), (0.4, 0.2), (0.4, 0.4), (0.2, 0.4)]
-hole2 = [(0.6, 0.2), (0.8, 0.2), (0.8, 0.4), (0.6, 0.4)]
+hole1 = [(0.2, 0.2), (0.2, 0.4), (0.4, 0.4), (0.4, 0.2)]
+hole2 = [(0.6, 0.2), (0.6, 0.4), (0.8, 0.4), (0.8, 0.2)]
 poly  = PolyArea([outer, hole1, hole2])
 ball1 = Ball((0.5, 0.5), 0.05)
 ball2 = Ball((0.3, 0.3), 0.05)
@@ -376,8 +397,20 @@ for discretization, simplification, refinement, convex hull, etc.
 Below we illustrate some of these algorithms, which will be useful in future examples:
 
 ```{julia}
-points = rand(Point{2}, 100)
+points = rand(Point, 100, crs=Cartesian2D)
 ```
+
+::: callout-note
+
+The `crs` option specifies the Coordinate Reference System (CRS) of the points.
+It will be explored in the chapter [Map projections](06-projections.qmd).
+By default, the `rand` function generates geometries with `Cartesian3D` crs:
+
+```{julia}
+rand(Triangle, 3)
+```
+
+:::
 
 ```{julia}
 viz(boundingbox(points))

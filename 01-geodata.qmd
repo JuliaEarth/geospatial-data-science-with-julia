@@ -98,9 +98,9 @@ The concept of geospatial domain is formalized in
   general set of tools.
 - According to our definition of geospatial data, "raster data"
   is simply a table with colors as variables (e.g., RGB values)
-  combined with a Cartesian grid of quadrangle geometries.
-  We illustrate this concept in @fig-raster by zooming in a
-  satellite image of the Lena delta:
+  combined with a grid of quadrangle geometries. We illustrate
+  this concept in @fig-raster by zooming in a satellite image
+  of the Lena delta:
 
   ::: {#fig-raster layout-ncol=2}
 
@@ -268,9 +268,9 @@ The choice of table representation is a function of the application.
 
 All available domain representations come from the
 [Meshes.jl](https://github.com/JuliaGeometry/Meshes.jl)
-module. Let's start illustrating the most common
-domains in GIS, which are collections of disconnected
-2D geometries:
+module.
+
+Let's start with a simple list of disconnected geometries:
 
 ```{julia}
 using GeoStats
@@ -469,6 +469,14 @@ Similarly, we can add units to vectors of values:
 [1.0, 2.0, 3.0]u"m"
 ```
 
+It is also possible to load units explicitly to avoid the "u" prefix:
+
+```julia
+using Unitful: m, ft
+
+1.0m + 2.0ft
+```
+
 :::
 
 The function combines any table with any domain into a geospatial data
@@ -536,8 +544,15 @@ using the [GeoIO.jl](https://github.com/JuliaEarth/GeoIO.jl) module:
 ```{julia}
 using GeoIO
 
-GeoIO.load("data/geotable.geojson")
+GeoIO.load("data/countries.geojson")
 ```
+
+::: {.callout-note}
+
+The "data" folder is stored on GitHub.
+Check the [Preface](preface.qmd) for download instructions.
+
+:::
 
 We will see more examples of "vector data" in the chapter
 [Interfacing with GIS](03-geoio.qmd), and will explain why

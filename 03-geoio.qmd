@@ -85,18 +85,18 @@ various issues with available standards and backend implementations.
 Most GIS file formats do **not** preserve topological information.
 This means that neighborhood information is lost as soon as geometries
 are saved to disk. To illustrate this issue, we consider a geotable over
-a `CartesianGrid`:
+a grid:
 
 ```{julia}
-geotable = georef((A=rand(10, 10), B=rand(10, 10)))
+using GeoIO
+
+geotable = GeoIO.load("data/earth.tif")
 ```
 
 If we save the geotable to a `.geojson` file on disk, and then load it back,
 we observe that the `CartesianGrid` gets replaced by a `GeometrySet`:
 
 ```{julia}
-using GeoIO
-
 fname = tempname() * ".geojson"
 
 GeoIO.save(fname, geotable)
@@ -150,6 +150,11 @@ return the constant integer `1`.
 Notice how the `isconvex` function is compiled away to the **constant** `1` (i.e. `true`) when
 called on the triangle. The code for a generic polygon is much more complicated and
 requires runtime checks that are too expensive to afford, especially in 3D.
+
+Another reason to not adhere to a generic interface is that we can store information
+in the geometry types themselves (e.g., coordinate reference system) that is relevant to
+to design advanced scientific visualization features illustrated in the previous chapter,
+and to dispatch specialized algorithms from geodesic geometry.
 
 Having cleared that up, we will now proceed to the last foundational chapter of the book,
 which covers the advanced geometric processing features of the framework.

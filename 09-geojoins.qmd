@@ -34,7 +34,7 @@ table = (
   LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -32.411372812211226]
 )
 
-people = georef(table, (:LONGITUDE, :LATITUDE))
+people = georef(table, (:LONGITUDE, :LATITUDE)) |> Proj(Robinson)
 ```
 
 And another containing countries in the world according to
@@ -43,14 +43,23 @@ the [Natural Earth](https://www.naturalearthdata.com) project:
 ```{julia}
 using GeoIO
 
-countries = GeoIO.load("data/countries.geojson", numbertype = Float64)
+countries = GeoIO.load("data/countries.geojson", numbertype = Float64) |> Proj(Robinson)
 ```
 
 ::: {.callout-note}
 
 The `georef` function has a method that accepts the names of
 columns with geospatial coordinates. In this example, the `table`
-already has the `LATITUDE` and `LONGITUDE` coordinates.
+already has the `LATITUDE` and `LONGITUDE` coordinates, which we
+project to a `Robinson` CRS as discussed in the chapter
+[Map projections](06-projections.qmd).
+
+:::
+
+::: {.callout-note}
+
+The `numbertype` of the coordinates is specified to avoid the default
+floating point type used by the GeoJSON backend, which is `Float32`.
 
 :::
 
@@ -59,7 +68,7 @@ Let's visualize the geometries of these two geotables:
 ```{julia}
 fig = Mke.Figure()
 ax = Mke.Axis(fig[1,1], title = "People and countries",
-              xlabel = "longitude", ylabel = "latitude")
+              xlabel = "Easting [m]", ylabel = "Northing [m]")
 viz!(countries.geometry)
 viz!(people.geometry, color = "teal", pointsize = 10)
 fig
@@ -87,13 +96,13 @@ Notice that Kate's "COUNTRY" and "REGION" are `missing`. That is because Kate li
 in the [Fernando de Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha) island,
 which is not present in the `countries` geotable. To retain just those people for which
 the geometric predicate evaluates `true`, we can use a different `kind` of `geojoin`
-known as `inner`:
+known as `:inner`:
 
 ```{julia}
 geojoin(people, countries, kind = :inner)
 ```
 
-By default, the `left` kind is used. Like in standard join, the `geojoin` is not
+By default, the `:left` kind is used. Like in standard join, the `geojoin` is not
 commutative. If we swap the order of the geotables, the result will be different:
 
 ```{julia}
@@ -166,8 +175,10 @@ applications may require custom predicates, which can be easily defined in pure 
 with the Meshes.jl module. For example, it is sometimes convenient to define geometric
 predicates in terms of a distance and a threshold:
 
-```julia
-pred(g1, g2) = evaluate(Euclidean(), centroid(g1), centroid(g2)) ≤ 1u"m"`
+```{julia}
+pred(g1, g2) = evaluate(Euclidean(), centroid(g1), centroid(g2)) ≤ 1500u"km"
+
+geojoin(people, countries, kind = :inner, pred = pred)
 ```
 
 | PREDICATE  | EXAMPLE                      |
@@ -196,7 +207,7 @@ table = (
   LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -35.71261407423411]
 )
 
-people = georef(table, (:LONGITUDE, :LATITUDE))
+people = georef(table, (:LONGITUDE, :LATITUDE)) |> Proj(Robinson)
 ```
 
 Now, both John and Kate live in Brazil according the `countries` geotable:

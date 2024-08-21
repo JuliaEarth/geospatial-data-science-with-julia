@@ -2,7 +2,6 @@
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 Cairo_jll = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-GeoArtifacts = "2a3f1dca-97a5-4513-bfd8-b69f0106a87e"
 GeoIO = "f5a160d5-e41d-4189-8b61-d57781c419e3"
 GeoStats = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"
 PairPlots = "43a3c2be-4208-490b-832a-a21dcd55d7da"

@@ -115,17 +115,14 @@ using Pkg
 pkg"activate @GDSJL"
 
 # install framework
-pkg"add GeoStats@0.59.0"
+pkg"add GeoStats@0.64.2"
 
 # install IO module
-pkg"add GeoIO@1.13.4"
-
-# install artifacts
-pkg"add GeoArtifacts@0.6.2"
+pkg"add GeoIO@1.17.4"
 
 # install viz modules
 pkg"add CairoMakie@0.12.2"
-pkg"add PairPlots@2.7.3"
+pkg"add PairPlots@2.8.0"
 
 # install other modules
 pkg"add DataFrames@1.6.1"
