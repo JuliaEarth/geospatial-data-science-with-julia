@@ -34,7 +34,7 @@ table = (
   LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -32.411372812211226]
 )
 
-people = georef(table, (:LONGITUDE, :LATITUDE)) |> Proj(Robinson)
+people = georef(table, (:LONGITUDE, :LATITUDE)) |> Proj(PlateCarree)
 ```
 
 And another containing countries in the world according to
@@ -43,7 +43,7 @@ the [Natural Earth](https://www.naturalearthdata.com) project:
 ```{julia}
 using GeoIO
 
-countries = GeoIO.load("data/countries.geojson", numbertype = Float64) |> Proj(Robinson)
+countries = GeoIO.load("data/countries.geojson", numbertype = Float64) |> Proj(PlateCarree)
 ```
 
 ::: {.callout-note}
@@ -51,7 +51,7 @@ countries = GeoIO.load("data/countries.geojson", numbertype = Float64) |> Proj(R
 The `georef` function has a method that accepts the names of
 columns with geospatial coordinates. In this example, the `table`
 already has the `LATITUDE` and `LONGITUDE` coordinates, which we
-project to a `Robinson` CRS as discussed in the chapter
+project to a `PlateCarree` CRS as discussed in the chapter
 [Map projections](06-projections.qmd).
 
 :::
@@ -207,7 +207,7 @@ table = (
   LONGITUDE=[-43.17891118844475, -122.17007072663823, 153.04380578036657, 116.40764745941036, -35.71261407423411]
 )
 
-people = georef(table, (:LONGITUDE, :LATITUDE)) |> Proj(Robinson)
+people = georef(table, (:LONGITUDE, :LATITUDE)) |> Proj(PlateCarree)
 ```
 
 Now, both John and Kate live in Brazil according the `countries` geotable:
