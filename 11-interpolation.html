@@ -412,7 +412,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 \lambda_i = \frac{1}{{d(u, u_i)}^\beta}
 \]</span></p>
 <p>This basic idea was proposed by <span class="citation" data-cites="Shepard1968">Shepard (<a href="references.html#ref-Shepard1968" role="doc-biblioref">1968</a>)</span>, who also studied the effect of the exponent <span class="math inline">\(\beta\)</span> in the interpolation results. Here, we will visualize the results using synthetic data:</p>
-<div id="4afa0db2" class="cell" data-execution_count="2">
+<div id="d957077b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">georef</span>((z<span class="op">=</span>[<span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>],), [(<span class="fl">25</span>, <span class="fl">25</span>), (<span class="fl">50</span>, <span class="fl">75</span>), (<span class="fl">75</span>, <span class="fl">50</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -448,7 +448,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </table>
 </div>
 </div>
-<div id="6406fbe2" class="cell" data-execution_count="3">
+<div id="979bfdf2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viewer</span>(data, pointsize <span class="op">=</span> <span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -463,7 +463,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <p>First, we need to the define the domain of interpolation, i.e., the geometries where we want to estimate the variable <code>z</code>. In this case, we will perform interpolation on a 2D <code>CartesianGrid</code>:</p>
-<div id="2d91692d" class="cell" data-execution_count="4">
+<div id="eeca736f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">100</span>, <span class="fl">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>100×100 CartesianGrid
@@ -473,7 +473,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <p>With the measurements of the variable <code>z</code> in the geotable, and the domain of interpolation, we can use the <code>Interpolate</code> transform with the <code>IDW</code> model:</p>
-<div id="487a9adc" class="cell" data-execution_count="5">
+<div id="d4c7959e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -541,7 +541,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </table>
 </div>
 </div>
-<div id="7df8b29d" class="cell" data-execution_count="6">
+<div id="a3a5bf7d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -556,7 +556,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <p>To visualize the effect of the exponent, let’s extract the interpolation results along the line segment between two of the measurements, and visualize it:</p>
-<div id="46bca1e8" class="cell" data-execution_count="7">
+<div id="fca04ddf" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>seg <span class="op">=</span> <span class="fu">Segment</span>((<span class="fl">25</span>, <span class="fl">25</span>), (<span class="fl">50</span>, <span class="fl">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Segment
@@ -564,7 +564,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 └─ Point(x: 50.0 m, y: 75.0 m)</code></pre>
 </div>
 </div>
-<div id="955c93a6" class="cell" data-execution_count="8">
+<div id="a3748070" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> interp[seg, <span class="st">"z"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>51-element Vector{Float64}:
@@ -596,7 +596,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
  0.03175705173700492</code></pre>
 </div>
 </div>
-<div id="10ddaeef" class="cell" data-execution_count="9">
+<div id="5e8f81a1" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">lines</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -611,7 +611,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <p>We observe that the exponent <span class="math inline">\(\beta=1\)</span> leads to a gradual transition from the value <span class="math inline">\(z=1\)</span> to the value <span class="math inline">\(z=0\)</span>. Let’s repeat the process with increasing values of the exponent:</p>
-<div id="d68ec9be" class="cell" data-execution_count="10">
+<div id="666a695c" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> β <span class="kw">in</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>]</span>
@@ -633,7 +633,7 @@ z(u) = \lambda_1 z(u_1) + \lambda_2 z(u_2) + \cdots + \lambda_n z(u_n)
 </div>
 </div>
 <p>The larger is the exponent, the more abrupt is the transition of values between the two locations. In addition, the IDW solution will converge to the nearest neighbor solution as <span class="math inline">\(\beta \to \infty\)</span>:</p>
-<div id="640b8264" class="cell" data-execution_count="11">
+<div id="eb732ab9" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">IDW</span>(<span class="fl">100</span>)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -681,7 +681,7 @@ Note
 </div>
 </div>
 <p>Unlike <code>IDW</code>, the <code>Kriging</code> solution is a function of pairwise evaluations of distances between geometries with measurements, represented in the matrix <span class="math inline">\(\mathbf{G}\)</span>. The pairwise evaluations account for possible redundancy in the measurements, which leads to improvements in the estimates:</p>
-<div id="463a784e" class="cell" data-execution_count="12">
+<div id="5d2a39fa" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fu">GaussianVariogram</span>(range<span class="op">=</span><span class="fl">30.0</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">|&gt;</span> <span class="fu">Interpolate</span>(grid, <span class="fu">Kriging</span>(γ)) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -698,7 +698,7 @@ Note
 </div>
 </div>
 <p>In the previous chapter, we learned how the <strong>range</strong> of the variogram determines the average size of the “blobs” in the image. Let’s illustrate this concept again for increasing values of this parameter:</p>
-<div id="e41c6d2d" class="cell" data-execution_count="13">
+<div id="61f0e39a" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>])</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span>]</span>
@@ -726,7 +726,7 @@ Note
 <h2 data-number="11.3" class="anchored" data-anchor-id="example"><span class="header-section-number">11.3</span> Example</h2>
 <p>In order to solidify the concepts learned so far, let’s look into an example. We will cover all the steps that a geospatial data scientist has to perform to extract <strong>geospatial correlation</strong> from samples and to use this information in <strong>geospatial interpolation</strong>.</p>
 <p>Let’s consider an image of the <a href="https://en.wikipedia.org/wiki/Walker_Lake_(Nevada)">Walker Lake</a> by <span class="citation" data-cites="Mariethoz2014">Mariethoz and Caers (<a href="references.html#ref-Mariethoz2014" role="doc-biblioref">2014</a>)</span> as groundtruth. To avoid visualization of large images with CairoMakie.jl, we will consider a subdomain within a <code>Box</code>:</p>
-<div id="cf3c0eb3" class="cell" data-execution_count="14">
+<div id="f991f830" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/walkerlake.gslib"</span>)</span>
@@ -798,7 +798,7 @@ Note
 </table>
 </div>
 </div>
-<div id="c7fc2579" class="cell" data-execution_count="15">
+<div id="e1ef6291" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -813,7 +813,7 @@ Note
 </div>
 </div>
 <p>Let’s assume that we only have access to 10000 samples from the image:</p>
-<div id="c2841495" class="cell" data-execution_count="16">
+<div id="2fd3b409" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> img <span class="op">|&gt;</span> <span class="fu">Sample</span>(<span class="fl">10000</span>, replace<span class="op">=</span><span class="cn">false</span>, rng<span class="op">=</span><span class="fu">MersenneTwister</span>(<span class="fl">123</span>))</span>
@@ -832,7 +832,7 @@ Note
 </div>
 </div>
 <p>Our goal is to interpolate the variable <code>Z</code> over the original domain. Let’s start by estimating the <code>EmpiricalVariogram</code> from the samples. Because the distribution of values in the Walker Lake is skewed, the default <code>:matheron</code> estimator of the variogram shows a high nugget effect:</p>
-<div id="04a21b72" class="cell" data-execution_count="17">
+<div id="df4560eb" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fu">EmpiricalVariogram</span>(samples, <span class="st">"Z"</span>, maxlag <span class="op">=</span> <span class="fl">100.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>EmpiricalVariogram
@@ -843,7 +843,7 @@ Note
 └─ npairs: 24150788</code></pre>
 </div>
 </div>
-<div id="22b6103e" class="cell" data-execution_count="18">
+<div id="11ecd806" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -858,7 +858,7 @@ Note
 </div>
 </div>
 <p>A better alternative in this case is to use the robust <code>:cressie</code> estimator:</p>
-<div id="2a31edca" class="cell" data-execution_count="19">
+<div id="e63b6b10" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fu">EmpiricalVariogram</span>(samples, <span class="st">"Z"</span>, maxlag <span class="op">=</span> <span class="fl">100.0</span>, estimator <span class="op">=</span> <span class="op">:</span>cressie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>EmpiricalVariogram
@@ -869,7 +869,7 @@ Note
 └─ npairs: 24150788</code></pre>
 </div>
 </div>
-<div id="7182f51d" class="cell" data-execution_count="20">
+<div id="f224259c" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -884,7 +884,7 @@ Note
 </div>
 </div>
 <p>After estimating the empirical variogram, the next step consists of fitting a theoretical model. The behavior near the origin resembles a <code>SphericalVariogram</code>:</p>
-<div id="862ddd09" class="cell" data-execution_count="21">
+<div id="32130f96" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> GeoStatsFunctions.<span class="fu">fit</span>(SphericalVariogram, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>SphericalVariogram
@@ -894,7 +894,7 @@ Note
 └─ distance: Euclidean</code></pre>
 </div>
 </div>
-<div id="10d8ce15" class="cell" data-execution_count="22">
+<div id="18d694c7" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">plot</span>(γ, maxlag <span class="op">=</span> <span class="fl">100.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -909,7 +909,7 @@ Note
 </div>
 </div>
 <p>Now that we extracted the geospatial correlation from the samples, we can use this information in <code>Kriging</code> interpolation. Instead of fitting all the samples at once like it is done in the <code>Interpolate</code> transform, we will fit the <code>Kriging</code> model with a maximum number of neighbors with the <code>InterpolateNeighbors</code> transform:</p>
-<div id="cf05ea4f" class="cell" data-execution_count="23">
+<div id="d68633fe" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> samples <span class="op">|&gt;</span> <span class="fu">InterpolateNeighbors</span>(img.geometry, <span class="fu">Kriging</span>(γ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -977,7 +977,7 @@ Note
 </table>
 </div>
 </div>
-<div id="f7c41a9c" class="cell" data-execution_count="24">
+<div id="634eb70c" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.

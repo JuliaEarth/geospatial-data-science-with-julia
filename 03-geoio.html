@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="file-formats" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">3.2</span> File formats</h2>
 <p>Most GIS file formats do <strong>not</strong> preserve topological information. This means that neighborhood information is lost as soon as geometries are saved to disk. To illustrate this issue, we consider a geotable over a grid:</p>
-<div id="3ab2d3d7" class="cell" data-execution_count="2">
+<div id="42465da5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/earth.tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -399,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Gray{N0f8}(0.0)</td>
-<td style="text-align: center;">Quadrangle((lat: 90.0°, lon: 180.0°), ..., (lat: 88.3333°, lon: 180.0°))</td>
+<td style="text-align: center;">Quadrangle((lat: 90.0°, lon: -180.0°), ..., (lat: 88.3333°, lon: -180.0°))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Gray{N0f8}(0.0)</td>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we save the geotable to a <code>.geojson</code> file on disk, and then load it back, we observe that the <code>CartesianGrid</code> gets replaced by a <code>GeometrySet</code>:</p>
-<div id="1291b955" class="cell" data-execution_count="3">
+<div id="cbac4062" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="fu">tempname</span>() <span class="op">*</span> <span class="st">".geojson"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>GeoIO.<span class="fu">save</span>(fname, geotable)</span>
@@ -472,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Dict{String, Any}("val"=&gt;0)</td>
-<td style="text-align: center;">PolyArea((lat: 90.0°, lon: 180.0°), ..., (lat: 88.3333°, lon: 180.0°))</td>
+<td style="text-align: center;">PolyArea((lat: 90.0°, lon: -180.0°), ..., (lat: 90.0°, lon: -176.667°))</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Dict{String, Any}("val"=&gt;0)</td>
@@ -519,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Other file formats such as <code>.ply</code> and <code>.msh</code> are widely used in <a href="https://en.wikipedia.org/wiki/Computer_graphics">computer graphics</a> to save geospatial data over meshes, and preserve topological information:</p>
-<div id="1d20caa2" class="cell" data-execution_count="4">
+<div id="8b76916b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>beethoven <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/beethoven.ply"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(beethoven.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -543,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Do we gain anything by not adhering to <strong>programming interfaces</strong>?</p>
 </blockquote>
 <p>The answer is an emphatic <strong>YES</strong>! It means that we have total freedom to innovate and improve the representation of various geometries and geospatial domains with Julia’s amazing type system. To give a simple example, let’s take a look at the <code>Triangle</code> geometry:</p>
-<div id="e5e756de" class="cell" data-execution_count="5">
+<div id="261085f9" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fu">Triangle</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">0</span>), (<span class="fl">1</span>, <span class="fl">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Triangle
@@ -553,11 +553,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we treated this geometry as a generic polygon represented by a vector of vertices in memory, like it is done in <a href="https://github.com/JuliaGeo/GeoInterface.jl">GeoInterface.jl</a> for example, we wouldn’t be able to dispatch optimized code that is only valid for a triangle:</p>
-<div id="324aaeaa" class="cell" data-execution_count="6">
+<div id="2e267c69" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@code_llvm</span> <span class="fu">isconvex</span>(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>;  @ /home/runner/.julia/packages/Meshes/OF9k2/src/predicates/isconvex.jl:57 within `isconvex`
-define i8 @julia_isconvex_4480([1 x [3 x [1 x [1 x [2 x [1 x double]]]]]]* nocapture readonly %0) #0 {
+<pre><code>;  @ /home/runner/.julia/packages/Meshes/SJejL/src/predicates/isconvex.jl:57 within `isconvex`
+define i8 @julia_isconvex_4468([1 x [3 x [1 x [1 x [2 x [1 x double]]]]]]* nocapture readonly %0) #0 {
 top:
   ret i8 1
 }</code></pre>
