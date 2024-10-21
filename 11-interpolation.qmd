@@ -220,7 +220,7 @@ g = EmpiricalVariogram(samples, "Z", maxlag = 100.0)
 ```
 
 ```{julia}
-Mke.plot(g)
+varioplot(g)
 ```
 
 A better alternative in this case is to use the robust `:cressie`
@@ -231,7 +231,7 @@ g = EmpiricalVariogram(samples, "Z", maxlag = 100.0, estimator = :cressie)
 ```
 
 ```{julia}
-Mke.plot(g)
+varioplot(g)
 ```
 
 After estimating the empirical variogram, the next step consists of fitting
@@ -242,7 +242,7 @@ a theoretical model. The behavior near the origin resembles a `SphericalVariogra
 ```
 
 ```{julia}
-Mke.plot(γ, maxlag = 100.0)
+varioplot(γ, maxlag = 100.0)
 ```
 
 Now that we extracted the geospatial correlation from the samples, we can

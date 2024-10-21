@@ -155,17 +155,10 @@ elements, we visualize the `values` of the drill hole samples with the
 `pairplot`:
 
 ```{julia}
-dtable |> Select("Cu", "Au", "Ag", "S") |> DropUnits() |> values |> pairplot
+dtable |> Select("Cu", "Au", "Ag", "S") |> values |> pairplot
 ```
 
 We can observe that the distribution is very skewed.
-
-::: {.callout-note}
-
-The `DropUnits` transform can be useful to drop units from the columns of a
-table before calling functions that do not support units yet (e.g., `pairplot`).
-
-:::
 
 ### Domain of interpolation
 
@@ -274,7 +267,7 @@ In order to remove compositional data constraints, we will perform the centered 
 transform (`CLR`) from the [CoDa.jl](https://github.com/JuliaEarth/CoDa.jl) module:
 
 ```{julia}
-grades = dtable |> Select("Cu", "Au", "Ag", "S") |> DropUnits()
+grades = dtable |> Select("Cu", "Au", "Ag", "S")
 
 grades |> CLR() |> values |> pairplot
 ```
@@ -306,12 +299,15 @@ samples
 
 #### Geospatial correlation
 
-Let's fit a theoretical variogram for all four (independent) variables:
+Let's fit a theoretical variogram for all four (independent) variables
+up to a given maximum lag:
 
 ```{julia}
+maxlag = 300.0u"m"
+
 ns = setdiff(names(samples), ["geometry"])
 
-gs = [EmpiricalVariogram(samples, n, estimator = :cressie) for n in ns]
+gs = [EmpiricalVariogram(samples, n, maxlag = maxlag) for n in ns]
 
 γs = [GeoStatsFunctions.fit(Variogram, g, h -> 1 / h^2) for g in gs]
 ```
@@ -327,8 +323,8 @@ model. The constant `100` was chosen based on visual inspection of the
 
 ```{julia}
 function gammaplot(n, g, γ)
-  Mke.plot(g, axis = (; title = n))
-  Mke.plot!(γ, maxlag = 300, vcolor = "teal")
+  varioplot(g, axis = (; title = n))
+  varioplot!(γ, maxlag = maxlag, color = "teal")
   Mke.current_figure()
 end
 

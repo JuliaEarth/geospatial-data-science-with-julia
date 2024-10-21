@@ -46,4 +46,4 @@ format:
     mermaid:
       theme: dark
 
-jupyter: julia-1.10
+jupyter: julia-1.11

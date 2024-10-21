@@ -180,12 +180,15 @@ n = 0.1
 m = GaussianVariogram
 g = m(range=r, sill=s, nugget=n)
 
+xs = range(1.0e-6, 30.0, length=100)
+ys = g.(xs)
+
 fig = Mke.Figure()
-Mke.Axis(fig[1,1], xlabel="h", ylabel="γ(h)", limits = (nothing, nothing, 0, 1.1))
-Mke.plot!(g, maxlag=25, label="model")
-Mke.vlines!(r, color="black", linestyle=:dash, label="range")
-Mke.hlines!(s, color="teal", linestyle=:dash, label="sill")
-Mke.hlines!(n, color="teal", linestyle=:dot, label="nugget")
+ax = Mke.Axis(fig[1,1], xlabel="h", ylabel="γ(h)", limits = (nothing, nothing, 0, 1.1))
+Mke.lines!(ax, xs, ys, color="slategray", label="model")
+Mke.vlines!(ax, r, color="black", linestyle=:dash, label="range")
+Mke.hlines!(ax, s, color="teal", linestyle=:dash, label="sill")
+Mke.hlines!(ax, n, color="teal", linestyle=:dot, label="nugget")
 Mke.axislegend("Elements", position = :rc)
 fig
 ```
@@ -314,9 +317,9 @@ geospatial correlation. The most widely used are the `GaussianVariogram`, the
 
 fig = Mke.Figure()
 Mke.Axis(fig[1,1])
-Mke.plot!(γ1, maxlag=2, vcolor = "teal", label = "Gaussian")
-Mke.plot!(γ2, maxlag=2, vcolor = "slategray3", label = "Spherical")
-Mke.plot!(γ3, maxlag=2, vcolor = "brown", label = "Exponential")
+varioplot!(γ1, maxlag=2.0, color = "teal", label = "Gaussian")
+varioplot!(γ2, maxlag=2.0, color = "slategray3", label = "Spherical")
+varioplot!(γ3, maxlag=2.0, color = "brown", label = "Exponential")
 Mke.axislegend("Model", position = :rb)
 fig
 ```
@@ -406,7 +409,7 @@ g = EmpiricalVariogram(img, :Z, maxlag = 50.0)
 ```
 
 ```{julia}
-Mke.plot(g)
+varioplot(g)
 ```
 
 ::: {.callout-note}
@@ -424,8 +427,8 @@ specific directions:
 gₕ = DirectionalVariogram((1.0, 0.0), img, :Z, maxlag = 50.0)
 gᵥ = DirectionalVariogram((0.0, 1.0), img, :Z, maxlag = 50.0)
 
-Mke.plot(gₕ, hshow = false, vcolor = "maroon")
-Mke.plot!(gᵥ, hshow = false, vcolor = "slategray")
+varioplot(gₕ, showhist = false, color = "maroon")
+varioplot!(gᵥ, showhist = false, color = "slategray")
 Mke.current_figure()
 ```
 
@@ -447,7 +450,7 @@ solid curve over the heatmap:
 ```{julia}
 fig = Mke.Figure()
 ax = Mke.PolarAxis(fig[1,1])
-Mke.plot!(ax, gₚ)
+varioplot!(ax, gₚ)
 fig
 ```
 
