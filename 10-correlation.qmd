@@ -444,14 +444,10 @@ gₚ = EmpiricalVarioplane(img, :Z, maxlag = 50.0)
 ```
 
 The varioplane is usually plotted on a polar axis to highlight the different
-ranges as a function of the polar angle. These ranges are illustrated with a
-solid curve over the heatmap:
+ranges as a function of the polar angle:
 
 ```{julia}
-fig = Mke.Figure()
-ax = Mke.PolarAxis(fig[1,1])
-varioplot!(ax, gₚ)
-fig
+planeplot(gₚ)
 ```
 
 ::: {.callout-note}
