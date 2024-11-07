@@ -203,9 +203,10 @@ fig
 
 :::
 
-The `viz` and `viz!` functions are aware of
-[Coordinate Reference Systems](https://en.wikipedia.org/wiki/Spatial_reference_system),
-which is a quite unique feature of the framework:
+The `viz` and `viz!` functions are aware of coordinate reference systems, which is a quite
+unique feature of the framework, explored in the chapter [Map projections](06-projections.qmd).
+
+Below is a preview of this feature in action:
 
 ```{julia}
 using GeoIO
@@ -214,8 +215,6 @@ world = GeoIO.load("data/countries.geojson")
 
 viz(world.geometry, color = 1:nrow(world))
 ```
-
-We will explore this concept more carefully in the chapter [Map projections](06-projections.qmd).
 
 ## viewer
 

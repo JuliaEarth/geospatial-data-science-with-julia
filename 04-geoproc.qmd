@@ -170,7 +170,7 @@ Finally, let's take a look into the polygonal `Chain`:
 subtypes(Chain)
 ```
 
-These are 1-dimensional polytopes connecting `Point`s in sequence. We've
+These are 1-dimensional polytopes connecting `Point`s in sequence. We have
 seen the `Ring`s in the `PolyArea` and `Ngon` geometries:
 
 ```{julia}

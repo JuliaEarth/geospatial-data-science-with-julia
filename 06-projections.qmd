@@ -1,3 +1,554 @@
-# Map projections 🚧
+# Map projections
 
-## Coming soon...
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+using GeoStats
+import CairoMakie as Mke
+```
+
+In this chapter, we detach the concept of `Point` from its **geospatial coordinates**
+in a given [coordinate reference system](https://en.wikipedia.org/wiki/Spatial_reference_system)
+(CRS). We explain how the same point in the physical world can be represented with multiple
+geospatial coordinates, and illustrate various types of CRS catalogued in the
+[EPSG Dataset](https://epsg.org/home.html).
+
+The framework classifies the various CRS as `Basic`, `Geographic` or `Projected`,
+all of which can depend on a **geodetic datum**. The following sections introduce
+these very important concepts in geospatial data science, as well as the `Proj`
+transform for CRS conversion.
+
+## Basic
+
+In previous chapters, the construction of geometries assumed a `Cartesian` Coordinate
+Reference System, or CRS for short. In all previous examples, we constructed `Point`s
+with `Cartesian` coordinates in `m` units:
+
+```{julia}
+point = Point(1, 2)
+```
+
+These coordinates can be retrieved with the `coords` function:
+
+```{julia}
+cart = coords(point)
+```
+
+::: {.callout-note}
+
+Other units from Unitful.jl can be specified with the `u"..."` syntax:
+
+```{julia}
+Point(1u"ft", 2u"cm")
+```
+
+:::
+
+::: {.callout-note}
+
+The syntax
+
+```julia
+Point(x, y, ...)
+```
+
+is an alias to
+
+```julia
+Point(Cartesian(x, y, ...))
+```
+
+:::
+
+To represent the same point in a `Polar` CRS, in terms of a radius `ρ` and an angle `ϕ`,
+we can convert its coordinates and reconstruct the point:
+
+```{julia}
+polar = convert(Polar, cart)
+```
+
+```{julia}
+Point(polar)
+```
+
+Even though this process is transparent, it would be very tedious to perform this
+conversion for all `Point`s of `Geometry`s in a `domain` of a `GeoTable`, and reconstruct
+the result efficiently. That is where the `Proj` transform becomes useful:
+
+```{julia}
+Point(1, 2) |> Proj(Polar)
+```
+
+This transform takes vectors of `Geometry`s, `Domain` or `GeoTable` and converts the
+underlying coordinates to a given target CRS efficiently, exploiting lazy representations
+of `Grid`s:
+
+```{julia}
+CartesianGrid(100, 100, 100) |> Proj(Cylindrical)
+```
+
+Although the conversion between `Basic` CRS doesn't affect the position of points:
+
+```{julia}
+Point(cart) ≈ Point(polar)
+```
+
+It can be useful to write geospatial algorithms in terms of specific coordinates of interest:
+
+```{julia}
+cart.x
+```
+
+```{julia}
+cart.y
+```
+
+```{julia}
+polar.ρ
+```
+
+```{julia}
+polar.ϕ
+```
+
+All coordinate values in the framework have well-defined units to facilitate the development
+of geospatial applications with full support for different unit systems (e.g., English units).
+
+::: {.callout-note}
+
+## Tip for all users
+
+Unitful coordinate values address many pitfalls in geospatial applications. A simple comparison
+of coordinate values without units can lead to major engineering failures such as the
+[roller coaster derailment](https://web.archive.org/web/20100923105150/http://lamar.colostate.edu/~hillger/unit-mixups.html#spacemountain)
+at Tokyo Disneyland's Space Mountain.
+
+Consider writing algorithms with units to avoid trivial issues in downstream applications:
+
+```{julia}
+cart.x < 2u"ft"
+```
+
+```{julia}
+ustrip(cart.x) < 2
+```
+
+:::
+
+::: {.callout-note}
+
+## Tip for advanced users
+
+The result of the `coords` function is **not** a vector, and therefore cannot be used in
+linear algebra. To retrieve the `Vec` from the origin of the CRS to the given `Point`,
+use the `to` function instead:
+
+```{julia}
+to(point)
+```
+
+This utility function will always convert the CRS of the coordinates of the `Point` to
+`Cartesian` before returning the static vector:
+
+```{julia}
+p = Point(polar)
+```
+
+```{julia}
+v = to(p)
+```
+
+:::
+
+## Geographic
+
+Unlike `Basic` CRS, which are commonly employed in engineering applications where
+the geospatial domain is small compared to the Earth, `Geographic` CRS depend on a
+[geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum):
+
+::: {.callout-tip}
+
+## Definition
+
+A **geodetic datum** is the combination of a **ellipsoid of revolution**
+(a.k.a., spheroid) that approximates the surface of the Earth and a
+**reference physical point** that identifies the origin of the CRS.
+
+:::
+
+To illustrate this concept, we start with the most widely used `Geographic` CRS:
+
+```{julia}
+latlon = LatLon(0, 90)
+```
+
+::: {.callout-note}
+
+`LatLon` is an alias for `GeodeticLatLon`.
+
+:::
+
+In the geodetic `LatLon` CRS, the longitude coordinate is the horizontal angle
+measured in degrees from the Greenwich (or prime) meridian:
+
+```{julia}
+latlon.lon
+```
+
+The latitude coordinate is the vertical angle measured in degrees from the Equator parallel:
+
+```{julia}
+latlon.lat
+```
+
+The geodetic datum of this CRS can be retrieved with the `datum` function:
+
+```{julia}
+datum(latlon)
+```
+
+It contains the ellipsoid of revolution:
+
+```{julia}
+ellipsoid(datum(latlon))
+```
+
+as well as other parameters used to convert from longitude and latitude angles to
+`Cartesian` coordinates in meters:
+
+```{julia}
+convert(Cartesian, latlon)
+```
+
+In this case, the `WGS84Latest` datum is propagated to the `Cartesian` CRS, which is
+no longer the default `NoDatum` of previous examples. The datum is used to display
+geometries with their actual shapes and sizes in the physical world:
+
+```{julia}
+A = Point(LatLon(0, 0))
+B = Point(LatLon(0, 90))
+C = Point(LatLon(45, 90))
+
+segments = [Segment(A, B), Segment(B, C), Segment(A, C)]
+
+viz(segments)
+```
+
+::: {.callout-note}
+
+All datum parameters are stored in the CRS type itself at compile time, and are statically
+retrieved by the Julia compiler during CRS conversion. This leads to extremely efficient
+code, and consequently extremely efficient `Proj`ections of large geotables.
+
+:::
+
+Below is a more familiar example loaded with the GeoIO.jl module:
+
+```{julia}
+using GeoIO
+
+world = GeoIO.load("data/countries.geojson")
+```
+
+The `GeodeticLatLon` CRS is displayed in the subheader of the `geometry` column.
+It is used internally by the framework for advanced visualization and geometric
+processing:
+
+```{julia}
+world |> Select("REGION") |> viewer
+```
+
+We can convert the `GeodeticLatLon` CRS to a `GeocentricLatLon` CRS where the
+latitude coordinate is measured with respect to the center of the ellipsoid:
+
+```{julia}
+world |> Proj(GeocentricLatLon)
+```
+
+or to a geodetic `LatLonAlt`, which also includes the altitude coordinate in meters:
+
+```{julia}
+world |> Proj(LatLonAlt) |> domain |> first
+```
+
+The `crs` function can be used to retrieve the CRS of any given `Geometry`, `Domain`,
+or `GeoTable` for use in the `Proj` transform:
+
+```{julia}
+crs(world)
+```
+
+As a final example to illustrate the importance of the datum, consider the CRS
+conversion that preserves the definition of the coordinates, but changes the datum
+from `WGS84Latest` to `ITRFLatest`:
+
+```{julia}
+Point(LatLon(45, 45)) |> Proj(LatLon{ITRFLatest})
+```
+
+These are still longitude and latitude coordinates, but measured with respect to
+a different ellipsoid:
+
+```{julia}
+ellipsoid(ITRFLatest)
+```
+
+From these examples, we can see that the `Proj` transform accepts a `CRS` or a
+`CRS{Datum}` type. In the latter case, the new coordinates are expressed in terms
+of the specified datum:
+
+```{julia}
+Point(LatLon(45, 45)) |> Proj(LatLonAlt{WGS84{2139}})
+```
+
+::: {.callout-note}
+
+The `WGS84Latest` datum is by far the most widely used datum in the world (e.g., GPS devices).
+It is often confused with the `WGS84🌎` ellipsoid, which is not exported by the framework:
+
+```{julia}
+ellipsoid(WGS84Latest)
+```
+
+:::
+
+## Projected
+
+We are finally ready to introduce `Projected` CRS. These are 2D coordinate reference systems
+obtained from longitude and latitude via specific mathematical formulae. The literature on this
+subject is quite dense, and it suffices to know that these formulas can be generally written as
+
+$$
+x = f_x(\lambda, \varphi),\quad y = f_y(\lambda, \varphi)
+$$
+
+where $x$ and $y$ are the projected coordinates from longitude $\lambda$ and latitude $\varphi$.
+
+Different formulas $f_x$ and $f_y$ were proposed in the literature to preserve properties of geometries
+such as shape, size and angle. Since it is not possible to preserve all these properties at once, one
+must choose a `Projected` CRS carefully with the `Proj` transform before sending the geotable to the
+`viewer`, or before performing geometric calculations (e.g., distances).
+
+Let's start with the historically famous `Mercator` CRS, designed to preserve angles (or bearings)
+for navigation. Its formulas are given by
+
+$$
+x = R(\lambda - \lambda_o), \quad y = R\ln\left(\tan\left(\frac{\pi}{4} + \frac{\varphi}{2}\right)\right)
+$$
+
+where $R$ is the major semiaxis of the ellipsoid of the datum, and $\lambda_o$ is the longitude of
+the origin (or central) meridian, not necessarily the Greenwich (i.e., $\lambda_o=0$). We can `viz`
+the result of the formulas on a `RegularGrid` of `LatLon` coordinates:
+
+```{julia}
+start  = Point(LatLon(-80, -180))
+finish = Point(LatLon(84, 180))
+
+grid = RegularGrid(start, finish, dims=(20, 20))
+```
+
+::: {.callout-note}
+
+The `Mercator` CRS is not well-defined at the poles $\varphi = \pm 90\degree$. It is common to restrict
+the visualization to the $-80\degree \le \varphi \le 84\degree$ latitude range.
+
+:::
+
+```{julia}
+pgrid = grid |> Proj(Mercator)
+```
+
+```{julia}
+fig = Mke.Figure()
+viz(fig[1,1], grid, showsegments = true)
+viz(fig[1,2], pgrid, showsegments = true)
+fig
+```
+
+It is clear from the visualization that areas are distorted away from the Equator. In other words,
+the `Mercator` CRS is not adequate for area calculations near the poles:
+
+```{julia}
+extrema(area.(pgrid))
+```
+
+If the domain of interest is located far away from the Equator, and there is a need for area
+calculations, we can use other `Projected` CRS such as `Lambert` or `GallPeters`:
+
+```{julia}
+fig = Mke.Figure()
+viz(fig[1,1], grid |> Proj(Lambert), showsegments = true)
+viz(fig[1,2], grid |> Proj(GallPeters), showsegments = true)
+fig
+```
+
+The formulas of some of `Projected` CRS are quite evolved, and sometimes depend on tabulated values.
+Fortunately, this hard work has already been done in the [CoordRefSystems.jl](https://github.com/JuliaEarth/CoordRefSystems.jl)
+module.
+
+::: {.callout-note}
+
+## Tip for advanced users
+
+Custom formulas can be quickly explored with the `Morphological` transform.
+It takes a function as input that maps one CRS into another. As an example,
+consider the [sinusoidal projection](https://en.wikipedia.org/wiki/Sinusoidal_projection)
+defined by
+
+$$
+x = (\lambda - \lambda_o) \cos(\varphi), \quad y = \varphi
+$$
+
+and set $\lambda_o = 0$ for simplicity in the following Julia function:
+
+```{julia}
+function sinproj(coords::LatLon)
+  λ = coords.lon
+  φ = coords.lat
+  x = ustrip(λ) * cos(φ)
+  y = ustrip(φ)
+  Cartesian(x, y)
+end
+```
+
+We can use this new function in the `Morphological` transform to convert the CRS
+of all points in the grid:
+
+```{julia}
+viz(grid |> Morphological(sinproj), showsegments = true)
+```
+
+:::
+
+Examples of `Projected` CRS with a good compromise of shape, area and angle distortion include
+the `Robinson` and `WinkelTripel`:
+
+```{julia}
+fig = Mke.Figure()
+viz(fig[1,1], grid |> Proj(Robinson), showsegments = true)
+viz(fig[1,2], grid |> Proj(WinkelTripel), showsegments = true)
+fig
+```
+
+We can create a more realistic map by loading the colors of the Earth stored in a GeoTIFF file:
+
+```{julia}
+using GeoIO
+
+earth = GeoIO.load("data/earth.tif")
+
+earth |> Proj(Robinson) |> viewer
+```
+
+::: {.callout-note}
+
+## Tip for all users
+
+The [GeoArtifacts.jl](https://github.com/JuliaEarth/GeoArtifacts.jl) module provides
+functions to (down)load such data from the web. It includes popular datasets such as
+[NaturalEarth](https://www.naturalearthdata.com) and [GADM](https://gadm.org).
+The small `earth.tif` file was generated with the following script:
+
+```julia
+using GeoStats
+using GeoArtifacts
+using GeoIO
+
+geotable = NaturalEarth.naturalearth1("water")
+
+earth = geotable |> Upscale(80, 40)
+
+GeoIO.save("data/earth.tif", earth)
+```
+
+:::
+
+Please consult the official documentation for the full list of `Projected` CRS.
+
+## UTM
+
+The [Universal Transverse Mercator](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system)
+(UTM) system defines a widely used collection of `Projected` CRS as a function of 60 zones in the northern and
+southern hemispheres. The `utm` function can be used to retrieve the `TransverseMercator` CRS given knowledge
+of the zone:
+
+```{julia}
+utm(:north, 1)
+```
+
+```{julia}
+utm(:south, 31)
+```
+
+These can be used in the `Proj` transform as usual. The zone number is a function of the longitude and latitude
+ranges of the domain of interest, and online resources exist to facilitate the identification of this number.
+
+::: {.callout-note}
+
+## Tip for all users
+
+The longitude and latitude ranges of a domain can be quickly found with the `boundingbox`:
+
+```{julia}
+boundingbox(grid)
+```
+
+:::
+
+::: {.callout-note}
+
+## Tip for all users
+
+The aliases `utmnorth` and `utmsouth` can be used to retrieve UTM zones from a specific hemisphere:
+
+```{julia}
+utmnorth(1) == utm(:north, 1)
+```
+
+:::
+
+## EPSG/ESRI
+
+The **EPSG Dataset** was created in the mid 80s to catalogue the immense list of CRS in the literature, and their
+associated projection and datum parameters. It provides a unique identification code for each CRS that can be
+safely used across geospatial data science projects.
+
+The `CoordRefSystems.get` function can be used to retrieve CRS from `EPSG` or `ESRI` codes:
+
+```{julia}
+CoordRefSystems.get(EPSG{4326})
+```
+
+```{julia}
+CoordRefSystems.get(EPSG{3395})
+```
+
+```{julia}
+CoordRefSystems.get(ESRI{54030})
+```
+
+These codes can be used directly in the `Proj` transform:
+
+```{julia}
+Point(LatLon(45, 45)) |> Proj(EPSG{3395})
+```
+
+This feature is convenient, particularly when the CRS is complex to write.
+
+::: {.callout-note}
+
+## Tip for all users
+
+The official [epsg.org](https://epsg.org/search/by-name) website provides tools to search codes in the EPSG Dataset.
+Other websites such as [epsg.io](https://epsg.io) provide alternative tools that are more user-friendly.
+
+:::
+
+We conclude this brief exposition of map projections with a few remarks:
+
+- Getting used to the properties of various CRS takes time, however; this is an important skill to develop as a
+  professional geospatial data scientist.
+- Although the literature on map projections requires advanced mathematical background,
+  the `Proj` transform facilitates the experimentation of various CRS in practice.
