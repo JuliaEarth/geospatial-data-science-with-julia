@@ -54,8 +54,8 @@ will only use the **drillholes.csv** table.
 
 Drill hole samples are always available in mining projects. They contain chemical
 information for each rock sample (a cylinder) along the drill hole trajectories.
-In this case, the data has been processed, and only the "X", "Y", "Z" coordinates
-of the centroids of the cylinders were stored:
+In this case, the data has been processed, and only the `Cartesian` "X", "Y", "Z"
+coordinates of the centroids of the cylinders were stored:
 
 ```{julia}
 url = "https://zenodo.org/record/7051975/files/drillholes.csv?download=1"
@@ -174,7 +174,7 @@ First, let's create our full `CartesianGrid` using the `boundingbox` of the traj
 bbox = boundingbox(dtable.geometry)
 
 # size of blocks in meters
-bsize = (25.0, 25.0, 12.5)
+bsize = (25.0u"m", 25.0u"m", 12.5u"m")
 
 # define Cartesian grid
 grid = CartesianGrid(extrema(bbox)..., bsize)
@@ -213,37 +213,39 @@ blocks = view(grid, active)
 
 We would also like to filter `Hexahedron`s that are above the terrain.
 Let's create a simple terrain elevation model by interpolating the vertical
-"Z" coordinate of the first point of each trajectory:
+`z` coordinate of the first point of each trajectory:
 
 ```{julia}
+zcoord(point) = coords(point).z
+
 ztable = @chain dtable begin
   @groupby(:HOLEID)
-  @transform(:Z = last(to(:geometry)), :geometry = shadow(:geometry))
-  @combine(:Z = first(:Z), :geometry = first(:geometry))
+  @transform(:z = zcoord(:geometry), :geometry = shadow(:geometry))
+  @combine(:z = first(:z), :geometry = first(:geometry))
 end
 ```
 
-We perform the interpolation of the "Z" coordinate on the projected centroids of the blocks:
+We perform the interpolation of the `z` coordinate on the projected centroids of the blocks:
 
 ```{julia}
 centroids = unique(shadow.(centroid.(blocks)))
 
-ztable = ztable |> Select("Z") |> Interpolate(centroids, IDW())
+ztable = ztable |> Select("z") |> Interpolate(centroids, IDW())
 ```
 
 ```{julia}
 ztable |> viewer
 ```
 
-Finally, we can filter the blocks for which the "Z" coordinate is below the terrain:
+Finally, we can filter the blocks for which the `z` coordinate is below the terrain:
 
 ```{julia}
 p(h) = shadow(centroid(h))
-Z(h) = last(to(centroid(h)))
+z(h) = zcoord(centroid(h))
 
-zdict = Dict(ztable.geometry .=> ztable.Z)
+zdict = Dict(ztable.geometry .=> ztable.z)
 
-active = findall(h -> Z(h) < zdict[p(h)], blocks)
+active = findall(h -> z(h) < zdict[p(h)], blocks)
 
 blocks = view(blocks, active)
 ```

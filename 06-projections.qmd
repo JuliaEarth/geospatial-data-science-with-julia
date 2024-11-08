@@ -125,7 +125,7 @@ of coordinate values without units can lead to major engineering failures such a
 [roller coaster derailment](https://web.archive.org/web/20100923105150/http://lamar.colostate.edu/~hillger/unit-mixups.html#spacemountain)
 at Tokyo Disneyland's Space Mountain.
 
-Consider writing algorithms with units to avoid trivial issues in downstream applications:
+Consider writing algorithms with units to avoid trivial issues in critical applications:
 
 ```{julia}
 cart.x < 2u"ft"
@@ -384,7 +384,7 @@ viz(fig[1,2], grid |> Proj(GallPeters), showsegments = true)
 fig
 ```
 
-The formulas of some of `Projected` CRS are quite evolved, and sometimes depend on tabulated values.
+The formulas of some `Projected` CRS are quite evolved, and sometimes depend on tabulated values.
 Fortunately, this hard work has already been done in the [CoordRefSystems.jl](https://github.com/JuliaEarth/CoordRefSystems.jl)
 module.
 
