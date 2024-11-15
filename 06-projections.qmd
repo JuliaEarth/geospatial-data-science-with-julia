@@ -458,7 +458,7 @@ using GeoIO
 
 geotable = NaturalEarth.naturalearth1("water")
 
-earth = geotable |> Upscale(80, 40)
+earth = geotable |> Upscale(20, 10)
 
 GeoIO.save("data/earth.tif", earth)
 ```
