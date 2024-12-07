@@ -34,8 +34,8 @@ has created a gap between the developers and the users of GIS
 software. A typical gap the Julia programming language helps to close.
 
 We decided to limit our interface with existing GIS technology to
-input and output (IO) of files. This gives users of the framework
-the chance to
+input and output (IO) of files while it matures. This gives users
+of the framework the chance to
 
 1. Import geospatial data stored as simple features
 2. Perform geospatial data science with a rich set of tools
