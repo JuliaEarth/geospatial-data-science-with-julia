@@ -52,35 +52,35 @@ and read this book. It is organized in five parts as follows:
 flowchart LR
   preread["Julia basics ✅"] --> partI
   subgraph partI["Part I: Foundations"]
-    chapter1["1. What is geospatial data?"]
-    chapter2["2. Scientific visualization"]
-    chapter3["3. Interfacing with GIS"]
-    chapter4["4. Geometric processing"]
+    chapter1["(1) What is geospatial data?"]
+    chapter2["(2) Scientific visualization"]
+    chapter3["(3) Interfacing with GIS"]
+    chapter4["(4) Geometric processing"]
     chapter1 --> chapter2
     chapter2 --> chapter3
     chapter3 --> chapter4
   end
   subgraph partII["Part II: Transforms"]
-    chapter5["5. What are transforms?"]
-    chapter6["6. Map projections"]
-    chapter7["7. Building pipelines"]
+    chapter5["(5) What are transforms?"]
+    chapter6["(6) Map projections"]
+    chapter7["(7) Building pipelines"]
     chapter5 --> chapter6
     chapter6 --> chapter7
   end
   subgraph partIII["Part III: Queries"]
-    chapter8["8. Split-apply-combine"]
-    chapter9["9. Geospatial joins"]
+    chapter8["(8) Split-apply-combine"]
+    chapter9["(9) Geospatial joins"]
     chapter8 --> chapter9
   end
   subgraph partIV["Part IV: Interpolation"]
-    chapter10["10. Geospatial correlation"]
-    chapter11["11. Simple interpolation"]
+    chapter10["(10) Geospatial correlation"]
+    chapter11["(11) Simple interpolation"]
     chapter10 --> chapter11
   end
   subgraph partV["Part V: Applications"]
-    chapter12["12. Mineral deposits"]
-    chapter13["13. Agricultural fields"]
-    chapter14["14. Petroleum reservoirs"]
+    chapter12["(12) Mineral deposits"]
+    chapter13["(13) Agricultural fields"]
+    chapter14["(14) Petroleum reservoirs"]
     chapter12 --> chapter13
     chapter13 --> chapter14
   end
@@ -115,14 +115,14 @@ using Pkg
 pkg"activate @GDSJL"
 
 # install framework
-pkg"add GeoStats@0.71.3"
+pkg"add GeoStats@0.72.1"
 
 # install IO module
-pkg"add GeoIO@1.19.2"
+pkg"add GeoIO@1.19.8"
 
 # install viz modules
 pkg"add CairoMakie@0.12.2"
-pkg"add PairPlots@2.9.3"
+pkg"add PairPlots@2.10.0"
 
 # install other modules
 pkg"add DataFrames@1.7.0"
