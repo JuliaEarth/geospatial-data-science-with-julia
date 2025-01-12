@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,12 +91,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-348f9480ca2773527746b0ae0a361280.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-46f389c8df888532cbd1bee5f85f9066.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-4f6263ad221f763a4834f521a0a25b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c1b3eac806c2add337f6f2869449eb23.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -401,35 +401,35 @@ div.csl-indent {
 <pre class="mermaid mermaid-js">flowchart LR
   preread["Julia basics ✅"] --&gt; partI
   subgraph partI["Part I: Foundations"]
-    chapter1["1. What is geospatial data?"]
-    chapter2["2. Scientific visualization"]
-    chapter3["3. Interfacing with GIS"]
-    chapter4["4. Geometric processing"]
+    chapter1["(1) What is geospatial data?"]
+    chapter2["(2) Scientific visualization"]
+    chapter3["(3) Interfacing with GIS"]
+    chapter4["(4) Geometric processing"]
     chapter1 --&gt; chapter2
     chapter2 --&gt; chapter3
     chapter3 --&gt; chapter4
   end
   subgraph partII["Part II: Transforms"]
-    chapter5["5. What are transforms?"]
-    chapter6["6. Map projections"]
-    chapter7["7. Building pipelines"]
+    chapter5["(5) What are transforms?"]
+    chapter6["(6) Map projections"]
+    chapter7["(7) Building pipelines"]
     chapter5 --&gt; chapter6
     chapter6 --&gt; chapter7
   end
   subgraph partIII["Part III: Queries"]
-    chapter8["8. Split-apply-combine"]
-    chapter9["9. Geospatial joins"]
+    chapter8["(8) Split-apply-combine"]
+    chapter9["(9) Geospatial joins"]
     chapter8 --&gt; chapter9
   end
   subgraph partIV["Part IV: Interpolation"]
-    chapter10["10. Geospatial correlation"]
-    chapter11["11. Simple interpolation"]
+    chapter10["(10) Geospatial correlation"]
+    chapter11["(11) Simple interpolation"]
     chapter10 --&gt; chapter11
   end
   subgraph partV["Part V: Applications"]
-    chapter12["12. Mineral deposits"]
-    chapter13["13. Agricultural fields"]
-    chapter14["14. Petroleum reservoirs"]
+    chapter12["(12) Mineral deposits"]
+    chapter13["(13) Agricultural fields"]
+    chapter14["(14) Petroleum reservoirs"]
     chapter12 --&gt; chapter13
     chapter13 --&gt; chapter14
   end
@@ -459,14 +459,14 @@ div.csl-indent {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"activate @GDSJL"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install framework</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add GeoStats@0.71.3"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add GeoStats@0.72.1"</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># install IO module</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add GeoIO@1.19.2"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add GeoIO@1.19.8"</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># install viz modules</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add CairoMakie@0.12.2"</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add PairPlots@2.9.3"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add PairPlots@2.10.0"</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># install other modules</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>pkg<span class="st">"add DataFrames@1.7.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
