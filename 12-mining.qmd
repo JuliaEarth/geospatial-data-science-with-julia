@@ -230,7 +230,7 @@ We perform the interpolation of the `z` coordinate on the projected centroids of
 ```{julia}
 centroids = unique(shadow.(centroid.(blocks)))
 
-ztable = ztable |> Select("z") |> Interpolate(centroids, IDW())
+ztable = ztable |> Select("z") |> Interpolate(centroids, model=IDW())
 ```
 
 ```{julia}
@@ -307,9 +307,9 @@ up to a given maximum lag:
 ```{julia}
 maxlag = 300.0u"m"
 
-ns = setdiff(names(samples), ["geometry"])
+vs = setdiff(names(samples), ["geometry"])
 
-gs = [EmpiricalVariogram(samples, n, maxlag = maxlag) for n in ns]
+gs = [EmpiricalVariogram(samples, v, maxlag = maxlag) for v in vs]
 
 γs = [GeoStatsFunctions.fit(Variogram, g, h -> 1 / h^2) for g in gs]
 ```
@@ -330,19 +330,19 @@ function gammaplot(n, g, γ)
   Mke.current_figure()
 end
 
-gammaplot(ns[1], gs[1], γs[1])
+gammaplot(vs[1], gs[1], γs[1])
 ```
 
 ```{julia}
-gammaplot(ns[2], gs[2], γs[2])
+gammaplot(vs[2], gs[2], γs[2])
 ```
 
 ```{julia}
-gammaplot(ns[3], gs[3], γs[3])
+gammaplot(vs[3], gs[3], γs[3])
 ```
 
 ```{julia}
-gammaplot(ns[4], gs[4], γs[4])
+gammaplot(vs[4], gs[4], γs[4])
 ```
 
 Assuming that the variogram models are adequate, we can proceed to interpolation.
@@ -353,9 +353,11 @@ Given the domain of interpolation, the samples and the variogram models, we
 can perform interpolation with `InterpolateNeighbors`:
 
 ```{julia}
-models = [n => Kriging(γ) for (n, γ) in zip(ns, γs)]
+interps = map(vs, γs) do v, γ
+  samples |> Select(v) |> InterpolateNeighbors(blocks, model=Kriging(γ))
+end
 
-interp = samples |> InterpolateNeighbors(blocks, models...)
+interp = reduce(hcat, interps)
 ```
 
 Let's confirm that the interpolated values follow the same standard normal distribution:

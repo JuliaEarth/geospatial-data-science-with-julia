@@ -10,6 +10,12 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 In order to disrupt existing practices and really develop
 something new in Julia, we had to make some hard decisions
 along the way. One of these decisions relates to how we are

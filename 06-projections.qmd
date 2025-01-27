@@ -9,6 +9,12 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 In this chapter, we detach the concept of `Point` from its **geospatial coordinates**
 in a given [coordinate reference system](https://en.wikipedia.org/wiki/Spatial_reference_system)
 (CRS). We explain how the same point in the physical world can be represented with multiple

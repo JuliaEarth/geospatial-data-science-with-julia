@@ -24,6 +24,12 @@ In this book, we use **CairoMakie.jl**:
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 ::: {.callout-note}
 
 We import the backend as `Mke` to avoid polluting the Julia

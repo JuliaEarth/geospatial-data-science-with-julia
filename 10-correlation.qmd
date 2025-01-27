@@ -10,6 +10,12 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 In **Part II** and **Part III** of the book, we learned two important
 tools for *efficient* geospatial data science. We learned how **transform
 pipelines** can be used to prepare geospatial data for investigation, and

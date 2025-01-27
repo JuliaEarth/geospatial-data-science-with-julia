@@ -1,6 +1,5 @@
 [deps]
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
-Cairo_jll = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 GeoIO = "f5a160d5-e41d-4189-8b61-d57781c419e3"
 GeoStats = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"

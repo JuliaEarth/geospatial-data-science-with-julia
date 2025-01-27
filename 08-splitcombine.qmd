@@ -9,6 +9,12 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 In **Part II** of the book, we introduced **transform pipelines** to
 process the `values` and the `domain` of geotables using high-level
 abstractions that preserve geospatial information. In this chapter, we

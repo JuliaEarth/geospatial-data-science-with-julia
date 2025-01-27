@@ -24,6 +24,12 @@ We will also assume that the Makie.jl backend is loaded:
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 ## Geometries
 
 We provide a vast list of geometries, which are organized into two main classes,

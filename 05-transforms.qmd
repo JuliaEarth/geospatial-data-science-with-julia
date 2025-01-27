@@ -9,6 +9,12 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 ## Motivation
 
 In **Part I** of the book, we learned that our `GeoTable` representation

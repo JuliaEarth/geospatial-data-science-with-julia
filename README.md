@@ -10,8 +10,8 @@ The book is available online for free at
 
 To build this book, you need:
 
-- Julia v1.10
-- IJulia (>= v1.24)
+- Julia v1.11
+- IJulia (>= v1.26)
   ```julia
   import Pkg
   Pkg.add("IJulia")

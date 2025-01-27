@@ -9,6 +9,12 @@ using GeoStats
 import CairoMakie as Mke
 ```
 
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
 Another important tool in geospatial data science is the **geospatial join**.
 We will introduce the concept with a practical example, and will explain how it
 is related to the standard [join](https://en.wikipedia.org/wiki/Join_(SQL)) of
