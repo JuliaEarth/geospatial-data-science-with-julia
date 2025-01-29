@@ -115,7 +115,7 @@ using Pkg
 pkg"activate @GDSJL"
 
 # install framework
-pkg"add GeoStats@0.73.0"
+pkg"add GeoStats@0.73.1"
 
 # install IO module
 pkg"add GeoIO@1.19.10"
