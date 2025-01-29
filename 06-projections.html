@@ -385,7 +385,7 @@ window.Quarto = {
 <section id="basic" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="basic"><span class="header-section-number">6.1</span> Basic</h2>
 <p>In previous chapters, the construction of geometries assumed a <code>Cartesian</code> Coordinate Reference System, or CRS for short. In all previous examples, we constructed <code>Point</code>s with <code>Cartesian</code> coordinates in <code>m</code> units:</p>
-<div id="527b8682" class="cell" data-execution_count="3">
+<div id="4d6632c2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>Point with Cartesian{NoDatum} coordinates
@@ -394,7 +394,7 @@ window.Quarto = {
 </div>
 </div>
 <p>These coordinates can be retrieved with the <code>coords</code> function:</p>
-<div id="c456ad2d" class="cell" data-execution_count="4">
+<div id="4344008b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cart <span class="op">=</span> <span class="fu">coords</span>(point)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>Cartesian{NoDatum} coordinates
@@ -413,7 +413,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Other units from Unitful.jl can be specified with the <code>u"..."</code> syntax:</p>
-<div id="2cf94159" class="cell" data-execution_count="5">
+<div id="9b18a6df" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(<span class="fl">1</span>u<span class="st">"ft"</span>, <span class="fl">2</span>u<span class="st">"cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Point with Cartesian{NoDatum} coordinates
@@ -440,7 +440,7 @@ Note
 </div>
 </div>
 <p>To represent the same point in a <code>Polar</code> CRS, in terms of a radius <code>ρ</code> and an angle <code>ϕ</code>, we can convert its coordinates and reconstruct the point:</p>
-<div id="4ad0ecc1" class="cell" data-execution_count="6">
+<div id="b3cb5207" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>polar <span class="op">=</span> <span class="fu">convert</span>(Polar, cart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Polar{NoDatum} coordinates
@@ -448,7 +448,7 @@ Note
 └─ ϕ: 1.1071487177940904 rad</code></pre>
 </div>
 </div>
-<div id="c2ab465e" class="cell" data-execution_count="7">
+<div id="084c10e4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(polar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Point with Polar{NoDatum} coordinates
@@ -457,7 +457,7 @@ Note
 </div>
 </div>
 <p>Even though this process is transparent, it would be very tedious to perform this conversion for all <code>Point</code>s of <code>Geometry</code>s in a <code>domain</code> of a <code>GeoTable</code>, and reconstruct the result efficiently. That is where the <code>Proj</code> transform becomes useful:</p>
-<div id="329903ad" class="cell" data-execution_count="8">
+<div id="5e887534" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">2</span>) <span class="op">|&gt;</span> <span class="fu">Proj</span>(Polar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Point with Polar{NoDatum} coordinates
@@ -466,7 +466,7 @@ Note
 </div>
 </div>
 <p>This transform takes vectors of <code>Geometry</code>s, <code>Domain</code> or <code>GeoTable</code> and converts the underlying coordinates to a given target CRS efficiently, exploiting lazy representations of <code>Grid</code>s:</p>
-<div id="c20fc67a" class="cell" data-execution_count="9">
+<div id="487b72e2" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">CartesianGrid</span>(<span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">100</span>) <span class="op">|&gt;</span> <span class="fu">Proj</span>(Cylindrical)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>100×100×100 TransformedGrid
@@ -497,32 +497,32 @@ Note
 </div>
 </div>
 <p>Although the conversion between <code>Basic</code> CRS doesn’t affect the position of points:</p>
-<div id="bacac8e6" class="cell" data-execution_count="10">
+<div id="5264e1b3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(cart) <span class="op">≈</span> <span class="fu">Point</span>(polar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>true</code></pre>
 </div>
 </div>
 <p>It can be useful to write geospatial algorithms in terms of specific coordinates of interest:</p>
-<div id="fd20d4e7" class="cell" data-execution_count="11">
+<div id="a19266c3" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cart.x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>1.0 m</code></pre>
 </div>
 </div>
-<div id="23242ad9" class="cell" data-execution_count="12">
+<div id="1285c105" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cart.y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>2.0 m</code></pre>
 </div>
 </div>
-<div id="a9b2cc25" class="cell" data-execution_count="13">
+<div id="a73d2dba" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>polar.ρ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>2.23606797749979 m</code></pre>
 </div>
 </div>
-<div id="213719f7" class="cell" data-execution_count="14">
+<div id="1c628ab8" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>polar.ϕ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>1.1071487177940904 rad</code></pre>
@@ -541,13 +541,13 @@ Tip for all users
 <div class="callout-body-container callout-body">
 <p>Unitful coordinate values address many pitfalls in geospatial applications. A simple comparison of coordinate values without units can lead to major engineering failures such as the <a href="https://web.archive.org/web/20100923105150/http://lamar.colostate.edu/~hillger/unit-mixups.html#spacemountain">roller coaster derailment</a> at Tokyo Disneyland’s Space Mountain.</p>
 <p>Consider writing algorithms with units to avoid trivial issues in critical applications:</p>
-<div id="36686b08" class="cell" data-execution_count="15">
+<div id="cd659703" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cart.x <span class="op">&lt;</span> <span class="fl">2</span>u<span class="st">"ft"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>false</code></pre>
 </div>
 </div>
-<div id="d4393dbd" class="cell" data-execution_count="16">
+<div id="bb755352" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ustrip</span>(cart.x) <span class="op">&lt;</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>true</code></pre>
@@ -566,14 +566,14 @@ Tip for advanced users
 </div>
 <div class="callout-body-container callout-body">
 <p>The result of the <code>coords</code> function is <strong>not</strong> a vector, and therefore cannot be used in linear algebra. To retrieve the <code>Vec</code> from the origin of the CRS to the given <code>Point</code>, use the <code>to</code> function instead:</p>
-<div id="4e59caff" class="cell" data-execution_count="17">
+<div id="c95f908a" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to</span>(point)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>Vec(1.0 m, 2.0 m)</code></pre>
 </div>
 </div>
 <p>This utility function will always convert the CRS of the coordinates of the <code>Point</code> to <code>Cartesian</code> before returning the static vector:</p>
-<div id="b985f415" class="cell" data-execution_count="18">
+<div id="458660bc" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fu">Point</span>(polar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>Point with Polar{NoDatum} coordinates
@@ -581,7 +581,7 @@ Tip for advanced users
 └─ ϕ: 1.1071487177940904 rad</code></pre>
 </div>
 </div>
-<div id="42c6c774" class="cell" data-execution_count="19">
+<div id="4c1d02aa" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="fu">to</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>Vec(1.0000000000000002 m, 2.0 m)</code></pre>
@@ -607,7 +607,7 @@ Definition
 </div>
 </div>
 <p>To illustrate this concept, we start with the most widely used <code>Geographic</code> CRS:</p>
-<div id="3ee411d0" class="cell" data-execution_count="20">
+<div id="d044e4e2" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>latlon <span class="op">=</span> <span class="fu">LatLon</span>(<span class="fl">0</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>GeodeticLatLon{WGS84Latest} coordinates
@@ -629,21 +629,21 @@ Note
 </div>
 </div>
 <p>In the geodetic <code>LatLon</code> CRS, the longitude coordinate is the horizontal angle measured in degrees from the Greenwich (or prime) meridian:</p>
-<div id="86e622a9" class="cell" data-execution_count="21">
+<div id="1cf5778e" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>latlon.lon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>90.0°</code></pre>
 </div>
 </div>
 <p>The latitude coordinate is the vertical angle measured in degrees from the Equator parallel:</p>
-<div id="0d63d31e" class="cell" data-execution_count="22">
+<div id="66cf9961" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>latlon.lat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>0.0°</code></pre>
 </div>
 </div>
 <p>The geodetic datum of this CRS can be retrieved with the <code>datum</code> function:</p>
-<div id="aa935673" class="cell" data-execution_count="23">
+<div id="6f7b03b2" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datum</span>(latlon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div class="ansi-escaped-output">
@@ -652,14 +652,14 @@ Note
 </div>
 </div>
 <p>It contains the ellipsoid of revolution:</p>
-<div id="36c24b52" class="cell" data-execution_count="24">
+<div id="d1913b6d" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipsoid</span>(<span class="fu">datum</span>(latlon))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>CoordRefSystems.WGS84🌎</code></pre>
 </div>
 </div>
 <p>as well as other parameters used to convert from longitude and latitude angles to <code>Cartesian</code> coordinates in meters:</p>
-<div id="0ae5e9c5" class="cell" data-execution_count="25">
+<div id="1f3efc57" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">convert</span>(Cartesian, latlon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>Cartesian{WGS84Latest} coordinates
@@ -669,7 +669,7 @@ Note
 </div>
 </div>
 <p>In this case, the <code>WGS84Latest</code> datum is propagated to the <code>Cartesian</code> CRS, which is no longer the default <code>NoDatum</code> of previous examples. The datum is used to display geometries with their actual shapes and sizes in the physical world:</p>
-<div id="1bb20048" class="cell" data-execution_count="26">
+<div id="d808fb21" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">0</span>, <span class="fl">0</span>))</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">0</span>, <span class="fl">90</span>))</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">45</span>, <span class="fl">90</span>))</span>
@@ -699,7 +699,7 @@ Note
 </div>
 </div>
 <p>Below is a more familiar example loaded with the GeoIO.jl module:</p>
-<div id="87497fa8" class="cell" data-execution_count="27">
+<div id="2217c141" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>world <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -784,7 +784,7 @@ Note
 </div>
 </div>
 <p>The <code>GeodeticLatLon</code> CRS is displayed in the subheader of the <code>geometry</code> column. It is used internally by the framework for advanced visualization and geometric processing:</p>
-<div id="fc1f73bb" class="cell" data-execution_count="28">
+<div id="932037e2" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>world <span class="op">|&gt;</span> <span class="fu">Select</span>(<span class="st">"REGION"</span>) <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -795,7 +795,7 @@ Note
 </div>
 </div>
 <p>We can convert the <code>GeodeticLatLon</code> CRS to a <code>GeocentricLatLon</code> CRS where the latitude coordinate is measured with respect to the center of the ellipsoid:</p>
-<div id="3912c7cd" class="cell" data-execution_count="29">
+<div id="4c3287d9" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>world <span class="op">|&gt;</span> <span class="fu">Proj</span>(GeocentricLatLon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -878,7 +878,7 @@ Note
 </div>
 </div>
 <p>or to a geodetic <code>LatLonAlt</code>, which also includes the altitude coordinate in meters:</p>
-<div id="b57f65c4" class="cell" data-execution_count="30">
+<div id="1dccf3f6" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>world <span class="op">|&gt;</span> <span class="fu">Proj</span>(LatLonAlt) <span class="op">|&gt;</span> domain <span class="op">|&gt;</span> first</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>MultiPolyArea
@@ -888,14 +888,14 @@ Note
 </div>
 </div>
 <p>The <code>crs</code> function can be used to retrieve the CRS of any given <code>Geometry</code>, <code>Domain</code>, or <code>GeoTable</code> for use in the <code>Proj</code> transform:</p>
-<div id="b9416b3c" class="cell" data-execution_count="31">
+<div id="37aff532" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(world)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>GeodeticLatLon{WGS84Latest, Quantity{Float64, NoDims, Unitful.FreeUnits{(°,), NoDims, nothing}}}</code></pre>
 </div>
 </div>
 <p>As a final example to illustrate the importance of the datum, consider the CRS conversion that preserves the definition of the coordinates, but changes the datum from <code>WGS84Latest</code> to <code>ITRFLatest</code>:</p>
-<div id="a054c33e" class="cell" data-execution_count="32">
+<div id="4d017631" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">45</span>, <span class="fl">45</span>)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(LatLon{ITRFLatest})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>Point with GeodeticLatLon{ITRFLatest} coordinates
@@ -904,14 +904,14 @@ Note
 </div>
 </div>
 <p>These are still longitude and latitude coordinates, but measured with respect to a different ellipsoid:</p>
-<div id="22e5dd8f" class="cell" data-execution_count="33">
+<div id="d6256604" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipsoid</span>(ITRFLatest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>CoordRefSystems.GRS80🌎</code></pre>
 </div>
 </div>
 <p>From these examples, we can see that the <code>Proj</code> transform accepts a <code>CRS</code> or a <code>CRS{Datum}</code> type. In the latter case, the new coordinates are expressed in terms of the specified datum:</p>
-<div id="63dde55f" class="cell" data-execution_count="34">
+<div id="9ddebf18" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">45</span>, <span class="fl">45</span>)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(LatLonAlt{WGS84{<span class="fl">2139</span>}})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>Point with GeodeticLatLonAlt{WGS84{2139}} coordinates
@@ -931,7 +931,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The <code>WGS84Latest</code> datum is by far the most widely used datum in the world (e.g., GPS devices). It is often confused with the <code>WGS84🌎</code> ellipsoid, which is not exported by the framework:</p>
-<div id="b1f2d5e9" class="cell" data-execution_count="35">
+<div id="83262def" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ellipsoid</span>(WGS84Latest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>CoordRefSystems.WGS84🌎</code></pre>
@@ -953,7 +953,7 @@ x = f_x(\lambda, \varphi),\quad y = f_y(\lambda, \varphi)
 x = R(\lambda - \lambda_o), \quad y = R\ln\left(\tan\left(\frac{\pi}{4} + \frac{\varphi}{2}\right)\right)
 \]</span></p>
 <p>where <span class="math inline">\(R\)</span> is the major semiaxis of the ellipsoid of the datum, and <span class="math inline">\(\lambda_o\)</span> is the longitude of the origin (or central) meridian, not necessarily the Greenwich (i.e., <span class="math inline">\(\lambda_o=0\)</span>). We can <code>viz</code> the result of the formulas on a <code>RegularGrid</code> of <code>LatLon</code> coordinates:</p>
-<div id="cb162cc2" class="cell" data-execution_count="36">
+<div id="1b9f6c39" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>start  <span class="op">=</span> <span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="op">-</span><span class="fl">80</span>, <span class="op">-</span><span class="fl">180</span>))</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>finish <span class="op">=</span> <span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">84</span>, <span class="fl">180</span>))</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -978,7 +978,7 @@ Note
 <p>The <code>Mercator</code> CRS is not well-defined at the poles <span class="math inline">\(\varphi = \pm 90\degree\)</span>. It is common to restrict the visualization to the <span class="math inline">\(-80\degree \le \varphi \le 84\degree\)</span> latitude range.</p>
 </div>
 </div>
-<div id="31a0a18d" class="cell" data-execution_count="37">
+<div id="baee3ce8" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>pgrid <span class="op">=</span> grid <span class="op">|&gt;</span> <span class="fu">Proj</span>(Mercator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>20×20 TransformedGrid
@@ -1008,7 +1008,7 @@ Note
   └─ Quadrangle(419, 420, 441, 440)</code></pre>
 </div>
 </div>
-<div id="068aefbf" class="cell" data-execution_count="38">
+<div id="744850ed" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], grid, showsegments <span class="op">=</span> <span class="cn">true</span>)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(fig[<span class="fl">1</span>,<span class="fl">2</span>], pgrid, showsegments <span class="op">=</span> <span class="cn">true</span>)</span>
@@ -1022,14 +1022,14 @@ Note
 </div>
 </div>
 <p>It is clear from the visualization that areas are distorted away from the Equator. In other words, the <code>Mercator</code> CRS is not adequate for area calculations near the poles:</p>
-<div id="d822d9f8" class="cell" data-execution_count="39">
+<div id="c1589de5" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extrema</span>(<span class="fu">area</span>.(pgrid))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>(1.8196349467139988e12 m^2, 1.1061722196192861e13 m^2)</code></pre>
 </div>
 </div>
 <p>If the domain of interest is located far away from the Equator, and there is a need for area calculations, we can use other <code>Projected</code> CRS such as <code>Lambert</code> or <code>GallPeters</code>:</p>
-<div id="640008da" class="cell" data-execution_count="40">
+<div id="559f89ce" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], grid <span class="op">|&gt;</span> <span class="fu">Proj</span>(Lambert), showsegments <span class="op">=</span> <span class="cn">true</span>)</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(fig[<span class="fl">1</span>,<span class="fl">2</span>], grid <span class="op">|&gt;</span> <span class="fu">Proj</span>(GallPeters), showsegments <span class="op">=</span> <span class="cn">true</span>)</span>
@@ -1058,7 +1058,7 @@ Tip for advanced users
 x = (\lambda - \lambda_o) \cos(\varphi), \quad y = \varphi
 \]</span></p>
 <p>and set <span class="math inline">\(\lambda_o = 0\)</span> for simplicity in the following Julia function:</p>
-<div id="5aa2ccfe" class="cell" data-execution_count="41">
+<div id="84aeb262" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sinproj</span>(coords<span class="op">::</span><span class="dt">LatLon</span>)</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  λ <span class="op">=</span> coords.lon</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="cn">φ</span> <span class="op">=</span> coords.lat</span>
@@ -1071,7 +1071,7 @@ x = (\lambda - \lambda_o) \cos(\varphi), \quad y = \varphi
 </div>
 </div>
 <p>We can use this new function in the <code>Morphological</code> transform to convert the CRS of all points in the grid:</p>
-<div id="4c562df8" class="cell" data-execution_count="42">
+<div id="e60cf125" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(grid <span class="op">|&gt;</span> <span class="fu">Morphological</span>(sinproj), showsegments <span class="op">=</span> <span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -1084,7 +1084,7 @@ x = (\lambda - \lambda_o) \cos(\varphi), \quad y = \varphi
 </div>
 </div>
 <p>Examples of <code>Projected</code> CRS with a good compromise of shape, area and angle distortion include the <code>Robinson</code> and <code>WinkelTripel</code>:</p>
-<div id="1108e5ba" class="cell" data-execution_count="43">
+<div id="bd36cefd" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], grid <span class="op">|&gt;</span> <span class="fu">Proj</span>(Robinson), showsegments <span class="op">=</span> <span class="cn">true</span>)</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(fig[<span class="fl">1</span>,<span class="fl">2</span>], grid <span class="op">|&gt;</span> <span class="fu">Proj</span>(WinkelTripel), showsegments <span class="op">=</span> <span class="cn">true</span>)</span>
@@ -1098,7 +1098,7 @@ x = (\lambda - \lambda_o) \cos(\varphi), \quad y = \varphi
 </div>
 </div>
 <p>We can create a more realistic map by loading the colors of the Earth stored in a GeoTIFF file:</p>
-<div id="4f2b9ac4" class="cell" data-execution_count="44">
+<div id="47508bc4" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>earth <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/earth.tif"</span>)</span>
@@ -1139,13 +1139,13 @@ Tip for all users
 <section id="utm" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="utm"><span class="header-section-number">6.4</span> UTM</h2>
 <p>The <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">Universal Transverse Mercator</a> (UTM) system defines a widely used collection of <code>Projected</code> CRS as a function of 60 zones in the northern and southern hemispheres. The <code>utm</code> function can be used to retrieve the <code>TransverseMercator</code> CRS given knowledge of the zone:</p>
-<div id="79869cda" class="cell" data-execution_count="45">
+<div id="163c0643" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">utm</span>(<span class="op">:</span>north, <span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>TransverseMercator{0.9996, 0.0°, WGS84Latest, CoordRefSystems.Shift{Quantity{Float64, NoDims, Unitful.FreeUnits{(°,), NoDims, nothing}}, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}(-177.0°, 500000.0 m, 0.0 m)}</code></pre>
 </div>
 </div>
-<div id="dc1c7ba6" class="cell" data-execution_count="46">
+<div id="99c7b9b3" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">utm</span>(<span class="op">:</span>south, <span class="fl">31</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>TransverseMercator{0.9996, 0.0°, WGS84Latest, CoordRefSystems.Shift{Quantity{Float64, NoDims, Unitful.FreeUnits{(°,), NoDims, nothing}}, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}(3.0°, 500000.0 m, 1.0e7 m)}</code></pre>
@@ -1163,7 +1163,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>The longitude and latitude ranges of a domain can be quickly found with the <code>boundingbox</code>:</p>
-<div id="ae466408" class="cell" data-execution_count="47">
+<div id="2dc94aab" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boundingbox</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>Box
@@ -1184,7 +1184,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>The aliases <code>utmnorth</code> and <code>utmsouth</code> can be used to retrieve UTM zones from a specific hemisphere:</p>
-<div id="e229ec52" class="cell" data-execution_count="48">
+<div id="b2dd54e2" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">utmnorth</span>(<span class="fl">1</span>) <span class="op">==</span> <span class="fu">utm</span>(<span class="op">:</span>north, <span class="fl">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>true</code></pre>
@@ -1197,26 +1197,26 @@ Tip for all users
 <h2 data-number="6.5" class="anchored" data-anchor-id="epsgesri"><span class="header-section-number">6.5</span> EPSG/ESRI</h2>
 <p>The <strong>EPSG Dataset</strong> was created in the mid 80s to catalogue the immense list of CRS in the literature, and their associated projection and datum parameters. It provides a unique identification code for each CRS that can be safely used across geospatial data science projects.</p>
 <p>The <code>CoordRefSystems.get</code> function can be used to retrieve CRS from <code>EPSG</code> or <code>ESRI</code> codes:</p>
-<div id="321df4e1" class="cell" data-execution_count="49">
+<div id="b8b8bbfc" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>CoordRefSystems.<span class="fu">get</span>(EPSG{<span class="fl">4326</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>GeodeticLatLon{WGS84Latest}</code></pre>
 </div>
 </div>
-<div id="2d76d3da" class="cell" data-execution_count="50">
+<div id="8ecb821a" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>CoordRefSystems.<span class="fu">get</span>(EPSG{<span class="fl">3395</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>Mercator{WGS84Latest}</code></pre>
 </div>
 </div>
-<div id="384bad82" class="cell" data-execution_count="51">
+<div id="39aaca85" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>CoordRefSystems.<span class="fu">get</span>(ESRI{<span class="fl">54030</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>Robinson{WGS84Latest}</code></pre>
 </div>
 </div>
 <p>These codes can be used directly in the <code>Proj</code> transform:</p>
-<div id="9c66b875" class="cell" data-execution_count="52">
+<div id="22e92cd6" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Point</span>(<span class="fu">LatLon</span>(<span class="fl">45</span>, <span class="fl">45</span>)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(EPSG{<span class="fl">3395</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>Point with Mercator{WGS84Latest} coordinates
