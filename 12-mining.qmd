@@ -317,9 +317,8 @@ gs = [EmpiricalVariogram(samples, v, maxlag = maxlag) for v in vs]
 ::: {.callout-note}
 
 We performed the `fit` of the variogram model using the weighting function
-`h -> exp(-h/100)` that penalizes the lag distance `h` with an exponential
-model. The constant `100` was chosen based on visual inspection of the
-`EmpiricalVariogram` estimates below.
+`h -> 1 / h^2` that penalizes the lag distance `h` with the inverse of its
+square.
 
 :::
 
