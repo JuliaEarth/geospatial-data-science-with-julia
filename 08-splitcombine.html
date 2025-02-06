@@ -349,7 +349,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14-energy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Petroleum reservoirs 🚧</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Petroleum reservoirs</span></span></a>
   </div>
 </li>
       </ul>
@@ -421,7 +421,7 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p>The Bonnie Project Example is under copyright of Transmin Metallurgical Consultants, 2019. It is issued under the Creative Commons Attribution-ShareAlike 4.0 International Public License.</p>
 </blockquote>
-<div id="63d5a510" class="cell" data-execution_count="3">
+<div id="50fe3c11" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/bonnie.csv"</span>, coords <span class="op">=</span> (<span class="st">"EAST"</span>, <span class="st">"NORTH"</span>, <span class="st">"RL"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -590,7 +590,7 @@ window.Quarto = {
 </div>
 </div>
 <p>It represents a 3D mineral deposit with grades in parts per million (ppm), sulfur contaminant in percent, and other categorical variables with geological and lithological units:</p>
-<div id="4fcf8ea5" class="cell" data-execution_count="4">
+<div id="bc20af6f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>9-element Vector{String}:
@@ -606,7 +606,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The “EAST”, “NORTH” and “RL” coordinates used to <code>georef</code> the CSV file represent the centroids of the mining blocks. The sides of these blocks are provided as metadata (e.g., 5x5x5):</p>
-<div id="1e4919a5" class="cell" data-execution_count="5">
+<div id="4665f1a6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">|&gt;</span> viewer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
@@ -617,7 +617,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Let’s clean the geotable using what we learned in previous chapters. We will reject the column with sulfur, will rename the variables for greater readability, and will drop missing values. We will also add units to some of the variables using bracket notation:</p>
-<div id="8ffc8da3" class="cell" data-execution_count="6">
+<div id="3cb433ae" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>clean <span class="op">=</span> <span class="fu">Reject</span>(<span class="st">"Sper"</span>) <span class="op">→</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Rename</span>(<span class="st">"Agppm"</span> <span class="op">=&gt;</span> <span class="st">"Ag [ppm]"</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Auppm"</span> <span class="op">=&gt;</span> <span class="st">"Au [ppm]"</span>,</span>
@@ -799,7 +799,7 @@ Note
 <section id="splitting-geotables" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="splitting-geotables"><span class="header-section-number">8.3</span> Splitting geotables</h2>
 <p>We can split geotables into lazy <strong>geospatial partitions</strong> based on values stored in a column. In this case, we want to split the mineral deposit in geological units stored in the <code>geo</code> column:</p>
-<div id="5d43de12" class="cell" data-execution_count="7">
+<div id="31afa3be" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="st">"geo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>2 Partition
@@ -809,7 +809,7 @@ metadata: rows, names</code></pre>
 </div>
 </div>
 <p>There are two geological units in this deposit, represented as <code>SubGeoTable</code>. We can access these units by indexing into the geospatial partition:</p>
-<div id="04d918fc" class="cell" data-execution_count="8">
+<div id="2d39eb2c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groups[<span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -961,7 +961,7 @@ metadata: rows, names</code></pre>
 </table>
 </div>
 </div>
-<div id="89175229" class="cell" data-execution_count="9">
+<div id="fdc4a35f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viz</span>(groups[<span class="fl">1</span>].geometry, color <span class="op">=</span> <span class="st">"teal"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(groups[<span class="fl">2</span>].geometry, color <span class="op">=</span> <span class="st">"slategray3"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Mke.<span class="fu">current_figure</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -981,13 +981,13 @@ metadata: rows, names</code></pre>
 m = Au \times \rho \times V
 \]</span></p>
 <p>Let’s use an auxiliary function to convert the <code>Point</code>s in the <code>geometry</code> column into <code>Box</code>es of sides 5x5x5. The function takes a centroid point as input and produces a box centered at the point with corners that are 2.5x2.5x2.5 units away in both directions:</p>
-<div id="f915626a" class="cell" data-execution_count="10">
+<div id="3be9ff9c" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(point) <span class="op">=</span> <span class="fu">Box</span>(point <span class="op">-</span> <span class="fu">Vec</span>(<span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>), point <span class="op">+</span> <span class="fu">Vec</span>(<span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>box (generic function with 1 method)</code></pre>
 </div>
 </div>
-<div id="90398cc2" class="cell" data-execution_count="11">
+<div id="4ad65e9e" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>.(gt.geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>19548-element Vector{Box{𝔼{3}, Cartesian3D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}:
@@ -1020,7 +1020,7 @@ m = Au \times \rho \times V
 </div>
 </div>
 <p>The <code>@transform</code> macro modifies or creates new columns in the geotable based on expressions with existing column names. In this case, we want to replace the <code>geometry</code> column by calling the auxiliary function above:</p>
-<div id="e293743f" class="cell" data-execution_count="12">
+<div id="ccb7b0c5" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> <span class="pp">@transform</span>(gt, <span class="op">:</span>geometry <span class="op">=</span> <span class="fu">box</span>(<span class="op">:</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1201,7 +1201,7 @@ Tip for all users
 </div>
 </div>
 <p>The mass of gold on each mining block can be computed now that the geometries have <code>volume</code>:</p>
-<div id="2207be58" class="cell" data-execution_count="13">
+<div id="734380fa" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@transform</span>(gt, <span class="op">:</span>m <span class="op">=</span> <span class="op">:</span>Au <span class="op">*</span> <span class="op">:</span>ρ <span class="op">*</span> <span class="fu">volume</span>(<span class="op">:</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1384,7 +1384,7 @@ Note
 <section id="combining-results" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="combining-results"><span class="header-section-number">8.5</span> Combining results</h2>
 <p>We can use the <code>@combine</code> macro to reduce columns of geotables in a geospatial partition obtained with the <code>@groupby</code> macro. The macro is similar to the <code>@transform</code> macro, but expects valid reduction functions such as <code>sum</code>, <code>mean</code>, <code>std</code>. Reduction functions take a vector of values as input and produce a single scalar as output:</p>
-<div id="f201550c" class="cell" data-execution_count="14">
+<div id="268b7e57" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="op">:</span>geo)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@combine</span>(groups, <span class="op">:</span>μ <span class="op">=</span> <span class="fu">mean</span>(<span class="op">:</span>Au), <span class="op">:</span>σ <span class="op">=</span> <span class="fu">std</span>(<span class="op">:</span>Au))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1429,7 +1429,7 @@ Note
 </div>
 </div>
 <p>Note that the macro reduces the geometry column and produces a new complex <code>Multi</code> geometry with all the <code>Box</code>es that are inside each geological unit. This is a very advanced feature of the framework that <strong>cannot be represented with the simple features standard</strong>. It is also possible to use a custom reduction function for the <code>geometry</code> column:</p>
-<div id="26414832" class="cell" data-execution_count="15">
+<div id="5a36bbe8" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="op">:</span>geo)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@combine</span>(groups, <span class="op">:</span>μ <span class="op">=</span> <span class="fu">mean</span>(<span class="op">:</span>Au), <span class="op">:</span>σ <span class="op">=</span> <span class="fu">std</span>(<span class="op">:</span>Au), <span class="op">:</span>geometry <span class="op">=</span> <span class="fu">first</span>(<span class="op">:</span>geometry))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1479,7 +1479,7 @@ Note
 <p>Let’s recall our original business question:</p>
 <p><em>What is the total mass of gold that will be mined from each geological unit?</em></p>
 <p>We can now answer this question with three lines of code:</p>
-<div id="4969cc9d" class="cell" data-execution_count="16">
+<div id="fd430921" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> <span class="pp">@groupby</span>(gt, <span class="op">:</span>geo)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> <span class="pp">@transform</span>(groups, <span class="op">:</span>m <span class="op">=</span> <span class="op">:</span>Au <span class="op">*</span> <span class="op">:</span>ρ <span class="op">*</span> <span class="fu">volume</span>(<span class="op">:</span>geometry))</span>
@@ -1531,7 +1531,7 @@ Tip for all users
 </div>
 <div class="callout-body-container callout-body">
 <p>We can simplify the code further using the <code>@chain</code> macro. It forwards the resulting geotable or geospatial partition to the next macro:</p>
-<div id="36863b64" class="cell" data-execution_count="17">
+<div id="8e2a7b83" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@chain</span> gt <span class="cf">begin</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@groupby</span>(<span class="op">:</span>geo)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@transform</span>(<span class="op">:</span>m <span class="op">=</span> <span class="op">:</span>Au <span class="op">*</span> <span class="op">:</span>ρ <span class="op">*</span> <span class="fu">volume</span>(<span class="op">:</span>geometry))</span>
