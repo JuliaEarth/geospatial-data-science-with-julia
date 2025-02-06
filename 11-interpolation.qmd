@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Simple interpolation
 
 ```{julia}

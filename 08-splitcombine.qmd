@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Split-apply-combine
 
 ```{julia}

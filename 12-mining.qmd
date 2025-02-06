@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Mineral deposits
 
 ```{julia}

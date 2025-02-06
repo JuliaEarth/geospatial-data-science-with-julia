@@ -45,5 +45,3 @@ format:
       dark: solar
     mermaid:
       theme: dark
-
-jupyter: julia-1.11

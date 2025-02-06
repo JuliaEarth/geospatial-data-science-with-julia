@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Map projections
 
 ```{julia}

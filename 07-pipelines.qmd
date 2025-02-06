@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Building pipelines
 
 ```{julia}

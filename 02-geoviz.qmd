@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Scientific visualization
 
 ```{julia}
