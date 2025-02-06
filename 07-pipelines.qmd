@@ -61,7 +61,7 @@ d = c .+ 0.6randn(N)
 
 table = (; a, b, c, d)
 
-gt = georef(table, CartesianGrid(100, 100))
+gtb = georef(table, CartesianGrid(100, 100))
 ```
 
 And suppose that we are interested in converting the columns "a", "b" and "c" of the geotable with
@@ -77,7 +77,7 @@ The operator `→` creates a special `SequentialTransform`, which can be applied
 transform in the framework:
 
 ```{julia}
-gt |> pipeline
+gtb |> pipeline
 ```
 
 It will perform optimizations whenever possible. For instance, we know a priori that adding the
@@ -107,14 +107,14 @@ pipeline2 = Select("b", "c", "d") → PCA(maxdim=2)
 The first pipeline creates 3 indicator variables from variable "a":
 
 ```{julia}
-gt |> pipeline1
+gtb |> pipeline1
 ```
 
 The second pipeline runs principal component analysis with variables "b", "c" and "d"
 and produces 2 principal components:
 
 ```{julia}
-gt |> pipeline2
+gtb |> pipeline2
 ```
 
 We can combine the two pipelines into a single pipeline that executes in parallel:
@@ -124,7 +124,7 @@ pipeline = pipeline1 ⊔ pipeline2
 ```
 
 ```{julia}
-gt |> pipeline
+gtb |> pipeline
 ```
 
 All 5 columns are present in the final geotable.
@@ -144,7 +144,7 @@ b = [1.6, 3.4, -1.0, 4.0]
 c = [3.4, 2.0, 3.6, -1.0]
 table = (; a, b, c)
 
-geotable = georef(table, [(0, 0), (1, 0), (1, 1), (0, 1)])
+gtb = georef(table, [(0, 0), (1, 0), (1, 1), (0, 1)])
 ```
 
 ```{julia}
@@ -154,7 +154,7 @@ pipeline = Center()
 We saw that our pipelines can be evaluated with Julia's pipe operator:
 
 ```{julia}
-geotable |> pipeline
+gtb |> pipeline
 ```
 
 In order to revert a pipeline, however; we need to save auxiliary constants that
@@ -162,9 +162,9 @@ were used to transform the data (e.g., mean of selected columns). The `apply` fu
 serves this purpose:
 
 ```{julia}
-newtable, cache = apply(pipeline, geotable)
+newgtb, cache = apply(pipeline, gtb)
 
-newtable
+newgtb
 ```
 
 The function produces the new geotable as usual and an additional `cache`
@@ -178,7 +178,7 @@ isrevertible(pipeline)
 ```
 
 ```{julia}
-revert(pipeline, newtable, cache)
+revert(pipeline, newgtb, cache)
 ```
 
 A very common workflow in geospatial data science consists of:

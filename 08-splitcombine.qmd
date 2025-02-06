@@ -62,7 +62,7 @@ We will use the `Bonnie` data set to illustrate our geospatial split-apply-combi
 ```{julia}
 using GeoIO
 
-gt = GeoIO.load("data/bonnie.csv", coords = ("EAST", "NORTH", "RL"))
+gtb = GeoIO.load("data/bonnie.csv", coords = ("EAST", "NORTH", "RL"))
 ```
 
 It represents a 3D mineral deposit with grades in parts per million (ppm),
@@ -70,7 +70,7 @@ sulfur contaminant in percent, and other categorical variables with geological
 and lithological units:
 
 ```{julia}
-names(gt)
+names(gtb)
 ```
 
 The "EAST", "NORTH" and "RL" coordinates used to `georef` the CSV file
@@ -78,7 +78,7 @@ represent the centroids of the mining blocks. The sides of these blocks
 are provided as metadata (e.g., 5x5x5):
 
 ```{julia}
-gt |> viewer
+gtb |> viewer
 ```
 
 Let's clean the geotable using what we learned in previous chapters.
@@ -98,7 +98,7 @@ clean = Reject("Sper") →
         DropMissing() →
         Unitify()
 
-gt = gt |> clean
+gtb = gtb |> clean
 ```
 
 ::: {.callout-note}
@@ -121,7 +121,7 @@ in a column. In this case, we want to split the mineral deposit in geological un
 stored in the `geo` column:
 
 ```{julia}
-groups = @groupby(gt, "geo")
+groups = @groupby(gtb, "geo")
 ```
 
 There are two geological units in this deposit, represented as `SubGeoTable`. We
@@ -157,7 +157,7 @@ box(point) = Box(point - Vec(2.5, 2.5, 2.5), point + Vec(2.5, 2.5, 2.5))
 ```
 
 ```{julia}
-box.(gt.geometry)
+box.(gtb.geometry)
 ```
 
 The `@transform` macro modifies or creates new columns in the geotable based on
@@ -165,7 +165,7 @@ expressions with existing column names. In this case, we want to replace the
 `geometry` column by calling the auxiliary function above:
 
 ```{julia}
-gt = @transform(gt, :geometry = box(:geometry))
+gtb = @transform(gtb, :geometry = box(:geometry))
 ```
 
 The macro will broadcast the expression to all rows of the geotable.
@@ -178,7 +178,7 @@ as valid values in the right-hand-side of the expression, which are not columns 
 geotable. To mark a string as a column name, we need to use curly braces:
 
 ```julia
-@transform(gt, {"geometry"} = box({"geometry"}))
+@transform(gtb, {"geometry"} = box({"geometry"}))
 ```
 
 :::
@@ -194,7 +194,7 @@ The use of symbols to represent column names is preferred in macros.
 The mass of gold on each mining block can be computed now that the geometries have `volume`:
 
 ```{julia}
-@transform(gt, :m = :Au * :ρ * volume(:geometry))
+@transform(gtb, :m = :Au * :ρ * volume(:geometry))
 ```
 
 ::: {.callout-note}
@@ -211,7 +211,7 @@ but expects valid reduction functions such as `sum`, `mean`, `std`. Reduction fu
 take a vector of values as input and produce a single scalar as output:
 
 ```{julia}
-groups = @groupby(gt, :geo)
+groups = @groupby(gtb, :geo)
 
 @combine(groups, :μ = mean(:Au), :σ = std(:Au))
 ```
@@ -223,7 +223,7 @@ advanced feature of the framework that
 It is also possible to use a custom reduction function for the `geometry` column:
 
 ```{julia}
-groups = @groupby(gt, :geo)
+groups = @groupby(gtb, :geo)
 
 @combine(groups, :μ = mean(:Au), :σ = std(:Au), :geometry = first(:geometry))
 ```
@@ -237,7 +237,7 @@ Let's recall our original business question:
 We can now answer this question with three lines of code:
 
 ```{julia}
-groups = @groupby(gt, :geo)
+groups = @groupby(gtb, :geo)
 
 mass = @transform(groups, :m = :Au * :ρ * volume(:geometry))
 
@@ -252,7 +252,7 @@ We can simplify the code further using the `@chain` macro. It forwards the
 resulting geotable or geospatial partition to the next macro:
 
 ```{julia}
-@chain gt begin
+@chain gtb begin
   @groupby(:geo)
   @transform(:m = :Au * :ρ * volume(:geometry))
   @combine(:m = sum(:m))
