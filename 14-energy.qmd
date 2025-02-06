@@ -1,3 +1,225 @@
-# Petroleum reservoirs 🚧
+# Petroleum reservoirs
 
-## Coming soon...
+```{julia}
+#| echo: false
+#| output: false
+import Pkg
+Pkg.activate(".")
+```
+
+Petroleum reservoirs present various modeling challenges related to
+their complex geometry and distribution of rock and fluid properties.
+Some of these challenges are still open in industry given the lack of
+software for advanced geospatial data science with unstructured meshes.
+In this chapter, we will illustrate how a very important "oil-in-place"
+calculation in reservoir management can be automated with the framework.
+
+**TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `Unitify`, `Unit`,
+`GHC`, `volume`, `viewer`
+
+**MODULES:**
+
+```{julia}
+# framework
+using GeoStats
+
+# IO modules
+using GeoIO
+
+# viz modules
+import CairoMakie as Mke
+```
+
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
+::: {.callout-note}
+
+Although we use CairoMakie.jl in this book, many of the 3D visualizations
+in this chapter demand a more performant Makie.jl backend. Consider using
+GLMakie.jl if you plan to reproduce the code locally.
+
+:::
+
+## Data
+
+We will use reservoir simulation results of the Norne benchmark case, a real
+oil field from the Norwegian Sea. For more information, please check the
+[OPM project](https://opm-project.org). These results were simulated with
+the [JutulDarcy.jl](https://github.com/sintefmath/JutulDarcy.jl) reservoir
+simulator by @Moyner2025.
+
+In particular, we will consider only two time steps of the simulation, named
+`norne1.vtu` and `norne2.vtu`. The data are stored in the open VTK format with
+`.vtu` extension, indicating that it is georeferenced over an unstructured mesh:
+
+```{julia}
+norne₁ = GeoIO.load("data/norne1.vtu")
+norne₂ = GeoIO.load("data/norne2.vtu")
+
+norne₁ |> viewer
+```
+
+::: {.callout-note}
+
+The [vtk.org](https://vtk.org) website provides official documentation for
+the various VTK file formats, including formats for image data (`.vti`),
+rectilinear grids (`.vtr`), structured grids (`.vts`), unstructured meshes
+(`.vtu`), etc.
+
+:::
+
+## Objectives
+
+The Volume of Oil In Place ($VOIP$) is a global estimate of the volume of oil
+trapped in the subsurface. It is defined as an integral over the volume $V$
+of the reservoir:
+
+$$
+VOIP = \int_V S_o \phi\ dV
+$$
+
+where $\phi$ is the rock porosity and $S_o$ is the oil saturation. The integrand
+can be converted into Mass of Oil in Place ($MOIP$) using the oil density $\rho_o$:
+
+$$
+MOIP = \int_V \rho_o S_o \phi\ dV
+$$
+
+Likewise, the Mass of Water In Place ($MWIP$) and Mass of Gas in Place ($MGIP$)
+are defined using the respective fluid saturations and densities.
+
+Our main objective is to estimate these masses of fluids in place over a reservoir model
+with non-trivial geometry, for different time steps within a physical reservoir simulation.
+This can be useful to understand rates of depletion and guide reservoir management.
+
+Secondary objectives include the localization (through 3D visualization) of zones with high
+mass of hydrocarbons (oil + gas), and the calculation of zonal depletion, i.e., the change
+of hydrocarbon mass per zone, from a time step $t_1$ to a time step $t_2$:
+
+$$
+Depletion = \left\{MOIP + MGIP\right\}_{t_1} - \left\{MOIP + MGIP\right\}_{t_2}
+$$
+
+## Methodology
+
+In order to identify zones of the reservoir with high mass of hydrocarbons, we need to
+compute the fluids in place for each element of the mesh, and group the elements based
+on their calculated masses. Given the zones, we can compute the zonal depletion.
+
+The proposed methodology has the following steps:
+
+1. Analysis of oil, gas and water in place
+2. Localization of hydrocarbon zones
+3. Calculation of zonal depletion
+
+### Fluid analysis
+
+Before we start our calculations, we need to rename the variables in the dataset to
+match our concise notation. We also need to correct the units of the variables to
+make sure that our final report has values that are easy to read.
+
+The following pipeline performs the desired cleaning steps by exploiting bracket
+notation (e.g., `[kg/m^3]`) for units. The `Unitify` transform takes a geotable
+with bracket notation as input and converts the values of columns to unitful
+values:
+
+```{julia}
+clean = Select(
+  "porosity" => "ϕ",
+  "saturation_oil" => "So",
+  "saturation_gas" => "Sg",
+  "saturation_water" => "Sw",
+  "density_oil" => "ρo [kg/m^3]",
+  "density_gas" => "ρg [kg/m^3]",
+  "density_water" => "ρw [kg/m^3]"
+) → Unitify()
+```
+
+The resulting geotable has variables with concise names and correct units:
+
+```{julia}
+reservoir₁ = clean(norne₁)
+reservoir₂ = clean(norne₂)
+```
+
+We `@transform` the reservoir and compute masses of fluids for each
+element of the mesh using the formulae in the beginning of the chapter:
+
+```{julia}
+mass(reservoir) = @transform(reservoir,
+  :MOIP = :ρo * :So * :ϕ * volume(:geometry),
+  :MGIP = :ρg * :Sg * :ϕ * volume(:geometry),
+  :MWIP = :ρw * :Sw * :ϕ * volume(:geometry)
+)
+
+mass₁ = mass(reservoir₁)
+mass₂ = mass(reservoir₂)
+
+mass₁ |> Select("MWIP") |> viewer
+```
+
+### Hydrocarbon zones
+
+We compute the mass of hydrocarbon in place $MHIP$ as the sum of oil and gas in
+the first time step, and cluster it with geostatistical hierarchical clustering
+(`GHC`) [@Fouedjio2016]. The method requires an approximate number of clusters
+that we set to $k=3$ (low, medium and high values) and a maximum range of
+geospatial association that we set to $\lambda = 500m$.
+
+Additionally, we set an upper bound `nmax=1000` on the number of elements used
+in the dissimilarity matrix computation and the option `as="zone"` to name the
+column with clustering results.
+
+
+```{julia}
+zones = @transform(mass₁, :MHIP = :MOIP + :MGIP) |>
+        Select("MHIP") |> GHC(3, 500u"m", nmax=1000, as="zone")
+
+zones |> viewer
+```
+
+### Zonal depletion
+
+We concatenate all variables of interest in a single geotable to be able to use
+the geospatial [split-apply-combine](08-splitcombine.qmd) pattern, and compute
+the final summary table with statistics per zone:
+
+```{julia}
+carbon₁ = mass₁ |> Select("MOIP" => "MOIP₁", "MGIP" => "MGIP₁")
+carbon₂ = mass₂ |> Select("MOIP" => "MOIP₂", "MGIP" => "MGIP₂")
+
+data = [carbon₁ carbon₂ zones]
+```
+
+The depletion per zone can be computed with
+
+```{julia}
+summary = @chain data begin
+  @groupby(:zone)
+  @transform(:delta = :MOIP₁ + :MGIP₁ - :MOIP₂ - :MGIP₂)
+  @combine(:depletion = sum(:delta))
+end
+```
+
+or in $Mg$ (ton) after a change of `Unit`:
+
+```{julia}
+summary |> Unit("depletion" => u"Mg")
+```
+
+## Summary
+
+In this chapter, we illustrated the application of the framework in the petroleum
+industry. Among other things, we learned how to
+
+- Perform simple calculations involving fluids in place and unstructured meshes.
+- Identify zones of a petroleum reservoir using clustering methods and visualizations.
+
+This open source technology can be used to create advanced dashboards for reservoir
+management without advanced programming skills. It addresses real issues raised by
+geospatial data scientists in industry who feel unproductive using rigid geomodeling
+software.
