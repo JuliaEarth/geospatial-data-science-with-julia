@@ -11,11 +11,6 @@ The book is available online for free at
 To build this book, you need:
 
 - Julia v1.11
-- IJulia (>= v1.26)
-  ```julia
-  import Pkg
-  Pkg.add("IJulia")
-  ```
 - Quarto
 
 1. Open the Julia REPL and instantiate the environment in this folder:
