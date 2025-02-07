@@ -54,7 +54,7 @@ We will use reservoir simulation results of the Norne benchmark case, a real
 oil field from the Norwegian Sea. For more information, please check the
 [OPM project](https://opm-project.org). These results were simulated with
 the [JutulDarcy.jl](https://github.com/sintefmath/JutulDarcy.jl) reservoir
-simulator by @Moyner2025.
+simulator by @Moyner2024.
 
 In particular, we will consider only two time steps of the simulation, named
 `norne1.vtu` and `norne2.vtu`. The data are stored in the open VTK format with
