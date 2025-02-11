@@ -13,9 +13,9 @@ Pkg.activate(".")
 
 Petroleum reservoirs present various modeling challenges related to
 their complex geometry and distribution of rock and fluid properties.
-Some of these challenges are still open in industry given the lack of
+Some of these challenges are still open in industry due the lack of
 software for advanced geospatial data science with unstructured meshes.
-In this chapter, we will illustrate how a very important "oil-in-place"
+In this chapter, we will illustrate how an important "oil-in-place"
 calculation in reservoir management can be automated with the framework.
 
 **TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `Unitify`, `Unit`,
