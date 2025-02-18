@@ -328,9 +328,10 @@ square.
 
 ```{julia}
 function gammaplot(n, g, γ)
-  varioplot(g, axis = (; title = n))
-  varioplot!(γ, maxlag = maxlag, color = "teal")
-  Mke.current_figure()
+  fig = Mke.Figure()
+  Mke.Axis(fig[1,1], title = n)
+  funplot!(fig, g, maxlag = maxlag)
+  funplot!(fig, γ, maxlag = maxlag)
 end
 
 gammaplot(vs[1], gs[1], γs[1])

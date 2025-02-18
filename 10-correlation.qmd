@@ -217,12 +217,12 @@ p1 = GaussianProcess(GaussianVariogram(range=10.0))
 p2 = GaussianProcess(GaussianVariogram(range=30.0))
 
 Random.seed!(2023)
-d1 = rand(p1, g, [:Z => Float64], LUMethod())
-d2 = rand(p2, g, [:Z => Float64], LUMethod())
+d1 = rand(p1, g)
+d2 = rand(p2, g)
 
 fig = Mke.Figure()
-viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="range: 10"))
-viz(fig[2,1], d2.geometry, color = d2.Z, axis = (; title="range: 30"))
+viz(fig[1,1], d1.geometry, color = d1.field, axis = (; title="range: 10"))
+viz(fig[2,1], d2.geometry, color = d2.field, axis = (; title="range: 30"))
 fig
 ```
 
@@ -243,14 +243,14 @@ p1 = GaussianProcess(GaussianVariogram(range=10.0, sill=1.0))
 p2 = GaussianProcess(GaussianVariogram(range=10.0, sill=9.0))
 
 Random.seed!(2023)
-d1 = rand(p1, g, [:Z => Float64], LUMethod())
-d2 = rand(p2, g, [:Z => Float64], LUMethod())
+d1 = rand(p1, g)
+d2 = rand(p2, g)
 
 f(x) = ustrip(first(to(centroid(x))))
 
 fig = Mke.Figure()
-Mke.lines(fig[1,1], f.(d1.geometry), d1.Z, color = "black", axis = (; title="sill: 1"))
-Mke.lines(fig[2,1], f.(d2.geometry), d2.Z, color = "black", axis = (; title="sill: 9"))
+Mke.lines(fig[1,1], f.(d1.geometry), d1.field, color = "black", axis = (; title="sill: 1"))
+Mke.lines(fig[2,1], f.(d2.geometry), d2.field, color = "black", axis = (; title="sill: 9"))
 fig
 ```
 
@@ -273,14 +273,14 @@ p1 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.1))
 p2 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.2))
 
 Random.seed!(2023)
-d1 = rand(p1, g, [:Z => Float64], LUMethod())
-d2 = rand(p2, g, [:Z => Float64], LUMethod())
+d1 = rand(p1, g)
+d2 = rand(p2, g)
 
 f(x) = ustrip(first(to(centroid(x))))
 
 fig = Mke.Figure()
-Mke.lines(fig[1,1], f.(d1.geometry), d1.Z, color = "black", axis = (; title="nugget: 0.1"))
-Mke.lines(fig[2,1], f.(d2.geometry), d2.Z, color = "black", axis = (; title="nugget: 0.2"))
+Mke.lines(fig[1,1], f.(d1.geometry), d1.field, color = "black", axis = (; title="nugget: 0.1"))
+Mke.lines(fig[2,1], f.(d2.geometry), d2.field, color = "black", axis = (; title="nugget: 0.2"))
 fig
 ```
 
@@ -294,13 +294,13 @@ p1 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.0))
 p2 = GaussianProcess(GaussianVariogram(range=10.0, nugget=0.1))
 
 Random.seed!(2023)
-d1 = rand(p1, g, [:Z => Float64], LUMethod())
+d1 = rand(p1, g)
 Random.seed!(2023)
-d2 = rand(p2, g, [:Z => Float64], LUMethod())
+d2 = rand(p2, g)
 
 fig = Mke.Figure()
-viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="nugget: 0.0"))
-viz(fig[2,1], d2.geometry, color = d2.Z, axis = (; title="nugget: 0.1"))
+viz(fig[1,1], d1.geometry, color = d1.field, axis = (; title="nugget: 0.0"))
+viz(fig[2,1], d2.geometry, color = d2.field, axis = (; title="nugget: 0.1"))
 fig
 ```
 
@@ -325,13 +325,9 @@ geospatial correlation. The most widely used are the `GaussianVariogram`, the
 γ2 = SphericalVariogram()
 γ3 = ExponentialVariogram()
 
-fig = Mke.Figure()
-Mke.Axis(fig[1,1])
-varioplot!(γ1, maxlag=2.0, color = "teal", label = "Gaussian")
-varioplot!(γ2, maxlag=2.0, color = "slategray3", label = "Spherical")
-varioplot!(γ3, maxlag=2.0, color = "brown", label = "Exponential")
-Mke.axislegend("Model", position = :rb)
-fig
+fig = funplot(γ1, maxlag=2.0, color = "teal")
+funplot!(fig, γ2, maxlag=2.0, color = "slategray3")
+funplot!(fig, γ3, maxlag=2.0, color = "brown")
 ```
 
 The faster is the increase of the function near the origin, the more "erratic" is the process:
@@ -345,14 +341,14 @@ p2 = GaussianProcess(SphericalVariogram(range=10.0))
 p3 = GaussianProcess(ExponentialVariogram(range=10.0))
 
 Random.seed!(2023)
-d1 = rand(p1, g, [:Z => Float64], LUMethod())
-d2 = rand(p2, g, [:Z => Float64], LUMethod())
-d3 = rand(p3, g, [:Z => Float64], LUMethod())
+d1 = rand(p1, g)
+d2 = rand(p2, g)
+d3 = rand(p3, g)
 
 fig = Mke.Figure()
-viz(fig[1,1], d1.geometry, color = d1.Z, axis = (; title="model: Gaussian"))
-viz(fig[2,1], d2.geometry, color = d2.Z, axis = (; title="model: Spherical"))
-viz(fig[3,1], d3.geometry, color = d3.Z, axis = (; title="model: Exponential"))
+viz(fig[1,1], d1.geometry, color = d1.field, axis = (; title="model: Gaussian"))
+viz(fig[2,1], d2.geometry, color = d2.field, axis = (; title="model: Spherical"))
+viz(fig[3,1], d3.geometry, color = d3.field, axis = (; title="model: Exponential"))
 fig
 ```
 
@@ -419,7 +415,7 @@ g = EmpiricalVariogram(img, :Z, maxlag = 50.0)
 ```
 
 ```{julia}
-varioplot(g)
+funplot(g)
 ```
 
 ::: {.callout-note}
@@ -437,9 +433,8 @@ specific directions:
 gₕ = DirectionalVariogram((1.0, 0.0), img, :Z, maxlag = 50.0)
 gᵥ = DirectionalVariogram((0.0, 1.0), img, :Z, maxlag = 50.0)
 
-varioplot(gₕ, showhist = false, color = "maroon")
-varioplot!(gᵥ, showhist = false, color = "slategray")
-Mke.current_figure()
+fig = funplot(gₕ, showhist = false, color = "maroon")
+funplot!(fig, gᵥ, showhist = false, color = "slategray")
 ```
 
 In this example, we observe that the blobs are elongated with a horizontal
@@ -447,17 +442,17 @@ range of 30 pixels and a vertical range of 10 pixels. This is known as
 geometric **anisotropy**.
 
 We can also estimate the variogram in all directions on a plane with the
-`EmpiricalVarioplane`:
+`EmpiricalVariogramSurface`:
 
 ```{julia}
-gₚ = EmpiricalVarioplane(img, :Z, maxlag = 50.0)
+gₚ = EmpiricalVariogramSurface(img, :Z, maxlag = 50.0)
 ```
 
-The varioplane is usually plotted on a polar axis to highlight the different
-ranges as a function of the polar angle:
+The variogram surface is usually plotted on a polar axis to highlight the
+different ranges as a function of the polar angle:
 
 ```{julia}
-planeplot(gₚ)
+surfplot(gₚ)
 ```
 
 ::: {.callout-note}
