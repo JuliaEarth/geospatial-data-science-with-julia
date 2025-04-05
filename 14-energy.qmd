@@ -172,16 +172,14 @@ We compute the mass of hydrocarbon in place $MHIP$ as the sum of oil and gas in
 the first time step, and cluster it with geostatistical hierarchical clustering
 (`GHC`) [@Fouedjio2016]. The method requires an approximate number of clusters
 that we set to $k=3$ (low, medium and high values) and a maximum range of
-geospatial association that we set to $\lambda = 500m$.
-
-Additionally, we set an upper bound `nmax=1000` on the number of elements used
-in the dissimilarity matrix computation and the option `as="zone"` to name the
-column with clustering results.
+geospatial association that we set to $\lambda = 500m$. Additionally, we set
+an upper bound `nmax=1000` on the number of elements used in the dissimilarity
+matrix computation.
 
 
 ```{julia}
 zones = @transform(mass₁, :MHIP = :MOIP + :MGIP) |>
-        Select("MHIP") |> GHC(3, 500u"m", nmax=1000, as="zone")
+        Select("MHIP") |> GHC(3, 500u"m", nmax=1000) |> Rename("label" => "zone")
 
 zones |> viewer
 ```
