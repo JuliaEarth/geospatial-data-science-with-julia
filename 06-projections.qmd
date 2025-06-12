@@ -385,11 +385,11 @@ extrema(area.(pgrid))
 ```
 
 If the domain of interest is located far away from the Equator, and there is a need for area
-calculations, we can use other `Projected` CRS such as `Lambert` or `GallPeters`:
+calculations, we can use other `Projected` CRS such as `LambertCylindrical` or `GallPeters`:
 
 ```{julia}
 fig = Mke.Figure()
-viz(fig[1,1], grid |> Proj(Lambert), showsegments = true)
+viz(fig[1,1], grid |> Proj(LambertCylindrical), showsegments = true)
 viz(fig[1,2], grid |> Proj(GallPeters), showsegments = true)
 fig
 ```
