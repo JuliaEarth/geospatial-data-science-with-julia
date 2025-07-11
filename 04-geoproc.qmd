@@ -4,13 +4,6 @@ engine: julia
 
 # Geometric processing
 
-```{julia}
-#| echo: false
-#| output: false
-import Pkg
-Pkg.activate(".")
-```
-
 In this chapter we give an overview of some of the advanced geometric processing
 features of the framework, highlighting the ones that will be most useful in future
 chapters.

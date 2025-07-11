@@ -7,8 +7,6 @@ engine: julia
 ```{julia}
 #| echo: false
 #| output: false
-import Pkg
-Pkg.activate(".")
 using GeoStats
 import CairoMakie as Mke
 ```

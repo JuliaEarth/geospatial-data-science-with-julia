@@ -4,13 +4,6 @@ engine: julia
 
 # Petroleum reservoirs
 
-```{julia}
-#| echo: false
-#| output: false
-import Pkg
-Pkg.activate(".")
-```
-
 Petroleum reservoirs present various modeling challenges related to
 their complex geometry and distribution of rock and fluid properties.
 Some of these challenges are still open in industry due the lack of

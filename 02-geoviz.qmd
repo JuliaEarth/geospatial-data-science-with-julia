@@ -4,13 +4,6 @@ engine: julia
 
 # Scientific visualization
 
-```{julia}
-#| echo: false
-#| output: false
-import Pkg
-Pkg.activate(".")
-```
-
 The visualization ecosystem in Julia is evolving very quickly. Among the various
 visualization projects, [Makie.jl](https://github.com/MakieOrg/Makie.jl) by
 @Danisch2021 is the most advanced for

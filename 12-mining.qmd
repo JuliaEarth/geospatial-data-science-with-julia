@@ -4,13 +4,6 @@ engine: julia
 
 # Mineral deposits
 
-```{julia}
-#| echo: false
-#| output: false
-import Pkg
-Pkg.activate(".")
-```
-
 In the mining industry, resource estimation consists of interpolating
 measurements of metal and mineral grades from drill hole samples to 3D
 grids known as "block models". Due to highly skewed distributions, several

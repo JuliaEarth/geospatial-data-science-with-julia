@@ -4,13 +4,6 @@ engine: julia
 
 # What is geospatial data?
 
-```{julia}
-#| echo: false
-#| output: false
-import Pkg
-Pkg.activate(".")
-```
-
 Welcome to **Part I** of the book. Before we can start our journey in
 geospatial data science, we need to introduce important concepts, which
 will be the foundations of **Part II**, **Part III** and **Part IV**.
