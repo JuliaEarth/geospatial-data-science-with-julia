@@ -122,15 +122,15 @@ viz(img.geometry, color = img.B, alpha = rand(length(img.B)))
 
 Other aesthetic options are available in the official documentation.
 
-As another example, consider the visualization of data over a `GeometrySet`:
+As another example, consider the visualization of data over a set of geometries:
 
 ```{julia}
-gset = GeometrySet([
+geoms = [
   Triangle((12, 12), (15, 15), (12, 15)),
   Quadrangle((5, 12), (10, 15), (10, 18), (5, 15))
-])
+]
 
-gis = georef((A=[0.1, 0.2], B=[0.3, 0.4]), gset)
+gis = georef((A=[0.1, 0.2], B=[0.3, 0.4]), geoms)
 
 viz(gis.geometry, color = gis.A)
 ```
@@ -206,6 +206,8 @@ fig
 
 :::
 
+### Reference systems
+
 The `viz` and `viz!` functions are aware of coordinate reference systems, which is a quite
 unique feature of the framework, explored in the chapter [Map projections](06-projections.qmd).
 
@@ -217,6 +219,35 @@ using GeoIO
 world = GeoIO.load("data/countries.geojson")
 
 viz(world.geometry, color = 1:nrow(world))
+```
+
+### Axis customization
+
+To customize the figure and axis, please refer to Makie.jl documentation. The following
+example illustrates the construction of a figure with two subfigures side by side. Each
+subfigure has an axis with title and axis labels:
+
+```{julia}
+fig = Mke.Figure()
+ax1 = Mke.Axis(fig[1, 1], title = "Image", xlabel = "Easting", ylabel = "Northing")
+ax2 = Mke.Axis(fig[1, 2], title = "Shapes", xlabel = "Easting", ylabel = "Northing")
+fig
+```
+
+We can use `viz!` to add geospatial data to the existing axes:
+
+```{julia}
+viz!(ax1, img.geometry, color = img.A)
+viz!(ax2, gis.geometry, color = gis.B)
+fig
+```
+
+Or use `viz` to create a new axis in a new subfigure:
+
+```{julia}
+viz(fig[2, 1], world.geometry, color = 1:nrow(world))
+viz(fig[2, 2], world.geometry, color = area.(world.geometry))
+fig
 ```
 
 ## viewer
