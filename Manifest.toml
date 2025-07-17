@@ -88,18 +88,20 @@ uuid = "27a7e980-b3e6-11e9-2bcd-0b925532e340"
 version = "0.4.2"
 
 [[deps.ArchGDAL]]
-deps = ["CEnum", "ColorTypes", "Dates", "DiskArrays", "Extents", "GDAL", "GeoFormatTypes", "GeoInterface", "GeoInterfaceMakie", "GeoInterfaceRecipes", "ImageCore", "Tables"]
-git-tree-sha1 = "706bc126751ce5468cb2b31b5620eb765a3275cf"
+deps = ["CEnum", "ColorTypes", "Dates", "DiskArrays", "Extents", "GDAL", "GeoFormatTypes", "GeoInterface", "ImageCore", "Tables"]
+git-tree-sha1 = "7048c7ffbdac14fe76f50ad3cce335cbff8b7816"
 uuid = "c9ce4bd3-c3d5-55b8-8973-c0e20141b8c3"
-version = "0.10.8"
+version = "0.10.10"
 
     [deps.ArchGDAL.extensions]
     ArchGDALJLD2Ext = "JLD2"
     ArchGDALMakieExt = "Makie"
+    ArchGDALRecipesBaseExt = "RecipesBase"
 
     [deps.ArchGDAL.weakdeps]
     JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
     Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
 
 [[deps.ArgCheck]]
 git-tree-sha1 = "f9e9a66c9b7be1ad7372bbd9b062d9230c30c5ce"
@@ -284,9 +286,9 @@ version = "1.1.1"
 
 [[deps.CairoMakie]]
 deps = ["CRC32c", "Cairo", "Cairo_jll", "Colors", "FileIO", "FreeType", "GeometryBasics", "LinearAlgebra", "Makie", "PrecompileTools"]
-git-tree-sha1 = "9bd45574379e50579a78774334f4a1f1238c0af5"
+git-tree-sha1 = "22e8c06a60dd4894a5e74dba616e636cb6ebe13c"
 uuid = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
-version = "0.13.10"
+version = "0.15.3"
 
 [[deps.Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "CompilerSupportLibraries_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
@@ -299,13 +301,18 @@ deps = ["DataAPI", "Future", "Missings", "Printf", "Requires", "Statistics", "Un
 git-tree-sha1 = "1568b28f91293458345dabba6a5ea3f183250a61"
 uuid = "324d7699-5711-5eae-9e2f-1d82baa6b597"
 version = "0.10.8"
-weakdeps = ["JSON", "RecipesBase", "SentinelArrays", "StructTypes"]
 
     [deps.CategoricalArrays.extensions]
     CategoricalArraysJSONExt = "JSON"
     CategoricalArraysRecipesBaseExt = "RecipesBase"
     CategoricalArraysSentinelArraysExt = "SentinelArrays"
     CategoricalArraysStructTypesExt = "StructTypes"
+
+    [deps.CategoricalArrays.weakdeps]
+    JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
+    SentinelArrays = "91c51154-3ec4-41a3-a24f-3f23e20d615c"
+    StructTypes = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
 
 [[deps.Chain]]
 git-tree-sha1 = "9ae9be75ad8ad9d26395bf625dea9beac6d519f1"
@@ -493,6 +500,12 @@ weakdeps = ["InverseFunctions"]
     [deps.CompositionsBase.extensions]
     CompositionsBaseInverseFunctionsExt = "InverseFunctions"
 
+[[deps.ComputePipeline]]
+deps = ["Observables", "Preferences"]
+git-tree-sha1 = "21d0d31878a58a902013389bf5c0fcc5be4bbe5a"
+uuid = "95dc2771-c249-4cd0-9c9f-1f3b4330693c"
+version = "0.1.2"
+
 [[deps.ConcurrentUtilities]]
 deps = ["Serialization", "Sockets"]
 git-tree-sha1 = "d9d26935a0bcffc87d2613ce14c527c99fc543fd"
@@ -523,9 +536,9 @@ version = "0.1.8"
 
 [[deps.CoordRefSystems]]
 deps = ["Random", "Rotations", "StaticArrays", "Unitful", "Zygote"]
-git-tree-sha1 = "b4e0d654987c46a63e52f45a7ae8eacd2701574d"
+git-tree-sha1 = "53fb6b057e3e67c617dd0ce735bdfaed6459c6f2"
 uuid = "b46f11dc-f210-4604-bfba-323c1ec968cb"
-version = "0.18.6"
+version = "0.18.7"
 
 [[deps.CpuId]]
 deps = ["Markdown"]
@@ -674,9 +687,9 @@ version = "1.15.1"
 
 [[deps.DifferentiationInterface]]
 deps = ["ADTypes", "LinearAlgebra"]
-git-tree-sha1 = "c092fd1dd0d94e609cd0d29e13897b2825c804bb"
+git-tree-sha1 = "f620da805b82bec64ab4d5f881c7592c82dbc08a"
 uuid = "a0c0ee7d-e4b9-4e03-894e-1c5f64a51d63"
-version = "0.7.2"
+version = "0.7.3"
 
     [deps.DifferentiationInterface.extensions]
     DifferentiationInterfaceChainRulesCoreExt = "ChainRulesCore"
@@ -952,9 +965,9 @@ version = "1.11.0"
 
 [[deps.GDAL_jll]]
 deps = ["Arrow_jll", "Artifacts", "Blosc_jll", "Expat_jll", "GEOS_jll", "HDF4_jll", "HDF5_jll", "JLLWrappers", "LERC_jll", "LibCURL_jll", "LibPQ_jll", "Libdl", "Libtiff_jll", "Lz4_jll", "NetCDF_jll", "OpenJpeg_jll", "PCRE2_jll", "PROJ_jll", "Qhull_jll", "SQLite_jll", "XML2_jll", "XZ_jll", "Zlib_jll", "Zstd_jll", "libgeotiff_jll", "libpng_jll", "libwebp_jll", "muparser_jll"]
-git-tree-sha1 = "04020fb34b3a9fc06cc2fcdf84bfefcc307eac11"
+git-tree-sha1 = "b481f0406aa3ac44cef6d7fb98236b2b4a028316"
 uuid = "a7073274-a066-55f0-b90d-d619367d196c"
-version = "303.1100.100+0"
+version = "303.1100.300+0"
 
 [[deps.GEOS_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
@@ -999,31 +1012,32 @@ version = "1.20.7"
 
 [[deps.GeoInterface]]
 deps = ["DataAPI", "Extents", "GeoFormatTypes"]
-git-tree-sha1 = "294e99f19869d0b0cb71aef92f19d03649d028d5"
+git-tree-sha1 = "0f265264b9287a19715dc5d491dbe3aff00c1e71"
 uuid = "cf35fbd7-0cd7-5166-be24-54bfbe79505f"
-version = "1.4.1"
+version = "1.5.0"
 
-[[deps.GeoInterfaceMakie]]
-deps = ["GeoInterface", "GeometryBasics", "MakieCore"]
-git-tree-sha1 = "378afe561ba990392146e1a7abd472c7db7f1479"
-uuid = "0edc0954-3250-4c18-859d-ec71c1660c08"
-version = "0.1.9"
+    [deps.GeoInterface.extensions]
+    GeoInterfaceMakieExt = ["Makie", "GeometryBasics"]
+    GeoInterfaceRecipesBaseExt = "RecipesBase"
 
-[[deps.GeoInterfaceRecipes]]
-deps = ["GeoInterface", "RecipesBase"]
-git-tree-sha1 = "fb1156076f24f1dfee45b3feadb31d05730a49ac"
-uuid = "0329782f-3d07-4b52-b9f6-d3137cf03c7a"
-version = "1.0.2"
+    [deps.GeoInterface.weakdeps]
+    GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+    Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
 
 [[deps.GeoJSON]]
-deps = ["Extents", "GeoFormatTypes", "GeoInterface", "GeoInterfaceMakie", "GeoInterfaceRecipes", "JSON3", "StructTypes", "Tables"]
-git-tree-sha1 = "c803640368acf4ae02bb5a69a986cecc4a5cb984"
+deps = ["Extents", "GeoFormatTypes", "GeoInterface", "JSON3", "StructTypes", "Tables"]
+git-tree-sha1 = "ce64817b826c36b30493b31be2ce53c55a277835"
 uuid = "61d90e0f-e114-555e-ac52-39dfb47a3ef9"
-version = "0.8.3"
-weakdeps = ["Makie"]
+version = "0.8.4"
 
     [deps.GeoJSON.extensions]
     GeoJSONMakieExt = "Makie"
+    GeoJSONRecipesBaseExt = "RecipesBase"
+
+    [deps.GeoJSON.weakdeps]
+    Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
 
 [[deps.GeoParquet]]
 deps = ["DataFrames", "Extents", "GeoFormatTypes", "GeoInterface", "JSON3", "Parquet2", "StructTypes", "Tables", "WellKnownGeometry"]
@@ -1066,9 +1080,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsModels]]
 deps = ["Combinatorics", "CoordRefSystems", "Distances", "Distributions", "GeoStatsFunctions", "GeoTables", "LinearAlgebra", "Meshes", "Statistics", "Tables", "Unitful"]
-git-tree-sha1 = "090bb65edfc1deb15ced521f4e5921ac5e353fea"
+git-tree-sha1 = "7f67c35895eeb04d6c050aa25143fa5ec22a6236"
 uuid = "ad987403-13c5-47b5-afee-0a48f6ac4f12"
-version = "0.12.3"
+version = "0.12.4"
 
 [[deps.GeoStatsProcesses]]
 deps = ["Bessels", "CpuId", "Distances", "Distributed", "Distributions", "FFTW", "GeoStatsFunctions", "GeoStatsModels", "GeoTables", "LinearAlgebra", "Meshes", "ProgressMeter", "Random", "Statistics", "TableTransforms", "Tables", "Unitful"]
@@ -1088,9 +1102,9 @@ version = "0.11.12"
 
 [[deps.GeoStatsTransforms]]
 deps = ["ArnoldiMethod", "CategoricalArrays", "Clustering", "ColumnSelectors", "Combinatorics", "DataScienceTraits", "Distances", "GeoStatsFunctions", "GeoStatsModels", "GeoTables", "LinearAlgebra", "Meshes", "OhMyThreads", "PrecompileTools", "Random", "SparseArrays", "Statistics", "TableDistances", "TableTransforms", "Tables", "TiledIteration", "Unitful"]
-git-tree-sha1 = "85405880384649ad4dcbc327a07450b1da41adc4"
+git-tree-sha1 = "8d2c5748301f94263e398cb823d40b8d261373ee"
 uuid = "725d9659-360f-4996-9c94-5f19c7e4a8a6"
-version = "0.12.13"
+version = "0.12.14"
 
 [[deps.GeoStatsValidation]]
 deps = ["ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "GeoStatsBase", "GeoStatsModels", "GeoStatsTransforms", "GeoTables", "LossFunctions", "Meshes", "StatsLearnModels"]
@@ -1348,12 +1362,16 @@ version = "0.22.36"
 git-tree-sha1 = "5fbb102dcb8b1a858111ae81d56682376130517d"
 uuid = "8197267c-284f-5f27-9208-e0e47529a953"
 version = "0.7.11"
-weakdeps = ["Random", "RecipesBase", "Statistics"]
 
     [deps.IntervalSets.extensions]
     IntervalSetsRandomExt = "Random"
     IntervalSetsRecipesBaseExt = "RecipesBase"
     IntervalSetsStatisticsExt = "Statistics"
+
+    [deps.IntervalSets.weakdeps]
+    Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
+    Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 
 [[deps.InverseFunctions]]
 git-tree-sha1 = "a779299d77cd080bf77b97535acecd73e1c5e5cb"
@@ -1689,16 +1707,10 @@ uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 version = "0.5.16"
 
 [[deps.Makie]]
-deps = ["Animations", "Base64", "CRC32c", "ColorBrewer", "ColorSchemes", "ColorTypes", "Colors", "Contour", "Dates", "DelaunayTriangulation", "Distributions", "DocStringExtensions", "Downloads", "FFMPEG_jll", "FileIO", "FilePaths", "FixedPointNumbers", "Format", "FreeType", "FreeTypeAbstraction", "GeometryBasics", "GridLayoutBase", "ImageBase", "ImageIO", "InteractiveUtils", "Interpolations", "IntervalSets", "InverseFunctions", "Isoband", "KernelDensity", "LaTeXStrings", "LinearAlgebra", "MacroTools", "MakieCore", "Markdown", "MathTeXEngine", "Observables", "OffsetArrays", "PNGFiles", "Packing", "PlotUtils", "PolygonOps", "PrecompileTools", "Printf", "REPL", "Random", "RelocatableFolders", "Scratch", "ShaderAbstractions", "Showoff", "SignedDistanceFields", "SparseArrays", "Statistics", "StatsBase", "StatsFuns", "StructArrays", "TriplotBase", "UnicodeFun", "Unitful"]
-git-tree-sha1 = "1d7d16f0e02ec063becd7a140f619b2ffe5f2b11"
+deps = ["Animations", "Base64", "CRC32c", "ColorBrewer", "ColorSchemes", "ColorTypes", "Colors", "ComputePipeline", "Contour", "Dates", "DelaunayTriangulation", "Distributions", "DocStringExtensions", "Downloads", "FFMPEG_jll", "FileIO", "FilePaths", "FixedPointNumbers", "Format", "FreeType", "FreeTypeAbstraction", "GeometryBasics", "GridLayoutBase", "ImageBase", "ImageIO", "InteractiveUtils", "Interpolations", "IntervalSets", "InverseFunctions", "Isoband", "KernelDensity", "LaTeXStrings", "LinearAlgebra", "MacroTools", "Markdown", "MathTeXEngine", "Observables", "OffsetArrays", "PNGFiles", "Packing", "Pkg", "PlotUtils", "PolygonOps", "PrecompileTools", "Printf", "REPL", "Random", "RelocatableFolders", "Scratch", "ShaderAbstractions", "Showoff", "SignedDistanceFields", "SparseArrays", "Statistics", "StatsBase", "StatsFuns", "StructArrays", "TriplotBase", "UnicodeFun", "Unitful"]
+git-tree-sha1 = "8ca3fbbe6685f2fb232526cabe25ef471d520c37"
 uuid = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
-version = "0.22.10"
-
-[[deps.MakieCore]]
-deps = ["ColorTypes", "GeometryBasics", "IntervalSets", "Observables"]
-git-tree-sha1 = "c3159eb1e3aa3e409edbb71f4035ed8b1fc16e23"
-uuid = "20f20a25-4f0e-4fdf-b5d1-57303727442b"
-version = "0.9.5"
+version = "0.24.3"
 
 [[deps.MappedArrays]]
 git-tree-sha1 = "2dab0221fe2b0f2cb6754eaa743cc266339f527e"
@@ -2160,12 +2172,6 @@ git-tree-sha1 = "9f0a1b71baaf7650f4fa8a1d168c7fb6ee41f0c9"
 uuid = "c1ae055f-0cd5-4b69-90a6-9a35b1a98df9"
 version = "0.1.0"
 
-[[deps.RecipesBase]]
-deps = ["PrecompileTools"]
-git-tree-sha1 = "5c3d09cc4f31f5fc6af001c250bf1278733100ff"
-uuid = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
-version = "1.3.4"
-
 [[deps.Reexport]]
 git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
 uuid = "189a3867-3050-52da-a836-e630ba90ab69"
@@ -2200,10 +2206,12 @@ deps = ["LinearAlgebra", "Quaternions", "Random", "StaticArrays"]
 git-tree-sha1 = "5680a9276685d392c87407df00d57c9924d9f11e"
 uuid = "6038ab10-8711-5258-84ad-4b1120ba62dc"
 version = "1.7.1"
-weakdeps = ["RecipesBase"]
 
     [deps.Rotations.extensions]
     RotationsRecipesBaseExt = "RecipesBase"
+
+    [deps.Rotations.weakdeps]
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
 
 [[deps.RoundingEmulator]]
 git-tree-sha1 = "40b9edad2e5287e05bd413a38f61a8ff55b9557b"
@@ -2239,9 +2247,9 @@ version = "0.5.0"
 
 [[deps.ScopedValues]]
 deps = ["HashArrayMappedTries", "Logging"]
-git-tree-sha1 = "1147f140b4c8ddab224c94efa9569fc23d63ab44"
+git-tree-sha1 = "7f44eef6b1d284465fafc66baf4d9bdcc239a15b"
 uuid = "7e506255-f358-4e82-b7e4-beb19740aa63"
-version = "1.3.0"
+version = "1.4.0"
 
 [[deps.Scratch]]
 deps = ["Dates"]
@@ -2272,17 +2280,19 @@ uuid = "65257c39-d410-5151-9873-9b3e5be5013e"
 version = "0.5.0"
 
 [[deps.Shapefile]]
-deps = ["DBFTables", "Extents", "GeoFormatTypes", "GeoInterface", "GeoInterfaceMakie", "GeoInterfaceRecipes", "OrderedCollections", "RecipesBase", "Tables"]
-git-tree-sha1 = "a641a9620394bf0ac1514c97bbae20e2fe1671b3"
+deps = ["DBFTables", "DataAPI", "Extents", "GeoFormatTypes", "GeoInterface", "OrderedCollections", "Tables"]
+git-tree-sha1 = "761a19d86ab3e90ed4dcb07692b2ce225124feb3"
 uuid = "8e980c4a-a4fe-5da2-b3a7-4b4b0353a2f4"
-version = "0.13.2"
+version = "0.13.3"
 
     [deps.Shapefile.extensions]
     ShapefileMakieExt = "Makie"
+    ShapefileRecipesBaseExt = "RecipesBase"
     ShapefileZipFileExt = "ZipFile"
 
     [deps.Shapefile.weakdeps]
     Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+    RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
     ZipFile = "a5390f91-8eb1-5f08-bee0-b1d1ffed6cea"
 
 [[deps.SharedArrays]]
@@ -2403,9 +2413,9 @@ weakdeps = ["OffsetArrays", "StaticArrays"]
 
 [[deps.StaticArrays]]
 deps = ["LinearAlgebra", "PrecompileTools", "Random", "StaticArraysCore"]
-git-tree-sha1 = "0feb6b9031bd5c51f9072393eb5ab3efd31bf9e4"
+git-tree-sha1 = "cbea8a6bd7bed51b1619658dec70035e07b8502f"
 uuid = "90137ffa-7385-5640-81b9-e52037218182"
-version = "1.9.13"
+version = "1.9.14"
 weakdeps = ["ChainRulesCore", "Statistics"]
 
     [deps.StaticArrays.extensions]
