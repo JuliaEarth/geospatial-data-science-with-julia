@@ -49,7 +49,7 @@ are loaded in the same session:
 using GeoStats
 ```
 
-## viz/viz!
+## The viz/viz! function
 
 The main visualization function that the framework provides is the
 `viz`/`viz!` function. The `viz` function *creates a scene* and displays
@@ -250,7 +250,7 @@ viz(fig[2, 2], world.geometry, color = area.(world.geometry))
 fig
 ```
 
-## viewer
+## Basic viewer
 
 As geospatial data scientists we are often interested in quick inspection
 of intermediate results from multivariate geostatistical analysis. Visualizing
@@ -300,7 +300,7 @@ geotable |> viewer
 
 :::
 
-## cbar
+## Color bars
 
 Any vector of Julia objects implementing the `getcolors`
 function from the [Colorfy.jl](https://github.com/JuliaGraphics/Colorfy.jl)
