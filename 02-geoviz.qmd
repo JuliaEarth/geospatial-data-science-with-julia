@@ -250,6 +250,50 @@ viz(fig[2, 2], world.geometry, color = area.(world.geometry))
 fig
 ```
 
+## The cbar function
+
+Any vector of Julia objects implementing the `getcolors`
+function from the [Colorfy.jl](https://github.com/JuliaGraphics/Colorfy.jl)
+module can be passed to the `color` option of `viz`/`viz!`.
+The final vector of colors is a function of the `colormap` from
+[ColorSchemes.jl](https://github.com/JuliaGraphics/ColorSchemes.jl)
+and `colorrange` options. To reproduce this behavior in the colorbar,
+the framework provides the `cbar` function:
+
+```{julia}
+grid = CartesianGrid(2, 2)
+vals = [1, missing, 3, 4]
+cmap = "cividis"
+
+fig = Mke.Figure()
+viz(fig[1,1], grid, color = vals, colormap = cmap)
+cbar(fig[1,2], vals, colormap = cmap)
+fig
+```
+
+The function is similar to Makie's colorbar function, but addresses
+various practical challenges with `missing` values, units, etc.
+The `colorrange` option is useful to set the range of colors in the
+presence of multiple geotables:
+
+```{julia}
+grid = CartesianGrid(10, 10)
+val1 = 1:100
+val2 = [1:50; 1:50]
+
+fig = Mke.Figure()
+
+viz(fig[1,1], grid, color = val1, colorrange = (1, 100))
+viz(fig[1,2], grid, color = val2, colorrange = (1, 100))
+cbar(fig[1,3], val1, colorrange = (1, 100))
+
+viz(fig[2,1], grid, color = val1, colorrange = (1, 50))
+viz(fig[2,2], grid, color = val2, colorrange = (1, 50))
+cbar(fig[2,3], val2, colorrange = (1, 50))
+
+fig
+```
+
 ## Basic viewer
 
 As geospatial data scientists we are often interested in quick inspection
@@ -285,10 +329,10 @@ geotable |> viewer
 
 ::: {.callout-note}
 
-The `viz/viz!` and the `viewer` automatically select color schemes
+The `viewer` automatically selects a `cbar`
 for variables based on data science traits from the
 [DataScienceTraits.jl](https://github.com/JuliaML/DataScienceTraits.jl)
-module. Additionally, the `viewer` recognizes units from the
+module. It also recognizes and displays units from the
 [Unitful.jl](https://github.com/PainterQubits/Unitful.jl)
 module:
 
@@ -299,29 +343,6 @@ geotable |> viewer
 ```
 
 :::
-
-## Color bars
-
-Any vector of Julia objects implementing the `getcolors`
-function from the [Colorfy.jl](https://github.com/JuliaGraphics/Colorfy.jl)
-module can be passed to the `color` option of `viz`/`viz!`.
-The final vector of colors will be a function of the `colormap`
-and `colorrange` options.
-
-To reproduce this behavior in the colorbar, the framework provides
-the `cbar` function. It is similar to Makie's colorbar, but addresses
-various practical challenges with `missing` values, units, etc.
-
-```{julia}
-grid = CartesianGrid(2, 2)
-vals = [1, missing, 3, 4]
-cmap = "cividis"
-
-fig = Mke.Figure()
-viz(fig[1,1], grid, color = vals, colormap = cmap)
-cbar(fig[1,2], vals, colormap = cmap)
-fig
-```
 
 We are now equipped with a set of visualization functions that can
 really improve the speed at which we explore and analyze geospatial data.
