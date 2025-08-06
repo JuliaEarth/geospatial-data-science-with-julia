@@ -390,7 +390,7 @@ f(Cu) = 1 / (1 + exp(-(Cu - μ) / σ))
 ```
 
 ```{julia}
-estim = estim |> Map("Cu" => f => "f")
+recov = estim |> Map("Cu" => f => "f")
 ```
 
 Please check the paper by @Hoffimann2022_2 for a more elaborate model of metallurgical
@@ -398,7 +398,7 @@ recovery in the locked-cycle-test.
 
 ### Economic assessment
 
-Given the block model with the grade of copper and metallurgical recovery, we can proceed
+Given the grade of copper and metallurgical recovery for each block, we can proceed
 and apply the formula of economic value stated in our [objectives](#objectives):
 
 ```{julia}
@@ -409,22 +409,30 @@ P = 4000 / ton
 Cₘ = 4 / ton
 Cₚ = 10 / ton
 
-estim = @transform(estim,
+model = @transform([estim recov],
   :value = volume(:geometry) * ρ * ((:Cu / 100) * :f * P - (Cₘ + Cₚ))
 )
 ```
 
+::: {.callout-tip}
+
+The expression `[estim recov]` concatenates the columns of the
+two geotables assuming that they share the same geospatial domain.
+It is equivalent to `hcat(estim, recov)`.
+
+:::
+
 We can then visualize all blocks with a positive economic value:
 
 ```{julia}
-estim |> Filter(x -> x.value > 0) |> Select("value") |> viewer
+model |> Filter(x -> x.value > 0) |> Select("value") |> viewer
 ```
 
 Or any criterion of interest such as positive economic value and
 small fraction of contaminants:
 
 ```{julia}
-estim |> Filter(x -> x.value > 0 && x.S < 0.25) |> Select("value") |> viewer
+model |> Filter(x -> x.value > 0 && x.S < 0.25) |> Select("value") |> viewer
 ```
 
 ## Summary

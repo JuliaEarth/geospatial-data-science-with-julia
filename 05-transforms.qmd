@@ -198,14 +198,6 @@ gtb |> Map([2, 3] => ((b, c) -> 2b + c) => "f(b, c)")
 The name of the resulting column can be provided or omitted. If the name is omitted like in the
 example above with the column "a", it is created by concatenation of column and function names.
 
-::: {.callout-note}
-
-The `Map` transform mimics the behavior of the `transform` function in DataFrames.jl, except
-that it always broadcasts the functions to the rows of the selected columns and always produces
-a single column for each function.
-
-::: 
-
 To filter rows in the geotable based on a given predicate (i.e., a function that returns
 `true` or `false`), we can use the `Filter` transform:
 
