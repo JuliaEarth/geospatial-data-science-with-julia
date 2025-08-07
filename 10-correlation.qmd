@@ -100,7 +100,7 @@ correlogram function given by $cor(h) = \exp(-h)$:
 #| echo: false
 xs = range(0, stop=10, length=100)
 ys = exp.(-xs)
-Mke.lines(xs, ys, axis = (xlabel="h", ylabel="cor(h)"), color="black")
+Mke.lines(xs, ys, axis = (xlabel = "h", ylabel = "cor(h)"), color = "black")
 ```
 
 - The correlogram $cor(h)$ is often a non-increasing function
@@ -153,7 +153,7 @@ $$
 #| echo: false
 xs = range(0, stop=10, length=100)
 ys = 1 .- exp.(-xs)
-Mke.lines(xs, ys, axis = (xlabel="h", ylabel="γ(h)"), color="black")
+Mke.lines(xs, ys, axis = (xlabel = "h", ylabel = "γ(h)"), color = "black")
 ```
 
 where $cov(h)$ is the covariance function, a version of the correlogram 
@@ -193,10 +193,10 @@ ys = g.(xs)
 
 fig = Mke.Figure()
 ax = Mke.Axis(fig[1,1], xlabel="h", ylabel="γ(h)", limits = (nothing, nothing, 0, 1.1))
-Mke.lines!(ax, xs, ys, color="slategray", label="model")
-Mke.vlines!(ax, r, color="black", linestyle=:dash, label="range")
-Mke.hlines!(ax, s, color="teal", linestyle=:dash, label="sill")
-Mke.hlines!(ax, n, color="teal", linestyle=:dot, label="nugget")
+Mke.lines!(ax, xs, ys, color = "slategray", label = "model")
+Mke.vlines!(ax, r, color = "black", linestyle = :dash, label = "range")
+Mke.hlines!(ax, s, color = "teal", linestyle = :dash, label = "sill")
+Mke.hlines!(ax, n, color = "teal", linestyle = :dot, label = "nugget")
 Mke.axislegend("Elements", position = :rc)
 fig
 ```
