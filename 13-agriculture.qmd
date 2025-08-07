@@ -39,9 +39,9 @@ Mke.activate!(type = "png")
 
 We will use an image from the
 [Harmonized Sentinel-2 MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED)
-dataset. The image is the result of cloud masking and averaging between
-dates 2025-07-01 and 2025-07-30, followed by a download within a specified
-box of latitude and longitude values:
+dataset, downloaded within a box of latitude and
+longitude values after cloud removal and averaging
+between dates 2025-07-01 and 2025-07-30:
 
 ```{julia}
 image = GeoIO.load("data/sentinel.tif")
@@ -96,10 +96,6 @@ tasks. Second, we would like to convert the region of the image that is inside
 of the agricultural field into a polygonal area for measurements of area and
 perimeter.
 
-The ability to convert geospatial data between these two representations (i.e.,
-"raster" vs. "vector") based on a categorical variable is key for advanced
-geospatial data science workflows.
-
 ## Methodology
 
 In order to assign meaning to the pixels of the image, we first need to visualize
@@ -142,7 +138,7 @@ We can map the function to all the pixels of the image using the `Map` transform
 color = rgb |> Map(["R", "G", "B"] => ascolor => "RGB")
 ```
 
-The `viewer` displays the colors that are familiar to us:
+The `viewer` displays the colors and reveals the features of the land:
 
 ```{julia}
 color |> viewer
@@ -219,7 +215,7 @@ fig
 ### Image segmentation
 
 From visual inspection, we select the `"MGRVI"` index for image segmentation.
-It creates a strong contrast between pixels that are inside and outside the
+It produces a strong contrast between pixels that are inside and outside the
 agricultural field. We use the `Map` transform again to create a binary
 variable in terms of the 30th percentile of the spectral index:
 
@@ -234,7 +230,7 @@ binary |> viewer
 ```
 
 Additionally, we use the `ModeFilter` transform to eliminate small artifacts
-that are not relevant for the stated objectives:
+that are not relevant for our stated objectives:
 
 ```{julia}
 mask = binary |> ModeFilter()
