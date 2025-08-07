@@ -2,6 +2,299 @@
 engine: julia
 ---
 
-# Agricultural fields 🚧
+# Agricultural fields
 
-## Coming soon...
+Satellite images are widely used for land cover classification and
+various related measurements within agricultural fields, especially
+when the size of these fields is large or when physical access is
+limited. In this chapter, we will illustrate the use of spectral
+indices derived from a [Sentinel-2](https://en.wikipedia.org/wiki/Sentinel-2)
+image to streamline the measurements of area and perimeter in a
+large agricultural field in Brazil.
+
+**TOOLS COVERED:** `Proj`, `Map`, `SpectralIndex`, `ModeFilter`, `Potrace`,
+`describe`, `boundingbox`, `crs`, `utmsouth`, `spectralindices`, `spectralbands`,
+`area`, `perimeter`, `viewer`
+
+**MODULES:**
+
+```{julia}
+# framework
+using GeoStats
+
+# IO modules
+using GeoIO
+
+# viz modules
+import CairoMakie as Mke
+```
+
+```{julia}
+#| echo: false
+#| output: false
+Mke.activate!(type = "png")
+```
+
+## Data
+
+We will use an image from the
+[Harmonized Sentinel-2 MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED)
+dataset. The image is the result of cloud masking and averaging between
+dates 2025-07-01 and 2025-07-30, followed by a download within a specified
+box of latitude and longitude values:
+
+```{julia}
+image = GeoIO.load("data/sentinel.tif")
+
+describe(image)
+```
+
+```{julia}
+boundingbox(image.geometry)
+```
+
+We convert the `crs` of the image from
+
+```{julia}
+crs(image)
+```
+
+to a UTM coordinate reference system with the `Proj` transform
+to be able to perform measurements in length (e.g., `m`) units:
+
+```{julia}
+img = image |> Proj(utmsouth(22))
+
+img |> viewer
+```
+
+::: {.callout-note}
+
+The UTM zone `22` was obtained from the longitude coordinate of the
+centroid of the domain via the formula
+
+```{julia}
+lon = coords(centroid(image.geometry)).lon
+
+frac = ustrip((lon + 183u"°") / 6)
+
+zone = round(Int, frac)
+```
+
+The corresponding latitude coordinate is negative, meaning the domain
+is in the `:south` hemisphere. Hence, `utmsouth(22)` was selected as
+the target `CRS`.
+
+:::
+
+## Objectives
+
+Our objective in this application is two-fold. First, we would like to assign
+a categorical value for each "pixel" of the image as a label for [geostatistical
+learning](https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full)
+tasks. Second, we would like to convert the region of the image that is inside
+of the agricultural field into a polygonal area for measurements of area and
+perimeter.
+
+The ability to convert geospatial data between these two representations (i.e.,
+"raster" vs. "vector") based on a categorical variable is key for advanced
+geospatial data science workflows.
+
+## Methodology
+
+In order to assign meaning to the pixels of the image, we first need to visualize
+the land as if we were looking at it with our naked eyes. Then, we can highlight
+some regions of the image based on selected formulas---
+[spectral indices](https://awesome-ee-spectral-indices.readthedocs.io/en/latest)---
+computed with the spectral bands measured by the Sentinel-2 satellite. Finally, we
+can introduce a threshold for the values of the indices to obtain a categorical
+variable and extract polygonal areas of interest.
+
+The proposed methodology has the following steps:
+
+1. Visualization of land in familiar color space
+2. Identification of useful spectral indices
+3. Segmentation of image based on threshold
+4. Measurement of area and perimeter of field
+
+### Visualization of land
+
+The Sentinel-2 dataset stores the red (`R`), green (`G`) and blue (`B`) bands in the
+4th, 3rd and 2nd channels of the image:
+
+```{julia}
+rgb = img |> Select(4 => "R", 3 => "G", 2 => "B")
+```
+
+We create an auxiliary function that takes the individual channels as inputs and produces
+a color object from [Colors.jl](https://github.com/JuliaGraphics/Colors.jl) as the output.
+We use an intensity parameter $\lambda$ to scale the channels and lighten up the image:
+
+```{julia}
+λ = 5 # intensity parameter
+
+ascolor(r, g, b) = RGB(λ * r, λ * g, λ * b)
+```
+
+We can map the function to all the pixels of the image using the `Map` transform:
+
+```{julia}
+color = rgb |> Map(["R", "G", "B"] => ascolor => "RGB")
+```
+
+The `viewer` displays the colors that are familiar to us:
+
+```{julia}
+color |> viewer
+```
+
+The agricultural field of interest is displayed in orange color, surrounded by green vegetation.
+
+### Spectral indices
+
+Given that the image is made of two groups of vegetation (green vs. orange), we lookup all the
+`spectralindices` that are adequate for the application. We print the first 20 vegetation indices
+along with their short and long names:
+
+```{julia}
+isvegetation(ind) = ind.application_domain == "vegetation"
+
+inds = filter(isvegetation, spectralindices())
+
+for ind in first(inds, 20)
+  println(ind.short_name, ": ", ind.long_name)
+end
+```
+
+Each of these indices is computed with specific `spectralbands`. Consider the `"NDVI"` vegetation
+index as an example. It is computed in terms of the red (`R`) and near-infrared (`N`) bands:
+
+```{julia}
+for band in spectralbands("NDVI")
+  println(band.short_name, ": ", band.long_name)
+end
+```
+
+The `R` band was already selected above for the visualization of the land. The `N` band is
+stored in the 8th channel of the image:
+
+```{julia}
+n = img |> Select(8 => "N")
+```
+
+We can compute the `"NDVI"` spectral index with the `SpectralIndex` transform by providing a
+geotable with all the necessary bands:
+
+```{julia}
+ndvi = [rgb n] |> SpectralIndex("NDVI")
+
+ndvi |> viewer
+```
+
+We see that the index assigns values close to one to pixels with green vegetation and values
+close to zero inside the agricultural field. Let's compare this result with other spectral
+indices. The `"MGRVI"` and `"SI"` indices are also computed in terms of the `R`, `G` and `B`
+bands:
+
+```{julia}
+mgrvi = [rgb n] |> SpectralIndex("MGRVI")
+si = [rgb n] |> SpectralIndex("SI")
+
+spec = [ndvi mgrvi si]
+```
+
+```{julia}
+fig = Mke.Figure()
+ax1 = Mke.Axis(fig[1, 1], title = "RGB")
+ax2 = Mke.Axis(fig[1, 2], title = "NDVI")
+ax3 = Mke.Axis(fig[2, 1], title = "MGRVI")
+ax4 = Mke.Axis(fig[2, 2], title = "SI")
+viz!(ax1, color.geometry, color = color.RGB)
+viz!(ax2, spec.geometry, color = spec.NDVI)
+viz!(ax3, spec.geometry, color = spec.MGRVI)
+viz!(ax4, spec.geometry, color = spec.SI)
+fig
+```
+
+### Image segmentation
+
+From visual inspection, we select the `"MGRVI"` index for image segmentation.
+It creates a strong contrast between pixels that are inside and outside the
+agricultural field. We use the `Map` transform again to create a binary
+variable in terms of the 30th percentile of the spectral index:
+
+```{julia}
+q30 = quantile(mgrvi.MGRVI, 0.3)
+
+isinside(x) = x < q30
+
+binary = mgrvi |> Map("MGRVI" => isinside => "label")
+
+binary |> viewer
+```
+
+Additionally, we use the `ModeFilter` transform to eliminate small artifacts
+that are not relevant for the stated objectives:
+
+```{julia}
+mask = binary |> ModeFilter()
+
+mask |> viewer
+```
+
+The first objective has been achieved. The resulting labels can be used in
+supervised learning tasks with the `Learn` transform and any subset of spectral
+bands.
+
+### Geometric measurements
+
+For the second objective, we use the `Potrace` transform to extract polygonal areas
+from the image based on the labels of the previous section:
+
+```{julia}
+potrace = mask |> Potrace("label")
+```
+
+We can visualize the region where the label is `true`:
+
+```{julia}
+region = potrace.geometry[findfirst(potrace.label)]
+
+region |> viz
+```
+
+It is made of various polygons of different size. Our agricultural field is the
+polygon with largest area:
+
+```{julia}
+polys = parent(region)
+
+field = argmax(area, polys)
+
+field |> viz
+```
+
+It has an area of approximately
+
+```{julia}
+area(field) |> u"ha"
+```
+
+and a perimeter of approximately
+
+```{julia}
+perimeter(field) |> u"km"
+```
+
+## Summary
+
+In this chapter, we illustrated an application of the framework in the agriculture
+industry. Among other things, we learned how to
+
+- Compute spectral indices to highlight geospatial objects of interest in satellite images.
+- Extract objects from categorical labels to perform measurements of area and perimeter.
+
+The tools presented here are useful in various other geostatistical applications involving
+remote sensing data. As an advanced geospatial data scientist, you will need to integrate
+data from different satellite missions to improve your understanding of the problem and to
+propose innovative solutions that cannot be derived from a single data source.
