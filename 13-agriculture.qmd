@@ -89,12 +89,12 @@ the target `CRS`.
 
 ## Objectives
 
-Our objective in this application is two-fold. First, we would like to assign
-a categorical value for each "pixel" of the image as a label for [geostatistical
-learning](https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full)
-tasks. Second, we would like to convert the region of the image that is inside
-of the agricultural field into a polygonal area for measurements of area and
-perimeter.
+Our objective is twofold. First, we would like to assign a categorical value
+for each pixel of the image, which is true inside of the agricultural field and
+false outside. This value (a.k.a. label) can be useful in applications of
+[geostatistical learning](https://www.frontiersin.org/articles/10.3389/fams.2021.689393/full).
+Second, we would like to convert the region of the image that is inside of the
+agricultural field into a polygonal area for measurements of area and perimeter.
 
 ## Methodology
 
