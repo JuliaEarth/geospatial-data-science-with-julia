@@ -51,7 +51,7 @@ the [Natural Earth](https://www.naturalearthdata.com) project:
 ```{julia}
 using GeoIO
 
-countries = GeoIO.load("data/countries.geojson", numbertype = Float64) |> Proj(PlateCarree)
+countries = GeoIO.load("data/countries.geojson") |> Proj(PlateCarree)
 ```
 
 ::: {.callout-note}
@@ -61,13 +61,6 @@ columns with geospatial coordinates. In this example, the `table`
 already has the `LATITUDE` and `LONGITUDE` coordinates, which we
 project to a `PlateCarree` CRS as discussed in the chapter
 [Map projections](06-projections.qmd).
-
-:::
-
-::: {.callout-note}
-
-The `numbertype` of the coordinates is specified to avoid the default
-floating point type used by the GeoJSON backend, which is `Float32`.
 
 :::
 
