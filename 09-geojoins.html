@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./08-splitcombine.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5fec71090063759883e7e0e36cd2e998.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-719266190eddec20e870a87754db91cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5fec71090063759883e7e0e36cd2e998.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4ff66e45b39d49436fe97d3fe27b9920.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-54b9597c09e0d30ae10402e3eef6afc5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-4ff66e45b39d49436fe97d3fe27b9920.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -299,7 +300,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Geospatial Data Science with Julia</a> 
         <div class="sidebar-tools-main">
@@ -524,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The split-apply-combine pattern that we learned in the previous chapter requires a <strong>single</strong> geotable with all the relevant information in it. However, many questions in geospatial data science can only be answered with information that is spread across <strong>multiple</strong> geotables. Hence, the need to <strong>join</strong> these geotables before attempting to <code>@groupby</code>, <code>@transform</code> and <code>@combine</code> the information.</p>
 <p>Let’s consider a simple example where we are given two geotables, one containing people who shared their latitude and longitude coordinates:</p>
 <div id="6" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  HEIGHT<span class="op">=</span>[<span class="fl">1.78</span>, <span class="fl">1.56</span>, <span class="fl">1.70</span>, <span class="fl">1.80</span>, <span class="fl">1.72</span>]u<span class="st">"m"</span>,</span>
@@ -532,24 +535,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  LONGITUDE<span class="op">=</span>[<span class="op">-</span><span class="fl">43.17891118844475</span>, <span class="op">-</span><span class="fl">122.17007072663823</span>, <span class="fl">153.04380578036657</span>, <span class="fl">116.40764745941036</span>, <span class="op">-</span><span class="fl">32.411372812211226</span>]</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(PlateCarree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(PlateCarree)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>5×4 GeoTable over 5 PointSet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="4" style="text-align: center; font-size: 14px;">5×4 GeoTable over 5 PointSet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
@@ -557,31 +562,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">(x: -4.80665e6 m, y: -2.55669e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">(x: -1.35999e7 m, y: 4.16644e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">(x: 1.70368e7 m, y: -3.05975e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">(x: 1.29584e7 m, y: 4.44205e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
@@ -593,84 +598,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>And another containing countries in the world according to the <a href="https://www.naturalearthdata.com">Natural Earth</a> project:</p>
 <div id="8" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>) <span class="op">|&gt;</span> <span class="fu">Proj</span>(PlateCarree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>) <span class="op">|&gt;</span> <span class="fu">Proj</span>(PlateCarree)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>177×3 GeoTable over 177 GeometrySet</caption>
+<div>
+  <div style="float: right; font-style: italic;">
+    <span>167 rows omitted</span>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="3" style="text-align: center; font-size: 14px;">177×3 GeoTable over 177 GeometrySet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">MultiPolygon</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">🖈 PlateCarree{WGS84Latest}</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Fiji</td>
 <td style="text-align: center;">Melanesia</td>
 <td style="text-align: center;">Multi(3×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Tanzania</td>
 <td style="text-align: center;">Eastern Africa</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">W. Sahara</td>
 <td style="text-align: center;">Northern Africa</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Canada</td>
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">Multi(30×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">Multi(10×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Kazakhstan</td>
 <td style="text-align: center;">Central Asia</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Uzbekistan</td>
 <td style="text-align: center;">Central Asia</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Papua New Guinea</td>
 <td style="text-align: center;">Melanesia</td>
 <td style="text-align: center;">Multi(4×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Indonesia</td>
 <td style="text-align: center;">South-Eastern Asia</td>
 <td style="text-align: center;">Multi(13×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Argentina</td>
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">Multi(2×PolyArea)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
-<td style="text-align: right;">⋮</td>
+<td style="text-align: center;">⋮</td>
+<td style="text-align: center;">⋮</td>
+<td style="text-align: center;">⋮</td>
 </tr>
 </tbody>
 </table>
@@ -691,12 +705,12 @@ Note
 </div>
 <p>Let’s visualize the geometries of these two geotables:</p>
 <div id="10" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Mke.<span class="fu">Figure</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> Mke.<span class="fu">Axis</span>(fig[<span class="fl">1</span>,<span class="fl">1</span>], title <span class="op">=</span> <span class="st">"People and countries"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              xlabel <span class="op">=</span> <span class="st">"Easting [m]"</span>, ylabel <span class="op">=</span> <span class="st">"Northing [m]"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(countries.geometry)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">viz!</span>(people.geometry, color <span class="op">=</span> <span class="st">"teal"</span>, pointsize <span class="op">=</span> <span class="fl">10</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <img width="672" height="480" style="object-fit: contain; height: auto;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAIABJREFUeAHswQl83HWB8P/P75jf3JlJZjI5mrRJ2vRuuQ8BoQIC7YrsI64oIoKCCCuICxUXcS3IIiKsgMha5CiKvED0JSCHIDdtt/SgFnpfOdpck2Tu+3c9z/yf1zz/bLeFltLQNt/3W7X/DwRBEARBEARhlKgIgiAIgiAIwihSEQRBEARBEIRRpCIIgiAIgiAIo0hFEARBEARBEEaRiiAIgiAIgiCMIhVBEARBEARBGEUqgiAIgiAIgjCKVARBEARBEARhFKkIgiAIgiAIwihSEQRBEARBEIRRpCIIgiAIgiAIo0hFEARBEARBEEaRiiAIgiAIgiCMIhVBEARBEARBGEUqgiAIgiAIgjCKVARBEARBEARhFKkIgiAIgiAIwihSEQRBOIzk83nWrVvHSB6Ph7a2NlwuF6PFNE1Wr16NpmnMnj2bg0F3dzfRaJTW1lZCoRCHss7OTp577jkmTZrEOeecgyAIhxYVQRCEw8imTZs47rjj2JWmadxwww3ccsstjIZ0Os1xxx3HuHHj2LlzJweDO+64g1/96lc88sgjXHLJJRyMcrkcDzzwAMFgkEsuuYQ9Wbt2LVdffTXnn38+55xzDoIgHFpUBEEQDkMej4crr7ySstWrV/PGG2/wk5/8hE996lPMnTsX4eCUSqX43ve+x8SJE7nkkkvYk0mTJnHDDTcwa9YsBEE49KgIgiAchvx+P3feeScV5513Hs8++yxvvvkmc+fORdd1HnjgAVauXEkoFOILX/gCJ510EhW6rvPII4+wYsUKFEXhhBNO4OKLL0ZRFMp+85vfsG7dOi677DJeeOEFNmzYwIknnsjll1+OLMvszsDAAAsXLmTLli1MnDiRSy+9lAkTJrAnzz77LC+++CKJRIKWlha++c1vMmnSJMpuueUWYrEY8+fP5+GHH2bz5s2ccMIJfPvb30ZVVcpisRj33XcfHR0dnH322eyNxYsX8+c//5loNMrs2bO58sor8fl8VDz//PO8/PLLJBIJZsyYwbe+9S2CwSBlv/nNb1i3bh1XXXUVkydPpmzBggUkEgl++tOf4na7ueWWW4jFYsyfP5+HH36YzZs3c8IJJ/Dtb38by7L47W9/S1kqleKhhx7im9/8Jo8//jjLly/n0ksvZePGjUSjUebMmUOhUMC2bSoGBgZYuHAhW7ZsYeLEiVx66aVMmDCBildffZU///nPxONx2tvbueyyy2hqakIQhNGnIgiCMAYEAgHKZFnGNE3mzJnD0qVLqampIZlMcvfdd/Pggw9yySWXUCqVOOWUU1ixYgUOhwPbtlm4cCGLFi3i9ddfR5ZlnnnmGZ5//nleeOEFtm7dim3bLFq0iNdff50nnniCXXV1dXH88ccTjUaJRCJEo1Huvfde3njjDWbPns2u7rrrLq6//nrK3G43+XyeX//616xdu5Zx48bx8MMP09XVxQsvvMCWLVsoe+yxx+jv7+fWW28lkUhw3HHHsX37dmRZZtGiRdTX1/NBfvOb33DFFVdg2zZOp5PHHnuMRx99lBUrVuB2u/nud7/LvffeiyRJOJ1OCoUCv/jFL1i+fDnNzc0888wzPP/883zuc59j8uTJlD344IP09PSwYMEC3G43Dz/8MF1dXbzwwgts2bKFsscee4z+/n6+//3vc+edd1IWi8W47bbb+OY3v8nLL7/Mo48+SldXF08//TTnn38+zc3N3HPPPXz1q1/loosuoquri+OPP55oNEokEiEajXLvvffyxhtvMHv2bBYtWsSll16KoihUVVXx+OOPc++997Jq1SpaW1sRBGF0qQiCIByG8vk8Dz74IGVr1qzhj3/8I2Wf/vSnefzxx1m6dCnnnXceTz31FB0dHcyYMYPvf//7XHDBBTz44IOsWLGCk046iZdeegld1zn77LN56623+N3vfsfXv/51KtxuN9FolEQiwamnnsqTTz7JddddR3t7OyPdcsstRKNR7rjjDubPn88jjzzCN77xDW688Uaee+45dvXkk09SXV3NG2+8waxZs7jgggt46qmneOutt/jKV75CxRlnnMHixYv57W9/y/z583n22We59dZb+Y//+A+2b9/OvHnzeOqpp1i9ejWnnnoqe1IoFLjhhhuQZZlVq1YxZcoUvvjFL/L888/zpz/9idmzZ/PLX/6S6upqli9fTmtrK//8z//MwoUL+bd/+zceeeQR9sUZZ5zB4sWL+e1vf8v8+fN59tlnufXWW3nvvfdoaGigpaWFrVu3MtKyZcv4+c9/zumnn053dzcj3XLLLUSjUe644w7mz5/PI488wje+8Q1uvPFGnnvuOR555BHKXnzxRT772c9y66238uCDD/Lyyy9zxRVXIAjC6FIRBEE4DKVSKS6//HJGuvzyy5k7dy5XXnklZblcjvnz51MWCoUYGBhg3bp1LFmyhLJLLrkEn89H2TXXXMPXvvY1li5dyte//nUqvvrVrxIOhwmHw1x88cX87Gc/Y9myZbS3tzPS0qVLKduwYQPXXnstuq5T9uabb7I7y5cvZ8uWLbz11ls8/PDDvPnmm5Rls1lG+sEPfkAkEuGiiy5i/vz5xGIxyt5++23KvvWtb+HxeDj55JM55phjWLFiBbuzdetW4vE4M2fO5IgjjqDsgQceYP369bS1tfHyyy9j2zZz585l0qRJlN10000sXLiQpUuXsq9+8IMfEIlEuOiii5g/fz6xWIwPc9VVV3H99ddT1t3dzUhLly6lbMOGDVx77bXouk7Zm2++SVljYyNlX/ziF5k7dy7z5s1j9erVVFdXIwjC6FMRBEE4DAUCAe677z7KNE1jxowZzJgxg7JYLEZZf38/pVKJsqlTpzJ16lTy+TzJZJKy6dOnU6FpGmWxWIyRmpqaqHA6nZSlUil2FYvFKNu6dSuyLFN22mmnUZZOp/H7/Yw0f/587rzzToLBIJ/+9KdpaWkhGo2yK6/XS5mqqowUj8cpa25upqKlpYUVK1awO/F4nLLx48dT0djYSGNjI2XJZJKy6dOnU6FpGmWxWIx95fV6KVNVlb01bdo09iQWi1G2detWZFmm7LTTTqMsnU5z9913Ew6H+cMf/sCTTz7Jk08+SU1NDU8++SRnnnkmgiCMLhVBEITDkMvl4qKLLmJ32traKLv66qu5/PLLKRsYGCCfz9PQ0MDkyZP561//yltvvcXJJ59M2QsvvEDZlClTGOmVV17hwgsvpOyll16ibOrUqeyqra2NaDTKQw89RHt7O2VdXV2U+f1+Rspms9x1111UVVXR09ODx+Ph1FNPZV+0t7ezZs0aXnnlFY4++mhM0+T1119nT1pbWyl7//33MU0TRVF49tlnefbZZ/nSl77E5MmTKXvrrbf44Q9/SNkLL7xA2ZQpUyhzOByUdXV1UbZz5076+/sZDW1tbUSjUR566CHa29sp6+rqoszpdPLkk09ywgkncPfdd7Ns2TLuu+8+nnjiCe69917OPPNMBEEYXSqCIAhjzNe+9jXuvPNOfvzjHxONRimVStx+++3U1NSwbds2rrjiCv7zP/+TH//4x/T19VEqlXjsscfweDxcdtlljPToo49SFovFeOedd2hubuZzn/sc+XyekS699FKWLVvGl7/8ZS6++GJWr17No48+yuc//3meeeYZRlJVFVVVSaVS/OAHP6C7u5vFixezL6644gr++Mc/cvPNN7Njxw7ee+89hoaG2JOmpibOOussXn75Zc455xyOPPJIHnroITKZDN/97ndpb2+nra2Nl19+mS984QtMnTqVhQsXUnbNNddQNm3aNJ5++mluvPFGlixZwmuvvYZpmuwLn8+Hw+Ggp6eHxx57jIsuuoi9cemll7Js2TK+/OUvc/HFF7N69WoeffRRPv/5z/PMM89w22230dHRwSuvvMIRRxxBPB6nrK6uDkEQRp+KIAjCGDN9+nSeeOIJrrnmGm666SbKTjrpJB544AE8Hg/Tp0/n6aef5pprruGXv/wlZTNmzOBXv/oVLS0tjHTdddexcOFCUqkUU6dO5YknnsDpdJLP5xnpsssuo6enh7vuuotrr70WVVW58MILuf/++9mV0+nkpz/9Kf/6r//Kfffdx2mnncYNN9zA7bffzuLFi7nsssv4MGeeeSb33HMPP/rRj7jvvvuYOXMmc+fO5cUXX2RPFi1axOWXX85f//pXXnnlFRobG3nggQeYNWsWZS+88ALf+ta3eOaZZ/jzn/9MJBLh/vvv50tf+hJl//Iv/8Krr77K8uXLefzxx7nmmmv4/e9/T29vL3vL5/Nx9dVX88ADD/Dtb3+biy66iL1x2WWX0dPTw1133cW1116LqqpceOGF3H///ZT96U9/4sorr+TRRx+lTJIk5s6dy2233YYgCKNPRRAE4TBy5JFHYts2H+b888/n/PPPJxqN4na78fv9jDRv3jzmzZtHIpFAlmWqqqrYnbPOOovbb7+dWCxGOBymIhgMYts2FbIsc/PNN7NgwQL6+voIhUI4nU725LrrruPKK6+kWCxSXV1N2U9/+lMqOjs7GSkcDmPbNiNdc801fOc73yEWixEOh/kwDQ0NPPfccxSLRRKJBHV1dYw0ZcoU3nzzTQqFAqlUikgkwkjhcJh33nmHwcFBAoEAmqZx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qVOnWL9+PQaDgf79+yOE6NgUhBBCXHWvvPIKFouFK626uprXX3+dJUuWEDVv3jw8Hg9Xy9KlSzGZTFyKzMxMVq5cyaeffooQQkQpCCGEuOZ2797NypUrOX78OGlpadx///3cc889RPl8PlasWMF7772HWq3m+9//PjNnzmT//v2sXr2as2fPMnPmTH71q1/hcDhwOp1Ebdy4kXA4jKIo/PGPf8Tj8fDQQw8xceJEYjZt2sQf//hH1Go1JSUlHDhwgNtvv53vfOc7XEg4HObf/u3fePTRR3nuuec4duwYEyZMYMaMGSxevJi9e/fSt29fnn32WcxmM0IIEU9BCCHEVdfc3IyiKMTTarXo9XpqamoYOXIkkyZNYubMmezevZsJEybw6aefkpeXx+OPP86mTZuYN28ebrebn/70pyQlJTF8+HByc3PZu3cvgwYNQq1W8/HHH3Pq1Cl++MMf8vHHH/PXv/6Vnj17ct9997FlyxamTp3KwYMH6dGjB+vXr+e+++5j8eLFpKenM2vWLGpra1mxYgXf+c53uJBwOMy///u/8+mnnzJr1iwOHjxISUkJK1euZObMmdx888089thjdOnShYULFyKEEPEUhBBCXHVZWVm09uCDD1JaWkptbS0PPPAAy5cvR6PR8IMf/IA333yTzz//nLy8PHbs2MH06dN56KGHiMrKysJisWCz2bjjjjt49913ue+++zif+vp61q1bh1ar5e677+bNN9/k4MGD9OjRgyeffJKnnnqKOXPmEDVgwADy8vK4FD/60Y+YMmUKUa+88grjxo3jX//1X4n6+9//zpEjRxBCiNYUhBBCXHVffPEFSUlJxDMajUTdfPPNPPPMM2zdupVDhw7xySefcOzYMcLhMFHjxo3jF7/4BYcPH2bMmDGMHTuWzp070xb5+flotVqiFEUhJSWFcDiMz+fjwIED3HnnncTceuutpKWlcSm+973vEdOpUyd69epFTFpaGqdOnUIIIVpTEEIIcdV17doVi8XC+Rw4cICxY8eSm5vLd7/7XSZMmMCnn35KzBNPPMEdd9zB+vXrWbZsGQ899BC//vWvKSkp4WIMBgPn4/P5CIfDaLVa4un1ei6FSqVCCCEulYIQQohratWqVfTp04eysjJiHn30UWKeffZZfvCDH7By5Uqinn76aZYtW0ZJSQnfVFJSEhkZGezevZvevXsTdfr0aRwOB0IIcbUpCCGEuOrWrl1LQkICrc2YMQODwcCxY8c4cOAAHo+HP/zhD5w5c4bPP/8cr9fL+vXr2bVrFz/72c8IBoO899579O3blyidTse5c+fYtWsXgwYN4lLMmjWL+fPn07lzZ9LT03n88ccxm81oNBqEEOJqUhBCCHHVWCwWhg0bxoYNGzifKVOmMG/ePA4fPsw//dM/kZ2dzY9//GPuvvtunnnmGaZPn87LL7/MrFmzGDt2LHq9nhEjRrBs2TKihg8fzrBhw3j44Yf5+OOP6datG2azmahu3bphNpuJN3jwYNLS0oh67LHH8Hq9PPLII5hMJhYsWEBjYyOdOnXiYlQqFcOGDSMxMZGYAQMGkJGRQUy3bt0wm80IIURrCkIIIa6a/v37U15ezsX8+c9/prVJkyYRs23bNs4nMTGRN998k5ji4mJiiouLae3ll18m5q233mL8+PEsXryYqJaWFkpKSrDb7VyMRqOhvLyceL/97W+JV1xcjBBCnI+CEEKIDmnXrl3MmzePZcuWkZaWxq9//WsGDhxITk4OX2fbtm3ccsstdO/enbZqamrio48+or6+HiGEiFIQQgjRIT399NOkpKTwm9/8hnA4zKBBg/iP//gPzsdgMDBy5EheeOEFfvjDH9K9e3faqqamhmXLltG5c2eys7MRQggFIYQQHZJWq2XevHnMmzePi0lLS2Pbtm18E7m5uWzbtg0hhIhREEIIIYQQoh0pCCGEEEII0Y4UhBBCCCGEaEcKQgghhBBCtCMFIYQQQggh2pGCEEIIIYQQ7UhBCCGEEEKIdqQghBBCCCFEO1IQQgghhBCiHSkIIYQQQgjRjhSEEEIIIYRoRwpCCCGEEEK0IwUhhBBCCCHakYIQQgghhBDt6P8AmVqS+5hSZikAAAAASUVORK5CYII=">
 </div>
@@ -707,20 +721,22 @@ Note
 <h2 data-number="9.2" class="anchored" data-anchor-id="joining-geotables"><span class="header-section-number">9.2</span> Joining geotables</h2>
 <p>The <code>geojoin</code> function can be used to join two geotables using a <strong>geometric predicate</strong> function:</p>
 <div id="12" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, pred <span class="op">=</span> <span class="op">∈</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, pred <span class="op">=</span> <span class="op">∈</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>5×6 GeoTable over 5 PointSet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">5×6 GeoTable over 5 PointSet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
@@ -728,7 +744,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
@@ -738,7 +754,7 @@ Note
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
@@ -746,7 +762,7 @@ Note
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">(x: -4.80665e6 m, y: -2.55669e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
@@ -754,7 +770,7 @@ Note
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">(x: -1.35999e7 m, y: 4.16644e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
@@ -762,7 +778,7 @@ Note
 <td style="text-align: center;">Australia and New Zealand</td>
 <td style="text-align: center;">(x: 1.70368e7 m, y: -3.05975e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
@@ -770,7 +786,7 @@ Note
 <td style="text-align: center;">Eastern Asia</td>
 <td style="text-align: center;">(x: 1.29584e7 m, y: 4.44205e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
@@ -785,20 +801,22 @@ Note
 <p>In the example above, we used the <code>∈</code> predicate to check if a <code>Point</code> in the <code>people</code> geotable is in a <code>MultiPolygon</code> in the <code>countries</code> geotable. The default predicate in <code>geojoin</code> is the <code>intersects</code> function that we covered in previous chapters.</p>
 <p>Notice that Kate’s “COUNTRY” and “REGION” are <code>missing</code>. That is because Kate lives in the <a href="https://en.wikipedia.org/wiki/Fernando_de_Noronha">Fernando de Noronha</a> island, which is not present in the <code>countries</code> geotable. To retain just those people for which the geometric predicate evaluates <code>true</code>, we can use a different <code>kind</code> of <code>geojoin</code> known as <code>:inner</code>:</p>
 <div id="14" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>4×6 GeoTable over 4 view(::PointSet, [1, 2, 3, 4])</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">4×6 GeoTable over 4 view(::PointSet, [1, 2, 3, 4])</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
@@ -806,7 +824,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
@@ -816,7 +834,7 @@ Note
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
@@ -824,7 +842,7 @@ Note
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">(x: -4.80665e6 m, y: -2.55669e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
@@ -832,7 +850,7 @@ Note
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">(x: -1.35999e7 m, y: 4.16644e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
@@ -840,7 +858,7 @@ Note
 <td style="text-align: center;">Australia and New Zealand</td>
 <td style="text-align: center;">(x: 1.70368e7 m, y: -3.05975e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
@@ -854,20 +872,22 @@ Note
 </div>
 <p>By default, the <code>:left</code> kind is used. Like in standard join, the <code>geojoin</code> is not commutative. If we swap the order of the geotables, the result will be different:</p>
 <div id="16" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
@@ -875,7 +895,7 @@ Note
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">MultiPolygon</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -885,7 +905,7 @@ Note
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">Mary</td>
@@ -893,7 +913,7 @@ Note
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">Multi(10×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">John</td>
@@ -901,7 +921,7 @@ Note
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
 <td style="text-align: center;">Paul</td>
@@ -909,7 +929,7 @@ Note
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Multi(2×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
 <td style="text-align: center;">Anne</td>
@@ -942,33 +962,35 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip for all users
+<span class="screen-reader-only">Note</span>Tip for all users
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Besides <code>geojoin</code>, the framework also provides vertical and horizontal concatenation of geotables. Vertical concatenation is achieved with <code>vcat</code> as follows:</p>
 <div id="18" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gt1 <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>]))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gt1 <span class="op">=</span> <span class="fu">georef</span>((a<span class="op">=</span>[<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>], b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>]))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>gt2 <span class="op">=</span> <span class="fu">georef</span>((b<span class="op">=</span>[<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>], c<span class="op">=</span>[<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>]))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>6×4 GeoTable over 6 GeometrySet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">c</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="4" style="text-align: center; font-size: 14px;">6×4 GeoTable over 6 GeometrySet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">a</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">c</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Segment</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -976,37 +998,37 @@ Tip for all users
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">9</td>
@@ -1018,46 +1040,48 @@ Tip for all users
 </div>
 <p>All columns are preserved by default, which corresponds to the option <code>kind = :union</code>. Absent columns are filled with <code>missing</code> values. The option <code>kind = :intersect</code> can be used to retain only the columns that are present in all geotables:</p>
 <div id="20" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2, kind <span class="op">=</span> <span class="op">:</span>intersect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vcat</span>(gt1, gt2, kind <span class="op">=</span> <span class="op">:</span>intersect)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>6×2 GeoTable over 6 GeometrySet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="2" style="text-align: center; font-size: 14px;">6×2 GeoTable over 6 GeometrySet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Segment</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">🖈 Cartesian{NoDatum}</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
@@ -1067,26 +1091,28 @@ Tip for all users
 </div>
 <p>Horizontal concatenation is achieved with <code>hcat</code> as follows:</p>
 <div id="22" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hcat</span>(gt1, gt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hcat</span>(gt1, gt2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>3×5 GeoTable over 3 CartesianGrid</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">b_</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">c</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="5" style="text-align: center; font-size: 14px;">3×5 GeoTable over 3 CartesianGrid</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">a</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b_</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">c</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Segment</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1095,21 +1121,21 @@ Tip for all users
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">6</td>
@@ -1122,25 +1148,27 @@ Tip for all users
 </div>
 <p>Unique column names are produced with underscore suffixes whenever a column appears in multiple geotables. Julia provides convenient syntax for <code>vcat</code> and <code>hcat</code>:</p>
 <div id="24" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>[gt1</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>[gt1</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> gt2]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>6×4 GeoTable over 6 GeometrySet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">c</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="4" style="text-align: center; font-size: 14px;">6×4 GeoTable over 6 GeometrySet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">a</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">c</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Segment</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1148,37 +1176,37 @@ Tip for all users
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">Segment((x: 2.0 m), (x: 3.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">missing</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">9</td>
@@ -1189,26 +1217,28 @@ Tip for all users
 </div>
 </div>
 <div id="26" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[gt1 gt2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[gt1 gt2]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>3×5 GeoTable over 3 CartesianGrid</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">a</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">b</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">b_</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">c</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="5" style="text-align: center; font-size: 14px;">3×5 GeoTable over 3 CartesianGrid</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">a</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">b_</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">c</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Segment</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1217,21 +1247,21 @@ Tip for all users
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">7</td>
 <td style="text-align: center;">Segment((x: 0.0 m), (x: 1.0 m))</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">Segment((x: 1.0 m), (x: 2.0 m))</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">6</td>
 <td style="text-align: center;">6</td>
@@ -1249,22 +1279,24 @@ Tip for all users
 <h2 data-number="9.3" class="anchored" data-anchor-id="common-predicates"><span class="header-section-number">9.3</span> Common predicates</h2>
 <p>In geospatial data science, the most common geometric predicates used in <code>geojoin</code> are <code>∈</code>, <code>⊆</code>, <code>==</code>, <code>≈</code> and <code>intersects</code> as illustrated in <a href="#tbl-predicate" class="quarto-xref">Table&nbsp;<span>9.1</span></a>. Specific applications may require custom predicates, which can be easily defined in pure Julia with the Meshes.jl module. For example, it is sometimes convenient to define geometric predicates in terms of a distance and a threshold:</p>
 <div id="28" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">evaluate</span>(<span class="fu">Euclidean</span>(), <span class="fu">centroid</span>(g1), <span class="fu">centroid</span>(g2)) <span class="op">≤</span> <span class="fl">1500</span>u<span class="st">"km"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pred</span>(g1, g2) <span class="op">=</span> <span class="fu">evaluate</span>(<span class="fu">Euclidean</span>(), <span class="fu">centroid</span>(g1), <span class="fu">centroid</span>(g2)) <span class="op">≤</span> <span class="fl">1500</span>u<span class="st">"km"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner, pred <span class="op">=</span> pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries, kind <span class="op">=</span> <span class="op">:</span>inner, pred <span class="op">=</span> pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>1×6 GeoTable over 1 view(::PointSet, [4])</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">1×6 GeoTable over 1 view(::PointSet, [4])</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
@@ -1272,7 +1304,7 @@ Tip for all users
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
@@ -1282,7 +1314,7 @@ Tip for all users
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
@@ -1338,7 +1370,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <h2 data-number="9.4" class="anchored" data-anchor-id="multiple-matches"><span class="header-section-number">9.4</span> Multiple matches</h2>
 <p>Sometimes the predicate function will evaluate <code>true</code> for multiple rows of the geotables. In this case, we need to decide which value will be copied to the resulting geotable. The <code>geojoin</code> accepts reduction functions for each column. For example, suppose that Kate decided to move to the continent:</p>
 <div id="30" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> (</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>, <span class="st">"Kate"</span>],</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>, <span class="fl">28.0</span>]u<span class="st">"yr"</span>,</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  HEIGHT<span class="op">=</span>[<span class="fl">1.78</span>, <span class="fl">1.56</span>, <span class="fl">1.70</span>, <span class="fl">1.80</span>, <span class="fl">1.72</span>]u<span class="st">"m"</span>,</span>
@@ -1346,24 +1378,26 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  LONGITUDE<span class="op">=</span>[<span class="op">-</span><span class="fl">43.17891118844475</span>, <span class="op">-</span><span class="fl">122.17007072663823</span>, <span class="fl">153.04380578036657</span>, <span class="fl">116.40764745941036</span>, <span class="op">-</span><span class="fl">35.71261407423411</span>]</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(PlateCarree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="fu">georef</span>(table, (<span class="op">:</span>LONGITUDE, <span class="op">:</span>LATITUDE)) <span class="op">|&gt;</span> <span class="fu">Proj</span>(PlateCarree)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>5×4 GeoTable over 5 PointSet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="4" style="text-align: center; font-size: 14px;">5×4 GeoTable over 5 PointSet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
@@ -1371,31 +1405,31 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
 <td style="text-align: center;">(x: -4.80665e6 m, y: -2.55669e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">(x: -1.35999e7 m, y: 4.16644e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">(x: 1.70368e7 m, y: -3.05975e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
 <td style="text-align: center;">(x: 1.29584e7 m, y: 4.44205e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
@@ -1407,20 +1441,22 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 <p>Now, both John and Kate live in Brazil according the <code>countries</code> geotable:</p>
 <div id="32" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(people, countries)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>5×6 GeoTable over 5 PointSet</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">5×6 GeoTable over 5 PointSet</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
@@ -1428,7 +1464,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Point</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[yr]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[m]</th>
@@ -1438,7 +1474,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">John</td>
 <td style="text-align: center;">34.0 yr</td>
 <td style="text-align: center;">1.78 m</td>
@@ -1446,7 +1482,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">(x: -4.80665e6 m, y: -2.55669e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Mary</td>
 <td style="text-align: center;">12.0 yr</td>
 <td style="text-align: center;">1.56 m</td>
@@ -1454,7 +1490,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">(x: -1.35999e7 m, y: 4.16644e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Paul</td>
 <td style="text-align: center;">23.0 yr</td>
 <td style="text-align: center;">1.7 m</td>
@@ -1462,7 +1498,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">Australia and New Zealand</td>
 <td style="text-align: center;">(x: 1.70368e7 m, y: -3.05975e6 m)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Anne</td>
 <td style="text-align: center;">39.0 yr</td>
 <td style="text-align: center;">1.8 m</td>
@@ -1470,7 +1506,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">Eastern Asia</td>
 <td style="text-align: center;">(x: 1.29584e7 m, y: 4.44205e6 m)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Kate</td>
 <td style="text-align: center;">28.0 yr</td>
 <td style="text-align: center;">1.72 m</td>
@@ -1484,20 +1520,22 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 <p>If we swap the order of the geotables in the <code>geojoin</code>, we need to decide how to reduce the multiple values of “NAME”, “AGE” and “HEIGHT” in the resulting geotable. By default, the <code>mean</code> function is used to reduce <code>Continuous</code> variables, and the <code>first</code> function is used otherwise:</p>
 <div id="34" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
@@ -1505,7 +1543,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">MultiPolygon</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1515,7 +1553,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">Mary</td>
@@ -1523,7 +1561,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">Multi(10×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">John</td>
@@ -1531,7 +1569,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.75 m</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
 <td style="text-align: center;">Paul</td>
@@ -1539,7 +1577,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Multi(2×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
 <td style="text-align: center;">Anne</td>
@@ -1553,20 +1591,22 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </div>
 <p>We can specify custom reduction functions using the following syntax:</p>
 <div id="36" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, <span class="st">"AGE"</span> <span class="op">=&gt;</span> maximum, <span class="st">"HEIGHT"</span> <span class="op">=&gt;</span> mean, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(countries, people, <span class="st">"AGE"</span> <span class="op">=&gt;</span> maximum, <span class="st">"HEIGHT"</span> <span class="op">=&gt;</span> mean, kind <span class="op">=</span> <span class="op">:</span>inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</caption>
+<table class="caption-top table table-sm table-striped small">
 <thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">COUNTRY</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">REGION</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">NAME</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">AGE</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">HEIGHT</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">geometry</th>
+<tr class="title header">
+<td colspan="6" style="text-align: center; font-size: 14px;">4×6 GeoTable over 4 view(::GeometrySet, [5, 30, 138, 140])</td>
 </tr>
-<tr class="subheader even">
+<tr class="columnLabelRow even">
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">COUNTRY</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">REGION</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">NAME</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">AGE</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #803d9b">HEIGHT</span></th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"><span style="font-weight: 700; color: #0097a7">geometry</span></th>
+</tr>
+<tr class="columnLabelRow header">
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Categorical</th>
@@ -1574,7 +1614,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <th style="text-align: center;" data-quarto-table-cell-role="th">Continuous</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">MultiPolygon</th>
 </tr>
-<tr class="subheader headerLastRow header">
+<tr class="columnLabelRow even">
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">[NoUnits]</th>
@@ -1584,7 +1624,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">United States of America</td>
 <td style="text-align: center;">Northern America</td>
 <td style="text-align: center;">Mary</td>
@@ -1592,7 +1632,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.56 m</td>
 <td style="text-align: center;">Multi(10×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">Brazil</td>
 <td style="text-align: center;">South America</td>
 <td style="text-align: center;">John</td>
@@ -1600,7 +1640,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.75 m</td>
 <td style="text-align: center;">Multi(1×PolyArea)</td>
 </tr>
-<tr class="odd">
+<tr class="dataRow odd">
 <td style="text-align: center;">Australia</td>
 <td style="text-align: center;">Australia and New Zealand</td>
 <td style="text-align: center;">Paul</td>
@@ -1608,7 +1648,7 @@ Table&nbsp;9.1: Common geometric predicates in geospatial join
 <td style="text-align: center;">1.7 m</td>
 <td style="text-align: center;">Multi(2×PolyArea)</td>
 </tr>
-<tr class="even">
+<tr class="dataRow even">
 <td style="text-align: center;">China</td>
 <td style="text-align: center;">Eastern Asia</td>
 <td style="text-align: center;">Anne</td>
@@ -1631,7 +1671,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The keyword arguments <code>kind</code> and <code>pred</code> must appear at the end of the <code>geojoin</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(gt1, gt2, var1 <span class="op">=&gt;</span> red1, <span class="op">...</span>, varn <span class="op">=&gt;</span> redn; kind <span class="op">=</span> <span class="op">:</span>left, pred <span class="op">=</span> intersects)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geojoin</span>(gt1, gt2, var1 <span class="op">=&gt;</span> red1, <span class="op">...</span>, varn <span class="op">=&gt;</span> redn; kind <span class="op">=</span> <span class="op">:</span>left, pred <span class="op">=</span> intersects)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1713,13 +1753,14 @@ Note
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
