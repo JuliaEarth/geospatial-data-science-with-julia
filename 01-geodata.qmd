@@ -191,7 +191,6 @@ table representation for data science in Julia is available in
 by @Bogumil2023.
 
 ```{julia}
-#| output: false
 using DataFrames
 
 df = DataFrame(
@@ -202,22 +201,11 @@ df = DataFrame(
 )
 ```
 
-```{julia}
-#| echo: false
-show(stdout, MIME("text/html"), df; header_alignment = :s)
-```
-
 This representation provides additional syntax for accessing
 rows and columns of the table:
 
 ```{julia}
-#| output: false
 df[1,:]
-```
-
-```{julia}
-#| echo: false
-show(stdout, MIME("text/html"), df[1,:]; header_alignment = :s)
 ```
 
 ```{julia}
@@ -225,13 +213,7 @@ df[:,"NAME"]
 ```
 
 ```{julia}
-#| output: false
 df[1:3,["NAME","AGE"]]
-```
-
-```{julia}
-#| echo: false
-show(stdout, MIME("text/html"), df[1:3,["NAME","AGE"]]; header_alignment = :s)
 ```
 
 ```{julia}
