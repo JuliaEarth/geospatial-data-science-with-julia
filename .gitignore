@@ -2,3 +2,4 @@
 /_book/
 /_site/
 .vscode
+**/*.quarto_ipynb

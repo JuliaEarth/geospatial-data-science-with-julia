@@ -115,17 +115,17 @@ using Pkg
 pkg"activate @GDSJL"
 
 # install framework
-pkg"add GeoStats@0.82.2"
+pkg"add GeoStats@0.82.7"
 
 # install IO module
-pkg"add GeoIO@1.21.2"
+pkg"add GeoIO@1.21.3"
 
 # install viz modules
 pkg"add CairoMakie@0.15.6"
 pkg"add PairPlots@3.0.3"
 
 # install other modules
-pkg"add DataFrames@1.8.0"
+pkg"add DataFrames@1.8.1"
 ```
 
 If you need to reproduce the exact same environment with
