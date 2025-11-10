@@ -789,6 +789,17 @@ Note
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  HEIGHT<span class="op">=</span>[<span class="fl">1.78</span>, <span class="fl">1.56</span>, <span class="fl">1.70</span>, <span class="fl">1.80</span>, <span class="fl">1.72</span>],</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  GENDER<span class="op">=</span>[<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>]</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+   1027.3 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerTablesExt<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 1 seconds
+<span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+   1024.4 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerLaTeXStringsExt<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 1 seconds
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>5×4 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame caption-top table table-sm table-striped small">
@@ -989,6 +1000,14 @@ Note
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fu">Ball</span>((<span class="fl">2</span>, <span class="fl">2</span>), <span class="fl">1</span>)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>geoms <span class="op">=</span> [p, s, t, b]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+   2228.6 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerJSONExt<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 2 seconds
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4-element Vector{Geometry{𝔼{2}, Cartesian2D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}:
  Point(x: 1.0 m, y: 2.0 m)
@@ -1438,63 +1457,63 @@ Note
 </thead>
 <tbody>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.452301</td>
-<td style="text-align: center;">0.716303</td>
-<td style="text-align: center;">0.734169</td>
+<td style="text-align: center;">0.301613</td>
+<td style="text-align: center;">0.0761669</td>
+<td style="text-align: center;">0.914304</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.933346</td>
-<td style="text-align: center;">0.309651</td>
-<td style="text-align: center;">0.702014</td>
+<td style="text-align: center;">0.485111</td>
+<td style="text-align: center;">0.463141</td>
+<td style="text-align: center;">0.367105</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.450146</td>
-<td style="text-align: center;">0.300849</td>
-<td style="text-align: center;">0.571881</td>
+<td style="text-align: center;">0.0137287</td>
+<td style="text-align: center;">0.293658</td>
+<td style="text-align: center;">0.510067</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.143731</td>
-<td style="text-align: center;">0.477807</td>
-<td style="text-align: center;">0.0528464</td>
+<td style="text-align: center;">0.85341</td>
+<td style="text-align: center;">0.935091</td>
+<td style="text-align: center;">0.460326</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.212468</td>
-<td style="text-align: center;">0.0397098</td>
-<td style="text-align: center;">0.175923</td>
+<td style="text-align: center;">0.785304</td>
+<td style="text-align: center;">0.657502</td>
+<td style="text-align: center;">0.702855</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.340663</td>
-<td style="text-align: center;">0.725795</td>
-<td style="text-align: center;">0.564812</td>
+<td style="text-align: center;">0.97509</td>
+<td style="text-align: center;">0.214735</td>
+<td style="text-align: center;">0.872309</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.230883</td>
-<td style="text-align: center;">0.530963</td>
-<td style="text-align: center;">0.727178</td>
+<td style="text-align: center;">0.958771</td>
+<td style="text-align: center;">0.994081</td>
+<td style="text-align: center;">0.87689</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.539224</td>
-<td style="text-align: center;">0.481274</td>
-<td style="text-align: center;">0.224016</td>
+<td style="text-align: center;">0.775045</td>
+<td style="text-align: center;">0.470658</td>
+<td style="text-align: center;">0.819285</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.51206</td>
-<td style="text-align: center;">0.104642</td>
-<td style="text-align: center;">0.758295</td>
+<td style="text-align: center;">0.955593</td>
+<td style="text-align: center;">0.814197</td>
+<td style="text-align: center;">0.603931</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.240894</td>
-<td style="text-align: center;">0.272018</td>
-<td style="text-align: center;">0.532005</td>
+<td style="text-align: center;">0.748019</td>
+<td style="text-align: center;">0.981166</td>
+<td style="text-align: center;">0.703614</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
@@ -1512,6 +1531,14 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
+   2828.2 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerJSON3Ext<span class="ansi-bright-black-fg"> (serial)</span>
+  1 dependency successfully precompiled in 3 seconds
+</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
   <div style="float: right; font-style: italic;">
