@@ -948,9 +948,9 @@ version = "1.3.7"
 
 [[deps.ForwardDiff]]
 deps = ["CommonSubexpressions", "DiffResults", "DiffRules", "LinearAlgebra", "LogExpFunctions", "NaNMath", "Preferences", "Printf", "Random", "SpecialFunctions"]
-git-tree-sha1 = "ba6ce081425d0afb2bedd00d9884464f764a9225"
+git-tree-sha1 = "cd33c7538e68650bd0ddbb3f5bd50a4a0fa95b50"
 uuid = "f6369f11-7733-5829-9624-2563aa707210"
-version = "1.2.2"
+version = "1.3.0"
 weakdeps = ["StaticArrays"]
 
     [deps.ForwardDiff.extensions]
@@ -1082,9 +1082,9 @@ version = "0.3.0"
 
 [[deps.GeoStats]]
 deps = ["CategoricalArrays", "Chain", "CoDa", "Colors", "CoordGridTransforms", "CoordRefSystems", "DataScienceTraits", "Dates", "DensityRatioEstimation", "Distances", "GeoStatsBase", "GeoStatsFunctions", "GeoStatsModels", "GeoStatsProcesses", "GeoStatsTransforms", "GeoStatsValidation", "GeoTables", "LossFunctions", "Meshes", "Random", "Reexport", "Rotations", "Statistics", "StatsLearnModels", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "ff034bb777898c414a014273c612bff21211813f"
+git-tree-sha1 = "ec6ce824a8d6f3e95c9cf1a3d83034a77baa0609"
 uuid = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"
-version = "0.82.7"
+version = "0.83.2"
 
 [[deps.GeoStatsBase]]
 deps = ["CategoricalArrays", "ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "Distances", "Distributions", "GeoTables", "LinearAlgebra", "Meshes", "Optim", "Rotations", "StaticArrays", "StatsBase", "Tables", "TypedTables", "Unitful"]
@@ -1135,10 +1135,10 @@ uuid = "725d9659-360f-4996-9c94-5f19c7e4a8a6"
 version = "0.14.7"
 
 [[deps.GeoStatsValidation]]
-deps = ["ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "GeoStatsBase", "GeoStatsModels", "GeoStatsTransforms", "GeoTables", "LossFunctions", "Meshes", "StatsLearnModels"]
-git-tree-sha1 = "bb6f4ad3b9e8f3a795761da303e1b2604f5dcc85"
+deps = ["DataScienceTraits", "DensityRatioEstimation", "GeoStatsBase", "GeoStatsModels", "GeoStatsTransforms", "GeoTables", "LossFunctions", "Meshes", "StatsLearnModels"]
+git-tree-sha1 = "e73b926742f72077bd1993c29110734b0e12ae21"
 uuid = "36f43c0d-3673-45fc-9557-6860e708e7aa"
-version = "0.4.2"
+version = "0.4.4"
 
 [[deps.GeoTIFF]]
 deps = ["ColorTypes", "FixedPointNumbers", "MappedArrays", "StaticArrays", "TiffImages"]
@@ -1148,13 +1148,14 @@ version = "0.5.0"
 
 [[deps.GeoTables]]
 deps = ["CategoricalArrays", "Colorfy", "ColumnSelectors", "CoordRefSystems", "DataAPI", "DataScienceTraits", "Dates", "Distributions", "IteratorInterfaceExtensions", "Meshes", "PrettyTables", "Random", "Statistics", "StyledStrings", "TableTraits", "Tables", "TransformsBase", "Unitful"]
-git-tree-sha1 = "b6da3fa98f0bc3c4b7bde3e5adcb08bd37457f14"
+git-tree-sha1 = "2775162282927ab45d528b96839486e9d8a3639e"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.26.3"
-weakdeps = ["Makie", "TableTransforms"]
+version = "1.27.2"
+weakdeps = ["Makie", "StatsLearnModels", "TableTransforms"]
 
     [deps.GeoTables.extensions]
     GeoTablesMakieExt = "Makie"
+    GeoTablesStatsLearnModelsExt = "StatsLearnModels"
     GeoTablesTableTransformsExt = "TableTransforms"
 
 [[deps.GeometryBasics]]
@@ -1370,9 +1371,9 @@ weakdeps = ["Unitful"]
 
 [[deps.IntervalArithmetic]]
 deps = ["CRlibm", "MacroTools", "OpenBLASConsistentFPCSR_jll", "Printf", "Random", "RoundingEmulator"]
-git-tree-sha1 = "bf0210c01fb7d67c31fed97d7c1d1716b98ea689"
+git-tree-sha1 = "02b61501dbe6da3b927cc25dacd7ce32390ee970"
 uuid = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
-version = "1.0.1"
+version = "1.0.2"
 
     [deps.IntervalArithmetic.extensions]
     IntervalArithmeticArblibExt = "Arblib"
@@ -1854,9 +1855,9 @@ version = "1.1.3"
 
 [[deps.NearestNeighbors]]
 deps = ["Distances", "StaticArrays"]
-git-tree-sha1 = "ca7e18198a166a1f3eb92a3650d53d94ed8ca8a1"
+git-tree-sha1 = "17399deebfc0ef7d7a97225776571d13adf01a36"
 uuid = "b8a86587-4115-5ab1-83bc-aa920d37bbce"
-version = "0.4.22"
+version = "0.4.23"
 
 [[deps.NelderMead]]
 git-tree-sha1 = "25abc2f9b1c752e69229f37909461befa7c1f85d"
@@ -2046,9 +2047,9 @@ version = "3.0.3"
 
 [[deps.Pango_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "FriBidi_jll", "Glib_jll", "HarfBuzz_jll", "JLLWrappers", "Libdl"]
-git-tree-sha1 = "1f7f9bbd5f7a2e5a9f7d96e51c9754454ea7f60b"
+git-tree-sha1 = "0662b083e11420952f2e62e17eddae7fc07d5997"
 uuid = "36c8627f-9965-5494-a995-c6b170f724f3"
-version = "1.56.4+0"
+version = "1.57.0+0"
 
 [[deps.Parameters]]
 deps = ["OrderedCollections", "UnPack"]
@@ -2533,14 +2534,10 @@ weakdeps = ["ChainRulesCore", "InverseFunctions"]
     StatsFunsInverseFunctionsExt = "InverseFunctions"
 
 [[deps.StatsLearnModels]]
-deps = ["ColumnSelectors", "DataScienceTraits", "DecisionTree", "Distances", "Distributions", "GLM", "NearestNeighbors", "StatsBase", "TableTransforms", "Tables"]
-git-tree-sha1 = "6d4e71c69298d4f1225a2245fd60530f79e74b31"
+deps = ["ColumnSelectors", "DataScienceTraits", "DecisionTree", "Distances", "Distributions", "GLM", "NearestNeighbors", "PrettyTables", "StatsBase", "StyledStrings", "TableTransforms", "Tables"]
+git-tree-sha1 = "23ffc0083010174c452c22cb4fc267a1a0d4381e"
 uuid = "c146b59d-1589-421c-8e09-a22e554fd05c"
-version = "1.1.1"
-weakdeps = ["MLJModelInterface"]
-
-    [deps.StatsLearnModels.extensions]
-    StatsLearnModelsMLJModelInterfaceExt = "MLJModelInterface"
+version = "1.2.2"
 
 [[deps.StatsModels]]
 deps = ["DataAPI", "DataStructures", "LinearAlgebra", "Printf", "REPL", "ShiftedArrays", "SparseArrays", "StatsAPI", "StatsBase", "StatsFuns", "Tables"]
