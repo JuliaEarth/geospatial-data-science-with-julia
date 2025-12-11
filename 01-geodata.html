@@ -787,17 +787,6 @@ Note
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  HEIGHT<span class="op">=</span>[<span class="fl">1.78</span>, <span class="fl">1.56</span>, <span class="fl">1.70</span>, <span class="fl">1.80</span>, <span class="fl">1.72</span>],</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  GENDER<span class="op">=</span>[<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>]</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-   1008.1 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerTablesExt<span class="ansi-bright-black-fg"> (serial)</span>
-  1 dependency successfully precompiled in 1 seconds
-<span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-    991.5 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerLaTeXStringsExt<span class="ansi-bright-black-fg"> (serial)</span>
-  1 dependency successfully precompiled in 1 seconds
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>5×4 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame caption-top table table-sm table-striped small">
@@ -998,14 +987,6 @@ Note
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fu">Ball</span>((<span class="fl">2</span>, <span class="fl">2</span>), <span class="fl">1</span>)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>geoms <span class="op">=</span> [p, s, t, b]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-   2185.1 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerJSONExt<span class="ansi-bright-black-fg"> (serial)</span>
-  1 dependency successfully precompiled in 2 seconds
-</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4-element Vector{Geometry{𝔼{2}, Cartesian2D{NoDatum, Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}}}:
  Point(x: 1.0 m, y: 2.0 m)
@@ -1014,9 +995,23 @@ Note
  Ball(center: (x: 2.0 m, y: 2.0 m), radius: 1.0 m)</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Tip for all users
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The GeoStats.jl module reexports the full stack of modules for geospatial data science in Julia. There is no need to import modules like Meshes.jl explicitly. You are all set if you start your script with</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 <p>Because these geometries are unaware of each other, we place them into a <code>GeometrySet</code>, informally known in computational geometry as the “soup of geometries” data structure:</p>
 <div id="20" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gset <span class="op">=</span> <span class="fu">GeometrySet</span>(geoms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gset <span class="op">=</span> <span class="fu">GeometrySet</span>(geoms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4 GeometrySet
 ├─ Point(x: 1.0 m, y: 2.0 m)
@@ -1027,14 +1022,14 @@ Note
 </div>
 <p>No advanced knowledge is required to start working with these geometries. For example, we can compute the <code>length</code> of the <code>Segment</code>, the <code>area</code> of the <code>Triangle</code> and the <code>area</code> of the <code>Ball</code> with:</p>
 <div id="22" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s), <span class="fu">area</span>(t), <span class="fu">area</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(s), <span class="fu">area</span>(t), <span class="fu">area</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>(1.4142135623730951 m, 0.5 m^2, 3.141592653589793 m^2)</code></pre>
 </div>
 </div>
 <p>More generally, we can compute the <code>measure</code> of the geometries in the domain:</p>
 <div id="24" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>[<span class="fu">measure</span>(g) for g <span class="kw">in</span> gset]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>[<span class="fu">measure</span>(g) for g <span class="kw">in</span> gset]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4-element Vector{Quantity{Float64}}:
  0.0 m
@@ -1045,7 +1040,7 @@ Note
 </div>
 <p>In the example above, we iterated over the domain to apply the function of interest, but we could have used Julia’s dot syntax for broadcasting the function over the geometries:</p>
 <div id="26" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">measure</span>.(gset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">measure</span>.(gset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4-element Vector{Quantity{Float64}}:
  0.0 m
@@ -1057,7 +1052,7 @@ Note
 <p>The list of supported geometries is very comprehensive. It encompasses all geometries from the <a href="https://www.iso.org/standard/40114.html">simple features</a> standard and more. We will see more examples in the following chapters.</p>
 <p>One of the main limitations of GIS software today is the lack of explicit representation of <a href="https://en.wikipedia.org/wiki/Topology">topology</a>. A <code>GeometrySet</code> does not provide efficient topological relations <span class="citation" data-cites="Floriani2007">(<a href="references.html#ref-Floriani2007" role="doc-biblioref">Floriani and Hui 2007</a>)</span>, yet advanced geospatial data science requires the definition of geospatial domains where geometries are aware of their neighbors. Let’s illustrate this concept with the <code>CartesianGrid</code> domain:</p>
 <div id="28" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10</span>, <span class="fl">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10</span>, <span class="fl">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>10×10 CartesianGrid
 ├─ minimum: Point(x: 0.0 m, y: 0.0 m)
@@ -1067,7 +1062,7 @@ Note
 </div>
 <p>We can access the individual geometries of the domain as before:</p>
 <div id="30" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>grid[<span class="fl">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>grid[<span class="fl">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Quadrangle
 ├─ Point(x: 0.0 m, y: 0.0 m)
@@ -1078,7 +1073,7 @@ Note
 </div>
 <p>And even though we can manipulate this domain as if it was a “soup of geometries”, the major advantage in this abstraction is the underlying <code>topology</code>:</p>
 <div id="32" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">topology</span>(grid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">=</span> <span class="fu">topology</span>(grid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>10×10 GridTopology(aperiodic, aperiodic)</code></pre>
 </div>
@@ -1096,7 +1091,7 @@ Note
 <div class="callout-body-container callout-body">
 <p>The <code>CartesianGrid</code> domain is <em>lazy</em>, meaning it only stores the start and end points of the grid together with the spacing between the elements. Therefore, we can easily create large 3D grids of <code>Hexahedron</code> geometries without consuming all available memory:</p>
 <div id="34" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10000</span>, <span class="fl">10000</span>, <span class="fl">10000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">10000</span>, <span class="fl">10000</span>, <span class="fl">10000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>10000×10000×10000 CartesianGrid
 ├─ minimum: Point(x: 0.0 m, y: 0.0 m, z: 0.0 m)
@@ -1105,7 +1100,7 @@ Note
 </div>
 </div>
 <div id="36" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>grid[<span class="fl">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>grid[<span class="fl">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Hexahedron
 ├─ Point(x: 0.0 m, y: 0.0 m, z: 0.0 m)
@@ -1122,14 +1117,14 @@ Note
 </div>
 <p>In computational geometry, a <code>CartesianGrid</code> is a specific type of <a href="https://en.wikipedia.org/wiki/Polygon_mesh">mesh</a>. It can only represent “flat” domains sampled regularly along each dimension (e.g., images). To represent domains with curvature such as terrain elevation models or complex 3D domains like the one in <a href="#fig-unisimII" class="quarto-xref">Figure&nbsp;<span>1.1 (b)</span></a>, we can use the <code>SimpleMesh</code> domain:</p>
 <div id="38" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global vector of 2D points</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> [(<span class="fl">0.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">0.0</span>), (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">1.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.25</span>, <span class="fl">0.5</span>), (<span class="fl">0.75</span>, <span class="fl">0.5</span>)]</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># connect the points into N-gons</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>connec <span class="op">=</span> <span class="fu">connect</span>.([(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">5</span>), (<span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span>), (<span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>), (<span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">5</span>)])</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2D mesh made of N-gon elements</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>mesh <span class="op">=</span> <span class="fu">SimpleMesh</span>(points, connec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global vector of 2D points</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> [(<span class="fl">0.0</span>, <span class="fl">0.0</span>), (<span class="fl">1.0</span>, <span class="fl">0.0</span>), (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">1.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.25</span>, <span class="fl">0.5</span>), (<span class="fl">0.75</span>, <span class="fl">0.5</span>)]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># connect the points into N-gons</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>connec <span class="op">=</span> <span class="fu">connect</span>.([(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">5</span>), (<span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span>), (<span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>), (<span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">5</span>)])</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2D mesh made of N-gon elements</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>mesh <span class="op">=</span> <span class="fu">SimpleMesh</span>(points, connec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4 SimpleMesh
   6 vertices
@@ -1148,14 +1143,14 @@ Note
 </div>
 <p>The <code>connect</code> function takes a tuple of indices and a geometry type, and produces a connectivity object. The geometry type can be omitted, in which case it is assumed to be a <code>Ngon</code>, i.e., a polygon with <code>N</code> sides:</p>
 <div id="40" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fu">connect</span>((<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fu">connect</span>((<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Triangle(1, 2, 3)</code></pre>
 </div>
 </div>
 <p>This connectivity object can be materialized into an actual geometry with a vector of points:</p>
 <div id="42" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">materialize</span>(c, [<span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>), <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">0</span>), <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">1</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">materialize</span>(c, [<span class="fu">Point</span>(<span class="fl">0</span>, <span class="fl">0</span>), <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">0</span>), <span class="fu">Point</span>(<span class="fl">1</span>, <span class="fl">1</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Triangle
 ├─ Point(x: 0.0 m, y: 0.0 m)
@@ -1165,7 +1160,7 @@ Note
 </div>
 <p>The <code>SimpleMesh</code> uses the <code>materialize</code> function above to construct geometries on the fly, similar to what we have seen with the <code>CartesianGrid</code>:</p>
 <div id="44" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mesh[<span class="fl">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mesh[<span class="fl">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Quadrangle
 ├─ Point(x: 0.0 m, y: 0.0 m)
@@ -1187,18 +1182,16 @@ Note
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2.3</span> Data</h3>
 <p>Wouldn’t it be nice if we had a representation of geospatial data that behaved like a table as discussed in the <a href="#tables">Tables</a> section, but preserved topological information as discussed in the <a href="04-geoproc.html#domains">Domains</a> section? In the <a href="https://github.com/JuliaEarth/GeoStats.jl">GeoStats.jl</a> framework, this is precisely what we get with the <code>georef</code> function:</p>
 <div id="46" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>],</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>]u<span class="st">"yr"</span>,</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  HEIGHT<span class="op">=</span>[<span class="fl">1.78</span>, <span class="fl">1.56</span>, <span class="fl">1.70</span>, <span class="fl">1.80</span>]u<span class="st">"m"</span>,</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  GENDER<span class="op">=</span>[<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>]</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">2</span>)</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>(df, grid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  NAME<span class="op">=</span>[<span class="st">"John"</span>, <span class="st">"Mary"</span>, <span class="st">"Paul"</span>, <span class="st">"Anne"</span>],</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  AGE<span class="op">=</span>[<span class="fl">34.0</span>, <span class="fl">12.0</span>, <span class="fl">23.0</span>, <span class="fl">39.0</span>]u<span class="st">"yr"</span>,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  HEIGHT<span class="op">=</span>[<span class="fl">1.78</span>, <span class="fl">1.56</span>, <span class="fl">1.70</span>, <span class="fl">1.80</span>]u<span class="st">"m"</span>,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  GENDER<span class="op">=</span>[<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>]</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="fu">CartesianGrid</span>(<span class="fl">2</span>, <span class="fl">2</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>geotable <span class="op">=</span> <span class="fu">georef</span>(df, grid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -1272,7 +1265,7 @@ Note
 <div class="callout-body-container callout-body">
 <p>The framework is integrated with the <a href="https://github.com/PainterQubits/Unitful.jl">Unitful.jl</a> module. To add the unit “meter” to the numeric value <code>1.0</code>, we can write <code>1.0u"m"</code>. Similarly, we can add units to vectors of values:</p>
 <div id="48" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]u<span class="st">"m"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]u<span class="st">"m"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Quantity{Float64, 𝐋, Unitful.FreeUnits{(m,), 𝐋, nothing}}}:
  1.0 m
@@ -1281,14 +1274,14 @@ Note
 </div>
 </div>
 <p>It is also possible to load units explicitly to avoid the “u” prefix:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Unitful</span>: m, ft</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0</span>m <span class="op">+</span> <span class="fl">2.0</span>ft</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Unitful</span>: m, ft</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0</span>m <span class="op">+</span> <span class="fl">2.0</span>ft</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>The function combines any table with any domain into a geospatial data representation that adheres to the Tables.jl interface. We call this representation a <code>GeoTable</code> to distinguish it from a standard table. Besides the original columns, the <code>GeoTable</code> has a special <code>geometry</code> column with the underlying domain:</p>
 <div id="50" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(geotable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(geotable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>5-element Vector{String}:
  "NAME"
@@ -1300,14 +1293,14 @@ Note
 </div>
 <p>Unlike a standard table, the <code>GeoTable</code> creates geometries on the fly depending on the data access pattern. For example, we can request the first measurement of the <code>GeoTable</code> and it will automatically construct the corresponding <code>Quadrangle</code>:</p>
 <div id="52" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="fl">1</span>,<span class="op">:</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="fl">1</span>,<span class="op">:</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>(NAME = "John", AGE = 34.0 yr, HEIGHT = 1.78 m, GENDER = "male", geometry = Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m)))</code></pre>
 </div>
 </div>
 <p>If we request a subset of measurements, the <code>GeoTable</code> will avoid unnecessary creation of geometries, and will instead return a view into the original data:</p>
 <div id="54" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,[<span class="st">"NAME"</span>,<span class="st">"AGE"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,[<span class="st">"NAME"</span>,<span class="st">"AGE"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -1352,7 +1345,7 @@ Note
 </div>
 <p>Finally, if we request the entire <code>geometry</code> column, we get back the original domain:</p>
 <div id="56" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="op">:</span>,<span class="st">"geometry"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="op">:</span>,<span class="st">"geometry"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>2×2 CartesianGrid
 ├─ minimum: Point(x: 0.0 m, y: 0.0 m)
@@ -1362,7 +1355,7 @@ Note
 </div>
 <p>Besides the data access patterns of the <code>DataFrame</code>, the <code>GeoTable</code> also provides an advanced method for retrieving all rows that intersect with a given geometry:</p>
 <div id="58" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="fu">Segment</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">2</span>, <span class="fl">0</span>)), <span class="op">:</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>geotable[<span class="fu">Segment</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">2</span>, <span class="fl">0</span>)), <span class="op">:</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -1413,14 +1406,14 @@ Note
 <p>This method is very useful to narrow the region of interest and quickly discard all measurements that are outside of it. For instance, it is common to discard all “pixels” outside of a polygon before exporting the geotable to a file on disk.</p>
 <p>Notice that the <code>GeoTable</code> representation is general enough to accommodate both “raster data” and “vector data” in traditional GIS. We can create very large rasters because the <code>CartesianGrid</code> is lazy:</p>
 <div id="60" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">georef</span>(</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  (</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    R<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000000</span>),</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    G<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000000</span>),</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000000</span>)</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">CartesianGrid</span>(<span class="fl">1000</span>, <span class="fl">1000</span>)</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">georef</span>(</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  (</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    R<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000000</span>),</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    G<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000000</span>),</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    B<span class="op">=</span><span class="fu">rand</span>(<span class="fl">1000000</span>)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">CartesianGrid</span>(<span class="fl">1000</span>, <span class="fl">1000</span>)</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
   <div style="float: right; font-style: italic;">
@@ -1455,63 +1448,63 @@ Note
 </thead>
 <tbody>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.966973</td>
-<td style="text-align: center;">0.503948</td>
-<td style="text-align: center;">0.513364</td>
+<td style="text-align: center;">0.705715</td>
+<td style="text-align: center;">0.680081</td>
+<td style="text-align: center;">0.144052</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.293427</td>
-<td style="text-align: center;">0.692295</td>
-<td style="text-align: center;">0.874965</td>
+<td style="text-align: center;">0.874238</td>
+<td style="text-align: center;">0.940915</td>
+<td style="text-align: center;">0.588344</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.648638</td>
-<td style="text-align: center;">0.824941</td>
-<td style="text-align: center;">0.361416</td>
+<td style="text-align: center;">0.801666</td>
+<td style="text-align: center;">0.931876</td>
+<td style="text-align: center;">0.382062</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.717463</td>
-<td style="text-align: center;">0.605135</td>
-<td style="text-align: center;">0.824017</td>
+<td style="text-align: center;">0.657442</td>
+<td style="text-align: center;">0.456275</td>
+<td style="text-align: center;">0.781816</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.26249</td>
-<td style="text-align: center;">0.226116</td>
-<td style="text-align: center;">0.380779</td>
+<td style="text-align: center;">0.796888</td>
+<td style="text-align: center;">0.753269</td>
+<td style="text-align: center;">0.237169</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.93155</td>
-<td style="text-align: center;">0.507213</td>
-<td style="text-align: center;">0.865029</td>
+<td style="text-align: center;">0.772472</td>
+<td style="text-align: center;">0.0813462</td>
+<td style="text-align: center;">0.545537</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.1346</td>
-<td style="text-align: center;">0.0222645</td>
-<td style="text-align: center;">0.801168</td>
+<td style="text-align: center;">0.310537</td>
+<td style="text-align: center;">0.989324</td>
+<td style="text-align: center;">0.302996</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.0759602</td>
-<td style="text-align: center;">0.444531</td>
-<td style="text-align: center;">0.316617</td>
+<td style="text-align: center;">0.280208</td>
+<td style="text-align: center;">0.318971</td>
+<td style="text-align: center;">0.440177</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.159881</td>
-<td style="text-align: center;">0.0932107</td>
-<td style="text-align: center;">0.20146</td>
+<td style="text-align: center;">0.870263</td>
+<td style="text-align: center;">0.49826</td>
+<td style="text-align: center;">0.561402</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.103696</td>
-<td style="text-align: center;">0.450339</td>
-<td style="text-align: center;">0.880902</td>
+<td style="text-align: center;">0.727879</td>
+<td style="text-align: center;">0.899204</td>
+<td style="text-align: center;">0.625609</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
@@ -1526,17 +1519,9 @@ Note
 </div>
 <p>And can load vector geometries from files that store simple features using the <a href="https://github.com/JuliaEarth/GeoIO.jl">GeoIO.jl</a> module:</p>
 <div id="62" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-green-fg ansi-bold">Precompiling</span> packages...
-   2823.9 ms<span class="ansi-green-fg">  ✓ </span>QuartoNotebookWorkerJSON3Ext<span class="ansi-bright-black-fg"> (serial)</span>
-  1 dependency successfully precompiled in 3 seconds
-</pre>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoIO</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>GeoIO.<span class="fu">load</span>(<span class="st">"data/countries.geojson"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
   <div style="float: right; font-style: italic;">
@@ -1640,20 +1625,6 @@ Note
 </div>
 </div>
 <p>We will see more examples of “vector data” in the chapter <a href="./03-geoio.html">Interfacing with GIS</a>, and will explain why file formats like <a href="https://github.com/JuliaGeo/Shapefile.jl">Shapefile.jl</a> and <a href="https://github.com/JuliaGeo/GeoJSON.jl">GeoJSON.jl</a> are not enough for advanced geospatial data science.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Tip for all users
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The GeoStats.jl module reexports the full stack of modules for geospatial data science in Julia. There is no need to import modules like Meshes.jl explicitly. You are all set if you start your script with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoStats</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
