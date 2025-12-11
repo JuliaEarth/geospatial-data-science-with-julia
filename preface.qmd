@@ -1,3 +1,7 @@
+---
+engine: julia
+---
+
 # Preface {.unnumbered}
 
 ## Who this book is for
@@ -126,6 +130,16 @@ pkg"add PairPlots@3.0.3"
 
 # install other modules
 pkg"add DataFrames@1.8.1"
+```
+
+```{julia}
+#| echo: false
+#| output: false
+import GeoStats
+import GeoIO
+import CairoMakie
+import PairPlots
+import DataFrames
 ```
 
 If you need to reproduce the exact same environment with
