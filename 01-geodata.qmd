@@ -262,6 +262,21 @@ b = Ball((2, 2), 1)
 geoms = [p, s, t, b]
 ```
 
+::: {.callout-note}
+
+## Tip for all users
+
+The GeoStats.jl module reexports the full stack of modules for
+geospatial data science in Julia. There is no need to import
+modules like Meshes.jl explicitly. You are all set if you
+start your script with
+
+```julia
+using GeoStats
+```
+
+:::
+
 Because these geometries are unaware of each other, we place
 them into a `GeometrySet`, informally known in computational
 geometry as the "soup of geometries" data structure:
@@ -422,8 +437,6 @@ In the [GeoStats.jl](https://github.com/JuliaEarth/GeoStats.jl) framework, this 
 precisely what we get with the `georef` function:
 
 ```{julia}
-using GeoStats
-
 df = DataFrame(
   NAME=["John", "Mary", "Paul", "Anne"],
   AGE=[34.0, 12.0, 23.0, 39.0]u"yr",
@@ -539,21 +552,6 @@ file formats like
 [Shapefile.jl](https://github.com/JuliaGeo/Shapefile.jl) and
 [GeoJSON.jl](https://github.com/JuliaGeo/GeoJSON.jl) are not enough
 for advanced geospatial data science.
-
-::: {.callout-note}
-
-## Tip for all users
-
-The GeoStats.jl module reexports the full stack of modules for
-geospatial data science in Julia. There is no need to import
-modules like Meshes.jl explicitly. You are all set if you
-start your script with
-
-```julia
-using GeoStats
-```
-
-:::
 
 ::: {.callout-note}
 
