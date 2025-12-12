@@ -122,7 +122,7 @@ pkg"activate @GDSJL"
 pkg"add GeoStats@0.84.0"
 
 # install IO module
-pkg"add GeoIO@1.21.4"
+pkg"add GeoIO@1.21.5"
 
 # install viz modules
 pkg"add CairoMakie@0.15.8"
