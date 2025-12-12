@@ -478,15 +478,23 @@ mesh = discretize(Box((0, 0), (1, 1)))
 ```
 
 ```{julia}
-tmesh = refine(mesh, TriRefinement())
+tmesh1 = refine(mesh, TriRefinement())
+tmesh2 = refine(tmesh1, TriRefinement())
 
-viz(tmesh, showsegments = true)
+fig = Mke.Figure()
+viz(fig[1, 1], tmesh1, showsegments = true)
+viz(fig[1, 2], tmesh2, showsegments = true)
+fig
 ```
 
 ```{julia}
-qmesh = refine(mesh, QuadRefinement())
+qmesh1 = refine(mesh, QuadRefinement())
+qmesh2 = refine(qmesh1, QuadRefinement())
 
-viz(qmesh, showsegments = true)
+fig = Mke.Figure()
+viz(fig[1, 1], qmesh1, showsegments = true)
+viz(fig[1, 2], qmesh2, showsegments = true)
+fig
 ```
 
 We will have the chance to see more algorithms in action as we advance in the
