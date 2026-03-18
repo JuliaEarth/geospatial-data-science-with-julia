@@ -119,13 +119,13 @@ using Pkg
 pkg"activate @GDSJL"
 
 # install framework
-pkg"add GeoStats@0.84.0"
+pkg"add GeoStats@0.84.4"
 
 # install IO module
-pkg"add GeoIO@1.21.5"
+pkg"add GeoIO@1.22.1"
 
 # install viz modules
-pkg"add CairoMakie@0.15.8"
+pkg"add CairoMakie@0.15.9"
 pkg"add PairPlots@3.0.3"
 
 # install other modules
