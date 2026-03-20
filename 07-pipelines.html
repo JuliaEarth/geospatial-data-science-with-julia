@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>7&nbsp; Building pipelines – Geospatial Data Science with Julia</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,19 +72,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./06-projections.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c58f986be3ff872790ab570c6d9e49f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b563265393cbec9954d2611e95370079.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-c58f986be3ff872790ab570c6d9e49f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ba377bcbac77ef6b16fc93106ad18526.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ffcd3553def89e546969dc2a6cbbd0f6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ba377bcbac77ef6b16fc93106ad18526.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -578,73 +580,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="dataRow odd">
-<td style="text-align: center;">6.77757</td>
-<td style="text-align: center;">2.1468</td>
-<td style="text-align: center;">-0.925015</td>
-<td style="text-align: center;">-0.891917</td>
+<td style="text-align: center;">5.75005</td>
+<td style="text-align: center;">4.02306</td>
+<td style="text-align: center;">-1.4484</td>
+<td style="text-align: center;">-0.51746</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">5.87519</td>
-<td style="text-align: center;">-3.63225</td>
-<td style="text-align: center;">-2.42557</td>
-<td style="text-align: center;">-2.1981</td>
+<td style="text-align: center;">6.666</td>
+<td style="text-align: center;">2.04866</td>
+<td style="text-align: center;">2.00477</td>
+<td style="text-align: center;">1.99839</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">4.70187</td>
-<td style="text-align: center;">1.81172</td>
-<td style="text-align: center;">-0.611192</td>
-<td style="text-align: center;">-0.954516</td>
+<td style="text-align: center;">7.42206</td>
+<td style="text-align: center;">1.18175</td>
+<td style="text-align: center;">1.9509</td>
+<td style="text-align: center;">1.94325</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">6.67952</td>
-<td style="text-align: center;">1.2212</td>
-<td style="text-align: center;">-1.46812</td>
-<td style="text-align: center;">-1.92034</td>
+<td style="text-align: center;">5.76462</td>
+<td style="text-align: center;">-2.08853</td>
+<td style="text-align: center;">-0.790572</td>
+<td style="text-align: center;">-0.93151</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">5.52202</td>
-<td style="text-align: center;">-0.271725</td>
-<td style="text-align: center;">-0.0269163</td>
-<td style="text-align: center;">-1.02208</td>
+<td style="text-align: center;">2.69104</td>
+<td style="text-align: center;">8.60386</td>
+<td style="text-align: center;">-0.605239</td>
+<td style="text-align: center;">0.439475</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">4.58658</td>
-<td style="text-align: center;">-0.576381</td>
-<td style="text-align: center;">-1.85421</td>
-<td style="text-align: center;">-2.75814</td>
+<td style="text-align: center;">4.94239</td>
+<td style="text-align: center;">2.05132</td>
+<td style="text-align: center;">0.173112</td>
+<td style="text-align: center;">1.26487</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">5.53768</td>
-<td style="text-align: center;">-0.0932629</td>
-<td style="text-align: center;">1.02354</td>
-<td style="text-align: center;">1.42345</td>
+<td style="text-align: center;">4.01172</td>
+<td style="text-align: center;">0.6605</td>
+<td style="text-align: center;">-0.654237</td>
+<td style="text-align: center;">-1.36421</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">5.28528</td>
-<td style="text-align: center;">-5.09688</td>
-<td style="text-align: center;">0.531348</td>
-<td style="text-align: center;">0.467825</td>
+<td style="text-align: center;">5.88487</td>
+<td style="text-align: center;">1.80513</td>
+<td style="text-align: center;">1.10991</td>
+<td style="text-align: center;">1.00068</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">5.08316</td>
-<td style="text-align: center;">-3.41577</td>
-<td style="text-align: center;">-1.04518</td>
-<td style="text-align: center;">-1.43587</td>
+<td style="text-align: center;">7.11784</td>
+<td style="text-align: center;">-2.32358</td>
+<td style="text-align: center;">0.350611</td>
+<td style="text-align: center;">0.289798</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">4.6207</td>
-<td style="text-align: center;">-0.634875</td>
-<td style="text-align: center;">-0.5361</td>
-<td style="text-align: center;">-0.641045</td>
+<td style="text-align: center;">7.46213</td>
+<td style="text-align: center;">4.81906</td>
+<td style="text-align: center;">-0.805201</td>
+<td style="text-align: center;">-0.31705</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
@@ -704,63 +706,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.936919</td>
-<td style="text-align: center;">0.87055</td>
-<td style="text-align: center;">-0.913461</td>
+<td style="text-align: center;">0.60046</td>
+<td style="text-align: center;">1.57959</td>
+<td style="text-align: center;">-1.44307</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.636578</td>
-<td style="text-align: center;">-1.44521</td>
-<td style="text-align: center;">-2.42283</td>
+<td style="text-align: center;">0.892733</td>
+<td style="text-align: center;">0.811637</td>
+<td style="text-align: center;">2.02566</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.336624</td>
-<td style="text-align: center;">0.741484</td>
-<td style="text-align: center;">-0.596262</td>
+<td style="text-align: center;">1.17149</td>
+<td style="text-align: center;">0.475262</td>
+<td style="text-align: center;">1.96168</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.897598</td>
-<td style="text-align: center;">0.504657</td>
-<td style="text-align: center;">-1.45525</td>
+<td style="text-align: center;">0.60557</td>
+<td style="text-align: center;">-0.834499</td>
+<td style="text-align: center;">-0.769157</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.537098</td>
-<td style="text-align: center;">-0.11203</td>
-<td style="text-align: center;">-0.017798</td>
+<td style="text-align: center;">0.0601954</td>
+<td style="text-align: center;">2.98888</td>
+<td style="text-align: center;">-0.58403</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.30916</td>
-<td style="text-align: center;">-0.235011</td>
-<td style="text-align: center;">-1.81973</td>
+<td style="text-align: center;">0.381274</td>
+<td style="text-align: center;">0.813031</td>
+<td style="text-align: center;">0.172302</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.541156</td>
-<td style="text-align: center;">-0.0376083</td>
-<td style="text-align: center;">1.0077</td>
+<td style="text-align: center;">0.207525</td>
+<td style="text-align: center;">0.273329</td>
+<td style="text-align: center;">-0.63045</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.476385</td>
-<td style="text-align: center;">-1.94813</td>
-<td style="text-align: center;">0.530161</td>
+<td style="text-align: center;">0.64674</td>
+<td style="text-align: center;">0.722805</td>
+<td style="text-align: center;">1.13018</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.428345</td>
-<td style="text-align: center;">-1.36073</td>
-<td style="text-align: center;">-1.03772</td>
+<td style="text-align: center;">1.05637</td>
+<td style="text-align: center;">-0.918418</td>
+<td style="text-align: center;">0.342466</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.316003</td>
-<td style="text-align: center;">-0.254383</td>
-<td style="text-align: center;">-0.524688</td>
+<td style="text-align: center;">1.18961</td>
+<td style="text-align: center;">1.86773</td>
+<td style="text-align: center;">-0.783728</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
@@ -854,7 +856,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
@@ -866,7 +868,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
@@ -878,7 +880,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
+<td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
@@ -890,13 +892,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">true</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
@@ -944,53 +946,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="dataRow odd">
-<td style="text-align: center;">1.18246</td>
-<td style="text-align: center;">0.844961</td>
+<td style="text-align: center;">1.35779</td>
+<td style="text-align: center;">1.54416</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">3.0252</td>
-<td style="text-align: center;">-1.42102</td>
+<td style="text-align: center;">-2.63487</td>
+<td style="text-align: center;">0.830804</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">1.0002</td>
-<td style="text-align: center;">0.712162</td>
+<td style="text-align: center;">-2.56748</td>
+<td style="text-align: center;">0.494447</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">2.18657</td>
-<td style="text-align: center;">0.479861</td>
+<td style="text-align: center;">1.11218</td>
+<td style="text-align: center;">-0.819204</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">0.630776</td>
-<td style="text-align: center;">-0.107265</td>
+<td style="text-align: center;">0.199978</td>
+<td style="text-align: center;">3.33209</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">2.96476</td>
-<td style="text-align: center;">-0.226993</td>
+<td style="text-align: center;">-0.888514</td>
+<td style="text-align: center;">0.810612</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">-1.58845</td>
-<td style="text-align: center;">-0.0313479</td>
+<td style="text-align: center;">1.29311</td>
+<td style="text-align: center;">0.241475</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">-0.665279</td>
-<td style="text-align: center;">-1.99553</td>
+<td style="text-align: center;">-1.39341</td>
+<td style="text-align: center;">0.720252</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
-<td style="text-align: center;">1.59498</td>
-<td style="text-align: center;">-1.33813</td>
+<td style="text-align: center;">-0.442695</td>
+<td style="text-align: center;">-0.889804</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
-<td style="text-align: center;">0.756839</td>
-<td style="text-align: center;">-0.246289</td>
+<td style="text-align: center;">0.783443</td>
+<td style="text-align: center;">1.85906</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
@@ -1061,80 +1063,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">1.18246</td>
-<td style="text-align: center;">0.844961</td>
+<td style="text-align: center;">1.35779</td>
+<td style="text-align: center;">1.54416</td>
 <td style="text-align: center;">Quadrangle((x: 0.0 m, y: 0.0 m), ..., (x: 0.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">3.0252</td>
-<td style="text-align: center;">-1.42102</td>
+<td style="text-align: center;">-2.63487</td>
+<td style="text-align: center;">0.830804</td>
 <td style="text-align: center;">Quadrangle((x: 1.0 m, y: 0.0 m), ..., (x: 1.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">1.0002</td>
-<td style="text-align: center;">0.712162</td>
+<td style="text-align: center;">-2.56748</td>
+<td style="text-align: center;">0.494447</td>
 <td style="text-align: center;">Quadrangle((x: 2.0 m, y: 0.0 m), ..., (x: 2.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">2.18657</td>
-<td style="text-align: center;">0.479861</td>
+<td style="text-align: center;">1.11218</td>
+<td style="text-align: center;">-0.819204</td>
 <td style="text-align: center;">Quadrangle((x: 3.0 m, y: 0.0 m), ..., (x: 3.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">0.630776</td>
-<td style="text-align: center;">-0.107265</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">0.199978</td>
+<td style="text-align: center;">3.33209</td>
 <td style="text-align: center;">Quadrangle((x: 4.0 m, y: 0.0 m), ..., (x: 4.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">2.96476</td>
-<td style="text-align: center;">-0.226993</td>
+<td style="text-align: center;">-0.888514</td>
+<td style="text-align: center;">0.810612</td>
 <td style="text-align: center;">Quadrangle((x: 5.0 m, y: 0.0 m), ..., (x: 5.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
-<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-1.58845</td>
-<td style="text-align: center;">-0.0313479</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">1.29311</td>
+<td style="text-align: center;">0.241475</td>
 <td style="text-align: center;">Quadrangle((x: 6.0 m, y: 0.0 m), ..., (x: 6.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">-0.665279</td>
-<td style="text-align: center;">-1.99553</td>
+<td style="text-align: center;">-1.39341</td>
+<td style="text-align: center;">0.720252</td>
 <td style="text-align: center;">Quadrangle((x: 7.0 m, y: 0.0 m), ..., (x: 7.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow odd">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">1.59498</td>
-<td style="text-align: center;">-1.33813</td>
+<td style="text-align: center;">-0.442695</td>
+<td style="text-align: center;">-0.889804</td>
 <td style="text-align: center;">Quadrangle((x: 8.0 m, y: 0.0 m), ..., (x: 8.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="dataRow even">
 <td style="text-align: center;">false</td>
+<td style="text-align: center;">false</td>
 <td style="text-align: center;">true</td>
-<td style="text-align: center;">true</td>
-<td style="text-align: center;">0.756839</td>
-<td style="text-align: center;">-0.246289</td>
+<td style="text-align: center;">0.783443</td>
+<td style="text-align: center;">1.85906</td>
 <td style="text-align: center;">Quadrangle((x: 9.0 m, y: 0.0 m), ..., (x: 9.0 m, y: 1.0 m))</td>
 </tr>
 <tr class="odd">
