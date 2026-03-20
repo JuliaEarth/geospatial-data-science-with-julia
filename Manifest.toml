@@ -172,9 +172,9 @@ version = "0.4.8"
 
 [[deps.BangBang]]
 deps = ["Accessors", "ConstructionBase", "InitialValues", "LinearAlgebra"]
-git-tree-sha1 = "308d82aa3d83140909590aa5a7824540944f110f"
+git-tree-sha1 = "cceb62468025be98d42a5dc581b163c20896b040"
 uuid = "198e06fe-97b7-11e9-32a5-e1d131e6ad66"
-version = "0.4.8"
+version = "0.4.9"
 weakdeps = ["ChainRulesCore", "DataFrames", "StaticArrays", "StructArrays", "Tables", "TypedTables"]
 
     [deps.BangBang.extensions]
@@ -1027,9 +1027,9 @@ version = "0.4.5"
 
 [[deps.GeoIO]]
 deps = ["CSV", "Colors", "CommonDataModel", "CoordRefSystems", "DBInterface", "FileIO", "Format", "GRIBDatasets", "GeoFormatTypes", "GeoInterface", "GeoJSON", "GeoParquet", "GeoTIFF", "GeoTables", "GslibIO", "ImageIO", "JSON", "Meshes", "NCDatasets", "PlyIO", "PrecompileTools", "PrettyTables", "ReadVTK", "SQLite", "Shapefile", "StaticArrays", "Tables", "TransformsBase", "Unitful", "VTKBase", "WriteVTK"]
-git-tree-sha1 = "418ba34ec2efcca8987a63e055878b714231b1d1"
+git-tree-sha1 = "8d79c9cf0cd4b4c06539afa2558a15df99865d5d"
 uuid = "f5a160d5-e41d-4189-8b61-d57781c419e3"
-version = "1.22.1"
+version = "1.22.2"
 
 [[deps.GeoInterface]]
 deps = ["DataAPI", "Extents", "GeoFormatTypes"]
@@ -1075,9 +1075,9 @@ version = "0.3.0"
 
 [[deps.GeoStats]]
 deps = ["CategoricalArrays", "Chain", "CoDa", "Colors", "CoordGridTransforms", "CoordRefSystems", "DataScienceTraits", "Dates", "DensityRatioEstimation", "Distances", "GeoStatsBase", "GeoStatsFunctions", "GeoStatsModels", "GeoStatsProcesses", "GeoStatsTransforms", "GeoStatsValidation", "GeoTables", "LossFunctions", "Meshes", "Random", "Reexport", "Rotations", "Statistics", "StatsLearnModels", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "f453ffc159fb4d7ecb7c0603e369ee51927d6cb7"
+git-tree-sha1 = "9132cb4037b6eeba26648c8af58690a9a6a072da"
 uuid = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"
-version = "0.84.4"
+version = "0.84.5"
 
 [[deps.GeoStatsBase]]
 deps = ["CategoricalArrays", "ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "Distances", "Distributions", "GeoTables", "LinearAlgebra", "MeshIntegrals", "Meshes", "Optim", "Rotations", "StaticArrays", "StatsBase", "Tables", "TypedTables", "Unitful"]
@@ -1617,9 +1617,9 @@ version = "2.41.3+0"
 
 [[deps.LightBSON]]
 deps = ["DataStructures", "Dates", "DecFP", "FNVHash", "JSON3", "Sockets", "StructTypes", "Transducers", "UUIDs", "UnsafeArrays", "WeakRefStrings"]
-git-tree-sha1 = "cef85bcff3b022934329dcf2a9c3bcec9bbacb14"
+git-tree-sha1 = "a439b31fda0a2a5b9b2fdee299facbdf98edc1ae"
 uuid = "a4a7f996-b3a6-4de6-b9db-2fa5f350df41"
-version = "1.3.1"
+version = "1.4.0"
 
 [[deps.LightXML]]
 deps = ["Libdl", "XML2_jll"]
