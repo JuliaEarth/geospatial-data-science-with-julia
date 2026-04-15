@@ -533,9 +533,9 @@ version = "0.1.10"
 
 [[deps.CoordRefSystems]]
 deps = ["ForwardDiff", "Random", "Rotations", "StaticArrays", "Unitful"]
-git-tree-sha1 = "645c137bbce1dfbd0f45639b558b43b57538e9dc"
+git-tree-sha1 = "b45a525c17d41201e92c56b9deeda99a60cedc99"
 uuid = "b46f11dc-f210-4604-bfba-323c1ec968cb"
-version = "0.19.16"
+version = "0.19.17"
 
 [[deps.CoreMath]]
 deps = ["CoreMath_jll"]
@@ -589,9 +589,9 @@ version = "0.7.13"
 
 [[deps.DataFrames]]
 deps = ["Compat", "DataAPI", "DataStructures", "Future", "InlineStrings", "InvertedIndices", "IteratorInterfaceExtensions", "LinearAlgebra", "Markdown", "Missings", "PooledArrays", "PrecompileTools", "PrettyTables", "Printf", "Random", "Reexport", "SentinelArrays", "SortingAlgorithms", "Statistics", "TableTraits", "Tables", "Unicode"]
-git-tree-sha1 = "d8928e9169ff76c6281f39a659f9bca3a573f24c"
+git-tree-sha1 = "5fab31e2e01e70ad66e3e24c968c264d1cf166d6"
 uuid = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-version = "1.8.1"
+version = "1.8.2"
 
 [[deps.DataScienceTraits]]
 deps = ["Dates"]
@@ -778,9 +778,9 @@ version = "1.11.0"
 
 [[deps.Distributions]]
 deps = ["AliasTables", "FillArrays", "LinearAlgebra", "PDMats", "Printf", "QuadGK", "Random", "SpecialFunctions", "Statistics", "StatsAPI", "StatsBase", "StatsFuns"]
-git-tree-sha1 = "fbcc7610f6d8348428f722ecbe0e6cfe22e672c6"
+git-tree-sha1 = "12184a8cf11c7cbd90a4db8b2cb2f7b6f057cc46"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
-version = "0.25.123"
+version = "0.25.124"
 
     [deps.Distributions.extensions]
     DistributionsChainRulesCoreExt = "ChainRulesCore"
@@ -1104,9 +1104,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsModels]]
 deps = ["ChunkSplitters", "Combinatorics", "CoordRefSystems", "Distances", "Distributions", "GeoStatsFunctions", "GeoTables", "LinearAlgebra", "Meshes", "Statistics", "Tables", "Unitful"]
-git-tree-sha1 = "52c8de84bc141565f22cb048b8f21155168d0e9b"
+git-tree-sha1 = "080d62daa93bc8b8206c49688f314e10c4b5a9dc"
 uuid = "ad987403-13c5-47b5-afee-0a48f6ac4f12"
-version = "0.13.4"
+version = "0.13.6"
 
 [[deps.GeoStatsProcesses]]
 deps = ["Bessels", "CpuId", "Distances", "Distributed", "Distributions", "FFTW", "GeoStatsBase", "GeoStatsFunctions", "GeoStatsModels", "GeoTables", "LinearAlgebra", "Meshes", "ProgressMeter", "Random", "Statistics", "TableTransforms", "Tables", "Unitful"]
@@ -1623,9 +1623,9 @@ version = "1.18.0+0"
 
 [[deps.Libmount_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
-git-tree-sha1 = "97bbca976196f2a1eb9607131cb108c69ec3f8a6"
+git-tree-sha1 = "cc3ad4faf30015a3e8094c9b5b7f19e85bdf2386"
 uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
-version = "2.41.3+0"
+version = "2.42.0+0"
 
 [[deps.Libtiff_jll]]
 deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "XZ_jll", "Zlib_jll", "Zstd_jll"]
@@ -1635,9 +1635,9 @@ version = "4.7.2+0"
 
 [[deps.Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
-git-tree-sha1 = "d0205286d9eceadc518742860bf23f703779a3d6"
+git-tree-sha1 = "d620582b1f0cbe2c72dd1d5bd195a9ce73370ab1"
 uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
-version = "2.41.3+0"
+version = "2.42.0+0"
 
 [[deps.LightBSON]]
 deps = ["DataStructures", "Dates", "DecFP", "FNVHash", "JSON3", "Sockets", "StructTypes", "Transducers", "UUIDs", "UnsafeArrays", "WeakRefStrings"]
@@ -1659,9 +1659,9 @@ version = "0.9.3"
 
 [[deps.LineSearches]]
 deps = ["LinearAlgebra", "NLSolversBase", "NaNMath", "Printf"]
-git-tree-sha1 = "738bdcacfef25b3a9e4a39c28613717a6b23751e"
+git-tree-sha1 = "a666999510c794fe1d9dfa629ef33366f11103aa"
 uuid = "d3d80556-e9d4-5f37-9878-2ab0fcc64255"
-version = "7.6.0"
+version = "7.6.1"
 
 [[deps.LinearAlgebra]]
 deps = ["Libdl", "OpenBLAS_jll", "libblastrampoline_jll"]
@@ -1810,9 +1810,9 @@ version = "0.3.3"
 
 [[deps.Meshes]]
 deps = ["Bessels", "CircularArrays", "Colorfy", "CoordRefSystems", "DelaunayTriangulation", "DifferentiationInterface", "Distances", "ForwardDiff", "HAdaptiveIntegration", "IntegrationInterface", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "ScopedValues", "SparseArrays", "StaticArrays", "StatsBase", "TiledIteration", "TransformsBase", "Unitful"]
-git-tree-sha1 = "ad813841c374ff4a734fda044657e0f0122533f4"
+git-tree-sha1 = "57fb92f532ab22178bf8b523af002b03ca686a33"
 uuid = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
-version = "0.57.5"
+version = "0.57.7"
 weakdeps = ["Makie"]
 
     [deps.Meshes.extensions]
@@ -2601,9 +2601,9 @@ version = "1.11.0"
 
 [[deps.StructUtils]]
 deps = ["Dates", "UUIDs"]
-git-tree-sha1 = "fa95b3b097bcef5845c142ea2e085f1b2591e92c"
+git-tree-sha1 = "aab80fbf866600f3299dd7f6656d80e7be177cfe"
 uuid = "ec057cc2-7a8d-4b58-b3b3-92acb9f63b42"
-version = "2.7.1"
+version = "2.7.2"
 
     [deps.StructUtils.extensions]
     StructUtilsMeasurementsExt = ["Measurements"]
