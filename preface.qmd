@@ -157,7 +157,8 @@ Click on any file of interest and press the download button.
 
 I would like to acknowledge all the [contributors](https://github.com/JuliaEarth/GeoStats.jl#contributors) of the
 [![](images/geostats.svg){fig-alt="GeoStats.jl" width=110px}](https://github.com/JuliaEarth/GeoStats.jl) framework.
-You are the reason this book exists! [![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)
+You are the reason this book exists!
+[[![](images/juliahearts.gif){fig-alt="JuliaHearts" width=30px}](https://julialang.org)]{.content-visible when-format="html"}
 The implementation of the framework is only possible thanks to the amazing programming language advances by @Benzanson2017.
 
 A special thanks to [Elias Carvalho](https://github.com/eliascarv)
