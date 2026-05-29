@@ -10,7 +10,7 @@ The book is available online for free at
 
 To build this book, you need:
 
-- Julia v1.11
+- Julia v1.11 (or a later release)
 - Quarto
 
 1. Open the Julia REPL and instantiate the environment in this folder:
@@ -20,15 +20,23 @@ To build this book, you need:
    Pkg.activate(".")
    Pkg.instantiate()
    ```
-2. Go to any `*.qmd` file and run the following in the terminal:
+
+2. Open the terminal, choose any `*.qmd` file (e.g., `index.qmd`) and preview it:
 
    ```sh
    quarto preview index.qmd
    ```
 
-Your web browser will open a tab with the book rendered.
+3. Render the entire book to different output formats:
 
-### Optional
+   ```sh
+   quarto render # default to html
+   ```
+
+   ```sh
+   quarto render --to pdf
+   ```
 
 If you prefer to work with VSCode, install the Quarto VSCode extension.
-Edit the files and press the `render` button.
+Edit the files and press the `render` button. All changes to the files
+are automatically tracked by the extension.
