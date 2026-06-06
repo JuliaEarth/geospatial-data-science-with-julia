@@ -386,10 +386,11 @@ If the domain of interest is located far away from the Equator, and there is a n
 calculations, we can use other `Projected` CRS such as `LambertCylindrical` or `GallPeters`:
 
 ```{julia}
-fig = Mke.Figure()
-viz(fig[1,1], grid |> Proj(LambertCylindrical), showsegments = true)
-viz(fig[1,2], grid |> Proj(GallPeters), showsegments = true)
-fig
+viz(grid |> Proj(LambertCylindrical), showsegments = true)
+```
+
+```{julia}
+viz(grid |> Proj(GallPeters), showsegments = true)
 ```
 
 The formulas of some `Projected` CRS are quite evolved, and sometimes depend on tabulated values.
@@ -434,10 +435,11 @@ Examples of `Projected` CRS with a good compromise of shape, area and angle dist
 the `Robinson` and `WinkelTripel`:
 
 ```{julia}
-fig = Mke.Figure()
-viz(fig[1,1], grid |> Proj(Robinson), showsegments = true)
-viz(fig[1,2], grid |> Proj(WinkelTripel), showsegments = true)
-fig
+viz(grid |> Proj(Robinson), showsegments = true)
+```
+
+```{julia}
+viz(grid |> Proj(WinkelTripel), showsegments = true)
 ```
 
 We can create a more realistic map by loading the colors of the Earth stored in a GeoTIFF file:
