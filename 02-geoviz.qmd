@@ -231,7 +231,7 @@ fig
 
 ## The cbar function
 
-Any vector of Julia objects implementing the `getcolors`
+Any vector of Julia objects implementing the `Colorfy.repr`
 function from the [Colorfy.jl](https://github.com/JuliaGraphics/Colorfy.jl)
 module can be passed to the `color` option of `viz`/`viz!`.
 The final vector of colors is a function of the `colormap` from
