@@ -425,13 +425,14 @@ weakdeps = ["SpecialFunctions"]
 
 [[deps.Colorfy]]
 deps = ["ColorSchemes", "Colors", "Dates", "FixedPointNumbers"]
-git-tree-sha1 = "f15ff69dd425686b7361974fb694d7ccdbb57cbc"
+git-tree-sha1 = "fc5c70d09eb21ac24f2ce1c17bccf5a3ea7279b2"
 uuid = "03fe91ce-8ec6-4610-8e8d-e7491ccca690"
-version = "1.2.0"
-weakdeps = ["CategoricalArrays", "Distributions", "Unitful"]
+version = "2.0.0"
+weakdeps = ["CategoricalArrays", "CoDa", "Distributions", "Unitful"]
 
     [deps.Colorfy.extensions]
     ColorfyCategoricalArraysExt = "CategoricalArrays"
+    ColorfyCoDaExt = "CoDa"
     ColorfyDistributionsExt = "Distributions"
     ColorfyUnitfulExt = "Unitful"
 
@@ -1081,15 +1082,15 @@ version = "0.3.0"
 
 [[deps.GeoStats]]
 deps = ["CategoricalArrays", "Chain", "CoDa", "Colors", "CoordGridTransforms", "CoordRefSystems", "DataScienceTraits", "Dates", "DensityRatioEstimation", "Distances", "GeoStatsBase", "GeoStatsFunctions", "GeoStatsModels", "GeoStatsProcesses", "GeoStatsTransforms", "GeoStatsValidation", "GeoTables", "LossFunctions", "Meshes", "Random", "Reexport", "Rotations", "Statistics", "StatsLearnModels", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "fd22d60f01e57888197220aff5d6a8e53d1c6b1e"
+git-tree-sha1 = "ec24e76c5a446b2612944252df47085e9d1af452"
 uuid = "dcc97b0b-8ce5-5539-9008-bb190f959ef6"
-version = "0.85.3"
+version = "0.85.4"
 
 [[deps.GeoStatsBase]]
 deps = ["CategoricalArrays", "ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "Distances", "Distributions", "GeoTables", "LinearAlgebra", "Meshes", "Optim", "Rotations", "StaticArrays", "StatsBase", "Tables", "TypedTables", "Unitful"]
-git-tree-sha1 = "d78d5c323ce5134a99d705f67cff062eec0393a0"
+git-tree-sha1 = "3c8fd3de2c39e22266329d021a36d0fbed7ba6b5"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.48.5"
+version = "0.48.6"
 weakdeps = ["Makie"]
 
     [deps.GeoStatsBase.extensions]
@@ -1097,9 +1098,9 @@ weakdeps = ["Makie"]
 
 [[deps.GeoStatsFunctions]]
 deps = ["Bessels", "CategoricalArrays", "DataScienceTraits", "Distances", "GeoTables", "LinearAlgebra", "Meshes", "NearestNeighbors", "OhMyThreads", "Optim", "PrecompileTools", "Random", "Setfield", "StaticArrays", "Statistics", "TableTransforms", "Tables", "Unitful"]
-git-tree-sha1 = "946a61887dc9254cbee8304988cdc03bbcf3deb5"
+git-tree-sha1 = "a3fc1c7c2f6b847a59f1e6c049ab4fb6b222abf8"
 uuid = "6771c435-bc22-4842-b0c3-41852a255103"
-version = "0.12.10"
+version = "0.12.12"
 weakdeps = ["Makie"]
 
     [deps.GeoStatsFunctions.extensions]
@@ -1147,9 +1148,9 @@ version = "0.5.1"
 
 [[deps.GeoTables]]
 deps = ["CategoricalArrays", "Colorfy", "ColumnSelectors", "CoordRefSystems", "DataAPI", "DataScienceTraits", "Dates", "Distributions", "IteratorInterfaceExtensions", "Meshes", "PrettyTables", "Random", "Statistics", "StyledStrings", "TableTraits", "Tables", "TransformsBase", "Unitful"]
-git-tree-sha1 = "cee53c746a9d9f45ad3f7dc88726182bbbc6b6f1"
+git-tree-sha1 = "9cd038215418c8337778bdb8c72440927edcc7fc"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.28.5"
+version = "1.28.7"
 weakdeps = ["Makie", "StatsLearnModels", "TableTransforms"]
 
     [deps.GeoTables.extensions]
@@ -1810,9 +1811,9 @@ version = "0.3.3"
 
 [[deps.Meshes]]
 deps = ["Bessels", "CircularArrays", "Colorfy", "CoordRefSystems", "DelaunayTriangulation", "DifferentiationInterface", "Distances", "ForwardDiff", "HAdaptiveIntegration", "IntegrationInterface", "LinearAlgebra", "NearestNeighbors", "Random", "Rotations", "ScopedValues", "SparseArrays", "StaticArrays", "StatsBase", "TiledIteration", "TransformsBase", "Unitful"]
-git-tree-sha1 = "a3719a47f170ae83b29773ddca14bcd8c050f48f"
+git-tree-sha1 = "b6435dfa770faafcc382c7efb3062675a74c28b2"
 uuid = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
-version = "0.57.14"
+version = "0.57.16"
 weakdeps = ["Makie"]
 
     [deps.Meshes.extensions]
@@ -2298,9 +2299,9 @@ version = "3.7.2"
 
 [[deps.SQLite]]
 deps = ["DBInterface", "Random", "SQLite_jll", "Serialization", "Tables", "WeakRefStrings"]
-git-tree-sha1 = "87b47a05946c50f44531b447b1f24968345316a4"
+git-tree-sha1 = "e06c74d1b23a4180c3f79a718235c8a15c165849"
 uuid = "0aa819cd-b072-5ff4-a722-6bc24af294d9"
-version = "1.8.0"
+version = "1.8.1"
 
 [[deps.SQLite_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Zlib_jll", "dlfcn_win32_jll"]
