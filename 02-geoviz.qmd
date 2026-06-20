@@ -257,18 +257,18 @@ presence of multiple geotables:
 
 ```{julia}
 grid = CartesianGrid(10, 10)
-val1 = 1:100
-val2 = [1:50; 1:50]
+val1 = 1.0:100.0
+val2 = [1.0:50.0; 1.0:50.0]
 
 fig = Mke.Figure()
 
-viz(fig[1,1], grid, color = val1, colorrange = (1, 100))
-viz(fig[1,2], grid, color = val2, colorrange = (1, 100))
-cbar(fig[1,3], val1, colorrange = (1, 100))
+viz(fig[1,1], grid, color = val1, colorrange = (1.0, 100.0))
+viz(fig[1,2], grid, color = val2, colorrange = (1.0, 100.0))
+cbar(fig[1,3], val1, colorrange = (1.0, 100.0))
 
-viz(fig[2,1], grid, color = val1, colorrange = (1, 50))
-viz(fig[2,2], grid, color = val2, colorrange = (1, 50))
-cbar(fig[2,3], val2, colorrange = (1, 50))
+viz(fig[2,1], grid, color = val1, colorrange = (1.0, 50.0))
+viz(fig[2,2], grid, color = val2, colorrange = (1.0, 50.0))
+cbar(fig[2,3], val2, colorrange = (1.0, 50.0))
 
 fig
 ```
