@@ -69,7 +69,7 @@ of the same variable measured at lag $h=0$ on the vertical axis, we get points
 along the identity line (i.e. no scatter):
 
 ```{julia}
-hscatter(sample, :Z, :Z, lag=0.0)
+hscatter(sample, "Z", "Z", lag=0.0)
 ```
 
 By increasing the value of the lag, we observe that the correlation is no longer
@@ -77,19 +77,19 @@ equal to one, and that the linear fit through the points approaches the horizont
 axis (i.e., zero correlation):
 
 ```{julia}
-hscatter(sample, :Z, :Z, lag=3.0)
+hscatter(sample, "Z", "Z", lag=3.0)
 ```
 
 ```{julia}
-hscatter(sample, :Z, :Z, lag=5.0)
+hscatter(sample, "Z", "Z", lag=5.0)
 ```
 
 ```{julia}
-hscatter(sample, :Z, :Z, lag=10.0)
+hscatter(sample, "Z", "Z", lag=10.0)
 ```
 
 ```{julia}
-hscatter(sample, :Z, :Z, lag=50.0)
+hscatter(sample, "Z", "Z", lag=50.0)
 ```
 
 The Pearson correlation coefficient studied as a function of the lag $h$

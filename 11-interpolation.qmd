@@ -212,7 +212,7 @@ Let's assume that we only have access to 10000 samples from the image:
 ```{julia}
 using Random
 
-samples = img |> Sample(10000, replace=false, rng=MersenneTwister(123))
+samples = img |> Sample(10000, replace=false, rng=Xoshiro(123))
 
 samples |> viewer
 ```
