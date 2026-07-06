@@ -55,21 +55,12 @@ img |> viewer
 
 The `hscatter` plot can be used to visualize the scatter of pairs
 $\{(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\}$ at a given lag $h$.
-We can choose a variable $X$ for the horizontal axis, a (possibly different)
-variable $Y$ for the vertical axis, and the value of the lag $h$. In
-order to reduce the computational costs associated with the plot, we
-will sample a subset of measurements from the image:
+If we plot the values of the variable `Z` in the horizontal axis and
+the values of the same variable measured at lag $h=0$ on the vertical
+axis, we get points along the identity line (i.e. no scatter):
 
 ```{julia}
-sample = img |> Sample(1000, replace=false)
-```
-
-If we plot the values of the variable `Z` in the horizontal axis and the values
-of the same variable measured at lag $h=0$ on the vertical axis, we get points
-along the identity line (i.e. no scatter):
-
-```{julia}
-hscatter(sample, "Z", "Z", lag=0.0)
+hscatter(img, lag=0.0)
 ```
 
 By increasing the value of the lag, we observe that the correlation is no longer
@@ -77,19 +68,19 @@ equal to one, and that the linear fit through the points approaches the horizont
 axis (i.e., zero correlation):
 
 ```{julia}
-hscatter(sample, "Z", "Z", lag=3.0)
+hscatter(img, lag=3.0)
 ```
 
 ```{julia}
-hscatter(sample, "Z", "Z", lag=5.0)
+hscatter(img, lag=5.0)
 ```
 
 ```{julia}
-hscatter(sample, "Z", "Z", lag=10.0)
+hscatter(img, lag=10.0)
 ```
 
 ```{julia}
-hscatter(sample, "Z", "Z", lag=50.0)
+hscatter(img, lag=50.0)
 ```
 
 The Pearson correlation coefficient studied as a function of the lag $h$
@@ -409,7 +400,7 @@ We can use the `EmpiricalVariogram` to estimate the function at specific
 lag values:
 
 ```{julia}
-g = EmpiricalVariogram(img, :Z, maxlag = 50.0)
+g = EmpiricalVariogram(img, "Z", maxlag = 50.0)
 ```
 
 ```{julia}
@@ -428,8 +419,8 @@ The `DirectionalVariogram` can be used to estimate the function along
 specific directions:
 
 ```{julia}
-gₕ = DirectionalVariogram((1.0, 0.0), img, :Z, maxlag = 50.0)
-gᵥ = DirectionalVariogram((0.0, 1.0), img, :Z, maxlag = 50.0)
+gₕ = DirectionalVariogram((1.0, 0.0), img, "Z", maxlag = 50.0)
+gᵥ = DirectionalVariogram((0.0, 1.0), img, "Z", maxlag = 50.0)
 
 fig = funplot(gₕ, showhist = false, color = "maroon")
 funplot!(fig, gᵥ, showhist = false, color = "slategray")
@@ -443,7 +434,7 @@ We can also estimate the variogram in all directions on a plane with the
 `EmpiricalVariogramSurface`:
 
 ```{julia}
-gₚ = EmpiricalVariogramSurface(img, :Z, maxlag = 50.0)
+gₚ = EmpiricalVariogramSurface(img, "Z", maxlag = 50.0)
 ```
 
 The variogram surface is usually plotted on a polar axis to highlight the
