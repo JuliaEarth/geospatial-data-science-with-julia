@@ -1102,9 +1102,9 @@ version = "0.88.1"
 
 [[deps.GeoStatsBase]]
 deps = ["CategoricalArrays", "ColumnSelectors", "DataScienceTraits", "DensityRatioEstimation", "Distances", "Distributions", "GeoTables", "LinearAlgebra", "Meshes", "Optim", "Random", "Rotations", "StaticArrays", "StatsBase", "Tables", "TypedTables", "Unitful"]
-git-tree-sha1 = "7a92143123b8423320ce23a917b83a94bf0aef82"
+git-tree-sha1 = "390c233bc3a610eb3bd4d5c76195eed1bb2f58a3"
 uuid = "323cb8eb-fbf6-51c0-afd0-f8fba70507b2"
-version = "0.49.1"
+version = "0.49.2"
 
 [[deps.GeoStatsFunctions]]
 deps = ["Bessels", "CategoricalArrays", "DataScienceTraits", "Distances", "GeoTables", "LinearAlgebra", "Meshes", "NearestNeighbors", "OhMyThreads", "Optim", "PrecompileTools", "Random", "Setfield", "StaticArrays", "Statistics", "TableTransforms", "Tables", "Unitful"]
