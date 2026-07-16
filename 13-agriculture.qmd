@@ -265,9 +265,7 @@ polygon with largest area:
 ```{julia}
 polys = parent(region)
 
-areas = map(area, polys)
-
-field = polys[argmax(areas)]
+field = argmax(area, polys)
 
 field |> viz
 ```
