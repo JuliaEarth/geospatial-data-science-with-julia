@@ -396,11 +396,11 @@ Let's recap the synthetic image from the beginning of the chapter:
 img |> viewer
 ```
 
-We can use the `EmpiricalVariogram` to estimate the function at specific
+We can use the `variogram` to estimate the function at specific
 lag values:
 
 ```{julia}
-g = EmpiricalVariogram(img, "Z", maxlag = 50.0)
+g = variogram(img, maxlag = 50.0)
 ```
 
 ```{julia}
@@ -415,12 +415,11 @@ The larger the number, the more confident we can be in the estimate.
 
 :::
 
-The `DirectionalVariogram` can be used to estimate the function along
-specific directions:
+The `dir` option can be used to estimate the function along specific directions:
 
 ```{julia}
-gₕ = DirectionalVariogram((1.0, 0.0), img, "Z", maxlag = 50.0)
-gᵥ = DirectionalVariogram((0.0, 1.0), img, "Z", maxlag = 50.0)
+gₕ = variogram(img, dir=(1.0, 0.0), maxlag = 50.0)
+gᵥ = variogram(img, dir=(0.0, 1.0), maxlag = 50.0)
 
 fig = funplot(gₕ, showhist = false, color = "maroon")
 funplot!(fig, gᵥ, showhist = false, color = "slategray")
@@ -431,10 +430,10 @@ range of 30 pixels and a vertical range of 10 pixels. This is known as
 geometric **anisotropy**.
 
 We can also estimate the variogram in all directions on a plane with the
-`EmpiricalVariogramSurface`:
+`variogramsurface`:
 
 ```{julia}
-gₚ = EmpiricalVariogramSurface(img, "Z", maxlag = 50.0)
+gₚ = variogramsurface(img, maxlag = 50.0)
 ```
 
 The variogram surface is usually plotted on a polar axis to highlight the
@@ -495,7 +494,7 @@ we learned:
   stays at this value as $h \to \infty$.
 - The selection of an appropriate theoretical variogram model for interpolation of
   geospatial data is often based on a two-step procedure. First, we estimate the
-  `EmpiricalVariogram`, and then we `fit` a theoretical model. The most widely
+  `variogram`, and then we `fit` a theoretical model. The most widely
   used models are the `GaussianVariogram`, the `SphericalVariogram` and the
   `ExponentialVariogram`.
 

@@ -12,8 +12,8 @@ In this chapter, we will cover simple steps for resource estimation and
 economic assessment of a real mineral deposit.
 
 **TOOLS COVERED:** `@groupby`, `@transform`, `@combine`, `CLR`, `ProjectionPursuit`,
-`EmpiricalVariogram`, `Kriging`, `Interpolate`, `InterpolateNeighbors`, `Shadow`,
-`Map`, `Filter`, `boundingbox`, `convexhull`, `viewer`
+`Kriging`, `Interpolate`, `InterpolateNeighbors`, `Shadow`, `Map`, `Filter`,
+`variogram`, `boundingbox`, `convexhull`, `viewer`
 
 **MODULES:**
 
@@ -306,18 +306,10 @@ maxlag = 300.0u"m"
 
 vs = setdiff(names(samples), ["geometry"])
 
-gs = [EmpiricalVariogram(samples, v, maxlag = maxlag) for v in vs]
+gs = [variogram(samples, v, maxlag = maxlag) for v in vs]
 
-γs = [GeoStatsFunctions.fit(Variogram, g, h -> 1 / h^2) for g in gs]
+γs = [GeoStatsFunctions.fit(ExponentialVariogram, g) for g in gs]
 ```
-
-::: {.callout-note}
-
-We performed the `fit` of the variogram model using the weighting function
-`h -> 1 / h^2` that penalizes the lag distance `h` with the inverse of its
-square.
-
-:::
 
 ```{julia}
 function gammaplot(n, g, γ)

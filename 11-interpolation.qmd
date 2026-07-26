@@ -218,13 +218,13 @@ samples |> viewer
 ```
 
 Our goal is to interpolate the variable `Z` over the original domain.
-Let's start by estimating the `EmpiricalVariogram` from the samples.
+Let's start by estimating the `variogram` from the samples.
 Because the distribution of values in the Walker Lake is skewed, the
 default `:matheron` estimator of the variogram shows a high nugget
 effect:
 
 ```{julia}
-g = EmpiricalVariogram(samples, "Z", maxlag = 100.0)
+g = variogram(samples, maxlag = 100.0)
 ```
 
 ```{julia}
@@ -235,7 +235,7 @@ A better alternative in this case is to use the robust `:cressie`
 estimator:
 
 ```{julia}
-g = EmpiricalVariogram(samples, "Z", maxlag = 100.0, estimator = :cressie)
+g = variogram(samples, maxlag = 100.0, estimator = :cressie)
 ```
 
 ```{julia}
@@ -299,7 +299,7 @@ we learned:
 - Models such as `Kriging` exploit **geospatial correlation** to improve
   interpolation results. We can extract this information from samples using
   a two-step procedure:
-  1. Estimate the `EmpiricalVariogram` from the available samples
+  1. Estimate the `variogram` from the available samples
   2. Perform `fit` of theoretical model with result from previous step
 - `Interpolate` and `InterpolateNeighbors` are examples of geostatistical
   transforms. They can be easily inserted in more advanced pipelines as
