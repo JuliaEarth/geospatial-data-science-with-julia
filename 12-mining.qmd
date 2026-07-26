@@ -298,40 +298,39 @@ samples
 
 #### Geospatial correlation
 
-Let's fit a theoretical variogram for all four (independent) variables
-up to a given maximum lag:
+Let's fit a theoretical variogram model to each (independent) variable:
 
 ```{julia}
 maxlag = 300.0u"m"
 
-vs = setdiff(names(samples), ["geometry"])
+nv = ncol(samples) - 1
 
-gs = [variogram(samples, v, maxlag = maxlag) for v in vs]
+gs = [variogram(samples, i, maxlag = maxlag) for i in 1:nv]
 
 γs = [GeoStatsFunctions.fit(ExponentialVariogram, g) for g in gs]
 ```
 
+We can plot the fitted model on top of the empirical variogram as follows:
+
 ```{julia}
-function gammaplot(n, g, γ)
-  fig = Mke.Figure()
-  Mke.Axis(fig[1,1], title = n)
-  funplot!(fig, g, maxlag = maxlag)
+function gammaplot(g, γ)
+  fig = funplot(g, maxlag = maxlag)
   funplot!(fig, γ, maxlag = maxlag)
 end
 
-gammaplot(vs[1], gs[1], γs[1])
+gammaplot(gs[1], γs[1])
 ```
 
 ```{julia}
-gammaplot(vs[2], gs[2], γs[2])
+gammaplot(gs[2], γs[2])
 ```
 
 ```{julia}
-gammaplot(vs[3], gs[3], γs[3])
+gammaplot(gs[3], γs[3])
 ```
 
 ```{julia}
-gammaplot(vs[4], gs[4], γs[4])
+gammaplot(gs[4], γs[4])
 ```
 
 Assuming that the variogram models are adequate, we can proceed to interpolation.
@@ -342,8 +341,8 @@ Given the domain of interpolation, the samples and the variogram models, we
 can perform interpolation with `InterpolateNeighbors`:
 
 ```{julia}
-interps = map(vs, γs) do v, γ
-  samples |> Select(v) |> InterpolateNeighbors(blocks, model=Kriging(γ))
+interps = map(1:nv) do i
+  samples |> Select(i) |> InterpolateNeighbors(blocks, model=Kriging(γs[i]))
 end
 
 interp = reduce(hcat, interps)
