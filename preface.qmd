@@ -126,7 +126,7 @@ pkg"add GeoIO@1.22.6"
 
 # install viz modules
 pkg"add CairoMakie@0.15.13"
-pkg"add PairPlots@3.0.7"
+pkg"add PairPlots@3.0.8"
 
 # install other modules
 pkg"add DataFrames@1.8.2"
