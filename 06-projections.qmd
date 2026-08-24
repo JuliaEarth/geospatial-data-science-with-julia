@@ -359,8 +359,8 @@ grid = RegularGrid(start, finish, dims=(20, 20))
 
 ::: {.callout-note}
 
-The `Mercator` CRS is not well-defined at the poles $\varphi = \pm 90\degree$. It is common to restrict
-the visualization to the $-80\degree \le \varphi \le 84\degree$ latitude range.
+The `Mercator` CRS is not well-defined at the poles $\varphi = \pm 90^\circ$. It is common to restrict
+the visualization to the $-80^\circ \le \varphi \le 84^\circ$ latitude range.
 
 :::
 
