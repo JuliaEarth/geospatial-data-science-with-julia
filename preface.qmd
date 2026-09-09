@@ -125,7 +125,7 @@ pkg"add GeoStats@0.90.0"
 pkg"add GeoIO@1.22.7"
 
 # install viz modules
-pkg"add CairoMakie@0.15.13"
+pkg"add CairoMakie@0.15.14"
 pkg"add PairPlots@3.0.8"
 
 # install other modules
