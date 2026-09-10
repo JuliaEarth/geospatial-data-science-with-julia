@@ -755,10 +755,10 @@ version = "0.1.2"
 
 [[deps.DelaunayTriangulation]]
 deps = ["AdaptivePredicates", "EnumX", "ExactPredicates", "Random"]
-git-tree-sha1 = "c55f5a9fd67bdbc8e089b5a3111fe4292986a8e8"
+git-tree-sha1 = "4ac548adcad90c1d5d677af13568a748af4c952b"
 registries = "General"
 uuid = "927a84f5-c5f4-47a5-9785-b46e178433df"
-version = "1.6.6"
+version = "1.6.7"
 
 [[deps.DelimitedFiles]]
 deps = ["Mmap"]
@@ -1300,10 +1300,10 @@ version = "0.5.1"
 
 [[deps.GeoTables]]
 deps = ["CategoricalArrays", "Colorfy", "ColumnSelectors", "CoordRefSystems", "DataAPI", "DataScienceTraits", "Dates", "Distributions", "IteratorInterfaceExtensions", "Meshes", "PrettyTables", "Random", "Statistics", "StyledStrings", "TableTraits", "Tables", "TransformsBase", "Unitful"]
-git-tree-sha1 = "fc740d70bec2d726f789546d8662fcb050d0e6a8"
+git-tree-sha1 = "9129aac5a92596467447149f5708906b1de0bfba"
 registries = "General"
 uuid = "e502b557-6362-48c1-8219-d30d308dcdb0"
-version = "1.29.2"
+version = "1.29.3"
 weakdeps = ["Makie", "StatsLearnModels", "TableTransforms"]
 
     [deps.GeoTables.extensions]
@@ -2040,10 +2040,10 @@ version = "0.3.3"
 
 [[deps.Meshes]]
 deps = ["Bessels", "CircularArrays", "Colorfy", "CoordRefSystems", "DelaunayTriangulation", "DifferentiationInterface", "Distances", "ForwardDiff", "HAdaptiveIntegration", "IntegrationInterface", "LinearAlgebra", "NearestNeighbors", "PrecompileTools", "Random", "Rotations", "ScopedValues", "SparseArrays", "StaticArrays", "StatsBase", "TiledIteration", "TransformsBase", "Unitful"]
-git-tree-sha1 = "2aafcc74247a9f0c89e92db7a99f2d54df1db746"
+git-tree-sha1 = "024d1c23100aaa730f0ce6cc29ad986d43926201"
 registries = "General"
 uuid = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
-version = "0.58.4"
+version = "0.58.5"
 weakdeps = ["Makie"]
 
     [deps.Meshes.extensions]
