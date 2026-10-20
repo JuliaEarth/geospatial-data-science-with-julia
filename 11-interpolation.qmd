@@ -53,7 +53,7 @@ data = georef((z=[1.0, 0.0, 1.0],), [(25, 25), (50, 75), (75, 50)])
 ```
 
 ```{julia}
-viewer(data, pointsize = 10)
+viewer(data, size = 10)
 ```
 
 First, we need to the define the domain of interpolation, i.e., the geometries
@@ -112,10 +112,6 @@ to the nearest neighbor solution as $\beta \to \infty$:
 ```{julia}
 data |> Interpolate(grid, model=IDW(100)) |> viewer
 ```
-
-Custom distances from [Distances.jl](https://github.com/JuliaStats/Distances.jl)
-may be used in place of the `Euclidean` distance to meet specific application
-requirements (e.g. `Haversine` distance on the sphere).
 
 ## Kriging
 

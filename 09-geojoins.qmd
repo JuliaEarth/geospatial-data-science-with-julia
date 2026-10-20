@@ -71,7 +71,7 @@ fig = Mke.Figure()
 ax = Mke.Axis(fig[1,1], title = "People and countries",
               xlabel = "Easting [m]", ylabel = "Northing [m]")
 viz!(countries.geometry)
-viz!(people.geometry, color = "teal", pointsize = 10)
+viz!(people.geometry, color = "teal", size = 10)
 fig
 ```
 
@@ -177,7 +177,7 @@ with the Meshes.jl module. For example, it is sometimes convenient to define geo
 predicates in terms of a distance and a threshold:
 
 ```{julia}
-pred(g1, g2) = evaluate(Euclidean(), centroid(g1), centroid(g2)) ≤ 1500u"km"
+pred(g1, g2) = EuclideanDistance()(centroid(g1), centroid(g2)) ≤ 1500u"km"
 
 geojoin(people, countries, kind = :inner, pred = pred)
 ```

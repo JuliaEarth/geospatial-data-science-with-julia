@@ -365,7 +365,7 @@ Or evaluate the variogram between any two points:
 γ(Point(0, 0), Point(1, 0))
 ```
 
-In this case, the `Euclidean` metric is used by default to compute the lag.
+In this case, the `EuclideanDistance` is used by default to compute the lag.
 More generally, we can evaluate the variogram between any two geometries:
 
 ```{julia}

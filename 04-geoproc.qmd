@@ -126,23 +126,22 @@ q = Quadrangle((1, 1), (2, 1), (2, 2), (1, 2))
 viz([t, q], color = ["teal", "slategray3"])
 ```
 
-The `PolyArea` is a polygon with or without holes. Its vertices are
-stored in dynamic memory, and they are mostly used for representation of
-polygonal areas in GIS:
+The `Pgon` is a polygon with or without holes. Its vertices are stored in
+dynamic memory, and they are mostly used for representation of areas in GIS:
 
 ```{julia}
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
 hole1 = [(0.2, 0.2), (0.2, 0.4), (0.4, 0.4), (0.4, 0.2)]
 hole2 = [(0.6, 0.2), (0.6, 0.4), (0.8, 0.4), (0.8, 0.2)]
-poly  = PolyArea([outer, hole1, hole2])
+poly  = Pgon([outer, hole1, hole2])
 
 viz(poly)
 ```
 
 In the example above, the first list of vertices represents the external
-boundary of the `PolyArea`, also known as the outer `Ring`. The other two
+boundary of the `Pgon`, also known as the outer `Ring`. The other two
 lists represent the two internal boundaries, or inner rings. A single list
-of vertices can be used, in which case the `PolyArea` doesn't have holes.
+of vertices can be used, in which case the `Pgon` doesn't have holes.
 
 ::: callout-note
 
@@ -174,7 +173,7 @@ subtypes(Chain)
 ```
 
 These are 1-dimensional polytopes connecting `Point`s in sequence. We have
-seen the `Ring`s in the `PolyArea` and `Ngon` geometries:
+seen the `Ring`s in the `Pgon` and `Ngon` geometries:
 
 ```{julia}
 viz(r)
@@ -288,7 +287,7 @@ A very useful predicate is `intersects` (with a "s" at the end):
 outer = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
 hole1 = [(0.2, 0.2), (0.2, 0.4), (0.4, 0.4), (0.4, 0.2)]
 hole2 = [(0.6, 0.2), (0.6, 0.4), (0.8, 0.4), (0.8, 0.2)]
-poly  = PolyArea([outer, hole1, hole2])
+poly  = Pgon([outer, hole1, hole2])
 ball1 = Ball((0.5, 0.5), 0.05)
 ball2 = Ball((0.3, 0.3), 0.05)
 
